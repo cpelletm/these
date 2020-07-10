@@ -1,0 +1,7 @@
+Cher journal,
+
+Au cas ou ce serait pas clair, j'ai un peu laissé tomber. Inch'Allah je m'y remettrai quand j'aurais un bureau et que je mangerai le soir.
+
+Je voulais juste écrire pour pas oublier : il faut importter matplotlib avant scipy.optimize sinon ça marche pas (bravo guido), et la dans mon prgrm faut que je trouve un moyen d'appeler une fonction à partir de sons nom (en str). J'espère que la conf était sympa.
+
+Ah et sinon j'ai enregistré des t1, c'était l'APD la coupable, faut bosser <1E6 (5E5 pour être sur) et ça marche nickel, même sans champ mag à première vue. En vrai c'est un truc à retenir, même pour la PLE et autre, je me serai pas méfié a priori.

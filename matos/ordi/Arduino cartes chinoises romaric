@@ -1,0 +1,4 @@
+Pour les cartes de romaric, sur windows il faut installer ch340/ch341, sur ubuntu t'as les drivers mais faut autoriser arduino à accéder au port (y'a un fichier à ajouter dans etc/udev/rules), mais surtout ensuite il faut bien choisir :
+carte : nano
+processeur : atmega328p (old bootloader)
+avec les ide récents (en 2019)

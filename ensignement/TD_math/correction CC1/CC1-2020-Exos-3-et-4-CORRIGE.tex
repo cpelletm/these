@@ -1,0 +1,212 @@
+%% LyX 2.3.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,french]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=20mm,rmargin=20mm}
+\setcounter{tocdepth}{2}
+\usepackage{color}
+\usepackage{babel}
+\makeatletter
+\addto\extrasfrench{%
+   \providecommand{\og}{\leavevmode\flqq~}%
+   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
+}
+
+\makeatother
+\usepackage{amstext}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true]
+ {hyperref}
+\hypersetup{pdftitle={Le Manuel d'apprentissage de LYX},
+ pdfauthor={LyX Team},
+ pdfsubject={LyX-documentation Tutorial},
+ pdfkeywords={LyX, documentation},
+ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ \fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+\makeatother
+
+\begin{document}
+\begin{center}
+{\small{}Sorbonne Universités} 
+\par\end{center}
+
+LU2PY013-PeiP\hfill{}03 mars 2020
+
+\begin{center}
+\medskip{}
+\textbf{\textcolor{blue}{\Large{}CC1}}\medskip{}
+\par\end{center}
+
+\begin{center}
+\textbf{Polycopié de cours autorisé - Calculatrice et TD interdits}\medskip{}
+\par\end{center}
+
+\section{Exercice 3 \textit{\normalsize{}{[}4 points{]}}}
+
+Soit
+\begin{equation}
+y'\left(x\right)+\textrm{sin}\left(x\right)y=\frac{\textrm{e}^{\textrm{cos}\left(x\right)}}{\textrm{cos}^{2}\left(x\right)}
+\end{equation}
+
+\begin{enumerate}
+\item Est-ce une équation différentielle \textbf{linéaire} ? (justifiez).
+De quel \textbf{ordre} ? (justifiez)\textbf{ }\textbf{\textit{{[}0,5
++ 0,5 point{]}}}
+\item \textbf{Résoudre} cette équation sur un \textbf{intervalle} que l\textquoteright on
+précisera (le plus grand possible).\textbf{ }\textbf{\textit{{[}2
++ 1 points{]}}}\bigskip{}
+\end{enumerate}
+\textcolor{blue}{CORRECTION :}
+
+\textcolor{blue}{1. C'est une équation différentielle linéaire (en
+y) ordinaire du premier ordre (seule la première dérivée de y intervient)}\\
+\textcolor{blue}{}\\
+
+\textcolor{blue}{2. Méthode de la variation de la constante.}
+
+\textcolor{blue}{On commence par résoudre l'EDO sans second membre
+:
+\[
+\frac{dy_{0}}{dx}+\textrm{sin}\left(x\right)y_{0}=0
+\]
+c'est-à-dire
+\[
+\frac{y_{0}'}{y_{0}}=-\textrm{sin}\left(x\right)
+\]
+ou
+\[
+\frac{d}{dx}\left(\textrm{ln}\left(y_{0}\right)\right)=\frac{d}{dx}\left(\textrm{cos}\left(x\right)+cte\right)
+\]
+dont la solution générale s'écrit
+\[
+y_{0}\left(x\right)=\textrm{e}^{\textrm{cos}\left(x\right)+cte}=A\textrm{e}^{\textrm{cos}\left(x\right)}
+\]
+avec $A$ une constante réelle que l'on suppose être une fonction
+$f\left(x\right)$ dans un second temps. On remplace donc $y\left(x\right)$
+par $f\left(x\right)\textrm{e}^{\textrm{cos}\left(x\right)}$ dans
+l'EDO et l'on obtient
+\[
+f'\left(x\right)=\frac{1}{\textrm{cos}^{2}\left(x\right)}
+\]
+en divisant par $\textrm{e}^{\textrm{cos}\left(x\right)}$ de chaque
+côté.}
+
+\textcolor{blue}{Cette équation s'intègre alors facilement en reconnaissant
+la dérivée de la fonction tangente à droite :
+\[
+f\left(x\right)=\textrm{tan}\left(x\right)+C
+\]
+avec $C$ une constante d'intégration réelle.}
+
+\textcolor{blue}{La solution générale recherchée est donc égale à
+\[
+y_{sol}\left(x\right)=\left(\textrm{tan}\left(x\right)+C\right)\textrm{e}^{\textrm{cos}\left(x\right)}
+\]
+et son support de définition est celui de la fonction tangente, c'est-à-dire
+l'ensemble des réels privé des nombres $\pi/2$ modulo $\pi$ (relatif).}
+
+\section{Exercice 4 \textit{\normalsize{}{[}6 points{]}}}
+
+On cherche les fonctions $y$, solutions de : 
+\begin{equation}
+\frac{dy}{dx}\textrm{e}^{-y^{2}}\left(1-2y\right)=2x\textrm{e}^{-y}
+\end{equation}
+et vérifiant $y\left(1\right)=1$.
+\begin{enumerate}
+\item Est-ce que (2) est une équation différentielle \textbf{linéaire} ?
+(justifiez). De quel \textbf{ordre} ? (justifiez) \textbf{\textit{{[}0,5
++ 0,5 point{]}}}
+\item \textbf{Calculer} la dérivée de $\textrm{e}^{y\left(1-y\right)}$
+\textbf{\textit{{[}1 point{]}}}
+\item Donner une \textbf{EDO équivalente} à (2) en utilisant la dérivée
+de $\textrm{e}^{y\left(1-y\right)}$ calculée juste avant. L\textquoteright \textbf{intégrer}
+sur un \textbf{intervalle} que l\textquoteright on précisera (le plus
+grand possible). \textbf{\textit{{[}0,5 + 1,5 + 2 points{]}}}\bigskip{}
+\end{enumerate}
+\textcolor{blue}{CORRECTION :}
+
+\textcolor{blue}{1. C'est une équation différentielle non-linéaire
+(en y) du premier ordre.}\\
+\textcolor{blue}{}\\
+
+\textcolor{blue}{2. La dérivée de la fonction $\textrm{e}^{y\left(1-y\right)}$
+s'écrit :
+\[
+\left(\textrm{e}^{y\left(1-y\right)}\right)'=y'\left(1-2y\right)\textrm{e}^{y\left(1-y\right)}
+\]
+}\\
+\textcolor{blue}{}\\
+
+\textcolor{blue}{3. Cette dérivée conduit à réexprimer l'EDO comme
+\[
+\frac{d}{dx}\left(\textrm{e}^{y\left(1-y\right)}\right)=2x
+\]
+d'où
+\[
+y\left(1-y\right)=\textrm{ln}\left(x^{2}+cte\right)
+\]
+La condition $y\left(1\right)=1$ élimine la constante : $cte=0$
+puisque $\textrm{ln}\left(1+cte\right)=0$.}
+
+\textcolor{blue}{Le support de définition de $y\left(x\right)$ est
+donc au maximum la droite réelle privée du point $0$.}
+
+\textcolor{blue}{Il reste à exprimer $y\left(x\right)$ de façon explicite.
+L'équation $y\left(1-y\right)=\textrm{ln}\left(x^{2}\right)$ s'écrit
+aussi
+\[
+y^{2}-y+\textrm{ln}\left(x^{2}\right)=0
+\]
+qui donne deux solutions a priori possibles
+\[
+\frac{1\pm\sqrt{1-4\textrm{ln}\left(x^{2}\right)}}{2}
+\]
+dont en fait seule celle avec le signe $+$ correspond à la solution
+recherchée car devant vérifier la condition $y\left(1\right)=1$ :
+\[
+y_{sol}\left(x\right)=\frac{1+\sqrt{1-4\textrm{ln}\left(x^{2}\right)}}{2}
+\]
+On remarque que le support de définition de $y_{sol}\left(x\right)$
+est plus restreint que prévu ci-dessus : il doit correspondre à la
+condition de réalité de la racine carrée : $1-4\textrm{ln}\left(x^{2}\right)\geq0$,
+c'est-à-dire 
+\[
+\left|x\right|\leq\textrm{e}^{1/8}
+\]
+Finalement, l'ensemble de définition de $y_{sol}\left(x\right)$ est
+\[
+\left[-\textrm{e}^{1/8},0\right[U\left]0,\textrm{e}^{1/8}\right]
+\]
+}
+\end{document}

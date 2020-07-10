@@ -1,0 +1,20 @@
+Cher journal,
+
+Bon Louis est revenu aujourd'hui donc forcément y'a eu un peu moins de touchage de nouille.
+
+Coté manip, le plus important à retenir c'est : 
+
+Y'a des saloperies qui peuvent se déposer sur l'échantillon, du coup on peut le chauffer grace au thermomètre qui est un peu plus qu'un thermomètre. Procédure : appuyer sur "loop1", fixer la températture visée avec la valeur de la resistance, appuyer sur commande pour lancer le truc (c'est une boucle de rétro-action) et appuyer sur "stop" pour arrêter. (et "home" pour revenir aux resistances.
+
+L'autre truc important je l'ai déja oublié lol. Ah si, c'est que tu peux débloquer les "actionneurs" en mettant vraiment une grosse valeur de tension pour le pas (genre 60+ V)
+
+Et sinon bien penser à regarder l'état de surface avec la reflexion. Aussi faudrait check si je dis pas de conneries sur l'axe z, pour être sur de regarder la reflexion sur la bonne face.
+
+Ensuite pas mal de bidouille sur la PLE mais pas de résultat pour l'insant. La technique de gitan c'est de regarder le spectre du laser en reflexion dans le circuit principal. En vrai je suis pas sur que ca aille plus vite que de regarder la voie 2 du laser en désalignant un peu.
+
+Idée fiches :
+-Le régalge de la température et le fonctionnement général du "thermomètre"
+-signal et bruit : plein de trucs, mais entre autre répondre à la question "quel est la DSP du shot noise". Vous avez 4h.
+
+Aussi pk faut refroidir le spectro, et pk il veut pas plus refroidirr que ca
+

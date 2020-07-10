@@ -1,0 +1,13 @@
+cf https://askubuntu.com/questions/626153/installing-32-bit-libbz2-so-1-in-64-bit-ubuntu
+
+Dans l'ordre, il faut faire :
+
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install lib32z1
+sudo apt-get install bzip2:i386
+sudo ln -s /lib/x86_64-linux-gnu/libc.so.6 /lib/libc.so.6
+
+Et la on peut lancer l'installeur : faut monter l'iso de labview qqpart et faire 
+sudo sh ./INSTALL

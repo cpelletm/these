@@ -1,0 +1,10 @@
+Cher journal,
+
+Journée manip sur les échantillons d'alex (diamant CVD fortement dopés en NV) + conf par ataturk, j'ai refait un peu de t1/t2 ramsay/echo, esr et rabi. Les trucs à retenir c'est :
+
+Penser à regarder le temps de polarisation par le laser vert : programme continu avec un séquence avec une pulse micro-onde au milieu (pas besoin d'éteindre le laser vert comme ça. Le temps de polarisation de la micro onde devrait êtrre très rapide (<1µs) mais le temps de polarisation du laseer vert peut prendre 500 µs. Ensuite pour faire du t1, rabi, ramsay et tout tu prends la moitié du temps de polarisation pour le read out et l'autre moitié pour finir de polariser.
+
+C'est la dernière séquence (read out) qu'il faut mettre en vert pour afficher le truc. Aussi bien penser à faire flèche puis start, et à arrêter avec stop.
+
+Et sinon 1T=1E4 Gauss, ça peut servir...
+

@@ -1,0 +1,38 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Non influence de l'interaction dipolaire sur les nano-pyramides de SiV}
+\subsubsection{Date}
+2019/12 pendant une petite semaine
+  \section{But}
+  Le but était d'observer la modification des largeurs (homogènes et inhomogènes) dues à l'interaction dipolaire entre les différents centres SiV. Pour ça l'idée est de réduire progressivement la quantité de centres SiV en les brulant de façon homogène (avec une ou plusieurs rampes) et de voir comment changent : la bosse totale (dominée par la largeur inhomogène) et les trous creusés (largeur homogène élargie par puissance).
+  \section{Méthodes expérimentales}
+  Globalement similaire au hole-burning, sauf que la séquence de burning inclue des rampes, en plus de l'éventuel trou à creuser.
+  
+  Deux points importants : 
+  \begin{itemize}
+  \item Le laser est loin d'être monomode : ça se voit très bien sur cette manip ou tu peux creuser plusieurs trous en même temps. Pour éviter ça : Michelson déja, et ensuite jouer sur le courant et la température, l'essentiel étant d'avoir des franges d'interférences bien contrastées sur l'ensemble du scan. Les sauts de mode c'est gênant mais moins important. (et je suis pas sur qu'on puisse faire 3V de scans sans saut de modes)
+  \item Pas oublier la puissance du laser qui peut complètement changer la tronche du scan. En particulier si tes scans commencent toujours par une descente de PL, c'est sans doute que le laser est trop fort.
+  \end{itemize}
+  \section{Résultats}
+ Les résultats sont pour l'instant dans le dossier python la haut, il faudra penser à les ramener.
+ Concrètement on a vu aucune modification, ni sur la largeur homogène, ni sur la largeur inhomogène (plus logique).
+  \end{document}	
+  
+  

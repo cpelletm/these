@@ -1,0 +1,76 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Hole burning de SiV dans des nano-pyramides CVD}
+\subsubsection{Date}
+2019/09/16 $\to$ 2019/10
+  \section{But}
+  On étudie les pointes d'AFM que Louis a déja étudié dans l'article d'ACS. Le but dans un premier temps c'est d'observer un splitting zeeman sur une des 4 raies en faisant un trou/anti-trou, comme dans le PRL 2014 de Lukin.
+  
+  Edit 15/10 : Le but a un peu changé, en faite on a réalisé qu'on pourrait observer Zeeman sans avoir à bouger l'aimant : si tu creuses un trou avec un champ mag déja présent, étant donné le T1 de spin des SiV (~40 ns), il va se creuser instantanément des petits pics à coté qui correspondent au spin $\pm 1/2$ complémentaire des spins que tu creuses au milieu.
+  \section{Éléments de la manip}
+  \subsection{L'échantillon}
+  Les pyramides sont sur un wafer de silicone. Ici pour pouvoir approcher un aimant le plus près possible on a décidé de mettre des pyramides sur une plaque de quartz (cf après). J'ai nettoyé des vieilles plaques de quartz (acéone + IPA) et pour faire l'échantillon j'ai simplement tapoté la plaque sur le wafer, et vérifié la présence de pyramides au microscope (objectif x20 vert).
+  \subsection{Setup dans le cryostat}
+  (Inclure photo)
+  
+  Le setup est le suivant : l'échantillon est placé sur un porte-échantillon en t, de l'autre coté de l'objectif (coté aimant donc). L'objectif utilisé est le jaune x10 pour être placé en dehors de l'écran thermique (en vrai c'est limite, l'objectif touche quasiment le hublot et l'attocube est quasiment en bout de course vers l'avant.
+  
+  L'aimant pour l'instant est un aimant fin de Nd qui es a priori orienté dans le mauvais sens (le champ sort de la "tranche", et pas du "bout"), et monté sur la platine motorisé (ci-après "le tchou-tchou"), il arrive a quelques mm de l'échantillon et peut s'écarter de 1.5cm.
+  
+  \subsubsection{Améliorations}
+  Utiliser les aimants ronds, vissés, plutôt que l'aimant fin. Vérifier les champs avec un tesla-mètre pour voir si on peut pas retourner le porte-échantillon.
+  
+  \subsection{Influence de la température}
+  Déjà, en fonction des pointes, tu as les 4 pics qui peuvent se distinguer ou non. Mais en plus t'as des effets assez fourbes avec la température, notamment au niveau du chauffage du laser : Pour l'instant (25/09) j'utilise une densité 0.15 (de la roue car les grosses densité dévie le faisceau), et faut aussi optimiser la ou tu tapes. Je m'explique :
+  
+  Je pense qu'en fonction de si tu excites beaucoup de NV ou pas, ton échantillon chauffe plus ou moins (pk ?). Du coup faut réussir à exciter un max de SiV sans trop de NV. Pour ça ma technique c'est de passer en laser pleine puissance (pour avoir du signal au spectro en mode caméra), et de bouger un peu jusqu'à voir les raies se séparer légèrement, sans perdre trop de signal (regarder le moment ou les raies sont grandes mais la base est petite).
+  
+  \subsubsection{Note}
+  Normalement, avec un hublot d'ouvert j'arrive à une température de $\approx 1020 \omega $, ce qui est suffisant, même avec le laser à fond, pour voir la séparation de 250 GHz (niveaux excités) au spectro (réseau vert ou rouge). Par contre il faut passer au réseau rouge pour voir la séparation à 50GHz du fondamental.
+  
+  
+  
+  \subsubsection{Amélioration}
+  Mettre du papier d'alu sur le hublot de l'aimant autour de l'aimant (p-e moins utile avec l'aimant rond, à vérifier).
+  
+  Edit 15/10 : Effectivement l'aimant rond fait un plutot bon écran thermique. D'après Louis il est sensé être à 300K et donc par rayonnement il devrait réchauffer l'aimant, mais c'est pas ce que j'observe : en raprochant l'aimant, la température diminue (donc je pense que la convection est plus importante que le rayonnement). Si il faut, on peut relier thermiquement l'aimant à l'écran thermique, mais ce sera plus dur de le déplacer.
+  
+  \subsection{Programmes Labview (outdated) (je m'avance un peu)}
+  \subsubsection{Hole burning}
+  \subsubsection{Principe}
+  Le programme va burn pendant un certain temps (c'est à dire fermer le laser vert)
+  \subsubsection{Branchements}
+  Avec les post-its actuels, le signal de commande es en "signal 1", l'APD dans "In APD", le shutter rouge dans "out shutter 1", le shutter vert dans "out shutter 2".
+  \subsubsection{Instructions}
+  Le programme que j'utilise pour l'instant (25/09) c'est HoleBurning V2. Les paramètres sont les suivants : \begin{itemize}
+  \item tps intégration 1 \& 2 : mettre la même valeur que dt (valeur en s, typiquement 1e-5)
+  \item plage totale en V : amplitude du scan (valeur en V, typiquement 1)
+  \item pas en V : le pas, typiquement 1e-4
+  \item offset en V : bah l'offset, 0 par défaut
+  \item dt : le temps que tu vas passer sur chaque point en s. Le nombre de point étant défini comme plage en V/pas en V, le temps total d'un cycle vaut plage/pas*dt (en sachant qu'il y a un break de 0.1s entre chaque cycle, donc ça sert à rien de vouloir descendre en dessous. Aussi le programme ne marche pas pour d=1e-6)
+  \item nb burning : ???
+  \item nb itérations : le nombre de cycle. Mettre 999999 et arrêter quand t'en as marre
+  \item rate : mettre une valeur plus grand que dt, genre 999 (pk ??)
+  \item 
+  \end{itemize}
+ 
+  \end{document}	
+  
+  

@@ -1,0 +1,8 @@
+Les données datent de 20200219 pour le sumi4 et 20200225 pour le sumi 2.
+
+Les transitions correspondent à une dégénérescence 1x2x1 dans les deux cas.
+
+La largeur en énergie a été estimée à partir d'un échantillonage à l'ESR autour de la transition ( à partir du moment ou les 2 pics peuvent se distinguer) des deux cotés. Globalement ça me semble assez précis, je dirais à qq% près (rq: les deux raies ne se déplacent pas à la même vitesse contrairement à ce que je pensais)
+
+Le fait que le fit soir plutot gaussien et qu'il ne dépende visiblement pas de la concentration (un facteur ? entre les 2 sumis) me fait dire qu'on est a priori limité par l'élargissement inhomogène. (rq sur le fit : c'est surtout à cause des zéros que c'est plus gaussien que lorentzien, et le zéro a été défini artificiellement. Après j'ai juste soustrait une droite aux données, je pense pas avoir trop modifié la forme de la courbe)
+(rq2 : la largeur pourrait ne pas être celle du t1, cf le dossier résonnance angulaire. Je suis en train de faire un scan en t1 du sumi2, mais même si ça marche pas je pense qu'on est assez safe, je dois avoir un gamma_las environ 10x le t1, étant donné les courbes de polarisation et de t1.)

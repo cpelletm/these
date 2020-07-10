@@ -1,0 +1,164 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Dépendance angulaire du champ magnétique sur un ensemble de NV-}
+
+\section{Théorie}
+La théorie pour l'instant c'est le PRL 2017 de Lukin. Je sais pas encore trop quoi en penser. Sans rentrer dans les détails, l'essentiel de ce qui m’intéresse est dans les équations (S36), (S38), (S40), (S41) (tout dans le suplementary). Faut juste prendre en compte que "slightly lower" pour Lukin c'est une diminution de 40\%.
+Je trouve pour les différentes configurations de dégénérescences :
+\begin{itemize}
+\item \textbf{1x1x1x1} : $T_1=\tau$
+\item \textbf{1x2x1} : $T_1\approx \dfrac{\tau}{4.1}$
+\item \textbf{2x2} : $T_1\approx \dfrac{\tau}{7.3}$
+\item \textbf{3x1} : $T_1\approx \dfrac{\tau}{14.7}$
+\item \textbf{4x} : $T_1\approx \dfrac{\tau}{37}$
+\end{itemize}
+
+La dépendance en NRJ ensuite, c'est en gros une Lorentzienne tant que ton $\gamma_f$ (c'est à dire la largeur spectrale de ton bruit, qui correspond au taux de dépolarisation des fluctuators) est grand devant ton élargissement inhomogène de chaque classe ($\delta \omega$ chez Lukin), ce qui est le cas pour lui et pour nous avec le diamant rose d'Alex et tous les échantillons assez concentrés qu'on a.
+
+Plus précisement, la formule générale c'est celle-la :
+\begin{equation}
+\dfrac{T_1}{T_{1\mathrm{ref}}} = \dfrac{1}{4} \sum_{i=1}^4 \left(1+\sum_{i \neq j} 1.69 \sqrt{\dfrac{\delta \omega ^2 + 4 \gamma_f^2}{(\delta \omega + \delta_{ij})^2 + 4\gamma_f^2}} \right)^2
+\end{equation}
+
+Où $T_{1\mathrm{ref}}$ est le temps de vie obtenu dans la configuration 1x1x1x1 (avec uniquement de l'interaction intra-classe), et où on somme sur les 4 orientations possibles. Le 1.69 vient de $\dfrac{0.6507}{2/3\sqrt{3}}$, c'est ce slightly qui vaut 1 chez Lukin.
+
+Pour la photoluminescence maintenant, on fait simplement une petite équation de tau et on trouve (sans approximation): 
+\begin{equation}
+\rho_0=\dfrac{\Gamma_{las} + 1/t_1}{\Gamma_{las} + 3/t_1}
+\end{equation}
+Avec $\Gamma_{las}$ le taux de pompage optique dans l'état $\ket{0}$ et 
+\begin{equation}
+\dfrac{1}{t_1}=\dfrac{1}{t_1^{phonons}}+\dfrac{1}{t_1^*}(\delta)
+\end{equation}
+
+\subsection{Géométrie}
+on se place dans le référentiel (x,y,z) ou x,y et z ont les normales aux faces du cube de la maille cristalline. Alors les coordonnées des différentes orientations dans cette base sont :
+\begin{equation}
+\begin{pmatrix}
+1 \\ 1 \\ 1
+\end{pmatrix} ,
+\begin{pmatrix}
+1 \\ -1 \\ -1
+\end{pmatrix} ,
+\begin{pmatrix}
+-1 \\ 1 \\ -1
+\end{pmatrix} ,
+\begin{pmatrix}
+-1 \\ -1 \\ 1
+\end{pmatrix} 
+\end{equation}
+Qu'on peut également noter $(111), (1\bar{1}\bar{1}),(\bar{1}1\bar{1}),(\bar{1}\bar{1}1)$
+
+Alors :
+\begin{itemize}
+\item Les dégénérescences 4x0 correspondent aux directions $(100), (010), (001)$ ou simplement x,y et z.
+\item Les dégénérescences 3x1 correspondent aux directions $(111), (1\bar{1}\bar{1}),(\bar{1}1\bar{1}),(\bar{1}\bar{1}1)$, soit la direction des différents centres.
+\item Les dégénérescences 2x2 correspondent aux plans normaux à $(100), (010), (001)$, c'est à dire les plans (xy), (yz) et (xz).
+\item Les dégénérescences 1x2x1 correspondent aux plans normaux à :
+
+$(110), (1\bar{1}0),(101), (10\bar{1}),(011), (01\bar{1})$ chacune des ces directions correspondant à une dégénérescence 2x2 particulière. 
+\end{itemize}
+  \section{Map 2d à la main}
+  \subsection{Principes physiques}
+  La référence c'est principalement "Depolarization Dynamics in a Strongly Interacting Solid-State Spin Ensemble" PRL 2017 de lukin, où il explique avec un modèle de spin-fluctuators pourquoi le $T_1$ de spin dépend de la dégénérescence des niveaux d'énergies de spin, et donc de l'angle du champ mag.
+  
+  L'idée c'est que : Champ aligné avec plusieurs orientations de NV- $\to$ états dégénérés $\to$ $T_1$ plus faible $\to$ Polarisation plus faible dans le fondamental $\to$ Moins de PL
+  
+  \subsection{Principe de la manip}
+  La manip "à la main" repose sur l'utilisation de montures de $\lambda/2$ pour faire tourner un aimant autour de l'échantillon avec un mouvement sphérique (pour avoir une amplitude de champ constante). Du coup l'échantillon est sur une pointe dure (pour pas bouger, c'est important que la PL soit stable dans le temps), au milieu d'une monture qui peut elle même pivoter, ça te fait un angle de nutation et un angle de précession.
+  (Include picture, c'est sur mon portable).
+  
+  \subsubsection{Subtilités de la manip}
+  Y'en a pas mal, je note comme ça me vient :
+  \begin{itemize}
+  \item Ce qui m'a le plus bloqué, c'est que pour voir un effet, il faut que le temps de polarisation des spins (par le laser vert, proportionnel à la puissance verte) soit du même ordre de grandeur que le $T_1$ des spins, tu peux faire le calcul mais en gros c'est la ou la variation de $T_1$ modifie le plus la PL.
+  
+  Y'a 2 façons de regarder ça : soit à la barbare en mesurant les 2, et en ajustant la puissance du laser avec AOM/densité, soit en regardant la différence de contraste quand tu approches un aimant : avec un échantillon fortement dopé, tu devrais voir une hausse de la PL qui peut monter à 3/4\% je pense, en approchant l'aimant dans une direction quelconque avec la bonne puissance incidente.
+  
+  Pour ma carte j'avais une densité 0.1 et 0.3 sur le laser, et une E-3 sur la collection
+  
+  \item Stabiliser la photolum : Tu regardes des variations de qq \% au mieux, assez éloignées dans le temps et sans moyennage : il te faut une photolum stable. Le principal truc à retenir c'est d'utiliser une fibre multi-mode. L'autre truc que j'ai pas fait mais qui est à creuser c'est de ne pas focaliser le laser complètement, pour avoir une tache plus grande que l'échantillon. Faut quand même garder une puissance suffisante, cf avant.
+  
+  \item Faire de la place : faut de la place pour tourner l'aimant, à la fin j'avais 30 degrés de précession (je suis monté à 40) et genre 270 degrés de nutation. Et pour faire ça il a fallu ruser : 
+  
+ Déposer l'échantillon sur un truc long et fin (une pointe en métal ici) et approcher l'antenne micro-onde selon le même axe pour pas que ça gêne trop la rotation (l'échantillon est pas posé sur l'antenne car elle chauffe et se déplace, même si en vrai tu pourrais faire tous les ESR à la fin)
+ 
+ Utiliser une lentille type lentille d'AOM au lieu d'un objectif pour l'éclairage/la collection. Ca limite aussi pas mal la puissance max.
+  
+  \item Centrer l'échantillon : la pas trop de techniques, bien penser à regarder sous différents angles. Le truc le plus astucieux que j'ai trouvé c'est de mettre une tige au milieu de la monture fixée à la table (précession), ça rend les différents éléments (échantillon puis monture 2) bcp plus simples à centrer. Et sinon je me suis chié sur la hauteur pour ma carte et ç se voit.
+  
+  \item Trouver un diamant unique : c'est la partie ou je suis le moins sur de moi. Ce que j'ai trouvé globalement, c'est soit de foutre des diamants partout, et d'essuyer sur le dessus et le dessous de la tige (puisque c'est les diamant sur les coté que tu peux voir directement), soit d'utiliser un petit fil chargé de diamants et le frotter sur la tige pour pas trop en déposer. A la fin cherche en un qui crache bien, en vrai je suis pas sur que ce soit si dur.
+  \end{itemize}
+  
+  \subsection{Résultats expérimentaux}
+  \begin{itemize}
+  \item 2019/11/04 : 2 map et des ESR correspondants. La 2eme map m'a quand même pris plus d'une heure de mesure (900 points, intégrés 1s chacun), et j'ai du essayer de piffer des variations de 1 degré avec des graduations de 2 degrés. En plus le diamant était pas au centre de la monture "nutation", donc j'ai un gradient de PL que j'ai normalisé un peu à la zob. On voit un grosse tache au centre avec 6 ou 7 branches qui partent. Une ptite simu pour comprendre ce que sont ces branches ferait pas de mal.
+  \end{itemize}
+  
+  \section{Map automatisée}
+  date : fin novembre 2019 à Janvier 2020 au moins
+  \subsection{Matos}
+  La grosse nouveauté qui m'aura bien bouffé un mois c'est le gonio motorisé Thorlabs. Actuellement, si j'ai le temps d'écrire, c'est parce que je l'ai un peu flingué (et aussi que les rer du soir ont enfin repris), mais ça se trouve je l'ai réparé. Dans tous les cas à l'avenir il vaudrait mieux éviter de construire des tours Eiffel dessus, pendant un moment je vais sans doute me contenter d'un aimant posé sur la base.
+  
+  \subsubsection{Utilisation}
+  C'est assez plug and play en mode "joystick", faut juste brancher les deux controlleurs aux deux moteurs. A noter qu'on a qu'une seule bonne alim, du coup l'autre j'ai bricolé un truc un peu crado avec 3 étages d'adaptateurs.
+  \subsubsection{Interfacage}
+  Après avoir bien galéré avec les triggers je me suis rendu compte que c'était infiniment plus simple en mode USB avec une bilbi thorlabs-apt en python. A retenir pour la suite, les bibli propriétaire ca fait gagner du temps. Pour l'utilisation regarder les programmes map new gen ou line new gen, c'est du très basique à base de move-to.
+  
+  Globalement j'utilise toujours l'option "fast" des cartes ou je prend la PL à la volée, mais forcément c'est pas hyper précis angulairement (pour la direction qui est balayée) vu que le moteur est pas parfaitement régulier (accélération/décélération entre autre). Donc éventuellement faut check que tu obtiens un truc similaire dans les 2 directions. J'ai aussi rajouté un petit "over wait" dans la dernière version qui te dit le temps que tu attends après ton scan de PL pour que le moteur arrive. Dans l'idéal ce truc est autour de 0, mais comme je peux pas voir les valeurs négatives, on va dire qu'il faut que ça tourne autour de 5 (unité $\approx 0.01$ s).
+  
+  Le dernier truc qui est peut-être le plus important : la bibli chie grave sa race, et très souvent python arrive même pas à la charger. C'est sans doute un truc autour du clean-up, et peut être du fait que j'utilise une interface graphique. J'ai bricolé un truc en modifiant les fichiers de la bibli mais c'est pas très sérieux. Bref, le truc à retenir c'est : \textbf{SI CA PLANTE FAUT LANCER KINESIS}. Kinesis c'est le programme Thorlabs plus récent mais qu'on peut pas interfacer à ma connaissance. Dans Kinesis faut s'assurer que les 2 moteurs sont chargé, et éventuellement les charger soi même. Si tu les vois pas, débranche et rebranche les USB.
+  \subsubsection{Entretien (lol)}
+  Je suis un peu obligé de faire cette partie, ne serait-ce que pour dire que c'est pas la peine d'essayer de dévisser les moteurs. La seule chose que ta vas réussir à dévisser c'est la colle qui maintien l'enveloppe plastique du moteur.
+  
+  Pour accéder à la vis du moteur, en faite il faut enlever le stage 1 du stage 2 et le stage 2 de la petite plaque grace à 4 vis noires verticales dans les deux cas (ou 3 dans un cas vu que j'en ai paumé une) et retourner le stage à l'envers. Ca continue de couiner même après l'avoir graissé mais bon il a quand même l'air de marcher.
+  \subsection{Résultats}
+  Déja, des cartes qui pètent la classe (et que je pourrais peut-être pas refaire en fonction d'à quel point le gonio est abîmé). Et plein d'autres trucs, mais ce sera au prochain épisode, je commence à avoir faim.
+
+ \section{Électro-aimant}
+ date : début : février 2020
+ \subsection{Matos}
+ Le matos utilisé c'est l'électro aimant fabriqué par Paul avec le gros entre-fer et beaucoup d'enroulement (du coup il prend max 1A, et sous vide je sais pas mais moins que ça), et l'alimentation Rhode \& Shwartz avec trois sorties, qui est pilotée en USB via Python.
+ \subsection{Interfaçage}
+ Il y a plusieurs programmes comme scan\_electroaimant.py qui montrent comment faire, les infos viennent toutes du site de R\&S. En gros ça passe par du VISA, il faut trouver l'ID de l'appareil (dans mon cas j'ai fait ça avec un utilitaire de R\&S) et ensuite les commandes sont assez intuitives, elle se séparent en QUERY quand tu veux interroger l'appareil, et WRITE pour envoyer des instructions. Il faut bien penser à mettre un WAIT entre chaque instruction, sinon des fois les instruction suivantes viennent override.
+ Aussi, le wait te dis juste que l'instruction a été reçue, pas qu'elle est appliquée. Du style une consigne en tension va revenir immédiatement mais ensuite il faut compter au moins 0.5s pour que la tension soit effectivement appliquée (c'est un générateur DC, il est pas vraiment fait pour faire de la dynamique)
+ \subsection{Manips}
+ Pour l'instant des scans à chaud sur les sumitomo (des diamants HPHT avec 4 concentrations de NV différentes filés par Alex) en tension (donc en courant donc en champ mag) ou je regarde la PL et en ce moment le temps de polarisation (à voir si ça mène quelque part). Les programmes sont un peu chelou : j'utilise l'option EasyRamp (tm) du générateur qui permet de faire des rampes de tension, mais il y a quelques subtils problèmes :
+ \begin{itemize}
+ \item Le plus important c'est que le générateur est pas triggé. Y'a peut être moyen de le faire mais en attendant je mesure en même temps (plus ou moins) la tension et la PL et je re-plot ça comme je peux ensuite pour avoir la PL en fonction de la tension.
+ \item Ensuite les rampes ne se font qu'à l'allumage de la tension (quand tu passe en output ON). Donc tu pars forcément de 0 (au passage le fait de couper à chaque fois l'output joue sur le cycle d’hystérésis je pense : j'ai l'impression qu'on passe par des tension négatives du coup au moment ou il s'éteint)
+ \item Et le dernier truc c'est que ce crétin ne connait pas les nombres à virgule, donc je peux faire des rampes que de 1s ou genre 10-2 (le minimum).
+ \end{itemize}
+ 
+  L'étape suivante c'est de choper une résistance (je voulais un rhéostat mais Hadrien m'a gentiment filé un vieux truc qui trainait en R18) parce que le générateur ne peux pas faire des pas de moins de 0.01V (d'ailleurs la rampe est en escalier, on peut le voir) et que la zone qui m'intersse pour l'instant est entre 0.4 et 0.5V. Donc une résistance en série ça me permettrait d'augmenter les tensions tout en maintenant le même courant.
+  
+  Et la vraie étape suivante c'est de mesurer les largeurs sur les différents sumitumo (et éventuellement le diamant rose) pour voir un peu comment ça varie avec la concentration. A la base je voulais faire ça avec le gonio mais il boude en ce moment, et de toutes façon c'est moins reproductible les mesures au gonio, et ça donne pas non plus l'énergie.
+  
+  Edit coronavirus (1er Avril 2020) : J'ai bien ajouté une resistance ce qui a pas mal augmenté la résolution, et j'ai fait des mesures de largeurs sur les sumi 2,4 et le rose. J'ai aussi essayé l'electro-aimant à froid mais sans écran thermique on descend à peine à 250K, c'est vraiment minable. Pour les mesures de largeur, il y a quand même pas mal de soucis :
+  \begin{itemize}
+  \item Deja il faut que je mette au clair cette mesure HWHM qui a l'air complètement fausse sur les sumi
+  \item Ensuite y'a le probleme de la soustraction du background, qui joue sans doute beaucoup dans le fait que le fit soit ensuite plutot gaussien que lorentzien, même si a priori en ajoutant une constante libre je pense que ça amoindrit le pb. Pour l'instant je soustrait simplement une droite entre les deux points qui limitent la bosse (interpolation linéaire). Je pourrai faire une interpolation quadratique ou plus mais je sais pas si j'y gagnerai beaucoup.
+  \item Enfin y'a le problème du rose : Deja sons contraste est vraiment flingué, c'est à se demander comment j'ai réussi à faire une carte, et la seule transition 1x2x1 que j'ai réussie à isoler est très proche de 2.88 GHz. Je sais pas si c'est lié mais ma raie est aussi très asymétrique.
+  \end{itemize}
+  \subsubsection{Mesures}
+  Les principales mesures grace à l'électro-aimant
+  \end{document}	
+  
+  

@@ -1,0 +1,15 @@
+Installer python 3 via le web-installer, préciser "ajouter a PATH"
+Installer les drivers daqmx
+installer le package python via pip : $ python -m pip install nidaqmx
+
+Go to the script folder of the python installation folder. For example, C:\Program Files (x86)\Python36-32\Scripts
+Go to computer properties, then select Advanced system settings
+In the Advanced tab click on Environment Variables.. 
+Under system variable, select PATH and click on Edit
+In Variable value, at the end, add a semicolon and path of script folder as above. For example, add ;C:\Program Files (x86)\Python36-32\Scripts
+Also add address of the python folder to PATH of environment variable. For example, add at the end ;C:\Program Files (x86)\Python36-32
+
+Je sais pas si c'est utile mais ca a marché du premier coup. Faire un test voltmètre
+
+ref : https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019Pf1SAE&l=fr-FR
+https://nidaqmx-python.readthedocs.io/en/latest/

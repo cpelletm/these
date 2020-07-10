@@ -1,0 +1,383 @@
+%% LyX 2.3.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=20mm,rmargin=20mm}
+\setcounter{tocdepth}{2}
+\usepackage{color}
+\usepackage{babel}
+\makeatletter
+\addto\extrasfrench{%
+   \providecommand{\og}{\leavevmode\flqq~}%
+   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
+}
+
+\makeatother
+\usepackage{amstext}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true]
+ {hyperref}
+\hypersetup{pdftitle={Le Manuel d'apprentissage de LYX},
+ pdfauthor={LyX Team},
+ pdfsubject={LyX-documentation Tutorial},
+ pdfkeywords={LyX, documentation},
+ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ \fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+\makeatother
+
+\begin{document}
+\begin{center}
+{\small{}Sorbonne Universit�s} 
+\par\end{center}
+
+LU2PY013-PeiP\hfill{}03 mars 2020
+
+\begin{center}
+\medskip{}
+\textbf{\textcolor{blue}{\Large{}CC1}}\medskip{}
+\par\end{center}
+
+\begin{center}
+\textbf{Polycopi� de cours autoris� - Calculatrice et TD interdits}\medskip{}
+\par\end{center}
+
+\section{Exercice 3 \textit{\normalsize{}{[}4 points{]}}}
+
+Soit
+\begin{equation}
+y'\left(x\right)+\textrm{sin}\left(x\right)y=\frac{\textrm{e}^{\textrm{cos}\left(x\right)}}{\textrm{cos}^{2}\left(x\right)}
+\end{equation}
+
+\begin{enumerate}
+\item Est-ce une �quation diff�rentielle \textbf{lin�aire} ? (justifiez).
+De quel \textbf{ordre} ? (justifiez)\textbf{ }\textbf{\textit{{[}0,5
++ 0,5 point{]}}}
+\item \textbf{R�soudre} cette �quation sur un \textbf{intervalle} que l\textquoteright on
+pr�cisera (le plus grand possible).\textbf{ }\textbf{\textit{{[}2
++ 1 points{]}}}\bigskip{}
+\end{enumerate}
+\textcolor{blue}{CORRECTION :}
+
+\textcolor{blue}{1. C'est une �quation diff�rentielle lin�aire (en
+y) ordinaire du premier ordre (seule la premi�re d�riv�e de y intervient)}\\
+\textcolor{blue}{}\\
+
+\textcolor{blue}{2. M�thode de la variation de la constante.}
+
+\textcolor{blue}{On commence par r�soudre l'EDO sans second membre
+:
+\[
+\frac{dy_{0}}{dx}+\textrm{sin}\left(x\right)y_{0}=0
+\]
+c'est-�-dire
+\[
+\frac{y_{0}'}{y_{0}}=-\textrm{sin}\left(x\right)
+\]
+ou
+\[
+\frac{d}{dx}\left(\textrm{ln}\left(y_{0}\right)\right)=\frac{d}{dx}\left(\textrm{cos}\left(x\right)+cte\right)
+\]
+dont la solution g�n�rale s'�crit
+\[
+y_{0}\left(x\right)=\textrm{e}^{\textrm{cos}\left(x\right)+cte}=A\textrm{e}^{\textrm{cos}\left(x\right)}
+\]
+avec $A$ une constante r�elle que l'on suppose �tre une fonction
+$f\left(x\right)$ dans un second temps. On remplace donc $y\left(x\right)$
+par $f\left(x\right)\textrm{e}^{\textrm{cos}\left(x\right)}$ dans
+l'EDO et l'on obtient
+\[
+f'\left(x\right)=\frac{1}{\textrm{cos}^{2}\left(x\right)}
+\]
+en divisant par $\textrm{e}^{\textrm{cos}\left(x\right)}$ de chaque
+c�t�.}
+
+\textcolor{blue}{Cette �quation s'int�gre alors facilement en reconnaissant
+la d�riv�e de la fonction tangente � droite :
+\[
+f\left(x\right)=\textrm{tan}\left(x\right)+C
+\]
+avec $C$ une constante d'int�gration r�elle.}
+
+\textcolor{blue}{La solution g�n�rale recherch�e est donc �gale �
+\[
+y_{sol}\left(x\right)=\left(\textrm{tan}\left(x\right)+C\right)\textrm{e}^{\textrm{cos}\left(x\right)}
+\]
+et son support de d�finition est celui de la fonction tangente, c'est-�-dire
+l'ensemble des r�els priv� des nombres $\pi/2$ modulo $\pi$ (relatif).}
+
+\section{Exercice 4 \textit{\normalsize{}{[}6 points{]}}}
+
+On cherche les fonctions $y$, solutions de : 
+\begin{equation}
+\frac{dy}{dx}\textrm{e}^{-y^{2}}\left(1-2y\right)=2x\textrm{e}^{-y}
+\end{equation}
+et v�rifiant $y\left(1\right)=1$.
+\begin{enumerate}
+\item Est-ce que (2) est une �quation diff�rentielle \textbf{lin�aire} ?
+(justifiez). De quel \textbf{ordre} ? (justifiez) \textbf{\textit{{[}0,5
++ 0,5 point{]}}}
+\item \textbf{Calculer} la d�riv�e de $\textrm{e}^{y\left(1-y\right)}$
+\textbf{\textit{{[}1 point{]}}}
+\item Donner une \textbf{EDO �quivalente} � (2) en utilisant la d�riv�e
+de $\textrm{e}^{y\left(1-y\right)}$ calcul�e juste avant. L\textquoteright \textbf{int�grer}
+sur un \textbf{intervalle} que l\textquoteright on pr�cisera (le plus
+grand possible). \textbf{\textit{{[}0,5 + 1,5 + 2 points{]}}}\bigskip{}
+\end{enumerate}
+\textcolor{blue}{CORRECTION :}
+
+\textcolor{blue}{1. C'est une �quation diff�rentielle non-lin�aire
+(en y) du premier ordre.}\\
+\textcolor{blue}{}\\
+
+\textcolor{blue}{2. La d�riv�e de la fonction $\textrm{e}^{y\left(1-y\right)}$
+s'�crit :
+\[
+\left(\textrm{e}^{y\left(1-y\right)}\right)'=y'\left(1-2y\right)\textrm{e}^{y\left(1-y\right)}
+\]
+}\\
+\textcolor{blue}{}\\
+
+\textcolor{blue}{3. Cette d�riv�e conduit � r�exprimer l'EDO comme
+\[
+\frac{d}{dx}\left(\textrm{e}^{y\left(1-y\right)}\right)=2x
+\]
+d'o�
+\[
+y\left(1-y\right)=\textrm{ln}\left(x^{2}+cte\right)
+\]
+La condition $y\left(1\right)=1$ �limine la constante : $cte=0$
+puisque $\textrm{ln}\left(1+cte\right)=0$.}
+
+\textcolor{blue}{Le support de d�finition de $y\left(x\right)$ est
+donc au maximum la droite r�elle priv�e du point $0$.}
+
+\textcolor{blue}{Il reste � exprimer $y\left(x\right)$ de fa�on explicite.
+L'�quation $y\left(1-y\right)=\textrm{ln}\left(x^{2}\right)$ s'�crit
+aussi
+\[
+y^{2}-y+\textrm{ln}\left(x^{2}\right)=0
+\]
+qui donne deux solutions a priori possibles
+\[
+\frac{1\pm\sqrt{1-4\textrm{ln}\left(x^{2}\right)}}{2}
+\]
+dont en fait seule celle avec le signe $+$ correspond � la solution
+recherch�e car devant v�rifier la condition $y\left(1\right)=1$ :
+\[
+y_{sol}\left(x\right)=\frac{1+\sqrt{1-4\textrm{ln}\left(x^{2}\right)}}{2}
+\]
+On remarque que le support de d�finition de $y_{sol}\left(x\right)$
+est plus restreint que pr�vu ci-dessus : il doit correspondre � la
+condition de r�alit� de la racine carr�e : $1-4\textrm{ln}\left(x^{2}\right)\geq0$,
+c'est-�-dire 
+\[
+\left|x\right|\leq\textrm{e}^{1/8}
+\]
+Finalement, l'ensemble de d�finition de $y_{sol}\left(x\right)$ est
+\[
+\left[-\textrm{e}^{1/8},0\right[U\left]0,\textrm{e}^{1/8}\right]
+\]
+}
+\section{Exercice 5 \textit{\normalsize{Une ballade en voiture en guise de dessert}{[}5 points{]}}}
+\subsubsection*{- \`a l'arr\^et }
+La suspension d'une voiture de masse $m$ = 800 kg est \'equivalente \`a un ressort vertical de constante de raideur $k$ = 1,36 10$^4$ N/m, qui est associ\'e a un frottement visqueux de constante $f$ = 1,6 10$^2$ kg/s.
+
+L'\'equation du d\'eplacement vertival $y(t)$ de la voiture s'\'ecrit :
+
+\begin {equation}
+\quad  \quad \quad \quad \quad \quad \quad \quad \quad m\frac{d^{2}y}{dt^{2}}+f \frac{dy}{dt} +ky = 0
+\end{equation}
+
+\begin{enumerate}
+   \item Cette \'equation diff\'erentielle est-elle lin\'eaire ? Si oui, de quel ordre est-elle ? 
+  \textbf{\textit{{[}0,5 point{]}}}\bigskip{}
+   \item R\'esoudre cette \'equation diff\'erentielle
+   \textbf{\textit{{[}1,5 points{]}}}\bigskip{}
+\end{enumerate}
+\subsubsection*{- Sur une route "ondul\'ee"}
+ On suppose maintenant que la voiture roule sur piste "ondul\'ee" qui force une oscillation verticale de pulsation $\sqrt{17}$ et transforme l'\'equation diff\'erentielle initiale en :
+\begin {equation}
+\quad  \quad \quad \quad \quad \quad \quad m\frac{d^{2}y}{dt^{2}}+f \frac{dy}{dt} +ky = F\text{cos} \sqrt{17}t
+\end{equation}
+avec $F$= 800 N
+\begin{enumerate}
+   \item Simplifier cette \'equation diff\'erentielle en effectuant les applications num\'eriques.
+      \textbf{\textit{{[}0,5 point{]}}}\bigskip{}
+   \item Donner la solution g\'en\'erale en pr\'ecisant l'intervalle de d\'efinition de $t$.
+      \textbf{\textit{{[}1,5 points{]}}}\bigskip{}
+   \item D\'eterminer la solution particuli\`ere alors associ\'ee aux conditions initiales $y(t=0)=1$ et $y'(t=0) = -1$.
+      \textbf{\textit{{[}1 point{]}}}\bigskip{}
+\end{enumerate}
+\textcolor{blue}{CORRECTION :}
+
+\textcolor{blue}{\textbf{- \`a l'arr\^et }}
+
+
+\textcolor{blue}{1. Cette \'equation diff\'erentielle est lin\'eaire, \`a coefficients constants et elle est du second ordre.}
+
+\textcolor{blue}{2. On \'ecrit le polyn\^ome associ\'e et on cherche ses solutions.}
+\begin{center}
+\textcolor{blue}{$mp^{2}+fp+k=0$ }
+
+\textcolor{blue}{avec $\Delta= f^2-4mk$.}
+\end{center}
+
+\textcolor{blue}{- Si $\Delta$ >0 (c'est \`a dire si $f^{2}$ > $4mk$), les solutions du polyn\^ome associ\'e s'\'ecrivent }
+\begin{center}
+
+\textcolor{blue}{ $p_{1,2}=\frac{- f \pm \sqrt{\Delta}}{2m}$}
+
+\
+
+\textcolor{blue}{et les solutions de l'\'equation diff\'erentielle s'expriment :}
+
+\textcolor{blue}{$y= Ae^{p_{1}t}+Be^{p_{2}t}$}  
+
+\textcolor{blue}{o\`u $A$ et $B$ sont des constantes r\'eelles. } 
+\end{center}
+
+\textcolor{blue}{- Si $\Delta$ =0 (c'est \`a dire si $f^{2}$ = $4mk$), les solutions du polyn\^ome associ\'e s'\'ecrivent }
+
+\begin{center}
+\textcolor{blue}{ $p_{1} = p_{2} = \frac{-f }{2m}$}
+
+\
+
+\textcolor{blue}{et les solutions de l'\'equation diff\'erentielle s'expriment :}
+
+\
+
+\textcolor{blue}{$y= (At+B)e^{p_{1}t}$}  
+
+\textcolor{blue}{o\`u $A$ et $B$ sont des constantes r\'eelles. } 
+
+\end{center}
+
+\textcolor{blue}{- Si $\Delta$ <0 (c'est \`a dire si $f^{2}$ < $4mk$), les solutions du polyn\^ome associ\'e s'\'ecrivent }
+
+\begin{center}
+\textcolor{blue}{ $p_{1,2} = \alpha \pm i \omega$   avec $\alpha= \frac{- f}{2m}$ et $\omega =\frac{\sqrt{-\Delta}}{2m}$}
+
+\
+
+\textcolor{blue}{et les solutions de l'\'equation diff\'erentielle s'expriment :}
+
+\
+
+\textcolor{blue}{$y= e^{\alpha t} [A\  \text{sin}(\omega t) + B\  \text{cos} (\omega t)]$}  
+
+
+\textcolor{blue}{o\`u $A$ et $B$ sont des constantes r\'eelles. } 
+\end{center}
+
+
+\textcolor{blue}{\textbf{- Sur une route "ondul\'ee"}}\\
+
+
+\textcolor{blue}{L'\'equation diff\'erentielle a maintenant un second membre. Elle s'\'ecrit :}
+\begin{center}
+
+
+\textcolor{blue}{$m\frac{d^{2}y}{dt^{2}}+f \frac{dy}{dt} +ky = F\text{cos} \sqrt{17}t$}
+\end{center}
+
+
+\textcolor{blue}{1. En effectuant les applications num\'eriques, on obtient :}
+
+\begin{center}
+
+
+\textcolor{blue}{$\frac{d^{2}y}{dt^{2}}+2 \frac{dy}{dt} +17y = \text{cos} \sqrt{17}t$}
+\end{center}
+
+\textcolor{blue}{2. L'intervalle de d\'efinition de $t$ est ici l'ensemble des r\'eels positifs, la variable $t$ \'etant ici le temps.  Pour obtenir la solution g\'en\'erale de cette \'equation diff\'erentielle, on cherche d'abord la solution g\'en\'erale de l'\'equation sans second membre. On se reporte aux r\'esultats pr\'ec\'edents. Ici $\Delta$ est n\'egatif et on a $\sqrt{-\Delta} = 8$, ce qui conduit \`a $\alpha =-1$ et $\omega=4$. La solution g\'en\'erale de l'\'equation sans second membre s'\'ecrit donc :}
+\begin{center}
+
+\textcolor{blue}{$y= e^{- t}[A\  \text{sin}(4 t) + B\  \text{cos} (4 t)]$ , A et B \'etant deux r\'eels.}
+\end{center}
+
+\textcolor{blue}{On cherche maintenant une solution particuli\`ere de l'\'equation avec second membre, de la forme:}
+\begin{center}
+
+\textcolor{blue}{$y= C\ \text{sin}(\sqrt{17} t) + D\  \text{cos} (\sqrt{17} t))$ , C et D \'etant deux r\'eels.}
+\end{center}
+
+\textcolor{blue}{Les d\'eriv\'ees $\frac{dy}{dt}$ et $\frac{d^{2}y}{dt^{2}}$ s'\'ecrivent alors:}
+\begin{center}
+
+\textcolor{blue}{ $ \frac{dy}{dt}\ = \sqrt{17} C\ \text{cos}(\sqrt{17} t) - \sqrt{17\ } D\ \text{sin} (\sqrt{17} t))$}
+
+\textcolor{blue}{$\frac{d^{2}y}{dt^{2}}= - \ 17 C\ \text{sin}(\sqrt{17} t) \ \  -17\ D\ \text{cos} (\sqrt{17} t))$}
+\end{center}
+
+\textcolor{blue}{En rempla\c cant $\frac{d^{2}y}{dt^{2}}$, $\frac{dy}{dt}$ et $y$ dans l'\'equation diff\'erentielle compl\`ete, on obtient en r\'eunissant les termes en sinus d'un c\^ot\'e et ceux en cosinus de l'autre:}
+
+\begin{center}
+\textcolor{blue}{$[- 17C -2 \sqrt{17} D+17C]\ \text{sin}(\sqrt{17} t) + [-17 D+2\sqrt{17} C +17D]\ \text{cos}(\sqrt{17} t) = \text{cos}( \sqrt{17} t)$}
+\end{center}
+
+\textcolor{blue}{Par identification des termes en $\text{sin}(\sqrt{17} t)$ et ceux en $\text{cos}(\sqrt{17} t)$ de part et d'autre de l'\'egalit\'e, on obtient :}
+
+\begin{center}
+\textcolor{blue}{$D=0$ et $C=\frac{1}{2\sqrt{17}}$.}
+\end{center}
+
+\textcolor{blue}{Soit une solution particuli\`ere de l'\'equation avec second membre \'egale \`a:}
+
+\begin{center}
+\textcolor{blue}{$y= \frac{1}{2\sqrt{17}}\ \text{sin}(\sqrt{17} t)$,}
+\end{center}
+
+\textcolor{blue}{et une solution g\'en\'erale de l'\'equation compl\`ete avec second membre :}
+
+\begin{center}
+\textcolor{blue}{$y= e^{- t} [A\  \text{sin}(4 t) + B\  \text{cos}(4 t)] + \frac{1}{2\sqrt{17}}\ \text{sin}(\sqrt{17} t)$, A et B \'etant deux r\'eels}
+\end{center}
+
+\textcolor{blue}{3. Pour trouver la solution particuli\`ere de l'\'equation compl\`ete avec second membre, associ\'ee aux conditions aux limites $y(t=0)=1$ et $y'(t=0)=-1$ on calcule $y(t=0)$ et $y'(t=0)$:}
+
+\begin{center}
+\textcolor{blue}{$y(t=0)= B+ \frac{1}{2\sqrt{17}}*0=1$, }
+
+\textcolor{blue}{$y'(t=0)= [4A - B + \frac{1}{2}]=-1$.}
+\end{center}
+
+\textcolor{blue}{On obtient donc $B=1$ et $A=-\frac{1}{8}$ et la solution s''ecrit :}
+
+\begin{center}
+\textcolor{blue}{$y= e^{- t} [-\frac{1}{8} \  \text{sin}(4 t) +  \text{cos}(4 t) ] + \frac{1}{2\sqrt{17}}\ \text{sin}(\sqrt{17} t)$.}
+\end{center}
+
+\end{document}

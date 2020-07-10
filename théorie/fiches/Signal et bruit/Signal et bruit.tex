@@ -1,0 +1,152 @@
+\documentclass[a4paper]{report}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\tableofcontents
+\chapter{Signal et bruit}
+  \section{Conventions, définitions}
+  \subsection{Transformée de Fourier}
+  On prend la définition "du physicien". Soit $s(t)$ un signal, alors ; 
+  \begin{align}
+  \tilde{s}_1(\omega)&=\int_{-\infty}^{+\infty} s(t) e^{-i\omega t} dt \\
+  s(t)&=\int_{-\infty}^{+\infty}\tilde{s}_1(\omega) e^{i\omega t} \dfrac{d\omega}{2\pi}
+  \end{align}
+  On peut également choisir la convention :
+  \begin{align}
+  \tilde{s}_2(\nu)&=\int_{-\infty}^{+\infty} s(t) e^{-i2\pi \nu t} dt \\
+  s(t)&=\int_{-\infty}^{+\infty}\tilde{s}_2(\nu) e^{i2\pi \nu t} d\nu
+  \end{align}
+  Et dans ce cas là tu as simplement $\tilde{s}_1(\omega)=\tilde{s}_2(2\pi \nu)$. Par contre les $\sqrt{2\pi}$ on oublie.
+  
+  Dans tous les cas, ton spectre à pour dimension $[\tilde{s}]=[s]\cdot[Hz]^{-1}$
+  \subsection{Propriétés de la TF}
+  \begin{itemize}
+  \item Translation : \begin{equation}
+  \tilde{f}(t-\tau)[\omega]=e^{-i\omega \tau} \tilde{f}(t)[\omega]
+  \end{equation}
+  \item Scaling : \begin{equation}
+  \tilde{f}(a\cdot t)[\omega]= \dfrac{1}{|a|} \tilde{f}(t)[\dfrac{\omega}{a}]
+  \end{equation}
+  En particulier, $\tilde{f}(-t)[\omega]=\tilde{f}(t)[-\omega]$. C'est la "time reversibility"
+  \item $f$ réelle $\implies$ $\tilde f$ Hermitienne, soit $\tilde f^*(\omega)= \tilde f(-\omega)$
+  \item Inversement, si $f$ est hermitienne (donc paire pour une fonction réelle), $\tilde{f}$ est réelle.
+  \item Convolution : 
+  \begin{equation}
+  TF[(f*g)(\tau](\omega)=\tilde{f}(\omega)\tilde{g}(\omega)
+  \end{equation}
+  \item Auto-corrélation : \begin{align*}
+  \tilde S_{ff}(\omega)&=TF[(f(t)*f^*(-t))] \\
+  &=TF[f(t)] \cdot TF[f^*(-t)] \\
+  &= TF[f(t)] \cdot TF[f(t)]^* \\
+  &= |\tilde{f}(\omega)|^2
+  \end{align*}
+   
+  \end{itemize}
+  \subsection{Transformée de Fourier tronquée}
+  L'infini c'est long, surtout dans le négatif. Donc expérimentalement on va plutôt utiliser la TF tronquée : 
+  \begin{equation}
+  \hat{s}(\omega)=\dfrac{1}{\sqrt{T}}\int_{0}^{T} s(t) e^{-i\omega t} dt
+  \end{equation}
+  \subsection{Transformée de Fourier discrète}
+  \subsection{Produit de convolution}
+  \begin{equation}
+  (f*g)(\tau)=\int_{-\infty}^{+\infty} f(\tau-t) g(t) dt = \int_{-\infty}^{+\infty} f(t) g(\tau-t) dt
+  \end{equation}
+  \subsection{Fonction d'auto-corrélation}
+  La fonction d'auto-corrélation d'un signal est définie comme :
+  \begin{equation}
+  R_{ss}(t_1,t_2)=\langle s(t_1)s^*(t_2)\rangle
+  \end{equation}
+  où $\langle ...\rangle$ représente a priori une moyenne d'ensemble.
+  Mais nous on aime bien les processus Markovien, donc $R_{ss}$ n'est plus fonction que de $\tau=|t_1-t_2|$. En plus de ça, on fait une petite hypothèse ergodique est la moyenne d'ensemble devient une moyenne temporelle, et on oublie au passage le facteur de normalisation Alors :
+  \begin{equation}
+  R_{ss}(\tau)=\int_{-\infty}^{+\infty} s(t) s^*(t-\tau)= (s(t)*s^*(-t))(\tau)
+  \end{equation}
+  Si jamais ton signal est réel, la fonction d'auto-corrélation est paire, donc $R_{ss}(\tau)=R_{ss}(-\tau)$. Si ton signal est complexe c'est un peu plus chiant.
+  
+  La \textbf{Fonction d'auto-covariance} c'est simplement la fonction d'auto-corrélation à la quelle tu soustrais $\langle s(t)\rangle ^2$.
+  \subsection{Densité spectrale de puissance}
+  On peut définir proprement la DSP à partir de la TF tronquée : 
+  \begin{equation}
+  S_{ss}(\omega)=\lim_{T \to \infty} \langle |\hat{s}(\omega)|^2 \rangle
+  \end{equation}
+ Or, \begin{align*}
+ \langle |\hat{s}(\omega)|^2 \rangle &=\langle \hat{s}(\omega)\hat{s^*}(\omega) \rangle \\
+ &=\langle \dfrac{1}{T} \int_{0}^{T} s(t) e^{-i\omega t} dt \int_{0}^{T} s^*(t') e^{i\omega t'} dt' \rangle\\
+ &=\dfrac{1}{T} \int_{0}^{T} \int_{0}^{T}\langle s(t)s^*(t') \rangle e^{i\omega(t-t')} dt\; dt'
+ \end{align*}
+ Et donc tu vois que, en posant $\tau=t-t'$ et en bidouillant un peu les bornes d'intégrations, tu te retrouves avec :
+ \begin{equation}
+ S_{ss}(\omega)=\int_{-\infty}^\infty R_{ss}(\tau) e^{-i\omega\tau}\,d \tau=\tilde R_{ss}(\omega)=|\tilde s (\omega)|^2
+ \end{equation}
+ La densité spectrale de puissance est la TF de la fonction d'auto-corrélation (pour un processus Markovien). C'est le théorème de \textbf{Wiener–Khinchin}.
+ 
+ La version plus sale c'est d'écrire la DSP comme :
+ \begin{equation}
+ \langle \tilde{s}(\omega) \tilde{s}^*(\omega') \rangle = S_{ss}(\omega)2\pi  \delta(\omega-\omega')
+ \end{equation}
+ 
+ \section{Résolution d'un Michelson}
+ Michelson mais ça marche pour toutes les interférences à deux ondes (Ramsay entre autre).
+ 
+ \subsection{Réponse spectrale}
+ On va commencer par la réponse spectrale d'un Micheslon, c'est à dire le rapport des densités spectrales de puissance en entrée ($I_{in}(\omega)$) et en sortie ($I_{out}(\omega)$) de l'interféromètre. On note $A$ les amplitudes correspondantes, et $\tau$ le retard dans l'interféromètre. Alors :
+ \begin{equation}
+ I_{in}(\omega)=\tilde{A}_{in}(\omega)\tilde{A}_{in}^*(\omega)=|\tilde{A}_{in}(\omega)|^2=|TF[A_{in}(t)](\omega)|^2
+ \end{equation}
+ et 
+ \begin{align*}
+I_{out}(\omega)&= |TF[A_{out}(t)](\omega)|^2 \\
+ &= |TF[\dfrac{1}{2} (A_{in}(t)+A_{in}(t-\tau)](\omega)|^2 \\
+ &= \left|TF[(A_{in}(t)](\omega)\left(\dfrac{1+e^{i\omega \tau}}{2}\right)\right|^2 \\
+ &= I_{in}(\omega) \left(\dfrac{1+e^{i\omega \tau}}{2}\right)^2 \\
+ &= I_{in}(\omega) \left(\dfrac{1+\cos \omega tau}{2}\right)
+ \end{align*}
+ 
+ Remarque : le 1/2 dans le $A_{out}(t)$ vient du fait que tu as deux séparatrices, qui ajoutent $1/\sqrt{2}$ chacune.
+ 
+ On trouve donc l'intervalle spectral libre : \begin{equation}
+ \Delta \nu = \dfrac{1}{\tau} = \dfrac{(2)l}{c}
+ \end{equation}
+ 
+ En résonnant maintenant en nombre de particules (photon ou autre), en supposant que le flux incident comporte $N$ particules et le flux sortant (flux transmis, ou nombre d'atomes excités dans le cas de Ramsay) est $N_e$, on a tout simplement \begin{equation}
+ N_e=N\left(\dfrac{1+\cos \Phi}{2}\right)
+ \end{equation}
+Avec $\Phi$ le déphasage entre les deux voies.
+\subsection{Pouvoir de résolution}
+On va maintenant considérer que $N_e$ est une variable aléatoire, chaque particule ayant une chance $p_e=\dfrac{1+\cos \Phi}{2}$ de passer. On a donc :
+\begin{align}
+\langle N_e\rangle &= N\left(\dfrac{1+\cos \Phi}{2}\right) \\
+\Delta^2 N_e &= N(p_e)(1-p_e) = N\dfrac{\sin ^2 \Phi}{4} \\
+\Delta N_e &=\sqrt{N} \dfrac{|\sin \Phi|}{2}
+\end{align}
+
+Maintenant pour s'intéresser au pouvoir de résolution, on va considérer un résultat $N_{e1}$ de $N$ particules à $\omega$ (où $\Delta$ pour un Ramsay) et un autre résultat $N_{e2}$ de $N$ particules à $\omega + \delta \omega$. Pour pouvoir distinguer le résultat entre les deux pulsations, il faut que la différence des valeurs moyennes soit plus grande que ($\sqrt{2}$ fois) l'écart type du résultat. ($\sqrt{2}$ car il y a deux variables aléatoires dont tu fais la différence, donc tu sommes les variances, un peu comme une mesure à la règle. Mais en vrai c'est du chipotage). D'où : \begin{equation}
+\langle N_e (\omega+ \delta \omega)\rangle - \langle N_e (\omega)\rangle \approx -N\tau\dfrac{\sin \omega \tau}{2} \geq \sqrt{2N} \dfrac{\sin \omega \tau}{2} 
+\end{equation}
+
+D'où finalement \begin{equation}
+\delta \omega \geq \dfrac{\sqrt{2}}{\sqrt{N}\tau}
+\end{equation}
+
+On constate que le pouvoir de résolution d'un Michelson ne dépend pas de la phase : Le signal et le bruit sont tous les deux plus importants quand ta phase vaut $\pi/2$
+
+On remarque également qu'on a une limite en $1/\tau$, qui vient de la transformée de Fourier / Heisenberg temps/énergie, et en $1/\sqrt{N}$, qui est la limite "classique" pour tout processus stochastique à N particules. En utilisant des états quantiques à N particules (intriquées donc) on peut idéalement monter à des résolutions en $1/N$.
+  \end{document}	
+  
+  

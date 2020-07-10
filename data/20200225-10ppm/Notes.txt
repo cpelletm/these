@@ -1,0 +1,456 @@
+champ mag:
+82.8G, 0.318rad
+
+2.6Mcps
+
+1 : nucpol
+pump : -5dBm, 2.6567
+probe : -20dBm
+100 las / 300 las / 0 las / 25 probe + las
+
+2 : nucpol
+pump : -5dBm, 2.6449
+probe : -20dBm
+100 las / 300 las / 0 las / 25 probe + las
+
+3 : nucpol
+pump : -5dBm, 2.6492
+probe : -20dBm
+100 las / 300 las / 0 las / 25 probe + las
+
+4 : nucpol ref
+pump : -5dBm, 2.64
+probe : -20dBm
+100 las / 300 las / 0 las / 25 probe + las
+
+lf1
+pump : -5dBm, 2.6492
+probe : -20dBm, 2.654
+100 las / 300 las / 0->600 las / 25 probe + las
+
+lf2
+pump : -5dBm, 2.6492
+probe : -20dBm, 2.64
+100 las / 300 las / 0->600 las / 25 probe + las
+
+lf3
+pump : -5dBm, 2.6492
+probe : -20dBm, 2.654
+100 las / 300 las / 0->1000 las / 25 probe + las
+
+lf4
+pump : -5dBm, 2.6492
+probe : -20dBm, 2.64
+100 las / 300 las / 0->1000 las / 25 probe + las
+
+lf5
+pump : -5dBm, 2.6492
+probe : -20dBm, 2.6497
+100 las / 300 las / 0->1000 las / 25 probe + las
+
+lf6
+pump : -5dBm, 2.6492
+probe : -20dBm, 2.65185
+100 las / 300 las / 0->1000 las / 25 probe + las
+
+lf7
+pump : -5dBm, 2.6449
+probe : -20dBm, 2.654
+100 las / 300 las / 0->1000 las / 50 probe + las
+
+lf8
+pump : -5dBm, 2.6449
+probe : -20dBm, 2.65185
+100 las / 300 las / 0->1000 las / 50 probe + las
+
+
+lf9
+pump : -5dBm, 2.6449
+probe : -20dBm, 2.6497
+100 las / 300 las / 0->1000 las / 50 probe + las
+
+lf10
+pump : -5dBm, 2.6449
+probe : -20dBm, 2.64
+100 las / 300 las / 0->1000 las / 50 probe + las
+
+other B
+82.6G, 0.179rad
+
+1 : nucpol
+pump : -2.5dBm, 2.64013
+probe : -20dBm
+100 las / 300 las / 100 las / 25 probe + las
+
+2 : nucpol
+pump : -2.5dBm, 2.6357
+probe : -20dBm
+100 las / 300 las / 100 las / 25 probe + las
+
+3 : nucpol
+pump : -2.5dBm, 2.6475
+probe : -20dBm
+100 las / 300 las / 100 las / 25 probe + las
+
+4 : nucpol ref
+pump : -2.5dBm, 2.63
+probe : -20dBm
+100 las / 300 las / 100 las / 25 probe + las
+
+lf1
+pump : -2.5dBm, 2.6357
+probe : -20dBm, 2.64275
+100 las / 300 las / 100->1500 las / 50 probe + las
+
+lf2
+pump : -2.5dBm, 2.6357
+probe : -20dBm, 2.6406
+100 las / 300 las / 100->2000 las / 50 probe + las
+
+lf3
+pump : -2.5dBm, 2.6357
+probe : -20dBm, 2.64275
+100 las / 300 las / 100->2000 las / 50 probe + las
+
+lf4
+pump : -2.5dBm, 2.6357
+probe : -20dBm, 2.6449
+100 las / 300 las / 100->2000 las / 50 probe + las
+
+
+
+2 days later
+
+1 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+100 las / 300 las / 100 las / 50 probe + las
+
+lf1
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+100 las / 300 las / 100->3100 las / 50 probe + las
+
+lf2
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+100 las / 300 las / 100->2100 las / 50 probe + las
+
+lf3
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+100 las / 300 las / 100->2100 las / 100 probe + las
+
+lf4
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.6427
+100 las / 300 las / 100->2100 las / 100 probe + las
+
+2 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+100 las / 300 las / 100 las / 100 probe + las
+
+3 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+100 las / 300 las / 500 las / 100 probe + las
+
+lf5
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.6405
+100 las / 300 las / 100->2100 las / 100 probe + las
+
+5Mcps
+
+4 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+75 las / 225 las / 75 las / 75 probe + las
+
+lf6
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.6427
+100 las / 300 las / 100->2100 las / 100 probe + las
+
+0.5Mcps
+
+5 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+400 las / 1200 las / 400 las / 400 probe + las
+
+lf7
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+400 las / 1200 las / 400->10400 las / 400 probe + las
+
+6 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+400 las / 1200 las / 400 las / 400 probe + las
+
+1Mcps
+
+7 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+200 las / 600 las / 200 las / 200 probe + las
+
+lf8
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+200 las / 600 las / 200->5200 las / 200 probe + las
+
+lf9
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.6427
+200 las / 600 las / 200->5200 las / 200 probe + las
+
+realign, 1.35Mcps
+
+8 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+150 las / 450 las / 150 las / 150 probe + las
+
+9 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+150 las / 450 las / 0 las / 150 probe + las
+
+10 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+150 las / 450 las / 500 las / 150 probe + las
+
+11 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+150 las / 450 las / 1000 las / 150 probe + las
+
+12 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+150 las / 450 las / 1500 las / 150 probe + las
+
+13 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+150 las / 450 las / 2000 las / 150 probe + las
+
+14 : nucpol
+pump : off
+probe : -15dBm
+150 las / 450 las / 150 las / 150 probe + las
+
+15 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+150 las / 450 las / 150 las / 150 probe + las
+
+16 : nucpol
+pump : -5dBm, 2.6357
+probe : -15dBm
+150 las / 450 las / 150 las / 150 probe + las
+
+17 : nucpol
+pump : -5dBm, 2.6475
+probe : -15dBm
+150 las / 450 las / 150 las / 150 probe + las
+
+lf10
+pump : -2.5dBm, 2.6475
+probe : -15dBm, 2.6427
+150 las / 450 las / 150->5150 las / 150 probe + las
+
+lf11
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+150 las / 450 las / 150->5150 las / 150 probe + las
+
+3Mcps
+
+18 : nucpol
+pump : -5dBm, 2.6401
+probe : -15dBm
+100 las / 300 las / 100 las / 100 probe + las
+
+lf12
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+100 las / 100 las / 100->4100 las / 100 probe + las
+
+19 : CPT,
+pump 2.635835, 10 dBm
+probe, -30dBm
+2Mcps
+
+monday morning
+
+20 : CPT,
+pump 2.635835, 10 dBm
+probe, -30dBm
+2Mcps
+
+Rabi1 : pump
+pump 2.64055, 10dBm
+probe 2.62, -30dBm
+
+Rabi2 : probe
+pump 2.62, 10dBm
+probe 2.6406, -20dBm
+
+Rabi3 : probe
+pump 2.62, 10dBm
+probe 2.6406, -26dBm
+
+21 : CPT,
+pump 2.635855, 10 dBm
+probe, -26dBm
+2Mcps
+
+22 : CPT,
+pump 2.635835, 10 dBm
+probe, -26dBm
+2Mcps
+
+23 : CPT,
+pump 2.635835, 10 dBm
+probe, -20dBm
+2Mcps
+
+24 : CPT,
+pump 2.635835, 10 dBm
+probe, -14dBm
+2Mcps
+
+25 : CPT,
+pump 2.635835, 10 dBm
+probe, -20dBm
+4Mcps
+
+26 : CPT,
+pump 2.635835, 10 dBm
+probe, -20dBm
+1Mcps
+
+27 : CPT,
+pump 2.635835, 10 dBm
+probe, -26dBm
+1Mcps
+
+28 : CPT,
+pump 2.635835, 10 dBm
+probe, -26dBm
+0.75Mcps
+
+29 : CPT,
+pump 2.635835, 10 dBm
+probe, -26dBm
+5Mcps
+
+30 : CPT,
+pump 2.635835, 10 dBm
+probe, -20dBm
+5Mcps
+
+31 : CPT,
+pump 2.635835, 10 dBm
+probe, -20dBm
+0.5Mcps
+
+32 : CPT,
+pump 2.635835, 10 dBm
+probe, -20dBm
+3Mcps
+
+33 : CPT,
+pump 2.635835, 10 dBm
+probe, -26dBm
+3Mcps
+
+34 : CPT,
+pump 2.635835, 10 dBm
+probe, -14dBm
+3Mcps
+
+Rabi4 : probe
+pump 2.62, 10dBm
+probe 2.6406, -14dBm
+
+35 : CPT,
+pump 2.635835, 10 dBm
+probe, -14dBm
+3Mcps
+
+36 : CPT,
+pump 2.63585, 10 dBm
+probe, -20dBm
+3Mcps
+
+36 : pulsed CPT,
+pump 2.6359, 10 dBm
+probe, -20dBm
+10 uW pulse  / 90 las and measure
+3Mcps
+
+
+nucpol1
+pump : -5dBm, 2.6401
+probe : -15dBm
+100 las / 300 las / 100 las / 100 probe + las
+
+nucpol2
+pump : -5dBm, 2.6357
+probe : -15dBm
+100 las / 300 las / 100 las / 100 probe + las
+
+nucpol3
+pump : -5dBm, 2.6475
+probe : -15dBm
+100 las / 300 las / 100 las / 100 probe + las
+
+nucpolref
+pump : off
+probe : -15dBm
+100 las / 300 las / 100 las / 100 probe + las
+
+0.8Mcps
+
+lf13:
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+400 las / 1200 las / 400->10400 las / 400 probe + las
+
+lf14:
+pump : -2.5dBm, 2.6475
+probe : -15dBm, 2.6427
+400 las / 1200 las / 400->7400 las / 400 probe + las
+
+0.45Mcps
+
+lf15
+pump : -2.5dBm, 2.6475
+probe : -15dBm, 2.6427
+600 las / 1800 las / 600->10600 las / 600 probe + las
+
+lf16
+pump : -2.5dBm, 2.6401
+probe : -15dBm, 2.64485
+600 las / 1800 las / 600->10600 las / 600 probe + las
+
+a
+pump : -2.5dBm, 2.6401
+probe : -15dBm
+600 las / 1800 las / 600 las / 600 probe + las
+
+b
+pump : -2.5dBm, 2.6401
+probe : -15dBm
+600 las / 1800 las / 600 las / 1s dark / 600 probe + las
+
+c
+pump : -2.5dBm, 2.6401
+probe : -15dBm
+600 las / 1800 las / 600 las / 3s dark / 600 probe + las

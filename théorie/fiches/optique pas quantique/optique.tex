@@ -1,0 +1,41 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Optique pas quantique}
+  \section{Ordres de grandeurs}
+  \subsection{Force électrique Vs Force magnétique}
+  La raison pour laquelle on s’intéresse par défaut plus au champ électrique que magnétique, c'est parce que le rapport des deux termes dans la force de Lorentz vaut :\begin{equation}
+  \dfrac{F_E}{F_B}=\dfrac{q\textbf{E}}{q\textbf{v}\times \textbf{B}}=\dfrac{c}{v}
+  \end{equation}
+  Il se trouve qu'on est pas si loin des vitesse relativistes pour les électrons d'un atome, en effet, en partant du quantum de moment cinétique \begin{equation}
+  \hbar=mvr=m_e\,v\,a_0
+  \end{equation}
+  Avec $m_e$ la masse de l'électron et $a_0$ le rayon de Bohr, que l'on détermine en posant le PFD : $\dfrac{m v^2}{r}=\dfrac{q^2}{4\pi \epsilon_0r^2}$, d'où :\begin{equation}
+  a_0=\dfrac{\hbar^2 4\pi\epsilon_0}{m_e q_e^2}\approx 0.53 \mathrm{\AA}
+  \end{equation}
+  
+  Et donc finalement : \begin{equation}
+  \dfrac{F_E}{F_B}=\dfrac{c\hbar}{m_e a_0}=\dfrac{1}{\alpha}\approx 137
+  \end{equation}
+  
+  C'est également le ratio des transitions Dipolaire électrique Vs Dipolaire magnétique par défaut.
+ 
+  \end{document}	
+  
+  

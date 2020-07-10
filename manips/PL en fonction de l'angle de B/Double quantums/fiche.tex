@@ -1,0 +1,63 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Double quantum}
+  \section{Principe}
+  L'idée c'est que dans le hamiltonien d’interaction dipolaire tu as des termes en $|0-><+0|$ qui sont souvent négligés (en tout cas dans les travaux de Lukin) car non résonnants d'un point de vue énergie, mais si tu travailles à champ quasi nul et que le strain est limité, ils commencent à jouer et à modifier le T1. (jusqu'à un facteur 5 par rapport à une théorie sans double-quantum d'après Gabriel).
+  Le principal soucis pour les observer, c'est le strain qui empêche la résonance (il faudra aussi un peu clarifier l'intercation dipolaire dans la base mixée par le strain, ainsi que le moyennage dans l'espace, mais c'est du fine-tuning je pense).
+  
+  Un des interêts pour moi des double quantum, ce serait l'idée que si on arrivait par ingénérie à limiter le strain suffisament par rapport au T2, on aurait un détecteur de bruit magnétique en champ nul, un peu comme ce qu'on a déja avec les adamas (la PL monte quand on approche un aimant) mais en bcp plus sensible : deja l'effet est plus violent (facteur 5 etc), mais surtout les raies s'éloignent les unes des autres plus vite que dans le cas des simples quantum (elles vont dans des directions différentes, plutot qu'à des vitesses différentes dans la même direction).
+  
+  \section{Manips}
+  Les manips ont globalement commencées à la reprise après le confinement (le premier lol), le 18/05/2020.
+  \subsection{Scan du champ mag selon la 100}
+  Première manip réalisée, l'idée est assez simple : mesurer un dip de PL autour de 0G en alignant l'Electro-aiamant (EM) selon la direction 100.
+  
+  Pas de résultats sur le rose il me semble, en revanche un petit résultat sur le sumitumo 4. Dans les jours qui viennent ce sera sans doute le point à pousser avec un sétup similaire mais sur des adamas à faible strain.
+  \subsubsection{astuces}
+  Pour aligner tout ça j'ai refait un sétup à bas de monture de lambda/2 (j'ai utilisé le socle rotatif pour la rotation principale) ou j'ai plaqué l'EM avec de la patafix sur la monture de lambda/2. 
+  
+  L'aspect un peu sioux c'est qu'on voyait pas grand chose à cause de l'hystéresis de l'EM, du coup pour bien passer par 0G je met le courant à fond dans l'autres sens avant chaque scan. Sauf que le générateur de courant peut pas prendre du courant négatif donc je suis obligé de débrancher et rebrancher pour chaque scan avec un programme qui fait bip-bip. Ce que j'ai réalisé avec les manips de bruit c'est qu'un GBF peut quand même cracher un peu de patate (10 VPP dans du 50hms donc 2W, plus que ce que j'utilise avec le générateur de courant), donc je pense que je me suis fait chier pour rien mais c'était marrant.
+  
+ Pour ce qui est de l'alignement j'ai l'impression que c'est assez robuste, parceque quand j'étais un peu désaligné je voyais des remontées au moment ou les raies se splittent. Ce sera à confirmer par des calculs/simu je pense.
+ 
+ \subsection{Variation de T1 pour des Adamas de différents strains}
+ La l'idée c'est de comparer les T1 dans un configuration 4x0 et en champ nul, pour des adamas avec un fort strain et des adamas avec faible strain, dans l'idée que dans le premier cas on observe pas de différence, alors qu'on en observe dans le second cas.
+ 
+ Le gros soucis ici bah c'est la mesure de T1. Je l'ai fait avec la méthode de la soustraction avec un pulse pi des polaks, mais avec la pulse pi à la fin du tau, comme Lukin. En gros dans la config des polaks t'as un problème si ton temps de vie dans l'état |-1> est pas le meme que celui dans l'état |0>, ce qui semble être le cas ici. Et l'autre gros problème c'est que si tu fais ta pulse au début et que tu laisses l'AOM en continue et pas en pulsé, bah tu mesures quand meme un temps de vie, mais un temps de vie avec le laser allumé (temps de repolarisation). Et ça peut prendre 3 jours de s'en rendre compte...
+ 
+ Mais même avec la soustraction il y l'air d'avoir des blagues : Lukin laisse un temps de retour à l'équilibre des charges (j'ai essayé mais ça fait rien chez moi), L'influence du laser a pas l'air énorme non plu, par contre j'ai essayé de mettre une micro-onde plus faible et la je mesure des tdv bcp plus courts. J'ai aussi vu des fois des petites remontés au début ou des courbes qui ont pas la même tronche quand on zoom...
+ 
+ Et surtout le gros problème que j'ai actuellement c'est le fit exp Vs stretch. Sans que je comprenne trop la logique, certaines courbes se fittent mieux avec l'un ou l'autre, et le temps de vie obtenus sont pas comparabales (deja que les temps de vie stretch sont difficilement comparables... Tu peux prendre un facteur 3 juste en zoomant ou en dézoomant. Il faudrait un programme avec des points rapprochés au début mais quand même une grande queue)
+ 
+ \subsection{Elargissement des raies par bruit magnétique}
+ Bon la c'est un échec mais j'ai vu des trucs rigolo.
+ 
+ Le but c'était d'élargir (homogènement) les raies en champ nul pour qu'il y ait un recouvrement plus important des double quantums. En gros le soucis c'est qu'on a un croisement évité des états +/- avec un ZFS de qq10MHz, et d'après Gabriel, et je veux bien le croire, pour battre ce croisement il faut un bruit avec une fréquence > ces qq10MHz, ce qui élimine toutes les bobines et EM (fréquence de coupure que j'ai mesuré entre 300Hz pour le gros EM et 15KHz pour une bobine avec dans les deux cas un R de 50Ohms en série). 
+ 
+ J'ai quand même fait l'expérience avec un bruit à 100K et l'EM en pointe (branché direct à l'ampli qui descend à 100KHz et avec un signal GBF) et j'observe bien un élargissement sur les bords, mais pas au centre (cf 11/06/2020) L'allure du truc est rigolo quand meme, mais j'ai pas trop poussé parce que l'EM chauffait vite. En faite je pense que les paliers viennent du fait que les différentes classes de NV n'oscillent pas avec la même amplitude (ça dépend de leur orientation avec le champ mag)
+ 
+ Du coup l'autre idée c'est d'utiliser une mirco-onde avec un fréquence assez élevée (mais pas résonnante) comme source de bruit magnétique. J'ai l'impression d'avoir rien vu mais faudrait quand meme mettre les chifres dessus sachant que j'ai des pulses pi de 50ns avec 0dB de uW (sur le R\&S avec le switch à -11dB et l'atténuateur à -3dB donc en théorie y'a encore un peu de marge).
+ 
+ Et ma dernière idée c'était d'utiliser le couplage dipolaire aux autres centres NV, en mettant une uW à résonnance avec une autre classe de NV. En faite c'est assez similaire aux manips de DEER qu'à fait Lukin par exemple dans le PRL de 2018, et comme l'a fait remarquer Gabriel c'est des modifications à l'échelle du T2écho, qui est très différent du T2réél en faite. Donc a priori c'est pas réaliste.
+ 
+ Par contre en faisant mumuse avec les deux uW j'ai pu observer les side-band du C13 first-shell autour de 2.8 et 2.95Ghz (en champ nul en mettant la uW à résonnance à 2.87GHz), cf 12/06/2020. C'est un peu rigolo en vrai.
+  \end{document}	
+  
+  

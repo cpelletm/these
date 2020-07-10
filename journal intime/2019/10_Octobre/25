@@ -1,0 +1,7 @@
+Cher journal,
+
+Journée essentiellement passée sur la map 2D, en abandonnat temporairement le moteur (les moteurs de Romaric sont pourraves, leur axe ballote) Au moins je pense que je pourrais améliorer le programme des shutters. Ce qui chie je pense c'est que romaric doit attendre 200 ms à chaqe fois que le truc est on, donc c'est pas réactif. Il faudrait faire une condition (signal=5V & shutter fermé) et une condition (signal=0 & shutter ouvert). (Au passage j'espère que j'ai pas cramé un deuxième moteur...)
+
+Les autres trrucs à faire lundi, déja c'es de changer la monture de la pointe (utiliser la monture de l'antenne micro-onde), ensuite continuer d'essuyer la pointe avec un mouchoir pour enlever les diams (oui je sais...). Niveau programmes, faudra écrire le programme python pour la prise de données, je suis en train d'y réfléchir mais c'est pas trivial. Faudra aussi que je finisse par ajouter la fonction save data avec la toolbar.
+
+Bref c'est le week-end et je me casse

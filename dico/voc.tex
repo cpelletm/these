@@ -1,0 +1,47 @@
+\documentclass[a4paper]{report}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Vocabulaire}
+\section{Spectro}
+\begin{itemize}
+\item \textbf{Fluorescence} : émission spontanée
+\item \textbf{ZPL} : Zero Phonon Line : la plage de fréquence de l'émissions/absorption dans un solide qui correspond à une recombinaison radiative sans émission de phonon, pour une transition donnée.
+\item \textbf{PSB} : Phonon Side Band : au contraire, la plage qui correspond à l'émission d'un photon et d'au moins un phonon (vibronic transition). Les énergies de la PSB sont nécessairement plus faibles que celles de la ZPL pour l'émission, et plus hautes pour l'absorption.
+\item \textbf{Frank-Codon} : (conséquence) Le diagramme d'absorption et de fluorescence sont en gros symétriques par rapport à la longueur d'onde centrale (c'est pas une science exacte)
+\item \textbf{PLE} : Photoluminescence excitation : le but c'est d’exciter à résonance avec un laser accordable qui va balayer la zone qui t’intéresse (typiquement la ZPL) tout en observant la photoluminescence d'une autre région (typiquement la PSB) que tu espères proportionnelle à l'absorption, elle même proportionnelle à l'émission. Ca te permet donc de faire de la spectro avec une précision limitée par la largeur de ton laser. Pour faire tout ça, tu auras besoin d'un filtre pour retirer la zone à résonance, et d'un moyen de mesurer la fréquence de ton laser (par exemple un Michelson, au moins pour les valeures relatives)
+\item \textbf{Effet Stark} : Décalage énergétique du à un champ électrique, s'applique donc aux dipôles électriques qui sont sensibles à un effet $D\cdot E$
+\item \textbf{Effet Zeeman} : Décalage énergétique du à un champ magnétique, s'applique donc aux dipôles électriques qui sont sensibles à un effet $\mu \cdot B$
+\item \textbf{EPR / ESR} (en spectro, c'est aussi lié aux inégalités de Bell) Electron Paramgnetic / Spin Resonnance : c'est en gros de la MNR sur des électrons : on split les niveaux d'énergie avec un champ mag permanent important ($\approx$ 0.3 T) par effet Zeeman, et on mesure l'absorbance d'une micro-onde scannée autour de la transition. (tu peux aussi scanner le champ mag permanent, comme de la MNR)
+
+Dans le cas des NV, tu n'as même pas besoin d'un champ mag vu que tu as naturellement un splitting entre $\ket{0}$ et $\ket{\pm 1}$. La différence avec l'ODMR c'est que c'est directement l'absorption des photons mirco-onde qu'on regarde. 
+
+\item \textbf{ODMR} : Optically Detected Magnetic Resonnance : Assez clair, c'est de l'ESR mais ou tu mesures un signal optique plutôt que l'absorption de la micro-onde. Dans le cas du NV, c'est parce que le niveau $\ket{0}$ est plus brillant que l'état $\ket{\pm 1}$, et que le laser de pompe polarise dans l'état $\ket{0}$.
+
+\item \textbf{Jahn-Teller Effect} : c'es un effet de brisure spontanée de symétrie (à suivre...)
+\end{itemize}
+  \section{Matériel}
+  \begin{itemize}
+  \item \textbf{FEL0700} (c'est un zéro): Filtre longpass, c'est à dire passe haut en longueur d'onde, donc passe-bas en énergie, jusqu'au $\lambda$ indiqué (en nm). C'est des filtres interférentiels, donc il faut faire un peu gaffe à l'angle d'incidence. La petite flèche indique le sens de transmission.
+  \item \textbf{FES1200} : Pareil mais shortpass.
+  \end{itemize}
+  
+ 
+  \end{document}	
+  
+  

@@ -1,0 +1,59 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def lecture (fichier,sep=None, colonne=0): #colonne=0 => rend le tableau complet
+	data=[]
+	with open(fichier,"r") as f:	
+		for line in f :
+			line=line.split(sep)
+			try :
+				float(line[0])
+			except :
+				continue
+			ligne=[]
+			for elem in line :
+				ligne+=[float(elem)]
+			data+=[ligne]
+	npdata=np.array(data)
+	if colonne==0 :
+		return npdata
+	else :
+		return npdata[:,colonne-1]
+		
+def cs(x,n=3): # retourne x avec n chiffres significatifs
+	y=round(x,-int(floor(log10(abs(x)))+1-n))
+	if y-int(y)==0 :
+		y=int(y)
+	return str(y)
+		
+def linfit(x,y): #retourne a,b,label avec f(x)=ax+b 
+	A=np.vstack([x,np.ones(len(x))]).T
+	a,b=np.linalg.lstsq(A,y,rcond=None)[0]
+	if b>=0 :
+		lab='fit '+cs(a)+'*X+'+cs(b)
+	else :
+		lab='fit '+cs(a)+'*X-'+cs(-b)
+	return a,b,lab
+
+
+		
+def s1():
+	data=lecture("s1")
+	plt.plot(data[:,0],data[:,1],'b-x',label='label',ms=7, mew=3)
+	
+
+x=np.linspace(-10,10,100)
+plt.plot(x,x,'b--')
+
+plt.plot(x,np.sqrt(4+x**2),'r',label=r'$E_+$')
+plt.plot(x,-np.sqrt(4+x**2),'g',label=r'$E_-$')
+plt.plot(x,-x,'b--', label='asymptote')
+plt.xlabel(r'$E_1-E_2$')
+plt.ylabel('E')
+
+plt.legend()
+plt.show()
+				
+        
+
+

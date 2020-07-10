@@ -1,0 +1,65 @@
+\documentclass[a4paper]{report}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Le matos}
+  \section{Attocube}
+  \subsection{Axes}
+  Susceptibles de changer si tu rebranches mal derrière
+  \begin{itemize}
+  \item Gauche : axe y, haut=haut, bas=bas
+  \item Milieu : axe z, haut=avant , bas=arrière
+  \item Droite : axe x, bas=droite, haut=gauche
+  \end{itemize}
+  \subsection{Positioners}
+  ref : https://www.attocube.com/en/products/nanopositioners/low-temperature-nanopositioners/anpz51ltuhv-linear-z-nanopositioner 
+  
+  et https://www.attocube.com/en/products/nanopositioners/low-temperature-nanopositioners/anpx51ltuhv-linear-x-nanopositioner (à vérifier)
+  
+  \subsubsection{Masse limite}
+  La structure c'est que t'as le z-positionner en bas (pour y) qui peut porter 50g et les deux x-positionners dessus (pour x et z) qui pèsent 7 g chacun et peuvent porter 25g.
+  
+  Donc a priori on ne peut pas porter qqchose de plus de 18g.
+  \section{Cryo}
+  \subsection{Références}
+  http://www.mycryofirm.com/nos-produits/page-accueil/
+  \subsection{Allumage}
+  \begin{itemize}
+  \item Pomper jusqu'à $10^{-2}$ au moins
+  \item Allumer le cooler (gros truc à l'entrée, t'as le bouton d'arrêt d'urgence dessus et le bouton on sur le tableau de bord à droite sur le mur).
+  \item Allumer le cryo dans la salle des serveurs (gros bouton vert).
+  \item Éteindre la pompe (et fermer la vanne) avant d'atteindre la température de liquéfaction de l'air.
+  \end{itemize}
+  \subsection{Sonde thermique}
+  Tu as un doigt froid qui vient de l'enceinte vers la chambre à vide et qui arrive en dessous de la pile atto-cube. Tu as un filament doré qui fait le contact thermique avec une petite plaque au sommet de la pile atto-cube, sur laquelle tu pose ton porte-échantillon. C'est au niveau de cette plaque qu'est la sonde de platine.
+ \section{Thermomètre (?)}
+ A compléter, mais en gros tu atteins la température minimum aux alentours de $1000 \; \Omega$.
+ 
+ Utilisation de la fonction chauffage : appuyer sur "loop1", fixer la températture visée avec la valeur de la résistance, appuyer sur commande pour lancer le truc (c'est une boucle de rétro-action) et appuyer sur "stop" pour arrêter. (et "home" pour revenir aux températures.
+ \section{spectro}
+ \subsection{Résolution}
+ 
+ \section{microscope}
+ Le microscope est un peu gitan, j'ai pas réussi à trouver d'objectif qui se visse mais tu peut simplement en poser un. Ensuite pour regarder un échantillon, le mieux c'est de le poser sur de la patafix que tu as mis sur une tige.
+ 
+ Faut aussi bien orienter la lampe (la tu regardes en réflexion donc faut la faire passer par en dessous). C'est con mais ça marche.
+ 
+ Tu as les molettes à droite de l'oculaire qui te permettent de translater rapidement en x/y, mais j'ai pas encore trouvé comment translater vite en z.
+  \end{document}	
+  
+  

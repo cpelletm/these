@@ -1,0 +1,215 @@
+%% LyX 2.3.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,french]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=20mm,rmargin=20mm}
+\setcounter{tocdepth}{2}
+\usepackage{color}
+\usepackage{babel}
+\makeatletter
+\addto\extrasfrench{%
+   \providecommand{\og}{\leavevmode\flqq~}%
+   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
+}
+
+\makeatother
+\usepackage{amstext}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true]
+ {hyperref}
+\hypersetup{pdftitle={Le Manuel d'apprentissage de LYX},
+ pdfauthor={LyX Team},
+ pdfsubject={LyX-documentation Tutorial},
+ pdfkeywords={LyX, documentation},
+ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ \fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+\makeatother
+
+\begin{document}
+\begin{center}
+{\small{}Sorbonne Universit�s} 
+\par\end{center}
+
+LU2PY013-PeiP\hfill{}03 mars 2020
+
+\begin{center}
+\medskip{}
+\textbf{\textcolor{blue}{\Large{}CC1}}\medskip{}
+\par\end{center}
+
+\begin{center}
+\textbf{Polycopi� de cours autoris� - Calculatrice et TD interdits}\medskip{}
+\par\end{center}
+
+
+\section{Exercice 5 \textit{\normalsize{Une ballade en voiture en guise de dessert}{[}5 points{]}}}
+\subsubsection*{- \`a l'arr\^et }
+La suspension d'une voiture de masse $m$ = 800 kg est \'equivalente \`a un ressort vertical de constante de raideur $k$ = 1,36 10$^4$ N/m, qui est associ\'e a un frottement visqueux de constante $f$ = 1,6 10$^2$ kg/s.
+
+L'\'equation du d\'eplacement vertival $y(t)$ de la voiture s'\'ecrit :
+
+\begin {equation}
+\quad  \quad \quad \quad \quad \quad \quad \quad \quad m\frac{d^{2}y}{dt^{2}}+f \frac{dy}{dt} +ky = 0
+\end{equation}
+
+\begin{enumerate}
+   \item Cette \'equation diff\'erentielle est-elle lin\'eaire ? Si oui, de quel ordre est-elle ? 
+  \textbf{\textit{{[}0,5 point{]}}}\bigskip{}
+   \item R\'esoudre cette \'equation diff\'erentielle
+   \textbf{\textit{{[}1,5 points{]}}}\bigskip{}
+\end{enumerate}
+\subsubsection*{- Sur une route "ondul\'ee"}
+ On suppose maintenant que la voiture roule sur piste "ondul\'ee" qui force une oscillation verticale de pulsation $\sqrt{17}$ et transforme l'\'equation diff\'erentielle initiale en :
+\begin {equation}
+\quad  \quad \quad \quad \quad \quad \quad m\frac{d^{2}y}{dt^{2}}+f \frac{dy}{dt} +ky = F\text{cos} \sqrt{17}t
+\end{equation}
+avec $F$= 800 N
+\begin{enumerate}
+   \item Simplifier cette \'equation diff\'erentielle en effectuant les applications num\'eriques.
+      \textbf{\textit{{[}0,5 point{]}}}\bigskip{}
+   \item Donner la solution g\'en\'erale en pr\'ecisant l'intervalle de d\'efinition de $t$.
+      \textbf{\textit{{[}2 points{]}}}\bigskip{}
+   \item D\'eterminer la solution particuli\`ere alors associ\'ee aux conditions initiales $y(t=0)=1$ et $y'(t=0) = -1$.
+      \textbf{\textit{{[}0,5 point{]}}}\bigskip{}
+\end{enumerate}
+\textcolor{blue}{CORRECTION :}
+
+\textcolor{blue}{\textbf{- \`a l'arr\^et }}
+
+
+\textcolor{blue}{1. Cette \'equation diff\'erentielle est lin\'eaire, \`a coefficients constants et elle est du second ordre.}
+
+\textcolor{blue}{2. On \'ecrit le polyn\^ome associ\'e et on cherche ses solutions.}
+\begin{center}
+\textcolor{blue}{$mp^{2}+fp+k=0$ }
+
+\textcolor{blue}{avec $\Delta= f^2-4mk$.}
+\end{center}
+
+\textcolor{blue}{On remarque qu'ici (compte tenu des valeurs num\'eriques de $f$, $m$ et $k$), on a $f^{2} << 4mk$ et donc $\Delta \sim -4mk$ < 0. Les solutions du polyn\^ome associ\'e s'\'ecrivent alors:}
+
+\begin{center}
+\textcolor{blue}{ $p_{1,2} = \alpha \pm i \omega$   avec $\alpha= \frac{- f}{2m}$ et $\omega =\frac{\sqrt{-\Delta}}{2m}$}
+
+\
+
+\textcolor{blue}{et les solutions de l'\'equation diff\'erentielle s'expriment :}
+
+\
+
+\textcolor{blue}{$y= e^{\alpha t} [A\  \text{sin}(\omega t) + B\  \text{cos} (\omega t)]$}  
+
+
+\textcolor{blue}{o\`u $A$ et $B$ sont des constantes r\'eelles. } 
+\end{center}
+
+
+\textcolor{blue}{\textbf{- Sur une route "ondul\'ee"}}\\
+
+
+\textcolor{blue}{L'\'equation diff\'erentielle a maintenant un second membre. Elle s'\'ecrit :}
+\begin{center}
+
+
+\textcolor{blue}{$m\frac{d^{2}y}{dt^{2}}+f \frac{dy}{dt} +ky = F\text{cos} \sqrt{17}t$}
+\end{center}
+
+
+\textcolor{blue}{1. En effectuant les applications num\'eriques, on obtient :}
+
+\begin{center}
+
+
+\textcolor{blue}{$\frac{d^{2}y}{dt^{2}}+\frac{1}{5} \frac{dy}{dt} +17y = \text{cos} \sqrt{17}t$}
+\end{center}
+
+\textcolor{blue}{2. L'intervalle de d\'efinition de $t$ est ici l'ensemble des r\'eels positifs, la variable $t$ \'etant ici le temps.  Pour obtenir la solution g\'en\'erale de cette \'equation diff\'erentielle, on cherche d'abord la solution g\'en\'erale de l'\'equation sans second membre. On se reporte aux r\'esultats pr\'ec\'edents en prenant les valeurs num\'eriques de l'equation simplifi\'ee. Ici $\Delta$ est n\'egatif et on a $\sqrt{-\Delta} \sim 2 \sqrt{17}$, ce qui conduit \`a $\alpha =-0.1$ et $\omega \sim \sqrt{17}$. La solution g\'en\'erale de l'\'equation sans second membre s'\'ecrit donc :}
+\begin{center}
+
+\textcolor{blue}{$y= e^{- 0.1t}[A\  \text{sin}(\sqrt{17} t) + B\  \text{cos} (\sqrt{17} t)]$ , A et B \'etant deux r\'eels.}
+\end{center}
+
+\textcolor{blue}{On cherche maintenant une solution particuli\`ere de l'\'equation avec second membre, de la forme:}
+\begin{center}
+
+\textcolor{blue}{$y= C\ \text{sin}(\sqrt{17} t) + D\  \text{cos} (\sqrt{17} t))$ , C et D \'etant deux r\'eels.}
+\end{center}
+
+\textcolor{blue}{Les d\'eriv\'ees $\frac{dy}{dt}$ et $\frac{d^{2}y}{dt^{2}}$ s'\'ecrivent alors:}
+\begin{center}
+
+\textcolor{blue}{ $ \frac{dy}{dt}\ = \sqrt{17} C\ \text{cos}(\sqrt{17} t) - \sqrt{17\ } D\ \text{sin} (\sqrt{17} t))$}
+
+\textcolor{blue}{$\frac{d^{2}y}{dt^{2}}= - \ 17 C\ \text{sin}(\sqrt{17} t) \ \  -17\ D\ \text{cos} (\sqrt{17} t))$}
+\end{center}
+
+\textcolor{blue}{En rempla\c cant $\frac{d^{2}y}{dt^{2}}$, $\frac{dy}{dt}$ et $y$ dans l'\'equation diff\'erentielle compl\`ete, on obtient en r\'eunissant les termes en sinus d'un c\^ot\'e et ceux en cosinus de l'autre:}
+
+\begin{center}
+\textcolor{blue}{$[- 17C -\frac{1}{5} \sqrt{17} D+17C]\ \text{sin}(\sqrt{17} t) + [-17 D+\frac{1}{5}\sqrt{17} C +17D]\ \text{cos}(\sqrt{17} t) = \text{cos}( \sqrt{17} t)$}
+\end{center}
+
+\textcolor{blue}{Par identification des termes en $\text{sin}(\sqrt{17} t)$ et ceux en $\text{cos}(\sqrt{17} t)$ de part et d'autre de l'\'egalit\'e, on obtient :}
+
+\begin{center}
+\textcolor{blue}{$D=0$ et $C=\frac{5}{\sqrt{17}}$.}
+\end{center}
+
+\textcolor{blue}{Soit une solution particuli\`ere de l'\'equation avec second membre \'egale \`a:}
+
+\begin{center}
+\textcolor{blue}{$y= \frac{5}{\sqrt{17}}\ \text{sin}(\sqrt{17} t)$,}
+\end{center}
+
+\textcolor{blue}{et une solution g\'en\'erale de l'\'equation compl\`ete avec second membre :}
+
+\begin{center}
+\textcolor{blue}{$y= e^{- 0.1t} [A\  \text{sin}(\sqrt{17} t) + B\  \text{cos}(\sqrt{17} t)] + \frac{5}{\sqrt{17}}\ \text{sin}(\sqrt{17} t)$, A et B \'etant deux r\'eels}
+\end{center}
+
+\textcolor{blue}{Pour trouver la solution particuli\`ere de l'\'equation compl\`ete avec second membre, associ\'ee aux conditions aux limites $y(t=0)=1$ et $y'(t=0)=-1$ on calcule $y(t=0)$ et $y'(t=0)$:}
+
+\begin{center}
+\textcolor{blue}{$y(t=0)= B=1$, }
+
+\textcolor{blue}{$y'(t=0)= [\sqrt{17}A - 0.1 B + 5]=-1$.}
+\end{center}
+
+\textcolor{blue}{On obtient donc $B=1$ et $A=-\frac{5,9}{\sqrt{17}}$ et la solution s'\'ecrit :}
+
+\begin{center}
+\textcolor{blue}{$y= e^{- 0.1 t} [-\frac{5,9}{\sqrt{17}} \  \text{sin}(\sqrt{17} t) +  \text{cos}(\sqrt{17} t) ] + \frac{5}{\sqrt{17}}\ \text{sin}(\sqrt{17} t)$.}
+\end{center}
+
+\end{document}

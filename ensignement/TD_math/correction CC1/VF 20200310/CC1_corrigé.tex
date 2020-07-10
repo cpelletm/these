@@ -1,0 +1,275 @@
+\documentclass[fleqn]{article}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{mathexam}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{mathtools, physics}
+
+\ExamClass{LUPY013 PEIP}
+\ExamName{Controle Continu 1}
+\ExamHead{3 Mars 2020}
+
+\let\ds\displaystyle
+
+\begin{document}
+\ExamInstrBox{
+\begin{center}
+\textbf{\textbf{Corrigé}}
+\end{center}
+}
+
+\section{Exercice 1 : Intégrales }
+
+
+\begin{enumerate}
+   \item \textbf{(3 pts)} En intégrant par partie,
+   \begin{align*}
+   \int_0^1 x^2 \mathrm{ln}(x) dx = \left[\dfrac{x^3}{3} \mathrm{ln}(x)\right]_0^1 - \int_0^1 \dfrac{x^2}{3}dx   =-\left[\dfrac{x^3}{9}\right]_0^1 =-\dfrac{1}{9}
+   \end{align*}
+   L'intégrale n'est pas généralisée car $\lim_{x \to 0} \left(x^2 \mathrm{ln}(x)\right)= 0$ par croissance comparée, la fonction est bien bornée sur son domaine d'intégration.
+   \item \textbf{(3 pts)} En posant le changement de variable $y^2=1+3\sin(x)$, qui est bien bijectif sur l'intervalle considéré, alors $2y\mathrm{d}y=3\cos(x)dx$ et les nouvelles bornes vont de $y=1$ à $y=2$.
+   \begin{align*}
+   \int_0^{\pi/2} \dfrac{\cos(x)}{\sqrt{1+3\sin(x)}}dx = \int_1^2 \dfrac{\dfrac{2}{3}y\mathrm{d}y}{\sqrt{y^2}}=\int_1^2 \dfrac{2}{3}dy=\dfrac{2}{3}
+   \end{align*}
+   L'intégrale n'est pas généralisée.
+   \item \textbf{(4 pts)} En remarquant que $$\dfrac{\mathrm{d}(1/\sin(x))}{dx}=-\dfrac{\cos(x)}{\sin^2(x)}$$
+   Et que $$ \dfrac{1}{\sin^2(x)}=\dfrac{\sin^2(x)+\cos^2(x)}{\sin^2(x)}=1+\mathrm{cotan}^2(x)=-\mathrm{cotan}'(x)$$
+   Il vient que $$\int_{-\pi/2}^{\pi/2} \dfrac{\cos(x)-1}{\sin^2(x)}dx = \left[-\dfrac{1}{\sin(x)}+\mathrm{cotan}(x)\right]_{-\pi/2}^{\pi/2} =\left[\dfrac{\cos(x)-1}{\sin(x)}\right]_{-\pi/2}^{\pi/2}=-2$$
+   L'intégrale n'est pas généralisée car $\lim_{x \to 0}\left(\dfrac{\cos(x)-1}{\sin^2(x)}\right)=-\dfrac{1}{2}$ par les développement limités de $\sin^2(x)$ et $\cos(x) -1$ en $0$. La fonction est bien bornée sur son domaine d'intégration.
+\end{enumerate}
+\section{Exercice 2 : calcul de volumes}
+\begin{enumerate}
+\item \textbf{(3 pts)} On décompose notre cylindre en petit cylindre de hauteur $\mathrm{d} z$ et additionne les volumes de tous ces cylindres pour trouver le volume du cylindre. Le volume de chacun de ces cylindres est $\pi r(z)^2 \mathrm{d} z$. Il ne reste plus qu'à trouver $r(z)$.\newline
+On connaît les équations du cylindre $x^2 + y^2 = R^2$ et $0\leq z \leq h$. Pour chacun de ces cylindres, on est dans un plan parallèle à $xOy$, c'est à dire qu'on est à $z$ fixé. On connaît l'équation d'un cercle dans un tel plan $x^2+y^2 = r(z)^2$, on en déduit que $x^2 + y^2 = R^2 = r(z)^2$. Donc, le volume du cylindre pour un $z$ donné est $\pi R^2 \mathrm{d} z $, il ne reste plus qu'à sommer :
+\begin{align*}
+    V_{\mathrm{cyl}} = \displaystyle \int_{0}^{h} \pi R^2 \, \mathrm{d} z = \pi R^2 h
+\end{align*}
+\item \textbf{(2 pts)} On décompose la toupie en petit cylindre de hauteur $\mathrm{d} z$ et on  additionne les volumes de tous ces cylindres pour trouver le volume de la toupie. Le volume de chacun des cylindres est $\pi r(z)^2 \mathrm{d} y$.\newline
+A $z$ fixé, on connaît l'équation d'un cercle dans le plan $xOy$: $x^2+y^2 = \frac{1}{\sqrt{\abs{z}}}$, on en déduit que $x^2 + y^2 =  \frac{1}{\sqrt{\abs{z}}} = r(z)^2$. Donc, le volume du cylindre pour un $z$ donné est $\pi  \frac{1}{\sqrt{\abs{z}}} \mathrm{d} z $, il ne reste plus qu'à sommer :
+\begin{equation}
+    V_{\mathrm{toupie}} = \displaystyle \int_{-5}^{5} \pi  \frac{1}{\sqrt{\abs{z}}} \, \mathrm{d} z = 2\displaystyle \int_{0}^{5} \pi  \frac{1}{\sqrt{z}} \, \mathrm{d} z
+\end{equation}
+Qui est une intégrale généralisée. On trouve finalement
+\begin{equation}
+    V_{\mathrm{toupie}} = 2\pi\lim \limits_{\epsilon \rightarrow 0}\left[2\sqrt{z} \right]_\epsilon^5 = 4\pi\sqrt{5}
+\end{equation}
+\end{enumerate}
+\section{Exercice 3 \textbf{(4 pts)}}
+
+
+{1. \textbf{(1 pts)} C'est une équation différentielle linéaire (en
+y) ordinaire du premier ordre (seule la première dérivée de y intervient)}\\
+{}\\
+
+{2. \textbf{(3 pts)} Méthode de la variation de la constante.}
+
+{On commence par résoudre l'EDO sans second membre
+:
+\[
+\frac{dy_{0}}{dx}+\textrm{sin}\left(x\right)y_{0}=0
+\]
+c'est-à-dire
+\[
+\frac{y_{0}'}{y_{0}}=-\textrm{sin}\left(x\right)
+\]
+ou
+\[
+\frac{d}{dx}\left(\textrm{ln}\left(y_{0}\right)\right)=\frac{d}{dx}\left(\textrm{cos}\left(x\right)+cte\right)
+\]
+dont la solution générale s'écrit
+\[
+y_{0}\left(x\right)=\textrm{e}^{\textrm{cos}\left(x\right)+cte}=A\textrm{e}^{\textrm{cos}\left(x\right)}
+\]
+avec $A$ une constante réelle que l'on suppose être une fonction
+$f\left(x\right)$ dans un second temps. On remplace donc $y\left(x\right)$
+par $f\left(x\right)\textrm{e}^{\textrm{cos}\left(x\right)}$ dans
+l'EDO et l'on obtient
+\[
+f'\left(x\right)=\frac{1}{\textrm{cos}^{2}\left(x\right)}
+\]
+en divisant par $\textrm{e}^{\textrm{cos}\left(x\right)}$ de chaque
+côté.}
+
+{Cette équation s'intègre alors facilement en reconnaissant
+la dérivée de la fonction tangente à droite :
+\[
+f\left(x\right)=\textrm{tan}\left(x\right)+C
+\]
+avec $C$ une constante d'intégration réelle.}
+
+{La solution générale recherchée est donc égale à
+\[
+y_{sol}\left(x\right)=\left(\textrm{tan}\left(x\right)+C\right)\textrm{e}^{\textrm{cos}\left(x\right)}
+\]
+et son support de définition est celui de la fonction tangente, c'est-à-dire
+l'ensemble des réels privé des nombres $\pi/2$ modulo $\pi$ (relatif).}
+
+\section{Exercice 4 \textbf{(6 pts)}}
+
+
+{1.\textbf{(1 pts)} C'est une équation différentielle non-linéaire
+(en y) du premier ordre.}\\
+{}\\
+
+{2.\textbf{(1 pts)} La dérivée de la fonction $\textrm{e}^{y\left(1-y\right)}$
+s'écrit :
+\[
+\left(\textrm{e}^{y\left(1-y\right)}\right)'=y'\left(1-2y\right)\textrm{e}^{y\left(1-y\right)}
+\]
+}\\
+{}\\
+
+{3.\textbf{(3 pts)} Cette dérivée conduit à réexprimer l'EDO comme
+\[
+\frac{d}{dx}\left(\textrm{e}^{y\left(1-y\right)}\right)=2x
+\]
+d'où
+\[
+y\left(1-y\right)=\textrm{ln}\left(x^{2}+cte\right)
+\]
+La condition $y\left(1\right)=1$ élimine la constante : $cte=0$
+puisque $\textrm{ln}\left(1+cte\right)=0$.}
+
+{Le support de définition de $y\left(x\right)$ est
+donc au maximum la droite réelle privée du point $0$.}
+
+{Il reste à exprimer $y\left(x\right)$ de façon explicite.
+L'équation $y\left(1-y\right)=\textrm{ln}\left(x^{2}\right)$ s'écrit
+aussi
+\[
+y^{2}-y+\textrm{ln}\left(x^{2}\right)=0
+\]
+qui donne deux solutions a priori possibles
+\[
+\frac{1\pm\sqrt{1-4\textrm{ln}\left(x^{2}\right)}}{2}
+\]
+dont en fait seule celle avec le signe $+$ correspond à la solution
+recherchée car devant vérifier la condition $y\left(1\right)=1$ :
+\[
+y_{sol}\left(x\right)=\frac{1+\sqrt{1-4\textrm{ln}\left(x^{2}\right)}}{2}
+\]
+On remarque que le support de définition de $y_{sol}\left(x\right)$
+est plus restreint que prévu ci-dessus : il doit correspondre à la
+condition de réalité de la racine carrée : $1-4\textrm{ln}\left(x^{2}\right)\geq0$,
+c'est-à-dire 
+\[
+\left|x\right|\leq\textrm{e}^{1/8}
+\]
+Finalement, l'ensemble de définition de $y_{sol}\left(x\right)$ est
+\[
+\left[-\textrm{e}^{1/8},0\right[U\left]0,\textrm{e}^{1/8}\right]
+\]
+}
+\section{Exercice 5 \textit{\normalsize{Une ballade en voiture en guise de dessert}{[}5 points{]}}}
+\subsubsection*{- \`a l'arr\^et }
+
+\begin{enumerate}
+\item \textbf{(0.5 pts)}Cette \'equation diff\'erentielle est lin\'eaire, \`a coefficients constants et elle est du second ordre.
+\item \textbf{(1.5 pts)}{On \'ecrit le polyn\^ome associ\'e et on cherche ses solutions.}
+\begin{center}
+{$mp^{2}+fp+k=0$ }
+
+{avec $\Delta= f^2-4mk$.}
+\end{center}
+
+{On remarque qu'ici (compte tenu des valeurs num\'eriques de $f$, $m$ et $k$), on a $f^{2} << 4mk$ et donc $\Delta \sim -4mk$ < 0. Les solutions du polyn\^ome associ\'e s'\'ecrivent alors:}
+
+\begin{center}
+{ $p_{1,2} = \alpha \pm i \omega$   avec $\alpha= \frac{- f}{2m}$ et $\omega =\frac{\sqrt{-\Delta}}{2m}$}
+
+\
+
+{et les solutions de l'\'equation diff\'erentielle s'expriment :}
+
+\
+
+{$y= e^{\alpha t} [A\  \text{sin}(\omega t) + B\  \text{cos} (\omega t)]$}  
+
+
+{o\`u $A$ et $B$ sont des constantes r\'eelles. } 
+\end{center}
+\end{enumerate}
+
+
+\subsection{- Sur une route "ondul\'ee"}
+
+
+L'\'equation diff\'erentielle a maintenant un second membre. Elle s'\'ecrit 
+\begin{align*}
+m\frac{d^{2}y}{dt^{2}}+f \frac{dy}{dt} +ky = F\text{cos} \sqrt{17}t
+\end{align*}
+
+\begin{enumerate}
+\item \textbf{(0.5 pts)}{En effectuant les applications num\'eriques, on obtient :}
+
+\begin{center}
+
+
+{$\frac{d^{2}y}{dt^{2}}+\frac{1}{5} \frac{dy}{dt} +17y = \text{cos} \sqrt{17}t$}
+\end{center}
+
+
+\item \textbf{(2 pts)}{L'intervalle de d\'efinition de $t$ est ici l'ensemble des r\'eels positifs, la variable $t$ \'etant ici le temps.  Pour obtenir la solution g\'en\'erale de cette \'equation diff\'erentielle, on cherche d'abord la solution g\'en\'erale de l'\'equation sans second membre. On se reporte aux r\'esultats pr\'ec\'edents en prenant les valeurs num\'eriques de l'equation simplifi\'ee. Ici $\Delta$ est n\'egatif et on a $\sqrt{-\Delta} \sim 2 \sqrt{17}$, ce qui conduit \`a $\alpha =-0.1$ et $\omega \sim \sqrt{17}$. La solution g\'en\'erale de l'\'equation sans second membre s'\'ecrit donc :}
+\begin{center}
+
+{$y= e^{- 0.1t}[A\  \text{sin}(\sqrt{17} t) + B\  \text{cos} (\sqrt{17} t)]$ , A et B \'etant deux r\'eels.}
+\end{center}
+
+{On cherche maintenant une solution particuli\`ere de l'\'equation avec second membre, de la forme:}
+\begin{center}
+
+{$y= C\ \text{sin}(\sqrt{17} t) + D\  \text{cos} (\sqrt{17} t))$ , C et D \'etant deux r\'eels.}
+\end{center}
+
+{Les d\'eriv\'ees $\frac{dy}{dt}$ et $\frac{d^{2}y}{dt^{2}}$ s'\'ecrivent alors:}
+\begin{center}
+
+{ $ \frac{dy}{dt}\ = \sqrt{17} C\ \text{cos}(\sqrt{17} t) - \sqrt{17\ } D\ \text{sin} (\sqrt{17} t))$}
+
+{$\frac{d^{2}y}{dt^{2}}= - \ 17 C\ \text{sin}(\sqrt{17} t) \ \  -17\ D\ \text{cos} (\sqrt{17} t))$}
+\end{center}
+
+{En rempla\c cant $\frac{d^{2}y}{dt^{2}}$, $\frac{dy}{dt}$ et $y$ dans l'\'equation diff\'erentielle compl\`ete, on obtient en r\'eunissant les termes en sinus d'un c\^ot\'e et ceux en cosinus de l'autre:}
+
+\begin{center}
+{$[- 17C -\frac{1}{5} \sqrt{17} D+17C]\ \text{sin}(\sqrt{17} t) + [-17 D+\frac{1}{5}\sqrt{17} C +17D]\ \text{cos}(\sqrt{17} t) = \text{cos}( \sqrt{17} t)$}
+\end{center}
+
+{Par identification des termes en $\text{sin}(\sqrt{17} t)$ et ceux en $\text{cos}(\sqrt{17} t)$ de part et d'autre de l'\'egalit\'e, on obtient :}
+
+\begin{center}
+{$D=0$ et $C=\frac{5}{\sqrt{17}}$.}
+\end{center}
+
+{Soit une solution particuli\`ere de l'\'equation avec second membre \'egale \`a:}
+
+\begin{center}
+{$y= \frac{5}{\sqrt{17}}\ \text{sin}(\sqrt{17} t)$,}
+\end{center}
+
+{et une solution g\'en\'erale de l'\'equation compl\`ete avec second membre :}
+
+\begin{center}
+{$y= e^{- 0.1t} [A\  \text{sin}(\sqrt{17} t) + B\  \text{cos}(\sqrt{17} t)] + \frac{5}{\sqrt{17}}\ \text{sin}(\sqrt{17} t)$, A et B \'etant deux r\'eels}
+\end{center}
+
+
+\item \textbf{(0.5 pts)} {Pour trouver la solution particuli\`ere de l'\'equation compl\`ete avec second membre, associ\'ee aux conditions aux limites $y(t=0)=1$ et $y'(t=0)=-1$ on calcule $y(t=0)$ et $y'(t=0)$:}
+
+\begin{center}
+{$y(t=0)= B=1$, }
+
+{$y'(t=0)= [\sqrt{17}A - 0.1 B + 5]=-1$.}
+\end{center}
+
+{On obtient donc $B=1$ et $A=-\frac{5,9}{\sqrt{17}}$ et la solution s'\'ecrit :}
+
+\begin{center}
+{$y= e^{- 0.1 t} [-\frac{5,9}{\sqrt{17}} \  \text{sin}(\sqrt{17} t) +  \text{cos}(\sqrt{17} t) ] + \frac{5}{\sqrt{17}}\ \text{sin}(\sqrt{17} t)$.}
+\end{center}
+\end{enumerate}
+
+\end{document}

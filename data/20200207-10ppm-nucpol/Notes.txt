@@ -1,0 +1,27 @@
+10h30 : 200uW->2Mcps
+
+nucpol1 : pump at  2.6549, -2dBm
+40us pump+las / 10 us las / 5us probe + las (read) *20
+3000 reps
+
+nucpol2 : pump at  2.6549, -2dBm
+40us pump+las / 100 us las / 5us probe + las (read) *20
+2000 reps
+
+nucpol3ref :
+40us las / 10 us las / 5us probe + las (read) *20
+5000 reps
+
+nucpol2 : pump at  2.6604, -2dBm
+40us pump+las / 10 us las / 5us probe + las (read) *20
+3000 reps
+
+change to 1Mcps
+
+nucpol5 : pump at  2.6549, -2dBm
+60us pump+las / 15 us las / 5us probe + las (read) *20
+2000 reps
+
+nucpol6 : 
+60us pump / 15 us las / 5us probe + las (read) *20
+2000 reps
