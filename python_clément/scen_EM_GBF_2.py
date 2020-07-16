@@ -30,9 +30,10 @@ class Photon_Counter(QMainWindow):
         
 
         self.f_cycle=1
-        self.f_acq=1000
+        self.n_acq=2000
+        self.refresh_rate=0.1
 
-        self.n_acq=int(self.f_acq/self.f_cycle)
+        self.f_acq=self.f_cycle*self.n_acq
 
 
        
@@ -115,6 +116,7 @@ class Photon_Counter(QMainWindow):
         self.stop.setEnabled(True)
 
         self.first_time=True
+        self.time_last_refresh=time.time()
 
         self.t=np.linspace(0,1/self.f_cycle,self.n_acq)
         y_PL=np.zeros(self.n_acq-1)
@@ -220,18 +222,20 @@ class Photon_Counter(QMainWindow):
             self.y=self.y*(1-1/self.repeat)+PL*(1/self.repeat)
             self.repeat+=1
 
-        self.dynamic_line.set_ydata(self.y)
-        ymin=min(self.y)
-        ymax=max(self.y)
-        self.dynamic_ax.set_ylim([ymin,ymax]) 
+        if time.time()-self.time_last_refresh>self.refresh_rate :
+            self.dynamic_line.set_ydata(self.y)
+            ymin=min(self.y)
+            ymax=max(self.y)
+            self.dynamic_ax.set_ylim([ymin,ymax]) 
 
-        # print(len(self.dynamic_line.get_xdata()))
-        # print(len(self.dynamic_line.get_ydata()))
-        # print(len(self.tension_plot_line.get_xdata()))
-        # print(len(self.tension_plot_line.get_ydata()))
-        self.dynamic_ax.figure.canvas.draw()
+            # print(len(self.dynamic_line.get_xdata()))
+            # print(len(self.dynamic_line.get_ydata()))
+            # print(len(self.tension_plot_line.get_xdata()))
+            # print(len(self.tension_plot_line.get_ydata()))
+            self.dynamic_ax.figure.canvas.draw()
 
-        self.labelIter.setText("iter # %i"%self.repeat)
+            self.labelIter.setText("iter # %i"%self.repeat)
+            self.time_last_refresh=time.time()
      
 
     def stop_measure(self):

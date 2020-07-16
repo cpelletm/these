@@ -174,25 +174,34 @@ center=2.863
 # y=y/max(y)
 # plt.plot(x,y,label=fname)
 
-# fname='T1_100_0V_setup2_nuit'
-# x,y=extract_data(fname+'.txt')
-# x=x[1:]
-# y=y[1:]
-# y=y/y[0]
-# plt.plot(x,y,'x',label=fname)
-# popt,yfit=exp_fit(x,y)
-# plt.plot(x,yfit,label='tau exp = %f'%popt[2])
+fname='T1_100_0V_setup2_nuit'
+x,y=extract_data(fname+'.txt')
+x=x[1:]
+y=y[1:]
+y=y/y[0]
+plt.plot(x,y,'x',label=fname)
+popt,yfit=exp_fit(x,y)
+plt.plot(x,yfit,label='tau exp = %f'%popt[2])
 
-# fname='T1_100_2V_setup2_nuit'
-# x,y=extract_data(fname+'.txt')
-# x=x[1:]
-# y=y[1:]
-# y=y/y[0]
-# plt.plot(x,y,'x',label=fname)
-# popt,yfit=exp_fit(x,y)
-# plt.plot(x,yfit,label='tau exp = %f'%popt[2])
+fname='T1_100_2V_setup2_nuit'
+x,y=extract_data(fname+'.txt')
+x=x[1:]
+y=y[1:]
+y=y/y[0]
+plt.plot(x,y,'x',label=fname)
+popt,yfit=exp_fit(x,y)
+plt.plot(x,yfit,label='tau exp = %f'%popt[2])
 
 fname='t1_2x2'
+x,y=extract_data(fname+'.txt')
+x=x[3:]
+y=y[3:]
+y=y/y[0]
+plt.plot(x,y,'x',label=fname)
+popt,yfit=exp_fit(x,y)
+plt.plot(x,yfit,label='tau exp = %f'%popt[2])
+
+fname='t1_nuit_1x-15-07'
 x,y=extract_data(fname+'.txt')
 x=x[3:]
 y=y[3:]
