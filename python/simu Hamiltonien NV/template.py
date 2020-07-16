@@ -4,12 +4,14 @@ from numpy.linalg import norm
 import matplotlib.pyplot as plt
 from qutip import *
 from scipy.integrate import quad, dblquad, nquad
+from tabulate import tabulate
 
 
 #theta=2*arccos(1/sqrt(3))
 
 Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
-bnamez=['+','0','-']
+bnamez=['+1','0','-1']
+bname_undemi=['+1/2','-1/2']
 Sx=1/sqrt(2)*np.array([[0,1,0],[1,0,1],[0,1,0]])
 Sy=1/(sqrt(2)*1j)*np.array([[0,1,0],[-1,0,1],[0,-1,0]])
 rho_0=np.array([[0,0,0],[0,1,0],[0,0,0]])
@@ -31,35 +33,69 @@ def ordre_numpy() : #Les matrices sont à rentrer ligne par ligne
 	print(testM.dot(testV)) #M.V
 	print(testV.dot(testM)) #V.M
 
-def Hamiltonian_0(B) :
+def Hamiltonian_0(B,classe=1,E=3) :
 	#Unité naturelle : MHz,Gauss
-	D=2880
+	B=np.array(B)
+	D=2870
 	gamma=2.8
-	E=0.1 #E varie de 0.1 pour du bulk à 5 pour du nano
-	H=D*Sz**2+gamma*(B[0]*Sx+B[1]*Sy+B[2]*Sz)+E*(Sx.dot(Sx)-Sy.dot(Sy))
+	if classe==1 :
+		C=np.array([1,1,1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	if classe==2 :
+		C=np.array([1,-1,-1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	if classe==3 :
+		C=np.array([-1,1,-1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	if classe==4 :
+		C=np.array([-1,-1,1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	H=D*Sz**2+gamma*(Bx*Sx+Bz*Sz)+E*(Sx.dot(Sx)-Sy.dot(Sy))
 	return H
 
 def egvect(H) :
 	val,vec=np.linalg.eigh(H) #H doit être Hermitienne
+	vec=vec.T #Les vecteurs propres sortent en LIGNE (vecteur #1 : vec[0])
 	return(val,vec)
 
 def print_matrix(M,bname) :
-	threshold=0.01
-	with open('matrix.txt','w') as f:
-		for name in bname :
-			f.write('\t|'+name+'>\t')		
-		for i in range(len (M[:,0])) :
-			name=bname[i]
-			f.write('\n')
-			f.write('<'+name+'|')
-			for v in M[i,:] :
-				if np.linalg.norm(v)>threshold :
-					f.write('\t%2.1f+%2.1fi'%(v.real,v.imag))
-				else :
-					f.write('\t\t')
+	headers=['']+['|'+name+'>' for name in bname]
+	table=[]
+	for i in range(len(bname)) :
+		line=[]
+		line+=['<'+bname[i]+'|']
+		values=list(abs(M[:,i]))
+		line+=values
+		table+=[line]
+	print(tabulate(table,headers))
+
+def print_vector(v,bname) :
+	table=[]
+	for i in range(len(v)) :
+		line=['%f+%fj'%(v[i].real,v[i].imag),bname[i]]
+		table+=[line]
+	print(tabulate(table))
+
+def convolution(M1,M2):
+	l1=len(M1[:,0])
+	l2=len(M2[:,0])
+	l=l1*l2
+	M=np.zeros((l,l),dtype=complex)
+	for i1 in range(l1) :
+		for j1 in range(l1) :
+			for i2 in range(l2) :
+				for j2 in range(l2) :
+					i=i1*l2+i2
+					j=j1*l2+j2
+					M[i,j]=M1[i1,j1]*M2[i2,j2]
+	return(M)
 
 
-def convolution(M1,M2,bname1,bname2) :
+def convolution_et_base(M1,M2,bname1,bname2) :
 	bname=[]
 	for name1 in bname1 :
 		for name2 in bname2 :
@@ -76,6 +112,89 @@ def convolution(M1,M2,bname1,bname2) :
 					j=j1*l2+j2
 					M[i,j]=M1[i1,j1]*M2[i2,j2]
 	return(M,bname)
+
+def carbon_13(B=[50,0,0],show=True):
+	C13=True
+	H_NV,bname=convolution_et_base(Hamiltonian_0(B,E=3),np.identity(2),bnamez,bname_undemi)
+	Ix=1/2*np.array([[0,1],[1,0]])
+	Iy=1/2*np.array([[0,0+1j],[0-1j,0]])
+	Iz=1/2*np.array([[1,0],[0,-1]])
+	gamma_C13=1.07*1e-3
+	Axx=190.2
+	Ayy=120.3
+	Azz=129.1
+	Axz=-25
+	H_zeeman_nucl=gamma_C13*np.linalg.norm(B)*Iz
+	H_nucl=convolution(np.identity(3),H_zeeman_nucl)
+	H_dip=Axx*convolution(Sx,Ix)+Ayy*convolution(Sy,Iy)+Azz*convolution(Sz,Iz)+Axz*(convolution(Sx,Iz)+convolution(Sz,Ix))
+	H=H_NV+(H_nucl+H_dip)*C13
+	val,vec=egvect(H)
+
+	if show :
+		print_matrix(H,bname)	
+		show_vpropres(val,vec,bname)
+		Sx_c13=convolution(Sx,np.identity(2))
+		rho0_c13=convolution(rho_0,np.identity(2))
+		transitions(val,vec,Sx_c13,rho0_c13)
+	else : 
+		return(val,vec)
+
+def show_vpropres(val,vec,bname):
+	for i in range(len(val)):
+		print('Vecteur %i : Vpropre=%f'%(i,val[i]))
+		print_vector(vec[i],bname)
+
+def transitions(val,vec,Sx,rho_0,show=True):
+	n=len(val)
+	transi=[]
+	for i in range(1,len(val)):
+		for j in range(i) :
+			valt=abs(val[i]-val[j])
+			pop_0_1=abs(vec[i].dot(rho_0.dot(vec[i])))
+			pop_0_2=abs(vec[j].dot(rho_0.dot(vec[j])))
+			contraste=abs(vec[i].dot(Sx.dot(vec[j]))*(pop_0_1-pop_0_2)) #Le contratse prend en compte le couplage par la micro onde et la différence de population dans 0 entre les deux états
+			transi+=[[valt,contraste,i,j]]
+	transi=sorted(transi,key=lambda x:x[1],reverse=True)
+	transi=np.array(transi)
+	if show :
+		headers=['Transition (MHz)','Probability','vecteur 1', 'vecteur 2']
+		print(tabulate(transi,headers))
+	else :
+		return transi
+
+
+
+def NV_simple():
+	theta=pi/2
+	amp=1000
+	B=[5000,0,0]
+	H=Hamiltonian_0(B,classe=1,E=3)
+	val,vec=egvect(H)
+	show_vpropres(val,vec,bnamez)
+	transitions(val,vec,Sx,rho_0)
+
+def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
+	amps=np.linspace(0,50,100)
+	transi=[]
+	transi_NV=[]
+	for amp in amps :
+		B=[amp,0,0]
+		val,vec=carbon_13(B,show=False)
+		transi+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
+		H=Hamiltonian_0(B,classe=1,E=3)
+		val,vec=egvect(H)
+		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+	transi=np.array(transi)
+	transi_NV=np.array(transi_NV)
+	for i in range(len(transi[0,:])) :
+		plt.plot(amps,transi[:,i],'--')
+	for i in range(len(transi_NV[0,:])) :
+		plt.plot(amps,transi_NV[:,i])
+	plt.xlabel('B along (100) (G)')
+	plt.ylabel('Transition frequency (MHz)')
+	plt.show()
+
+egv_C13()
 
 def transpose_basepm(M) :
 	#base : (+)=(+1)+(-1)/sqrt(2), 0=0 , (-)=(+1)-(-1)/sqrt(2)
@@ -133,7 +252,8 @@ def some_matrices() :
 	if matrice=='SySx' :
 		M1,bname=convolution(Syf,Sxf,bnamez,bnamez)
 		print_matrix(M1,bname)
-some_matrices()
+
+
 
 def test_mesolve():
 	H=Qobj(Hamiltonian_0([0,0,100])) #en ms
@@ -359,9 +479,6 @@ def angular_average(f) :
 
 
 
-
-print(angular_average_manuel(gplus_same))
-print(2/(3*sqrt(3)))
 
 #Le principal problème ici c'est que je considère tous les états comme étant |+1> et |-1>. Y'a peut-etre moyen de faire mieux mais on verra ca plus tard
 #L'autre soucis c'est que je ne prend pas en compte l'élargissement inhomogène
