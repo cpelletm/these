@@ -6,8 +6,8 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
-Sy=np.array([[0,-1j,0],[1j,0,-1j],[0,1j,0]])
-Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])
+Sy=np.array([[0,-1j,0],[1j,0,-1j],[0,1j,0]])/np.sqrt(2)
+Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])/np.sqrt(2)
 Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
 
 c0=np.array([0,0,0])
@@ -326,16 +326,16 @@ def line_PL(theta_min,theta_max,phi_min,phi_max,amp):
 
 #show([1,1,0])
 
-rotation_diamond(45,0)
+# rotation_diamond(45,0)
 
 
 #show_ESR(ChampMag(90,180,100))
 
 
-#map_2D_croisements(np.linspace(115,135,200),np.linspace(125,145,200),20)
+map_2D_croisements(np.linspace(0,180,180),np.linspace(0,360,360),100)
 #map_2D_croisements(np.linspace(0,180,360),np.linspace(0,360,720),100)
 #map_pl(np.linspace(84,96,80),np.linspace(171,189,80),mag_field)
-line_PL(89.9,89.9,171,189,100)
+# line_PL(89.9,89.9,171,189,100)
 
 
 

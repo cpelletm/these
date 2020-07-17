@@ -174,7 +174,7 @@ def NV_simple():
 	transitions(val,vec,Sx,rho_0)
 
 def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
-	amps=np.linspace(0,50,100)
+	amps=np.linspace(0,200,100)
 	transi=[]
 	transi_NV=[]
 	for amp in amps :
@@ -186,10 +186,24 @@ def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G
 		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
 	transi=np.array(transi)
 	transi_NV=np.array(transi_NV)
+	ax=plt.gca()
+	color = next(ax._get_lines.prop_cycler)['color']
 	for i in range(len(transi[0,:])) :
-		plt.plot(amps,transi[:,i],'--')
+		if i==0 :
+			plt.plot(amps,transi[:,i],'--',color=color,label='NV with 13C first shell')
+		else :
+			plt.plot(amps,transi[:,i],'--',color=color)
+	color = next(ax._get_lines.prop_cycler)['color']
 	for i in range(len(transi_NV[0,:])) :
-		plt.plot(amps,transi_NV[:,i])
+		if i==0 :
+			plt.plot(amps,transi_NV[:,i],color=color,label='NV isolated')
+		else :
+			plt.plot(amps,transi_NV[:,i],color=color)
+	color = next(ax._get_lines.prop_cycler)['color']
+	x_transi=[17.9531,19.70,22.1173,24.312]
+	y_transi=[2841.67,2839,2907.24,2911.07]
+	plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color)		
+	plt.legend()
 	plt.xlabel('B along (100) (G)')
 	plt.ylabel('Transition frequency (MHz)')
 	plt.show()
