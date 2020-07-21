@@ -116,7 +116,7 @@ def ask_name():
 	return fname
 
 
-fname='scan_rose_4x_0B_zoom_align3'
+fname='scan_rose_4x_0B_full'
 x,y=extract_data(fname+'.txt')
 x2,y2=extract_data(fname+'.txt',xcol=2,ycol=3)
 y2=list(y2)
@@ -125,8 +125,7 @@ xmax=y2.index(min(y2))
 y2=y2[xmin:xmax]
 y=y[xmin:xmax]
 plt.plot(y2,y)
-popt,yfit=lor_fit(y2,y)
-plt.plot(y2,yfit,label='lor, sigma=%f'%popt[2])
+
 
 plt.legend()
 

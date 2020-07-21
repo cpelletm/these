@@ -139,7 +139,7 @@ def ask_name():
 # plt.plot(y2,yfit,label='lor, sigma=%f'%popt[2])
 
 
-center=2.863
+center=2.8648
 
 # fname='ESR_4x_3V_zoom_align3'
 # x,y=extract_data(fname+'.txt')
@@ -150,81 +150,35 @@ center=2.863
 # x=x+center-x[mil]
 # plt.plot(x,y,label=fname)
 
-# fname='ESR_zoom_3V'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# y=list(y)
-# mil=y.index(min(y))
-# x=x+center-x[mil]
-# plt.plot(x,y,label=fname)
 
-# fname='ESR_zoom_5V'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# y=list(y)
-# mil=y.index(min(y))
-# x=x+center-x[mil]
-# plt.plot(x,y,label=fname)
 
-# fname='ESR_zoom_0V'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# plt.plot(x,y,label=fname)
-
-ax = plt.gca()
-color = next(ax._get_lines.prop_cycler)['color']
-
-fname='t1_nuit_1x-15-07'
+fname='scan_adamas_4_jours'
 x,y=extract_data(fname+'.txt')
-x=x[3:]
-y=y[3:]
-y=y/y[0]
-plt.plot(x,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='1-Degenerancy, tau= %1.3e s'%popt[2],color=color)
-
-color = next(ax._get_lines.prop_cycler)['color']
-fname='t1_2x2'
-x,y=extract_data(fname+'.txt')
-x=x[3:]
-y=y[3:]
-y=y/y[0]
-plt.plot(x,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='2-Degenerancy, tau= %1.3e s'%popt[2],color=color)
-
-color = next(ax._get_lines.prop_cycler)['color']
-fname='T1_100_2V_setup2_nuit'
-x,y=extract_data(fname+'.txt')
-x=x[1:]
-y=y[1:]
-y=y/y[0]
-plt.plot(x,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='4-Degenerancy, tau= %1.3e s'%popt[2],color=color)
-
-color = next(ax._get_lines.prop_cycler)['color']
-fname='T1_100_0V_setup2_nuit'
-x,y=extract_data(fname+'.txt')
-x=x[1:]
-y=y[1:]
-y=y/y[0]
-plt.plot(x,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='0-Field, tau= %1.3e s'%popt[2],color=color)
+x=x-0.075
+x=x*68.1
+plt.plot(x,y,label='Photoluminescence')
 
 
 
+plt.xlabel('Magnetic field along (100) in G')
 
+plt.plot([17.95,17.95],[3E6,5E6],ls='dotted',color='orange', label=' Predicted transitions')
+Cm=19.70
+plt.plot([Cm,Cm],[3E6,5E6],ls='dotted',color='orange')
+Cm=22.11
+plt.plot([Cm,Cm],[3E6,5E6],ls='dotted',color='orange')
+Cm=24.31
+plt.plot([Cm,Cm],[3E6,5E6],ls='dotted',color='orange')
+Cm=-17.95
+plt.plot([Cm,Cm],[3E6,5E6],ls='dotted',color='orange')
+Cm=-19.70
+plt.plot([Cm,Cm],[3E6,5E6],ls='dotted',color='orange')
+Cm=-22.11
+plt.plot([Cm,Cm],[3E6,5E6],ls='dotted',color='orange')
+Cm=-24.31
+plt.plot([Cm,Cm],[3E6,5E6],ls='dotted',color='orange')
 
-
-plt.xlabel(r'Dark time $\tau$ (s)')
-plt.ylabel('Photoluminescence')
-
+plt.ylim([3.972E6,4.01E6])
 
 plt.legend()
-
 plt.show()
