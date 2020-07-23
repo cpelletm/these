@@ -18,6 +18,9 @@ rho_0=np.array([[0,0,0],[0,1,0],[0,0,0]])
 rho_s=1./3*np.array([[1,0,0],[0,1,0],[0,0,1]])
 
 
+Sx_12=1/2*np.array([[0,1],[1,0]])
+Sy_12=1/2*np.array([[0,0+1j],[0-1j,0]])
+Sz_12=1/2*np.array([[1,0],[0,-1]])
 
 ## Collaposologie
 col_t1=np.array([[0,1,1],[1,0,1],[1,1,0]])
@@ -208,7 +211,75 @@ def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G
 	plt.ylabel('Transition frequency (MHz)')
 	plt.show()
 
-egv_C13()
+
+def p1():
+
+
+	def Ham_p1(B,classe=1):
+		B=np.array(B)
+		gamma=2.8
+		gamma_14N=3.07*1E-4
+		Axx=113.98
+		Ayy=Axx
+		Azz=81.34
+		Q14N=-3.97
+		if classe==1 :
+			C=np.array([1,1,1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		if classe==2 :
+			C=np.array([1,-1,-1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		if classe==3 :
+			C=np.array([-1,1,-1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		if classe==4 :
+			C=np.array([-1,-1,1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		H=convolution(Sz_12,np.identity(3))*gamma*Bz+convolution(Sx_12,np.identity(3))*gamma*Bx
+		H+=-(convolution(np.identity(2),Sz)*gamma_14N*Bz+convolution(np.identity(2),Sx)*gamma_14N*Bx) #Pourquoi "-" ?
+		H+=Axx*convolution(Sx_12,Sx)+Ayy*convolution(Sy_12,Sy)+Azz*convolution(Sz_12,Sz)
+		H+=Q14N*convolution(np.identity(2),Sz**2)
+		return H
+
+	M,bname=convolution_et_base(np.identity(2),np.identity(3),bname_undemi,bnamez)
+	amps=np.linspace(0,200,200)
+	transi=[]
+	transi_NV=[]
+	Sx_P1=convolution(Sx_12,np.identity(3))
+	for amp in amps :
+		# B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+		B=[amp,0,0]
+		H=Ham_p1(B,classe=1)
+		val,vec=egvect(H)
+		single=[]
+		for i in range(3,6) :
+			for j in range(3) :
+				print(i,j,len(single))
+				single+=[val[i]-val[j]]
+		transi+=[single]
+		H=Hamiltonian_0(B,classe=1,E=3)
+		val,vec=egvect(H)
+		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+	transi=np.array(transi)
+	transi_NV=np.array(transi_NV)
+	for i in range(len(transi[0,:])) :
+		plt.plot(amps,transi[:,i]+transi_NV[:,1]-transi_NV[:,0],label='transition %i'%i)
+	plt.plot(amps,transi_NV[:,0])
+	plt.plot(amps,transi_NV[:,1])
+	plt.plot([0,amps[-1]],[0,0],'--')
+	plt.legend()
+	plt.show()
+	# H=Ham_p1([32.5,0,0],classe=1)
+	# val,vec=egvect(H)
+	# show_vpropres(val,vec,bname)
+	# print(abs(vec[4].dot(Sx_P1).dot(vec[3]))*2)
+
+
+p1()
 
 def transpose_basepm(M) :
 	#base : (+)=(+1)+(-1)/sqrt(2), 0=0 , (-)=(+1)-(-1)/sqrt(2)
@@ -506,7 +577,7 @@ def Lukin(B,gamma_las=1E-3,gamma_phonon=3E-4,gamma_f=1): #En Mhz
 	for i in range(4) :
 		C=Ci[i]
 		Bz=B.dot(C)
-		B_rel=[np.sqrt(max(B.dot(B)-Bz**2,0)),0,Bz] #Il ai me pas les racines de nobres négatifs avec les arrondis
+		B_rel=[np.sqrt(max(B.dot(B)-Bz**2,0)),0,Bz] #Il aime pas les racines de nobres négatifs avec les arrondis
 		H=Hamiltonian_0(B_rel)
 		Hi+=[H]
 		val,vec=egvect(H)

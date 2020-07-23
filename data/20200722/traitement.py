@@ -152,26 +152,12 @@ center=2.8648
 
 
 
-fname='scan_rose_100_7V_'
+fname='scan_100_rose_10V'
 x,y=extract_data(fname+'.txt')
 y=y/max(y)
-x=x+0.158
-x=x*65
-plt.plot(x,y,label='rose')
-
-fname='scan_adamas_gros_laser'
-x,y=extract_data(fname+'.txt')
-y=y/max(y)
-x=x+0.115
-x=x*68.1
-plt.plot(x,y,label='adamas gros laser')
-
-fname='scan_adamas_4_jours'
-x,y=extract_data(fname+'.txt')
-y=y/max(y)
-x=x-0.075
-x=x*68.1
-plt.plot(x,y,label='adamas petit laser')
+x=x*67
+x=x+12.8
+plt.plot(x,y,label=fname)
 
 plt.xlabel('Magnetic field along (100) in G')
 
@@ -190,8 +176,11 @@ Cm=-22.11
 plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
 Cm=-24.31
 plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-
-plt.ylim([0.984,1.0005])
+Cm=-55
+plt.plot([Cm,Cm],[0,2],ls='dotted',color='r',label='P1 transitions')
+Cm=55
+plt.plot([Cm,Cm],[0,2],ls='dotted',color='r')
+plt.ylim([0.97,1.0005])
 
 plt.legend()
 plt.show()
