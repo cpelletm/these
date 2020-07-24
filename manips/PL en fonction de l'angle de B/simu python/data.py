@@ -75,6 +75,8 @@ def show(B) :
     ax.axis('off')
     plt.show()
 
+show([100,0,0])
+
 def NRJ(B,c) :
     return gamma*sum(B*c)/sum(c*c)
 
@@ -332,7 +334,7 @@ def line_PL(theta_min,theta_max,phi_min,phi_max,amp):
 #show_ESR(ChampMag(90,180,100))
 
 
-map_2D_croisements(np.linspace(0,180,180),np.linspace(0,360,360),100)
+# map_2D_croisements(np.linspace(0,180,180),np.linspace(0,360,360),100)
 #map_2D_croisements(np.linspace(0,180,360),np.linspace(0,360,720),100)
 #map_pl(np.linspace(84,96,80),np.linspace(171,189,80),mag_field)
 # line_PL(89.9,89.9,171,189,100)

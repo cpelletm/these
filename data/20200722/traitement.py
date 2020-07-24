@@ -152,12 +152,12 @@ center=2.8648
 
 
 
-fname='scan_100_rose_10V'
-x,y=extract_data(fname+'.txt')
-y=y/max(y)
-x=x*67
-x=x+12.8
-plt.plot(x,y,label=fname)
+# fname='scan_100_rose_10V'
+# x,y=extract_data(fname+'.txt')
+# y=y/max(y)
+# x=x*67
+# x=x+11.83
+# plt.plot(x,y,label=fname)
 
 plt.xlabel('Magnetic field along (100) in G')
 
@@ -176,11 +176,36 @@ Cm=-22.11
 plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
 Cm=-24.31
 plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-55
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='r',label='P1 transitions')
-Cm=55
+Cm=-55.3
+plt.plot([Cm,Cm],[0,2],ls='dotted',color='g',label='2789')
+Cm=55.3
+plt.plot([Cm,Cm],[0,2],ls='dotted',color='g')
+Cm=-49.9
+plt.plot([Cm,Cm],[0,2],ls='dotted',color='r',label='2796')
+Cm=49.9
 plt.plot([Cm,Cm],[0,2],ls='dotted',color='r')
 plt.ylim([0.97,1.0005])
+
+fname='scan_100_rose_10V'
+x,y=extract_data(fname+'.txt')
+x=x*64
+x=x-x[507]
+y=y/max(y)
+plt.plot(x,y)
+
+fname='scan_10V_uW_2789'
+x,y=extract_data(fname+'.txt')
+x=x*64
+x=x-x[253]
+y=y/max(y)
+plt.plot(x,y)
+
+fname='scan_10V_uW_2796'
+x,y=extract_data(fname+'.txt')
+x=x*64
+x=x-x[253]
+y=y/max(y)
+plt.plot(x,y)
 
 plt.legend()
 plt.show()

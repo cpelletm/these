@@ -12,6 +12,7 @@ from tabulate import tabulate
 Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
 bnamez=['+1','0','-1']
 bname_undemi=['+1/2','-1/2']
+bname_troisdemi=['+3/2','+1/2','-1/2','-3/2']
 Sx=1/sqrt(2)*np.array([[0,1,0],[1,0,1],[0,1,0]])
 Sy=1/(sqrt(2)*1j)*np.array([[0,1,0],[-1,0,1],[0,-1,0]])
 rho_0=np.array([[0,0,0],[0,1,0],[0,0,0]])
@@ -19,8 +20,12 @@ rho_s=1./3*np.array([[1,0,0],[0,1,0],[0,0,1]])
 
 
 Sx_12=1/2*np.array([[0,1],[1,0]])
-Sy_12=1/2*np.array([[0,0+1j],[0-1j,0]])
+Sy_12=1/2*np.array([[0,0-1j],[0+1j,0]])
 Sz_12=1/2*np.array([[1,0],[0,-1]])
+
+Sx_32=1/2*np.array([[0,sqrt(3),0,0],[sqrt(3),0,2,0],[0,2,0,sqrt(3)],[0,0,sqrt(3),0]])
+Sy_32=1/2j*np.array([[0,sqrt(3),0,0],[-sqrt(3),0,2,0],[0,-2,0,sqrt(3)],[0,0,-sqrt(3),0]])
+Sz_32=np.array([[3/2,0,0,0],[0,1/2,0,0],[0,0,-1/2,0],[0,0,0,-3/2]])
 
 ## Collaposologie
 col_t1=np.array([[0,1,1],[1,0,1],[1,1,0]])
@@ -71,7 +76,7 @@ def print_matrix(M,bname) :
 	for i in range(len(bname)) :
 		line=[]
 		line+=['<'+bname[i]+'|']
-		values=list(abs(M[:,i]))
+		values=list(M[:,i])
 		line+=values
 		table+=[line]
 	print(tabulate(table,headers))
@@ -193,9 +198,9 @@ def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G
 	color = next(ax._get_lines.prop_cycler)['color']
 	for i in range(len(transi[0,:])) :
 		if i==0 :
-			plt.plot(amps,transi[:,i],'--',color=color,label='NV with 13C first shell')
+			plt.plot(amps,transi[:,i],color=color,label='NV with 13C first shell')
 		else :
-			plt.plot(amps,transi[:,i],'--',color=color)
+			plt.plot(amps,transi[:,i],color=color)
 	color = next(ax._get_lines.prop_cycler)['color']
 	for i in range(len(transi_NV[0,:])) :
 		if i==0 :
@@ -219,9 +224,9 @@ def p1():
 		B=np.array(B)
 		gamma=2.8
 		gamma_14N=3.07*1E-4
-		Axx=113.98
+		Axx=81
 		Ayy=Axx
-		Azz=81.34
+		Azz=114
 		Q14N=-3.97
 		if classe==1 :
 			C=np.array([1,1,1])/np.sqrt(3)
@@ -246,40 +251,148 @@ def p1():
 		return H
 
 	M,bname=convolution_et_base(np.identity(2),np.identity(3),bname_undemi,bnamez)
-	amps=np.linspace(0,200,200)
+	amps=np.linspace(0,1000,200)
 	transi=[]
 	transi_NV=[]
 	Sx_P1=convolution(Sx_12,np.identity(3))
 	for amp in amps :
-		# B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
-		B=[amp,0,0]
+		B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+		# B=[amp,0,0]
 		H=Ham_p1(B,classe=1)
 		val,vec=egvect(H)
 		single=[]
 		for i in range(3,6) :
 			for j in range(3) :
-				print(i,j,len(single))
+				#print(i,j,len(single))
 				single+=[val[i]-val[j]]
 		transi+=[single]
-		H=Hamiltonian_0(B,classe=1,E=3)
+		H=Hamiltonian_0(B,classe=1,E=0)
 		val,vec=egvect(H)
 		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
 	transi=np.array(transi)
 	transi_NV=np.array(transi_NV)
 	for i in range(len(transi[0,:])) :
-		plt.plot(amps,transi[:,i]+transi_NV[:,1]-transi_NV[:,0],label='transition %i'%i)
-	plt.plot(amps,transi_NV[:,0])
-	plt.plot(amps,transi_NV[:,1])
-	plt.plot([0,amps[-1]],[0,0],'--')
+		plt.plot(amps,transi[:,i],label='transition %i'%i)
+
+
+	transi=[]
+	transi_NV=[]
+	Sx_P1=convolution(Sx_12,np.identity(3))
+	for amp in amps :
+		B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+		# B=[amp,0,0]
+		H=Ham_p1(B,classe=2)
+		val,vec=egvect(H)
+		single=[]
+		for i in range(3,6) :
+			for j in range(3) :
+				#print(i,j,len(single))
+				single+=[val[i]-val[j]]
+		transi+=[single]
+		H=Hamiltonian_0(B,classe=1,E=0)
+		val,vec=egvect(H)
+		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+	transi=np.array(transi)
+	transi_NV=np.array(transi_NV)
+	for i in range(len(transi[0,:])) :
+		plt.plot(amps,transi[:,i],label='transition %i'%i)
+	# for i in range(len(transi[0,:])) :
+	# 	plt.plot(amps,transi_NV[:,1]+transi[:,i],'-.',label='transition %i'%i)
+
+	plt.plot(amps,transi_NV[:,0],'--')
+	plt.plot(amps,transi_NV[:,1],'--')
+	# plt.plot([0,amps[-1]],[0,0],'--')
 	plt.legend()
 	plt.show()
-	# H=Ham_p1([32.5,0,0],classe=1)
+	# H=Ham_p1([0,0,0],classe=1)
 	# val,vec=egvect(H)
 	# show_vpropres(val,vec,bname)
 	# print(abs(vec[4].dot(Sx_P1).dot(vec[3]))*2)
 
+def NV_0():
 
-p1()
+	D=1685
+	gamma=2.8
+	Axx=-23.8
+	Ayy=Axx
+	Azz=-35.7
+	Q=-4.654
+	def Ham_NV0(B,classe=1):
+		B=np.array(B)
+		if classe==1 :
+			C=np.array([1,1,1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		if classe==2 :
+			C=np.array([1,-1,-1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		if classe==3 :
+			C=np.array([-1,1,-1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		if classe==4 :
+			C=np.array([-1,-1,1])/np.sqrt(3)
+			Bz=B.dot(C)
+			Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+		
+		H_e=D*Sz_32**2+gamma*(Bz*Sz_32+Bx*Sx_32)-5*D/4*np.identity(4)
+		H_n=Q*Sz**2
+		H_hf=Axx*convolution(Sx_32,Sx)+Ayy*convolution(Sy_32,Sy)+Azz*convolution(Sz_32,Sz)
+		H=convolution(H_e,np.identity(3))+convolution(np.identity(4),H_n)+H_hf
+		return H
+	H=Ham_NV0([65,0,0])
+	val,vec=egvect(H)
+	M,bname=convolution_et_base(np.identity(4),np.identity(3),bname_troisdemi,bnamez)
+	show_vpropres(val,vec,bname)
+	# single=[]
+	# minmax=3500
+	# minmin=1000
+	# for i in range(len(val)) :
+	# 	for j in range(i) :
+	# 		single+=[val[i]-val[j]]
+	# 		if single[-1]>minmin and single[-1]<minmax :
+	# 			print(i,j,len(single))
+				
+	# 			print(single[-1])
+	# 			minmax=single[-1]
+	# amps=np.linspace(0,200,200)
+	# transi=[]
+	# transi_NV=[]
+	# for amp in amps :
+	# 	# B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+	# 	B=[amp,0,0]
+	# 	H=Ham_NV0(B,classe=1)
+	# 	val,vec=egvect(H)
+	# 	single=[]
+	# 	for i in range(6,12) :
+	# 		for j in range(6) :
+	# 			#print(i,j,len(single))
+	# 			single+=[val[i]-val[j]]
+	# 	transi+=[single]
+	# 	H=Hamiltonian_0(B,classe=1,E=3)
+	# 	val,vec=egvect(H)
+	# 	transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+	# transi=np.array(transi)
+	# transi_NV=np.array(transi_NV)
+	# ax=plt.gca()
+	# color = next(ax._get_lines.prop_cycler)['color']
+	# for i in range(len(transi[0,:])) :
+	# 	if i==0 :
+	# 		plt.plot(amps,transi[:,i],color=color,label='NV0')
+	# 	else :
+	# 		plt.plot(amps,transi[:,i],color=color)
+	# color = next(ax._get_lines.prop_cycler)['color']
+	# for i in range(len(transi_NV[0,:])) :
+	# 	if i==0 :
+	# 		plt.plot(amps,transi_NV[:,i],color=color,label='NV-')
+	# 	else :
+	# 		plt.plot(amps,transi_NV[:,i],color=color)
+	# plt.legend()
+	# plt.show()
+
+NV_0()
+
 
 def transpose_basepm(M) :
 	#base : (+)=(+1)+(-1)/sqrt(2), 0=0 , (-)=(+1)-(-1)/sqrt(2)

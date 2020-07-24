@@ -53,5 +53,13 @@ def widths():
 		ax[0].set_ylabel('Width(PL)-Width(R1)')
 		ax[1].set_ylabel('Contrast')
 
-widths()
-plt.show()
+
+
+def lors():
+	x=np.linspace(-20,20,1000)
+	sigma1=0.05
+	sigma2=5
+	plt.plot(x,1/(1+(x/sigma1)**2)+1/(1+(x/sigma2)**2))
+	plt.show()
+
+lors()
