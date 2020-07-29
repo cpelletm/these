@@ -121,9 +121,9 @@ def convolution_et_base(M1,M2,bname1,bname2) :
 					M[i,j]=M1[i1,j1]*M2[i2,j2]
 	return(M,bname)
 
-def carbon_13(B=[50,0,0],show=True):
+def carbon_13(B=[50,0,0],show=True,classe=1):
 	C13=True
-	H_NV,bname=convolution_et_base(Hamiltonian_0(B,E=3),np.identity(2),bnamez,bname_undemi)
+	H_NV,bname=convolution_et_base(Hamiltonian_0(B,E=3,classe=classe),np.identity(2),bnamez,bname_undemi)
 	Ix=1/2*np.array([[0,1],[1,0]])
 	Iy=1/2*np.array([[0,0+1j],[0-1j,0]])
 	Iz=1/2*np.array([[1,0],[0,-1]])
@@ -182,11 +182,11 @@ def NV_simple():
 	transitions(val,vec,Sx,rho_0)
 
 def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
-	amps=np.linspace(0,200,100)
+	amps=np.linspace(0,100,100)
 	transi=[]
 	transi_NV=[]
 	for amp in amps :
-		B=[amp,0,0]
+		B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
 		val,vec=carbon_13(B,show=False)
 		transi+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
 		H=Hamiltonian_0(B,classe=1,E=3)
@@ -198,24 +198,50 @@ def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G
 	color = next(ax._get_lines.prop_cycler)['color']
 	for i in range(len(transi[0,:])) :
 		if i==0 :
-			plt.plot(amps,transi[:,i],color=color,label='NV with 13C first shell')
+			plt.plot(amps,transi[:,i],'--',color=color,label='NV 111 with 13C first shell')
 		else :
-			plt.plot(amps,transi[:,i],color=color)
+			plt.plot(amps,transi[:,i],'--',color=color)
 	color = next(ax._get_lines.prop_cycler)['color']
 	for i in range(len(transi_NV[0,:])) :
 		if i==0 :
-			plt.plot(amps,transi_NV[:,i],color=color,label='NV isolated')
+			plt.plot(amps,transi_NV[:,i],color=color,label='NV 111')
+		else :
+			plt.plot(amps,transi_NV[:,i],color=color)
+	transi=[]
+	transi_NV=[]
+	for amp in amps :
+		B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+		val,vec=carbon_13(B,show=False,classe=2)
+		transi+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
+		H=Hamiltonian_0(B,classe=2,E=3)
+		val,vec=egvect(H)
+		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+	transi=np.array(transi)
+	transi_NV=np.array(transi_NV)
+	ax=plt.gca()
+	color = next(ax._get_lines.prop_cycler)['color']
+	for i in range(len(transi[0,:])) :
+		if i==0 :
+			plt.plot(amps,transi[:,i],'--',color=color,label='NV not 111 with 13C first shell')
+		else :
+			plt.plot(amps,transi[:,i],'--',color=color)
+	color = next(ax._get_lines.prop_cycler)['color']
+	for i in range(len(transi_NV[0,:])) :
+		if i==0 :
+			plt.plot(amps,transi_NV[:,i],color=color,label='NV not 111')
 		else :
 			plt.plot(amps,transi_NV[:,i],color=color)
 	color = next(ax._get_lines.prop_cycler)['color']
-	x_transi=[17.9531,19.70,22.1173,24.312]
-	y_transi=[2841.67,2839,2907.24,2911.07]
-	plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color)		
+	# x_transi=[17.9531,19.70,22.1173,24.312]
+	# y_transi=[2841.67,2839,2907.24,2911.07]
+	# plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color)		
 	plt.legend()
 	plt.xlabel('B along (100) (G)')
 	plt.ylabel('Transition frequency (MHz)')
 	plt.show()
 
+
+egv_C13()
 
 def p1():
 
@@ -390,8 +416,6 @@ def NV_0():
 	# 		plt.plot(amps,transi_NV[:,i],color=color)
 	# plt.legend()
 	# plt.show()
-
-NV_0()
 
 
 def transpose_basepm(M) :
