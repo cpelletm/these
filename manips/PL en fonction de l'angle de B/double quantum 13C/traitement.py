@@ -159,12 +159,12 @@ x_transi=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.11730153
 # x=x*64
 # plt.plot(x,y,label='Photoluminescence')
 
-fname='scan_100_rose_10V'
-x,y=extract_data(fname+'.txt')
-y=y/max(y)
-x=x-x[507]
-x=x*64
-plt.plot(x,y,label='Photoluminescence')
+# fname='scan_100_rose_10V'
+# x,y=extract_data(fname+'.txt')
+# y=y/max(y)
+# x=x-x[507]
+# x=x*64
+# plt.plot(x,y,label='Photoluminescence')
 
 # fname='scan_adamas_gros_laser'
 # x,y=extract_data(fname+'.txt')
@@ -198,6 +198,14 @@ plt.plot(x,y,label='Photoluminescence')
 # x=x[40:]
 # y=y[40:]
 # plt.plot(x,y,label='Photoluminescence')
+
+
+fname='scan_100_symetrique'
+x,y=extract_data(fname+'.txt')
+y=y/max(y)
+x=x-x[255]
+x=x*65
+plt.plot(x,y,label='Photoluminescence')
 
 plt.xlabel('Magnetic field along (100) in G')
 ax=plt.gca()
