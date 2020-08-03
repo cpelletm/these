@@ -155,32 +155,44 @@ x_transi=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.11730153
 # fname='scan_rose_100_7V_'
 # x,y=extract_data(fname+'.txt')
 # y=y/max(y)
-# x=x-x[257]
+# xmin=258
+# x=x-x[xmin]
+# x=x[:xmin]
+# y=y[:xmin]
 # x=x*64
 # plt.plot(x,y,label='Photoluminescence')
 
-# fname='scan_100_rose_10V'
-# x,y=extract_data(fname+'.txt')
-# y=y/max(y)
-# x=x-x[507]
-# x=x*64
-# plt.plot(x,y,label='Photoluminescence')
+fname='scan_100_rose_10V'
+x,y=extract_data(fname+'.txt')
+y=y/max(y)
+xmin=507
+x=x-x[xmin]
+x=x[xmin:]
+y=y[xmin:]
+x=x*62
+plt.plot(-x,y,label='Photoluminescence')
 
 # fname='scan_adamas_gros_laser'
 # x,y=extract_data(fname+'.txt')
 # y=y/max(y)
-# x=x+0.115
+
+# xmin=1291
+# x=x-x[xmin]
+# x=x[:xmin]
+# y=y[:xmin]
+
 # x=x*68.1
-# x=x[250:]
-# y=y[250:]
 # plt.plot(x,y,label='Photoluminescence')
 
 # fname='scan_adamas_4_jours'
 # x,y=extract_data(fname+'.txt')
 # y=y/max(y)
-# x=x-0.075
+# x=x-x[521]
 # x=x*68.1
-# plt.plot(x,y,label='adamas petit laser')
+# xmin=521
+# x=x[xmin:]
+# y=y[xmin:]
+# plt.plot(x,y,label='Photoluminescence')
 
 
 # fname='scan_100_sample_ludo_accident'
@@ -193,21 +205,25 @@ x_transi=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.11730153
 # fname='scan_100_sample_ludo_aligne_vitedeuf'
 # x,y=extract_data(fname+'.txt')
 # y=y/max(y)
-# x=x+0.167
 # x=x*62
-# x=x[40:]
-# y=y[40:]
+# xmin=251
+# x=x-x[xmin]
+# x=x[:xmin]
+# y=y[:xmin]
 # plt.plot(x,y,label='Photoluminescence')
 
 
-fname='scan_100_symetrique'
-x,y=extract_data(fname+'.txt')
-y=y/max(y)
-x=x-x[255]
-x=x*65
-plt.plot(x,y,label='Photoluminescence')
+# fname='scan_100_symetrique'
+# x,y=extract_data(fname+'.txt')
+# y=y/max(y)
+# xmin=255
+# x=x-x[xmin]
+# x=x[:xmin]
+# y=y[:xmin]
+# x=x*65
+# plt.plot(-x,y,label='Photoluminescence')
 
-plt.xlabel('Magnetic field along (100) in G')
+plt.xlabel(r'B$\parallel$(100) (G)')
 ax=plt.gca()
 ylim=ax.get_ylim()
 
@@ -220,14 +236,14 @@ Cm=x_transi[2]
 plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
 Cm=x_transi[3]
 plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-x_transi[0]
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-x_transi[1]
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-x_transi[2]
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-x_transi[3]
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
+# Cm=-x_transi[0]
+# plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
+# Cm=-x_transi[1]
+# plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
+# Cm=-x_transi[2]
+# plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
+# Cm=-x_transi[3]
+# plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
 
 plt.ylim(ylim)
 

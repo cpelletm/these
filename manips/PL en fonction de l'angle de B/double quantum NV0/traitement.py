@@ -170,7 +170,7 @@ for x in x_transi[1:] :
 	plt.plot([-x,-x],[0,2],'--',color=color)
 ax.set_ylim(ylim)
 
-plt.xlabel('B along (100) (G)')
+plt.xlabel(r'B$\parallel$(100) (G)')
 plt.legend()
 
 plt.show()

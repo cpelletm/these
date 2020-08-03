@@ -131,32 +131,40 @@ x_transi=[82.85779704691888, 49.26889421556611, 153.09765463190857, 80.916674830
 # fname='scan_rose_100_7V_'
 # x,y=extract_data(fname+'.txt')
 # y=y/max(y)
-# x=x-x[257]
+# xmin=258
+# x=x-x[xmin]
+# x=x[:xmin]
+# y=y[:xmin]
 # x=x*64
 # plt.plot(x,y,label='Photoluminescence')
 
-# fname='scan_100_rose_10V'
-# x,y=extract_data(fname+'.txt')
-# y=y/max(y)
-# x=x-x[507]
-# x=x*62
-# plt.plot(x,y,label='Photoluminescence')
-
-fname='scan_100_sample_ludo_aligne_vitedeuf'
+fname='scan_100_rose_10V'
 x,y=extract_data(fname+'.txt')
 y=y/max(y)
-x=x+0.167
+xmin=507
+x=x-x[xmin]
+x=x[xmin:]
+y=y[xmin:]
 x=x*62
-x=x[40:]
-y=y[40:]
-plt.plot(x,y,label='Photoluminescence')
+plt.plot(-x,y,label='Photoluminescence')
+
+
+# fname='scan_100_sample_ludo_aligne_vitedeuf'
+# x,y=extract_data(fname+'.txt')
+# y=y/max(y)
+# x=x*62
+# xmin=251
+# x=x-x[xmin]
+# x=x[:xmin]
+# y=y[:xmin]
+# plt.plot(x,y,label='Photoluminescence')
 
 # fname='scan_10V_uW_2796'
 # x,y=extract_data(fname+'.txt')
 # y=y/max(y)
 # x=x-x[253]
 # x=x*62
-# plt.plot(x,y,label='Photoluminescence')
+# plt.plot(-x,y,label='Photoluminescence')
 
 
 ax=plt.gca()
@@ -164,13 +172,13 @@ ylim=ax.get_ylim()
 color = next(ax._get_lines.prop_cycler)['color']
 x=x_transi[0]
 plt.plot([x,x],[0,2],'--',color=color,label='P1 cross relaxation')
-plt.plot([-x,-x],[0,2],'--',color=color)
+# plt.plot([-x,-x],[0,2],'--',color=color)
 for x in x_transi[1:] :
 	plt.plot([x,x],[0,2],'--',color=color)
-	plt.plot([-x,-x],[0,2],'--',color=color)
+	# plt.plot([-x,-x],[0,2],'--',color=color)
 ax.set_ylim(ylim)
 
-plt.xlabel('B along (100) (G)')
+plt.xlabel(r'B$\parallel$(100) (G)')
 plt.legend()
 
 plt.show()

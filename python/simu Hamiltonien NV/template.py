@@ -250,11 +250,11 @@ def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G
 		y0=y_transi[i]
 		plt.plot([x0,x0],[y0,0],'--',color=color)
 	ax.set_ylim(ylim)
-	plt.xlabel('B along (100) (G)')
+	plt.xlabel(r'B$\parallel$(100) (G)')
 	plt.ylabel('Transition frequency (MHz)')
 	plt.show()
 
-
+# egv_C13()
 
 
 def p1():
@@ -331,13 +331,13 @@ def p1():
 	transi_NV=np.array(transi_NV)
 	color = next(ax._get_lines.prop_cycler)['color']
 
-	# plt.plot(amps,transi[:,0]+transi_NV[:,1],'--',label='NV|-1> +P1',color=color)
-	# for i in range(1,len(transi[0,:])) :
-	# 	plt.plot(amps,transi[:,i]+transi_NV[:,1],'--',color=color)
-
-	plt.plot(amps,transi[:,0],'--',label='P1',color=color)
+	plt.plot(amps,transi[:,0]+transi_NV[:,1],'--',label='NV|-1> +P1',color=color)
 	for i in range(1,len(transi[0,:])) :
-		plt.plot(amps,transi[:,i],'--',color=color)
+		plt.plot(amps,transi[:,i]+transi_NV[:,1],'--',color=color)
+
+	# plt.plot(amps,transi[:,0],'--',label='P1',color=color)
+	# for i in range(1,len(transi[0,:])) :
+	# 	plt.plot(amps,transi[:,i],'--',color=color)
 
 	def zero(i):
 		def f(amp):
@@ -368,40 +368,40 @@ def p1():
 			return False
 
 	# x,y=zero(0)
-	# for i in range(len(transi[0,:])) :
-	# 	try :
-	# 		x,y=zero(i)
-	# 		print('%ic bon'%(i))
-	# 	except :
-	# 		print('%ic mort'%(i))
-	# x_transi=[]
-	# y_transi=[]
-	# for i in range(9) :
-	# 	try :
-	# 		x,y=zero(i)
-	# 		x_transi+=[x]
-	# 		y_transi+=[y]
-	# 	except :
-	# 		pass
-	# print(x_transi)
-	# print(y_transi)
+	for i in range(len(transi[0,:])) :
+		try :
+			x,y=zero(i)
+			print('%ic bon'%(i))
+		except :
+			print('%ic mort'%(i))
+	x_transi=[]
+	y_transi=[]
+	for i in range(9) :
+		try :
+			x,y=zero(i)
+			x_transi+=[x]
+			y_transi+=[y]
+		except :
+			pass
+	print(x_transi)
+	print(y_transi)
 
-	# color = next(ax._get_lines.prop_cycler)['color']
-	# plt.plot(amps,transi_NV[:,0],color=color,label='isolated NV')
-	# plt.plot(amps,transi_NV[:,1],color=color)
-	# # plt.plot([0,amps[-1]],[0,0],'--')
-	# color = next(ax._get_lines.prop_cycler)['color']
-	# plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color,label='cross relaxation')		
+	color = next(ax._get_lines.prop_cycler)['color']
+	plt.plot(amps,transi_NV[:,0],color=color,label='isolated NV')
+	plt.plot(amps,transi_NV[:,1],color=color)
+	# plt.plot([0,amps[-1]],[0,0],'--')
+	color = next(ax._get_lines.prop_cycler)['color']
+	plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color,label='cross relaxation')		
 	
-	# ylim=ax.get_ylim()
-	# for i in range(len(x_transi)) :
-	# 	x0=x_transi[i]
-	# 	y0=y_transi[i]
-	# 	plt.plot([x0,x0],[y0,0],'--',color=color)
-	# ax.set_ylim(ylim)
+	ylim=ax.get_ylim()
+	for i in range(len(x_transi)) :
+		x0=x_transi[i]
+		y0=y_transi[i]
+		plt.plot([x0,x0],[y0,0],'--',color=color)
+	ax.set_ylim(ylim)
 	
 	plt.legend()
-	plt.xlabel('B along (100) (G)')
+	plt.xlabel(r'B$\parallel$(100) (G)')
 	plt.ylabel('Transition frequency (MHz)')
 	plt.show()
 	# H=Ham_p1([0,0,0],classe=1)
@@ -544,11 +544,11 @@ def NV_0():
 		y0=y_transi[i]
 		plt.plot([x0,x0],[y0,0],'--',color=color)
 	ax.set_ylim(ylim)
-	plt.xlabel('B along (100) (G)')
+	plt.xlabel(r'B$\parallel$(100) (G)')
 	plt.ylabel('Transition frequency (MHz)')
 	plt.show()
 
-
+# NV_0()
 
 def transpose_basepm(M) :
 	#base : (+)=(+1)+(-1)/sqrt(2), 0=0 , (-)=(+1)-(-1)/sqrt(2)
