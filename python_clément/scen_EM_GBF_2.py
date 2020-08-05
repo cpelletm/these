@@ -30,7 +30,7 @@ class Photon_Counter(QMainWindow):
         
 
         self.f_cycle=1
-        self.n_acq=2000
+        self.n_acq=1000
         self.refresh_rate=0.1
 
         self.f_acq=self.f_cycle*self.n_acq
@@ -184,7 +184,7 @@ class Photon_Counter(QMainWindow):
 
 
 
-        lecture=self.apd.read(self.n_acq)
+        lecture=self.apd.read(self.n_acq,timeout=nidaqmx.constants.WAIT_INFINITELY)
         tensions=self.tension.read(self.n_acq) 
 
 

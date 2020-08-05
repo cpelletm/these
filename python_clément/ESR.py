@@ -355,7 +355,7 @@ class Photon_Counter(QMainWindow):
 		#     trig.timing.cfg_samp_clk_timing(self.sampling_rate*2,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.n_points)
 		#     trig.write([True,False]*self.n_points)
 		#     trig.start()
-
+		
 		self.PG.write('LIST:RES') #Ca par contre ca a l'air de jouer curieusement
 		self.PG.write('*WAI')
 
