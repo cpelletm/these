@@ -138,9 +138,12 @@ x_transi=[71.82434080570832, 142.20378286816248, 68.313480701811, 136.2313359037
 fname='scan_100_rose_10V'
 x,y=extract_data(fname+'.txt')
 y=y/max(y)
-x=x-x[507]
+xmin=507
+x=x-x[xmin]
+x=x[xmin:]
+y=y[xmin:]
 x=x*62
-plt.plot(x,y,label='Photoluminescence')
+plt.plot(-x,y,label='Photoluminescence')
 
 # fname='scan_100_sample_ludo_aligne_vitedeuf'
 # x,y=extract_data(fname+'.txt')
@@ -164,10 +167,10 @@ ylim=ax.get_ylim()
 color = next(ax._get_lines.prop_cycler)['color']
 x=x_transi[0]
 plt.plot([x,x],[0,2],'--',color=color,label='NV0 cross relaxation')
-plt.plot([-x,-x],[0,2],'--',color=color)
+# plt.plot([-x,-x],[0,2],'--',color=color)
 for x in x_transi[1:] :
 	plt.plot([x,x],[0,2],'--',color=color)
-	plt.plot([-x,-x],[0,2],'--',color=color)
+	# plt.plot([-x,-x],[0,2],'--',color=color)
 ax.set_ylim(ylim)
 
 plt.xlabel(r'B$\parallel$(100) (G)')

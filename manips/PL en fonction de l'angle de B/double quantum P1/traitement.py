@@ -170,12 +170,15 @@ plt.plot(-x,y,label='Photoluminescence')
 ax=plt.gca()
 ylim=ax.get_ylim()
 color = next(ax._get_lines.prop_cycler)['color']
-x=x_transi[0]
-plt.plot([x,x],[0,2],'--',color=color,label='P1 cross relaxation')
-# plt.plot([-x,-x],[0,2],'--',color=color)
-for x in x_transi[1:] :
-	plt.plot([x,x],[0,2],'--',color=color)
-	# plt.plot([-x,-x],[0,2],'--',color=color)
+# x=x_transi[0]
+# plt.plot([x,x],[0,2],'--',color=color,label='P1 cross relaxation')
+# # plt.plot([-x,-x],[0,2],'--',color=color)
+# for x in x_transi[1:] :
+# 	plt.plot([x,x],[0,2],'--',color=color)
+# 	# plt.plot([-x,-x],[0,2],'--',color=color)
+# color = next(ax._get_lines.prop_cycler)['color']
+x=50.5276
+plt.plot([x,x],[0,2],'--',color=color,label='VH cross relaxation')
 ax.set_ylim(ylim)
 
 plt.xlabel(r'B$\parallel$(100) (G)')

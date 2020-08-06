@@ -13,7 +13,8 @@ def extract_data(filename,xcol=0,ycol=1):
 	y=[]
 	with open(filename,'r',encoding = "ISO-8859-1") as f:
 		for line in f :
-			line=re.split('\t|;| ',line)
+			line=line.split()
+
 			try :
 				x+=[float(line[xcol])]
 				y+=[float(line[ycol])]
@@ -158,23 +159,31 @@ def ask_name():
 
 
 
-fname='spectre_ludo'
-x,y=extract_data(fname+'.asc')
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y,'-',label=fname)
-
-fname='spectre_sumi4'
-x2,y2=extract_data(fname+'.asc')
-y2=y2-min(y2)
-y2=y2/max(y2)
-plt.plot(x,y2,'-',label=fname)
-
-
-# fname='pas_de_uW'
+# fname='uW_3000'
+# transi=[46.41,99.83]
 # x,y=extract_data(fname+'.txt')
 # y=y/max(y)
-# plt.plot(x,y,label=fname)
+# x=x-x[253]
+# x=x*63
+# plt.plot(x,y,'-',label=fname)
+# ax=plt.gca()
+# ylim=ax.get_ylim()
+# color = next(ax._get_lines.prop_cycler)['color']
+# for t in transi :
+# 	plt.plot([t,t],[0,2],'--',color=color)
+# 	plt.plot([-t,-t],[0,2],'--',color=color)
+# ax.set_ylim(ylim)
+
+
+
+
+fname='scan_direct'
+transi=[46.41,99.83]
+x,y=extract_data(fname+'.txt')
+y=y/max(y)
+x=x-x[253]
+x=x*63
+plt.plot(x,y,'-',label=fname)
 
 
 
