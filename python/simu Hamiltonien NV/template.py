@@ -2,7 +2,7 @@ import numpy as np
 from numpy import cos,sin,tan,arccos,arcsin,arctan,exp,sqrt,pi
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
-from qutip import *
+# from qutip import *
 from scipy.integrate import quad, dblquad, nquad
 from scipy.optimize import root_scalar
 from tabulate import tabulate
@@ -236,7 +236,7 @@ def NV_simple(orientation='111'):
 				H=Hamiltonian_0(B,classe=1,E=3,D=2870)
 				val,vec=egvect(H)
 				transi_NV=[val[2]-val[0],val[1]-val[0]]
-				H=Hamiltonian_0(B,classe=1,E=0,D=2706)
+				H=Hamiltonian_0(B,classe=1,E=3,D=2706)
 				val,vec=egvect(H)
 				transi_VH=[val[2]-val[0],val[1]-val[0]]
 				return transi_VH[0]-transi_NV[1]

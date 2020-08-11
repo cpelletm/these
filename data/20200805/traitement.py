@@ -160,15 +160,13 @@ def ask_name():
 
 fname='spectre_ludo'
 x,y=extract_data(fname+'.asc')
-y=y-min(y)
 y=y/max(y)
-plt.plot(x,y,'-',label=fname)
+# plt.plot(x,y,'-',label=fname)
 
 fname='spectre_sumi4'
 x2,y2=extract_data(fname+'.asc')
-y2=y2-min(y2)
 y2=y2/max(y2)
-plt.plot(x,y2,'-',label=fname)
+plt.plot(x,y2-y,'-',label=fname)
 
 
 # fname='pas_de_uW'
