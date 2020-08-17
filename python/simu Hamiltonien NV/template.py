@@ -2,13 +2,16 @@ import numpy as np
 from numpy import cos,sin,tan,arccos,arcsin,arctan,exp,sqrt,pi
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
-# from qutip import *
+from qutip import *
+import scipy.optimize
 from scipy.integrate import quad, dblquad, nquad
 from scipy.optimize import root_scalar
 from tabulate import tabulate
 
 
-#theta=2*arccos(1/sqrt(3))
+# theta=2*arccos(sqrt(1/3))
+# theta=2*arcsin(sqrt(2/3))
+# theta=2*arctan(sqrt(2))
 
 Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
 bnamez=['+1','0','-1']
@@ -576,7 +579,7 @@ def p1(): #le soucis pour la 111 c'est que il y a 6 transitions de NV possibles 
 	# show_vpropres(val,vec,bname)
 	# print(abs(vec[4].dot(Sx_P1).dot(vec[3]))*2)
 
-NV_simple('100')
+
 
 def NV_0():
 
@@ -853,6 +856,205 @@ def test_steady():
 		rho_0+=[dm[1,1]]
 	plt.plot(Bs,rho_0)
 	plt.show()
+
+def superpose_dir(ax):
+	#Theta en ordonée de 0 a 180 ; phi en abscisse de 0 à 360
+	lw1=3
+	ls1='-'
+	#(100)
+	color = next(ax._get_lines.prop_cycler)['color']
+	ax.plot([90,90],[0,180],linewidth=lw1,ls=ls1,label=r'Plane $\bot (100)$ ',color=color)
+	ax.plot([270,270],[0,180],linewidth=lw1,ls=ls1,color=color)
+
+	#(010)
+	color = next(ax._get_lines.prop_cycler)['color']
+	ax.plot([180,180],[0,180],linewidth=lw1,ls=ls1,label=r'Plane $\bot (010)$ ',color=color)
+	ax.plot([0,0],[0,180],linewidth=lw1/2,ls=ls1,color=color)
+	ax.plot([360,360],[0,180],linewidth=lw1/2,ls=ls1,color=color)
+
+	#(001)
+	color = next(ax._get_lines.prop_cycler)['color']
+	ax.plot([0,360],[90,90],linewidth=lw1,ls=ls1,label=r'Plane $\bot (001)$ ',color=color)
+
+	lw2=2
+	ls2='--'
+
+
+	#(110)
+	color = next(ax._get_lines.prop_cycler)['color']
+	ax.plot([135,135],[0,180],linewidth=lw2,ls=ls2,label=r'Plane $\bot (110)$ ',color=color)
+	ax.plot([315,315],[0,180],linewidth=lw2,ls=ls2,color=color)
+
+	#(1-10)
+	color = next(ax._get_lines.prop_cycler)['color']
+	ax.plot([45,45],[0,180],linewidth=lw2,ls=ls2,label=r'Plane $\bot (1\bar{1}0)$ ',color=color)
+	ax.plot([225,225],[0,180],linewidth=lw2,ls=ls2,color=color)
+
+
+	phis=np.linspace(0,360,500)
+	#(101)
+	color = next(ax._get_lines.prop_cycler)['color']
+	thetas=[]
+	for phi in phis :
+		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*cos(phi*pi/180)+cos(theta*pi/180),bracket=[0,180]).root
+		thetas+=[theta]
+	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (101)$ ',color=color)
+
+	#(10-1)
+	color = next(ax._get_lines.prop_cycler)['color']
+	thetas=[]
+	for phi in phis :
+		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*cos(phi*pi/180)-cos(theta*pi/180),bracket=[0,180]).root
+		thetas+=[theta]
+	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (10\bar{1})$ ',color=color)
+
+	#(011)
+	color = next(ax._get_lines.prop_cycler)['color']
+	thetas=[]
+	for phi in phis :
+		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*sin(phi*pi/180)+cos(theta*pi/180),bracket=[0,180]).root
+		thetas+=[theta]
+	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (011)$ ',color=color)
+
+	#(01-1)
+	color = next(ax._get_lines.prop_cycler)['color']
+	thetas=[]
+	for phi in phis :
+		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*sin(phi*pi/180)-cos(theta*pi/180),bracket=[0,180]).root
+		thetas+=[theta]
+	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (01\bar{1})$ ',color=color)
+
+
+
+def Hamiltonian_NV_propre_base(B,E=3,D=2870) :
+	#Unité naturelle : MHz,Gauss
+	B=np.array(B)
+	gamma=2.8
+	H=D*Sz**2+gamma*(B[0]*Sx+B[1]*Sy+B[2]*Sz)+E*(Sx.dot(Sx)-Sy.dot(Sy))
+	return H
+
+
+def NV_torque_propre_base(B,gamma_las=3E3,gamma_phonon=3E2):
+	H=Qobj(Hamiltonian_NV_propre_base(B))
+	dm=steadystate(H,make_collapse_list(gamma_las,gamma_phonon))
+	rho=np.array(dm)
+	s=np.array([np.trace(rho.dot(Sx)),np.trace(rho.dot(Sy)),np.trace(rho.dot(Sz))])
+	torque=np.cross(s,B)
+	return(torque)
+
+def torque_3nvx_1classe():
+	thetas=np.linspace(0,2*pi,200)
+	torques=[]
+	B=200
+	for theta in thetas :
+		torques+=[NV_torque_propre_base([B*cos(theta),0,B*sin(theta)])]
+
+	torques=np.array(torques)
+	print(torques[37,0],torques[87,1],torques[67,2])
+
+
+	plt.plot(thetas,torques[:,0],label='Torque x')
+	plt.plot(thetas,torques[:,1],label='Torque y')
+	plt.plot(thetas,torques[:,2],label='Torque z')
+	plt.legend()
+	plt.xlabel('theta dans le plan zOx')
+	plt.show()
+	# plt.savefig('simu torque 3 nvx 1 classe 200G.png')
+
+def torque_3nvx_4classes(B): #B exprimé dans la base (100)
+	B=np.array(B)
+	Rzplus=np.array([[sqrt(1/2),sqrt(1/2),0],[-sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+	Rzmoins=np.array([[sqrt(1/2),-sqrt(1/2),0],[sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+
+	Rxplus=np.array([[1,0,0],[0,sqrt(1/3),sqrt(2/3)],[0,-sqrt(2/3),sqrt(1/3)]])
+	Rxmoins=np.array([[1,0,0],[0,sqrt(1/3),-sqrt(2/3)],[0,sqrt(2/3),sqrt(1/3)]])
+
+	Ryplus=np.array([[sqrt(1/3),0,sqrt(2/3)],[0,1,0],[-sqrt(2/3),0,sqrt(1/3)]])
+	Rymoins=np.array([[sqrt(1/3),0,-sqrt(2/3)],[0,1,0],[sqrt(2/3),0,sqrt(1/3)]])
+
+
+	R=Rxplus.dot(Rzplus)
+	Raller=[Rymoins.dot(Rzplus),Ryplus.dot(Rzplus),Rxplus.dot(Rzplus),Rxmoins.dot(Rzplus)]
+	Rretour=[Rzmoins.dot(Ryplus),Rzmoins.dot(Rymoins),Rzmoins.dot(Rxmoins),Rzmoins.dot(Rxplus)]
+	
+	torque=np.zeros(3,dtype='complex128')
+	for k in range(4) :
+		B_base=Raller[k].dot(B)
+		torque_base=NV_torque_propre_base(B_base)
+		torque+=Rretour[k].dot(torque_base)
+	return(torque.real)
+
+def div_3vx_4classes(B):
+	B=np.array(B)
+	step=1E3*np.linalg.norm(B)
+	
+	Rzplus=np.array([[sqrt(1/2),sqrt(1/2),0],[-sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+	Rzmoins=np.array([[sqrt(1/2),-sqrt(1/2),0],[sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+
+	Rxplus=np.array([[1,0,0],[0,sqrt(1/3),sqrt(2/3)],[0,-sqrt(2/3),sqrt(1/3)]])
+	Rxmoins=np.array([[1,0,0],[0,sqrt(1/3),-sqrt(2/3)],[0,sqrt(2/3),sqrt(1/3)]])
+
+	Ryplus=np.array([[sqrt(1/3),0,sqrt(2/3)],[0,1,0],[-sqrt(2/3),0,sqrt(1/3)]])
+	Rymoins=np.array([[sqrt(1/3),0,-sqrt(2/3)],[0,1,0],[sqrt(2/3),0,sqrt(1/3)]])
+
+
+	R=Rxplus.dot(Rzplus)
+	Raller=[Rymoins.dot(Rzplus),Ryplus.dot(Rzplus),Rxplus.dot(Rzplus),Rxmoins.dot(Rzplus)]
+	Rretour=[Rzmoins.dot(Ryplus),Rzmoins.dot(Rymoins),Rzmoins.dot(Rxmoins),Rzmoins.dot(Rxplus)]
+
+	div=0
+	for k in range(4):
+		B_base=Raller[k].dot(B)
+		H=Qobj(Hamiltonian_NV_propre_base(B))
+		dm=steadystate(H,make_collapse_list(gamma_las,gamma_phonon))
+		rho=np.array(dm)
+		s=np.array([np.trace(rho.dot(Sx)),np.trace(rho.dot(Sy)),np.trace(rho.dot(Sz))])
+		for i in range(3):
+			Bstep=np.zeros(3)
+			Bstep[i]=step/2
+			div+=(np.cross(s,B+Bstep)-np.cross(s,B-Bstep))/
+
+
+
+
+def map_torque(amp,ntheta=100,nphi=200):
+	thetas=np.linspace(0,pi,ntheta)
+	phis=np.linspace(0,2*pi,nphi)
+	cartex=np.zeros((ntheta,nphi))
+	cartey=np.zeros((ntheta,nphi))
+	cartez=np.zeros((ntheta,nphi))
+	for i in range(ntheta):
+		theta=thetas[i]
+		for j in range(nphi):			
+			phi=phis[j]
+			B=np.array([sin(theta)*sin(phi),sin(theta)*cos(phi),cos(theta)])*amp		
+			torque=torque_3nvx_4classes(B)
+			cartex[i,j]=torque[0]
+			cartey[i,j]=torque[1]
+			cartez[i,j]=torque[2]
+		print('ligne %i sur %i, amp=%iG'%(i,ntheta,amp))
+	fig,ax=plt.subplots(3)
+	c=ax[0].pcolormesh(phis, thetas, cartex, cmap='seismic')
+	ax[0].set_title('Torque en x')
+	cb=fig.colorbar(c,ax=ax)
+	c=ax[1].pcolormesh(phis, thetas, cartey, cmap='seismic')
+	ax[1].set_title('Torque en y')
+	# cb=fig.colorbar(c,ax=ax)
+	c=ax[2].pcolormesh(phis, thetas, cartez, cmap='seismic')
+	ax[2].set_title('Torque en z')
+	# cb=fig.colorbar(c,ax=ax)
+	fig.savefig('cartes_meca/map_torque_%iG.eps'%amp)
+	# plt.show()
+
+for amp in np.linspace(100,2000,10):
+	map_torque(amp,ntheta=100,nphi=200)
+
+def ligne_torque():
+	print(torque_3nvx_4classes([200,100,100]))
+	print(torque_3nvx_4classes([0,100,0]))
+	print(torque_3nvx_4classes([0,0,100]))
+
+
 
 def steady_2_spins_1():
 	thetas=np.linspace(0.6,0.64,100)
