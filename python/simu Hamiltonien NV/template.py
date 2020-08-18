@@ -933,8 +933,16 @@ def Hamiltonian_NV_propre_base(B,E=3,D=2870) :
 	H=D*Sz**2+gamma*(B[0]*Sx+B[1]*Sy+B[2]*Sz)+E*(Sx.dot(Sx)-Sy.dot(Sy))
 	return H
 
+def spin_NV_propre_base(B,gamma_las=1E-3,gamma_phonon=2E-4): #Attention : gamma en MHz
+	H=H=Qobj(Hamiltonian_NV_propre_base(B))
+	dm=steadystate(H,make_collapse_list(gamma_las,gamma_phonon))
+	rho=np.array(dm)
+	s=np.array([np.trace(rho.dot(Sx)),np.trace(rho.dot(Sy)),np.trace(rho.dot(Sz))])
+	return(s)
 
-def NV_torque_propre_base(B,gamma_las=3E3,gamma_phonon=3E2):
+
+
+def NV_torque_propre_base(B,gamma_las=1E-3,gamma_phonon=2E-4):
 	H=Qobj(Hamiltonian_NV_propre_base(B))
 	dm=steadystate(H,make_collapse_list(gamma_las,gamma_phonon))
 	rho=np.array(dm)
@@ -942,24 +950,203 @@ def NV_torque_propre_base(B,gamma_las=3E3,gamma_phonon=3E2):
 	torque=np.cross(s,B)
 	return(torque)
 
-def torque_3nvx_1classe():
+def torque_3nvx_1classe(amp):
 	thetas=np.linspace(0,2*pi,200)
-	torques=[]
-	B=200
+	spins=[]
+	B=amp
 	for theta in thetas :
-		torques+=[NV_torque_propre_base([B*cos(theta),0,B*sin(theta)])]
+		spins+=[spin_NV_propre_base([B*sin(theta),0,B*cos(theta)])]
 
-	torques=np.array(torques)
-	print(torques[37,0],torques[87,1],torques[67,2])
+	fig,ax=plt.subplots(3)
+	spins=np.array(spins)
 
 
-	plt.plot(thetas,torques[:,0],label='Torque x')
-	plt.plot(thetas,torques[:,1],label='Torque y')
-	plt.plot(thetas,torques[:,2],label='Torque z')
-	plt.legend()
+	torques_sz=spins[:,2]*amp*sin(thetas)
+	torques_sx=-spins[:,0]*amp*cos(thetas)
+	NRJ_sx=-amp*spins[:,0]*sin(thetas)
+	NRJ_sz=-amp*spins[:,2]*cos(thetas)
+	# plt.plot(thetas,torques[:,0],label='Torque x')
+	ax[0].plot(thetas,torques_sz,label='Torque Sz')
+	ax[0].plot(thetas,torques_sx,label='Torque Sx')
+	ax[0].plot(thetas,torques_sz+torques_sx,label='Torque total')
+	ax[0].legend()
+	ax[1].plot(thetas,spins[:,2],label='spin z')
+	ax[1].plot(thetas,spins[:,0],label='spin x')
+	ax[1].legend()
+	ax[2].plot(thetas,NRJ_sz,label='Energie Sz')
+	ax[2].plot(thetas,NRJ_sx,label='Energie Sx')
+	ax[2].plot(thetas,NRJ_sz+NRJ_sx,label='Energie total')
+	ax[2].legend()
+
+	# plt.plot(thetas,torques[:,2],label='Torque z')
 	plt.xlabel('theta dans le plan zOx')
 	plt.show()
-	# plt.savefig('simu torque 3 nvx 1 classe 200G.png')
+	# plt.savefig('torque une classe/simu torque 3 nvx 1 classe %iG.png'%amp)
+
+torque_3nvx_1classe(1300)
+
+def torque_1classe_amplitude(theta):
+	amps=np.linspace(0,5000,200)
+	spins=[]
+	for amp in amps:
+		spins+=[spin_NV_propre_base([amp*sin(theta),0,amp*cos(theta)])]
+	fig,ax=plt.subplots(2)
+	spins=np.array(spins)
+
+
+	torques_sz=spins[:,2]*amps*sin(theta)
+	torques_sx=-spins[:,0]*amps*cos(theta)
+
+	ax[0].plot(amps,torques_sx,label='Torque Sx')
+	ax[0].plot(amps,torques_sz,label='Torque Sz')
+	ax[0].plot(amps,torques_sz+torques_sx,label='Torque total')
+	ax[0].legend()
+	ax[1].plot(amps,spins[:,0],label='spin x')
+	ax[1].plot(amps,spins[:,2],label='spin z')
+	ax[1].legend()
+
+	plt.xlabel('theta dans le plan zOx')
+	plt.show()
+
+# torque_1classe_amplitude(0.3)
+
+def spin_3vx_4classes(B):
+	B=np.array(B)
+	Rzplus=np.array([[sqrt(1/2),sqrt(1/2),0],[-sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+	Rzmoins=np.array([[sqrt(1/2),-sqrt(1/2),0],[sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+
+	Rxplus=np.array([[1,0,0],[0,sqrt(1/3),sqrt(2/3)],[0,-sqrt(2/3),sqrt(1/3)]])
+	Rxmoins=np.array([[1,0,0],[0,sqrt(1/3),-sqrt(2/3)],[0,sqrt(2/3),sqrt(1/3)]])
+
+	Ryplus=np.array([[sqrt(1/3),0,sqrt(2/3)],[0,1,0],[-sqrt(2/3),0,sqrt(1/3)]])
+	Rymoins=np.array([[sqrt(1/3),0,-sqrt(2/3)],[0,1,0],[sqrt(2/3),0,sqrt(1/3)]])
+
+
+	R=Rxplus.dot(Rzplus)
+	Raller=[Rymoins.dot(Rzplus),Ryplus.dot(Rzplus),Rxplus.dot(Rzplus),Rxmoins.dot(Rzplus)]
+	Rretour=[Rzmoins.dot(Ryplus),Rzmoins.dot(Rymoins),Rzmoins.dot(Rxmoins),Rzmoins.dot(Rxplus)]
+
+	spin=np.zeros(3,dtype='complex128')
+	for k in range(4) :
+		B_base=Raller[k].dot(B)
+		spin_base=spin_NV_propre_base(B_base)
+		spin+=Rretour[k].dot(spin_base)
+	return(spin.real)	
+
+def cart_to_spher(r):
+	x=r[0]
+	y=r[1]
+	z=r[2]
+	xphi=x/np.sqrt(x**2+y**2)
+	yphi=y/np.sqrt(x**2+y**2)
+	if xphi>-1 :
+		phi_r=2*arctan(yphi/(xphi+1))
+	else :
+		phi_r=pi
+	theta_r=arccos(z/np.sqrt(x**2+y**2+z**2))
+	return(theta_r,phi_r)
+
+
+def vector_field_static_torque(torque):
+	nthetas=20
+	nphis=40
+	thetas=np.linspace(pi*0.1,pi*0.9,nthetas)
+	phis=np.linspace(-pi*0.9,pi*0.9,nphis)
+	Fs_theta=np.zeros((nthetas,nphis))
+	Fs_phi=np.zeros((nthetas,nphis))
+	for t in range(nthetas) :
+		theta=thetas[t]
+		for p in range(nphis):
+			phi=phis[p]
+			r=(sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta))
+			F=np.cross(torque,r)
+			theta_f,phi_f=cart_to_spher(r+F*0.01)
+			Fs_theta[t,p]=theta_f-theta
+			Fs_phi[t,p]=phi_f-phi
+	fig,ax=plt.subplots()
+	q=ax.quiver(phis,thetas,Fs_phi,Fs_theta)
+	plt.show()
+
+# vector_field_static_torque([1,0,0])
+
+def vector_field_NV_4_classes(amp):
+	nthetas=20
+	nphis=40
+	thetas=np.linspace(pi*0.1,pi*0.9,nthetas)
+	phis=np.linspace(-pi*0.9,pi*0.9,nphis)
+	Fs_theta=np.zeros((nthetas,nphis))
+	Fs_phi=np.zeros((nthetas,nphis))
+	for t in range(nthetas) :
+		theta=thetas[t]
+		for p in range(nphis):
+			phi=phis[p]
+			r=np.array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)])
+			B=r*amp
+			s=spin_3vx_4classes(B)
+			# torque=np.cross(s,r)
+			# F=np.cross(torque,r)
+			# theta_f,phi_f=cart_to_spher(r+F*0.01)
+			theta_f,phi_f=cart_to_spher(r+s*0.01) # 0.01 parce qu'il faut une petite variation pour avoir un vecteur précis
+			Fs_theta[t,p]=theta_f-theta
+			Fs_phi[t,p]=phi_f-phi
+	fig,ax=plt.subplots()
+	q=ax.quiver(phis*180/pi,thetas*180/pi,Fs_phi,Fs_theta)
+	ax.set_xlabel(r'$\phi$ (°)')
+	ax.set_ylabel(r'$\theta$ (°)')
+	ax.set_title('Torque map for B=%iG'%amp)
+	plt.show()
+	# plt.savefig('map torque/map_%iG.png'%amp)
+
+for amp in np.arange(100,2100,100):
+	vector_field_NV_4_classes(amp)
+	print(amp)
+
+# vector_field_NV_4_classes(600)
+
+def NRJ_map(amp):
+	nthetas=100
+	nphis=200
+	thetas=np.linspace(pi*0.1,pi*0.9,nthetas)
+	phis=np.linspace(-pi*0.9,pi*0.9,nphis)
+	NRJs=np.zeros((nthetas,nphis))
+	for t in range(nthetas) :
+		theta=thetas[t]
+		for p in range(nphis):
+			phi=phis[p]
+			r=np.array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)])
+			B=r*amp
+			s=spin_3vx_4classes(B)
+			NRJs[t,p]=-B.dot(s)
+		print('ligne %i sur %i'%(t,nthetas))
+	fig,ax=plt.subplots()
+	c=ax.pcolormesh(phis, thetas, NRJs, cmap='seismic')
+	ax.set_title('Energie')
+	cb=fig.colorbar(c,ax=ax)
+	plt.show()
+# NRJ_map(1300)
+
+
+
+def torque_4classes_dir(theta,phi,amp):
+	r=np.array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)])
+	B=r*amp
+	s=spin_3vx_4classes(B)
+	theta_f,phi_f=cart_to_spher(r-s*0.01)
+	return(phi_f-phi)
+	# return(np.linalg.norm(s))
+
+# theta=arccos(sqrt(1/3))
+# phi=pi/4+3*pi/180
+# amps=np.linspace(0,2000,200)
+# torques=[]
+# for amp in amps:
+# 	torques+=[torque_4classes_dir(theta,phi,amp)*amp]
+# plt.plot(amps,torques)
+# plt.xlabel('B (G)')
+# plt.ylabel('Torque')
+# plt.show()
+
+
 
 def torque_3nvx_4classes(B): #B exprimé dans la base (100)
 	B=np.array(B)
@@ -1012,7 +1199,7 @@ def div_3vx_4classes(B):
 		for i in range(3):
 			Bstep=np.zeros(3)
 			Bstep[i]=step/2
-			div+=(np.cross(s,B+Bstep)-np.cross(s,B-Bstep))/
+			div+=(np.cross(s,B+Bstep)-np.cross(s,B-Bstep))
 
 
 
@@ -1046,8 +1233,7 @@ def map_torque(amp,ntheta=100,nphi=200):
 	fig.savefig('cartes_meca/map_torque_%iG.eps'%amp)
 	# plt.show()
 
-for amp in np.linspace(100,2000,10):
-	map_torque(amp,ntheta=100,nphi=200)
+
 
 def ligne_torque():
 	print(torque_3nvx_4classes([200,100,100]))
