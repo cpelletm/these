@@ -960,7 +960,7 @@ def torque_3nvx_1classe(amp):
 	fig,ax=plt.subplots(3)
 	spins=np.array(spins)
 
-
+	plt.clf()
 	torques_sz=spins[:,2]*amp*sin(thetas)
 	torques_sx=-spins[:,0]*amp*cos(thetas)
 	NRJ_sx=-amp*spins[:,0]*sin(thetas)
@@ -980,10 +980,12 @@ def torque_3nvx_1classe(amp):
 
 	# plt.plot(thetas,torques[:,2],label='Torque z')
 	plt.xlabel('theta dans le plan zOx')
-	plt.show()
-	# plt.savefig('torque une classe/simu torque 3 nvx 1 classe %iG.png'%amp)
+	# plt.show()
+	plt.savefig('torque une classe/simu torque 3 nvx 1 classe %iG.png'%amp)
 
-torque_3nvx_1classe(1300)
+for amp in np.arange(50,2050,50) :
+	torque_3nvx_1classe(amp)
+	print(amp)
 
 def torque_1classe_amplitude(theta):
 	amps=np.linspace(0,5000,200)
@@ -1097,9 +1099,9 @@ def vector_field_NV_4_classes(amp):
 	plt.show()
 	# plt.savefig('map torque/map_%iG.png'%amp)
 
-for amp in np.arange(100,2100,100):
-	vector_field_NV_4_classes(amp)
-	print(amp)
+# for amp in np.arange(100,2100,100):
+# 	vector_field_NV_4_classes(amp)
+# 	print(amp)
 
 # vector_field_NV_4_classes(600)
 
