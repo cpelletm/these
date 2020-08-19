@@ -5,6 +5,6 @@ from datetime import date
 
 print(date.today())
 
-# fig,ax=plt.subplots()
-# print(dir(ax))
+fig,ax=plt.subplots()
+print(dir(ax))
 

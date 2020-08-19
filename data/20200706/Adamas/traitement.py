@@ -184,7 +184,7 @@ y=y[3:]
 y=y/y[0]
 plt.plot(x,y,'x',color=color)
 popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='1-Degenerancy, tau= %1.3e s'%popt[2],color=color)
+plt.plot(x,yfit,label='1-Degenerancy',color=color)
 
 color = next(ax._get_lines.prop_cycler)['color']
 fname='t1_2x2'
@@ -194,7 +194,7 @@ y=y[3:]
 y=y/y[0]
 plt.plot(x,y,'x',color=color)
 popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='2-Degenerancy, tau= %1.3e s'%popt[2],color=color)
+plt.plot(x,yfit,label='2-Degenerancy',color=color)
 
 color = next(ax._get_lines.prop_cycler)['color']
 fname='T1_100_2V_setup2_nuit'
@@ -204,7 +204,7 @@ y=y[1:]
 y=y/y[0]
 plt.plot(x,y,'x',color=color)
 popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='4-Degenerancy, tau= %1.3e s'%popt[2],color=color)
+plt.plot(x,yfit,label='4-Degenerancy',color=color)
 
 color = next(ax._get_lines.prop_cycler)['color']
 fname='T1_100_0V_setup2_nuit'
@@ -214,17 +214,17 @@ y=y[1:]
 y=y/y[0]
 plt.plot(x,y,'x',color=color)
 popt,yfit=exp_fit(x,y)
-plt.plot(x,yfit,label='0-Field, tau= %1.3e s'%popt[2],color=color)
+plt.plot(x,yfit,label='0-Field',color=color)
 
 
 
 
 
+ax.tick_params(labelsize=15)
+plt.xlabel(r'Dark time $\tau$ (s)',fontsize=25)
+plt.ylabel('PL (arb.)',fontsize=25)
 
-plt.xlabel(r'Dark time $\tau$ (s)')
-plt.ylabel('Photoluminescence')
 
-
-plt.legend()
+plt.legend(fontsize=15)
 
 plt.show()

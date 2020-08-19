@@ -15,36 +15,20 @@ with open('map_average.txt','r') as f:
 
 map=np.array(xy)
 
-theta_axis=np.linspace(-6,6,len(map[0,:]))
-phi_axis=np.linspace(-9,9,len(map[:,0]))
+thetas=np.linspace(-6,6,len(map[0,:]))
+phis=np.linspace(-9,9,len(map[:,0]))
 
 
-fig,ax=plt.subplots(2)
+fig,ax=plt.subplots()
 
-ax1=ax[0]
-ax2=ax[1]
-
-C=ax1.pcolormesh(xy)
-bres=list(bresenham.bresenham(x0,y0,xf,yf))
-bres=np.array(bres)
-ax1.scatter(bres[:,0],bres[:,1],c='r',marker='.')
-ax1.set_xlim([0,96])
-ax1.set_ylim([0,96])
-absc=[]
-ord=[]
-for point in bres :
-	absc+=[np.linalg.norm(point-bres[0,:])]
-	ord+=[map[point[1],point[0]]]
-
-absc=np.array(absc)
-absc=absc*18/96
-ax2.plot(absc,ord)
-
+c=ax.pcolormesh(phis, thetas, map)
+ax.tick_params(labelsize=15)
+ax.set_xlabel(r'$\phi (°)$',fontsize=25)
+ax.set_ylabel(r'$\theta (°)$',fontsize=25)
+cb=fig.colorbar(c,ax=ax)
+cb.ax.tick_params(labelsize=15)
+cb.set_label('PL (arb.)',fontsize=25)
 plt.show()
-
-with open('plot_4x0.txt','w') as f :
-	for i in range(len(absc)) :
-		f.write('%f \t %f\n'%(absc[i],ord[i]))
 
 
 

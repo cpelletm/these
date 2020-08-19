@@ -269,6 +269,7 @@ def NV_simple(orientation='111'):
 
 
 
+
 def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
 	amps=np.linspace(0,100,100)
 	transi=[]
@@ -938,7 +939,7 @@ def spin_NV_propre_base(B,gamma_las=1E-3,gamma_phonon=2E-4): #Attention : gamma 
 	dm=steadystate(H,make_collapse_list(gamma_las,gamma_phonon))
 	rho=np.array(dm)
 	s=np.array([np.trace(rho.dot(Sx)),np.trace(rho.dot(Sy)),np.trace(rho.dot(Sz))])
-	return(s)
+	return(s,rho[1,1])
 
 
 
@@ -983,9 +984,9 @@ def torque_3nvx_1classe(amp):
 	# plt.show()
 	plt.savefig('torque une classe/simu torque 3 nvx 1 classe %iG.png'%amp)
 
-for amp in np.arange(50,2050,50) :
-	torque_3nvx_1classe(amp)
-	print(amp)
+# for amp in np.arange(50,2050,50) :
+# 	torque_3nvx_1classe(amp)
+# 	print(amp)
 
 def torque_1classe_amplitude(theta):
 	amps=np.linspace(0,5000,200)
@@ -1029,11 +1030,13 @@ def spin_3vx_4classes(B):
 	Rretour=[Rzmoins.dot(Ryplus),Rzmoins.dot(Rymoins),Rzmoins.dot(Rxmoins),Rzmoins.dot(Rxplus)]
 
 	spin=np.zeros(3,dtype='complex128')
+	rho_0=0
 	for k in range(4) :
 		B_base=Raller[k].dot(B)
-		spin_base=spin_NV_propre_base(B_base)
+		spin_base,rho_0_base=spin_NV_propre_base(B_base)
+		rho_0+=rho_0_base
 		spin+=Rretour[k].dot(spin_base)
-	return(spin.real)	
+	return(spin.real,rho_0)	
 
 def cart_to_spher(r):
 	x=r[0]
@@ -1111,21 +1114,26 @@ def NRJ_map(amp):
 	thetas=np.linspace(pi*0.1,pi*0.9,nthetas)
 	phis=np.linspace(-pi*0.9,pi*0.9,nphis)
 	NRJs=np.zeros((nthetas,nphis))
+	gamma=2.8
+	D=2870
 	for t in range(nthetas) :
 		theta=thetas[t]
 		for p in range(nphis):
 			phi=phis[p]
 			r=np.array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)])
 			B=r*amp
-			s=spin_3vx_4classes(B)
-			NRJs[t,p]=-B.dot(s)
+			s,rho_0=spin_3vx_4classes(B)
+			NRJs[t,p]=-B.dot(s)*gamma-D*rho_0
 		print('ligne %i sur %i'%(t,nthetas))
 	fig,ax=plt.subplots()
 	c=ax.pcolormesh(phis, thetas, NRJs, cmap='seismic')
-	ax.set_title('Energie')
+	ax.set_title('Energie totale pour B=%iG'%amp)
 	cb=fig.colorbar(c,ax=ax)
-	plt.show()
-# NRJ_map(1300)
+	plt.savefig('Cartes NRJ totale/carte B=%iG'%amp)
+
+# for amp in np.arange(0,2100,100):
+# 	NRJ_map(amp)
+# 	print(amp)
 
 
 

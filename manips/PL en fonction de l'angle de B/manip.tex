@@ -159,6 +159,38 @@ $(110), (1\bar{1}0),(101), (10\bar{1}),(011), (01\bar{1})$ chacune des ces direc
   \end{itemize}
   \subsubsection{Mesures}
   Les principales mesures grace à l'électro-aimant
+  
+  \section{Double quantums et VH-}
+  Manips réalisées de mi Mai à Aout (et peut être un peu après, faut voir).
+  
+  J'ai déja écrit une partie dans une autre fiche qui est dans "double quantums", je vais décrire le setup final.
+  \subsection{Matos}
+  
+  En gros le meilleur setup c'était, toujours avec l'EM de Paul et ses 5000 enroulages, de fixer l'EM avec de la patafix sur une monture de lambda/2 et de monter cette lambda/2 sur une platine tournante, et de brancher cet EM directement sur le GBF (!).
+  
+  Setup du GBF (un HP, on doit pas en avoir des milliers) : Je me suis mis en mode triangle, à une fréquence de 1HZ (au dela le signal se distort à cause de l'inductance énorme) et je suis passé en mode burst (bouton burst...) en envoyant des pulses avec le programme d'acquisition pour générer une rampe toute les 1.1s (pour être safe, le GBF ne réagit pas si t'envoie une pulse alors qu'il a pas fini son burst). Le piège c'est d'appuyer sur "Single", sinon ce con de GBF est en mode auto et renvoie un burst des qu'il a fini le précédent. Tu peux aussi modifier la phase du burst dans les options, je te laisse chercher dans le manuel parce que c'est chiant (menu, flèche du bas, flèche de droite *5 de mémoire)
+  
+  Le programme c'est scan\_em\_gbf\_2.py, et normalement il ne regarde que la partie du scan qui correspond à une rampe.
+  
+  Aussi faut que je signale qu'on a vu des grosses asymétries dans les scans, et qu'on sait toujours pas bien ce que c'est :
+ \begin{itemize}
+ \item C'est pas un processus dynamique parce que ça ne dépend pas de la vitesse de scan
+ \item C'est pas du à l'hysteresis de l'aimant parce que les asymétries ne changent pas de sens quand on scan dans l'autre sens
+ \item c'est peut-etre du aux gradient de champs parce que l'effet a l'air moins fort au milieu de l'EM
+ \end{itemize}
+ Du coup j'ai fini par conclure que c'était des gradients de champ qui sont pas les même en fonction du signe du champ. Je ne vois pas comment c'est possible mais ça me suffira pour l'instant. Et la vraie solution c'est de couper les scans pour en voir qu'une moitié. Merci Gabriel pour les cours d'intégrité scientifique.
+ 
+ \subsection{Manips}
+ J'ai analysé 4 échantillons avec ce setup : le diamant rose d'Alex (3.5 PPM de NV), le sumitumo \#4, HPHT irradié par électrons (à vue de nez 5 PPM de NV, sans doute un peu plus), un Adamas sur une antenne uW (5 PPM de NV aussi), et un diamant de Ludo HPHT, irradié aux protons avec 20 PPM de NV. 
+ 
+ J'ai essentiellement fait des scans selon la (100), avec aussi pour certains des temps de vie (le Adamas en particulier) et des scans (111).
+ 
+ TdV : le 06/07/2020
+ 
+ scans 100 : de fin Juin à fin Juillet
+ 
+ \subsection{Resultats}
+ cf article, je completerai peut-etre ce qu'on a pas mis dedans.
   \end{document}	
   
   

@@ -83,12 +83,16 @@ def map_full() :
 
 
 
-	plt.xlabel(r'$\phi$(°)')
-	plt.ylabel(r'$\theta$(°)')
+	plt.xlabel(r'$\phi$(°)',fontsize=25)
+	plt.ylabel(r'$\theta$(°)',fontsize=25)
+	plt.xticks(fontsize=15)
+	plt.yticks(fontsize=15)
 
 
-	plt.legend()
+	# plt.legend()
 	plt.show()
+
+
 
 def map_zoom():
 	fig,ax=plt.subplots()
@@ -145,13 +149,15 @@ def map_zoom():
 	for line in ax.get_lines() :
 		line.set_data(line.get_xdata()-180,line.get_ydata()-90)
 
-	plt.xlabel(r'$\phi$(°)')
-	plt.ylabel(r'$\theta$(°)')
+	plt.xlabel(r'$\phi$(°)',fontsize=25)
+	plt.ylabel(r'$\theta$(°)',fontsize=25)
+	plt.xticks(fontsize=15)
+	plt.yticks(fontsize=15)
 	plt.xlim([-9,9])
 	plt.ylim([-6,6])
 
 
-	plt.legend()
+	plt.legend(loc='upper right', fontsize=15)
 	plt.show()
 
 map_zoom()
