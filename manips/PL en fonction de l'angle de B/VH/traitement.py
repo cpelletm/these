@@ -126,7 +126,7 @@ def ask_name():
 	return fname
 
 
-x_transi=[82.85779704691888, 49.26889421556611, 153.09765463190857, 80.9166748302668, 6.222636078130301, 136.53699671424204, 17.389247810767305]
+x_transi=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
 
 # fname='scan_rose_100_7V_'
 # x,y=extract_data(fname+'.txt')
@@ -179,6 +179,11 @@ color = next(ax._get_lines.prop_cycler)['color']
 # color = next(ax._get_lines.prop_cycler)['color']
 x=50.5276
 plt.plot([x,x],[0,2],'--',color=color,label='VH cross relaxation')
+color = next(ax._get_lines.prop_cycler)['color']
+x=x_transi[0]
+plt.plot([x,x],[0,2],'--',color=color,label='13C-NV cross relaxation')
+for x in x_transi[1:]:
+	plt.plot([x,x],[0,2],'--',color=color)
 ax.set_ylim(ylim)
 
 plt.xlabel(r'B$\parallel$(100) (G)')
