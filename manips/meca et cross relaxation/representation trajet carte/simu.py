@@ -158,8 +158,8 @@ theta_111=arctan(sqrt(2))
 
 
 
-B_in=spher_to_cart(pi/6,pi/2)*200+[30,0,30]
-B_out=spher_to_cart(pi/6,pi/2)*200-[30,0,30]
+B_in=spher_to_cart(pi/4,pi/4)*200+[30,0,0]
+B_out=spher_to_cart(pi/4,pi/4)*200-[30,0,0]
 n=200
 Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)

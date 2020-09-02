@@ -75,7 +75,7 @@ def spin_3vx_4classes(B,gamma_las,gamma_t1):
 		spin+=Rretour[k].dot(spin_base)
 	return(spin,rho_0)	
 
-def make_t1_list(B,gamma_t1_CR=1E-3,gamma_t1_base=1E-3,width=8):
+def make_t1_list(B,gamma_t1_CR=1E-3,gamma_t1_base=1E-3,width=8): #gamma_t1=1,3,5,7 KHz pour deg=1,2,3,4
 	B=np.array(B)
 	Rzplus=np.array([[sqrt(1/2),sqrt(1/2),0],[-sqrt(1/2),sqrt(1/2),0],[0,0,1]])
 	Rzmoins=np.array([[sqrt(1/2),-sqrt(1/2),0],[sqrt(1/2),sqrt(1/2),0],[0,0,1]])
@@ -133,17 +133,18 @@ fig,ax=plt.subplots(2)
 
 
 theta_111=arctan(sqrt(2))
-gamma_las=1E-3 #Idem que l'autre
-gamma_t1=2E-4#5ms en unité MHz
+gamma_las=5E-3
 
-B_in=spher_to_cart(pi/6,pi/2)*200+[30,0,30]
-B_out=spher_to_cart(pi/6,pi/2)*200-[30,0,30]
+B_in=spher_to_cart(pi/4,pi/4)*200+[30,0,0]
+B_out=spher_to_cart(pi/4,pi/4)*200-[30,0,0]
 n=200
 Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)
 Bzs=np.linspace(B_in[2],B_out[2],n)
 torques=[]
 PLs=[]
+torques_sans=[]
+PLs_sans=[]
 for i in range(n):
 	B=[Bxs[i],Bys[i],Bzs[i]]
 	H=Hamiltonian_NV_propre_base(B)
@@ -151,11 +152,25 @@ for i in range(n):
 	s,rho_0=spin_3vx_4classes(B,gamma_las,gamma_t1)
 	PLs+=[rho_0]
 	torques+=[np.cross(s,B)]
+	gamma_t1=np.ones(4)*1E-3
+	s,rho_0=spin_3vx_4classes(B,gamma_las,gamma_t1)
+	PLs_sans+=[rho_0]
+	torques_sans+=[np.cross(s,B)]
+
 torques=np.array(torques)
-ax[0].plot(PLs,label='PL')
-ax[1].plot(torques[:,0],label='Torque x')
-ax[1].plot(torques[:,1],label='Torque y')
-ax[1].plot(torques[:,2],label='Torque z')
+torques_sans=np.array(torques_sans)
+color = next(ax[0]._get_lines.prop_cycler)['color']
+ax[0].plot(PLs,label='PL',color=color)
+ax[0].plot(PLs_sans,'--',color=color)
+color = next(ax[1]._get_lines.prop_cycler)['color']
+ax[1].plot(torques[:,0],label='Torque x',color=color)
+ax[1].plot(torques_sans[:,0],'--',color=color)
+color = next(ax[1]._get_lines.prop_cycler)['color']
+ax[1].plot(torques[:,1],label='Torque y',color=color)
+ax[1].plot(torques_sans[:,1],'--',color=color)
+color = next(ax[1]._get_lines.prop_cycler)['color']
+ax[1].plot(torques[:,2],label='Torque z',color=color)
+ax[1].plot(torques_sans[:,2],'--',color=color)
 
 for axes in ax:
 	axes.legend()

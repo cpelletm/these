@@ -128,15 +128,6 @@ def ask_name():
 
 x_transi=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
 
-# fname='scan_rose_100_7V_'
-# x,y=extract_data(fname+'.txt')
-# y=y/max(y)
-# xmin=258
-# x=x-x[xmin]
-# x=x[:xmin]
-# y=y[:xmin]
-# x=x*64
-# plt.plot(x,y,label='Photoluminescence')
 
 fname='scan_100_rose_10V'
 x,y=extract_data(fname+'.txt')
@@ -146,47 +137,38 @@ x=x-x[xmin]
 x=x[xmin:]
 y=y[xmin:]
 x=x*62
-plt.plot(-x,y,label='Photoluminescence')
+plt.plot(-x,y,lw=2,label='Photoluminescence')
 
-
-# fname='scan_100_sample_ludo_aligne_vitedeuf'
-# x,y=extract_data(fname+'.txt')
-# y=y/max(y)
-# x=x*62
-# xmin=251
-# x=x-x[xmin]
-# x=x[:xmin]
-# y=y[:xmin]
-# plt.plot(x,y,label='Photoluminescence')
-
-# fname='scan_10V_uW_2796'
-# x,y=extract_data(fname+'.txt')
-# y=y/max(y)
-# x=x-x[253]
-# x=x*62
-# plt.plot(-x,y,label='Photoluminescence')
 
 
 ax=plt.gca()
 ylim=ax.get_ylim()
+ymin=ylim[0]
+ymax=ylim[1]
+
 color = next(ax._get_lines.prop_cycler)['color']
-# x=x_transi[0]
-# plt.plot([x,x],[0,2],'--',color=color,label='P1 cross relaxation')
-# # plt.plot([-x,-x],[0,2],'--',color=color)
-# for x in x_transi[1:] :
-# 	plt.plot([x,x],[0,2],'--',color=color)
-# 	# plt.plot([-x,-x],[0,2],'--',color=color)
+x=0
+plt.plot([x,x],[ymin,ymax],'--',color=color,label='Double quantums')
+
 # color = next(ax._get_lines.prop_cycler)['color']
-x=50.5276
-plt.plot([x,x],[0,2],'--',color=color,label='VH cross relaxation')
-color = next(ax._get_lines.prop_cycler)['color']
-x=x_transi[0]
-plt.plot([x,x],[0,2],'--',color=color,label='13C-NV cross relaxation')
-for x in x_transi[1:]:
-	plt.plot([x,x],[0,2],'--',color=color)
+# x=50.5276
+# plt.plot([x,x],[ymin,ymax],'--',color=color,label='VH- cross relaxation')
+
+
+# color = next(ax._get_lines.prop_cycler)['color']
+# x=x_transi[0]
+# plt.plot([x,x],[ymin,ymax],'--',color=color,label='13C-NV cross relaxation')
+# for x in x_transi[1:]:
+# 	plt.plot([x,x],[ymin,ymax],'--',color=color)
+
+
 ax.set_ylim(ylim)
 
-plt.xlabel(r'B$\parallel$(100) (G)')
-plt.legend()
+
+plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
+plt.ylabel('PL (arb.)',fontsize=25)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.legend(fontsize=18)
 
 plt.show()

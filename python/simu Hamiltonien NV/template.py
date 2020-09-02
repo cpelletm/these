@@ -261,13 +261,15 @@ def NV_simple(orientation='111'):
 		ylim=ax.get_ylim()
 		plt.plot([x_VH,x_VH],[y_VH,0],'--',color=color)
 		ax.set_ylim(ylim)
-		plt.xlabel(r'B$\parallel$(100) (G)')
-		plt.ylabel('Transition frequency (MHz)')
-		plt.legend()
+		plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
+		plt.ylabel('Transition frequency (MHz)',fontsize=25)
+		plt.xticks(fontsize=15)
+		plt.yticks(fontsize=15)
+		plt.legend(fontsize=18)
 		plt.show()
 
 
-
+# NV_simple(orientation='100')
 
 
 def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
@@ -331,15 +333,17 @@ def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G
 
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color,label='cross relaxation')		
-	plt.legend()
 	ylim=ax.get_ylim()
 	for i in range(len(x_transi)) :
 		x0=x_transi[i]
 		y0=y_transi[i]
 		plt.plot([x0,x0],[y0,0],'--',color=color)
 	ax.set_ylim(ylim)
-	plt.xlabel(r'B$\parallel$(100) (G)')
-	plt.ylabel('Transition frequency (MHz)')
+	plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
+	plt.ylabel('Transition frequency (MHz)',fontsize=25)
+	plt.xticks(fontsize=15)
+	plt.yticks(fontsize=15)
+	plt.legend(fontsize=18)
 	plt.show()
 
 # egv_C13()
@@ -1087,7 +1091,7 @@ def vector_field_NV_4_classes(amp):
 			phi=phis[p]
 			r=np.array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)])
 			B=r*amp
-			s=spin_3vx_4classes(B)
+			s,rho_0=spin_3vx_4classes(B)
 			# torque=np.cross(s,r)
 			# F=np.cross(torque,r)
 			# theta_f,phi_f=cart_to_spher(r+F*0.01)
