@@ -1,7 +1,8 @@
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.optimize import curve_fit
+import glob
+from scipy.optimize import curve_fit,root_scalar
 from PyQt5.QtWidgets import QApplication,QFileDialog
 
 
@@ -21,9 +22,18 @@ def extract_data(filename,xcol=0,ycol=1):
 	return(np.array(x),np.array(y))
 
 def lin_fit(x,y) :
+	x=np.array(x)
+	y=np.array(y)
 	A=np.vstack([x,np.ones(len(x))]).T
 	a,b = np.linalg.lstsq(A, y, rcond=None)[0]
 	return(a,b,a*x+b)
+
+def quad_fit(x,y) :
+	x=np.array(x)
+	y=np.array(y)
+	A=np.vstack([x**2,x,np.ones(len(x))]).T
+	q,a,b = np.linalg.lstsq(A, y, rcond=None)[0]
+	return([q,a,b],q*x**2+a*x+b)
 
 def gauss_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
 	if not ss :
@@ -34,7 +44,10 @@ def gauss_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
 		else :
 			Amp=min(y)-ss
 	if not x0 :
-		x0=x[int(len(x)/2)]
+		if max(y)-ss > ss-min(y) :
+			x0=x[np.argmax(y)]
+		else :
+			x0=x[np.argmin(y)]
 	if not sigma :
 		sigma=x[int(len(x)/5)]-x[0]
 	def f(x,Amp,x0,sigma,ss) :
@@ -125,53 +138,64 @@ def ask_name():
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
-
-
-
-
-fname='scan_100_rose_10V'
-x,y=extract_data(fname+'.txt')
+fname='blanc.txt'
+x,y=extract_data(fname)
+bmin=243
+bmax=707
+x=x[bmin:bmax]
+y=y[bmin:bmax]
+y=y-min(y)
 y=y/max(y)
-xmin=507
-x=x-x[xmin]
-x=x[xmin:]
-y=y[xmin:]
-x=x*66
-plt.plot(-x,y,lw=2,label='Photoluminescence')
+plt.plot(x,y)
+
+fname='blanc_rose.txt'
+x,y=extract_data(fname)
+x=x[bmin:bmax]
+y=y[bmin:bmax]
+y=y-min(y)
+y=y/max(y)
+plt.plot(x,y)
 
 
+Sx=1/np.sqrt(2)*np.array([[0,1,0],[1,0,1],[0,1,0]])
+Sy=1/(np.sqrt(2)*1j)*np.array([[0,1,0],[-1,0,1],[0,-1,0]])
+Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
+def Hamiltonian_0(B,classe=1,E=3,D=2870) :
+	#Unité naturelle : MHz,Gauss
+	B=np.array(B)
+	gamma=2.8
+	if classe==1 :
+		C=np.array([1,1,1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	if classe==2 :
+		C=np.array([1,-1,-1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	if classe==3 :
+		C=np.array([-1,1,-1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	if classe==4 :
+		C=np.array([-1,-1,1])/np.sqrt(3)
+		Bz=B.dot(C)
+		Bx=np.sqrt(abs(B.dot(B)-Bz**2))
+	H=D*Sz**2+gamma*(Bx*Sx+Bz*Sz)+E*(Sx.dot(Sx)-Sy.dot(Sy))
+	return H
+def egvect(H) :
+	val,vec=np.linalg.eigh(H) #H doit être Hermitienne
+	vec=vec.T #Les vecteurs propres sortent en LIGNE (vecteur #1 : vec[0])
+	return(val,vec)
+def zero(nu):
+	def f(amp):
+		B=[amp,0,0]
+		H=Hamiltonian_0(B,classe=1,E=3,D=2870)
+		val,vec=egvect(H)		
+		return val[2]-val[0]-nu
+	RR=root_scalar(f,bracket=[0,200])
+	return(RR.root)
 
-ax=plt.gca()
-ylim=ax.get_ylim()
-ymin=ylim[0]
-ymax=ylim[1]
+print(zero(2963))
 
-color = next(ax._get_lines.prop_cycler)['color']
-x=0
-plt.plot([x,x],[ymin,ymax],'--',color=color,label='Double quantums')
-
-
-
-color = next(ax._get_lines.prop_cycler)['color']
-# x=50.5276
-x=53.8
-plt.plot([x,x],[ymin,ymax],'--',color=color,label='VH- cross relaxation')
-
-x_transi=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
-color = next(ax._get_lines.prop_cycler)['color']
-x=x_transi[0]
-plt.plot([x,x],[ymin,ymax],'--',color=color,label='13C-NV cross relaxation')
-for x in x_transi[1:]:
-	plt.plot([x,x],[ymin,ymax],'--',color=color)
-
-
-ax.set_ylim(ylim)
-
-
-plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
-plt.ylabel('PL (arb.)',fontsize=25)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
-plt.legend(fontsize=18)
-
+plt.legend()
 plt.show()

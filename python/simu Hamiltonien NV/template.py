@@ -182,6 +182,7 @@ def NV_simple(orientation='111'):
 	# val,vec=egvect(H)
 	# show_vpropres(val,vec,bnamez)
 	# transitions(val,vec,Sx,rho_0)
+	D_VH=2695
 	if orientation=='111' :
 		amps=np.linspace(0,200,100)
 		transi_NV=[]
@@ -225,7 +226,7 @@ def NV_simple(orientation='111'):
 		transi_NV=[]
 		for amp in amps :
 			B=[amp,0,0]
-			H=Hamiltonian_0(B,classe=1,E=3,D=2706)
+			H=Hamiltonian_0(B,classe=1,E=3,D=D_VH)
 			val,vec=egvect(H)
 			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
 		transi_NV=np.array(transi_NV)
@@ -239,7 +240,7 @@ def NV_simple(orientation='111'):
 				H=Hamiltonian_0(B,classe=1,E=3,D=2870)
 				val,vec=egvect(H)
 				transi_NV=[val[2]-val[0],val[1]-val[0]]
-				H=Hamiltonian_0(B,classe=1,E=3,D=2706)
+				H=Hamiltonian_0(B,classe=1,E=3,D=D_VH)
 				val,vec=egvect(H)
 				transi_VH=[val[2]-val[0],val[1]-val[0]]
 				return transi_VH[0]-transi_NV[1]
@@ -269,7 +270,7 @@ def NV_simple(orientation='111'):
 		plt.show()
 
 
-# NV_simple(orientation='100')
+NV_simple(orientation='100')
 
 
 def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
@@ -406,42 +407,9 @@ def p1(): #le soucis pour la 111 c'est que il y a 6 transitions de NV possibles 
 	transi_NV=[]
 	Sx_P1=convolution(Sx_12,np.identity(3))
 	for amp in amps :
-		B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
-		# B=[amp,0,0]
+		# B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+		B=[amp,0,0]
 		H=Ham_p1(B,classe=1)
-		val,vec=egvect(H)
-		single=[]
-		# for i in range(6) :
-		# 	for j in range(i) :
-		# 		#print(i,j,len(single))
-		# 		single+=[val[i]-val[j]]
-		for pair in [[5,0],[4,1],[3,2]] :
-			i=pair[0]
-			j=pair[1]
-			single+=[val[i]-val[j]]
-		transi+=[single]
-		H=Hamiltonian_0(B,classe=1,E=3)
-		val,vec=egvect(H)
-		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
-	transi=np.array(transi)
-	transi_NV=np.array(transi_NV)
-	color = next(ax._get_lines.prop_cycler)['color']
-
-	plt.plot(amps,transi[:,0]+transi_NV[:,1],'--',label='P1',color=color)
-	for i in range(1,len(transi[0,:])) :
-		plt.plot(amps,transi[:,i]+transi_NV[:,1],'--',color=color)
-
-	color = next(ax._get_lines.prop_cycler)['color']
-	plt.plot(amps,transi_NV[:,0],color=color,label='isolated NV')
-	plt.plot(amps,transi_NV[:,1],color=color)
-
-	transi=[]
-	transi_NV=[]
-	Sx_P1=convolution(Sx_12,np.identity(3))
-	for amp in amps :
-		B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
-		# B=[amp,0,0]
-		H=Ham_p1(B,classe=2)
 		val,vec=egvect(H)
 		single=[]
 		for i in range(6) :
@@ -453,20 +421,22 @@ def p1(): #le soucis pour la 111 c'est que il y a 6 transitions de NV possibles 
 		# 	j=pair[1]
 		# 	single+=[val[i]-val[j]]
 		transi+=[single]
-		H=Hamiltonian_0(B,classe=2,E=3)
+		H=Hamiltonian_0(B,classe=1,E=3)
 		val,vec=egvect(H)
 		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
 	transi=np.array(transi)
 	transi_NV=np.array(transi_NV)
 	color = next(ax._get_lines.prop_cycler)['color']
 
-	plt.plot(amps,transi[:,0]+transi_NV[:,1],'--',label='P1',color=color)
+	plt.plot(amps,transi[:,0],'--',label='P1',color=color)
 	for i in range(1,len(transi[0,:])) :
-		plt.plot(amps,transi[:,i]+transi_NV[:,1],'--',color=color)
+		plt.plot(amps,transi[:,i],'--',color=color)
 
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.plot(amps,transi_NV[:,0],color=color,label='isolated NV')
 	plt.plot(amps,transi_NV[:,1],color=color)
+
+	
 	
 
 	def zero(i,c1,c2):
@@ -576,7 +546,7 @@ def p1(): #le soucis pour la 111 c'est que il y a 6 transitions de NV possibles 
 	# ax.set_ylim(ylim)
 	
 	plt.legend()
-	plt.xlabel(r'B$\parallel$(111) (G)')
+	plt.xlabel(r'B$\parallel$(100) (G)')
 	plt.ylabel('Transition frequency (MHz)')
 	plt.show()
 	# H=Ham_p1([0,0,0],classe=1)
