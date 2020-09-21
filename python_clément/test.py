@@ -923,5 +923,3 @@ def digital2d_out_simple():
 		task.start()
 		time.sleep(3)
 
-digital2d_out_simple()
-
