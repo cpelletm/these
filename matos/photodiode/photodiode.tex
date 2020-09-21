@@ -1,0 +1,50 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Photodiodes}
+  \section{Principe}
+  Bon le principe d'une photodiode je l'ai su mais j'ai oublié. En gros ça transforme des photons en électrons mobiles et donc ça fait du courant. Dans le visible on a essentiellement interet à utiliser du Si, ça va jusqu'à 1100 nm je crois.
+  
+  Deux trucs importants à retenir :
+  \begin{itemize}
+  \item De base ça produit du courant une photodiode (si t'es polarisé en inverse, blabla. On va pas partir d'un bloc de silicium non plus), donc y'a un moment ou il faut le convertir en tension. T'as deux modèles de photodiodes qu'on a : avec et sans gain. Sans gain (celle sur pile), t'as directement le courant, donc en fonction de la résistance que tu branche dessus, t'auras plus ou moins de contraste : si tu la branche direct sur l'oscillo ($R\approx M\Omega$) t'auras un super contraste mais un temps de réponse moisi (cf après). Avec gain (celle sur secteur), tu dois avoir un petit circuit avec AO qui fait qu'elle délivre simplement une tension, toujours la même et toujours avec le même temps de réponse (en fonction du gain bien sur).
+  \item Le temps de réponse : ça dépend de ta capacité de jonction (taille du capteur) et de la résistance de charge ($\tau=RC$). Avec un temps de réponse lent c'est chiant pour tes mesures, mais ça peut être un avantage pour le bruit (c'est compliqué le bruit, mais plus grosse bande passante = plus de bruit)
+  \end{itemize}
+  \section{Performances}
+  Les perfs décrites sur le site thorlabs me semblent assez justes, mais je vais noter vite fait ce que j'ai vu.
+  
+  \subsection{La photodiode sur pile}
+  D'après Gabriel, c'est mieux d'être sur pile pour éviter le 50 Hz. Moi de ce que j'ai vu elle est pas ouf, mais j'ai pas vraiment accès au bruit de la photodiode directement.
+  La puissance optique que j'avais à chaque fois était de genre $P=700 nW$, puissance de PL raisonnable sur des adamas avec l'objectif vert (x40, NA=0.4).
+  
+  Branché direct à l'oscillo, j'avais un contraste de l'ordre de 0.5V, mais un temps de réponse à la ms.
+  
+  Branché sur la carte NI j'avais rien du tout (saturation, elle doit avoir une impédance d'entrée trop grande)
+  
+  Branché avec un bouchon de $20 k\Omega$ sur un T(fait maison STP, et j'ai galéré. Il est rangé dans le tiroir en haut à gauche du foutoir électronique), j'avais un temps de réponse de $50 \mu s$ mais un contraste de 10 mV.
+  
+ \subsection{La photodiode sur secteur}
+ En gros il faut l'utiliser sur les gains 60 ou 70 dB pour de la PL, mais les chiffres sont pas dégueux : contratse de 0.5V et 1.5V, et temps de réponse de $20 \mu s$ et $50 \mu s$. Même à $20 \mu s$ j'ai pas vu de différence entre la monté et la descente de la PL (la montée devrait être plus lente à cause de la polarisation des spins), mais c'est parce que le laser vert est à fond pour avoir du signal (à peu près le même ordre de grandeur $t_{pol}$ mesuré à l'APD).
+ Du coup c'est peut être jouable. Par contre j'ai vu un bruit chelou à 130 kHz.
+ 
+ Par ailleurs j'y avais pas pensé, mais je sais pas du tout comment dire à Labview de moyenner la tension entre deux points. En faite je sais pas sur combien de temps il lit une tension.
+ 
+  \end{document}	
+  
+  

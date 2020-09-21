@@ -43,7 +43,7 @@ def gauss_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
 
-def lor_fit(x,y,Amp=None,x0=None,sigma=None,ss=None) :
+def lor_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
 	if not ss :
 		ss=y[0]
 	if not Amp :
@@ -87,91 +87,37 @@ def stretch_exp_fit(x,y,Amp=None,ss=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
-def stretch_soustraction(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
-	if not tau :
-		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-np.sqrt(x/tau))
-	p0=[Amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
-
-def third_stretch(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
-	if not tau :
-		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-(x/tau)^(1/3))
-	p0=[Amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
-
-def stretch_et_phonon(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
-	if not tau :
-		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-np.sqrt(x/tau)-x/5E-3)
-	p0=[Amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
-
 def ask_name():
 	qapp = QApplication(sys.argv)
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
+def fit_rabi(x,y,amp=None,omega=None,ss=None,tau_decroissance=None,phi=0):
+	if not amp :
+		amp=max(x)-max(y)
+	if not omega :
+		omega=2*np.pi/(x[-1]-x[0])*5
+	if not ss :
+		ss=y[-1]
+	if not tau_decroissance :
+		tau_decroissance=x[int(len(x)/5)]-x[0]
+	def f(x,amp,omega,ss,tau_decroissance,phi):
+		return ss+amp*np.cos(omega*x+phi)*np.exp(-x/tau_decroissance)
+	p0=[amp,omega,ss,tau_decroissance,phi]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,popt[0],popt[1],popt[2],popt[3],popt[4]))
 
 
 
 
-fname='scan_100_rose_10V'
+fname='rabi_18_dB'
 x,y=extract_data(fname+'.txt')
-y=y/max(y)
-xmin=507
-x=x-x[xmin]
-x=x[xmin:]
-y=y[xmin:]
-x=x*66
-plt.plot(-x,y,lw=2,label='Photoluminescence')
 
-
-
-ax=plt.gca()
-ylim=ax.get_ylim()
-ymin=ylim[0]
-ymax=ylim[1]
-
-color = next(ax._get_lines.prop_cycler)['color']
-x=0
-plt.plot([x,x],[ymin,ymax],'--',color=color,label='Double quantums')
-
-
-
-color = next(ax._get_lines.prop_cycler)['color']
-# x=50.5276
-x=53.8
-plt.plot([x,x],[ymin,ymax],'--',color=color,label='VH- cross relaxation')
-
-x_transi=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
-color = next(ax._get_lines.prop_cycler)['color']
-x=x_transi[0]
-plt.plot([x,x],[ymin,ymax],'--',color=color,label='13C-NV cross relaxation')
-for x in x_transi[1:]:
-	plt.plot([x,x],[ymin,ymax],'--',color=color)
-
-
-ax.set_ylim(ylim)
-
-
-plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
-plt.ylabel('PL (arb.)',fontsize=25)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
-plt.legend(fontsize=18)
+plt.plot(x,y,label=fname)
+x=x[10:]
+y=y[10:]
+popt,yfit=fit_rabi(x,y)
+plt.plot(x,yfit,label='pulse pi =%e'%(np.pi/popt[1]))
+plt.legend()
 
 plt.show()
