@@ -37,8 +37,8 @@ class Photon_Counter(QMainWindow):
 
         self.Imax=1 #A
 
-        self.time_scan=11 #s
-        self.time_rampe=10 #s, doit être un multiple de 1s pour une raison mysterieuse
+        self.time_scan=1.1 #s
+        self.time_rampe=1 #s, doit être un multiple de 1s pour une raison mysterieuse
 
         self.sampling_rate=self.N_scan/self.time_scan
 

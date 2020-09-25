@@ -313,11 +313,12 @@ class Photon_Counter(QMainWindow):
 		freq_list,pow_list=create_list_freq(self.f_min,self.f_max,self.level,self.n_points)
 
 
-		resourceString4 = 'USB0::0x0AAD::0x0054::110693::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+		resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
 		rm = visa.ResourceManager()
 		self.PG = rm.open_resource( resourceString4 )
 		self.PG.write_termination = '\n'
+		self.PG.timeout=5000
 
 		self.PG.clear()  # Clear instrument io buffers and status
 		self.PG.write('*WAI')

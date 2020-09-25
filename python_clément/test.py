@@ -505,10 +505,6 @@ def test_apt():
 	apt._cleanup()
 
 
-
-
-
-
 def generateur_RS():
 	with nidaqmx.Task() as tension:
 		tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")    
@@ -923,5 +919,48 @@ def digital2d_out_simple():
 		task.start()
 		time.sleep(3)
 
-digital2d_out_simple()
+def trig_gen_courant(): #on a pas acheté l'option...
+	resourceString4 = 'USB0::0x0AAD::0x0197::5601.3800k03-101213::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+	rm = visa.ResourceManager()
+	PG = rm.open_resource( resourceString4 )
+	PG.write_termination = '\n'
+	PG.clear()  # Clear instrument io buffers and status
+	PG.write('OUTP:GEN 0')
+	PG.write('*WAI')
+	PG.write('INST 1')
+	PG.write('*WAI')
+	PG.write('VOLTage:RAMP ON')
+	PG.write('*WAI')
+	PG.write('VOLTage:EASYramp:TIME 1')#le temps est en secondes et j'arrive pas à faire 0.1 sec...
+	PG.write('*WAI')
+	PG.write('OUTP:SEL 1')
+	PG.write('*WAI')
+	PG.write('APPLY "1,1"')
+	PG.write('*WAI')  
+	PG.write('TRIGger:IN:SOURce:DIO1 CH1')
+	PG.write('*WAI')
+	PG.write('TRIG:ENAB:DIO1 ON')
+	PG.write('*WAI')
+	PG.write('TRIG:DIR:DIO1 INP')
+	PG.write('*WAI') 
+	PG.write('TRIG:IN:RESP:DIO1 ON')
+	PG.write('*WAI')
+	
+	with nidaqmx.Task() as trig_gbf :
+		trig_gbf.do_channels.add_do_chan('Dev1/port0/line0')
+		trig_gbf.timing.cfg_samp_clk_timing(10000,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=2)
+		signal=[True]+[False]
+		trig_gbf.write(signal)
+		trig_gbf.start()
 
+		time.sleep(2)
+	PG.write('OUTP:GEN 0')
+	PG.write('*WAI')
+	print(PG.query('SYSTem:ERRor?'))
+	print(PG.query('SYSTem:ERRor?'))
+	print(PG.query('SYSTem:ERRor?'))
+	print(PG.query('SYSTem:ERRor?'))
+	print(PG.query('SYSTem:ERRor?'))
+	print(PG.query('SYSTem:ERRor?'))
+
+trig_gen_courant()

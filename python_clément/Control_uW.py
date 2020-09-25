@@ -47,7 +47,7 @@ class Photon_Counter(QMainWindow):
 		self.start.clicked.connect(self.open_uW)
 		self.stop.clicked.connect(self.close_uW)
 
-		resourceString4 = 'USB0::0x0AAD::0x0054::110693::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+		resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
 		rm = visa.ResourceManager()
 		self.PG = rm.open_resource( resourceString4 )
