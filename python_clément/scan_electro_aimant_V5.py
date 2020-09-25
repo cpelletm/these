@@ -192,6 +192,16 @@ class Photon_Counter(QMainWindow):
         self.PG.clear()  # Clear instrument io buffers and status
         self.PG.write('OUTP:GEN 0')
         self.PG.write('*WAI')
+        self.PG.write('INST 1')
+        self.PG.write('*WAI')
+        self.PG.write('VOLTage:RAMP ON')
+        self.PG.write('*WAI')
+        self.PG.write('VOLTage:EASYramp:TIME %f'% self.time_rampe)#le temps est en secondes et j'arrive pas à faire 0.1 sec...
+        self.PG.write('*WAI')
+        self.PG.write('OUTP:SEL 1')
+        self.PG.write('*WAI')
+        self.PG.write('APPLY "%f,%f"' % (self.Vmax,self.Imax))
+        self.PG.write('*WAI')   
 
 
 
@@ -213,16 +223,7 @@ class Photon_Counter(QMainWindow):
     def take_point(self):
 
 
-        self.PG.write('INST 1')
-        self.PG.write('*WAI')
-        self.PG.write('VOLTage:RAMP ON')
-        self.PG.write('*WAI')
-        self.PG.write('VOLTage:EASYramp:TIME %f'% self.time_rampe)#le temps est en secondes et j'arrive pas à faire 0.1 sec...
-        self.PG.write('*WAI')
-        self.PG.write('OUTP:SEL 1')
-        self.PG.write('*WAI')
-        self.PG.write('APPLY "%f,%f"' % (self.Vmax,self.Imax))
-        self.PG.write('*WAI')        
+             
         
 
         self.PG.write('OUTP:GEN 1')
@@ -236,8 +237,8 @@ class Photon_Counter(QMainWindow):
         lecture=self.counter.read(self.N_scan+1)
         tensions=self.tension.read(self.N_scan) #piquets intervalles etc 
 
-        self.counter.read(nidaqmx.constants.READ_ALL_AVAILABLE)#clears the buffer
-        self.tension.read(nidaqmx.constants.READ_ALL_AVAILABLE)#clears the buffer
+        # self.counter.read(nidaqmx.constants.READ_ALL_AVAILABLE)#clears the buffer
+        # self.tension.read(nidaqmx.constants.READ_ALL_AVAILABLE)#clears the buffer
 
         PL=np.array([(lecture[i+1]-lecture[i])*self.sampling_rate for i in range(len(lecture)-1)])
 

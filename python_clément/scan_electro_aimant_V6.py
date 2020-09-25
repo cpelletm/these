@@ -34,7 +34,7 @@ class Photon_Counter(QMainWindow):
         self.N_scan=801 #nb of points per scan
         self.N_display=201
         self.Vmin=0 #V
-        self.Vmax=10 #V
+        self.Vmax=1 #V
 
         self.Imax=1 #A
 
