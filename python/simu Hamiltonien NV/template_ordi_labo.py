@@ -183,7 +183,7 @@ def NV_simple(orientation='111'):
 	# show_vpropres(val,vec,bnamez)
 	# transitions(val,vec,Sx,rho_0)
 	if orientation=='111' :
-		amps=np.linspace(0,200,100)
+		amps=np.linspace(0,500,100)
 		transi_NV=[]
 		for amp in amps :
 			# B=[amp,0,0]
@@ -269,7 +269,7 @@ def NV_simple(orientation='111'):
 		plt.show()
 
 
-# NV_simple(orientation='100')
+NV_simple(orientation='111')
 
 
 def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
@@ -552,7 +552,7 @@ def p1(): #le soucis pour la 111 c'est que il y a 6 transitions de NV possibles 
 	# val,vec=egvect(H)
 	# show_vpropres(val,vec,bname)
 	# print(abs(vec[4].dot(Sx_P1).dot(vec[3]))*2)
-p1()
+
 
 
 def NV_0():
