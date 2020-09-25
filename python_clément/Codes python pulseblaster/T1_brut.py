@@ -29,28 +29,20 @@ class Photon_Counter(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		
+		self.setWindowTitle("T1")
 
-		self.dt='10 us'
-		self.n_points=501
-		self.f=2870 #MHz
-		self.level=0 #dBm
+		self.t_max='4 ms'
+		self.t_ecl='500 us'
+		self.t_lect='500 us'
+		self.n_points=201
+		
 
 		self.refresh_rate=0.1
 
-		for s in self.dt.split() :
-			try :
-				self.dt_val=float(s)
-			except :
-				self.dt_unit=s
-		if self.dt_unit=='ms' :
-			self.dt_val=self.dt_val*1e-3
-		if self.dt_unit=='us' :
-			self.dt_val=self.dt_val*1e-6
-		if self.dt_unit=='ns' :
-			self.dt_val=self.dt_val*1e-9
+		
 		##Creation of the graphical interface##
 
-		self.setWindowTitle("Polarisation time")
+		
 
 		self.main = QWidget()
 		self.setCentralWidget(self.main)
@@ -67,24 +59,22 @@ class Photon_Counter(QMainWindow):
 
 
 		#Fields on the left
-		self.choice_menu=QComboBox()
-		self.choice_menu.addItem('Micro Wave')
-		self.choice_menu.addItem('AOM')
-		Vbox_gauche.addWidget(self.choice_menu)
+		self.labelt_max=QLabel("t_max")
+		self.lectt_max=QLineEdit(str(self.t_max))
+		Vbox_gauche.addWidget(self.labelt_max)
+		Vbox_gauche.addWidget(self.lectt_max)
 		Vbox_gauche.addStretch(1)
 
-
-		self.labelf=QLabel("f (MHz)")
-		self.lectf=QLineEdit(str(self.f))
-		Vbox_gauche.addWidget(self.labelf)
-		Vbox_gauche.addWidget(self.lectf)
+		self.labelt_ecl=QLabel("t_ecl")
+		self.lectt_ecl=QLineEdit(str(self.t_ecl))
+		Vbox_gauche.addWidget(self.labelt_ecl)
+		Vbox_gauche.addWidget(self.lectt_ecl)
 		Vbox_gauche.addStretch(1)
 
-
-		self.labellevel=QLabel("level (dBm)")
-		self.lectlevel=QLineEdit(str(self.level))
-		Vbox_gauche.addWidget(self.labellevel)
-		Vbox_gauche.addWidget(self.lectlevel)
+		self.labelt_lect=QLabel("t_lect")
+		self.lectt_lect=QLineEdit(str(self.t_lect))
+		Vbox_gauche.addWidget(self.labelt_lect)
+		Vbox_gauche.addWidget(self.lectt_lect)
 		Vbox_gauche.addStretch(1)
 
 		self.labeln_points=QLabel("n_points")
@@ -126,14 +116,14 @@ class Photon_Counter(QMainWindow):
 						MyToolbar(dynamic_canvas, self))
 		self.dynamic_ax= dynamic_canvas.figure.subplots()
 
-		self.x=np.linspace(0,self.dt_val*self.n_points,self.n_points-1)
-		self.y=np.zeros(self.n_points-1)
+		self.x=np.zeros(self.n_points)
+		self.y=np.zeros(self.n_points)
 		self.dynamic_line,=self.dynamic_ax.plot(self.x, self.y)
 		self.dynamic_ax.set_xlabel('time (s)')
   
 
 
-
+		self.update_value()
 
 
 			  
@@ -154,18 +144,43 @@ class Photon_Counter(QMainWindow):
 			line.remove()
 		self.dynamic_ax.figure.canvas.draw()
 
+	def num_val(self,pbtext):
+		for s in pbtext.split() :
+			try :
+				val=float(s)
+			except :
+				unit=s
+		if unit=='ms' :
+			val=val*1e-3
+		if unit=='us' :
+			val=val*1e-6
+		if unit=='ns' :
+			val=val*1e-9
+		return val
 
-
+	def make_taux_list(self,t_max,n_points):
+		t_max_val=self.num_val(t_max)
+		dt_val=t_max_val/n_points
+		taux=[]
+		x=[]
+		for i in range(n_points):
+			if i*dt_val > 20*1e-9 :
+				taux+=['%i ns'%(i*dt_val*1e9)]
+				x+=[i*dt_val]
+		x=np.array(x)
+		return(taux,x)
 		
 	def update_value(self):
-		self.f=np.float(self.lectf.text())
-		self.level=np.float(self.lectlevel.text())
-		self.n_points=np.int(self.lectn_points.text())
+		self.t_max=self.lectt_max.text()
+		self.t_ecl=self.lectt_ecl.text()
+		self.t_lect=self.lectt_lect.text()
+		self.n_points=int(self.lectn_points.text())
 
-		self.sampling_rate=1/self.dt_val
 
-		self.x=np.linspace(0,self.dt_val*self.n_points,self.n_points-1)
-		self.y=np.zeros(self.n_points-1)
+		self.t_lect_val=self.num_val(self.t_lect)
+		self.taux,self.x=self.make_taux_list(self.t_max,self.n_points)
+		self.n_points=len(self.taux)
+		self.y=np.zeros(self.n_points)
 		xmin=min(self.x)
 		xmax=max(self.x)
 		self.dynamic_ax.set_xlim([xmin,xmax]) 
@@ -183,44 +198,36 @@ class Photon_Counter(QMainWindow):
 
 		self.update_value()
 
-		self.config_uW() #Pour une raison mysterieuse il vaut mieux le faire au début
 
 		self.time_last_refresh=time.time()
 
-		def t_pola(dt,n_points) :
+		def T1_brut(taux,t_lect,t_ecl):
 			with open('PB_instructions.txt','w') as f:
-				for i in range(n_points):
+				for i in range(len(taux)) :
+					tau=taux[i]
 					if i == 0:
 						f.write('label : ')
 					else : 
 						f.write('\t')
-					if i < n_points/2 :
-						if self.choice_menu.currentIndex()==0 :
-							f.write('0b 1110, 20 ns\n')
-							f.write('\t0b 1100, '+dt)
-						if self.choice_menu.currentIndex()==1 :
-							f.write('0b 0110, 20 ns\n')
-							f.write('\t0b 0100, '+dt)
-					else :
-						if self.choice_menu.currentIndex()==0 :
-							f.write('0b 0110, 20 ns\n')
-							f.write('\t0b 0100, '+dt)
-						if self.choice_menu.currentIndex()==1 :
-							f.write('0b 0010, 20 ns\n')
-							f.write('\t0b 0000, '+dt)
-					if i==n_points-1:
+
+					f.write('0b 1100, '+t_ecl+'\n')
+					f.write('\t0b 1000, '+tau+'\n')
+					f.write('\t0b 1110, 20 ns \n') 
+					f.write('\t0b 1100, '+t_lect+'\n') 
+					f.write('\t0b 1110, 20 ns') 
+					if i==len(taux)-1:
 						f.write(', branch, label')
 					else :
 						f.write('\n')
 
-		t_pola(self.dt,self.n_points)
+		T1_brut(self.taux,self.t_lect,self.t_ecl)
 		check_output('spbicl load pb_instructions.txt 500.0')
 
 
 
 		self.apd=nidaqmx.Task()
 		self.apd.ci_channels.add_ci_count_edges_chan('Dev1/ctr0')
-		self.apd.timing.cfg_samp_clk_timing(self.sampling_rate,source='/Dev1/PFI9',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_points)
+		self.apd.timing.cfg_samp_clk_timing(100E6,source='/Dev1/PFI9',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_points)
 
 
 		self.apd.start()
@@ -242,17 +249,19 @@ class Photon_Counter(QMainWindow):
 	def take_point(self):
 
 
-		lecture=self.apd.read(self.n_points)
+		lecture=self.apd.read(2*self.n_points)
 
 
 		# PL=np.array([(lecture[i+1]-lecture[i])*self.sampling_rate for i in range(len(lecture)-1)])
 
 		lecture=np.array(lecture)
-		PL=lecture[1:]-lecture[:-1]
+		PL=np.zeros(self.n_points)
+		for i in range(self.n_points):
+			PL[i]=(lecture[2*i+1]-lecture[2*i])/self.t_lect_val
+
 		if self.normalize_cb.isChecked() :
 			PL=PL/max(PL)
-		else : 
-			PL=PL*self.sampling_rate
+
 		
 
 		if min(PL) >= 0 : #Pour éviter les reset de compteur
@@ -262,12 +271,8 @@ class Photon_Counter(QMainWindow):
 
 		if time.time()-self.time_last_refresh>self.refresh_rate :
 			self.dynamic_line.set_ydata(self.y)
-			if self.choice_menu.currentIndex()==0 :				
-				ymin=min(self.y)
-				ymax=max(self.y)
-			if self.choice_menu.currentIndex()==1 :				
-				ymin=min(self.y[1:self.n_points//2-1])
-				ymax=max(self.y[1:self.n_points//2-1])
+			ymin=min(self.y)
+			ymax=max(self.y)
 			self.dynamic_ax.set_ylim([ymin,ymax]) 
 
 			self.dynamic_ax.figure.canvas.draw()
@@ -310,21 +315,7 @@ class Photon_Counter(QMainWindow):
 		self.stop.setEnabled(False)
 		self.start.setEnabled(True)  
 
-	def config_uW(self):
-		resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
-		rm = visa.ResourceManager()
-		self.PG = rm.open_resource( resourceString4 )
-		self.PG.write_termination = '\n'
-
-		self.PG.clear()  # Clear instrument io buffers and status
-		self.PG.write('*WAI')
-		self.PG.write('FREQ %f MHz'%self.f)
-		self.PG.write('*WAI')
-		self.PG.write('POW %f dBm'%self.level)
-		self.PG.write('*WAI')
-		self.PG.write('OUTP ON')
-		self.PG.write('*WAI')
 
 
 

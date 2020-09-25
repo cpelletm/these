@@ -31,11 +31,11 @@ class Photon_Counter(QMainWindow):
 		
 		self.setWindowTitle("Rabi")
 
-		self.t_max='2 us'
-		self.t_ecl='70 us'
-		self.t_lect='70 us'
-		self.n_points=301
-		self.f=2359 #MHz
+		self.t_max='100 us'
+		self.t_ecl='300 us'
+		self.t_lect='300 us'
+		self.n_points=201
+		self.f=2873 #MHz
 		self.level=20 #dBm
 
 		self.refresh_rate=0.1
@@ -320,7 +320,7 @@ class Photon_Counter(QMainWindow):
 		self.start.setEnabled(True)  
 
 	def config_uW(self):
-		resourceString4 = 'USB0::0x0AAD::0x0054::110693::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+		resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
 		rm = visa.ResourceManager()
 		self.PG = rm.open_resource( resourceString4 )

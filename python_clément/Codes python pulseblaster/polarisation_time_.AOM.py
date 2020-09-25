@@ -67,13 +67,6 @@ class Photon_Counter(QMainWindow):
 
 
 		#Fields on the left
-		self.choice_menu=QComboBox()
-		self.choice_menu.addItem('Micro Wave')
-		self.choice_menu.addItem('AOM')
-		Vbox_gauche.addWidget(self.choice_menu)
-		Vbox_gauche.addStretch(1)
-
-
 		self.labelf=QLabel("f (MHz)")
 		self.lectf=QLineEdit(str(self.f))
 		Vbox_gauche.addWidget(self.labelf)
@@ -195,19 +188,11 @@ class Photon_Counter(QMainWindow):
 					else : 
 						f.write('\t')
 					if i < n_points/2 :
-						if self.choice_menu.currentIndex()==0 :
-							f.write('0b 1110, 20 ns\n')
-							f.write('\t0b 1100, '+dt)
-						if self.choice_menu.currentIndex()==1 :
-							f.write('0b 0110, 20 ns\n')
-							f.write('\t0b 0100, '+dt)
+						f.write('0b 1110, 20 ns\n')
+						f.write('\t0b 1100, '+dt)
 					else :
-						if self.choice_menu.currentIndex()==0 :
-							f.write('0b 0110, 20 ns\n')
-							f.write('\t0b 0100, '+dt)
-						if self.choice_menu.currentIndex()==1 :
-							f.write('0b 0010, 20 ns\n')
-							f.write('\t0b 0000, '+dt)
+						f.write('0b 0110, 20 ns\n')
+						f.write('\t0b 0100, '+dt)
 					if i==n_points-1:
 						f.write(', branch, label')
 					else :
@@ -262,12 +247,8 @@ class Photon_Counter(QMainWindow):
 
 		if time.time()-self.time_last_refresh>self.refresh_rate :
 			self.dynamic_line.set_ydata(self.y)
-			if self.choice_menu.currentIndex()==0 :				
-				ymin=min(self.y)
-				ymax=max(self.y)
-			if self.choice_menu.currentIndex()==1 :				
-				ymin=min(self.y[1:self.n_points//2-1])
-				ymax=max(self.y[1:self.n_points//2-1])
+			ymin=min(self.y)
+			ymax=max(self.y)
 			self.dynamic_ax.set_ylim([ymin,ymax]) 
 
 			self.dynamic_ax.figure.canvas.draw()
