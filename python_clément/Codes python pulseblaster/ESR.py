@@ -262,8 +262,9 @@ class Photon_Counter(QMainWindow):
 		try :
 			self.PG.write('*RST')
 			self.PG.write('*WAI')
+			self.PG.close()
 		except :
-			pass
+			print('could not close uW')
 		try :
 			def AOM_on():
 				with open('PB_instructions.txt','w') as f:

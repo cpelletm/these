@@ -129,7 +129,7 @@ class Photon_Counter(QMainWindow):
 			  
 		#Define the buttons' action 
 		
-		self.start.clicked.connect(self.start_measure)
+		self.start.clicked.connect(lambda : self.start_measure()) #De facon très étrange, sans la lambda fonction il me change initial en False...
 		self.stop.clicked.connect(self.stop_measure)
 		self.keep_button.clicked.connect(self.keep_trace)
 		self.clear_button.clicked.connect(self.clear_trace)
@@ -189,16 +189,15 @@ class Photon_Counter(QMainWindow):
 	   
 
 
-	def start_measure(self):
+	def start_measure(self,initial=True):
 		## What happens when you click "start" ##
 
+		if initial :			
+			self.update_value()
+			self.repeat=1.
 
 		self.start.setEnabled(False)
 		self.stop.setEnabled(True)
-
-		self.update_value()
-
-
 		self.time_last_refresh=time.time()
 
 		def T1_brut(taux,t_lect,t_ecl):
@@ -232,19 +231,25 @@ class Photon_Counter(QMainWindow):
 
 		self.apd.start()
 			
-		self.repeat=1.
 		
 
 		#Start the timer     
 		self.timer = QTimer(self,interval=0)        
-		self.timer.timeout.connect(self.take_point)
+		self.timer.timeout.connect(self.measure)
 		self.timer.start()
 
 		check_output('spbicl start')
 		
 		
 
-		
+	def measure(self):
+		try :
+			self.take_point()
+		except :
+			self.stop_measure()
+			self.start_measure(initial=False)
+
+
 
 	def take_point(self):
 
@@ -294,6 +299,7 @@ class Photon_Counter(QMainWindow):
 		try :
 			self.PG.write('*RST')
 			self.PG.write('*WAI')
+			self.PG.close()
 		except :
 			pass
 		try :

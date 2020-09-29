@@ -31,11 +31,11 @@ class Photon_Counter(QMainWindow):
 		
 		self.setWindowTitle("Rabi")
 
-		self.t_max='100 us'
+		self.t_max='30 us'
 		self.t_ecl='300 us'
 		self.t_lect='300 us'
 		self.n_points=201
-		self.f=2873 #MHz
+		self.f=2744.4 #MHz
 		self.level=20 #dBm
 
 		self.refresh_rate=0.1
