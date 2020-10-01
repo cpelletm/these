@@ -182,9 +182,9 @@ def NV_simple(orientation='111'):
 	# val,vec=egvect(H)
 	# show_vpropres(val,vec,bnamez)
 	# transitions(val,vec,Sx,rho_0)
-	D_VH=2695
+	D_VH=2466
 	if orientation=='111' :
-		amps=np.linspace(0,200,100)
+		amps=np.linspace(0,200,201)
 		transi_NV=[]
 		for amp in amps :
 			# B=[amp,0,0]
@@ -209,6 +209,53 @@ def NV_simple(orientation='111'):
 		color = next(ax._get_lines.prop_cycler)['color']
 		plt.plot(amps,transi_NV[:,0],color=color)
 		plt.plot(amps,transi_NV[:,1],color=color)
+		transi_NV=[]
+		for amp in amps :
+			# B=[amp,0,0]
+			B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+			H=Hamiltonian_0(B,classe=1,E=3,D=D_VH)
+			val,vec=egvect(H)
+			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+		transi_NV=np.array(transi_NV)
+		ax=plt.gca()
+		color = next(ax._get_lines.prop_cycler)['color']
+		plt.plot(amps,transi_NV[:,0],color=color)
+		plt.plot(amps,transi_NV[:,1],color=color)
+		transi_NV=[]
+		for amp in amps :
+			# B=[amp,0,0]
+			B=[amp/sqrt(3),amp/sqrt(3),amp/sqrt(3)]
+			H=Hamiltonian_0(B,classe=2,E=3,D=D_VH)
+			val,vec=egvect(H)
+			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+		transi_NV=np.array(transi_NV)
+		ax=plt.gca()
+		color = next(ax._get_lines.prop_cycler)['color']
+		plt.plot(amps,transi_NV[:,0],color=color)
+		plt.plot(amps,transi_NV[:,1],color=color)
+		def zero_approx(l1,l2):
+			lx=l1._x
+			l1y=l1._y
+			l2y=l2._y
+			for i in range(len(lx)):
+				if (l1y[0]-l2y[0])*(l1y[i]-l2y[i]) < 0:
+					return((lx[i]+lx[i-1])/2,(l1y[i]+l1y[i-1])/2)
+			return -1,-1
+		ylim=ax.get_ylim()
+		color = next(ax._get_lines.prop_cycler)['color']
+		
+		
+		lines=ax.get_lines()
+		for i in range(len(lines)):
+			for j in range(i):
+				l1=lines[i]
+				l2=lines[j]
+				x_c,y_c=zero_approx(l1,l2)
+				if x_c>0:
+					plt.plot([x_c,x_c],[0,y_c],'--',color=color)
+
+
+		ax.set_ylim(ylim)
 		plt.show()
 	if orientation=='100' :
 		amps=np.linspace(0,200,100)
@@ -270,84 +317,169 @@ def NV_simple(orientation='111'):
 		plt.show()
 
 
-NV_simple(orientation='100')
+NV_simple(orientation='111')
 
 
-def egv_C13(): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
-	amps=np.linspace(0,100,100)
-	transi=[]
-	transi_NV=[]
-	for amp in amps :
-		B=[amp,0,0]
-		val,vec=carbon_13(B,show=False)
-		transi+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
-		H=Hamiltonian_0(B,classe=1,E=3)
-		val,vec=egvect(H)
-		transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
-	transi=np.array(transi)
-	transi_NV=np.array(transi_NV)
-	ax=plt.gca()
-	color = next(ax._get_lines.prop_cycler)['color']
-	for i in range(len(transi[0,:])) :
-		if i==0 :
-			plt.plot(amps,transi[:,i],'--',color=color,label='NV with 13C first shell')
-		else :
-			plt.plot(amps,transi[:,i],'--',color=color)
-	color = next(ax._get_lines.prop_cycler)['color']
-	for i in range(len(transi_NV[0,:])) :
-		if i==0 :
-			plt.plot(amps,transi_NV[:,i],color=color,label='isolated NV')
-		else :
-			plt.plot(amps,transi_NV[:,i],color=color)
-	def zero(i,j):
-		def f(amp):
+def egv_C13(orientation='100'): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 
+	if orientation == '100' :
+		amps=np.linspace(0,100,100)
+		transi=[]
+		transi_NV=[]
+		for amp in amps :
 			B=[amp,0,0]
 			val,vec=carbon_13(B,show=False)
-			transi=[val[2]-val[0],val[2]-val[1],val[3]-val[0],val[3]-val[1],val[4]-val[0],val[4]-val[1],val[5]-val[0],val[5]-val[1]]
-			transi_fs=transi[i]
+			transi+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
 			H=Hamiltonian_0(B,classe=1,E=3)
 			val,vec=egvect(H)
-			transi=[val[2]-val[0],val[1]-val[0]]
-			transi_NV=transi[j]
-			return transi_fs-transi_NV
-		RR=root_scalar(f,bracket=[0,50])
-		if RR.converged :
-			amp=RR.root
-			B=[amp,0,0]
+			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+		transi=np.array(transi)
+		transi_NV=np.array(transi_NV)
+		ax=plt.gca()
+		color = next(ax._get_lines.prop_cycler)['color']
+		for i in range(len(transi[0,:])) :
+			if i==0 :
+				plt.plot(amps,transi[:,i],'--',color=color,label='NV with 13C first shell')
+			else :
+				plt.plot(amps,transi[:,i],'--',color=color)
+		color = next(ax._get_lines.prop_cycler)['color']
+		for i in range(len(transi_NV[0,:])) :
+			if i==0 :
+				plt.plot(amps,transi_NV[:,i],color=color,label='isolated NV')
+			else :
+				plt.plot(amps,transi_NV[:,i],color=color)
+		def zero(i,j):
+			def f(amp):
+				B=[amp,0,0]
+				val,vec=carbon_13(B,show=False)
+				transi=[val[2]-val[0],val[2]-val[1],val[3]-val[0],val[3]-val[1],val[4]-val[0],val[4]-val[1],val[5]-val[0],val[5]-val[1]]
+				transi_fs=transi[i]
+				H=Hamiltonian_0(B,classe=1,E=3)
+				val,vec=egvect(H)
+				transi=[val[2]-val[0],val[1]-val[0]]
+				transi_NV=transi[j]
+				return transi_fs-transi_NV
+			RR=root_scalar(f,bracket=[0,50])
+			if RR.converged :
+				amp=RR.root
+				B=[amp,0,0]
+				H=Hamiltonian_0(B,classe=1,E=3)
+				val,vec=egvect(H)
+				transi=[val[2]-val[0],val[1]-val[0]]
+				transi_NV=transi[j]
+				return amp,transi_NV
+			else :
+				return False
+
+		zero_pairs=[[2,1],[3,1],[4,0],[5,0]]
+		x_transi=[]
+		y_transi=[]
+		for pair in zero_pairs :
+			x,y=zero(pair[0],pair[1])
+			x_transi+=[x]
+			y_transi+=[y]
+		print(x_transi)
+		print(y_transi)
+
+		color = next(ax._get_lines.prop_cycler)['color']
+		plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color,label='cross relaxation')		
+		ylim=ax.get_ylim()
+		for i in range(len(x_transi)) :
+			x0=x_transi[i]
+			y0=y_transi[i]
+			plt.plot([x0,x0],[y0,0],'--',color=color)
+		ax.set_ylim(ylim)
+		plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
+		plt.ylabel('Transition frequency (MHz)',fontsize=25)
+		plt.xticks(fontsize=15)
+		plt.yticks(fontsize=15)
+		plt.legend(fontsize=18)
+		plt.show()
+	if orientation=='111' :
+		amps=np.linspace(0,100,201)
+		transi=[]
+		transi_NV=[]
+		for amp in amps :
+			B=[amp,amp,amp]/np.sqrt(3)
+			val,vec=carbon_13(B,show=False)
+			transi+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
 			H=Hamiltonian_0(B,classe=1,E=3)
 			val,vec=egvect(H)
-			transi=[val[2]-val[0],val[1]-val[0]]
-			transi_NV=transi[j]
-			return amp,transi_NV
-		else :
-			return False
+			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+		transi=np.array(transi)
+		transi_NV=np.array(transi_NV)
+		ax=plt.gca()
+		color = next(ax._get_lines.prop_cycler)['color']
+		for i in range(len(transi[0,:])) :
+			if i==0 :
+				plt.plot(amps,transi[:,i],'--',color=color,label='NV-13C aligned')
+			else :
+				plt.plot(amps,transi[:,i],'--',color=color)
+		color = next(ax._get_lines.prop_cycler)['color']
+		for i in range(len(transi_NV[0,:])) :
+			if i==0 :
+				plt.plot(amps,transi_NV[:,i],color=color,label='NV aligned')
+			else :
+				plt.plot(amps,transi_NV[:,i],color=color)
 
-	zero_pairs=[[2,1],[3,1],[4,0],[5,0]]
-	x_transi=[]
-	y_transi=[]
-	for pair in zero_pairs :
-		x,y=zero(pair[0],pair[1])
-		x_transi+=[x]
-		y_transi+=[y]
-	print(x_transi)
-	print(y_transi)
+		transi=[]
+		transi_NV=[]
+		for amp in amps :
+			B=[amp,amp,amp]/np.sqrt(3)
+			val,vec=carbon_13(B,show=False,classe=2)
+			transi+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
+			H=Hamiltonian_0(B,classe=2,E=3)
+			val,vec=egvect(H)
+			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+		transi=np.array(transi)
+		transi_NV=np.array(transi_NV)
+		ax=plt.gca()
+		color = next(ax._get_lines.prop_cycler)['color']
+		for i in range(len(transi[0,:])) :
+			if i==0 :
+				plt.plot(amps,transi[:,i],'--',color=color,label='NV-13C not aligned')
+			else :
+				plt.plot(amps,transi[:,i],'--',color=color)
+		color = next(ax._get_lines.prop_cycler)['color']
+		for i in range(len(transi_NV[0,:])) :
+			if i==0 :
+				plt.plot(amps,transi_NV[:,i],color=color,label='NV not aligned')
+			else :
+				plt.plot(amps,transi_NV[:,i],color=color)
 
-	color = next(ax._get_lines.prop_cycler)['color']
-	plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color,label='cross relaxation')		
-	ylim=ax.get_ylim()
-	for i in range(len(x_transi)) :
-		x0=x_transi[i]
-		y0=y_transi[i]
-		plt.plot([x0,x0],[y0,0],'--',color=color)
-	ax.set_ylim(ylim)
-	plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
-	plt.ylabel('Transition frequency (MHz)',fontsize=25)
-	plt.xticks(fontsize=15)
-	plt.yticks(fontsize=15)
-	plt.legend(fontsize=18)
-	plt.show()
 
-# egv_C13()
+		def zero_approx(l1,l2):
+			lx=l1._x
+			l1y=l1._y
+			l2y=l2._y
+			for i in range(len(lx)):
+				if (l1y[0]-l2y[0])*(l1y[i]-l2y[i]) < 0:
+					return((lx[i]+lx[i-1])/2,(l1y[i]+l1y[i-1])/2)
+			return -1,-1
+		ylim=ax.get_ylim()
+		color = next(ax._get_lines.prop_cycler)['color']
+		
+		
+		lines=ax.get_lines()
+		for i in [8,9,18,19]:
+			# for j in range(len(lines)):
+			for j in [0,1,2,3,4,5,6,7]:
+				l1=lines[i]
+				l2=lines[j]
+				x_c,y_c=zero_approx(l1,l2)
+				if x_c>0:
+					plt.plot([x_c,x_c],[0,y_c],'--',color=color)
+
+
+		ax.set_ylim(ylim)
+		plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
+		plt.ylabel('Transition frequency (MHz)',fontsize=25)
+		plt.xticks(fontsize=15)
+		plt.yticks(fontsize=15)
+		plt.legend(fontsize=18)
+		plt.show()
+
+
+# egv_C13(orientation='111')
 
 
 def p1(): #le soucis pour la 111 c'est que il y a 6 transitions de NV possibles (et 15*2 de P1...). Pour l'instant j'ai pas tout pris en compte.

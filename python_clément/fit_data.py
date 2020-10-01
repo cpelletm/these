@@ -153,7 +153,7 @@ class Photon_Counter(QMainWindow):
         fname,filters=QFileDialog.getOpenFileName(self,"Chose a data file","D:/DATA","Data files (*.txt)")
         if fname!= "" :
             self.data=[]
-            with open (fname,'r') as f :
+            with open (fname,'r',encoding = "ISO-8859-1") as f :
                 for textLine in f :
                     textLine=textLine.split() #Assumes tab/space as separator; else add the separator here
                     numLine=[]

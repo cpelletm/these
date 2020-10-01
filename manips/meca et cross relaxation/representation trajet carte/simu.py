@@ -157,9 +157,8 @@ plot_canevas(ax)
 theta_111=arctan(sqrt(2))
 
 
-
-B_in=spher_to_cart(pi/4,pi/4)*200+[30,0,0]
-B_out=spher_to_cart(pi/4,pi/4)*200-[30,0,0]
+B_in=np.array([37.10881904,  26.76190453, 106.28458597])
+B_out=np.array([ 40.38174003, -22.4760415 , 129.65136112])
 n=200
 Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)

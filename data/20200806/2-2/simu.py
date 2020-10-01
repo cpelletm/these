@@ -128,16 +128,23 @@ def spher_to_cart(theta,phi):
 	return(np.array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)]))
 
 
+h=6.626*1E-34
+gamma_e=2.8*1E6 #en Hz/Gauss
+n_centers=1E9/4 #nb de spins par classe
 
-fig,ax=plt.subplots(2)
+xmin=30
+
+fig,ax=plt.subplots()
 
 
 theta_111=arctan(sqrt(2))
 gamma_las=5E-3
 
-B_in=np.array([72.65829175, 30.55410235, 85.39414061])
-B_out=np.array([ 27.41941162,  50.08273284, 114.89942708])
-n=200
+B_in=np.array([ 37.0815447 ,  27.17222075, 106.08986284])
+B_out=np.array([ 40.35446569, -22.06572528, 129.456638  ])
+n=201
+xs=np.linspace(0,np.linalg.norm(B_out-B_in),n)
+xs=xs-xs[xmin]
 Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)
 Bzs=np.linspace(B_in[2],B_out[2],n)
@@ -148,7 +155,7 @@ PLs_sans=[]
 for i in range(n):
 	B=[Bxs[i],Bys[i],Bzs[i]]
 	H=Hamiltonian_NV_propre_base(B)
-	gamma_t1=make_t1_list(B)
+	gamma_t1=make_t1_list(B,width=6)
 	s,rho_0=spin_3vx_4classes(B,gamma_las,gamma_t1)
 	PLs+=[rho_0]
 	torques+=[np.cross(s,B)]
@@ -157,21 +164,79 @@ for i in range(n):
 	PLs_sans+=[rho_0]
 	torques_sans+=[np.cross(s,B)]
 
-torques=np.array(torques)
-torques_sans=np.array(torques_sans)
-color = next(ax[0]._get_lines.prop_cycler)['color']
-ax[0].plot(PLs,label='PL',color=color)
-ax[0].plot(PLs_sans,'--',color=color)
-color = next(ax[1]._get_lines.prop_cycler)['color']
-ax[1].plot(torques[:,0],label='Torque x',color=color)
-ax[1].plot(torques_sans[:,0],'--',color=color)
-color = next(ax[1]._get_lines.prop_cycler)['color']
-ax[1].plot(torques[:,1],label='Torque y',color=color)
-ax[1].plot(torques_sans[:,1],'--',color=color)
-color = next(ax[1]._get_lines.prop_cycler)['color']
-ax[1].plot(torques[:,2],label='Torque z',color=color)
-ax[1].plot(torques_sans[:,2],'--',color=color)
 
-for axes in ax:
-	axes.legend()
+
+
+torques=np.array(torques)*h*gamma_e*n_centers*1E19
+torques_sans=np.array(torques_sans)*h*gamma_e*n_centers*1E19
+PLs=np.array(PLs)/4
+PLs_sans=np.array(PLs_sans)/4
+
+
+
+# color = next(ax._get_lines.prop_cycler)['color']
+# ax.plot(xs[xmin:],PLs[xmin:],label='With CR',color=color)
+# ax.plot(xs[xmin:],PLs_sans[xmin:],'--',color=color,label='Without CR')
+# ax.set_xlabel('Secondary B (G)',fontsize=25)
+# ax.set_ylabel(r'$\rho_{00}$',fontsize=25)
+
+# color = next(ax._get_lines.prop_cycler)['color']
+# ax.plot(xs[xmin:],torques[xmin:,0],label='With CR',color=color)
+# ax.plot(xs[xmin:],torques_sans[xmin:,0],'--',label='Without CR', color=color)
+# ax.set_xlabel('Secondary B (g)',fontsize=25)
+# ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=25)
+
+color = next(ax._get_lines.prop_cycler)['color']
+ax.plot(xs[xmin:],torques[xmin:,1],label='With CR',color=color)
+ax.plot(xs[xmin:],torques_sans[xmin:,1],'--',label='Without CR', color=color)
+ax.set_xlabel('Secondary B (g)',fontsize=25)
+ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=25)
+
+# color = next(ax._get_lines.prop_cycler)['color']
+# ax.plot(xs[xmin:],torques[xmin:,2],label='With CR',color=color)
+# ax.plot(xs[xmin:],torques_sans[xmin:,2],'--',label='Without CR', color=color)
+# ax.set_xlabel('Secondary B (g)',fontsize=25)
+# ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=25)
+
+
+
+
+def extract_data(filename,xcol=0,ycol=1):
+	x=[]
+	y=[]
+	with open(filename,'r',encoding = "ISO-8859-1") as f:
+		for line in f :
+			line=line.split()
+			try :
+				x+=[float(line[xcol])]
+				y+=[float(line[ycol])]
+			except :
+				pass
+	return(np.array(x),np.array(y))
+
+
+# y_tot=np.zeros(201)
+# pool=['0-0.5V_PLdown','0-0.5V_PLdown-b','0-0.5V_PLdown-c','0-0.5V_PLdown-d','0-0.5V_PLdown-d-14uW_was9','0-0.5V_PLdown-e-14uW','0-0.5V_PLdown-f-18.5uW']
+# for fname in pool :
+# 	x,y=extract_data(fname+'.txt',ycol=3)
+# 	y=y/max(y)
+# 	y_tot+=y/7
+
+
+# ax.set_xlabel('Secondary B (G)',fontsize=25)
+# ax.set_ylabel('Signal (a.u.)',fontsize=25)
+# ax.plot(xs[xmin:],y_tot[xmin:])
+
+# fname='0-0.5V_PLdown'
+# x,y=extract_data(fname+'.txt',ycol=1)
+# y=y/max(y)
+# ax.set_xlabel('Secondary B (G)',fontsize=25)
+# ax.set_ylabel('Signal (a.u.)',fontsize=25)
+# ax.plot(xs[xmin:],y[xmin:])
+
+
+
+# ax.legend(fontsize=25)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
 plt.show()
