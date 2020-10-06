@@ -35,6 +35,10 @@ def fit_ordre_4(x,y) :
 	a,b,c,d,e = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([a,b,c,d,e],a*x**4+b*x**3+c*x**2+d*x+e)
 
+def fit_ordre_6(x,y) :
+	A=np.vstack([x**6,x**5,x**4,x**3,x**2,x,np.ones(len(x))]).T
+	w,z,a,b,c,d,e = np.linalg.lstsq(A, y, rcond=None)[0]
+	return([w,z,a,b,c,d,e],w*x**6+z*x**5+a*x**4+b*x**3+c*x**2+d*x+e)
 def gauss_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
 	if not ss :
 		ss=y[0]
@@ -130,21 +134,66 @@ def stretch_et_phonon(x,y,Amp=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
+def lissage(y):
+	yl=np.zeros(len(y))
+	yl[0]=y[0]
+	yl[-1]=y[-1]
+	for i in range(1,len(y)-1):
+		yl[i]=(y[i]/2+y[i-1]/4+y[i+1]/4)
+	return(yl)
+
+
 def ask_name():
 	qapp = QApplication(sys.argv)
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
-# xmin=0
-# xmax=-1
-indices=[294,313,327,339,352,368,383,405,456,474]
-xmin=295
-xmax=474#295+113#474
+
+
+
+def fit_droite():
+	# xmin=0
+	# xmax=-1
+	indices=[294,313,327,339,352,368,383,405,456,474]
+	xmin=295
+	xmax=474#295+113#474
+
+	fname='scan_rose_111'
+	x,y=extract_data(fname+'.txt',ycol=1)
+	x=x*56.528132258549384-9.624229803755462
+	y=y/max(y)
+	xs=[]
+	ys=[]
+	for i in indices :
+		xs+=[x[i]]
+		ys+=[y[i]]
+	xs=np.array(xs)
+	ys=np.array(ys)
+	plt.plot(x,y)
+
+
+	# fname='scan_uW_2783'
+	# x,y=extract_data(fname+'.txt',ycol=1)
+	# x=x*56.528132258549384-9.624229803755462
+	# y=y/max(y)
+
+
+	x=x[xmin:xmax]
+	y=y[xmin:xmax]
+	popt,yfit=fit_ordre_4(xs,ys)
+	plt.plot(x,popt[0]*x**4+popt[1]*x**3+popt[2]*x**2+popt[3]*x+popt[4])
+
+	plt.show()
+
+indices=[211,206,194,190,179,167,154,143,137,119,97,52,45,40]
 
 fname='scan_rose_111'
+xmax=212
+xmin=95
 x,y=extract_data(fname+'.txt',ycol=1)
 x=x*56.528132258549384-9.624229803755462
 y=y/max(y)
+# plt.plot(y[xmin:xmax])
 xs=[]
 ys=[]
 for i in indices :
@@ -152,18 +201,17 @@ for i in indices :
 	ys+=[y[i]]
 xs=np.array(xs)
 ys=np.array(ys)
-plt.plot(x,y)
-
-
-# fname='scan_uW_2783'
-# x,y=extract_data(fname+'.txt',ycol=1)
-# x=x*56.528132258549384-9.624229803755462
-# y=y/max(y)
-
-
+# popt,yfit=fit_ordre_4(xs,ys)
+popt,yfit=fit_ordre_6(xs,ys)
 x=x[xmin:xmax]
 y=y[xmin:xmax]
-popt,yfit=fit_ordre_4(xs,ys)
-plt.plot(x,popt[0]*x**4+popt[1]*x**3+popt[2]*x**2+popt[3]*x+popt[4])
-
+plt.plot(x,y-(popt[0]*x**6+popt[1]*x**5+popt[2]*x**4+popt[3]*x**3+popt[4]*x**2+popt[5]*x+popt[6]))
+# dy=y[1:]-y[:-1]
+# dy=dy/max(dy[:xmax])
+# plt.plot(dy[:xmax])
+# dy_liss=lissage(dy)
+# plt.plot(dy_liss[:xmax])
+# d2y=y[2:]+y[:-2]-2*y[1:-1]
+# d2y=d2y/max(d2y)
+# plt.plot(d2y)
 plt.show()
