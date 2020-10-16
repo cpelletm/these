@@ -125,102 +125,21 @@ def ask_name():
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
+fig,ax=plt.subplots()
+fname='0-0.8V_PLdown-Db'
+x,y=extract_data(fname+('.txt'),ycol=3)
+xmin=100
+xmax=165
+xplotmin=80
 
-# fname='scan_rose_4x_0B_zoom_align3'
-# x,y=extract_data(fname+'.txt')
-# x2,y2=extract_data(fname+'.txt',xcol=2,ycol=3)
-# y2=list(y2)
-# xmin=y2.index(max(y2))
-# xmax=y2.index(min(y2))
-# y2=y2[xmin:xmax]
-# y=y[xmin:xmax]
-# plt.plot(y2,y)
-# popt,yfit=lor_fit(y2,y)
-# plt.plot(y2,yfit,label='lor, sigma=%f'%popt[2])
+x=(x-x[xplotmin])*31
 
 
-center=2.863
+ax.plot(x[xplotmin:],y[xplotmin:],'x',ms=8,mew=2)
 
-# fname='ESR_4x_3V_zoom_align3'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# y=list(y)
-# mil=y.index(min(y))
-# x=x+center-x[mil]
-# plt.plot(x,y,label=fname)
-
-# fname='ESR_zoom_3V'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# y=list(y)
-# mil=y.index(min(y))
-# x=x+center-x[mil]
-# plt.plot(x,y,label=fname)
-
-# fname='ESR_zoom_5V'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# y=list(y)
-# mil=y.index(min(y))
-# x=x+center-x[mil]
-# plt.plot(x,y,label=fname)
-
-# fname='ESR_zoom_0V'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# plt.plot(x,y,label=fname)
-
-ax = plt.gca()
-color = next(ax._get_lines.prop_cycler)['color']
-
-fname='t1_nuit_1x-15-07'
-x,y=extract_data(fname+'.txt')
-x=x[3:]
-y=y[3:]
-y=y/y[0]
-plt.plot(x*1E3,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x*1E3,yfit,label='No degenerancies',color=color)
+popt,yfit=gauss_fit(x[xmin:xmax],y[xmin:xmax])
+ax.plot(x[xmin:xmax],yfit,linewidth=5)
 print(popt[2])
-
-color = next(ax._get_lines.prop_cycler)['color']
-fname='t1_2x2'
-x,y=extract_data(fname+'.txt')
-x=x[3:]
-y=y[3:]
-y=y/y[0]
-plt.plot(x*1E3,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x*1E3,yfit,label='2-classes degenerancy',color=color)
-print(popt[2])
-
-
-color = next(ax._get_lines.prop_cycler)['color']
-fname='T1_100_2V_setup2_nuit'
-x,y=extract_data(fname+'.txt')
-x=x[1:]
-y=y[1:]
-y=y/y[0]
-plt.plot(x*1E3,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x*1E3,yfit,label='4-classes degenerancy',color=color)
-print(popt[2])
-
-
-# color = next(ax._get_lines.prop_cycler)['color']
-# fname='T1_100_0V_setup2_nuit'
-# x,y=extract_data(fname+'.txt')
-# x=x[1:]
-# y=y[1:]
-# y=y/y[0]
-# plt.plot(x*1E3,y,'x',color=color)
-# popt,yfit=exp_fit(x,y)
-# plt.plot(x*1E3,yfit,label='0-Field',color=color)
-
 
 
 

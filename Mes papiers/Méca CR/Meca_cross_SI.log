@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  5 OCT 2020 18:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  16 OCT 2020 16:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -192,6 +192,24 @@ Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 209.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/physics/physics.sty
+Package: physics 
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-02-14 L3 programming layer (loader) 
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count193
+\l__pdf_internal_box=\box57
+))
+Package: xparse 2020-02-14 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count194
+\g__xparse_grabber_int=\count195
+\l__xparse_m_args_int=\count196
+\l__xparse_v_nesting_int=\count197
+))
 (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
@@ -214,24 +232,19 @@ te \@footnotemark@gobble #1: #2\par \endgroup }{\global \@minipagefalse \hb@xt@
  \hsize {\hfil \unhbox \@tempboxa \hfil }}\endgroup \vskip \belowcaptionskip  o
 n input line 1082.
 )
-\c@KVtest=\count193
+\c@KVtest=\count198
 \sf@farskip=\skip56
 \sf@captopadj=\dimen154
 \sf@capskip=\skip57
 \sf@nearskip=\skip58
-\c@subfigure=\count194
-\c@subfigure@save=\count195
-\c@lofdepth=\count196
-\c@subtable=\count197
-\c@subtable@save=\count198
-\c@lotdepth=\count199
+\c@subfigure=\count199
+\c@subfigure@save=\count266
+\c@lofdepth=\count267
+\c@subtable=\count268
+\c@subtable@save=\count269
+\c@lotdepth=\count270
 \sf@top=\skip59
 \sf@bottom=\skip60
-)
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
-File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count266
-\l__pdf_internal_box=\box57
 )
 (./Meca_cross_SI.aux
 
@@ -246,36 +259,36 @@ LaTeX Warning: Label `Optics' multiply defined.
 )
 \openout1 = `Meca_cross_SI.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 Class revtex4 Info: Unrecognized array package. Please update this document cla
-ss! (Proceeding with fingers crossed.) on input line 10.
-Class revtex4 Info: cite was not loaded (OK!) on input line 10.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 10.
+ss! (Proceeding with fingers crossed.) on input line 11.
+Class revtex4 Info: cite was not loaded (OK!) on input line 11.
+Class revtex4 Info: multicol was not loaded (OK!) on input line 11.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count267
+\scratchcounter=\count271
 \scratchdimen=\dimen155
 \scratchbox=\box58
-\nofMPsegments=\count268
-\nofMParguments=\count269
+\nofMPsegments=\count272
+\nofMParguments=\count273
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count270
+\MPscratchCnt=\count274
 \MPscratchDim=\dimen156
-\MPnumerator=\count271
-\makeMPintoPDFobject=\count272
+\MPnumerator=\count275
+\makeMPintoPDFobject=\count276
 \everyMPtoPDFconversion=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -290,16 +303,16 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--16
+Underfull \hbox (badness 10000) in paragraph at lines 14--17
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -310,18 +323,8 @@ Overfull \hbox (0.87494pt too wide) detected at line 4
  []
 
 
-Overfull \hbox (11.5721pt too wide) detected at line 5
- \OT1/cmr/m/n/12 A.
- []
-
-
 Overfull \hbox (0.87494pt too wide) detected at line 5
  \OT1/cmr/m/n/12 2
- []
-
-
-Overfull \hbox (11.08461pt too wide) detected at line 6
- \OT1/cmr/m/n/12 B.
  []
 
 
@@ -330,13 +333,18 @@ Overfull \hbox (0.87494pt too wide) detected at line 6
  []
 
 
-Overfull \hbox (11.24988pt too wide) detected at line 7
- \OT1/cmr/m/n/12 C.
+Overfull \hbox (0.87494pt too wide) detected at line 7
+ \OT1/cmr/m/n/12 4
  []
 
 
-Overfull \hbox (0.87494pt too wide) detected at line 7
- \OT1/cmr/m/n/12 4
+Overfull \hbox (0.87494pt too wide) detected at line 8
+ \OT1/cmr/m/n/12 5
+ []
+
+
+Overfull \hbox (0.87494pt too wide) detected at line 9
+ \OT1/cmr/m/n/12 5
  []
 
 )
@@ -344,63 +352,36 @@ Overfull \hbox (0.87494pt too wide) detected at line 7
 \openout3 = `Meca_cross_SI.toc'.
 
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<map_200G_juste_CR.png, id=12, 673.5564pt x 445.1832pt>
+<map_200G_juste_CR.png, id=13, 673.5564pt x 445.1832pt>
 File: map_200G_juste_CR.png Graphic file (type png)
 <use map_200G_juste_CR.png>
-Package pdftex.def Info: map_200G_juste_CR.png  used on input line 40.
+Package pdftex.def Info: map_200G_juste_CR.png  used on input line 41.
 (pdftex.def)             Requested size: 673.55475pt x 445.18211pt.
 
-Overfull \hbox (3.48627pt too wide) in paragraph at lines 40--41
+Overfull \hbox (3.48627pt too wide) in paragraph at lines 41--42
  [][] 
  []
 
-<map_cross_22.png, id=14, 462.528pt x 346.896pt>
+<map_cross_22.png, id=15, 462.528pt x 346.896pt>
 File: map_cross_22.png Graphic file (type png)
 <use map_cross_22.png>
-Package pdftex.def Info: map_cross_22.png  used on input line 46.
+Package pdftex.def Info: map_cross_22.png  used on input line 47.
 (pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
-<map_cross_121.png, id=15, 462.528pt x 346.896pt>
+<map_cross_121.png, id=16, 462.528pt x 346.896pt>
 File: map_cross_121.png Graphic file (type png)
 <use map_cross_121.png>
-Package pdftex.def Info: map_cross_121.png  used on input line 53.
+Package pdftex.def Info: map_cross_121.png  used on input line 54.
 (pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
-<cross_22_200G.png, id=16, 899.7615pt x 440.847pt>
+<cross_22_200G.png, id=17, 899.7615pt x 440.847pt>
 File: cross_22_200G.png Graphic file (type png)
 <use cross_22_200G.png>
-Package pdftex.def Info: cross_22_200G.png  used on input line 59.
+Package pdftex.def Info: cross_22_200G.png  used on input line 60.
 (pdftex.def)             Requested size: 899.75931pt x 440.84592pt.
-! Undefined control sequence.
-l.66 ...are initially polarized in their $m_s=\ket
-                                                  {0}$ state through a 1 ms ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [2 <./map_200G_juste_CR.png>] [3 <./map_cross_22.png> <./map_cross_121.png>]
-! Undefined control sequence.
-l.68 ...exchanging the population of the $m_s=\ket
-                                                  {0}$ state with one of the...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.68 ...s=\ket{0}$ state with one of the $m_s=\ket
-                                                  {\pm 1}$ state.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [4 <./cross_22_200G.png>]
 
 Package natbib Warning: Citation `DelordNat' on page 5 undefined on input line 
-86.
+87.
 
 No file Meca_cross_SI.bbl.
 
@@ -412,13 +393,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4773 strings out of 481239
- 65096 string characters out of 5920377
- 307981 words of memory out of 5000000
- 19996 multiletter control sequences out of 15000+600000
+ 5737 strings out of 481239
+ 81731 string characters out of 5920377
+ 331782 words of memory out of 5000000
+ 20950 multiletter control sequences out of 15000+600000
  543772 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,42p,606b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,6n,42p,606b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -431,7 +412,7 @@ c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
 pfb>
-Output written on Meca_cross_SI.pdf (5 pages, 387871 bytes).
+Output written on Meca_cross_SI.pdf (5 pages, 388626 bytes).
 PDF statistics:
  77 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream
