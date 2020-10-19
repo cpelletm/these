@@ -1,0 +1,39 @@
+\begin{thebibliography}{3}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{\citenamefont{Delord et~al.}(2018)\citenamefont{Delord, Huillery,
+  Schwab, Nicolas, Lecordier, and H\'etet}}]{DelordPRL}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Huillery}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Schwab}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Nicolas}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Lecordier}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{H\'etet}},
+  \bibinfo{journal}{Phys. Rev. Lett.} \textbf{\bibinfo{volume}{121}},
+  \bibinfo{pages}{053602} (\bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Delord}(2019)}]{DelordPhD}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}}, Ph.D. thesis,
+  \bibinfo{school}{{\'E}cole Normale Sup{\'e}rieure} (\bibinfo{year}{2019}).
+
+\bibitem[{\citenamefont{Delord et~al.}(2020)\citenamefont{Delord, Huillery,
+  Nicolas, and H{\'e}tet}}]{DelordNat}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Huillery}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Nicolas}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{H{\'e}tet}},
+  \bibinfo{journal}{Nature} \textbf{\bibinfo{volume}{580}}, \bibinfo{pages}{56}
+  (\bibinfo{year}{2020}).
+
+\end{thebibliography}
