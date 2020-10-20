@@ -183,7 +183,7 @@ def NV_simple(orientation='111'):
 	# show_vpropres(val,vec,bnamez)
 	# transitions(val,vec,Sx,rho_0)
 	if orientation=='111' :
-		amps=np.linspace(0,500,100)
+		amps=np.linspace(0,1000,500)
 		transi_NV=[]
 		for amp in amps :
 			# B=[amp,0,0]
@@ -210,18 +210,19 @@ def NV_simple(orientation='111'):
 		plt.plot(amps,transi_NV[:,1],color=color)
 		plt.show()
 	if orientation=='100' :
-		amps=np.linspace(0,200,100)
+		amps=np.linspace(0,200,300)
 		transi_NV=[]
 		for amp in amps :
 			B=[amp,0,0]
 			H=Hamiltonian_0(B,classe=1,E=3)
 			val,vec=egvect(H)
-			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+			transi_NV+=[[val[2]-val[0],val[1]-val[0],val[2]-val[1]]]
 		transi_NV=np.array(transi_NV)
 		ax=plt.gca()
 		color = next(ax._get_lines.prop_cycler)['color']
 		plt.plot(amps,transi_NV[:,0],color=color,label='NV-')
 		plt.plot(amps,transi_NV[:,1],color=color)
+		# plt.plot(amps,transi_NV[:,2],color=color)
 		transi_NV=[]
 		for amp in amps :
 			B=[amp,0,0]
@@ -258,6 +259,7 @@ def NV_simple(orientation='111'):
 		color = next(ax._get_lines.prop_cycler)['color']
 		plt.scatter(x_VH,y_VH,s=80,facecolors='none',edgecolors=color,label='cross relaxation')		
 		plt.legend()
+		# plt.plot(amps,2.8*amps,label='spins 1/2')
 		ylim=ax.get_ylim()
 		plt.plot([x_VH,x_VH],[y_VH,0],'--',color=color)
 		ax.set_ylim(ylim)
