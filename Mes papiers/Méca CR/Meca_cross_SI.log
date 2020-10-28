@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  19 OCT 2020 19:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  22 OCT 2020 15:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -360,12 +360,12 @@ Overfull \hbox (0.87494pt too wide) detected at line 13
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 14
- \OT1/cmr/m/n/12 6
+ \OT1/cmr/m/n/12 7
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 15
- \OT1/cmr/m/n/12 6
+ \OT1/cmr/m/n/12 9
  []
 
 )
@@ -389,86 +389,89 @@ File: SI_Cristallo-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: SI_Cristallo-eps-converted-to.pdf  used on input line 
 46.
 (pdftex.def)             Requested size: 986.68384pt x 433.61894pt.
- [2 <./SI_Cristallo-eps-converted-to.pdf>]
+ [2]
 Package epstopdf Info: Source file: <setup.eps>
-(epstopdf)                    date: 2020-10-19 15:47:36
-(epstopdf)                    size: 274163 bytes
+(epstopdf)                    date: 2020-10-22 09:57:00
+(epstopdf)                    size: 271553 bytes
 (epstopdf)             Output file: <setup-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-10-19 16:09:11
-(epstopdf)                    size: 71356 bytes
+(epstopdf)                    date: 2020-10-22 10:21:55
+(epstopdf)                    size: 69406 bytes
 (epstopdf)             Command: <repstopdf --outfile=setup-eps-converted-to.pdf
  setup.eps>
 (epstopdf)             \includegraphics on input line 67.
 Package epstopdf Info: Output file is already uptodate.
-<setup-eps-converted-to.pdf, id=37, 1230.5975pt x 732.7375pt>
+<setup-eps-converted-to.pdf, id=22, 1230.5975pt x 732.7375pt>
 File: setup-eps-converted-to.pdf Graphic file (type pdf)
 <use setup-eps-converted-to.pdf>
 Package pdftex.def Info: setup-eps-converted-to.pdf  used on input line 67.
 (pdftex.def)             Requested size: 1230.59451pt x 732.73572pt.
- [3]
+ [3 <./SI_Cristallo-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <T1_soustraction_shema.eps>
-(epstopdf)                    date: 2020-10-19 14:36:01
-(epstopdf)                    size: 36879 bytes
+(epstopdf)                    date: 2020-10-22 10:24:32
+(epstopdf)                    size: 35634 bytes
 (epstopdf)             Output file: <T1_soustraction_shema-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2020-10-19 14:36:39
-(epstopdf)                    size: 15060 bytes
+(epstopdf)                    date: 2020-10-22 10:24:39
+(epstopdf)                    size: 14602 bytes
 (epstopdf)             Command: <repstopdf --outfile=T1_soustraction_shema-eps-
 converted-to.pdf T1_soustraction_shema.eps>
 (epstopdf)             \includegraphics on input line 83.
 Package epstopdf Info: Output file is already uptodate.
-<T1_soustraction_shema-eps-converted-to.pdf, id=41, 365.365pt x 67.25125pt>
+<T1_soustraction_shema-eps-converted-to.pdf, id=42, 351.3125pt x 46.1725pt>
 File: T1_soustraction_shema-eps-converted-to.pdf Graphic file (type pdf)
 <use T1_soustraction_shema-eps-converted-to.pdf>
 Package pdftex.def Info: T1_soustraction_shema-eps-converted-to.pdf  used on in
 put line 83.
-(pdftex.def)             Requested size: 365.3641pt x 67.25107pt.
- [4 <./setup-eps-converted-to.pdf> <./T1_soustraction_shema-eps-converted-to.pd
-f>]
-
-Package natbib Warning: Citation `qutip1' on page 5 undefined on input line 112
-.
-
-
-Package natbib Warning: Citation `qutip2' on page 5 undefined on input line 112
-.
-
-[5]
-
-Package natbib Warning: Citation `choi_depolarization_2017' on page 6 undefined
- on input line 120.
-
-(./Meca_cross_SI.bbl)
-
-Package natbib Warning: There were undefined citations.
-
-[6] (./Meca_cross_SI.aux) ) 
+(pdftex.def)             Requested size: 351.31163pt x 46.17236pt.
+ [4 <./setup-eps-converted-to.pdf>] [5 <./T1_soustraction_shema-eps-converted-t
+o.pdf>]
+Package epstopdf Info: Source file: <CR_meca_22.eps>
+(epstopdf)                    date: 2020-10-21 19:31:40
+(epstopdf)                    size: 235247 bytes
+(epstopdf)             Output file: <CR_meca_22-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-10-21 19:31:50
+(epstopdf)                    size: 65964 bytes
+(epstopdf)             Command: <repstopdf --outfile=CR_meca_22-eps-converted-t
+o.pdf CR_meca_22.eps>
+(epstopdf)             \includegraphics on input line 112.
+Package epstopdf Info: Output file is already uptodate.
+<CR_meca_22-eps-converted-to.pdf, id=67, 1381.16pt x 376.40625pt>
+File: CR_meca_22-eps-converted-to.pdf Graphic file (type pdf)
+<use CR_meca_22-eps-converted-to.pdf>
+Package pdftex.def Info: CR_meca_22-eps-converted-to.pdf  used on input line 11
+2.
+(pdftex.def)             Requested size: 1381.15663pt x 376.40532pt.
+ [6 <./CR_meca_22-eps-converted-to.pdf>] [7]
+(./Meca_cross_SI.bbl [8]) [9] (./Meca_cross_SI.aux) ) 
 Here is how much of TeX's memory you used:
- 5804 strings out of 481239
- 82888 string characters out of 5920377
- 334969 words of memory out of 5000000
- 21003 multiletter control sequences out of 15000+600000
- 543772 words of font info for 65 fonts, out of 8000000 for 9000
+ 5839 strings out of 481239
+ 83613 string characters out of 5920377
+ 337225 words of memory out of 5000000
+ 21037 multiletter control sequences out of 15000+600000
+ 543940 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,6n,42p,796b,267s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-csc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmti10.pfb>
-Output written on Meca_cross_SI.pdf (6 pages, 270699 bytes).
+ 43i,6n,42p,929b,348s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb>
+Output written on Meca_cross_SI.pdf (9 pages, 379777 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 148 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

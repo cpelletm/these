@@ -18,9 +18,9 @@
 
 \title{Mechanical Detection of Dipole-Dipole Interactions \\between Electronic Spins in a Solid}
 
-\author{C. Pellet-Mary, P. Huillery, M. Perdriat, G. H\'etet} 
+\author{C. Pellet-Mary$^1$, P. Huillery$^1$, M. Perdriat$^1$, G. H\'etet} 
 
-\affiliation{$^1$Laboratoire Pierre Aigrain, Ecole normale sup\'erieure, PSL Research University, CNRS, Universit\'e Pierre et Marie Curie, Sorbonne Universit\'es, Universit\'e Paris Diderot, Sorbonne Paris-Cit\'e, 24 rue Lhomond, 75231 Paris Cedex 05, France.}
+\affiliation{Laboratoire De Physique de l'\'Ecole Normale Sup\'erieure, \'Ecole Normale Sup\'erieure, PSL Research University, CNRS, Sorbonne Universit\'e, Universit\'e de Paris , 24 rue Lhomond, 75231 Paris Cedex 05, France.}
 
 \begin{abstract}
 Magnetic-dipole interactions between the spins of defects in crystals play a key role in a vast range of applications. In typical experiments on nuclear or electronic spin resonance, the interactions are identified in the electromagnetic emission or absorption spectrum of the spins.
@@ -52,18 +52,12 @@ Specifically, we employ a levitating diamond in a Paul trap with embedded NV cen
 
 %When this occurs, the spin-torque is modified so that subsequently, the diamond rotates.
 
-\begin{figure}[!ht]
-  \centering \scalebox{0.45}{\includegraphics{Adamas_fixe.eps}}
-  \caption{a) Photoluminescence signal in function of the scanning magnetic field. b) Predicted transition frequencies for the four classes of NV centers (dashed). ESR spectra for particular value of the magnetic field (plain, vertical)}
+\begin{figure*}[!ht]
+  \centering \scalebox{0.33}{\includegraphics{Adamas_fixe.eps}}
+  \caption{Depolarization of NV ensembles induced by co-resonances. a) Representation of the NV-NV depolarization process. Green arrows represent the optical pumping in the brighter $\ket{m_s=0}$ state, curvy blue arrows represent the longitudinal relaxation where NV$_2$ has a considerably shorter T$_1$ than NV$_1$. Red circles represent the population in each state and red dashed arrows represent the resonant dipole-dipole interaction between the two NV centers. b) Photoluminescence signal in function of the scanning magnetic field. c) Predicted transition frequencies for the four classes of NV centers (dashed). ESR spectra for particular value of the magnetic field (plain, vertical). d) Longitudinal relaxation from a single class of NV centers with exponential fit. i) The class is not at resonance with any other classes : T$_1$=1.02 ms. ii) The class is at resonance with another class : T$_1$=0.28 ms. iii) The class is at resonance with the three other classes : T$_1$=0.15 ms.}
   \label{CR_deposited}
-\end{figure}
+\end{figure*}
 
-
-\begin{figure}[!ht]
-  \centering \scalebox{0.5}{\includegraphics{T1.eps}}
-  \caption{Longitudinal relaxation from a single class of NV centers with exponential fit. i) The class is not at resonance with any other classes : T$_1$=1.02 ms. ii) The class is at resonance with another class : T$_1$=0.28 ms. iii) The class is at resonance with the three other classes : T$_1$=0.15 ms.
-  }\label{T_1}
-\end{figure}
 
 %We first present the results and conclude by discussing the potential applications behind our observations.
 The key idea of our mechanical detection of dipolar interactions lies in the cross-relaxation (CR) that takes place when two spins with different orientations and polarization become resonant. This can be achieved by tuning a magnetic field when using spin-1 defects such as the NV center.
@@ -72,37 +66,38 @@ The ground states are labelled $| m_s={0}, {\pm 1}\rangle$.
 Due to an intersystem crossing in the excited state of the NV centers \cite{Doherty}, the state $m_s=\ket{0}$ is brighter than the state $m_s=\ket{\pm 1}$ upon green laser optical illumination \cite{Hopper}. This provides a means to read out the Zeeman splitting by scanning a microwave tone around the resonance, carrying out ODMR.
 
 The diamonds that we use are in the form of a powder of particles that have a diameter of 15 $\mu$m. They are supplied by the company Adamas, which produces diamonds with a concentration of NV centers in the 3-4 ppm range. 
-We operate with a Paul trap that is similar to the one used in \cite{delordPRL} with particles are stably trapped at the bottleneck region, where both the electric field gradient and anisotropy are stronger.
+We operate with a Paul trap that is similar to the one used in \cite{delordPRL} with particles stably trapped at the bottleneck region, where both the electric field gradient and anisotropy are stronger.
 The microwave is applied directly on the trapping electrode, which provides an efficient means to excite the spins.
 The photoluminescence is detected using standard confocal microscopy. We use about 100 $\mu$W of laser light at 532nm to polarise the NV centers. The laser is focused via a lens inside the vacuum chamber which has a numerical aperture of 0.5 and a working distance of 8mm. The focal point of the laser is kept few tens of micrometer away from the micro-diamond to mitigate the effect of radiation pressure and to enable laser excitation of the whole diamond \cite{delordPRL,delord2016}. 
 
 Let us first show that dipolar interaction in our diamonds is effective by studying cross-relaxation with diamonds that are simply attached to the trap.
-In diamonds that contain more than 1 ppm of nitrogen-vacancy centers cross relaxation effects have been observed by many groups \cite{van_oort_cross-relaxation_1989, armstrong_nvnv_2010, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, mrozek_longitudinal_2015, jarmola_temperature-_2012, choi_depolarization_2017}.
-It manifests itself as a change in the longitudinal relaxation rate of NV centers, which can then translate as a reduction of the overall photo-luminescence. 
+Fig. \ref{CR_deposited} a) shows the interaction between two NV centers, one of which (NV$_2$) has a considerably reduced relaxation time T$_1$, almost negating the optical polarization by the laser. When considering the resonant dipole-dipole interaction with another center NV$_1$ (whose T$_1$ is phonon-limited), the centers will exchange excitation quanta through flip-flop process, resulting in a depolarization of NV$_1$. Generalizing, this means that a few fast-decaying NV can depolarize an ensemble of "normal" NV centers through dipolar interaction, reducing the average T$_1$ of the ensemble to a few to a few hundreds of micro-seconds \cite{Jarmola} and lowering the total photoluminescence. 
+This effect has been observed by many groups\cite{van_oort_cross-relaxation_1989, armstrong_nvnv_2010, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, mrozek_longitudinal_2015, jarmola_temperature-_2012, choi_depolarization_2017}.
 
-This effect has been routinely observed in bulk materials, the origin of which was attributed to the presence of charge tunneling amongst closely packed NV centers \cite{choi_depolarization_2017}. The NV centers that undergo tunneling with other impurities (possibly the substitutional nitrogen defect \cite{Manson}) have a reduced longitudinal spin lifetime $T_1$. When their energy matches the energy of NV centers that have phonon-limited lifetimes ($T_1\approx 5 ms$), the latter can drop 
-to a few hundreds of micro-seconds \cite{Jarmola} when the NV concentration is large enough (typically in the ppm range)
-This process has recently revived interest recently because the sensitivity of magnetometers is ultimately limited by these interactions \cite{Zhou}. 
+
+This effect has been routinely observed in bulk materials with large enough  NV concentration, typically in the ppm range. The origin of it (the fast-decaying NV centers)  was attributed to the presence of charge tunneling amongst closely packed NV centers \cite{choi_depolarization_2017}. The NV centers that undergo tunneling with other impurities (possibly the substitutional nitrogen defect \cite{manson_nv_2018}) have a largely reduced longitudinal spin lifetime $T_1$.
+This process has recently revived interest because the sensitivity of magnetometers is ultimately limited by these interactions \cite{Zhou}. 
+
 %In our spin-mechanics experiment, we use micro-diamond particules subjected to a green laser field and a magnetic field.
 %To observe the dipolar effects in a levitating platform, we employ heavily doped micro-diamonds.
 In our experiment, we first probe CR by using a fixed bias magnetic field $\bf B_{\rm bias} \approx$ 100 G and scan another magnetic field $\bf B_{\rm em}$ at some angle with $B$ using an electromagnet. 
-Figure \ref{CR_deposited}-a) shows the photoluminescence from the NV centers as a function of $\bf B_{\rm em}$. 
+Figure \ref{CR_deposited}-b) shows the photoluminescence from the NV centers as a function of $\bf B_{\rm em}$. 
 For these measurement we use a 1 mW green laser excitation which yields a repolarisation rate of about 100 $\mu$s. 
 Three dips in the fluorescence can be observed. 
-We attribute these to cross-relaxation that takes place when two orientation meet. To be sure, we recorded Electronic spin resonance spectra for different values which allows us to measure the total magnetic field felt by the spins, and therefore to extrapolate the transition frequencies of the four classes of NV for any applied $\bf B_{\rm em}$.
+We attribute these to cross-relaxation that takes place when two orientation meet. To be sure, we recorded Electronic spin resonance spectra for different field values in Fig. \ref{CR_deposited}-c) which allows us to measure the total magnetic field felt by the spins, and therefore to extrapolate the transition frequencies of the four classes of NV for any applied $\bf B_{\rm em}$.
 There is indeed a strong correspondence between the PL dips and the degeneracy conditions. 
-(See SI for details on planes that cross etc.). 
-We tentatively attribute those to CR. 
+This is expected for NV ensembles presenting a NV-NV depolarization process, since when two orientations or more are at resonance, the effective density of NV being able to exchange spin quanta increases, resulting in a stronger depolarization process.
 %It is important to characterize this effect further when using smaller particles such micro-diamonds where surface effects can play a role. 
 %where, to our knowledge, such cross-relaxations have not been observed. 
 %Indeed, surface effects may start to play a role and change quantitatively. 
-To confirm our interpretation, and to extract the spin-torque dynamics in the mechanical experiment, we measure the longitudinal relaxation time ($T_1$ time) of the NV spins under different degeneracy conditions.
 
-The measurement consists in applying a green laser to polarize the NV centers and to measure the photoluminescence at a later time. 
+
+To confirm our interpretation, and to extract the spin-torque dynamics in the mechanical experiment, we measure the longitudinal relaxation time ($T_1$ time) of the NV spins under different degeneracy conditions. %Clément : je comprend pas la partie "to extract the spin-torque dynamics"
+The measurement presented in Fig \ref{CR_deposited}-d) consists in applying a green laser to polarize the NV centers and to measure the photoluminescence at a later time. 
 Such a measurement turns out to be hidden by recharging of NV centers in the dark, as has been observed and analyzed by several groups \cite{choi_depolarization_2017, mrozek_longitudinal_2015, giri_selective_2019, giri_coupled_2018}.
 In order to accurately measure the $T_1$ and remove the changing PL due to the recharging effects, we use a sequence presented in the SI, where a microwave pulse is applied or not prior to relaxation. Subtracting the two resulting signals eliminates charge dynamics from the spin decay.
-The results of the measurements are shown in Fig. \ref{T_1} for different degeneracies. 
-It can be seen that $T_1$ is greatly shortened, from X to Y when approaching degeneracy, confirming this interpretation.
+The results are shown for different degeneracy configuration, starting with a case without degeneracy where we extract a $T_1=1.08$ ms, already shorter than the expected phonon limited lifetime, and this lifetime is even further reduced to 0.28 ms (resp. 0.15 ms) when two (resp. four) orientations are brought to resonance.
+
 
 \begin{figure}[!ht]
   \centering \scalebox{0.13}{\includegraphics{dilutednv.pdf}}
@@ -127,19 +122,19 @@ Specifically, we will detect the diamond angle and seek for changes in the diamo
 
 One major ingredient of the present study compared to \cite{DelordNat} is the spin-torque coming from the NV centers in the absence of the microwave tone.
 For this, let us consider first the torque coming from a single spin due to the transverse component of the magnetic field when the NV is in the ground state.
-The hamiltonian for one NV orientation with quantization axis $z$ reads 
+The Hamiltonian for one NV orientation with quantization axis $z$ reads 
 \begin{equation}\hat{H}_{\rm NV}=\hbar D \hat{S}_z^2+ \hbar \gamma_e \bf B  \cdot \bf\hat S.
 \end{equation}
-Under the condition $\gamma B \ll D$, $H_{B}= \gamma_e B  ( S_x \cos\theta + S_z \sin\theta)$ can be treated as a perturbation to the anisotropic part of the hamiltonian. 
+Under the condition $\gamma B \ll D$, $H_{B}= \gamma_e B  ( S_x \cos\theta + S_z \sin\theta)$ can be treated as a perturbation to the anisotropic part of the Hamiltonian. 
 The perturbed energy $\epsilon_g$ of $\ket{0}$ due to the transverse B field is then
 \begin{equation} \epsilon_g=\sum_{m_s=\pm 1}\frac{ |\bra{0} H_B \ket{\pm 1}|^2}{-\epsilon^0_{\pm 1}}=-\hbar\frac{(\gamma_e B)^2 }{D} \cos^2\theta.
 \end{equation}
-One can deduce the total torque when N spins of a given orientation are polarised in the ground state to be 
+One can deduce the total torque when N spins of a given orientation are polarized in the ground state to be 
 \begin{equation}\tau_g=-N \frac{\partial \epsilon_0}{\partial \theta}=\hbar N  \frac{(\gamma_e B)^2}{D} \sin 2\theta.\end{equation}
 
 At an angle $\theta=\pi/4$, where the torque is maximized, using $10^9$ spins polarized in the ground state and a B field of 100 G, the static torque is about $10^{-19}$ N.m.
 We checked numerically that at these magnetic field values and angle, the NV are still polarized mostly in the ground state. 
-Note that the torque is zero at $\theta=mod (\pi/2)$ where the eigenstates of $S_z$ are not mixed. The hamiltonian ground state is the eigenstate $| S=1,m_s=0\rangle$, which is is non magnetic. 
+Note that the torque is zero at $\theta=mod (\pi/2)$ where the eigenstates of $S_z$ are not mixed. The Hamiltonian ground state is the eigenstate $| S=1,m_s=0\rangle$, which is is non magnetic. 
 %Note also that the torque tends to zero if  tends to zero at any angle $\theta$. This is the case in the presence of strong spin-depolarisation, i.e. when $\hat\rho\rightarrow\frac{1}{3}\hat{I}$ (with $\hat{I}$ the identity operator).
 
 Although the physics of the torque differs from the torque observed in \cite{DelordNat}, which came from the microwave excitation to magnetic states, this torque is comparable in magnitude. With our angular resolution of 100 $\mu$rad/$\sqrt{\rm Hz}$, it should thus enable a measurable shift in the angular position to be detected and possibly modified when cross-relaxation occurs. 
@@ -161,7 +156,7 @@ Fig. \ref{principle}-i) is a depiction of a levitating diamond containing NV cen
 In the presence of a magnetic field, each NV centers has a different magnetic field projection, which means a different torque. 
 Below, we show the sum of the ground state spin-torques $\tau_{NR}$, resulting from the four classes. 
 Fig. \ref{principle}-ii) shows the same situation, with a magnetic field that is tuned so that two NV classes are co-resonant. 
-When the re-polarisation rate due to the green laser is smaller than the cross-relaxation rate, the magnetization coming from these two classes (indicated by a circle) tends to cancel. The population in the three NV eigenstates will indeed equilibrate, giving a smaller magnetization.
+When the re-polarization rate due to the green laser is smaller than the cross-relaxation rate, the magnetization coming from these two classes (indicated by a circle) tends to cancel. The population in the three NV eigenstates will indeed equilibrate, giving a smaller magnetization.
 The resulting torque is thus changed to $\tau_{R}$ and the diamond then turns about another angle.
 This is the essence of the proposed dipolar detection. 
 
@@ -172,7 +167,7 @@ To observe this effect we use similar parameters and magnetic field arrangement 
 Let us first monitor the spin-mechanical resonances. 
 Fig. \ref{data}-a) shows the signal coming from the laser reflected off the diamond surface as a function of the microwave signal driving the NV centers' spins, with a zoom on the $m_s=-1$ states frequencies.
 Three ESR have been taken for three different $\bf B_{\rm em}$ amplitudes. 
-At 10 and 25 G, one can observe 4 pics in the spectrum, that are demonstrate spin induced torque on the diamond from the 4 classes of NVs.
+At 10 and 25 G, one can observe 4 peaks in the spectrum that demonstrate spin induced torque on the diamond from the 4 classes of NVs.
 At 17 G however, two classes merge at 2.75 GHz. This is where we expect CR.
 
 Analysis (SI) suggest that we cross a single degeneracy that is the magnetic field crosses a $(110)_\perp$ plane.

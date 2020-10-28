@@ -177,14 +177,16 @@ def transitions(val,vec,Sx,rho_0,show=True):
 
 def NV_simple(orientation='111'):
 
+	plt.figure(num=1,figsize=(11,7),dpi=80)
 	# B=[5000,0,0]
 	# H=Hamiltonian_0(B,classe=1,E=3)
 	# val,vec=egvect(H)
 	# show_vpropres(val,vec,bnamez)
 	# transitions(val,vec,Sx,rho_0)
-	D_VH=2466
+	D_VH=2694 #+/-5 , Cruddace a 2706 +/- 30
+	D_War1=2466 #la meme valeur que Cruddace, lui il a +/- 60
 	if orientation=='111' :
-		amps=np.linspace(0,200,201)
+		amps=np.linspace(0,400,201)
 		transi_NV=[]
 		for amp in amps :
 			# B=[amp,0,0]
@@ -258,7 +260,7 @@ def NV_simple(orientation='111'):
 		ax.set_ylim(ylim)
 		plt.show()
 	if orientation=='100' :
-		amps=np.linspace(0,200,100)
+		amps=np.linspace(0,145.8369,100)
 		transi_NV=[]
 		for amp in amps :
 			B=[amp,0,0]
@@ -268,8 +270,8 @@ def NV_simple(orientation='111'):
 		transi_NV=np.array(transi_NV)
 		ax=plt.gca()
 		color = next(ax._get_lines.prop_cycler)['color']
-		plt.plot(amps,transi_NV[:,0],color=color,label='NV-')
-		plt.plot(amps,transi_NV[:,1],color=color)
+		plt.plot(amps,transi_NV[:,0],color=color,label='NV-',lw=5)
+		plt.plot(amps,transi_NV[:,1],color=color,lw=5)
 		transi_NV=[]
 		for amp in amps :
 			B=[amp,0,0]
@@ -277,21 +279,40 @@ def NV_simple(orientation='111'):
 			val,vec=egvect(H)
 			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
 		transi_NV=np.array(transi_NV)
-		ax=plt.gca()
 		color = next(ax._get_lines.prop_cycler)['color']
-		plt.plot(amps,transi_NV[:,0],color=color,label='VH-')
-		plt.plot(amps,transi_NV[:,1],color=color)
-		def zero():
+		plt.plot(amps,transi_NV[:,0],color=color,label='VH-', ls='dashed', lw=2.5)
+		plt.plot(amps,transi_NV[:,1],color=color, ls='dashed', lw=2.5)
+		transi_NV=[]
+		for amp in amps :
+			B=[amp,0,0]
+			H=Hamiltonian_0(B,classe=1,E=3,D=D_War1)
+			val,vec=egvect(H)
+			transi_NV+=[[val[2]-val[0],val[1]-val[0]]]
+		transi_NV=np.array(transi_NV)
+		color = next(ax._get_lines.prop_cycler)['color']
+		plt.plot(amps,transi_NV[:,0],color=color,label='War1', ls='dashdot', lw=2.5)
+		plt.plot(amps,transi_NV[:,1],color=color, ls='dashdot', lw=2.5)
+		transi_NV=[]
+		for amp in amps :
+			B=[amp,0,0]
+			val,vec=carbon_13(B,show=False)
+			transi_NV+=[[val[4]-val[0],val[2]-val[1],val[5]-val[1],val[4]-val[1],val[5]-val[0],val[3]-val[0],val[2]-val[0],val[3]-val[1]]]
+		transi_NV=np.array(transi_NV)
+		color = next(ax._get_lines.prop_cycler)['color']
+		plt.plot(amps,transi_NV[:,0],color=color,label=r'$^{13}$C', ls='dotted', lw=2.5)
+		for i in range(1,len(transi_NV[0,:])):
+			plt.plot(amps,transi_NV[:,i],color=color, ls='dotted', lw=2.5)
+		def zero(D):
 			def f(amp):
 				B=[amp,0,0]
 				H=Hamiltonian_0(B,classe=1,E=3,D=2870)
 				val,vec=egvect(H)
 				transi_NV=[val[2]-val[0],val[1]-val[0]]
-				H=Hamiltonian_0(B,classe=1,E=3,D=D_VH)
+				H=Hamiltonian_0(B,classe=1,E=3,D=D)
 				val,vec=egvect(H)
 				transi_VH=[val[2]-val[0],val[1]-val[0]]
 				return transi_VH[0]-transi_NV[1]
-			RR=root_scalar(f,bracket=[0,100])
+			RR=root_scalar(f,bracket=[0,300])
 			if RR.converged :
 				amp=RR.root
 				B=[amp,0,0]
@@ -302,22 +323,62 @@ def NV_simple(orientation='111'):
 				return amp,transi_NV
 			else :
 				return False
-		x_VH,y_VH=zero()
+		x_VH,y_VH=zero(D_VH)
+		x_War1,y_War1=zero(D_War1)
 		color = next(ax._get_lines.prop_cycler)['color']
-		plt.scatter(x_VH,y_VH,s=80,facecolors='none',edgecolors=color,label='cross relaxation')		
+		plt.scatter([x_VH,x_War1],[y_VH,y_War1],s=80,facecolors='none',edgecolors=color,lw=2)	
 		plt.legend()
 		ylim=ax.get_ylim()
-		plt.plot([x_VH,x_VH],[y_VH,0],'--',color=color)
+		plt.plot([x_VH,x_VH],[y_VH,0],'--',color=color,lw=2)
+		plt.plot([x_War1,x_War1],[y_War1,0],'--',color=color,lw=2)
+
+		def zero(i,j):
+			def f(amp):
+				B=[amp,0,0]
+				val,vec=carbon_13(B,show=False)
+				transi=[val[2]-val[0],val[2]-val[1],val[3]-val[0],val[3]-val[1],val[4]-val[0],val[4]-val[1],val[5]-val[0],val[5]-val[1]]
+				transi_fs=transi[i]
+				H=Hamiltonian_0(B,classe=1,E=3)
+				val,vec=egvect(H)
+				transi=[val[2]-val[0],val[1]-val[0]]
+				transi_NV=transi[j]
+				return transi_fs-transi_NV
+			RR=root_scalar(f,bracket=[0,50])
+			if RR.converged :
+				amp=RR.root
+				B=[amp,0,0]
+				H=Hamiltonian_0(B,classe=1,E=3)
+				val,vec=egvect(H)
+				transi=[val[2]-val[0],val[1]-val[0]]
+				transi_NV=transi[j]
+				return amp,transi_NV
+			else :
+				return False
+
+		zero_pairs=[[2,1],[3,1],[4,0],[5,0]]
+		x_transi=[]
+		y_transi=[]
+		for pair in zero_pairs :
+			x,y=zero(pair[0],pair[1])
+			x_transi+=[x]
+			y_transi+=[y]
+
+		plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color,lw=2)		
+		for i in range(len(x_transi)) :
+			x0=x_transi[i]
+			y0=y_transi[i]
+			plt.plot([x0,x0],[y0,0],'--',color=color,lw=2)
+
 		ax.set_ylim(ylim)
-		plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25)
-		plt.ylabel('Transition frequency (MHz)',fontsize=25)
-		plt.xticks(fontsize=15)
-		plt.yticks(fontsize=15)
+		plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25, fontweight='bold')
+		plt.ylabel('Transition frequency (MHz)',fontsize=25, fontweight='bold')
+		plt.xticks(fontsize=20)
+		plt.yticks(fontsize=20)
 		plt.legend(fontsize=18)
 		plt.show()
 
 
-NV_simple(orientation='111')
+NV_simple(orientation='100')
 
 
 def egv_C13(orientation='100'): #Les 4 croisements sont à : 17.96 G, 19.70 G, 22.11 G, 24.31 G 

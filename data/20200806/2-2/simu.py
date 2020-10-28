@@ -133,15 +133,19 @@ gamma_e=2.8*1E6 #en Hz/Gauss
 n_centers=1E9/4 #nb de spins par classe
 
 xmin=30
+xmax=200
 
-fig,ax=plt.subplots()
+fig,axs=plt.subplots(2)
 
 
 theta_111=arctan(sqrt(2))
 gamma_las=5E-3
 
-B_in=np.array([ 37.0815447 ,  27.17222075, 106.08986284])
-B_out=np.array([ 40.35446569, -22.06572528, 129.456638  ])
+B_1=np.array([ 37.0815447 ,  27.17222075, 106.08986284])
+B_2=np.array([ 40.35446569, -22.06572528, 129.456638  ])
+
+B_in=B_1+(B_2-B_1)*(-0.02)
+B_out=B_1+(B_2-B_1)*0.98
 n=201
 xs=np.linspace(0,np.linalg.norm(B_out-B_in),n)
 xs=xs-xs[xmin]
@@ -173,12 +177,14 @@ PLs=np.array(PLs)/4
 PLs_sans=np.array(PLs_sans)/4
 
 
-
-# color = next(ax._get_lines.prop_cycler)['color']
-# ax.plot(xs[xmin:],PLs[xmin:],label='With CR',color=color)
-# ax.plot(xs[xmin:],PLs_sans[xmin:],'--',color=color,label='Without CR')
-# ax.set_xlabel('Secondary B (G)',fontsize=25)
-# ax.set_ylabel(r'$\rho_{00}$',fontsize=25)
+ax=axs[1]
+color = next(ax._get_lines.prop_cycler)['color']
+ax.plot(xs[xmin:],PLs[xmin:],lw=3,label='With CR',color=color)
+ax.plot(xs[xmin:],PLs_sans[xmin:],'--',lw=3,color=color,label='Without CR')
+# ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
+# ax.set_ylabel(r'|$m_s$=0> population',fontsize=15)
+ax.legend(fontsize=20)
+ax.tick_params(labelsize=20)
 
 # color = next(ax._get_lines.prop_cycler)['color']
 # ax.plot(xs[xmin:],torques[xmin:,0],label='With CR',color=color)
@@ -186,11 +192,13 @@ PLs_sans=np.array(PLs_sans)/4
 # ax.set_xlabel('Secondary B (g)',fontsize=25)
 # ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=25)
 
-color = next(ax._get_lines.prop_cycler)['color']
-ax.plot(xs[xmin:],torques[xmin:,1],label='With CR',color=color)
-ax.plot(xs[xmin:],torques_sans[xmin:,1],'--',label='Without CR', color=color)
-ax.set_xlabel('Secondary B (g)',fontsize=25)
-ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=25)
+# color = next(ax._get_lines.prop_cycler)['color']
+# ax.plot(xs[xmin:],torques[xmin:,1],lw=3,label='With CR',color=color)
+# ax.plot(xs[xmin:],torques_sans[xmin:,1],'--',lw=3,label='Without CR', color=color)
+# # ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
+# # ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=15)
+# ax.legend(fontsize=20)
+# ax.tick_params(labelsize=20)
 
 # color = next(ax._get_lines.prop_cycler)['color']
 # ax.plot(xs[xmin:],torques[xmin:,2],label='With CR',color=color)
@@ -215,17 +223,21 @@ def extract_data(filename,xcol=0,ycol=1):
 	return(np.array(x),np.array(y))
 
 
-# y_tot=np.zeros(201)
-# pool=['0-0.5V_PLdown','0-0.5V_PLdown-b','0-0.5V_PLdown-c','0-0.5V_PLdown-d','0-0.5V_PLdown-d-14uW_was9','0-0.5V_PLdown-e-14uW','0-0.5V_PLdown-f-18.5uW']
-# for fname in pool :
-# 	x,y=extract_data(fname+'.txt',ycol=3)
-# 	y=y/max(y)
-# 	y_tot+=y/7
+y_tot=np.zeros(201)
+pool=['0-0.5V_PLdown','0-0.5V_PLdown-c','0-0.5V_PLdown-e-14uW','0-0.5V_PLdown-f-18.5uW','0-0.5V_PLdown-d-14uW_was9']
+for fname in pool :
+	x,y=extract_data(fname+'.txt',ycol=3)
+	y=y/max(y)
+	y_tot+=y/5
 
+ax=axs[0]
+# ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
+# ax.set_ylabel('Reflected signal (a.u)',fontsize=15)
+# ax.legend(fontsize=15)
+ax.tick_params(labelsize=20)
 
-# ax.set_xlabel('Secondary B (G)',fontsize=25)
-# ax.set_ylabel('Signal (a.u.)',fontsize=25)
-# ax.plot(xs[xmin:],y_tot[xmin:])
+ax.plot(xs[xmin:xmax],y_tot[xmin:xmax])
+
 
 # fname='0-0.5V_PLdown'
 # x,y=extract_data(fname+'.txt',ycol=1)
@@ -236,7 +248,5 @@ def extract_data(filename,xcol=0,ycol=1):
 
 
 
-# ax.legend(fontsize=25)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
+
 plt.show()

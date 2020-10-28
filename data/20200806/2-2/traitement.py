@@ -125,6 +125,39 @@ def ask_name():
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
+def ESR_n_pics(x,y,cs,width=8,ss=None,amp=None) :
+	if not ss :
+		ss=y[0]
+	if not amp :
+		if max(y)-ss > ss-min(y) :
+			amp=max(y)-ss
+		else :
+			amp=min(y)-ss
+	n=len(cs)
+	widths=np.ones(n)*width
+	amps=np.ones(n)*amp
+	p0=[ss]
+	for c in cs:
+		p0+=[c]
+	for w in widths:
+		p0+=[w]
+	for a in amps:
+		p0+=[a]
+	def f(x,*params):
+		ss=params[0]
+		n=(len(params)-1)//3
+		y=ss
+		for i in range(n):
+			c=params[1+i]
+			width=params[1+n+i]
+			amp=params[1+2*n+i]
+			y+=amp*np.exp(-((x-c)**2/(2*width**2)))
+		return(y)
+	popt, pcov = curve_fit(f, x, y, p0)
+	variables=(x,)
+	for p in popt :
+		variables+=(p,)
+	return(variables[1:],f(*variables))
 
 xmin=30
 xmax=200
@@ -137,22 +170,30 @@ y_tot=np.zeros(xmax-xmin)
 # 	y_tot+=y[xmin:xmax]
 
 
-# pool=['0-0.5V_PLdown','0-0.5V_PLdown-c','0-0.5V_PLdown-e-14uW','0-0.5V_PLdown-f-18.5uW']
-# for fname in pool :
-# 	x,y=extract_data(fname+'.txt',ycol=1)
-# 	y=y/max(y)
-# 	y_tot+=y[xmin:xmax]
+pool=['0-0.5V_PLdown','0-0.5V_PLdown-c','0-0.5V_PLdown-e-14uW','0-0.5V_PLdown-f-18.5uW','0-0.5V_PLdown-d-14uW_was9']
+for fname in pool :
+	x,y=extract_data(fname+'.txt',ycol=3)
+	y=y/max(y)
+	y_tot+=y[xmin:xmax]
+	x=x[xmin:xmax]
 
-fname='0-0.5V_PLdown'
-x,y=extract_data(fname+'.txt',ycol=1)
+y_tot=y_tot/max(y_tot)
+popt,yfit=ESR_n_pics(x,y_tot,[1.25],width=0.1)
+print(popt)
+
+# fname='0-0.5V_PLdown'
+# x,y=extract_data(fname+'.txt',ycol=1)
 # y2=np.zeros(201)
 # y2[0]=y[0]
 # y2[-1]=y[-1]
 # for i in range(1,200):
 # 	y2[i]=(2*y[i]+y[i-1]+y[i+1])/4
-y_tot=y[xmin:xmax]
+# y_tot=y[xmin:xmax]
 
-plt.plot(y_tot)
-
+plt.plot(x,y_tot,'x',ms=8,mew=2)
+plt.plot(x[50:104],yfit[50:104],linewidth=5)
+ax=plt.gca()
+ax.tick_params(labelsize='large')
+plt.ylabel('Photoluminescence',fontsize=20)
 
 plt.show()
