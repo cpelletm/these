@@ -183,7 +183,7 @@ def NV_simple(orientation='111'):
 	# show_vpropres(val,vec,bnamez)
 	# transitions(val,vec,Sx,rho_0)
 	if orientation=='111' :
-		amps=np.linspace(0,1000,500)
+		amps=np.linspace(0,2000,500)
 		transi_NV=[]
 		for amp in amps :
 			# B=[amp,0,0]
