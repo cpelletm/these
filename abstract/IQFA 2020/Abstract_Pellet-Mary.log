@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  28 OCT 2020 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  29 OCT 2020 16:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -410,55 +410,43 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 31
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-Package epstopdf Info: Source file: <CR_total.eps>
-(epstopdf)                    date: 2020-10-28 17:09:57
-(epstopdf)                    size: 885006 bytes
-(epstopdf)             Output file: <CR_total-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-10-28 18:00:55
-(epstopdf)                    size: 812522 bytes
-(epstopdf)             Command: <repstopdf --outfile=CR_total-eps-converted-to.
-pdf CR_total.eps>
-(epstopdf)             \includegraphics on input line 38.
-Package epstopdf Info: Output file is already uptodate.
-<CR_total-eps-converted-to.pdf, id=1, 1515.6625pt x 505.89pt>
-File: CR_total-eps-converted-to.pdf Graphic file (type pdf)
-<use CR_total-eps-converted-to.pdf>
-Package pdftex.def Info: CR_total-eps-converted-to.pdf  used on input line 38.
-(pdftex.def)             Requested size: 378.9147pt x 126.47218pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--40
- [][] 
- []
-
-<CRmeca.pdf, id=2, 692.87581pt x 226.10257pt>
+<CR_total.pdf, id=1, 1214.71443pt x 445.12033pt>
+File: CR_total.pdf Graphic file (type pdf)
+<use CR_total.pdf>
+Package pdftex.def Info: CR_total.pdf  used on input line 39.
+(pdftex.def)             Requested size: 303.67786pt x 111.2798pt.
+<CRmeca.pdf, id=2, 1096.71426pt x 443.80956pt>
 File: CRmeca.pdf Graphic file (type pdf)
 <use CRmeca.pdf>
-Package pdftex.def Info: CRmeca.pdf  used on input line 41.
-(pdftex.def)             Requested size: 346.43706pt x 113.051pt.
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./CR_total-eps-converted
--to.pdf> <./CRmeca.pdf>] (./Abstract_Pellet-Mary.bbl) [2]
-(./Abstract_Pellet-Mary.aux) ) 
+Package pdftex.def Info: CRmeca.pdf  used on input line 45.
+(pdftex.def)             Requested size: 274.17789pt x 110.9521pt.
+
+(./Abstract_Pellet-Mary.bbl) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.m
+ap} <./CR_total.pdf> <./CRmeca.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./CRmeca.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+>] (./Abstract_Pellet-Mary.aux) ) 
 Here is how much of TeX's memory you used:
- 6529 strings out of 481239
- 88582 string characters out of 5920377
- 348481 words of memory out of 5000000
- 21662 multiletter control sequences out of 15000+600000
- 558420 words of font info for 69 fonts, out of 8000000 for 9000
+ 6490 strings out of 481239
+ 88173 string characters out of 5920377
+ 349496 words of memory out of 5000000
+ 21641 multiletter control sequences out of 15000+600000
+ 550702 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,35p,586b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ba
-se/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
-i8a.pfb>
-Output written on Abstract_Pellet-Mary.pdf (2 pages, 931881 bytes).
+ 38i,6n,35p,600b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on Abstract_Pellet-Mary.pdf (1 page, 513267 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -265,13 +265,13 @@ def print_map(array,xmin=0,xmax=1,ymin=0,ymax=1):
 	plt.show()
 
 def ecris_gros():
-	plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori
+	plt.figure(num=1,figsize=(10,7),dpi=80) #à écrire au début a priori
 
 
 	ax=plt.gca()
 	ax.tick_params(labelsize=20)
-	ax.set_xlabel(r'B $\parallel$[100] (G)', fontweight='bold' ,fontsize=20)
-	ax.set_ylabel(r'Photoluminescence' , fontweight='bold', fontsize=20)
+	ax.set_xlabel(r'B $\parallel$[100] (G)', fontweight='bold' ,fontsize=25)
+	ax.set_ylabel(r'Photoluminescence' , fontweight='bold', fontsize=25)
 	plt.plot(x,y,'x-',linewidth=3,ms=8,mew=2)
 
 
@@ -304,6 +304,13 @@ ax.set_xlabel(r'B $\parallel$[100] (G)', fontweight='bold' ,fontsize=25)
 ax.set_ylabel(r'Photoluminescence' , fontweight='bold', fontsize=25)
 plt.plot(x,(y-yfit)*100,'x-',linewidth=3,ms=8,mew=2)
 
+ylim=ax.get_ylim()
+color = next(ax._get_lines.prop_cycler)['color']
+x_transi=[54.211299328723314,123.0866685272786,17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
+for i in range(len(x_transi)) :
+	x0=x_transi[i]
+	plt.plot([x0,x0],[1,-1],'--',color=color,lw=2)
+ax.set_ylim(ylim)
 plt.show()
 
 print(x[-1])

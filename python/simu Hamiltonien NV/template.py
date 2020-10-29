@@ -325,6 +325,7 @@ def NV_simple(orientation='111'):
 				return False
 		x_VH,y_VH=zero(D_VH)
 		x_War1,y_War1=zero(D_War1)
+		print(x_VH,x_War1)
 		color = next(ax._get_lines.prop_cycler)['color']
 		plt.scatter([x_VH,x_War1],[y_VH,y_War1],s=80,facecolors='none',edgecolors=color,lw=2)	
 		plt.legend()
@@ -362,7 +363,7 @@ def NV_simple(orientation='111'):
 			x,y=zero(pair[0],pair[1])
 			x_transi+=[x]
 			y_transi+=[y]
-
+		print(x_transi)
 		plt.scatter(x_transi,y_transi,s=80,facecolors='none',edgecolors=color,lw=2)		
 		for i in range(len(x_transi)) :
 			x0=x_transi[i]

@@ -124,10 +124,11 @@ def ask_name():
 	qapp = QApplication(sys.argv)
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
-
-fig,ax=plt.subplots()
+plt.figure(num=1,figsize=(11,7),dpi=80)
+ax=plt.gca()
 fname='0-0.8V_PLdown-Db'
-x,y=extract_data(fname+('.txt'),ycol=3)
+x,y=extract_data(fname+('.txt'),ycol=1)
+y=y/max(y)
 xmin=100
 xmax=165
 xplotmin=80
@@ -135,7 +136,7 @@ xplotmin=80
 x=(x-x[xplotmin])*31
 
 
-ax.plot(x[xplotmin:],y[xplotmin:],'x',ms=8,mew=2)
+ax.plot(x[xplotmin:],y[xplotmin:],'x',ms=10,mew=3)
 
 popt,yfit=gauss_fit(x[xmin:xmax],y[xmin:xmax])
 ax.plot(x[xmin:xmax],yfit,linewidth=5)
@@ -144,11 +145,11 @@ print(popt[2])
 
 
 
-ax.tick_params(labelsize='large')
-plt.xlabel(r'Dark time $\tau$ (ms)',fontsize='xx-large')
-plt.ylabel('PL (arb.)',fontsize='xx-large')
+ax.tick_params(labelsize=20)
+plt.xlabel(r'B$_{\mathrm{scan}}$ (G)',fontweight='bold' ,fontsize=25)
+plt.ylabel('Reflected signal',fontweight='bold' ,fontsize=25)
 
 
-plt.legend(fontsize='x-large')
+
 
 plt.show()
