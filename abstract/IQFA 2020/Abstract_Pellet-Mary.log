@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  29 OCT 2020 16:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  31 OCT 2020 22:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -254,9 +254,9 @@ File: babel.def 2020/02/14 3.40 Babel common definitions
 \bbl@dirlevel=\count196
 )
 Package babel Info: \l@acadian = using hyphenrules for french
-(babel)             (\language82) on input line 91.
+(babel)             (\language30) on input line 91.
 Package babel Info: \l@canadien = using hyphenrules for french
-(babel)             (\language82) on input line 92.
+(babel)             (\language30) on input line 92.
 \FB@nonchar=\count197
 Package babel Info: Making : an active character on input line 419.
 Package babel Info: Making ; an active character on input line 420.
@@ -415,22 +415,22 @@ File: CR_total.pdf Graphic file (type pdf)
 <use CR_total.pdf>
 Package pdftex.def Info: CR_total.pdf  used on input line 39.
 (pdftex.def)             Requested size: 303.67786pt x 111.2798pt.
-<CRmeca.pdf, id=2, 1096.71426pt x 443.80956pt>
-File: CRmeca.pdf Graphic file (type pdf)
-<use CRmeca.pdf>
-Package pdftex.def Info: CRmeca.pdf  used on input line 45.
-(pdftex.def)             Requested size: 274.17789pt x 110.9521pt.
+<CRmeca_2.pdf, id=2, 1086.11264pt x 443.80956pt>
+File: CRmeca_2.pdf Graphic file (type pdf)
+<use CRmeca_2.pdf>
+Package pdftex.def Info: CRmeca_2.pdf  used on input line 45.
+(pdftex.def)             Requested size: 271.5275pt x 110.9521pt.
 
 (./Abstract_Pellet-Mary.bbl) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.m
-ap} <./CR_total.pdf> <./CRmeca.pdf
+ap} <./CR_total.pdf> <./CRmeca_2.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./CRmeca.pdf): PDF inclusion: multiple 
-pdfs with page group included in a single page
+pdfTeX warning: /usr/bin/pdflatex (file ./CRmeca_2.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
 >] (./Abstract_Pellet-Mary.aux) ) 
 Here is how much of TeX's memory you used:
  6490 strings out of 481239
- 88173 string characters out of 5920377
- 349496 words of memory out of 5000000
+ 88185 string characters out of 5920377
+ 349497 words of memory out of 5000000
  21641 multiletter control sequences out of 15000+600000
  550702 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -443,10 +443,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Abstract_Pellet-Mary.pdf (1 page, 513267 bytes).
+Output written on Abstract_Pellet-Mary.pdf (1 page, 516685 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

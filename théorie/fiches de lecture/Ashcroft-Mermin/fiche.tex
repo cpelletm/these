@@ -1,0 +1,55 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\chapter{Théorie de Drude}
+  \section{Historique}
+  Découverte des électrons par Thomson en 1897, Modèle de Drude à partir de 1900, découverte du noyau par Rutherford en 1909. (Avant y'avait toute cette histoire de flan au pruneau)
+  \section{le modèle}
+  C'est un modèle pour décrire le comportement des conducteurs (donc métaux) : Les électrons de valence sont libres et forment un gaz, les noyaux et les électrons de coeurs (les "ions") sont fixes. En ordre de grandeur, ça fait $\approx 10^{22} e^-/cm^3$ soit environ 10 x plus que la densité d'un gaz à 300K et $P_0$. En plus les électrons sont chargés, donc fortement en interaction, mais Drude il s'en ballec il dit que c'est un gaz dillué.
+  
+  En gros il a un modèle purement mécanico-collisionel, ou les électrons ne sont sensibles qu'au champ exterieur entre deux collisions. Il ne considère que les collisions $e^-$-ions, ce qui est assez justifié parce que la section efficace des ions est bcp plus grosse, et après chaque collision, l'$e^-$ est thermalisé avec la matrice cristalline : sa vitesse suit la loi de ditribution de Boltzmann et a une direction aléatoire. La fréquence des collisions est donnée par $1/\tau$ ou $\tau$ est une constante dans le modèle de base.
+  \section{Résultats du modèle}
+  \begin{enumerate}
+  
+  \item \textbf{La loi d'Ohm (locale)} : $\mathbf{j}=\sigma\mathbf{E}$ avec la conductivité $\sigma = \frac{ne^2\tau}{m}$ (La formule est pas vraiment prédictive vu qu'on connait pas $\tau$). Je refais pas la démo, en gros tu trouve que le modèle soumis à une Force constante revient à ajouter une force de frottement.
+  
+  \item \textbf{L'effet Hall (classique)} L'effet Hall c'est toujours la merde en vrai. L'idée est toute simple, tu as un champ mag transverse, donc tes $e^-$ tournent et se mettent en excès sur un bord, ce qui te créé un champ transverse (car surplus de charge d'un coté), donc un courant transverse. Sauf que en régime stattionaire tu peux pas avoir de courant transverse vu que tes électrons ont nulle part ou aller. Donc NTM il y un champ E transverse mais pas de courant (en gros c'est juste que la Force E et B se compensent pour la composante transverse). A la fin, ta resitivité est la même vu qu'il y a pas de courant transverse (magnétoresistance = 0, ce qui est pas toujours vrai en quantique), et tu as une constante qui apparait : $R_H=\frac{E_\perp}{j_\parallel B}=\frac{1}{ne}$ la constante de Hall, qui ne dépend a priori que de la densité électronique. 
+  
+  \begin{tcolorbox}
+  \textbf{Attention :} Le Ashcroft est un petit coquin, il utilise $H$ au lieu de $B$ en disant que c'est pareil pour un materiau pas magnétique (pourquoi pas). Sauf que ce trou du cul normalise $H=B/c$ plutot que $H=B/\mu_0$ (H est homogène à un champ électrique, ce qui il faut le reconnaitre est pratique pour les OEM) Donc méfiance, je ferai pas forcément gaffe partout.
+ \end{tcolorbox}
+ 
+ La constante de Hall, c'est un truc qui marche en gros en statique, à froid et à gros champ mag. Donc c'est quand meme un peu limité.
+ Point plus intéressant, l'angle $\phi$ entre le courant et le champ Elec (angle de Hall) s'écrit $\tan \phi = \omega_c \tau$ ou $\omega_c=\frac{eB}{m}$ est la fréquence cyclotron (1/le temps pour qu'un  $e^-$ fasse un tour autour du champ mag). Donc $\phi$ te dit en gros combien de tours tu fais entre chaque collsion.
+ 
+ \item \textbf{Courant alternatif} En courant alternatif il faut passer en Fourier : $\mathbf{j}(\omega)=\sigma(\omega)\mathbf{E}(\omega)$, et la conductivité prend une composante complexe $\sigma=\frac{\sigma_0}{1-i\omega\tau}$. Attention quand même, ce n'est vrai que dans la limite ou l'$e^-$ voit un champ constant entre deux collsions, cad la longueur d'onde de l'OEM est grande devant le libre parcours moyen (lpm) des $e^-$. En appliquant Maxwell comme des bourrins, on trouve l'équation d'onde :
+ \begin{equation}
+ \Delta E + \frac{\omega^2}{c^2} \epsilon(\omega) E =0
+ \end{equation}
+ $\epsilon(\omega)$ est la constante diélectrique dans le voc du livre et elle vaut $$ \epsilon(\omega)= \frac{4\pi i \sigma}{\omega} \approx 1-\frac{\omega_p^2}{\omega^2}$$ ce qui fait sortir la fréquence plasma $\omega_p=\frac{4\pi n e^2}{m}$. Pour $\omega < \omega_p$, les solutions sont exponentielles (donc décroissante parce qu'on est en physique), le métal absorbe les OEM avec une épaisseur de peau $l=c/\omega_p$. Pour $\omega > \omega_p$, les solutions sont des oscillations : le métal devient transparent aux OEM.
+ Bon en vrai ça marche un peu pour les alcalins et c'est tout, et encore c'est de la chatte.
+ 
+ Une conséquence tout de même c'est l'apparition des \textbf{plasmons} dans le modèle. En gros tu trouve que tu as des oscillations de densité locale de charge exactement à la fréquence $\omega_p$. De ce que j'en comprend c'est la fréquence de résonnance des $e^-$ elastiquement liés au cristal ($\omega_p$ est simplement lié à la constante de raideur de la liaison).
+ 
+ \item \textbf{Conductivité thermique}
+ 
+   \end{enumerate}
+  \end{document}	
+  
+  
