@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  31 OCT 2020 19:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  6 NOV 2020 13:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -310,57 +310,57 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (./Meca_cross_SI.toc
 Overfull \hbox (0.87494pt too wide) detected at line 4
- \OT1/cmr/m/n/12 2
+ \OT1/cmr/m/n/12 3
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 5
- \OT1/cmr/m/n/12 2
+ \OT1/cmr/m/n/12 3
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 6
- \OT1/cmr/m/n/12 2
+ \OT1/cmr/m/n/12 3
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 7
- \OT1/cmr/m/n/12 3
- []
-
-
-Overfull \hbox (0.87494pt too wide) detected at line 8
- \OT1/cmr/m/n/12 3
- []
-
-
-Overfull \hbox (0.87494pt too wide) detected at line 9
  \OT1/cmr/m/n/12 4
  []
 
 
-Overfull \hbox (0.87494pt too wide) detected at line 10
+Overfull \hbox (0.87494pt too wide) detected at line 8
+ \OT1/cmr/m/n/12 4
+ []
+
+
+Overfull \hbox (0.87494pt too wide) detected at line 9
  \OT1/cmr/m/n/12 5
+ []
+
+
+Overfull \hbox (0.87494pt too wide) detected at line 10
+ \OT1/cmr/m/n/12 6
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 11
- \OT1/cmr/m/n/12 5
+ \OT1/cmr/m/n/12 6
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 12
- \OT1/cmr/m/n/12 5
+ \OT1/cmr/m/n/12 7
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 13
- \OT1/cmr/m/n/12 6
+ \OT1/cmr/m/n/12 7
  []
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 14
- \OT1/cmr/m/n/12 6
+ \OT1/cmr/m/n/12 7
  []
 
 
@@ -370,24 +370,29 @@ Overfull \hbox (0.87494pt too wide) detected at line 15
 
 
 Overfull \hbox (0.87494pt too wide) detected at line 16
- \OT1/cmr/m/n/12 7
+ \OT1/cmr/m/n/12 9
  []
 
 
-Overfull \hbox (0.87494pt too wide) detected at line 17
- \OT1/cmr/m/n/12 8
+Overfull \hbox (6.74988pt too wide) detected at line 17
+ \OT1/cmr/m/n/12 10
  []
 
 
 Overfull \hbox (6.74988pt too wide) detected at line 18
- \OT1/cmr/m/n/12 10
+ \OT1/cmr/m/n/12 12
+ []
+
+
+Overfull \hbox (6.74988pt too wide) detected at line 19
+ \OT1/cmr/m/n/12 14
  []
 
 )
 \tf@toc=\write3
 \openout3 = `Meca_cross_SI.toc'.
 
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 Package epstopdf Info: Source file: <SI_Cristallo.eps>
 (epstopdf)                    date: 2020-10-30 10:23:06
 (epstopdf)                    size: 65710 bytes
@@ -398,13 +403,13 @@ Package epstopdf Info: Source file: <SI_Cristallo.eps>
 -to.pdf SI_Cristallo.eps>
 (epstopdf)             \includegraphics on input line 46.
 Package epstopdf Info: Output file is already uptodate.
-<SI_Cristallo-eps-converted-to.pdf, id=14, 986.68625pt x 433.62pt>
+<SI_Cristallo-eps-converted-to.pdf, id=17, 986.68625pt x 433.62pt>
 File: SI_Cristallo-eps-converted-to.pdf Graphic file (type pdf)
 <use SI_Cristallo-eps-converted-to.pdf>
 Package pdftex.def Info: SI_Cristallo-eps-converted-to.pdf  used on input line 
 46.
 (pdftex.def)             Requested size: 986.68384pt x 433.61894pt.
- [2]
+ [3]
 Package epstopdf Info: Source file: <setup.eps>
 (epstopdf)                    date: 2020-10-30 10:23:06
 (epstopdf)                    size: 271553 bytes
@@ -415,12 +420,12 @@ Package epstopdf Info: Source file: <setup.eps>
  setup.eps>
 (epstopdf)             \includegraphics on input line 67.
 Package epstopdf Info: Output file is already uptodate.
-<setup-eps-converted-to.pdf, id=22, 1230.5975pt x 732.7375pt>
+<setup-eps-converted-to.pdf, id=25, 1230.5975pt x 732.7375pt>
 File: setup-eps-converted-to.pdf Graphic file (type pdf)
 <use setup-eps-converted-to.pdf>
 Package pdftex.def Info: setup-eps-converted-to.pdf  used on input line 67.
 (pdftex.def)             Requested size: 1230.59451pt x 732.73572pt.
- [3 <./SI_Cristallo-eps-converted-to.pdf>]
+ [4 <./SI_Cristallo-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <T1_soustraction_shema.eps>
 (epstopdf)                    date: 2020-10-30 10:23:06
 (epstopdf)                    size: 35634 bytes
@@ -432,61 +437,63 @@ Package epstopdf Info: Source file: <T1_soustraction_shema.eps>
 converted-to.pdf T1_soustraction_shema.eps>
 (epstopdf)             \includegraphics on input line 83.
 Package epstopdf Info: Output file is already uptodate.
-<T1_soustraction_shema-eps-converted-to.pdf, id=42, 351.3125pt x 46.1725pt>
+<T1_soustraction_shema-eps-converted-to.pdf, id=45, 351.3125pt x 46.1725pt>
 File: T1_soustraction_shema-eps-converted-to.pdf Graphic file (type pdf)
 <use T1_soustraction_shema-eps-converted-to.pdf>
 Package pdftex.def Info: T1_soustraction_shema-eps-converted-to.pdf  used on in
 put line 83.
 (pdftex.def)             Requested size: 351.31163pt x 46.17236pt.
- [4 <./setup-eps-converted-to.pdf>] [5 <./T1_soustraction_shema-eps-converted-t
+ [5 <./setup-eps-converted-to.pdf>] [6 <./T1_soustraction_shema-eps-converted-t
 o.pdf>]
-Package epstopdf Info: Source file: <CR_meca_22.eps>
-(epstopdf)                    date: 2020-10-30 10:23:06
-(epstopdf)                    size: 235247 bytes
-(epstopdf)             Output file: <CR_meca_22-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-10-30 10:23:06
-(epstopdf)                    size: 65964 bytes
-(epstopdf)             Command: <repstopdf --outfile=CR_meca_22-eps-converted-t
-o.pdf CR_meca_22.eps>
-(epstopdf)             \includegraphics on input line 134.
-Package epstopdf Info: Output file is already uptodate.
-<CR_meca_22-eps-converted-to.pdf, id=67, 1381.16pt x 376.40625pt>
-File: CR_meca_22-eps-converted-to.pdf Graphic file (type pdf)
-<use CR_meca_22-eps-converted-to.pdf>
-Package pdftex.def Info: CR_meca_22-eps-converted-to.pdf  used on input line 13
-4.
-(pdftex.def)             Requested size: 1381.15663pt x 376.40532pt.
- [6] [7 <./CR_meca_22-eps-converted-to.pdf>]
-[8] (./Meca_cross_SI.bbl [9]) [10] (./Meca_cross_SI.aux) ) 
+<map_torque_1_classe.pdf, id=70, 1151.31938pt x 472.82925pt>
+File: map_torque_1_classe.pdf Graphic file (type pdf)
+<use map_torque_1_classe.pdf>
+Package pdftex.def Info: map_torque_1_classe.pdf  used on input line 119.
+(pdftex.def)             Requested size: 1151.31657pt x 472.8281pt.
+ [7]
+<map_torque_4_classe.pdf, id=75, 1099.94937pt x 434.34273pt>
+File: map_torque_4_classe.pdf Graphic file (type pdf)
+<use map_torque_4_classe.pdf>
+Package pdftex.def Info: map_torque_4_classe.pdf  used on input line 136.
+(pdftex.def)             Requested size: 1099.94669pt x 434.34167pt.
+ [8 <./map_torque_1_classe.pdf>] [9 <./map_torque_4_classe.pdf>]
+<22-total.pdf, id=144, 1055.71661pt x 716.83017pt>
+File: 22-total.pdf Graphic file (type pdf)
+<use 22-total.pdf>
+Package pdftex.def Info: 22-total.pdf  used on input line 171.
+(pdftex.def)             Requested size: 1055.71404pt x 716.82841pt.
+ [10] [11 <./22-total.pdf>] [12] (./Meca_cross_SI.bbl
+[13]) [14] (./Meca_cross_SI.aux) ) 
 Here is how much of TeX's memory you used:
  5842 strings out of 481239
- 83640 string characters out of 5920377
- 338242 words of memory out of 5000000
+ 83754 string characters out of 5920377
+ 339272 words of memory out of 5000000
  21040 multiletter control sequences out of 15000+600000
  543940 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,10n,42p,927b,348s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmtt10.pfb>
-Output written on Meca_cross_SI.pdf (10 pages, 389259 bytes).
+ 43i,10n,42p,1193b,348s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+>
+Output written on Meca_cross_SI.pdf (14 pages, 759538 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
+ 389 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

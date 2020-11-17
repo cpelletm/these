@@ -184,7 +184,7 @@ def NV_simple(orientation='111'):
 	# show_vpropres(val,vec,bnamez)
 	# transitions(val,vec,Sx,rho_0)
 	D_VH=2694 #+/-5 , Cruddace a 2706 +/- 30
-	D_War1=2466 #la meme valeur que Cruddace, lui il a +/- 60
+	D_War1=2468 #+/- 10 , Cruddace il a 2466 +/- 60
 	if orientation=='111' :
 		amps=np.linspace(0,400,201)
 		transi_NV=[]

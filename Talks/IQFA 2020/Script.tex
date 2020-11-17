@@ -1,0 +1,68 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+\section{intro}
+Thanks to the organizer for inviting me. Today I'm going to present to you two of our recent results regarding dipolar spin interaction in diamond. The first one is the optical observation of interaction between Natrogen-Vacancy (or NV) spins and new spin species in diamond, and the second is the mechanical detection of dipolar interaction between NV centers.
+
+But first, I will have to briefly introduce the physics of NV centers.
+
+\section{NV center}
+%Slide avec un NV dans sa maille cristalline et les niveaux d'énergie (juste excité
+% et fondamental) avec un zoom sur le niveau d'énergie fondamentale.
+A Nitrogen-vacancy center, which consists of nitrogen and a vacancy in the diamond crystal lattice, is a colored center, because it emits red light when optically excited (in our case with a green laser). However, the main reasons NV centers are widely used in quantum technology are not its optical properties, which are rather poor, but its spin properties.
+
+An NV center is a Spin-1 specie with no spin-orbit coupling and relatively good spin properties : a lifetime of a few milliseconds at room temperature, and a coherence time that can reach ??? for single spins. In our case since we are working with relatively dense ensembles, we do have an inhomogenous broadening of a few MHz. 
+
+But the most important property of the NV spin is that it can be optically polarized : At zero magnetic field, because of (origin of D???), the ms=0 state has an energy level about 3 GHz lower than that of the magnetic states ms=+/-1. At room temperature, this means that the ms=0 state is more populated by a whole .0000001\%. But when you are optically exciting (Reformuler ca) the NV center,because the optical cycle is different for the ms=0 and the magnetic states, you start pumping population in the 0 state up to about 80\%, which would be equivalent to a Temperature of 0.6 K. Another important property, which is related, is that the ms=0 state is brighter than the magnetic state, (quantum ratios ???).
+
+So to sum up, exciting an NV center with a green laser allows us to polarize the NV spin, and looking at the photoluminescence emitted by the NV allows us to measure that polarization.
+
+\section{Magnetometry with NV centers}
+The most common use of NV centers is probably magnetometry. The reason is rather simple : thanks to the optical pumping and the ability to read the quantum state, you can quite easily find the energy levels of your spin states, and since these levels depend on the magnetic field though the Zeeman effect, you can deduce the magnetic field. 
+The simplest protocol is called Optically Detected Magnetic Resonance (ODMR). This protocol consist in continuously shining a green laser on your diamond and looking at the photoluminescence (or PL) while scanning a microwave frequency. Whenever the microwave is resonant with a 0 to -1 or 0 to +1 transition, the spin is partially depolarized in a magnetic state and the PL drops.% Plot avec un ODMR de single spin.
+
+This would be what you observe with a single spin, but we are dealing with ensemble. And an important aspect I did not mention so far is that the ms=0,+1 or -1 states are implicitly the eigenstates of a Sz operator, with a particular direction z. And since we have a zero-field splitting term, the direction of z is not imposed by the magnetic field. To the fist order, as long as the zeeman splitting is lower than than the zero field splitting, we can consider that the z axis is given by the zero field splitting, and the Zeeman splitting will simply be the projection of the magnetic field along the z axis. 
+The physical z axis would then simply be the one formed by the nitrogen and the vacancy. And since there are four possible crystalline orientation in a diamond, one for each valence bond of the carbon, there are four possible z axis for our NV centers, and therefor 4 possible projection of the magnetic field. %Un peu de géométrie
+
+Going back to the ODMR, when dealing with ensemble, this is what you would observe : 4 transitions of 0 to -1, one for each possible orientation, or class, of NV centers, and 4 0 to +1 transitions.
+
+\section{Polarization transfer}
+Ref : Kamp, E. J., Carvajal, B., \& Samarth, N. (2018). Continuous wave protocol for simultaneous polarization and optical detection of P1-center electron spin resonance. Physical Review B, 97(4), 045204.
+
+le science 2016 de Lukin, le PRX de Wallsworth
+
+Another thing you can do when you have a polarized spin is to transfer its polarization, through dipolar interaction,  to another spin species. This is an especially active area for NV application with Dynamic Nuclear Polarization where you can transfer some of the NV polarization to nuclear spins either in the diamond (papier 13C et 14N), or outside the diamond (papier Lukin et wallsworth).
+But you can also transfer its polarization to a (dark) electron spin. So far, as far as y know, there has only been transfer to electric spin inside the diamond, and only to one particular spin which is the substitutional Nitrogen N minus defect, often called P1 center.
+
+There are several ways to transfer polarization from one spin to another, but the simplest one is cross-relaxation : by tuning the magnetic field you can sometimes match the energy transition of diferent spins species and they will start to exchange spin quanta through RESONANT dipolar interaction, which tend to balance the spin polarization of the two spins.
+ 
+This leads me to our first result :
+\section{Cross-Relaxation with NV centers}
+%1ere slide : Scan + en dessous 100 et puis soustraction par dessus.
+What we see here is the change in photoluminescence of our NV centers when we scan a magnetic field along the 100 direction of the diamond. I'll start detailing what we observed.
+
+The first thing to discuss is the 100 direction. It is a defined by the crystaline planes of the diamond, and it correspond to a direction where the magnetic field projection is the same on all four classes of the diamond, so in a way we are back to the single spin case which will make analysis much easier.
+
+The second thing to discuss is the overall decrease of the photoluminescence with the magnetic field. This is because every class is misaligned with the magnetic field, which means that by increasing the field amplitude, you will increase both the longitudinal field, so the zeeman splitting Bz*Sz in the Hamiltonian, but you also increase the transverse magnetic field component, so Bx*Sx which will mix the bright ms=0 state with the dark ms=+/-1 states and decrease the overall luminosity.
+
+So we expect a decreasing enveloppe (slide), and when we subtract the enveloppe of the signal, what remains is this :(new slide avec la soustraction) three clear features, none of which at been observed before and that we attributed to cross-relaxation of the NV center with three different species. The first 
+
+  \end{document}	
+  
+  

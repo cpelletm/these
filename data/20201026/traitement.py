@@ -187,6 +187,8 @@ def ask_name():
 fname='scan_rose_EM_week_end_100'
 x,y=extract_data(fname+'.txt')
 
+y=y/max(y)
+
 V_min=0
 V_max=10
 n_V=len(x)
@@ -235,6 +237,22 @@ sig_fft[np.abs(sample_freq) > 5]=0
 
 filtered_sig = fftpack.ifft(sig_fft)
 plt.plot(x_plot,filtered_sig,label='filtre passe bas')
+ax=plt.gca()
+ylim=ax.get_ylim()
 
+c2 = next(ax._get_lines.prop_cycler)['color']
+
+x_v=54.5 #+/- 1
+plt.plot([x_v,x_v],[1,-1],'--',color=c2)
+
+x_v=121 #+/- 2
+plt.plot([x_v,x_v],[1,-1],'--',color=c2)
+
+
+x_C13=[17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
+for x_v in x_C13 :
+	plt.plot([x_v,x_v],[1,-1],'--',color=c2)
+
+ax.set_ylim(ylim)
 plt.legend()
 plt.show()

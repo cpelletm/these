@@ -222,94 +222,107 @@ def spher_to_cart(theta,phi):
 
 
 
-n=300
-fig,ax=plt.subplots()
+n=15
+# fig,ax=plt.subplots()
 
 B_1=np.array([ 37.0815447 ,  27.17222075, 106.08986284])
 B_2=np.array([ 40.35446569, -22.06572528, 129.456638  ])
 
 B_in=B_1+(B_2-B_1)*(-0.02)
+
 B_out=B_1+(B_2-B_1)*0.98
+
 
 Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)
 Bzs=np.linspace(B_in[2],B_out[2],n)
 
 def show_map():
-	ax=plt.gca()
+	fig,ax=plt.subplots()
+	
 	plot_canevas(ax)
 	for i in range(n):
 		theta,phi=cart_to_spher([Bxs[i],Bys[i],Bzs[i]])
 		theta=theta*180/np.pi
 		phi=phi*180/np.pi
-		plt.scatter([phi],[theta],color='red',marker='.')
+		if phi < 270 :
+			phi = phi +90
+		else : phi=phi-270
+		ax.scatter([phi],[theta],color='red',marker='.',s=50)
 	# plt.scatter([B1[2],B2[2]],[B1[1],B2[1]])
+	ax.tick_params(labelsize=15)
+	plt.show()
+	
 
-x0=8
-x=np.linspace(0,np.linalg.norm(B_out-B_in),n)-x0
-
-
-
-transis=np.zeros((n,4))
-for i in range(n):
-	B=np.array([Bxs[i],Bys[i],Bzs[i]])
-	transis[i,:]=transitions(B)[:4]
-
-color = next(ax._get_lines.prop_cycler)['color']
-for j in range(4):
-	ax.plot(x,transis[:,j],color=color,ls='--',lw=3)
-
-color = next(ax._get_lines.prop_cycler)['color']
-
-fname='ESR-meca_0.3V'
-x,y=extract_data(fname+'.txt')
-nmax=len(x)//2
-nmin=50
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-y=-8*y+40-x0
-ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
-
-fname='ESR-meca_0.2V'
-x,y=extract_data(fname+'.txt')
-nmax=len(x)//2
-nmin=50
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-y=-8*y+25-x0
-ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
+show_map()
 
 
-fname='ESR-meca_0.1V'
-x,y=extract_data(fname+'.txt')
-nmax=len(x)//2
-nmin=50
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-y=-8*y+10-x0
-ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
 
-fname='ESR-meca_0.4V'
-x,y=extract_data(fname+'.txt')
-nmax=len(x)//2
-nmin=50
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-y=-8*y+55-x0
-ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
+def plot_ESRs() :
+	x0=8
+	x=np.linspace(0,np.linalg.norm(B_out-B_in),n)-x0
 
-# plt.xlabel(r'$\phi$(°)',fontsize=25)
-# 	plt.ylabel(r'$\theta$(°)',fontsize=25)
-ax.tick_params(labelsize=20)
-# ax.set_xlabel(r'$B_{em}$(G)',fontsize=30)
-# ax.set_ylabel(r'Frequency (MHz)',fontsize=30)
+	ax=plt.gca()
+	transis=np.zeros((n,4))
+	for i in range(n):
+		B=np.array([Bxs[i],Bys[i],Bzs[i]])
+		transis[i,:]=transitions(B)[:4]
+
+	color = next(ax._get_lines.prop_cycler)['color']
+	for j in range(4):
+		ax.plot(x,transis[:,j],color=color,ls='--',lw=3)
+
+	color = next(ax._get_lines.prop_cycler)['color']
+
+	fname='ESR-meca_0.3V'
+	x,y=extract_data(fname+'.txt')
+	nmax=len(x)//2
+	nmin=50
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	y=-8*y+40-x0
+	ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
+
+	fname='ESR-meca_0.2V'
+	x,y=extract_data(fname+'.txt')
+	nmax=len(x)//2
+	nmin=50
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	y=-8*y+25-x0
+	ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
 
 
-plt.show()
+	fname='ESR-meca_0.1V'
+	x,y=extract_data(fname+'.txt')
+	nmax=len(x)//2
+	nmin=50
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	y=-8*y+10-x0
+	ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
 
-# print(transis[n//2,:])
-# print(transitions(B0_cart))
+	fname='ESR-meca_0.4V'
+	x,y=extract_data(fname+'.txt')
+	nmax=len(x)//2
+	nmin=50
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	y=-8*y+55-x0
+	ax.plot(y[nmin:nmax],x[nmin:nmax],'x',color=color,ms=8,mew=2)
+
+	# plt.xlabel(r'$\phi$(°)',fontsize=25)
+	# 	plt.ylabel(r'$\theta$(°)',fontsize=25)
+	ax.tick_params(labelsize=20)
+	# ax.set_xlabel(r'$B_{em}$(G)',fontsize=30)
+	# ax.set_ylabel(r'Frequency (MHz)',fontsize=30)
+
+
+	plt.show()
+
+	# print(transis[n//2,:])
+	# print(transitions(B0_cart))

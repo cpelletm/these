@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  29 OCT 2020 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  3 NOV 2020 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -345,20 +345,15 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package epstopdf Info: Source file: <Adamas_fixe.eps>
-(epstopdf)                    date: 2020-10-29 18:26:18
+(epstopdf)                    date: 2020-10-30 10:23:06
 (epstopdf)                    size: 210219 bytes
 (epstopdf)             Output file: <Adamas_fixe-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-10-22 11:51:21
-(epstopdf)                    size: 67578 bytes
+(epstopdf)                    date: 2020-10-30 10:23:06
+(epstopdf)                    size: 67938 bytes
 (epstopdf)             Command: <repstopdf --outfile=Adamas_fixe-eps-converted-
 to.pdf Adamas_fixe.eps>
 (epstopdf)             \includegraphics on input line 56.
-runsystem(repstopdf --outfile=Adamas_fixe-eps-converted-to.pdf Adamas_fixe.eps)
-...executed safely (allowed).
-
-Package epstopdf Info: Result file: <Adamas_fixe-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-10-29 18:26:34
-(epstopdf)                    size: 67938 bytes.
+Package epstopdf Info: Output file is already uptodate.
 <Adamas_fixe-eps-converted-to.pdf, id=1, 1491.5725pt x 397.485pt>
 File: Adamas_fixe-eps-converted-to.pdf Graphic file (type pdf)
 <use Adamas_fixe-eps-converted-to.pdf>
@@ -388,10 +383,10 @@ on to the
  []
 
 Package epstopdf Info: Source file: <CRmeca.eps>
-(epstopdf)                    date: 2020-10-16 18:54:14
+(epstopdf)                    date: 2020-10-30 10:23:06
 (epstopdf)                    size: 227344 bytes
 (epstopdf)             Output file: <CRmeca-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-10-16 19:00:28
+(epstopdf)                    date: 2020-10-30 10:23:06
 (epstopdf)                    size: 75649 bytes
 (epstopdf)             Command: <repstopdf --outfile=CRmeca-eps-converted-to.pd
 f CRmeca.eps>
@@ -433,7 +428,7 @@ Underfull \hbox (badness 4913) in paragraph at lines 251--257
 Here is how much of TeX's memory you used:
  6291 strings out of 481239
  90214 string characters out of 5920377
- 377449 words of memory out of 5000000
+ 377450 words of memory out of 5000000
  21479 multiletter control sequences out of 15000+600000
  543038 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191

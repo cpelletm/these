@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  30 OCT 2020 15:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  10 NOV 2020 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -633,30 +633,66 @@ Chapter 1.
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./fiche.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Chapter 2.
+[4
+
+] [5]
+Overfull \hbox (17.58119pt too wide) in paragraph at lines 85--85
+[]\OT1/cmr/bx/n/14.4 Temp^^Serature non nulle : dis-tri-bu-tion de Fermi-
+ []
+
+
+Overfull \hbox (14.91725pt too wide) in paragraph at lines 107--108
+[]\OT1/cmr/m/n/10 Ce qui pour un m^^Setal (et unique-ment pour un m^^Setal) res
+te val-able ^^Ra Temp^^Serature
+ []
+
+[6]
+Overfull \hbox (3.38947pt too wide) in paragraph at lines 113--113
+[]\OT1/cmr/m/n/10 Ensuite pour sim-plifer le cal-cul, on va donc compter le nom
+-bre d'^^Setat d'^^Senergie
+ []
+
+[7] [8]
+Chapter 3.
+[9
+
+]
+Chapter 4.
+[10
+
+] [11]
+Chapter 5.
+[12
+
+] (./fiche.aux) ) 
 Here is how much of TeX's memory you used:
- 18277 strings out of 481239
- 401831 string characters out of 5920377
- 655599 words of memory out of 5000000
- 33243 multiletter control sequences out of 15000+600000
- 535237 words of font info for 34 fonts, out of 8000000 for 9000
+ 18279 strings out of 481239
+ 401860 string characters out of 5920377
+ 657599 words of memory out of 5000000
+ 33245 multiletter control sequences out of 15000+600000
+ 535842 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,5n,75p,910b,531s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb>
-Output written on fiche.pdf (2 pages, 114438 bytes).
+ 60i,8n,75p,969b,531s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+>
+Output written on fiche.pdf (12 pages, 196410 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

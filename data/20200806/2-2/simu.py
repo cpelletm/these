@@ -4,6 +4,7 @@ from numpy.linalg import norm
 import matplotlib.pyplot as plt
 from qutip import *
 import scipy.optimize
+from scipy.optimize import curve_fit
 from tabulate import tabulate
 
 
@@ -178,13 +179,13 @@ PLs_sans=np.array(PLs_sans)/4
 
 
 ax=axs[1]
-color = next(ax._get_lines.prop_cycler)['color']
-ax.plot(xs[xmin:],PLs[xmin:],lw=3,label='With CR',color=color)
-ax.plot(xs[xmin:],PLs_sans[xmin:],'--',lw=3,color=color,label='Without CR')
-# ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
-# ax.set_ylabel(r'|$m_s$=0> population',fontsize=15)
-ax.legend(fontsize=20)
-ax.tick_params(labelsize=20)
+# color = next(ax._get_lines.prop_cycler)['color']
+# ax.plot(xs[xmin:],PLs[xmin:],lw=3,label='With CR',color=color)
+# ax.plot(xs[xmin:],PLs_sans[xmin:],'--',lw=3,color=color,label='Without CR')
+# # ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
+# # ax.set_ylabel(r'|$m_s$=0> population',fontsize=15)
+# ax.legend(fontsize=15)
+# ax.tick_params(labelsize=15)
 
 # color = next(ax._get_lines.prop_cycler)['color']
 # ax.plot(xs[xmin:],torques[xmin:,0],label='With CR',color=color)
@@ -192,13 +193,13 @@ ax.tick_params(labelsize=20)
 # ax.set_xlabel('Secondary B (g)',fontsize=25)
 # ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=25)
 
-# color = next(ax._get_lines.prop_cycler)['color']
-# ax.plot(xs[xmin:],torques[xmin:,1],lw=3,label='With CR',color=color)
-# ax.plot(xs[xmin:],torques_sans[xmin:,1],'--',lw=3,label='Without CR', color=color)
-# # ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
-# # ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=15)
-# ax.legend(fontsize=20)
-# ax.tick_params(labelsize=20)
+color = next(ax._get_lines.prop_cycler)['color']
+ax.plot(xs[xmin:],torques[xmin:,1],lw=3,label='With CR',color=color)
+ax.plot(xs[xmin:],torques_sans[xmin:,1],'--',lw=3,label='Without CR', color=color)
+# ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
+# ax.set_ylabel(r'Torque ($10^{-19}$Nm)',fontsize=15)
+ax.legend(fontsize=15)
+ax.tick_params(labelsize=15)
 
 # color = next(ax._get_lines.prop_cycler)['color']
 # ax.plot(xs[xmin:],torques[xmin:,2],label='With CR',color=color)
@@ -226,7 +227,7 @@ def extract_data(filename,xcol=0,ycol=1):
 y_tot=np.zeros(201)
 pool=['0-0.5V_PLdown','0-0.5V_PLdown-c','0-0.5V_PLdown-e-14uW','0-0.5V_PLdown-f-18.5uW','0-0.5V_PLdown-d-14uW_was9']
 for fname in pool :
-	x,y=extract_data(fname+'.txt',ycol=3)
+	x,y=extract_data(fname+'.txt',ycol=1)
 	y=y/max(y)
 	y_tot+=y/5
 
@@ -234,11 +235,46 @@ ax=axs[0]
 # ax.set_xlabel(r'B$_{em}$ (G)',fontsize=15)
 # ax.set_ylabel('Reflected signal (a.u)',fontsize=15)
 # ax.legend(fontsize=15)
-ax.tick_params(labelsize=20)
+ax.tick_params(labelsize=15)
 
-ax.plot(xs[xmin:xmax],y_tot[xmin:xmax])
+ax.plot(xs[xmin:xmax],y_tot[xmin:xmax],'x',ms=8,mew=2)
 
+def ESR_n_pics(x,y,cs,width=8,ss=None,amp=None) :
+	if not ss :
+		ss=y[0]
+	if not amp :
+		if max(y)-ss > ss-min(y) :
+			amp=max(y)-ss
+		else :
+			amp=min(y)-ss
+	n=len(cs)
+	widths=np.ones(n)*width
+	amps=np.ones(n)*amp
+	p0=[ss]
+	for c in cs:
+		p0+=[c]
+	for w in widths:
+		p0+=[w]
+	for a in amps:
+		p0+=[a]
+	def f(x,*params):
+		ss=params[0]
+		n=(len(params)-1)//3
+		y=ss
+		for i in range(n):
+			c=params[1+i]
+			width=params[1+n+i]
+			amp=params[1+2*n+i]
+			y+=amp*np.exp(-((x-c)**2/(2*width**2)))
+		return(y)
+	popt, pcov = curve_fit(f, x, y, p0)
+	variables=(x,)
+	for p in popt :
+		variables+=(p,)
+	return(variables[1:],f(*variables))
 
+popt,yfit=ESR_n_pics(xs[80:140],y_tot[80:140],[18,26],width=2)
+ax.plot(xs[80:140],yfit,linewidth=5)
 # fname='0-0.5V_PLdown'
 # x,y=extract_data(fname+'.txt',ycol=1)
 # y=y/max(y)
