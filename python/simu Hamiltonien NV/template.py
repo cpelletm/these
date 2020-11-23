@@ -302,6 +302,7 @@ def NV_simple(orientation='111'):
 		plt.plot(amps,transi_NV[:,0],color=color,label=r'$^{13}$C', ls='dotted', lw=2.5)
 		for i in range(1,len(transi_NV[0,:])):
 			plt.plot(amps,transi_NV[:,i],color=color, ls='dotted', lw=2.5)
+			pass
 		def zero(D):
 			def f(amp):
 				B=[amp,0,0]
@@ -327,8 +328,8 @@ def NV_simple(orientation='111'):
 		x_War1,y_War1=zero(D_War1)
 		print(x_VH,x_War1)
 		color = next(ax._get_lines.prop_cycler)['color']
-		plt.scatter([x_VH,x_War1],[y_VH,y_War1],s=80,facecolors='none',edgecolors=color,lw=2)	
-		plt.legend()
+		plt.scatter([x_VH],[y_VH],s=80,facecolors='none',edgecolors=color,lw=2)
+		plt.scatter([x_War1],[y_War1],s=80,facecolors='none',edgecolors=color,lw=2)
 		ylim=ax.get_ylim()
 		plt.plot([x_VH,x_VH],[y_VH,0],'--',color=color,lw=2)
 		plt.plot([x_War1,x_War1],[y_War1,0],'--',color=color,lw=2)
@@ -370,12 +371,12 @@ def NV_simple(orientation='111'):
 			y0=y_transi[i]
 			plt.plot([x0,x0],[y0,0],'--',color=color,lw=2)
 
-		ax.set_ylim(ylim)
-		plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25, fontweight='bold')
-		plt.ylabel('Transition frequency (MHz)',fontsize=25, fontweight='bold')
+		ax.set_ylim(2252.0684648424035, 3303.369657487661)
+		# plt.xlabel(r'B$\parallel$(100) (G)',fontsize=25, fontweight='bold')
+		# plt.ylabel('Transition frequency (MHz)',fontsize=25, fontweight='bold')
 		plt.xticks(fontsize=20)
 		plt.yticks(fontsize=20)
-		plt.legend(fontsize=18)
+		# plt.legend(fontsize=18)
 		plt.show()
 
 

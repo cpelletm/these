@@ -127,7 +127,7 @@ def ask_name():
 plt.figure(num=1,figsize=(11,7),dpi=80)
 ax=plt.gca()
 fname='0-0.8V_PLdown-Db'
-x,y=extract_data(fname+('.txt'),ycol=1)
+x,y=extract_data(fname+('.txt'),ycol=3)
 y=y/max(y)
 xmin=100
 xmax=165
@@ -136,7 +136,7 @@ xplotmin=80
 x=(x-x[xplotmin])*31
 
 
-ax.plot(x[xplotmin:],y[xplotmin:],'x',ms=10,mew=3)
+ax.plot(x[xplotmin:],y[xplotmin:],'o',markerfacecolor="None",ms=10,mew=3)
 
 popt,yfit=gauss_fit(x[xmin:xmax],y[xmin:xmax])
 ax.plot(x[xmin:xmax],yfit,linewidth=5)

@@ -125,87 +125,49 @@ def ask_name():
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
+def ESR_n_pics(x,y,cs,width=8,ss=None,amp=None) :
+	if not ss :
+		ss=y[0]
+	if not amp :
+		if max(y)-ss > ss-min(y) :
+			amp=max(y)-ss
+		else :
+			amp=min(y)-ss
+	n=len(cs)
+	widths=np.ones(n)*width
+	amps=np.ones(n)*amp
+	p0=[ss]
+	for c in cs:
+		p0+=[c]
+	for w in widths:
+		p0+=[w]
+	for a in amps:
+		p0+=[a]
+	def f(x,*params):
+		ss=params[0]
+		n=(len(params)-1)//3
+		y=ss
+		for i in range(n):
+			c=params[1+i]
+			width=params[1+n+i]
+			amp=params[1+2*n+i]
+			y+=amp*np.exp(-((x-c)/width)**2)
+		return(y)
+	popt, pcov = curve_fit(f, x, y, p0)
+	variables=(x,)
+	for p in popt :
+		variables+=(p,)
+	return(popt,f(*variables))
 
-# fname='scan_rose_4x_0B_zoom_align3'
-# x,y=extract_data(fname+'.txt')
-# x2,y2=extract_data(fname+'.txt',xcol=2,ycol=3)
-# y2=list(y2)
-# xmin=y2.index(max(y2))
-# xmax=y2.index(min(y2))
-# y2=y2[xmin:xmax]
-# y=y[xmin:xmax]
-# plt.plot(y2,y)
-# popt,yfit=lor_fit(y2,y)
-# plt.plot(y2,yfit,label='lor, sigma=%f'%popt[2])
 
+fname='ESR_1.434V'+'.txt'
+x,y=extract_data(fname)
+x=x*1000
+ax=plt.gca()
+color = next(ax._get_lines.prop_cycler)['color']
+plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
+popt,yfit=ESR_n_pics(x,y,[2738,3053])
+plt.plot(x,yfit,lw=3,color=color)
 
-center=2.8648
-
-# fname='ESR_4x_3V_zoom_align3'
-# x,y=extract_data(fname+'.txt')
-# y=y-min(y)
-# y=y/max(y)
-# y=list(y)
-# mil=y.index(min(y))
-# x=x+center-x[mil]
-# plt.plot(x,y,label=fname)
-
-
-
-# fname='scan_100_rose_10V'
-# x,y=extract_data(fname+'.txt')
-# y=y/max(y)
-# x=x*67
-# x=x+11.83
-# plt.plot(x,y,label=fname)
-
-plt.xlabel('Magnetic field along (100) in G')
-
-plt.plot([17.95,17.95],[0,2],ls='dotted',color='orange', label=' 13C transitions')
-Cm=19.70
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=22.11
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=24.31
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-17.95
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-19.70
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-22.11
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-24.31
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='orange')
-Cm=-55.3
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='g',label='2789')
-Cm=55.3
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='g')
-Cm=-49.9
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='r',label='2796')
-Cm=49.9
-plt.plot([Cm,Cm],[0,2],ls='dotted',color='r')
-plt.ylim([0.97,1.0005])
-
-fname='scan_100_rose_10V'
-x,y=extract_data(fname+'.txt')
-x=x*64
-x=x-x[507]
-y=y/max(y)
-plt.plot(x,y)
-
-fname='scan_10V_uW_2789'
-x,y=extract_data(fname+'.txt')
-x=x*64
-x=x-x[253]
-y=y/max(y)
-plt.plot(x,y)
-
-fname='scan_10V_uW_2796'
-x,y=extract_data(fname+'.txt')
-x=x*64
-x=x-x[253]
-y=y/max(y)
-plt.plot(x,y)
-
-plt.legend()
+ax.tick_params(labelsize=18)
 plt.show()

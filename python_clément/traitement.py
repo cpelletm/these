@@ -267,7 +267,7 @@ def ecris_gros():
 	ax.tick_params(labelsize=20)
 	ax.set_xlabel(r'B $\parallel$[100] (G)',fontsize=20,fontweight='bold')
 	ax.set_ylabel(r'Photoluminescence' ,fontsize=20,fontweight='bold')
-	plt.plot(x,y,'x-',linewidth=3,ms=8,mew=2)
+	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2)
 
 
 

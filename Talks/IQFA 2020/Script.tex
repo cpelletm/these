@@ -55,14 +55,49 @@ There are several ways to transfer polarization from one spin to another, but th
 This leads me to our first result :
 \section{Cross-Relaxation with NV centers}
 %1ere slide : Scan + en dessous 100 et puis soustraction par dessus.
-What we see here is the change in photoluminescence of our NV centers when we scan a magnetic field along the 100 direction of the diamond. I'll start detailing what we observed.
+What we see here is the change in photoluminescence of our NV centers when we scan a magnetic field along the 100 direction of a CVD grown irradiated diamond with about 5ppm of NV centers. I'll start detailing what we observed.
 
 The first thing to discuss is the 100 direction. It is a defined by the crystaline planes of the diamond, and it correspond to a direction where the magnetic field projection is the same on all four classes of the diamond, so in a way we are back to the single spin case which will make analysis much easier.
 
 The second thing to discuss is the overall decrease of the photoluminescence with the magnetic field. This is because every class is misaligned with the magnetic field, which means that by increasing the field amplitude, you will increase both the longitudinal field, so the zeeman splitting Bz*Sz in the Hamiltonian, but you also increase the transverse magnetic field component, so Bx*Sx which will mix the bright ms=0 state with the dark ms=+/-1 states and decrease the overall luminosity.
 
-So we expect a decreasing enveloppe (slide), and when we subtract the enveloppe of the signal, what remains is this :(new slide avec la soustraction) three clear features, none of which at been observed before and that we attributed to cross-relaxation of the NV center with three different species. The first 
+So we expect a decreasing enveloppe (slide), and when we subtract the enveloppe of the signal, what remains is this :(new slide avec la soustraction) three clear features, none of which at been observed before and that we attributed to cross-relaxation of the NV center with three different species. 
+The peak at 55 G is due to another spin defects : VH- (niveaux d'énergie sur la slide d'en dessous). VH- is a spin 1 defect with a spin structure close to that of NV- but is a dark spin. It was observed previously in EPR measurement for other CVD grown diamond, but never optically. (article ?). We can see that its +1 to 0 transition crosses the -1 to 0 transition at 55 G. We can also see its signature in scan along 111 although the signal is not as clear.
+The scan at 123 G is yet another spin defect, which was probably observed before and named WAR1 , because it was the first defect detected at the university of Warwick, again with EPR technique. We do not know its chemical nature, but it is another spin 1 defect with a slightly lower zero field splitting.
+Finally the peak at 20G is not exactly a new defect because this are NV centers, but with one of its neighboring carbon being a carbon 13 nucleus. Carbon 12, which has a 99\% nutural abundance, does not have a nuclear spin, but Carbon 13 which is about 1\% abundant does have a one half nuclear spin. Most of the carbon-13 spins, and other spin defects in the diamond, will contibute to the inhomogenous broadening of the NV centers. However when a carbon-13 is a direct neighbor, we say there is a first shell carbon-13, the hyper-fine coupling to the electronic spin of the NV center is strong enough that we can observe resolved/distinct sidebands (ESR with distinct sidebands ?), separating the carbon-13 first shell NV centers to the other NV centers. Based on ???, there are four possible values for the hyper fine coupling energy splitting, which leads to four possible cross-relaxation conditions that are somewhat confounded in the 20G peak.
+However, this peak is different from the last ones, because in the previous cases we were looking at cross-relaxation between a bright polarized spin and dark unpolarized spins, so we were expecting a drop in the photolmuniescence. However, here, we are looking at the cross-relaxation between two bright polarized spins, so why do we still observe a drop in the PL ? This brings me to our second results.
 
+\section{NV-NV cross relaxation}
+Before discussing our levitation experiment, I will briefly discuss what we observed for the first shell carbon-13 cross-relaxation. The fact that NV centers will spontaneously depolarize when brought to resonance with other NV centers is not particularly linked to the carbon-13. This is a phenomenon that has been observed and studied by multiple groups (Budker, les polaks, Lukin), and withouth going into to much details, this probably due to some NV centers having a much shorter spin lifetime than the average NV centers, most likely because their electron tunnels in and out of the NV site, which causes a depolarization of the ensemble of spins through dipolar interaction. This phenomoenon is only clearly observed on dense ensemble of more than 1 ppm of NV centers.
+
+Here are two experimental proofs that we recorded on another sample, a micro-diamond similar to the one we use in our levitation experiment. On the left side you can look at the change in fluorescence when we scan the magnetic field in a random direction with a magnetic field offset. You can see in the bottom panel the energy level of the four different classes of NV, that we recorded through ODMR, and you can notice that the drops in photoluminescence of the NV centers correspond to the part were several classes are at degeneracy. In our explanation, this because when two or more classes are at degeneracy, the number of NV centers being able to resonantly exchange spin quanta increases, therefore the depolarization by the flucuators increases and we observe cross-relaxations.
+
+The experiment on the right side is a lifetime measurement for various resonance conditions that confirm what we observed in the cross-relaxation on the left.  The top curve correspond to the case where all four classes are clearly separated, and the measured lifetime of about 1 ms is already shorter than the phonon-limited lifetime of 5ms that we observe in dilute ensemble. The second curve correspond to the case where two classes are degenerated and we observe a clear decrease to .25 ms. Finally the bottom curve is the 100 alignment where all four classes are at degeneracy and we observe an increased reduction of the lifetime to .15 ms.
+
+\section{Torque measurement with a levitating diamond}
+The second ingredient to explain our levitating experiment is how we can measure a torque thanks to our levitating diamond.
+
+In order to trap the center of mass of our diamonds, we use a Paul trap which is an electro-static based trap, mostly used to trap ions, but since there are always a few patch charges on the surface of objects, we can trap any micrometric objects, including in this case 15 microns diameter diamonds. 
+
+A side effect to this trap is that because of the anisotropy of shape of the diamond, and potentially of the charges on its surface, and because the anisotropy of the trap, the angular orientation of the diamond is also confined.
+
+If we look at the potential angular energy, the action of the trap will look something like this : a harmonic potential centered around the equilibrium angular position. Now if we apply a static torque on the diamond, which can be represented as a pure slope in the potential energy, we see that the bottom of the energy well is displaced, meaning that the diamond will slightly rotate to a new angular position.
+
+In order to detect this rotation, we simply shine a laser on the diamond and, which also serve to excite the NV centers, and look at its reflection off the diamond. Since the diamond's facettes are of the order of 1 microns, we do not observe a clear refelction of the laser beam, however we observe a speckle pattern, and whenever the diamond moves, the pattern will change. So by collecting the light on a particular bright or dark spot of the speckle, we will observe either an increase or a decrease in the signal whenever the diamond rotates.
+
+%Slide avec du speckle et un carré rouge sur la collection
+
+\section{Magnetic torque caused by the cross-relaxation}
+With all this being discussed, I can show you the result of our experiment. What we did was again to scan a magnetic field with an offset in order to observe NV-NV cross-relaxation, but this time in levitation. And indeed we observe again a drop in the photoluminescence of the NV centers when two classes are brought to resonance. But when looking at the diamond orientation, we can also see a movement around the resonance, indicating a torque (a microwave-free torque) at the cross-relaxation.
+
+The origin of the torque is in fact due to the natural magnetization of the spins, and by natural I mean the magnetization you get when polarizing your spin with a green laser but without any microwave. This magnetization depends mostly on the transverse field, and will be different for every class of NVs. Then by looking at the expected torque gamma times the average S value cross the magnetic field, here is what we get for the four classes of NV for an arbitrary direction $\Gamma_x$. When we take the sum of all four contributions, we get a total torque which is almost zero, due to directional averaging by the four classes. However, when we take into consideration the depolarization due to the cross-relaxation between NVs, we can reduce the contribution of two of the four classes for a specific magnetic field, and therefore we observe a non-zero torque specifically at the cross-relaxation transition.
+
+\section{Conclusion and outlook}
+-Observation of two news electronic spin defects in diamond through cross-relaxation : new candidates for electronic hyperpolarization.
+
+-Observation of NV-NV cross-relaxation : implications for magnetometry with ensembles
+
+-Mechanical detection of cross-relaxations : - first observation of the "natural" magnetic torque of diamonds, -potential for mechanical detection of new spin defects - and Einstein de Haas effect with paramagnetic systems.
   \end{document}	
   
   

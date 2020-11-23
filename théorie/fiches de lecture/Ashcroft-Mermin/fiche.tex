@@ -178,4 +178,28 @@
   Qui doivent vérifier $b_i \cdot a_j = 2\pi \delta_{ij}$. Bref pour un cube c'est un cube de coté $\frac{2\pi}{a_0}$ (et les ondes sont les différentes harmoniques de chaque "corde vibrante" élementaire dans les 3 directions)
   
   Donc le réseau réciproque c'est les \textbf{k}=$k_1\mathbf{b_1}+k_2\mathbf{b_2}+k_3\mathbf{b_3}$ (on confond vecteur en noeud mais bon tu vois l'idée)
+  \section{Première zone de Brillouin}
+  La définition est simple : \textbf{La première zone de Brillouin (PZB) est la maille de Wigner-Seitz du réseau réciproque}
+  
+  Un truc important à comprendre c'est que la PZB est énorme dans l'espace des k en faite : vu les conditions $b_i \cdot a_j = 2\pi \delta_{ij}$, ca veut dire que si $a_j$ est de l'ordre de quelques \AA , alors $b_i$ est de l'ordre de quelques $10^{10}$ m$^{-1}$. Les points du réseau réciproque sont très très espacés (avec des longueurs d'onde associées égales aux distance atomiques, donc dans les rayons X).
+  
+  De façon générale, le volume de la PZB est $$V_k = \frac{(2\pi)^3}{v}$$ ou $v$ est \textbf{le volume de la maille élémentaire (en espace réel)}. J'insiste parce que naturellement j'ai envie de considérer le volume total du solide, mais ça n'a pas de sens ici ou on parle uniquement de réseaux (infinis). La taille finie du cristal elle va jouer sur la discrétisation des phonons dans la PZB (spoils).
+  \section{Plans réticulaires}
+  Les plans réticulaires sont simplement définis dans le réseau de Bravais par un plan contenant 3 points du réseau non alignés. On peut alors toujours crééer une famille de ces plans réticulaires, équidistants d'une distance $d$, qui contiennent l'ensemble des points du réseau de Bravais. les vecteurs normaux à ces plans sont alors toujours alignés avec des points du réseau réciproque, et le plus court vecteur du réseau réciproque (deux points consécutifs en gros) est de longueur $2\pi/d$.
+  
+  Inversement, pour toute droite dans la réseau de Bravais, dont deux points consécutifs sont séparés d'une distance $2\pi/d$, il existe une famille de plans réticulaires normaux à ce vecteurs, et séparés d'une distance $d$.
+  \subsection{Indices de Miller des plans réticulaires}
+  Vu qu'il y a une équivalence entre plans réticulaires et plus court vecteur du réseau réciproque, tu peux référencer une maille de plans réticulaires par 3 indices entiers (h,k,l) tels que $$ \mathbf{k} = h \mathbf{b1} + k \mathbf{b2} + l \mathbf{b3} $$.
+  
+  Au passage tu vois que pour que ce soit le plus petit vecteur possible, il suffit que le PGCD de h,k, et l soit 1.
+  
+  \textbf{Remarque :} Attention quand même (je me posais la questions) dans les réseaux CC et CFC, on considère en général la maille conventionelle (donc cubique simple, et son RR cubique simple également) pour parler des indices de Miller, plutot que la maille primitive qui donnerait des trucs chelous. Donc c'est bien la définition intuitive les plans (100) et (111) dans le diamant. Par contre pour l'hexagonal compact par exemple t'es obligé de te faire le vrai truc.
+  
+  \subsection{Notations (si c'est encore d'actualité)}
+  \begin{itemize}
+  \item (111) la famille de plans d'indice de Miller h=1, k=1, l=1. Pour de nombres négatifs on utilisera plutot ($1\bar 1 1$). Fait référence au réseau réciproque.
+  \item $[111]$ : La direction dans le réseau direct définie par le vecteur $\mathbf{r} = 1 \mathbf{a1} + 1 \mathbf{a2} + 1 \mathbf{a3} $
+  \item $\{ 100 \}$ : Les familles de plans équivalentes (100), (010) et (001).
+  \item $\langle 100 \rangle$ : Les directions équivalentes [100], [010], [001], [$\bar 1 00$], [$0\bar 1 0$], [$00\bar 1$]
+  \end{itemize}
     \end{document}	
