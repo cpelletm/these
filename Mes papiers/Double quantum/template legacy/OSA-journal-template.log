@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  10 NOV 2020 16:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  26 NOV 2020 17:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -59,9 +59,9 @@ File: babel.def 2020/02/14 3.40 Babel common definitions
 Package babel Info: \l@canadian = using hyphenrules for english
 (babel)             (\language0) on input line 102.
 Package babel Info: \l@australian = using hyphenrules for ukenglish
-(babel)             (\language77) on input line 105.
+(babel)             (\language26) on input line 105.
 Package babel Info: \l@newzealand = using hyphenrules for ukenglish
-(babel)             (\language77) on input line 108.
+(babel)             (\language26) on input line 108.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
@@ -630,8 +630,8 @@ LaTeX Info: Redefining \bm on input line 209.
 (/usr/share/texlive/texmf-dist/tex/latex/physics/physics.sty
 Package: physics 
 )
-(./legacy-styles/ol.sty
-Package: legacy-styles/ol 2018/07/19 v1.2 Optics Letters Journal color scheme
+(./legacy-styles/optica.sty
+Package: legacy-styles/optica 2020/06/01 v1 Optica Journal color scheme
 ) (./OSA-journal-template.aux)
 \openout1 = `OSA-journal-template.aux'.
 
@@ -941,10 +941,10 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 77--78
  []
 
 Package epstopdf Info: Source file: <Theorie_CR.eps>
-(epstopdf)                    date: 2020-10-30 10:23:06
+(epstopdf)                    date: 2020-11-25 10:35:24
 (epstopdf)                    size: 61923 bytes
 (epstopdf)             Output file: <Theorie_CR-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-11-10 12:15:27
+(epstopdf)                    date: 2020-11-25 10:35:24
 (epstopdf)                    size: 26626 bytes
 (epstopdf)             Command: <repstopdf --outfile=Theorie_CR-eps-converted-t
 o.pdf Theorie_CR.eps>
@@ -990,18 +990,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 135--136
 (./OSA-journal-template.bbl
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 7.59998pt on input line 10.
-) [3
-
-]
-No file fullrefs.bbl.
+)
 
 Package natbib Warning: There were undefined citations.
 
 
 AED: lastpage setting LastPage
+[3
+
+]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
-(./OSA-journal-template.aux)
+ (./OSA-journal-template.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
 Package rerunfilecheck Info: File `OSA-journal-template.out' has not changed.
@@ -1009,10 +1009,10 @@ Package rerunfilecheck Info: File `OSA-journal-template.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 176.
  ) 
 Here is how much of TeX's memory you used:
- 22024 strings out of 481239
- 413832 string characters out of 5920377
- 749912 words of memory out of 5000000
- 36702 multiletter control sequences out of 15000+600000
+ 22023 strings out of 481239
+ 413848 string characters out of 5920377
+ 749911 words of memory out of 5000000
+ 36701 multiletter control sequences out of 15000+600000
  643682 words of font info for 291 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,19n,49p,1011b,433s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1030,7 +1030,7 @@ tic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on OSA-journal-template.pdf (3 pages, 796691 bytes).
+Output written on OSA-journal-template.pdf (3 pages, 796677 bytes).
 PDF statistics:
  1079 PDF objects out of 1200 (max. 8388607)
  581 compressed objects within 6 object streams

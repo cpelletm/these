@@ -185,33 +185,70 @@ def fit_droite():
 
 	plt.show()
 
-indices=[211,206,194,190,179,167,154,143,137,119,97,52,45,40]
 
+
+
+
+
+
+# Gauche :
+
+# xmax=-1 #c'est pas les bon indices, faut retrouver. Déso
+# xmin=292
+# x,y=extract_data(fname+'.txt',ycol=1)
+# x=x*56.528132258549384-9.624229803755462
+
+# y=y/max(y)
+# x=-x
+# indices=[211,206,194,190,179,167,154,143,137,119,97,52,45,40]
+# xs=[]
+# ys=[]
+# for i in indices :
+# 	xs+=[x[i]]
+# 	ys+=[y[i]]
+# xs=np.array(xs)
+# ys=np.array(ys)
+# # popt,yfit=fit_ordre_4(xs,ys)
+# popt,yfit=fit_ordre_6(xs,ys)
+# x=x[xmin:xmax]
+# y=y[xmin:xmax]
+
+# # plt.plot(x,y,lw=2)
+# # plt.plot(x,(popt[0]*x**6+popt[1]*x**5+popt[2]*x**4+popt[3]*x**3+popt[4]*x**2+popt[5]*x+popt[6]),'--',lw=2)
+
+# plt.plot(x,y-(popt[0]*x**6+popt[1]*x**5+popt[2]*x**4+popt[3]*x**3+popt[4]*x**2+popt[5]*x+popt[6]))
+
+#Droite : 
+ax=plt.gca()
 fname='scan_rose_111'
-xmax=212
-xmin=95
+xmax=-1
+xmin=295
 x,y=extract_data(fname+'.txt',ycol=1)
 x=x*56.528132258549384-9.624229803755462
 y=y/max(y)
-# plt.plot(y[xmin:xmax])
-xs=[]
-ys=[]
-for i in indices :
-	xs+=[x[i]]
-	ys+=[y[i]]
-xs=np.array(xs)
-ys=np.array(ys)
-# popt,yfit=fit_ordre_4(xs,ys)
-popt,yfit=fit_ordre_6(xs,ys)
 x=x[xmin:xmax]
 y=y[xmin:xmax]
-plt.plot(x,y-(popt[0]*x**6+popt[1]*x**5+popt[2]*x**4+popt[3]*x**3+popt[4]*x**2+popt[5]*x+popt[6]))
-# dy=y[1:]-y[:-1]
-# dy=dy/max(dy[:xmax])
-# plt.plot(dy[:xmax])
-# dy_liss=lissage(dy)
-# plt.plot(dy_liss[:xmax])
-# d2y=y[2:]+y[:-2]-2*y[1:-1]
-# d2y=d2y/max(d2y)
-# plt.plot(d2y)
+popt,yfit=fit_ordre_4(x,y)
+yfit=yfit+0.0002
+# plt.plot(x,y,lw=2)
+# plt.plot(x,yfit,'--',lw=2)
+
+plt.plot(x,y-yfit,'o-',lw=2,markerfacecolor="None")
+
+
+x_transis=[29.4, 113.2, 45.8, 42.0, 86.2, 76.2, 72.1, 122.2, 97.3] #Cruddace
+x_VH=[31.4, 125.0, 49.4, 45.1, 92.4, 81.1] #nous
+x_War1=[ 71.8, 96.8, 121.7]
+ylim=ax.get_ylim()
+color=next(ax._get_lines.prop_cycler)['color']
+for x in x_VH :
+	plt.plot([x,x],[-1,1],ls='dotted',color=color,lw=2.5)
+color=next(ax._get_lines.prop_cycler)['color']
+for x in x_War1 :
+	plt.plot([x,x],[-1,1],ls='dashed',color=color,lw=2)
+ax.set_ylim(ylim)
+
+plt.xlabel(r'B$\parallel$[111] (G)', fontsize=15)
+plt.ylabel('Photoluminescence', fontsize=15)
+ax.tick_params(labelsize=15)
 plt.show()
