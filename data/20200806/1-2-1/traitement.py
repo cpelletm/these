@@ -127,7 +127,7 @@ def ask_name():
 plt.figure(num=1,figsize=(11,7),dpi=80)
 ax=plt.gca()
 fname='0-0.8V_PLdown-Db'
-x,y=extract_data(fname+('.txt'),ycol=3)
+x,y=extract_data(fname+('.txt'),ycol=1)
 y=y/max(y)
 xmin=100
 xmax=165

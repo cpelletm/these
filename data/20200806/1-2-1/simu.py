@@ -180,7 +180,7 @@ h=6.626*1E-34
 gamma_e=2.8*1E6 #en Hz/Gauss
 n_centers=1E9/4 #nb de spins par classe
 
-xmin=30 # 80 Pour 121
+xmin=30 # 80 Pour 121 # 30 pour 22
 
 fig,ax=plt.subplots()
 
@@ -204,15 +204,18 @@ Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)
 Bzs=np.linspace(B_in[2],B_out[2],n)
 
-# color = next(ax._get_lines.prop_cycler)['color']
-# transis=[]
-# for i in range(n):
-# 	B=[Bxs[i],Bys[i],Bzs[i]]
-# 	transis+=[nrj_4_niveaux(B)]
+color = next(ax._get_lines.prop_cycler)['color']
+transis=[]
+for i in range(n):
+	B=[Bxs[i],Bys[i],Bzs[i]]
+	transis+=[nrj_4_niveaux(B)]
 
-# transis=np.array(transis)
-# for i in range(4):
-# 	plt.plot(xs[xmin:],transis[xmin:,i],color=color,lw=3)
+plt.xlabel(r'B$_{\mathrm{scan}}$ (G)',fontweight='bold' ,fontsize=20)
+plt.ylabel('Transitions (MHz)',fontweight='bold' ,fontsize=20)
+
+transis=np.array(transis)
+for i in range(4):
+	plt.plot(xs[xmin:],transis[xmin:,i],color=color,lw=3)
 
 # torques=[]
 # PLs=[]
@@ -255,35 +258,35 @@ Bzs=np.linspace(B_in[2],B_out[2],n)
 # ax[1].plot(xs,torques[:,2],label='Torque z',color=color)
 # ax[1].plot(xs,torques_sans[:,2],'--',color=color)
 
-torques=[]
-torques_sans=[]
-for i in range(n):
-	B=[Bxs[i],Bys[i],Bzs[i]]
-	H=Hamiltonian_NV_propre_base(B)
-	gamma_t1=make_t1_list(B,width=6)
-	torque_4_classes=[]
-	for k in range(4):
-		s,rho_0=spin_3vx_1classe(B,gamma_las,gamma_t1,classe=k)
-		torque_4_classes+=[np.cross(s,B)]
-	torques+=[torque_4_classes]
-	gamma_t1=np.ones(4)*1E-3
-	torque_4_classes=[]
-	for k in range(4):
-		s,rho_0=spin_3vx_1classe(B,gamma_las,gamma_t1,classe=k)
-		torque_4_classes+=[np.cross(s,B)]
-	torques_sans+=[torque_4_classes]
+# torques=[]  #Tout ça c'est pour avoir les simus de torques des 4 classes
+# torques_sans=[]
+# for i in range(n):
+# 	B=[Bxs[i],Bys[i],Bzs[i]]
+# 	H=Hamiltonian_NV_propre_base(B)
+# 	gamma_t1=make_t1_list(B,width=6)
+# 	torque_4_classes=[]
+# 	for k in range(4):
+# 		s,rho_0=spin_3vx_1classe(B,gamma_las,gamma_t1,classe=k)
+# 		torque_4_classes+=[np.cross(s,B)]
+# 	torques+=[torque_4_classes]
+# 	gamma_t1=np.ones(4)*1E-3
+# 	torque_4_classes=[]
+# 	for k in range(4):
+# 		s,rho_0=spin_3vx_1classe(B,gamma_las,gamma_t1,classe=k)
+# 		torque_4_classes+=[np.cross(s,B)]
+# 	torques_sans+=[torque_4_classes]
 
-torques=np.array(torques)*h*gamma_e*n_centers*1E19
-torques_sans=np.array(torques_sans)*h*gamma_e*n_centers*1E19
-color = next(ax._get_lines.prop_cycler)['color']
+# torques=np.array(torques)*h*gamma_e*n_centers*1E19
+# torques_sans=np.array(torques_sans)*h*gamma_e*n_centers*1E19
+# color = next(ax._get_lines.prop_cycler)['color']
 
-for i in range(4) :
-	plt.plot(xs[xmin:],torques[xmin:,i,1],'--',color=color,lw=2)
+# for i in range(4) :
+# 	plt.plot(xs[xmin:],torques[xmin:,i,1],'--',color=color,lw=2)
 
-torques_total=torques[:,0,:]+torques[:,1,:]+torques[:,2,:]+torques[:,3,:]
+# torques_total=torques[:,0,:]+torques[:,1,:]+torques[:,2,:]+torques[:,3,:]
 
-color = next(ax._get_lines.prop_cycler)['color']
-plt.plot(xs[xmin:],torques_total[xmin:,1],color=color,lw=3)
+# color = next(ax._get_lines.prop_cycler)['color']
+# plt.plot(xs[xmin:],torques_total[xmin:,1],color=color,lw=3)
 
 def extract_data(filename,xcol=0,ycol=1):
 	x=[]
