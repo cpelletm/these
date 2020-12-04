@@ -14,7 +14,7 @@
 %\bibliographystyle{stylename}
 %\bibliography{Biblio_dbl_quantum}
 
-\title{Mechanical and relaxation-based detection of dipolar-interactions between spins in diamond}
+\title{Mechanical and luminescence-based detection of dipolar-interactions between spins in diamond}
 \author{Clément Pellet-Mary\\ Laboratoire de physique de l'ENS\\ \textit{ENS, Paris}}
 \date\today
 
@@ -24,18 +24,20 @@
 \begin{frame}
 \maketitle
 \end{frame}
-\begin{frame}{Two experiments around cross-relaxations in diamond}
+\begin{frame}
 \includegraphics[scale=.3]{Shémas_intro}
-\end{frame}
-\begin{frame}{Outline}
-\tableofcontents
 \end{frame}
 \section{NV center and Cross-Relaxations}
 \begin{frame}{Outline}
 \tableofcontents[currentsection]
 \end{frame}
 \begin{frame}{Spin Hamiltonian and orientation of the centers}
-\includegraphics[scale=.25]{projection_4_classes}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=.25]{projection_4_classes_0}
+    \onslide<2>\includegraphics[scale=.25]{projection_4_classes_1}
+    \end{overprint}
+\end{figure}
 \end{frame}
 \begin{frame}{ODMR with an ensemble of NV centers}
 \includegraphics[scale=.65]{ESR_4spin_simu}
@@ -48,19 +50,38 @@
 \centering
 \includegraphics[scale=.35]{CR_resonnant}
 \end{frame}
-\begin{frame}{Exemple of C.R. : scan along the [111]}
-\includegraphics[scale=.30]{CR_111}\footfullcite{armstrong_nvnv_2010}
+\begin{frame}{Exemple of Cross-Relaxation NV-P1}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=.30]{CR_111_0}\footfullcite{armstrong_nvnv_2010}
+    \onslide<2>\includegraphics[scale=.30]{CR_111_05}
+    \onslide<3>\includegraphics[scale=.30]{CR_111_1}
+    \onslide<4>\includegraphics[scale=.30]{CR_111_2}
+    \end{overprint}
+\end{figure}
 \end{frame}
 \section{Cross-relaxations with new spin species}
 \begin{frame}{Outline}
 \tableofcontents[currentsection]
 \end{frame}
 \begin{frame}{Motivations of the study}
-\includegraphics[scale=.3]{Motivations}\footfullcite{tallaire2020high}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=.30]{Motivations_0}
+    \onslide<2>\includegraphics[scale=.30]{Motivations_1}\footfullcite{tallaire2020high}
+    \onslide<3>\includegraphics[scale=.30]{Motivations_2}
+    \onslide<4>\includegraphics[scale=.30]{Motivations_3}
+    \end{overprint}
+\end{figure}
 \end{frame}
 \begin{frame}{Photoluminescence change with $\vec B$ in the [100] direction}
-\centering
-\includegraphics[scale=.45]{Scan_100_brut}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\centering\includegraphics[scale=.45]{Scan_100_brut_0}
+    \onslide<2>\centering\includegraphics[scale=.45]{Scan_100_brut_1}
+    \onslide<3>\centering\includegraphics[scale=.45]{Scan_100_brut_2}
+    \end{overprint}
+\end{figure}
 \end{frame}
 \begin{frame}{Cross-relaxation between NV$^-$ and VH$^-$}
 \includegraphics[scale=.48]{soustraction_1}
@@ -73,23 +94,40 @@ Electron Paramagnetic Resonance : A spectroscopy technique using absorption of a
 \bigbreak
 VH$^-$\footfullcite{glover_hydrogen_2004} and WAR1 \footfullcite{cruddace2007magnetic} have been observed by EPR spectrocopy in CVD diamonds by Mark Newton's team at the University of Warwick.
 \end{frame}
-\begin{frame}{Comparison between CR and EPR}
+\begin{frame}{Comparison between cross-relaxation and EPR}
+\pause
+Upsides :
 \begin{itemize}
-\item CR experiments are much simpler to setup (low $B$, no microwave)
+\item CR experiments are much simpler to setup (low $\vec B$, no microwave)
+\pause
 \item Doable on micro and potentially nano-diamonds
-\item NV centers produce a calibration for $B$ $\to$ Better precision on the ZFS measurement
-\item Potential for polarization transfer
-\bigbreak
-\bigbreak
-\item Requires a high NV concentration and quickly becomes unreadable on non-[100] directions.
+\pause
+\item NV centers produce a calibration for $\vec B$ $\to$ Better precision on the ZFS measurement
+\pause
+\item Potential for hyperpolarization of new spins
+\pause
+\end{itemize}
+Downsides :
+\begin{itemize}
+\item Requires a high NV concentration
+\pause
+\item Loss of contrast in non-[100] directions
 \end{itemize}
 \end{frame}
 \section{Cross-relaxation between NV centers}
 \begin{frame}{Outline}
 \tableofcontents[currentsection]
 \end{frame}
-\begin{frame}{Experimental proofs of NV-NV CR}
-\includegraphics[scale=.28]{NV-NV_0}
+\begin{frame}{Experimental proofs of NV-NV cross-relaxations}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=.28]{NV-NV_0}
+    \onslide<2>\includegraphics[scale=.28]{NV-NV_05}
+    \onslide<3>\includegraphics[scale=.28]{NV-NV_1}
+    \onslide<4>\includegraphics[scale=.28]{NV-NV_2}
+    \onslide<5>\includegraphics[scale=.28]{NV-NV_3}
+    \end{overprint}
+\end{figure}
 \end{frame}
 \begin{frame}{Microscopic explanation of the NV-NV CR}
 \centering
@@ -109,15 +147,28 @@ VH$^-$\footfullcite{glover_hydrogen_2004} and WAR1 \footfullcite{cruddace2007mag
 \end{frame}
 \begin{frame}{Back-scattered laser detection}
 \centering
-\includegraphics[scale=.3]{Trap_3}%And how do we measure this rotation ? well, since we have to send a laser on the diamond to polarise the NV centers..." "We do not observe a clear reflection of the laser, instead we observe a speckle pattern, which is produced by the many interferences on the rough surface of the diamond" "Whenever the diamond moves, the speckle pattern will either shift or change its shape..."
+\includegraphics[scale=.085]{Trap_3}%And how do we measure this rotation ? well, since we have to send a laser on the diamond to polarise the NV centers..." "We do not observe a clear reflection of the laser, instead we observe a speckle pattern, which is produced by the many interferences on the rough surface of the diamond" "Whenever the diamond moves, the speckle pattern will either shift or change its shape..."
 \end{frame}
 \begin{frame}{Measurement of the torque caused by C.R.}
-\centering
-\includegraphics[scale=.08]{CRmeca_121_mieux}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=.08]{CRmeca_121_mieux_0}
+    \onslide<2>\includegraphics[scale=.08]{CRmeca_121_mieux_1}
+    \onslide<3>\includegraphics[scale=.08]{CRmeca_121_mieux_2}
+    \end{overprint}
+\end{figure}
 \end{frame}
 \begin{frame}{Origin of the magnetic torque}
-\centering
-\includegraphics[scale=.23]{Explication_torque_alalouche}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=.23]{Explication_torque_alalouche_0}
+    \onslide<2>\includegraphics[scale=.23]{Explication_torque_alalouche_1}
+    \onslide<3>\includegraphics[scale=.23]{Explication_torque_alalouche_2}
+    \onslide<4>\includegraphics[scale=.23]{Explication_torque_alalouche_3}
+    \onslide<5>\includegraphics[scale=.23]{Explication_torque_alalouche_4}
+    \onslide<6>\includegraphics[scale=.23]{Explication_torque_alalouche_5}
+    \end{overprint}
+\end{figure}
 \end{frame}
 \begin{frame}{Simulation of the C.R.-caused torque}
 \centering
