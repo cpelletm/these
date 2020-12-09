@@ -285,11 +285,11 @@ y_cal=[510,592,1020]
 
 plt.figure(num=1,figsize=(9,6),dpi=80)
 xmax=-1
-x,y=extract_data('ESR_-1.15V.txt')
+x,y=extract_data('ESR_-2.34V.txt')
 y=y/max(y)
 x=x*1000
 plt.plot(x,y,'o',markerfacecolor="None",ms=10,mew=3)
-xpos=[2666,2699,2765,2796]
+xpos=[2610,2709,2745,2837]
 popt,yfit=ESR_n_pics(x,y,xpos)
 plt.plot(x,yfit,lw=4)
 ax=plt.gca()
