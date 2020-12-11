@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  7 DEC 2020 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.21)  10 DEC 2020 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1646,9 +1646,28 @@ Package pdftex.def Info: soustraction_2.pdf  used on input line 88.
 
  <./soustraction_2.pdf>] [22
 
-] [23
+]
+<epr-converted.pdf, id=1035, 845.1575pt x 597.23125pt>
+File: epr-converted.pdf Graphic file (type pdf)
+<use epr-converted.pdf>
+Package pdftex.def Info: epr-converted.pdf  used on input line 101.
+(pdftex.def)             Requested size: 253.54921pt x 179.17075pt.
 
-] [24
+Overfull \vbox (3.29913pt too high) detected at line 101
+ []
+
+[23
+
+ <./epr-converted.pdf>]
+File: epr-converted.pdf Graphic file (type pdf)
+<use epr-converted.pdf>
+Package pdftex.def Info: epr-converted.pdf  used on input line 101.
+(pdftex.def)             Requested size: 253.54921pt x 179.17075pt.
+
+Overfull \vbox (3.29913pt too high) detected at line 101
+ []
+
+[24
 
 ] [25
 
@@ -1660,27 +1679,26 @@ Package pdftex.def Info: soustraction_2.pdf  used on input line 88.
 
 ] [29
 
-] (./presentation.toc)
-[30
+] (./presentation.toc) [30
 
 ]
-<NV-NV_1.pdf, id=1244, 1346.8949pt x 694.13937pt>
+<NV-NV_1.pdf, id=1246, 1346.8949pt x 694.13937pt>
 File: NV-NV_1.pdf Graphic file (type pdf)
 <use NV-NV_1.pdf>
-Package pdftex.def Info: NV-NV_1.pdf  used on input line 125.
+Package pdftex.def Info: NV-NV_1.pdf  used on input line 131.
 (pdftex.def)             Requested size: 323.26138pt x 166.59685pt.
 
-Overfull \hbox (15.97151pt too wide) in paragraph at lines 125--125
+Overfull \hbox (15.97151pt too wide) in paragraph at lines 131--131
 [][] 
  []
 
-<NV-NV_2.pdf, id=1245, 1343.90828pt x 704.35724pt>
+<NV-NV_2.pdf, id=1247, 1343.90828pt x 704.35724pt>
 File: NV-NV_2.pdf Graphic file (type pdf)
 <use NV-NV_2.pdf>
-Package pdftex.def Info: NV-NV_2.pdf  used on input line 125.
+Package pdftex.def Info: NV-NV_2.pdf  used on input line 131.
 (pdftex.def)             Requested size: 322.54457pt x 169.04918pt.
 
-Overfull \hbox (15.2547pt too wide) in paragraph at lines 125--125
+Overfull \hbox (15.2547pt too wide) in paragraph at lines 131--131
 [][] 
  []
 
@@ -1689,36 +1707,36 @@ Overfull \hbox (15.2547pt too wide) in paragraph at lines 125--125
  <./NV-NV_1.pdf>]
 File: NV-NV_1.pdf Graphic file (type pdf)
 <use NV-NV_1.pdf>
-Package pdftex.def Info: NV-NV_1.pdf  used on input line 125.
+Package pdftex.def Info: NV-NV_1.pdf  used on input line 131.
 (pdftex.def)             Requested size: 323.26138pt x 166.59685pt.
 
-Overfull \hbox (15.97151pt too wide) in paragraph at lines 125--125
+Overfull \hbox (15.97151pt too wide) in paragraph at lines 131--131
 [][] 
  []
 
 File: NV-NV_2.pdf Graphic file (type pdf)
 <use NV-NV_2.pdf>
-Package pdftex.def Info: NV-NV_2.pdf  used on input line 125.
+Package pdftex.def Info: NV-NV_2.pdf  used on input line 131.
 (pdftex.def)             Requested size: 322.54457pt x 169.04918pt.
 
-Overfull \hbox (15.2547pt too wide) in paragraph at lines 125--125
+Overfull \hbox (15.2547pt too wide) in paragraph at lines 131--131
 [][] 
  []
 
 [32
 
  <./NV-NV_2.pdf>]
-<NVNV-micro_2.pdf, id=1341, 460.29623pt x 192.33733pt>
+<NVNV-micro_2.pdf, id=1343, 460.29623pt x 192.33733pt>
 File: NVNV-micro_2.pdf Graphic file (type pdf)
 <use NVNV-micro_2.pdf>
-Package pdftex.def Info: NVNV-micro_2.pdf  used on input line 140.
+Package pdftex.def Info: NVNV-micro_2.pdf  used on input line 146.
 (pdftex.def)             Requested size: 161.1061pt x 67.31906pt.
  [33
 
  <./NVNV-micro_2.pdf>]
 File: NVNV-micro_2.pdf Graphic file (type pdf)
 <use NVNV-micro_2.pdf>
-Package pdftex.def Info: NVNV-micro_2.pdf  used on input line 140.
+Package pdftex.def Info: NVNV-micro_2.pdf  used on input line 146.
 (pdftex.def)             Requested size: 161.1061pt x 67.31906pt.
  [34
 
@@ -1726,263 +1744,293 @@ Package pdftex.def Info: NVNV-micro_2.pdf  used on input line 140.
 [35
 
 ]
-<Explication_torque_alalouche_0.pdf, id=1434, 1291.54027pt x 662.21585pt>
+<Explication_torque_alalouche_0.pdf, id=1436, 1339.06647pt x 661.88643pt>
 File: Explication_torque_alalouche_0.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_0.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_0.pdf  used on input line
- 157.
-(pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
-<Explication_torque_alalouche_1.pdf, id=1435, 1291.54027pt x 662.21585pt>
+ 163.
+(pdftex.def)             Requested size: 307.9788pt x 152.23067pt.
+
+Overfull \hbox (0.68893pt too wide) in paragraph at lines 163--163
+[][] 
+ []
+
+<Explication_torque_alalouche_1.pdf, id=1437, 1291.54027pt x 662.21585pt>
 File: Explication_torque_alalouche_1.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_1.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_1.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
-<Explication_torque_alalouche_2.pdf, id=1436, 1291.54027pt x 662.21585pt>
+<Explication_torque_alalouche_2.pdf, id=1438, 1291.54027pt x 662.21585pt>
 File: Explication_torque_alalouche_2.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_2.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_2.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
-<Explication_torque_alalouche_3.pdf, id=1437, 1291.54027pt x 662.21585pt>
+<Explication_torque_alalouche_3.pdf, id=1439, 1291.54027pt x 662.21585pt>
 File: Explication_torque_alalouche_3.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_3.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_3.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
-<Explication_torque_alalouche_4.pdf, id=1438, 1291.54027pt x 662.21585pt>
+<Explication_torque_alalouche_4.pdf, id=1440, 1291.54027pt x 662.21585pt>
 File: Explication_torque_alalouche_4.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_4.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_4.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
-<Explication_torque_alalouche_5.pdf, id=1439, 1291.54027pt x 662.21585pt>
+<Explication_torque_alalouche_5.pdf, id=1441, 1291.54027pt x 662.21585pt>
 File: Explication_torque_alalouche_5.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_5.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_5.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
- [36
+[36
 
  <./Explication_torque_alalouche_0.pdf>]
 File: Explication_torque_alalouche_0.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_0.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_0.pdf  used on input line
- 157.
-(pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
+ 163.
+(pdftex.def)             Requested size: 307.9788pt x 152.23067pt.
+
+Overfull \hbox (0.68893pt too wide) in paragraph at lines 163--163
+[][] 
+ []
+
 File: Explication_torque_alalouche_1.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_1.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_1.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_2.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_2.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_2.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_3.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_3.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_3.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_4.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_4.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_4.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_5.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_5.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_5.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
- [37
+[37
 
  <./Explication_torque_alalouche_1.pdf>]
 File: Explication_torque_alalouche_0.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_0.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_0.pdf  used on input line
- 157.
-(pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
+ 163.
+(pdftex.def)             Requested size: 307.9788pt x 152.23067pt.
+
+Overfull \hbox (0.68893pt too wide) in paragraph at lines 163--163
+[][] 
+ []
+
 File: Explication_torque_alalouche_1.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_1.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_1.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_2.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_2.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_2.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_3.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_3.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_3.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_4.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_4.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_4.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_5.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_5.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_5.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
- [38
+[38
 
  <./Explication_torque_alalouche_2.pdf>]
 File: Explication_torque_alalouche_0.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_0.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_0.pdf  used on input line
- 157.
-(pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
+ 163.
+(pdftex.def)             Requested size: 307.9788pt x 152.23067pt.
+
+Overfull \hbox (0.68893pt too wide) in paragraph at lines 163--163
+[][] 
+ []
+
 File: Explication_torque_alalouche_1.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_1.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_1.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_2.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_2.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_2.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_3.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_3.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_3.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_4.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_4.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_4.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_5.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_5.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_5.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
- [39
+[39
 
  <./Explication_torque_alalouche_3.pdf>]
 File: Explication_torque_alalouche_0.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_0.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_0.pdf  used on input line
- 157.
-(pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
+ 163.
+(pdftex.def)             Requested size: 307.9788pt x 152.23067pt.
+
+Overfull \hbox (0.68893pt too wide) in paragraph at lines 163--163
+[][] 
+ []
+
 File: Explication_torque_alalouche_1.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_1.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_1.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_2.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_2.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_2.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_3.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_3.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_3.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_4.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_4.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_4.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_5.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_5.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_5.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
- [40
+[40
 
  <./Explication_torque_alalouche_4.pdf>]
 File: Explication_torque_alalouche_0.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_0.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_0.pdf  used on input line
- 157.
-(pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
+ 163.
+(pdftex.def)             Requested size: 307.9788pt x 152.23067pt.
+
+Overfull \hbox (0.68893pt too wide) in paragraph at lines 163--163
+[][] 
+ []
+
 File: Explication_torque_alalouche_1.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_1.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_1.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_2.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_2.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_2.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_3.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_3.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_3.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_4.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_4.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_4.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
 File: Explication_torque_alalouche_5.pdf Graphic file (type pdf)
 <use Explication_torque_alalouche_5.pdf>
 Package pdftex.def Info: Explication_torque_alalouche_5.pdf  used on input line
- 157.
+ 163.
 (pdftex.def)             Requested size: 297.04802pt x 152.30644pt.
- [41
+[41
 
  <./Explication_torque_alalouche_5.pdf>]
-<Trap_0.pdf, id=1713, 1056.43486pt x 498.40402pt>
+<Trap_0.pdf, id=1715, 1056.43486pt x 498.40402pt>
 File: Trap_0.pdf Graphic file (type pdf)
 <use Trap_0.pdf>
-Package pdftex.def Info: Trap_0.pdf  used on input line 161.
+Package pdftex.def Info: Trap_0.pdf  used on input line 167.
 (pdftex.def)             Requested size: 316.9329pt x 149.52235pt.
 
-Overfull \hbox (9.64304pt too wide) in paragraph at lines 161--161
+Overfull \hbox (9.64304pt too wide) in paragraph at lines 167--167
  [][] 
  []
 
 [42
 
  <./Trap_0.pdf>]
-<Trap_3.pdf, id=1750, 3626.01674pt x 1678.2711pt>
+<Trap_3.pdf, id=1752, 3626.01674pt x 1678.2711pt>
 File: Trap_3.pdf Graphic file (type pdf)
 <use Trap_3.pdf>
-Package pdftex.def Info: Trap_3.pdf  used on input line 165.
+Package pdftex.def Info: Trap_3.pdf  used on input line 171.
 (pdftex.def)             Requested size: 308.23502pt x 142.66396pt.
 
-Overfull \hbox (0.94514pt too wide) in paragraph at lines 165--165
+Overfull \hbox (0.94514pt too wide) in paragraph at lines 171--171
  [][] 
  []
 
 [43
 
  <./Trap_3.pdf>]
-<CRmeca_121_mieux_0.pdf, id=1819, 3893.51096pt x 2406.82904pt>
+<CRmeca_121_mieux_0.pdf, id=1821, 3893.51096pt x 2406.82904pt>
 File: CRmeca_121_mieux_0.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_0.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_0.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_0.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
-<CRmeca_121_mieux_1.pdf, id=1820, 3893.51096pt x 2406.82904pt>
+<CRmeca_121_mieux_1.pdf, id=1822, 3893.51096pt x 2406.82904pt>
 File: CRmeca_121_mieux_1.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_1.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_1.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_1.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
-<CRmeca_121_mieux_2.pdf, id=1821, 3893.51096pt x 2406.82904pt>
+<CRmeca_121_mieux_2.pdf, id=1823, 3893.51096pt x 2406.82904pt>
 File: CRmeca_121_mieux_2.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_2.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_2.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_2.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
@@ -1991,28 +2039,28 @@ Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
  <./CRmeca_121_mieux_0.pdf>]
 File: CRmeca_121_mieux_0.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_0.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_0.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_0.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
 File: CRmeca_121_mieux_1.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_1.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_1.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_1.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
 File: CRmeca_121_mieux_2.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_2.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_2.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_2.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
@@ -2021,28 +2069,28 @@ Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
  <./CRmeca_121_mieux_1.pdf>]
 File: CRmeca_121_mieux_0.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_0.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_0.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_0.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
 File: CRmeca_121_mieux_1.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_1.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_1.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_1.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
 File: CRmeca_121_mieux_2.pdf Graphic file (type pdf)
 <use CRmeca_121_mieux_2.pdf>
-Package pdftex.def Info: CRmeca_121_mieux_2.pdf  used on input line 174.
+Package pdftex.def Info: CRmeca_121_mieux_2.pdf  used on input line 180.
 (pdftex.def)             Requested size: 311.48724pt x 192.55026pt.
 
-Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
+Overfull \hbox (4.19737pt too wide) in paragraph at lines 180--180
 [][] 
  []
 
@@ -2053,35 +2101,48 @@ Overfull \hbox (4.19737pt too wide) in paragraph at lines 174--174
 ] [48
 
 ]
-<soustraction_3.pdf, id=2769, 728.23625pt x 444.26413pt>
+<soustraction_3.pdf, id=2771, 728.23625pt x 444.26413pt>
 File: soustraction_3.pdf Graphic file (type pdf)
 <use soustraction_3.pdf>
-Package pdftex.def Info: soustraction_3.pdf  used on input line 193.
+Package pdftex.def Info: soustraction_3.pdf  used on input line 199.
 (pdftex.def)             Requested size: 327.7033pt x 199.917pt.
 
-Overfull \hbox (20.41342pt too wide) in paragraph at lines 193--193
+Overfull \hbox (20.41342pt too wide) in paragraph at lines 199--199
 [][]  
  []
 
 [49
 
  <./soustraction_3.pdf>]
-<Explication_torque.pdf, id=2904, 1018.49864pt x 651.04007pt>
+<Explication_torque.pdf, id=2906, 1018.49864pt x 651.04007pt>
 File: Explication_torque.pdf Graphic file (type pdf)
 <use Explication_torque.pdf>
-Package pdftex.def Info: Explication_torque.pdf  used on input line 197.
+Package pdftex.def Info: Explication_torque.pdf  used on input line 203.
 (pdftex.def)             Requested size: 305.55194pt x 195.31352pt.
  [50
 
  <./Explication_torque.pdf>]
-<CRmeca_22.pdf, id=2962, 1055.7171pt x 718.62465pt>
+<CRmeca_22.pdf, id=2965, 1055.7171pt x 718.62465pt>
 File: CRmeca_22.pdf Graphic file (type pdf)
 <use CRmeca_22.pdf>
-Package pdftex.def Info: CRmeca_22.pdf  used on input line 201.
+Package pdftex.def Info: CRmeca_22.pdf  used on input line 207.
 (pdftex.def)             Requested size: 295.59877pt x 201.21352pt.
  [51
 
  <./CRmeca_22.pdf>]
+<NV-NV_3.pdf, id=3061, 1098.26105pt x 620.36597pt>
+File: NV-NV_3.pdf Graphic file (type pdf)
+<use NV-NV_3.pdf>
+Package pdftex.def Info: NV-NV_3.pdf  used on input line 211.
+(pdftex.def)             Requested size: 307.511pt x 173.70128pt.
+
+Overfull \hbox (0.22113pt too wide) in paragraph at lines 211--211
+ [][] 
+ []
+
+[52
+
+ <./NV-NV_3.pdf>]
 \tf@nav=\write9
 \openout9 = `presentation.nav'.
 
@@ -2091,11 +2152,11 @@ Package pdftex.def Info: CRmeca_22.pdf  used on input line 201.
 \tf@snm=\write11
 \openout11 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 52A7C1694D18B622933D0921761436B1;312.
 Package logreq Info: Writing requests to 'presentation.run.xml'.
@@ -2103,10 +2164,10 @@ Package logreq Info: Writing requests to 'presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28453 strings out of 481239
- 562222 string characters out of 5920377
- 1176024 words of memory out of 5000000
- 43054 multiletter control sequences out of 15000+600000
+ 28471 strings out of 481239
+ 562527 string characters out of 5920377
+ 1176023 words of memory out of 5000000
+ 43070 multiletter control sequences out of 15000+600000
  547900 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,80p,806b,1813s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2122,10 +2183,10 @@ lic/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb>
-Output written on presentation.pdf (51 pages, 8443911 bytes).
+Output written on presentation.pdf (52 pages, 9839009 bytes).
 PDF statistics:
- 3125 PDF objects out of 3580 (max. 8388607)
- 2469 compressed objects within 25 object streams
- 107 named destinations out of 1000 (max. 500000)
- 250 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3176 PDF objects out of 3580 (max. 8388607)
+ 2509 compressed objects within 26 object streams
+ 109 named destinations out of 1000 (max. 500000)
+ 260 words of extra memory for PDF output out of 10000 (max. 10000000)
 
