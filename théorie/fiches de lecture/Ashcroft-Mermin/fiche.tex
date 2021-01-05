@@ -1,6 +1,6 @@
 \documentclass[a4paper]{report}
 \usepackage[utf8]{inputenc}
-\usepackage[]{amsmath}
+\usepackage[]{amsmath,amssymb}
 \usepackage[]{braket} % \bra, \ket etc
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -75,7 +75,7 @@
  
  \section{Le niveau fondamental du gaz d'électrons : La grand-mère à Fermi}
  
- En oubliant pas la dégénérescence du spin, on peut donc construire l'état fondamental en remplissant les niveaux d'énergies en partant du bas (quis de l'anti-symmétrisation ?), ce qui dans l'espace des k revient à remplir une boule vu que l'énergie c'est la distance à l'origine dans l'espace des k : La sphère de Fermi, de rayon $k_f$ (pour bien se rappeler que c'est dans l'espace réciproque). Et la relation avec la densité volumique (dans l'espace réel) d'état $n$ est : $$n=\frac{k_f^3}{3\pi^2}$$ Et $n$ on le connait, c'est globalement le même d'un métal à l'autre (en fonction du paramètre de maille et du nombre d'électrons de Valence mais toujours le meme ordre de grandeur). Donc $k_f$ a aussi toujours le meme ordre de grandeur, ce qui nous donne une vitesse de Fermi (vitesse des électrons de plus haute énergie, qui sont aussi les plus nombreux) : $$ v_f = \frac{\hbar}{m} k_f \approx 4 \cdot 10^6 \mathrm{m/s} $$
+ En oubliant pas la dégénérescence du spin, on peut donc construire l'état fondamental en remplissant les niveaux d'énergies en partant du bas (quid de l'anti-symmétrisation ?), ce qui dans l'espace des k revient à remplir une boule vu que l'énergie c'est la distance à l'origine dans l'espace des k : La sphère de Fermi, de rayon $k_f$ (pour bien se rappeler que c'est dans l'espace réciproque). Et la relation avec la densité volumique (dans l'espace réel) d'état $n$ est : $$n=\frac{k_f^3}{3\pi^2}$$ Et $n$ on le connait, c'est globalement le même d'un métal à l'autre (en fonction du paramètre de maille et du nombre d'électrons de Valence mais toujours le meme ordre de grandeur). Donc $k_f$ a aussi toujours le meme ordre de grandeur, ce qui nous donne une vitesse de Fermi (vitesse des électrons de plus haute énergie, qui sont aussi les plus nombreux) : $$ v_f = \frac{\hbar}{m} k_f \approx 4 \cdot 10^6 \mathrm{m/s} $$
  Et ce alors qu'on est dans l'état fondamental, donc à T=0. A T=300K, la vitesse thermique d'une particule de la masse d'un électron est toujours 10x plus petite que cette vitesse de Fermi. Le calcul numérique des énergies de Fermi donne lui des valeurs $\mathcal{E}_f \approx 1.5 \to 15 $ eV, comparables donc à des liaisons chimiques. Et la température de Fermi $T_f=\mathcal{E}_f/k_B \approx 10^4 \to 10^5$ K. 
  
  L'énergie (par électron) totale du fondamental est $E/N= \frac{3}{5} k_B T_f$, sachant que l'énergie par électron classique dans un gaz parfait est $E/N= \frac{3}{2} k_B T$ , ça te donne idée de quand est-ce que "l'agitation quantique" l'emporte sur l'agitation thermique.
@@ -126,10 +126,10 @@
   
   Puis $$c_V(T)=\frac{\partial u}{\partial T}= \frac{3 \pi^2}{4} \frac{k_BT}{\mathcal{E}_f} nk_B$$
   
-  Bon il se trouve que je suis peut-etre allé un peu vite en besogne, et que le dl de Sommerfeld doit se faire autour de $\mu$ plutot que de $\mathcal{E}_f$, ce qui change légèrement le facteur numérique. Mais bon le scaling est bon, et par rapport à un gaz classique $c_V(T)=\frac{3}{2}nk_B$, on voit qu'on a pris un facteur $\frac{k_BT}{\mathcal{E}_f}$ dans les detns, d'ou le fait que la chaleur spécifique des $e^-$ est 100x moins importante que pour un gaz parfait. Par contre ça fait un scaling linéaire avec T, alors que les solides à basse température c'est en $T^3$, donc à basse température (qq K) les métaux ont une chaleur spécifique essentiellement due aux $e^-$ de conductions.
+  Bon il se trouve que je suis peut-etre allé un peu vite en besogne, et que le dl de Sommerfeld doit se faire autour de $\mu$ plutot que de $\mathcal{E}_f$, ce qui change légèrement le facteur numérique. Mais bon le scaling est bon, et par rapport à un gaz classique $c_V(T)=\frac{3}{2}nk_B$, on voit qu'on a pris un facteur $\frac{k_BT}{\mathcal{E}_f}$ dans les dents, d'ou le fait que la chaleur spécifique des $e^-$ est 100x moins importante que pour un gaz parfait. Par contre ça fait un scaling linéaire avec T, alors que les solides à basse température c'est en $T^3$, donc à basse température (qq K) les métaux ont une chaleur spécifique essentiellement due aux $e^-$ de conductions.
   
   \subsubsection{Vitesse des électrons}
-  Vu qu'on est en quantique, maintenant la première question c'est de savoir si on peut réelement parler des vitesse, et de position pour les électrons. Dans notre modèle les électrons sont complètement délocalisés vu qu'ils sont défini par $\mathbf{k}=\mathbf{v}/\hbar$. Si on veut un modèle un peu plus réaliste, il faut inclure des fluctuations autour de \textbf{k} faibles devant $k_f$, donc des fluctuation en positions grandes devant $1/k_f$, qui est plus ou moins la distance inter-atomique. Donc bref les électrons ne peuvent pas être localisés à l'atome près, par contre sur une centaine d'\AA c'est jouable. Typiquement du point de vue de la lumière visible, on peut considérer des $e^-$ ponctuels, par contre pour les rayons X il faut regarder le comportement ondulatoire.
+  Vu qu'on est en quantique, maintenant la première question c'est de savoir si on peut réelement parler des vitesse, et de position pour les électrons. Dans notre modèle les électrons sont complètement délocalisés vu qu'ils sont défini par $\mathbf{k}=\mathbf{v}/\hbar$. Si on veut un modèle un peu plus réaliste, il faut inclure des fluctuations autour de \textbf{k} faibles devant $k_f$, donc des fluctuation en positions grandes devant $1/k_f$, qui est plus ou moins la distance inter-atomique. Donc bref les électrons ne peuvent pas être localisés à l'atome près, par contre sur une centaine d'\AA  c'est jouable. Typiquement du point de vue de la lumière visible, on peut considérer des $e^-$ ponctuels, par contre pour les rayons X il faut regarder le comportement ondulatoire.
   
   Pour des phénomènes qui ont lieu sur des distances assez grande, on peut a nouveau considérer les $e^-$ comme des bouboules avec une certaine vitesse, mais cette fois en utilisant la ditribution de FD des vitesse : en gros une distribution uniforme des vitesses (dans l'espace, pas en norme) jusqu'a $v_f$ vu qu'on a une distrib uniforme des \textbf{k}, et une vitesse moyenne de l'ordre de $v_f$ qui est environ 10x plus rapide que la vitesse thermique à température ambiante.
   
@@ -202,4 +202,83 @@
   \item $\{ 100 \}$ : Les familles de plans équivalentes (100), (010) et (001).
   \item $\langle 100 \rangle$ : Les directions équivalentes [100], [010], [001], [$\bar 1 00$], [$0\bar 1 0$], [$00\bar 1$]
   \end{itemize}
+  \chapter{Diffraction par rayon X}
+  L'énergie d'un photon pour avoir $\lambda$ de l'ordre de l'Angstrom est $\sim 10^4$ eV. Donc faut du bon gros rayon X qui tache pour sonder ça. Du coup diffraction par un réseau périodique (tu peux aussi faire des rayons X sur un un solide amorphe mais t'auras pas des pics), tu vas avoir des pics. Y'a deux façons de voir ça : Bragg ou van Laue.
+  \section{Réflexion de Bragg}
+  C'est la méthode avec le réseau direct. On considère un faisceau incident avec une longueur d'onde $\lambda$ et une famille de plans séparés d'une distance $d$. En faite on s'en fout un peu que chaque plan forme un réseau d'atomes, la seule chose qui nous interesse c'est l'angle $\theta$ entre le faisceau incident et la normale des plans, et la distance $d$ entre ces plans.
+  
+  On considère que chaque plan cristallin réfléchit une partie du faisceau incident avec un angle $-\theta$ (pourquoi ? au niveau microscopique). Alors tu vas observer un pic de réflexion quand les réflexions par tous les plans interfèrent constructivement, soit $$\frac{2d \sin \theta}{\lambda} = n \in \mathbb{N}$$Ou $n$ est l'ordre de diffraction. Du coup chaque famille de plan a des pics correspondant, ou $theta$ doit être considéré par rapport à la normale des plans. Donc c'est vite le bordel en vrai.
+  \section{Formulation de Van Laue}
+  Yippity Yippita, pour une onde incidente de vecteur d'onde $k$, tu auras un pic de réflexion avec un vecteur d'onde $k'$ si $K=k'-k$ appartient au réseau réciproque.
+  
+  C'est un peu sioux, mais vu qu'ici on laisse libre deux vecteurs ($k$ et $k'$) alors que la famille de plans sondés ne correspond qu'au seul vecteur $K=k-k'$, ça veut dire que tu as de la redondance (plusieurs couples $k$ et $k'$ qui correspondent au même plan de diffraction). En faite tu peux défini les \textbf{plans de Bragg} qui sont des plans dans l'espace réciproque tels que si $k$ appartient à ce plan, alors il existe un $k'$ qui permette d'observer un maximum de réflexion pour le plan recherché (en gros il existe $k'$ tel que $K=k-k'$, ce qui n'est pas toujours vrai pour une diffusion élastique vu que $k$ et $k'$ doivent avoir la meme norme).
+  \section{Construction d'Ewald}
+  Bon c'est le dessins du futurs qui ressemblent au tricercle de ses morts. Mais en vrai ça va. L'idée c'est que les plans de Bragg par défaut ils pavent pas du tout l'espace (c'est un peu comme des plans cristallins, mais dans l'espace réciproque. Bref). Donc si tu veux voir des pics tu as en gros deux solutions :
+  \begin{itemize}
+  \item Varier la longueur d'onde/ utiliser des rayons X poly-chromatiques pour scanner une région plus large. C'est la \textbf{Méthode de Laue}
+  \item Faire tourner le cristal/utiliser des poudres (\textbf{méthode de Debye-Scherrer}). Étonnament faire tourner le cristal c'est équivalent à faire tourner le réseau réciproque, ça reste de la magie noire pour moi tout ça.
+  \end{itemize}
+  \section{Facteurs de structure}
+  On a fait l'hypothèse que l'onde était réfléchie par les plans cristallins, sauf que les plans cristallins c'est pas forcément des plans atomiques, c'est uniquement le centre du motif cristallin. Du coup pour les réseaux ou la maille n'est pas mono-atomique (genre le diamant), il faut rajouter un \textbf{facteur de structure géométrique} qui vient moduler l'amplitude de chaque pic chaque pic de diffraction. C'est pas hyper prédictif d'un point de vue quantitatif parce que t'as encore d'autres facteurs qui viennent se rajouter après, mais t'as des fois ou le facteur de structure fait 0, et dans ce cas la c'est niet, tu as pas de pic.
+  
+  Ce qu'il faut retenir c'est que considérer des motifs plus compliqués par rapport à des motifs simple, ça ne peut que te retirer des pics de diffraction, pas t'en ajouter. Par exemple si tu prends un réseau CC mais que tu le considère comme un réseau CS à motif (le réseau CS ayant plus de points dans le réseau réciproque parce que les distances sont plus lointaines), tu verras que la moitié des points du réseau réciproque ne donnent pas de pic avec le facteur de structure, parce que le réseau réciproque d'un CC c'est un CFC qui a deux fois moins de points qu'un CS.
+  \chapter{Classification des réseaux, systèmes, groupes d'espaces et toutes ces conneries}
+  Bientot on fera de la physique, c'est promis. 
+  \begin{tcolorbox}
+  \textbf{Groupe de symmétrie :} Dans ce contexte, c'est l'ensemble des opérations rigides (qui laisse invariantes les distances entre chaque point, aka \textbf{isométrie}) qui transforme le réseau en lui-même (en considérant tous les points comme équivalents).
+  \end{tcolorbox}
+  \section{Classsification des réseaux de Bravais}
+  On va commencer par considérer des réseaux de Bravais "pure", c'est à dire qu'à chaque noeud du réseau on a un objet de symmétrie maximale (une sphère, un atome quoi). Je rappelle que l'idée avec les symmétries c'est de soustraire.
+  \subsection{Invariance par translation}
+  C'est un peu la définition du réseau de Bravais, tu est invariant par translation selon un vecteur $\mathbf{R}=n_1 \mathbf{a_1}+n_2 \mathbf{a_2}+n_3 \mathbf{a_3}$
+  \subsection{Invariance par rotation, réflexion, inversion}
+  \begin{itemize}
+  \item \textbf{Rotation :} Une rotation est définie par une \textbf{axe} (1D, orienté) et un \textbf{angle} de rotation autour de l'axe.
+  \item \textbf{Reflexion :} Une réflexion (symmétrie miroir) est définie par un \textbf{plan} (2D) : une réflexion $M'$ est à la même distance $d$ que $M$ du plan, et $MM'$ est perpendiculaire au plan.
+  \item \textbf{Inversion :} Une inversion est définie par rapport à un \textbf{point} (0D) : elle transforme tout point $M$ tel que $\vec{OM} = \vec r \to -\vec r = \vec{OM'}$. Tous les points du réseau de Bravais sont des centres d'inversion (les coordonnées sont algébriques)
+  \end{itemize}
+  \section{Systèmes cristallins et groupe ponctuel}
+  Le \textbf{groupe ponctuel}, c'est l'ensemble des transformations qui laissent au moins un point du réseau invariant (donc en gros les pas-translations). Après mure réflexion, il se trouve que le groupe ponctuel n'est pas Abelien. Il existe 7 groupes ponctuels distincts pour des réseaux de Bravais qui définissent les 7 \textbf{Systèmes cristallins} :
+  
+   \textbf{cubique}, \textbf{tétragonal} (pavé droit base carré), \textbf{orthorombique} (pavé droit de base rectangulaire), \textbf{monoclinique} (on a plus que deux angles droits), \textbf{triclinique} (plus d'angles droit du tout, c'est le cas le plus général). Tu as aussi le \textbf{trigonal} qui est un cube étiré selon la diagonale (normes des $a_i$ égales et angles entre chaque $a_i$ égaux, c'est le losange en 3D en gros) et \textbf{l'hexagonal} (pavé droit de section hexagonale regulière.
+  \section{Groupes d'espace et groupes ponctuels}
+  Le groupe d'espace c'est le groupe qui inclue la translation en plus. Chaque groupe d'espace "appartient" à un groupe ponctuel, par exemple les 3 groupes d'espaces pour le système cubique c'est le cubique simple, le CC et le CFC.
+  
+  Maintenant si on ne s'interesse plus au réseau de bravais "pur", mais à  tout réseau cristallin, il faut augmenter le nombre de groupes ponctuels et de groupes d'espace, cf la table en dessous :
+  
+  \begin{center}
+  \begin{tabular}{ccc}
+\hline
+ & Groupes ponctuels & Groupes d'espace \\
+\hline
+Bravais & 7 & 14 \\
+Général & 32 & 230 \\
+\hline
+\end{tabular}
+  \end{center}
+  
+ Et on s'en tiendra à ça pour l'instant.
+ \chapter{Niveaux électroniques dans un potentiel périodique}
+ Le retour de la physique
+ \section{Théorème de Bloch}
+ Pour rappel, ce qu'on avait considéré dans le chapitre 2 c'était un gaz d'électron, quantique certe, mais libre. C'est pour ça qu'on s'est emmerdé à décrire la structure cristalline, pour décrire le potentiel effectif des ions sur les électrons. Mais dans un premier temps on ne vas utiliser que deux propriétés :
+ \begin{itemize}
+ \item Les électrons sont toujours supposés indpéendants, on résoudra Shrondinger à un électron
+ \item Le potenteil électrique généré par les ions est périodique (et indépendant du temps, on considère les ions immobiles toujours), soit $ V(r+R)=V(r) $ pour tout R appartenant au réseau de Bravais.
+ \end{itemize}
+ \begin{tcolorbox}
+ \textbf{Théorème de Bloch :} La fonction d'onde des états propres à un électron dans un potentiel périodique peut s'écrire comme une onde plane multipliée par une fonction périodique sur le réseau : $$\psi_{n\mathbf{k}}(r) = e^{i\mathbf{k}\cdot\mathbf{r}} u_{n\mathbf{k}}(r) $$
+ 
+ Avec $u_{n\mathbf{k}}(r+R)=u_{n\mathbf{k}}(r)$ pour tout $R$ appartenant au réseau de Bravais.
+ 
+ Une formulation alternative est : $$ \psi_{n\mathbf{k}}(r+R) = e^{i\mathbf{k}\cdot\mathbf{R}} \psi_{n\mathbf{k}}(r)$$
+ \end{tcolorbox}
+ Au passage, comme on regarde les états propres d'un Hamiltonien ne dépendant pas du temps, les états propres (= stationnaires) ne dépendant pas du temps. Le $n$ correspond à la n-ième énergie propre, et le $\mathbf{k}$ au vecteur d'onde.
+ 
+ La démonstration n'est pas très compliquée, on utilise le fait que $\mathcal{H}$ commute avec l'opérateur de translation selon un vecteur de Bravais $T_R$, ce qui veut dire qu'il esxiste une base commune pour $\mathcal{H}$ et $T_R$. Or on peut montrer assez facilement que les états propres de $T_R$ vérifient tous la deuxième formulation du théorème de Bloch, donc les états propres de $\mathcal{H}$ aussi.
+ 
+ \subsection{Conditions aux limites de Born-Von Karman}
+ Dans l'absolu $k$ est complexe, ce qui est un peu chiant. Du coup on reprend les même conditions aux limites périodiques (sur l'ensemble du cristal) qu'avant, c'est à dire : $$ \psi_{n\mathbf{k}}(r+N_i \mathbf{a}_i) = \psi_{n\mathbf{k}}(r)$$ Ou les $a_i$ sont les vecteurs de la base du réseau de Bravais, et $N=N_1N_2N_3$ est le nombre total d'atomes du cristal.
+ 
+ On retrouve alors que la maille primitive du réseau réciproque (aka PZB) contient N modes, et que le volume de chaque mode vaut $$ \Delta \vec k = \frac{(2\pi)^3}{V} $$
     \end{document}	
