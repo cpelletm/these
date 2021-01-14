@@ -1,3 +1,8 @@
+from pipython import GCSDevice
+
+print(dir(GCSDevice))
+
+
 class field_template():
 	def __init__(self):
 

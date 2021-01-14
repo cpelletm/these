@@ -7,11 +7,26 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 import visa
+import sys
+import traceback
 def voltmetre():
 	with nidaqmx.Task() as task :
 		task.ai_channels.add_ai_voltage_chan("Dev1/ai11") #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
 		V=task.read()
 		print(V)
+
+def sapin_de_noel():
+	for i in range(15):
+		with nidaqmx.Task() as task :
+			task.ai_channels.add_ai_voltage_chan("Dev1/ai%i"%i) #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
+			V=task.read()
+			print(V)
+	for i in range(15):
+		with nidaqmx.Task() as task :
+			task.ai_channels.add_ao_voltage_chan("Dev1/ai%i"%i) #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
+			V=task.read()
+			print(V)
+
 
 
 
@@ -55,7 +70,14 @@ def digital_out():
 		task.start()
 		while not task.is_task_done() :
 			pass
+		task.stop()
+		time.sleep(1)
 
+		task.start()
+		while not task.is_task_done() :
+			pass
+
+digital_out()
 		
 def do2() :
 	with nidaqmx.Task() as task:
@@ -963,4 +985,44 @@ def trig_gen_courant(): #on a pas acheté l'option...
 	print(PG.query('SYSTem:ERRor?'))
 	print(PG.query('SYSTem:ERRor?'))
 
-trig_gen_courant()
+def TD_math():
+	x=np.linspace(-5,5,300)
+	y1=np.cos(x)**4
+	y2=(1+np.cos(4*x))/2
+	plt.plot(x,y1)
+	plt.plot(x,y2)
+	plt.show()
+
+def error_handling(x,y):
+	try :
+		print(x/y)
+	except :
+		err = sys.exc_info()
+		print(err)
+		message=err[1]
+		tb=err[2]
+		with open('log.txt','w') as log :
+			log.write(str(message)+'\n')
+			traceback.print_tb(tb,file=log)
+	print('le programme continue')
+
+def test_writing():
+	with open('toto.txt','w') as f:
+		f.write('tutu\n')
+	with open('toto.txt','a') as f:
+		f.write('tutu\n')
+
+
+def comportement_boucle():
+	for i in range(10) :
+		if i<=2 :
+			i=2
+		print(i)
+
+def matrice_pas_carree():
+	a=[1,2,3]
+	b=[4,5,6]
+	m=[a,b]
+	m2=np.array(m)
+	print(m,m2)
+matrice_pas_carree()

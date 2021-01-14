@@ -31,19 +31,21 @@ class Photon_Counter(QMainWindow):
 		
 
 
-		self.n_points=100
-		self.f_uW=2.88   
-		self.level=0 #dBm
+		self.n_points=50
+		self.f_uW=2.865
+		self.level=20 #dBm
 		self.time_acq=1E-3 #in s
 
 		self.time_polarization=2E-4 #in s
-		self.time_read=1E-4 #in s
-		self.time_pulse_uW=2E-6 #in s. The pulse time might not pe precise
+		self.time_read=2E-4 #in s
+		self.time_pulse_uW=20E-6 #in s. The pulse time might not pe precise
+		self.n_min_wait=2 #n_wait = l'unité de temps d'attente (le dt entre chaque point du dark time). n_min_wait dis à combien de dt est-ce qu'on commence, parce qu'il y a des pb si le temps d'attente est plus court que la pulse uw
 
 		self.refresh_rate=0.1 #Screen max refresh rate (in s), below 0.1 is probably too fast
 
 
-		self.sampling_rate=5E5
+
+		self.sampling_rate=1E5
 
 		self.n_pulse=int(self.time_pulse_uW*self.sampling_rate)
 		if self.n_pulse < 1 :
@@ -53,6 +55,8 @@ class Photon_Counter(QMainWindow):
 		self.n_wait=int(self.time_acq/self.n_points*self.sampling_rate)
 		self.n_cycle=self.n_wait*self.n_points+self.n_read+self.n_pola
 
+		if self.n_pulse >= self.n_wait*self.n_min_wait :
+			print("Pulse trop longue par rapport au premier dark time")
 		
 
 
@@ -126,11 +130,14 @@ class Photon_Counter(QMainWindow):
 		Vbox.addWidget(dynamic_canvas)
 		self.addToolBar(Qt.BottomToolBarArea,
 						MyToolbar(dynamic_canvas, self))
-		self.dynamic_ax= dynamic_canvas.figure.subplots()
+		self.dynamic_ax,self.direct_ax,self.pulse_ax= dynamic_canvas.figure.subplots(3)
 
 		self.x=np.linspace(0,self.time_acq,self.n_points)
 		self.y=np.zeros(self.n_points)
 		self.dynamic_line,=self.dynamic_ax.plot(self.x, self.y)
+		self.direct_line,=self.direct_ax.plot(self.x, self.y)
+		self.pulse_line,=self.pulse_ax.plot(self.x, self.y)
+
   
 
 
@@ -149,6 +156,8 @@ class Photon_Counter(QMainWindow):
 		self.seq_aom=[]
 		self.seq_switch=[]
 		for i in range(1,self.n_points+1) :
+			if i <= self.n_min_wait :
+				i=self.n_min_wait
 			self.seq_aom+=[False]*(i*self.n_wait)+[True]*(self.n_cycle-i*self.n_wait)
 			self.seq_aom+=[False]*(i*self.n_wait)+[True]*(self.n_cycle-i*self.n_wait)
 			self.seq_switch+=[True]*(i*self.n_wait-self.n_pulse)+[False]*self.n_pulse+[True]*(self.n_cycle-i*self.n_wait)
@@ -188,6 +197,8 @@ class Photon_Counter(QMainWindow):
 		self.f_uW=np.float(self.lectf_uW.text())
 		self.level=np.float(self.lectlevel.text())
 		self.n_points=np.int(self.lectn_points.text())
+
+
 		self.time_acq=np.float(self.lecttime_acq.text())
 
 		self.n_pulse=int(self.time_pulse_uW*self.sampling_rate)
@@ -203,11 +214,17 @@ class Photon_Counter(QMainWindow):
 
 		self.x=np.linspace(0,self.time_acq,self.n_points)
 		self.y=np.zeros(self.n_points)
+		self.y2=np.zeros(self.n_points)
+		self.y3=np.zeros(self.n_points)
 		xmin=min(self.x)
 		xmax=max(self.x)
 		self.dynamic_ax.set_xlim([xmin,xmax]) 
+		self.direct_ax.set_xlim([xmin,xmax]) 
+		self.pulse_ax.set_xlim([xmin,xmax]) 
 
 		self.dynamic_line.set_data(self.x,self.y)
+		self.direct_line.set_data(self.x,self.y2)
+		self.pulse_line.set_data(self.x,self.y3)
 
 
 
@@ -267,20 +284,32 @@ class Photon_Counter(QMainWindow):
 
 		lecture=self.apd.read(self.n_seq)
 
-		PL=np.array([(lecture[p[3]]-lecture[p[2]])-(lecture[p[1]]-lecture[p[0]]) for p in self.PL_indices])
-		PL=PL*self.sampling_rate/self.n_read
+		PL_direct=np.array([(lecture[p[3]]-lecture[p[2]]) for p in self.PL_indices])*self.sampling_rate/self.n_read
+		PL_pulse=np.array([(lecture[p[1]]-lecture[p[0]]) for p in self.PL_indices])*self.sampling_rate/self.n_read
+		PL=PL_direct-PL_pulse
 		
 		
 
-		if max(abs(PL)) <= 1E8 : #Pour éviter les reset de compteur
+		if min(PL_direct)>=0 and min(PL_pulse)>=0 : #Pour éviter les reset de compteur
 			self.y=self.y*(1-1/self.repeat)+PL*(1/self.repeat)
+			self.y2=self.y2*(1-1/self.repeat)+PL_direct*(1/self.repeat)
+			self.y3=self.y3*(1-1/self.repeat)+PL_pulse*(1/self.repeat)
 			self.repeat+=1
 
 		if time.time()-self.time_last_refresh>self.refresh_rate :
 			self.dynamic_line.set_ydata(self.y)
+			self.direct_line.set_data(self.x,self.y2)
+			self.pulse_line.set_data(self.x,self.y3)
+
 			ymin=min(self.y)
 			ymax=max(self.y)
 			self.dynamic_ax.set_ylim([ymin,ymax]) 
+			ymin=min(self.y2)
+			ymax=max(self.y2)
+			self.direct_ax.set_ylim([ymin,ymax]) 
+			ymin=min(self.y3)
+			ymax=max(self.y3)
+			self.pulse_ax.set_ylim([ymin,ymax]) 
 
 			# print(len(self.dynamic_line.get_xdata()))
 			# print(len(self.dynamic_line.get_ydata()))
@@ -377,10 +406,22 @@ class MyToolbar(NavigationToolbar): #Modification of the toolbar to save data wi
 										 start, "Images (*.png)")
 
 		data=[]
-		for ax in self.canvas.figure.get_axes() :
-			for line in ax.get_lines() :
-				data+=[line._x]
-				data+=[line._y]
+        lmax=0
+        for ax in self.canvas.figure.get_axes() :
+            for line in ax.get_lines() :
+                if len(line._x)>lmax :
+                    lmax=len(line._x)
+
+        for ax in self.canvas.figure.get_axes() :
+            for line in ax.get_lines() :
+                x=list(line._x)
+                if len(x) < lmax :
+                    x+=[-1]*(lmax-len(x))
+                y=list(line._y)
+                if len(y) < lmax :
+                    y+=[-1]*(lmax-len(y))
+                data+=[x]
+                data+=[y]
 
 		fdataname=fname[:-4]+".txt"
 		with open(fdataname,'w') as f: #Needs an update if the lines have differents sizes

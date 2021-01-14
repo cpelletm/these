@@ -1,16 +1,3 @@
-SpinCore Technologies, Inc. SpinAPI ver. 20171214
-Logfile created: Tue Jul 28 16:41:10 2020
-
-Markers: (I) info, (W) warning, (E) error.
-
-================================================================================================
-    TIME     FUNCTION                     MESSAGE                      
-================================================================================================
-(I) 16:41:10 os_count_boards:177         Registering WinDriver...
-(E) 16:41:10 RegisterWinDriver:132       Incorrect WinDriver version. (found 0, compiled with 1001)
-(E) 16:41:10 os_count_boards:181         failed to register WinDriver
-(E) 16:41:10 pb_count_boards:125         pb_count_boards(): error counting PCI boards. Please check to make sure WinDriver is properly installed.
-(I) 16:41:10 os_usb_count_devices:71     os_usb_count_devices: Enumerating USB Devices...
-(I) 16:41:10 os_usb_count_devices:86     os_usb_count_devices: Enumeration Completed. Found 0 Devices.
-(I) 16:41:10 pb_count_boards:144         pb_count_boards(): Detected 0 boards in your system.
-(E) 16:41:10 pb_select_board:164         pb_select_board(..):  Board number out of range (num_boards=0)
+division by zero
+  File "D:\Users\manip\Desktop\python_clément\test.py", line 978, in error_handling
+    print(x/y)

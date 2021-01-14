@@ -34,7 +34,7 @@ class Photon_Counter(QMainWindow):
         self.N_scan=1501 #nb of points per scan
         self.N_display=401
         self.Vmin=0 #V
-        self.Vmax=5 #V
+        self.Vmax=10 #V
 
         self.Imax=1 #A
 
@@ -43,7 +43,8 @@ class Photon_Counter(QMainWindow):
 
         self.sampling_rate=self.N_scan/self.time_scan
 
-
+        self.safe_save_bool=False
+        self.safe_save_nb=100
 
         
 
@@ -141,6 +142,10 @@ class Photon_Counter(QMainWindow):
         self.start.setEnabled(False)
         self.stop.setEnabled(True)
 
+        if self.safe_save_bool :
+            self.fname, filter = QFileDialog.getSaveFileName(None,
+                                             "Choose a filename to save to",
+                                             "D:/DATA", "Documents texte (*.txt)")
         self.N_scan=np.int(self.lectNscan.text())
         self.Vmax=np.float(self.lectVmax.text())
         self.Vmin=np.float(self.lectVmin.text())
@@ -281,6 +286,12 @@ class Photon_Counter(QMainWindow):
         self.dynamic_ax.figure.canvas.draw()
 
         self.labelIter.setText("iter # %i"%self.repeat)
+
+        if self.safe_save_bool :
+            if self.repeat % self.safe_save_nb ==0 :
+                with open(self.fname,'w') as f:
+                    for i in range(len(self.y)):
+                        f.write('%e \n'%self.y[i])
      
 
     def stop_measure(self):
