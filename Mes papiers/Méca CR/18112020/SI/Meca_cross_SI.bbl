@@ -1,0 +1,80 @@
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{\citenamefont{Delord et~al.}(2018)\citenamefont{Delord, Huillery,
+  Schwab, Nicolas, Lecordier, and H\'etet}}]{DelordPRL}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Huillery}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Schwab}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Nicolas}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Lecordier}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{H\'etet}},
+  \bibinfo{journal}{Phys. Rev. Lett.} \textbf{\bibinfo{volume}{121}},
+  \bibinfo{pages}{053602} (\bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Delord}(2019)}]{DelordPhD}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}}, Ph.D. thesis,
+  \bibinfo{school}{{\'E}cole Normale Sup{\'e}rieure} (\bibinfo{year}{2019}).
+
+\bibitem[{\citenamefont{Delord et~al.}(2020)\citenamefont{Delord, Huillery,
+  Nicolas, and H{\'e}tet}}]{DelordNat}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Huillery}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Nicolas}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{H{\'e}tet}},
+  \bibinfo{journal}{Nature} \textbf{\bibinfo{volume}{580}}, \bibinfo{pages}{56}
+  (\bibinfo{year}{2020}).
+
+\bibitem[{\citenamefont{Johansson et~al.}(2012)\citenamefont{Johansson, Nation,
+  and Nori}}]{qutip1}
+\bibinfo{author}{\bibfnamefont{J.~R.} \bibnamefont{Johansson}},
+  \bibinfo{author}{\bibfnamefont{P.~D.} \bibnamefont{Nation}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Nori}},
+  \bibinfo{journal}{Computer Physics Communications}
+  \textbf{\bibinfo{volume}{183}}, \bibinfo{pages}{1760} (\bibinfo{year}{2012}).
+
+\bibitem[{\citenamefont{Johansson}()}]{qutip2}
+\bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Johansson}},
+  \bibinfo{journal}{Comp. Phys. Comm} \textbf{\bibinfo{volume}{184}},
+  \bibinfo{pages}{1234} (????).
+
+\bibitem[{\citenamefont{van Oort and
+  Glasbeek}(1989)}]{van_oort_cross-relaxation_1989}
+\bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{van Oort}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Glasbeek}},
+  \bibinfo{journal}{Phys. Rev. B} \textbf{\bibinfo{volume}{40}},
+  \bibinfo{pages}{6509} (\bibinfo{year}{1989}), ISSN \bibinfo{issn}{0163-1829},
+  \bibinfo{note}{number: 10},
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevB.40.6509}.
+
+\bibitem[{\citenamefont{Choi et~al.}(2017)\citenamefont{Choi, Choi, Kucsko,
+  Maurer, Shields, Sumiya, Onoda, Isoya, Demler, Jelezko
+  et~al.}}]{choi_depolarization_2017}
+\bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Choi}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Choi}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Kucsko}},
+  \bibinfo{author}{\bibfnamefont{P.~C.} \bibnamefont{Maurer}},
+  \bibinfo{author}{\bibfnamefont{B.~J.} \bibnamefont{Shields}},
+  \bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Sumiya}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Onoda}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Isoya}},
+  \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Demler}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Jelezko}},
+  \bibnamefont{et~al.}, \bibinfo{journal}{Phys. Rev. Lett.}
+  \textbf{\bibinfo{volume}{118}}, \bibinfo{pages}{093601}
+  (\bibinfo{year}{2017}), ISSN \bibinfo{issn}{0031-9007, 1079-7114},
+  \bibinfo{note}{number: 9},
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevLett.118.093601}.
+
+\end{thebibliography}
