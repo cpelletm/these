@@ -184,7 +184,8 @@ y=y[3:]
 y=y/y[0]
 plt.plot(x*1E3,y,'x',color=color)
 popt,yfit=exp_fit(x,y)
-plt.plot(x*1E3,yfit,label='1-Degenerancy',color=color)
+plt.plot(x*1E3,yfit,label='No degenerancies',color=color)
+print(popt[2])
 
 color = next(ax._get_lines.prop_cycler)['color']
 fname='t1_2x2'
@@ -194,7 +195,9 @@ y=y[3:]
 y=y/y[0]
 plt.plot(x*1E3,y,'x',color=color)
 popt,yfit=exp_fit(x,y)
-plt.plot(x*1E3,yfit,label='2-Degenerancy',color=color)
+plt.plot(x*1E3,yfit,label='2-classes degenerancy',color=color)
+print(popt[2])
+
 
 color = next(ax._get_lines.prop_cycler)['color']
 fname='T1_100_2V_setup2_nuit'
@@ -204,27 +207,29 @@ y=y[1:]
 y=y/y[0]
 plt.plot(x*1E3,y,'x',color=color)
 popt,yfit=exp_fit(x,y)
-plt.plot(x*1E3,yfit,label='4-Degenerancy',color=color)
-
-color = next(ax._get_lines.prop_cycler)['color']
-fname='T1_100_0V_setup2_nuit'
-x,y=extract_data(fname+'.txt')
-x=x[1:]
-y=y[1:]
-y=y/y[0]
-plt.plot(x*1E3,y,'x',color=color)
-popt,yfit=exp_fit(x,y)
-plt.plot(x*1E3,yfit,label='0-Field',color=color)
+plt.plot(x*1E3,yfit,label='4-classes degenerancy',color=color)
+print(popt[2])
 
 
+# color = next(ax._get_lines.prop_cycler)['color']
+# fname='T1_100_0V_setup2_nuit'
+# x,y=extract_data(fname+'.txt')
+# x=x[1:]
+# y=y[1:]
+# y=y/y[0]
+# plt.plot(x*1E3,y,'x',color=color)
+# popt,yfit=exp_fit(x,y)
+# plt.plot(x*1E3,yfit,label='0-Field',color=color)
 
 
 
-ax.tick_params(labelsize=15)
-plt.xlabel(r'Dark time $\tau$ (ms)',fontsize=25)
-plt.ylabel('PL (arb.)',fontsize=25)
 
 
-plt.legend(fontsize=15)
+ax.tick_params(labelsize='large')
+plt.xlabel(r'Dark time $\tau$ (ms)',fontsize='xx-large')
+plt.ylabel('PL (arb.)',fontsize='xx-large')
+
+
+plt.legend(fontsize='x-large')
 
 plt.show()

@@ -1,0 +1,180 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{choi_depolarization_2017}{article}{}
+      \name{author}{12}{}{%
+        {{hash=57a57425ca896b5ff04437ae9326358a}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Joonhee},
+           giveni={J\bibinitperiod}}}%
+        {{hash=aefff0f639ffce89deaac5b5a6e0d625}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Soonwon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e2d76903aa5edbfad4db8f641e8d9b9c}{%
+           family={Kucsko},
+           familyi={K\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=26627a96bd5c9e16c60b94d9c4a93b40}{%
+           family={Maurer},
+           familyi={M\bibinitperiod},
+           given={Peter\bibnamedelima C.},
+           giveni={P\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=568f93fd49f6b56c212bf545801d2f2b}{%
+           family={Shields},
+           familyi={S\bibinitperiod},
+           given={Brendan\bibnamedelima J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=bf2859933e1b0c4896731b2e0f045403}{%
+           family={Sumiya},
+           familyi={S\bibinitperiod},
+           given={Hitoshi},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ead6bf8f02a5582b2c748352737bc0e8}{%
+           family={Onoda},
+           familyi={O\bibinitperiod},
+           given={Shinobu},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e72a0e59f917bfcf16da87421615eef1}{%
+           family={Isoya},
+           familyi={I\bibinitperiod},
+           given={Junichi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=643c556d156225bdad6e50ef100dd939}{%
+           family={Demler},
+           familyi={D\bibinitperiod},
+           given={Eugene},
+           giveni={E\bibinitperiod}}}%
+        {{hash=176f8a3c6b3820fedfad65dcbb8fb5c5}{%
+           family={Jelezko},
+           familyi={J\bibinitperiod},
+           given={Fedor},
+           giveni={F\bibinitperiod}}}%
+        {{hash=7cd626b291b1591383af185597568b20}{%
+           family={Yao},
+           familyi={Y\bibinitperiod},
+           given={Norman\bibnamedelima Y.},
+           giveni={N\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=8fd921a549ae6718702b6c8c84fef487}{%
+           family={Lukin},
+           familyi={L\bibinitperiod},
+           given={Mikhail\bibnamedelima D.},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{fullhash}{b80ec8120e27edef2e0521eb1cb8c702}
+      \strng{bibnamehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{authorbibnamehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{authornamehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{authorfullhash}{b80ec8120e27edef2e0521eb1cb8c702}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev. Lett.}
+      \field{month}{3}
+      \field{title}{Depolarization {Dynamics} in a {Strongly} {Interacting} {Solid}-{State} {Spin} {Ensemble}}
+      \field{year}{2017}
+    \endentry
+    \entry{cruddace2007magnetic}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=b52c52ddf3760a0c0f1bb83bdb7ca1fa}{%
+           family={Cruddace},
+           familyi={C\bibinitperiod},
+           given={Robin},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Warwick}%
+      }
+      \strng{namehash}{b52c52ddf3760a0c0f1bb83bdb7ca1fa}
+      \strng{fullhash}{b52c52ddf3760a0c0f1bb83bdb7ca1fa}
+      \strng{bibnamehash}{b52c52ddf3760a0c0f1bb83bdb7ca1fa}
+      \strng{authorbibnamehash}{b52c52ddf3760a0c0f1bb83bdb7ca1fa}
+      \strng{authornamehash}{b52c52ddf3760a0c0f1bb83bdb7ca1fa}
+      \strng{authorfullhash}{b52c52ddf3760a0c0f1bb83bdb7ca1fa}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Magnetic resonance and optical studies of point defects in single crystal CVD diamond}
+      \field{type}{phdthesis}
+      \field{year}{2007}
+    \endentry
+    \entry{glover_hydrogen_2004}{article}{}
+      \name{author}{5}{}{%
+        {{hash=ccda6ee11201d0971da466eee2e2294c}{%
+           family={Glover},
+           familyi={G\bibinitperiod},
+           given={Claire},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c9497fa750f4eecf9be4830ab3aaeebe}{%
+           family={Newton},
+           familyi={N\bibinitperiod},
+           given={M.\bibnamedelimi E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=3cde6acc6a5ee756ae9917df504ab139}{%
+           family={Martineau},
+           familyi={M\bibinitperiod},
+           given={P.\bibnamedelimi M.},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d27eb99db013cca845161d320f302788}{%
+           family={Quinn},
+           familyi={Q\bibinitperiod},
+           given={Samantha},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a7a2a908b10027309b539d8c8b6046a7}{%
+           family={Twitchen},
+           familyi={T\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{6bd40b82c5beb97b18d2728bd4d3df93}
+      \strng{fullhash}{ccb3ca5069d1220fb2ae9a95699dd3c9}
+      \strng{bibnamehash}{6bd40b82c5beb97b18d2728bd4d3df93}
+      \strng{authorbibnamehash}{6bd40b82c5beb97b18d2728bd4d3df93}
+      \strng{authornamehash}{6bd40b82c5beb97b18d2728bd4d3df93}
+      \strng{authorfullhash}{ccb3ca5069d1220fb2ae9a95699dd3c9}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{We report the identification of the vacancy-hydrogen complex in single crystal diamond synthesized by chemical vapor deposition. The S=1 defect is observed by electron paramagnetic resonance in the negative charge state. The hydrogen atom is bonded to one of the carbon atoms neighboring the vacancy. Unlike the analogous defect in silicon, no symmetry lowering reconstruction occurs between the three remaining carbon dangling orbitals. The very small measured hydrogen hyperfine interaction is explained by dipolar coupling between the hydrogen and the unpaired electron probability density delocalized on the three equivalent carbon neighbors.}
+      \field{journaltitle}{Phys. Rev. Lett.}
+      \field{month}{3}
+      \field{number}{13}
+      \field{shorttitle}{Hydrogen {Incorporation} in {Diamond}}
+      \field{title}{Hydrogen {Incorporation} in {Diamond}: {The} {Vacancy}-{Hydrogen} {Complex}}
+      \field{volume}{92}
+      \field{year}{2004}
+      \field{pages}{135502}
+      \range{pages}{1}
+      \verb{file}
+      \verb Full Text PDF:/home/zouzou/Zotero/storage/77SS95QA/Glover et al. - 2004 - Hydrogen Incorporation in Diamond The Vacancy-Hyd.pdf:application/pdf;APS Snapshot:/home/zouzou/Zotero/storage/G82KZQHM/PhysRevLett.92.html:text/html
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

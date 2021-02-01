@@ -135,8 +135,8 @@ fig,ax=plt.subplots(2)
 theta_111=arctan(sqrt(2))
 gamma_las=5E-3
 
-B_in=spher_to_cart(pi/4,pi/4)*200+[30,0,0]
-B_out=spher_to_cart(pi/4,pi/4)*200-[30,0,0]
+B_in=np.array([72.65829175, 30.55410235, 85.39414061])
+B_out=np.array([ 27.41941162,  50.08273284, 114.89942708])
 n=200
 Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)

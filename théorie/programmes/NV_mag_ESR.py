@@ -8,8 +8,8 @@ D=2870 #Mhz
 gamma_e=2.8 #Mhz/gauss
 
 Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
-Sy=np.array([[0,-1j,0],[1j,0,-1j],[0,1j,0]])
-Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])
+Sy=np.array([[0,-1j,0],[1j,0,-1j],[0,1j,0]])*1/np.sqrt(2)
+Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])*1/np.sqrt(2)
 Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
 
 c1=np.array([-1,1.,-1])/np.sqrt(3)
@@ -60,15 +60,19 @@ def err_func(B_coord,ESR_peaks) :
 
 
 def find_B(ESR_peaks):
-	for theta_try in [0,10,20,30,40,50] :
-		sol=minimize(err_func,x0=[100,theta_try,50],args=ESR_peaks,bounds=[(0,1000),(0,180),(0,180)])
-		if err_func(sol.x,ESR_peaks) < 0.01 :
-			break
+	sol=minimize(err_func,x0=[100,45,45],args=ESR_peaks,bounds=[(0,1000),(0,90),(0,90)])
+
 	return sol.x
 
+def test():
+	B=mag_field(10,128,62,radian=False)
+	ESR=transitions(B)
+	print(ESR)
 
-B=mag_field(10,128,62,radian=False)
-ESR=transitions(B)
+	print(find_B(ESR))
+	print(err_func(find_B(ESR),ESR))
 
-print(find_B(ESR))
-print(err_func(find_B(ESR),ESR))
+	B=mag_field(10,52,62,radian=False)
+	ESR=transitions(B)
+	print(ESR)
+

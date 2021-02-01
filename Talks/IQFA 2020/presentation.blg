@@ -1,0 +1,17 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'presentation.blg'
+[125] biber:322> INFO - === lun. nov. 23, 2020, 16:25:20
+[147] Biber.pm:415> INFO - Reading 'presentation.bcf'
+[310] Biber.pm:943> INFO - Found 3 citekeys in bib section 0
+[332] Biber.pm:4256> INFO - Processing section 0
+[333] Utils.pm:75> INFO - Globbing data source 'Biblio_dbl_quantum.bib'
+[333] Utils.pm:91> INFO - Globbed data source 'Biblio_dbl_quantum.bib' to Biblio_dbl_quantum.bib
+[350] Biber.pm:4455> INFO - Looking for bibtex format file 'Biblio_dbl_quantum.bib' for section 0
+[356] bibtex.pm:1653> INFO - LaTeX decoding ...
+[477] bibtex.pm:1471> INFO - Found BibTeX data source 'Biblio_dbl_quantum.bib'
+[570] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[570] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[570] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[570] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[577] bbl.pm:652> INFO - Writing 'presentation.bbl' with encoding 'UTF-8'
+[582] bbl.pm:755> INFO - Output to presentation.bbl

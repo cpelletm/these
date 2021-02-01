@@ -136,7 +136,7 @@ class Photon_Counter(QMainWindow):
 		self.clear_button.clicked.connect(self.clear_trace)
 
 	def keep_trace(self):
-		self.dynamic_ax.plot(self.x,self.y)
+		self.dynamic_ax.plot(self.x,self.y,'--')
 
 	def clear_trace(self):
 		lines=self.dynamic_ax.get_lines()
@@ -271,13 +271,10 @@ class Photon_Counter(QMainWindow):
 		try :
 			self.PG.write('*RST')
 			self.PG.write('*WAI')
+			self.PG.close()
 		except :
 			pass
 		try :
-			self.trig_uW.close()
-			self.trig_uW=nidaqmx.Task()
-			self.trig_uW.do_channels.add_do_chan('Dev1/port0/line1')
-			self.trig_uW.write([False])
 			self.trig_uW.close()
 
 		except :
@@ -318,7 +315,7 @@ class Photon_Counter(QMainWindow):
 		rm = visa.ResourceManager()
 		self.PG = rm.open_resource( resourceString4 )
 		self.PG.write_termination = '\n'
-		self.PG.timeout=5000
+		self.PG.timeout=10000
 
 		self.PG.clear()  # Clear instrument io buffers and status
 		self.PG.write('*WAI')
@@ -383,10 +380,22 @@ class MyToolbar(NavigationToolbar): #Modification of the toolbar to save data wi
 										 start, "Images (*.png)")
 
 		data=[]
-		for ax in self.canvas.figure.get_axes() :
-			for line in ax.get_lines() :
-				data+=[line._x]
-				data+=[line._y]
+        lmax=0
+        for ax in self.canvas.figure.get_axes() :
+            for line in ax.get_lines() :
+                if len(line._x)>lmax :
+                    lmax=len(line._x)
+
+        for ax in self.canvas.figure.get_axes() :
+            for line in ax.get_lines() :
+                x=list(line._x)
+                if len(x) < lmax :
+                    x+=[-1]*(lmax-len(x))
+                y=list(line._y)
+                if len(y) < lmax :
+                    y+=[-1]*(lmax-len(y))
+                data+=[x]
+                data+=[y]
 
 		fdataname=fname[:-4]+".txt"
 		with open(fdataname,'w') as f: #Needs an update if the lines have differents sizes

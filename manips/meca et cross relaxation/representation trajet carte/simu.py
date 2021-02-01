@@ -92,6 +92,7 @@ def spher_to_cart(theta,phi):
 
 
 def plot_canevas(ax):
+
 	#Theta en ordonée de 0 a 180 ; phi en abscisse de 0 à 360
 	lw1=3
 	ls1='-'
@@ -101,11 +102,13 @@ def plot_canevas(ax):
 	ax.plot([270,270],[0,180],linewidth=lw1,ls=ls1,color=color)
 
 	#(010)
+	color = next(ax._get_lines.prop_cycler)['color']
 	ax.plot([180,180],[0,180],linewidth=lw1,ls=ls1,label=r'Plane $\bot (010)$ ',color=color)
 	ax.plot([0,0],[0,180],linewidth=lw1/2,ls=ls1,color=color)
 	ax.plot([360,360],[0,180],linewidth=lw1/2,ls=ls1,color=color)
 
 	#(001)
+	color = next(ax._get_lines.prop_cycler)['color']
 	ax.plot([0,360],[90,90],linewidth=lw1,ls=ls1,label=r'Plane $\bot (001)$ ',color=color)
 
 	lw2=2
@@ -118,12 +121,14 @@ def plot_canevas(ax):
 	ax.plot([315,315],[0,180],linewidth=lw2,ls=ls2,color=color)
 
 	#(1-10)
+	color = next(ax._get_lines.prop_cycler)['color']
 	ax.plot([45,45],[0,180],linewidth=lw2,ls=ls2,label=r'Plane $\bot (1\bar{1}0)$ ',color=color)
 	ax.plot([225,225],[0,180],linewidth=lw2,ls=ls2,color=color)
 
 
 	phis=np.linspace(0,360,500)
 	#(101)
+	color = next(ax._get_lines.prop_cycler)['color']
 	thetas=[]
 	for phi in phis :
 		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*cos(phi*pi/180)+cos(theta*pi/180),bracket=[0,180]).root
@@ -131,6 +136,7 @@ def plot_canevas(ax):
 	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (101)$ ',color=color)
 
 	#(10-1)
+	color = next(ax._get_lines.prop_cycler)['color']
 	thetas=[]
 	for phi in phis :
 		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*cos(phi*pi/180)-cos(theta*pi/180),bracket=[0,180]).root
@@ -138,6 +144,7 @@ def plot_canevas(ax):
 	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (10\bar{1})$ ',color=color)
 
 	#(011)
+	color = next(ax._get_lines.prop_cycler)['color']
 	thetas=[]
 	for phi in phis :
 		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*sin(phi*pi/180)+cos(theta*pi/180),bracket=[0,180]).root
@@ -145,11 +152,27 @@ def plot_canevas(ax):
 	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (011)$ ',color=color)
 
 	#(01-1)
+	color = next(ax._get_lines.prop_cycler)['color']
 	thetas=[]
 	for phi in phis :
 		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*sin(phi*pi/180)-cos(theta*pi/180),bracket=[0,180]).root
 		thetas+=[theta]
 	ax.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (01\bar{1})$ ',color=color)
+
+
+	# ax.plot(phis,90+45*cos(pi/180*phis)) #Pour les mauvaises langues qui disent que ça sert à rien
+
+	#Particular directions
+	ax.scatter([0,180,360],[90,90,90],s=80,facecolors='red',edgecolors='red',label=r'$(100)$ direction',zorder=10)
+	theta_111=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*np.sqrt(2)/2-cos(theta*pi/180),bracket=[0,180]).root
+	ax.scatter([45,225],[theta_111,180-theta_111], marker='s',s=80,facecolors='g',edgecolors='g',label=r'$(111)$ direction',zorder=10)
+
+
+
+
+	ax.set_xlabel(r'$\phi$(°)',fontsize=25)
+	ax.set_ylabel(r'$\theta$(°)',fontsize=25)
+	ax.tick_params(labelsize='large')
 
 fig,ax=plt.subplots()
 plot_canevas(ax)
@@ -157,10 +180,9 @@ plot_canevas(ax)
 theta_111=arctan(sqrt(2))
 
 
-
-B_in=spher_to_cart(pi/4,pi/4)*200+[30,0,0]
-B_out=spher_to_cart(pi/4,pi/4)*200-[30,0,0]
-n=200
+B_in=np.array([77.05651621, 28.6554855 , 82.52557109])
+B_out=np.array([ 26.79109384,  50.35396382, 115.30922273])
+n=10
 Bxs=np.linspace(B_in[0],B_out[0],n)
 Bys=np.linspace(B_in[1],B_out[1],n)
 Bzs=np.linspace(B_in[2],B_out[2],n)
@@ -173,5 +195,5 @@ for i in range(n):
 	phi=phi*180/pi
 	thetas+=[theta]
 	phis+=[phi]
-ax.scatter(phis,thetas,s=10,facecolors='red',edgecolors='red',zorder=10)
+ax.scatter(phis,thetas,s=15,facecolors='blue',edgecolors='blue',zorder=10)
 plt.show()

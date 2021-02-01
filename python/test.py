@@ -1,10 +1,8 @@
 import numpy as np 
+from numpy import cos,sin,exp,sqrt,pi
 import matplotlib.pyplot as plt
-from numpy.random import random as rd
-from datetime import date
 
-print(date.today())
-
-fig,ax=plt.subplots()
-print(dir(ax))
-
+m=10**3
+dm=10
+vg=4000
+print(vg**2*(dm/2+dm**2/(2*m-dm)))

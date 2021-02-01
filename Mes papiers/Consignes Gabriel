@@ -1,0 +1,33 @@
+Salut !
+
+J'espère que tout va toujours bien pour vous et que le moral est bon.
+
+Je suis en train de relire à nouveau le papier ferro, qui manque encore de clarté, et je me suis dis que ce serait peut-être une bonne idée de vous envoyer une liste des écueils à éviter lors de l'écriture d'articles, ou pour la thèse.  Voici quelques points qui me sont venus :
+
+-----------------------
+
+- Il faut faire attention à bien amener les idées en s'appuyant, si possible, sur les figures. Pour chaque paragraphe, il faut d'abord une petite phrase d'accroche qui exprime le changement d'idée, puis : "Fig. X shows....". Ensuite une description de la figure. Puis une analyse. Préférez des formulations du genre : "Fig. X shows $omega_{\phi}$ en fonction de ... which demonstrates .... ". Plutôt que : "In order to demonstrate ... we plot in Fig.X...". 
+
+- Dans le texte, les figures doivent être présentées selon leur ordre d'apparition...
+
+- Côté typographie: il faut que les équations soient suivies d'une virgule et que le paragraphe qui suit l'équation n'ait pas d'alinéa. Il faut un espace (idéalement un ~ pour ne pas que latex coupe en deux l'expression) entre le chiffre et les unités et des $$ lorsqu'il y a des grandeurs au cœur du texte.
+
+-Il ne faut pas "d'analyses" dans les légendes des figures, juste une description.
+
+- Toutes les grandeurs et tous les acronymes (CVD, ND, NV, APD par exemple) doivent être définis.
+
+- Les indices "longs", du genre : $B_{ext}$ doivent être écrits $B_{\rm ext}$.
+
+- Les mots en latin : via, i.e. etc. doivent être en italique.
+
+- Toutes les pulsations doivent être converties en Hz sous la forme \omega/2\pi pour permettre une comparaison directe avec l'expérience et avec les taux de décohérences. 
+
+- Pour un manuscrit de thèse, il faut s'assurer que ce dont on va parler est nouveau (à part dans l'intro et l'état de l'art). Ne pas réinventer la roue. S'il existe déjà un papier clair sur le sujet, préférer un petit résumé, et citer. Il s'agit de faire avancer la connaissance...
+
+---------------------------
+
+Merci de faire attention à tout ça pour vos prochains écrits.
+
+A bientôt!
+
+Gabriel
