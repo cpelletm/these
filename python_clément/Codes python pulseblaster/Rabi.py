@@ -31,11 +31,11 @@ class Photon_Counter(QMainWindow):
 		
 		self.setWindowTitle("Rabi")
 
-		self.t_max='30 us'
+		self.t_max='5 us'
 		self.t_ecl='300 us'
 		self.t_lect='300 us'
 		self.n_points=201
-		self.f=2744.4 #MHz
+		self.f=2865 #MHz
 		self.level=20 #dBm
 
 		self.refresh_rate=0.1
@@ -215,7 +215,7 @@ class Photon_Counter(QMainWindow):
 						f.write('\t')
 
 					f.write('0b 1100, '+t_ecl+'\n')
-					f.write('\t0b 0100, '+tau+'\n')
+					f.write('\t0b 0000, '+tau+'\n')
 					f.write('\t0b 1110, 20 ns \n') 
 					f.write('\t0b 1100, '+t_lect+'\n') 
 					f.write('\t0b 1110, 20 ns') 

@@ -1,5 +1,6 @@
 import sys
 import os
+import traceback
 from subprocess import check_output
 import time
 import random
@@ -26,28 +27,20 @@ from matplotlib.figure import Figure
 
 
 class Photon_Counter(QMainWindow):
+
 	def __init__(self):
 		super().__init__()
 		
 
 		self.dt='10 us'
 		self.n_points=501
+		self.n_low=101
 		self.f=2870 #MHz
 		self.level=0 #dBm
 
 		self.refresh_rate=0.1
 
-		for s in self.dt.split() :
-			try :
-				self.dt_val=float(s)
-			except :
-				self.dt_unit=s
-		if self.dt_unit=='ms' :
-			self.dt_val=self.dt_val*1e-3
-		if self.dt_unit=='us' :
-			self.dt_val=self.dt_val*1e-6
-		if self.dt_unit=='ns' :
-			self.dt_val=self.dt_val*1e-9
+		self.dt_val=self.num_val(self.dt)
 		##Creation of the graphical interface##
 
 		self.setWindowTitle("Polarisation time")
@@ -73,6 +66,11 @@ class Photon_Counter(QMainWindow):
 		Vbox_gauche.addWidget(self.choice_menu)
 		Vbox_gauche.addStretch(1)
 
+		self.labeldt=QLabel("dt")
+		self.lectdt=QLineEdit(str(self.dt))
+		Vbox_gauche.addWidget(self.labeldt)
+		Vbox_gauche.addWidget(self.lectdt)
+		Vbox_gauche.addStretch(1)
 
 		self.labelf=QLabel("f (MHz)")
 		self.lectf=QLineEdit(str(self.f))
@@ -91,6 +89,11 @@ class Photon_Counter(QMainWindow):
 		self.lectn_points=QLineEdit(str(self.n_points))
 		Vbox_gauche.addWidget(self.labeln_points)
 		Vbox_gauche.addWidget(self.lectn_points)
+
+		self.labeln_low=QLabel("n_low")
+		self.lectn_low=QLineEdit(str(self.n_low))
+		Vbox_gauche.addWidget(self.labeln_low)
+		Vbox_gauche.addWidget(self.lectn_low)
 
 
 		#Buttons on the right
@@ -145,7 +148,7 @@ class Photon_Counter(QMainWindow):
 		self.clear_button.clicked.connect(self.clear_trace)
 
 	def keep_trace(self):
-		self.dynamic_ax.plot(self.x,self.y)
+		self.dynamic_ax.plot(self.dynamic_line._x,self.dynamic_line._y)
 
 	def clear_trace(self):
 		lines=self.dynamic_ax.get_lines()
@@ -155,12 +158,30 @@ class Photon_Counter(QMainWindow):
 		self.dynamic_ax.figure.canvas.draw()
 
 
-
+	def num_val(self,pbtext):
+		for s in pbtext.split() :
+			try :
+				val=float(s)
+			except :
+				unit=s
+		if unit=='ms' :
+			val=val*1e-3
+		if unit=='us' :
+			val=val*1e-6
+		if unit=='ns' :
+			val=val*1e-9
+		return val
 		
 	def update_value(self):
 		self.f=np.float(self.lectf.text())
 		self.level=np.float(self.lectlevel.text())
 		self.n_points=np.int(self.lectn_points.text())
+		self.n_low=np.int(self.lectn_low.text())
+		self.dt=self.lectdt.text()
+
+		if self.n_low > self.n_points :
+			raise NameError('Dark time longer than the total time')
+		self.dt_val=self.num_val(self.dt)
 
 		self.sampling_rate=1/self.dt_val
 
@@ -185,37 +206,45 @@ class Photon_Counter(QMainWindow):
 		self.stop.setEnabled(True)
 		self.time_last_refresh=time.time()
 
-		self.config_uW() #Pour une raison mysterieuse il vaut mieux le faire au début
+		if self.choice_menu.currentIndex()==0 :
+			self.config_uW() #Pour une raison mysterieuse il vaut mieux le faire au début
 
 		self.time_last_refresh=time.time()
 
-		def t_pola(dt,n_points) :
+		def t_pola(dt,n_points,n_low) :
 			with open('PB_instructions.txt','w') as f:
 				for i in range(n_points):
 					if i == 0:
 						f.write('label : ')
 					else : 
 						f.write('\t')
-					if i < n_points/2 :
+					if i < (n_points-n_low)/2 :
+						if self.choice_menu.currentIndex()==0 :
+							f.write('0b 0110, 20 ns\n')
+							f.write('\t0b 0100, '+dt)
+						if self.choice_menu.currentIndex()==1 :
+							f.write('0b 0110, 20 ns\n')
+							f.write('\t0b 0100, '+dt)
+					elif i < (n_points+n_low)/2 :
 						if self.choice_menu.currentIndex()==0 :
 							f.write('0b 1110, 20 ns\n')
 							f.write('\t0b 1100, '+dt)
 						if self.choice_menu.currentIndex()==1 :
-							f.write('0b 0110, 20 ns\n')
-							f.write('\t0b 0100, '+dt)
+							f.write('0b 0010, 20 ns\n')
+							f.write('\t0b 0000, '+dt)
 					else :
 						if self.choice_menu.currentIndex()==0 :
 							f.write('0b 0110, 20 ns\n')
 							f.write('\t0b 0100, '+dt)
 						if self.choice_menu.currentIndex()==1 :
-							f.write('0b 0010, 20 ns\n')
-							f.write('\t0b 0000, '+dt)
+							f.write('0b 0110, 20 ns\n')
+							f.write('\t0b 0100, '+dt)
 					if i==n_points-1:
 						f.write(', branch, label')
 					else :
 						f.write('\n')
 
-		t_pola(self.dt,self.n_points)
+		t_pola(self.dt,self.n_points,self.n_low)
 		check_output('spbicl load pb_instructions.txt 500.0')
 
 
@@ -241,9 +270,11 @@ class Photon_Counter(QMainWindow):
 	def measure(self):
 		try :
 			self.take_point()
-		except :
+		except Exception as e:
+			traceback.print_exc()
 			self.stop_measure()
 			self.start_measure(initial=False)
+			
 		
 
 	def take_point(self):
@@ -255,11 +286,8 @@ class Photon_Counter(QMainWindow):
 		# PL=np.array([(lecture[i+1]-lecture[i])*self.sampling_rate for i in range(len(lecture)-1)])
 
 		lecture=np.array(lecture)
-		PL=lecture[1:]-lecture[:-1]
-		if self.normalize_cb.isChecked() :
-			PL=PL/max(PL)
-		else : 
-			PL=PL*self.sampling_rate
+		PL=(lecture[1:]-lecture[:-1])*self.sampling_rate
+		
 		
 
 		if min(PL) >= 0 : #Pour éviter les reset de compteur
@@ -267,14 +295,20 @@ class Photon_Counter(QMainWindow):
 			self.repeat+=1
 
 
+
+		if self.normalize_cb.isChecked() :
+			yplot=self.y/max(self.y)
+		else :
+			yplot=self.y
 		if time.time()-self.time_last_refresh>self.refresh_rate :
-			self.dynamic_line.set_ydata(self.y)
-			if self.choice_menu.currentIndex()==0 :				
-				ymin=min(self.y)
-				ymax=max(self.y)
-			if self.choice_menu.currentIndex()==1 :				
-				ymin=min(self.y[1:self.n_points//2-1])
-				ymax=max(self.y[1:self.n_points//2-1])
+
+			self.dynamic_line.set_ydata(yplot)
+			mask=np.zeros(len(yplot))
+			if self.choice_menu.currentIndex()==1 :	
+				mask[(self.n_points-self.n_low)//2:(self.n_points+self.n_low)//2+1]=1
+			my=np.ma.masked_array(yplot,mask)			
+			ymin=my.min()
+			ymax=my.max()
 			self.dynamic_ax.set_ylim([ymin,ymax]) 
 
 			self.dynamic_ax.figure.canvas.draw()
@@ -356,11 +390,23 @@ class MyToolbar(NavigationToolbar): #Modification of the toolbar to save data wi
 										 start, "Images (*.png)")
 
 		data=[]
+		lmax=0
 		for ax in self.canvas.figure.get_axes() :
 			for line in ax.get_lines() :
-				data+=[line._x]
-				data+=[line._y]
+				if len(line._x)>lmax :
+					lmax=len(line._x)
 
+		for ax in self.canvas.figure.get_axes() :
+			for line in ax.get_lines() :
+				x=list(line._x)
+				if len(x) < lmax :
+					x+=[-1]*(lmax-len(x))
+				y=list(line._y)
+				if len(y) < lmax :
+					y+=[-1]*(lmax-len(y))
+				data+=[x]
+				data+=[y]
+				
 		fdataname=fname[:-4]+".txt"
 		with open(fdataname,'w') as f: #Needs an update if the lines have differents sizes
 			for i in range(len(data[0])) :

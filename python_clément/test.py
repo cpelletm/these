@@ -963,4 +963,11 @@ def trig_gen_courant(): #on a pas acheté l'option...
 	print(PG.query('SYSTem:ERRor?'))
 	print(PG.query('SYSTem:ERRor?'))
 
-trig_gen_courant()
+def test_mask():
+	a=np.arange(10)
+	mask=np.ones(len(a))
+	mask[2:5]=0
+	mx=np.ma.masked_array(a,mask)
+	print(mx)
+
+test_mask()
