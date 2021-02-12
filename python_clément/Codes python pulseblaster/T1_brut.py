@@ -34,10 +34,10 @@ class Photon_Counter(QMainWindow):
 		self.t_max='0.5 ms'
 		self.t_ecl='300 us'
 		self.t_lect='300 us'
-		self.n_points=101
+		self.n_points=100
 		
 		self.zoom_proportion=0.5 #Proportions of points in the zoomed area
-		self.zoom_range=0.1 #Size of the zoomed area in proportion of total time scanned. Keep at same value than zoom_proportion for no zoom
+		self.zoom_range=0.5 #Size of the zoomed area in proportion of total time scanned. Keep at same value than zoom_proportion for no zoom
 		self.refresh_rate=0.1
 
 		

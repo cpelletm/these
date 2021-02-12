@@ -109,6 +109,20 @@ def stretch_exp_fit(x,y,Amp=None,ss=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
+def stretch_arb_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5) :
+	if not Amp :
+		Amp=max(y)-min(y)
+	if not ss :
+		ss=y[-1]
+	if not tau :
+		tau=x[int(len(x)/10)]-x[0]
+	def f(x,Amp,ss,tau,alpha) :
+		return Amp*np.exp(-(x/tau)**alpha)+ss
+	p0=[Amp,ss,tau,alpha]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
+
+
 def stretch_soustraction(x,y,Amp=None,tau=None) :
 	if not Amp :
 		Amp=max(y)-min(y)
@@ -283,42 +297,241 @@ def ask_name():
 
 #510=6.85 ; 592=5.77 ; 1020=2.03
 
+xmax=-1
 
-x,y=extract_data('T1_0V_100.txt')
-y=y/max(y)+0.02
-plt.plot(x,y,'x',label='0V')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_brut_86uW_0B_long.txt')
+# x=x[:xmax]
+# y=y[:xmax]
+# y=y/max(y)
+# plt.plot(x,y,'x',label='OB_ordi2')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_3V_100.txt')
-y=y/max(y)+0.01
-plt.plot(x,y,'x',label='3V')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_brut_86uW_100_3V_long.txt')
+# x=x[:xmax]
+# y=y[:xmax]
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100_ordi2')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_0B.txt')
+
+# x,y=extract_data('T1_0B_ordi1.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100_ordi1')
+
+# x,y=extract_data('T1_100_3V_comme_ordi1.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100_ordi2_comme_1')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+# x,y=extract_data('T1_sub_0B.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='0B_sub')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+
+# x,y=extract_data('T1_sub_100_3V.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+
+# x,y=extract_data('T1_100_sub.txt')
+# y=y-min(y)
+# y=y/max(y)
+# x=x[1:]
+# y=y[1:]
+# plt.plot(x,y,'o',markerfacecolor="None",label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+
+# x,y=extract_data('T1_sub_0B_le_switch_est_mort.txt')
+# y=y-min(y)
+# y=y/max(y)
+# x=x[1:]
+# y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='0B')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+# popt,yfit=stretch_arb_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f,alpha=%f'%(popt[2],popt[3]))
+
+taux=[]
+
+x,y=extract_data('T1_sub_100_2V_align=0.txt')
+y=y-min(y)
 y=y/max(y)
-plt.plot(x,y,'x',label='0B')
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=+1.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100+1')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=+2.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100+2')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=+3.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100+3')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=-1.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100-1')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=-2.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100-2')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+# popt,yfit=stretch_arb_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f,alpha=%f'%(popt[2],popt[3]))
+
+x,y=extract_data('T1_sub_100_2V_align=-3.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100-3')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=-4.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100-3')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=+4.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100-3')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+x,y=extract_data('T1_sub_100_2V_align=+5.txt')
+y=y-min(y)
+y=y/max(y)
+x=x[1:]
+y=y[1:]
+# plt.plot(x,y,'s',markerfacecolor="None",label='100-3')
+popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+taux+=[popt[2]]
+
+xs=[0,1,2,3,-1,-2,-3,-4,+4,+5]
+taux=np.array(taux)
+taux=1/taux
+# plt.plot(xs,taux,'s')
+
+
+# x,y=extract_data('T1_100_sub.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+# x,y=extract_data('T1_100_sub_+2deg.txt')
+# y=y-min(y)
+# y=y/max(y)
+# x=x[1:]
+# y=y[1:]
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+# x,y=extract_data('T1_1classe_sub_weekend.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+# popt,yfit=stretch_arb_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f,alpha=%f'%(popt[2],popt[3]))
+
+# x,y=extract_data('T1_1classe_brut_10min.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+x,y=extract_data('T1_sub_1111_mieux.txt')
+x=x[2:]
+y=y[2:]
+y=y/max(y)
+plt.plot(x,y,'x',label='100')
 popt,yfit=stretch_exp_fit(x,y)
 plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_0B_2.txt')
-y=y/max(y)-0.01
-plt.plot(x,y,'x',label='0B_2')
+x,y=extract_data('T1_sub_121.txt')
+x=x[1:]
+y=y[1:]
+y=y/max(y)
+plt.plot(x,y,'x',label='100')
 popt,yfit=stretch_exp_fit(x,y)
 plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_brut_86uW_0B.txt')
-y=y/max(y)-0.02
-plt.plot(x,y,'x',label='OB_ordi2')
+x,y=extract_data('T1_sub_100_long.txt')
+x=x[1:]
+y=y[1:]
+y=y/max(y)
+plt.plot(x,y,'x',label='100')
 popt,yfit=stretch_exp_fit(x,y)
 plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_brut_86uW_100_3V.txt')
-y=y/max(y)-0.03
-plt.plot(x,y,'x',label='OB_ordi2')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
 
 plt.legend()
 plt.show()

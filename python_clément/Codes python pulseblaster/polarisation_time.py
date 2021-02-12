@@ -301,6 +301,8 @@ class Photon_Counter(QMainWindow):
 		else :
 			yplot=self.y
 		if time.time()-self.time_last_refresh>self.refresh_rate :
+			self.time_last_refresh=time.time()
+
 
 			self.dynamic_line.set_ydata(yplot)
 			mask=np.zeros(len(yplot))
@@ -314,8 +316,7 @@ class Photon_Counter(QMainWindow):
 			self.dynamic_ax.figure.canvas.draw()
 
 			self.labelIter.setText("iter # %i"%self.repeat)
-			self.time_last_refresh=time.time()
-	 
+				 
 
 	def stop_measure(self):
 		#A ameliorer en recuperant dirrectement les tasks depuis system.truc
