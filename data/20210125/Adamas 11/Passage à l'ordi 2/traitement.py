@@ -476,12 +476,20 @@ taux=1/taux
 # plt.plot(xs,taux,'s')
 
 
-# x,y=extract_data('T1_100_sub.txt')
-# y=y-min(y)
-# y=y/max(y)
-# plt.plot(x,y,'x',label='100')
-# popt,yfit=stretch_exp_fit(x,y)
-# plt.plot(x,yfit,label='tau=%f'%popt[2])
+x,y=extract_data('T1_100_sub.txt')
+y=y-min(y)
+y=y/max(y)
+plt.plot(x,y,'x',label='100')
+popt,yfit=stretch_exp_fit(x,y)
+plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+
+x,y=extract_data('T1_sub_0B_weekend.txt')
+y=y-min(y)
+y=y/max(y)
+plt.plot(x,y,'x',label='0B')
+popt,yfit=stretch_exp_fit(x,y)
+plt.plot(x,yfit,label='tau=%f'%popt[2])
 
 # x,y=extract_data('T1_100_sub_+2deg.txt')
 # y=y-min(y)
@@ -508,29 +516,29 @@ taux=1/taux
 # popt,yfit=exp_fit(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_sub_1111_mieux.txt')
-x=x[2:]
-y=y[2:]
-y=y/max(y)
-plt.plot(x,y,'x',label='100')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_sub_1111_mieux.txt')
+# x=x[2:]
+# y=y[2:]
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_sub_121.txt')
-x=x[1:]
-y=y[1:]
-y=y/max(y)
-plt.plot(x,y,'x',label='100')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_sub_121.txt')
+# x=x[1:]
+# y=y[1:]
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-x,y=extract_data('T1_sub_100_long.txt')
-x=x[1:]
-y=y[1:]
-y=y/max(y)
-plt.plot(x,y,'x',label='100')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_sub_100_long.txt')
+# x=x[1:]
+# y=y[1:]
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
 
 
 plt.legend()
