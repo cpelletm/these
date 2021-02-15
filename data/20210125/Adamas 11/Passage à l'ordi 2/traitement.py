@@ -109,6 +109,7 @@ def stretch_exp_fit(x,y,Amp=None,ss=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
+
 def stretch_arb_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5) :
 	if not Amp :
 		Amp=max(y)-min(y)
@@ -134,27 +135,29 @@ def stretch_soustraction(x,y,Amp=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def third_stretch(x,y,Amp=None,tau=None) :
+def third_stretch(x,y,Amp=None,ss=None,tau=None) :
 	if not Amp :
 		Amp=max(y)-min(y)
+	if not ss :
+		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-(x/tau)^(1/3))
-	p0=[Amp,tau]
+	def f(x,Amp,ss,tau) :
+		return Amp*np.exp(-(x/tau)**(0.3333))+ss
+	p0=[Amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
+	return(popt,f(x,popt[0],popt[1],popt[2]))
 
-def stretch_et_phonon(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
-	if not tau :
-		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-np.sqrt(x/tau)-x/5E-3)
-	p0=[Amp,tau]
+def stretch_et_phonon(x,y,Amp_stretch=None,Amp_exp=0.1,tau_stretch=None,tau_exp=5e-3) :
+	if not Amp_stretch :
+		Amp_stretch=max(y)-min(y)
+	if not tau_stretch :
+		tau_stretch=x[int(len(x)/10)]-x[0]
+	def f(x,Amp_stretch,Amp_exp,tau_stretch,tau_exp) :
+		return Amp_stretch*np.exp(-np.sqrt(x/tau_stretch))+Amp_exp*np.exp(-(x/tau_exp))
+	p0=[Amp_stretch,Amp_exp,tau_stretch,tau_exp]
 	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
+	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
 
 def fit_B_dipole(x,y,B0=2000,x0=10) : #x : distance en mm, y : champ mag en G
 	def f(x,B0,x0):
@@ -476,20 +479,34 @@ taux=1/taux
 # plt.plot(xs,taux,'s')
 
 
-x,y=extract_data('T1_100_sub.txt')
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y,'x',label='100')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_100_sub.txt')
+# xmin=0
+# xmax=-1
+# x=x[xmin:xmax]
+# y=y[xmin:xmax]
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# # popt,yfit=stretch_exp_fit(x,y)
+# # plt.plot(x,yfit,label='tau=%f'%popt[2])
+# popt,yfit=stretch_soustraction(x,y)
+# plt.plot(x,yfit,label='tau=%e'%popt[1])
+# popt,yfit=stretch_et_phonon(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
+# print(popt)
 
 
-x,y=extract_data('T1_sub_0B_weekend.txt')
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y,'x',label='0B')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_sub_0B_weekend.txt')
+# xmin=3
+# xmax=-1
+# x=x[xmin:xmax]
+# y=y[xmin:xmax]
+# y=y/max(y)
+# plt.plot(x,y,'x',label='0B')
+# popt,yfit=stretch_soustraction(x,y)
+# plt.plot(x,yfit,label='tau=%e'%popt[1])
+# popt,yfit=stretch_et_phonon(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
+# print(popt)
 
 # x,y=extract_data('T1_100_sub_+2deg.txt')
 # y=y-min(y)
@@ -516,30 +533,63 @@ plt.plot(x,yfit,label='tau=%f'%popt[2])
 # popt,yfit=exp_fit(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-# x,y=extract_data('T1_sub_1111_mieux.txt')
-# x=x[2:]
-# y=y[2:]
-# y=y/max(y)
+ax=plt.gca()
+
+color = next(ax._get_lines.prop_cycler)['color']
+x,y=extract_data('T1_sub_1111_mieux.txt')
+x=x[2:]
+y=y[2:]
+y=y/max(y)
+plt.plot(x,y,'v',markerfacecolor="None",ms=5,mew=1,label='1 class',color=color)
+popt,yfit=stretch_exp_fit(x,y)
+plt.plot(x,yfit,label='tau=%f'%popt[2],color=color,lw=2)
+# popt,yfit=stretch_et_phonon(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
+# print(popt)
+
+color = next(ax._get_lines.prop_cycler)['color']
+x,y=extract_data('T1_sub_121.txt')
+x=x[1:]
+y=y[1:]
+y=y/max(y)
+plt.plot(x,y,'s',markerfacecolor="None",ms=5,mew=1,label='2 classes',color=color)
+popt,yfit=stretch_exp_fit(x,y)
+plt.plot(x,yfit,label='tau=%f'%popt[2],color=color,lw=2)
+# popt,yfit=stretch_soustraction(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
+# popt,yfit=stretch_et_phonon(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
+# print(popt)
+
+x,y=extract_data('T1_sub_100_long.txt')
+y=y/max(y)
+x1=x[1:]
+y1=y[1:]
+
 # plt.plot(x,y,'x',label='100')
 # popt,yfit=stretch_exp_fit(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
-
-# x,y=extract_data('T1_sub_121.txt')
-# x=x[1:]
-# y=y[1:]
-# y=y/max(y)
-# plt.plot(x,y,'x',label='100')
-# popt,yfit=stretch_exp_fit(x,y)
+# popt,yfit=stretch_soustraction(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
+# popt,yfit=stretch_et_phonon(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
+# print(popt)
 
-# x,y=extract_data('T1_sub_100_long.txt')
-# x=x[1:]
-# y=y[1:]
-# y=y/max(y)
-# plt.plot(x,y,'x',label='100')
-# popt,yfit=stretch_exp_fit(x,y)
+color = next(ax._get_lines.prop_cycler)['color']
+x,y=extract_data('T1_sub_100_long_2.txt')
+x=x[1:]
+y=y[1:]
+y=y/max(y)
+x=(x+x1)/2
+y=(y+y1)/2
+plt.plot(x,y,'o',markerfacecolor="None",ms=5,mew=1,label='4 classes',color=color)
+popt,yfit=stretch_exp_fit(x,y)
+plt.plot(x,yfit,label='tau=%f'%popt[2],color=color,lw=2)
+# popt,yfit=stretch_soustraction(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
+# popt,yfit=stretch_et_phonon(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
-
+# print(popt)
 
 plt.legend()
 plt.show()

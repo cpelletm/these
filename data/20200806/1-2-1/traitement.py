@@ -38,7 +38,7 @@ def gauss_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
 	if not sigma :
 		sigma=x[int(len(x)/5)]-x[0]
 	def f(x,Amp,x0,sigma,ss) :
-		return Amp*np.exp(-((x-x0)/(2*sigma))**2)+ss
+		return Amp*np.exp(-((x-x0)**2/(2*sigma**2)))+ss
 	p0=[Amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
@@ -127,7 +127,7 @@ def ask_name():
 plt.figure(num=1,figsize=(11,7),dpi=80)
 ax=plt.gca()
 fname='0-0.8V_PLdown-Db'
-x,y=extract_data(fname+('.txt'),ycol=1)
+x,y=extract_data(fname+('.txt'),ycol=3)
 y=y/max(y)
 xmin=100
 xmax=165
@@ -140,7 +140,9 @@ ax.plot(x[xplotmin:],y[xplotmin:],'o',markerfacecolor="None",ms=10,mew=3)
 
 popt,yfit=gauss_fit(x[xmin:xmax],y[xmin:xmax])
 ax.plot(x[xmin:xmax],yfit,linewidth=5)
-print(popt[2])
+a=popt[3]+popt[0]/2
+ax.plot([0,40],[a,a])
+print(popt[2]*np.sqrt(2*np.log(2)))
 
 
 
