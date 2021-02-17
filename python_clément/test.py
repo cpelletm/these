@@ -985,6 +985,16 @@ def trig_gen_courant(): #on a pas acheté l'option...
 	print(PG.query('SYSTem:ERRor?'))
 	print(PG.query('SYSTem:ERRor?'))
 
+<<<<<<< HEAD
+def test_mask():
+	a=np.arange(10)
+	mask=np.ones(len(a))
+	mask[2:5]=0
+	mx=np.ma.masked_array(a,mask)
+	print(mx)
+
+test_mask()
+=======
 def TD_math():
 	x=np.linspace(-5,5,300)
 	y1=np.cos(x)**4
@@ -1026,3 +1036,4 @@ def matrice_pas_carree():
 	m2=np.array(m)
 	print(m,m2)
 matrice_pas_carree()
+>>>>>>> be3989b34e65083d57739d74178ac2999ffdf446

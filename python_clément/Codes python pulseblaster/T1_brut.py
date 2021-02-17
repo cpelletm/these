@@ -31,12 +31,13 @@ class Photon_Counter(QMainWindow):
 		
 		self.setWindowTitle("T1")
 
-		self.t_max='4 ms'
-		self.t_ecl='500 us'
-		self.t_lect='500 us'
-		self.n_points=201
+		self.t_max='0.5 ms'
+		self.t_ecl='300 us'
+		self.t_lect='300 us'
+		self.n_points=100
 		
-
+		self.zoom_proportion=0.5 #Proportions of points in the zoomed area
+		self.zoom_range=0.5 #Size of the zoomed area in proportion of total time scanned. Keep at same value than zoom_proportion for no zoom
 		self.refresh_rate=0.1
 
 		
@@ -158,15 +159,23 @@ class Photon_Counter(QMainWindow):
 			val=val*1e-9
 		return val
 
-	def make_taux_list(self,t_max,n_points):
+	def make_taux_list(self,t_max,n_points,zoom_proportion,zoom_range):
+
 		t_max_val=self.num_val(t_max)
-		dt_val=t_max_val/n_points
+		t_max_zoom=t_max_val*zoom_range
+
+		n_zoom=int(n_points*zoom_proportion)
+		n_pas_zoom=n_points-n_zoom
+		taux_zoom=np.linspace(20E-9,t_max_zoom,n_zoom)
+		taux_pas_zoom=np.linspace(t_max_zoom,t_max_val,n_pas_zoom)
 		taux=[]
 		x=[]
-		for i in range(n_points):
-			if i*dt_val > 20*1e-9 :
-				taux+=['%i ns'%(i*dt_val*1e9)]
-				x+=[i*dt_val]
+		for t in taux_zoom :
+			taux+=['%i ns'%(t*1e9)]
+			x+=[t]
+		for t in taux_pas_zoom :
+			taux+=['%i ns'%(t*1e9)]
+			x+=[t]
 		x=np.array(x)
 		return(taux,x)
 		
@@ -178,7 +187,7 @@ class Photon_Counter(QMainWindow):
 
 
 		self.t_lect_val=self.num_val(self.t_lect)
-		self.taux,self.x=self.make_taux_list(self.t_max,self.n_points)
+		self.taux,self.x=self.make_taux_list(self.t_max,self.n_points,self.zoom_proportion,self.zoom_range)
 		self.n_points=len(self.taux)
 		self.y=np.zeros(self.n_points)
 		xmin=min(self.x)

@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{39}%
+\begin{thebibliography}{43}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -378,9 +378,13 @@
   {\doibase 10.1103/PhysRevB.100.235410} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo
   {pages} {235410} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{SM_()}]{SM_CR_meca}%
+  \BibitemOpen
+  \href@noop {} {\emph {\bibinfo {title} {See Supplemental Material at [...],
+  which includes Refs. [XX–YY]}}}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Delord}\ \emph {et~al.}(2018)\citenamefont {Delord},
   \citenamefont {Huillery}, \citenamefont {Schwab}, \citenamefont {Nicolas},
-  \citenamefont {Lecordier},\ and\ \citenamefont {H\'etet}}]{delordPRL}%
+  \citenamefont {Lecordier},\ and\ \citenamefont {H\'etet}}]{DelordPRL}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
   {Delord}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Huillery}},
@@ -391,6 +395,49 @@
   {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
   {volume} {121}},\ \bibinfo {pages} {053602} (\bibinfo {year}
   {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Delord}(2019)}]{delordPhD}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Delord}},\ }\emph {\bibinfo {title} {Spin-mechanics with micro-particles
+  levitating in a Paul trap}},\ \href@noop {} {Ph.D. thesis},\ \bibinfo
+  {school} {{\'E}cole Normale Sup{\'e}rieure} (\bibinfo {year}
+  {2019})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Johansson}\ \emph {et~al.}(2012)\citenamefont
+  {Johansson}, \citenamefont {Nation},\ and\ \citenamefont {Nori}}]{qutip1}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Johansson}}, \bibinfo {author} {\bibfnamefont {P.~D.}\ \bibnamefont
+  {Nation}}, \ and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Nori}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Computer
+  Physics Communications}\ }\textbf {\bibinfo {volume} {183}},\ \bibinfo
+  {pages} {1760} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Johansson}(2013)}]{qutip2}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Johansson}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Comp. Phys. Comm}\ }\textbf {\bibinfo {volume} {184}},\ \bibinfo {pages}
+  {1234} (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Choi}\ \emph {et~al.}(2017)\citenamefont {Choi},
+  \citenamefont {Choi}, \citenamefont {Kucsko}, \citenamefont {Maurer},
+  \citenamefont {Shields}, \citenamefont {Sumiya}, \citenamefont {Onoda},
+  \citenamefont {Isoya}, \citenamefont {Demler}, \citenamefont {Jelezko},
+  \citenamefont {Yao},\ and\ \citenamefont {Lukin}}]{choi_depolarization_2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Choi}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Choi}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Kucsko}}, \bibinfo {author}
+  {\bibfnamefont {P.~C.}\ \bibnamefont {Maurer}}, \bibinfo {author}
+  {\bibfnamefont {B.~J.}\ \bibnamefont {Shields}}, \bibinfo {author}
+  {\bibfnamefont {H.}~\bibnamefont {Sumiya}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Onoda}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Isoya}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Demler}}, \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Jelezko}}, \bibinfo {author} {\bibfnamefont {N.~Y.}\
+  \bibnamefont {Yao}}, \ and\ \bibinfo {author} {\bibfnamefont {M.~D.}\
+  \bibnamefont {Lukin}},\ }\href {\doibase 10.1103/PhysRevLett.118.093601}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {118}},\ \bibinfo {pages} {093601} (\bibinfo {year}
+  {2017})},\ \bibinfo {note} {number: 9}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Delord}\ \emph {et~al.}(2017)\citenamefont {Delord},
   \citenamefont {Nicolas}, \citenamefont {Schwab},\ and\ \citenamefont
   {H{\'e}tet}}]{delord2016}%
@@ -491,27 +538,6 @@
   {EPJ Quantum Technol.}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages}
   {22} (\bibinfo {year} {2015})},\ \bibinfo {note} {number: 1}\BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Choi}\ \emph {et~al.}(2017)\citenamefont {Choi},
-  \citenamefont {Choi}, \citenamefont {Kucsko}, \citenamefont {Maurer},
-  \citenamefont {Shields}, \citenamefont {Sumiya}, \citenamefont {Onoda},
-  \citenamefont {Isoya}, \citenamefont {Demler}, \citenamefont {Jelezko},
-  \citenamefont {Yao},\ and\ \citenamefont {Lukin}}]{choi_depolarization_2017}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Choi}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Choi}}, \bibinfo
-  {author} {\bibfnamefont {G.}~\bibnamefont {Kucsko}}, \bibinfo {author}
-  {\bibfnamefont {P.~C.}\ \bibnamefont {Maurer}}, \bibinfo {author}
-  {\bibfnamefont {B.~J.}\ \bibnamefont {Shields}}, \bibinfo {author}
-  {\bibfnamefont {H.}~\bibnamefont {Sumiya}}, \bibinfo {author} {\bibfnamefont
-  {S.}~\bibnamefont {Onoda}}, \bibinfo {author} {\bibfnamefont
-  {J.}~\bibnamefont {Isoya}}, \bibinfo {author} {\bibfnamefont
-  {E.}~\bibnamefont {Demler}}, \bibinfo {author} {\bibfnamefont
-  {F.}~\bibnamefont {Jelezko}}, \bibinfo {author} {\bibfnamefont {N.~Y.}\
-  \bibnamefont {Yao}}, \ and\ \bibinfo {author} {\bibfnamefont {M.~D.}\
-  \bibnamefont {Lukin}},\ }\href {\doibase 10.1103/PhysRevLett.118.093601}
-  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
-  {\bibinfo {volume} {118}},\ \bibinfo {pages} {093601} (\bibinfo {year}
-  {2017})},\ \bibinfo {note} {number: 9}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Manson}\ \emph {et~al.}(2018)\citenamefont {Manson},
   \citenamefont {Hedges}, \citenamefont {Barson}, \citenamefont {Ahlefeldt},
   \citenamefont {Doherty}, \citenamefont {Abe}, \citenamefont {Ohshima},\ and\

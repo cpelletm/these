@@ -30,7 +30,8 @@ class Photon_Counter(QMainWindow):
 
         self.dt=0.03 # value in s
 
-        
+        self.refresh_rate=0.1
+        self.time_last_refresh=time.time()
 
 
         #Total number of points in the plot
@@ -156,25 +157,26 @@ class Photon_Counter(QMainWindow):
 
         self.y[-1]=(self.data[1]-self.data[0])/self.dt
 
+        if time.time()-self.time_last_refresh>self.refresh_rate :
+            self.time_last_refresh=time.time()
+            self.PL.setText("%3.2E" % self.y[-1])
+       
+            self.dynamic_line.set_ydata(self.y)
 
-        self.PL.setText("%3.2E" % self.y[-1])
-   
-        self.dynamic_line.set_ydata(self.y)
 
+            if self.semi_auto_scale :
+                self.ymax=max(self.ymax,max(self.y))
+            else : 
+                self.ymax=max(self.y)
 
-        if self.semi_auto_scale :
-            self.ymax=max(self.ymax,max(self.y))
-        else : 
-            self.ymax=max(self.y)
+            if self.ymin_auto_scale :
+                self.ymin=min(self.y)
+            else :
+                self.ymin=0
+            
 
-        if self.ymin_auto_scale :
-            self.ymin=min(self.y)
-        else :
-            self.ymin=0
-        
-
-        self.dynamic_ax.set_ylim([self.ymin,self.ymax])    
-        self.dynamic_canvas.draw()
+            self.dynamic_ax.set_ylim([self.ymin,self.ymax])    
+            self.dynamic_canvas.draw()
 
         
 

@@ -29,16 +29,22 @@ class Photon_Counter(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		
-		self.setWindowTitle("T1")
+		self.setWindowTitle("T1_sub")
 
-		self.t_max='4 ms'
-		self.t_ecl='500 us'
-		self.t_lect='500 us'
-		self.n_points=201
+		self.t_max='1.5 ms'
+		self.t_ecl='300 us'
+		self.t_lect='300 us'
+		self.n_points=200
 		
-
+		self.zoom_proportion=0.5 #Proportions of points in the zoomed area
+		self.zoom_range=0.25 #Size of the zoomed area in proportion of total time scanned. Keep at same value than zoom_proportion for no zoom
 		self.refresh_rate=0.1
 
+		self.frequency=2865 # MHz
+		self.power=15 # dBm
+		self.t_pulse="1000 ns"
+
+		self.t_min="2000 ns"
 		
 		##Creation of the graphical interface##
 
@@ -81,6 +87,18 @@ class Photon_Counter(QMainWindow):
 		self.lectn_points=QLineEdit(str(self.n_points))
 		Vbox_gauche.addWidget(self.labeln_points)
 		Vbox_gauche.addWidget(self.lectn_points)
+
+		self.labelfrequency=QLabel("frequency (MHz)")
+		self.lectfrequency=QLineEdit(str(self.frequency))
+		Vbox_gauche.addWidget(self.labelfrequency)
+		Vbox_gauche.addWidget(self.lectfrequency)
+		Vbox_gauche.addStretch(1)
+
+		self.labelpower=QLabel("power (dBm)")
+		self.lectpower=QLineEdit(str(self.power))
+		Vbox_gauche.addWidget(self.labelpower)
+		Vbox_gauche.addWidget(self.lectpower)
+		Vbox_gauche.addStretch(1)
 
 
 		#Buttons on the right
@@ -129,7 +147,7 @@ class Photon_Counter(QMainWindow):
 			  
 		#Define the buttons' action 
 		
-		self.start.clicked.connect(self.start_measure)
+		self.start.clicked.connect(lambda : self.start_measure()) #De facon très étrange, sans la lambda fonction il me change initial en False...
 		self.stop.clicked.connect(self.stop_measure)
 		self.keep_button.clicked.connect(self.keep_trace)
 		self.clear_button.clicked.connect(self.clear_trace)
@@ -158,15 +176,25 @@ class Photon_Counter(QMainWindow):
 			val=val*1e-9
 		return val
 
-	def make_taux_list(self,t_max,n_points):
+	def make_taux_list(self,t_max,n_points,zoom_proportion,zoom_range,t_pulse,t_min):
+
 		t_max_val=self.num_val(t_max)
-		dt_val=t_max_val/n_points
+		t_max_zoom=t_max_val*zoom_range
+		t_pulse_val=self.num_val(t_pulse)
+		t_min_val=self.num_val(t_min)
+
+		n_zoom=int(n_points*zoom_proportion)
+		n_pas_zoom=n_points-n_zoom
+		taux_zoom=np.linspace(t_min_val,t_max_zoom,n_zoom)
+		taux_pas_zoom=np.linspace(t_max_zoom,t_max_val,n_pas_zoom)
 		taux=[]
 		x=[]
-		for i in range(n_points):
-			if i*dt_val > 20*1e-9 :
-				taux+=['%i ns'%(i*dt_val*1e9)]
-				x+=[i*dt_val]
+		for t in taux_zoom :
+			taux+=['%i ns'%((t-t_pulse_val)*1e9)]
+			x+=[t]
+		for t in taux_pas_zoom :
+			taux+=['%i ns'%((t-t_pulse_val)*1e9)]
+			x+=[t]
 		x=np.array(x)
 		return(taux,x)
 		
@@ -175,10 +203,13 @@ class Photon_Counter(QMainWindow):
 		self.t_ecl=self.lectt_ecl.text()
 		self.t_lect=self.lectt_lect.text()
 		self.n_points=int(self.lectn_points.text())
+		self.frequency=float(self.lectfrequency.text())
+		self.power=float(self.lectpower.text())
 
+		self.config_uW()
 
 		self.t_lect_val=self.num_val(self.t_lect)
-		self.taux,self.x=self.make_taux_list(self.t_max,self.n_points)
+		self.taux,self.x=self.make_taux_list(self.t_max,self.n_points,self.zoom_proportion,self.zoom_range,self.t_pulse,self.t_min)		
 		self.n_points=len(self.taux)
 		self.y=np.zeros(self.n_points)
 		xmin=min(self.x)
@@ -189,19 +220,18 @@ class Photon_Counter(QMainWindow):
 	   
 
 
-	def start_measure(self):
+	def start_measure(self,initial=True):
 		## What happens when you click "start" ##
 
+		if initial :			
+			self.update_value()
+			self.repeat=1.
 
 		self.start.setEnabled(False)
 		self.stop.setEnabled(True)
-
-		self.update_value()
-
-
 		self.time_last_refresh=time.time()
 
-		def T1_brut(taux,t_lect,t_ecl):
+		def T1_soustraction(taux,t_lect,t_ecl,t_pulse):
 			with open('PB_instructions.txt','w') as f:
 				for i in range(len(taux)) :
 					tau=taux[i]
@@ -210,17 +240,25 @@ class Photon_Counter(QMainWindow):
 					else : 
 						f.write('\t')
 
-					f.write('0b 1100, '+t_ecl+'\n')
-					f.write('\t0b 1000, '+tau+'\n')
-					f.write('\t0b 1110, 20 ns \n') 
-					f.write('\t0b 1100, '+t_lect+'\n') 
-					f.write('\t0b 1110, 20 ns') 
+					f.write('0b 0100, '+t_ecl+'\n')
+					f.write('\t0b 0000, '+tau+'\n')
+					f.write('\t0b 0000, '+t_pulse+'\n')
+					f.write('\t0b 0110, 20 ns \n') 
+					f.write('\t0b 0100, '+t_lect+'\n') 
+					f.write('\t0b 0110, 20 ns \n') 
+
+					f.write('\t0b 0100, '+t_ecl+'\n')
+					f.write('\t0b 0000, '+tau+'\n')
+					f.write('\t0b 1000, '+t_pulse+'\n')
+					f.write('\t0b 0110, 20 ns \n') 
+					f.write('\t0b 0100, '+t_lect+'\n') 
+					f.write('\t0b 0110, 20 ns') 
 					if i==len(taux)-1:
 						f.write(', branch, label')
 					else :
 						f.write('\n')
 
-		T1_brut(self.taux,self.t_lect,self.t_ecl)
+		T1_soustraction(self.taux,self.t_lect,self.t_ecl,self.t_pulse)
 		check_output('spbicl load pb_instructions.txt 500.0')
 
 
@@ -232,39 +270,48 @@ class Photon_Counter(QMainWindow):
 
 		self.apd.start()
 			
-		self.repeat=1.
 		
 
 		#Start the timer     
 		self.timer = QTimer(self,interval=0)        
-		self.timer.timeout.connect(self.take_point)
+		self.timer.timeout.connect(self.measure)
 		self.timer.start()
 
 		check_output('spbicl start')
 		
 		
 
-		
+	def measure(self):
+		try :
+			self.take_point()
+		except :
+			self.stop_measure()
+			self.start_measure(initial=False)
+
+
 
 	def take_point(self):
 
 
-		lecture=self.apd.read(2*self.n_points)
+		lecture=self.apd.read(4*self.n_points)
 
 
 		# PL=np.array([(lecture[i+1]-lecture[i])*self.sampling_rate for i in range(len(lecture)-1)])
 
 		lecture=np.array(lecture)
-		PL=np.zeros(self.n_points)
+		PL1=np.zeros(self.n_points)
+		PL2=np.zeros(self.n_points)
 		for i in range(self.n_points):
-			PL[i]=(lecture[2*i+1]-lecture[2*i])/self.t_lect_val
+			PL1[i]=(lecture[4*i+1]-lecture[4*i])/self.t_lect_val
+			PL2[i]=(lecture[4*i+3]-lecture[4*i+2])/self.t_lect_val
 
+		PL=PL1-PL2
 		if self.normalize_cb.isChecked() :
 			PL=PL/max(PL)
 
 		
 
-		if min(PL) >= 0 : #Pour éviter les reset de compteur
+		if min(PL1) >= 0 and min(PL2) >= 0: #Pour éviter les reset de compteur
 			self.y=self.y*(1-1/self.repeat)+PL*(1/self.repeat)
 			self.repeat+=1
 
@@ -281,6 +328,23 @@ class Photon_Counter(QMainWindow):
 			self.time_last_refresh=time.time()
 	 
 
+	def config_uW(self):
+		resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+
+		rm = visa.ResourceManager()
+		self.PG = rm.open_resource( resourceString4 )
+		self.PG.write_termination = '\n'
+
+		self.PG.clear()  # Clear instrument io buffers and status
+		self.PG.write('*WAI')
+		self.PG.write('FREQ %f MHz'%self.frequency)
+		self.PG.write('*WAI')
+		self.PG.write('POW %f dBm'%self.power)
+		self.PG.write('*WAI')
+		self.PG.write('OUTP ON')
+		self.PG.write('*WAI')
+
+
 	def stop_measure(self):
 		#A ameliorer en recuperant dirrectement les tasks depuis system.truc
 		try :
@@ -294,6 +358,7 @@ class Photon_Counter(QMainWindow):
 		try :
 			self.PG.write('*RST')
 			self.PG.write('*WAI')
+			self.PG.close()
 		except :
 			pass
 		try :

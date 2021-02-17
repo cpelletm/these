@@ -184,8 +184,8 @@ class Photon_Counter(QMainWindow):
 						val=float(s)
 					except :
 						unit=s
-				f.write('label: 0b 0111, '+str(val/2)+unit+'\n')
-				f.write('\t0b 0100, '+str(val/2)+unit+', branch, label')
+				f.write('label: 0b 1111, '+str(val/2)+unit+'\n')
+				f.write('\t0b 1100, '+str(val/2)+unit+', branch, label')
 
 		ESR()
 		check_output('spbicl load pb_instructions.txt 500.0')

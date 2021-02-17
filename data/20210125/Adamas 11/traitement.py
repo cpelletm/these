@@ -308,5 +308,17 @@ plt.plot(x,y,'x',label='0B_2')
 popt,yfit=stretch_exp_fit(x,y)
 plt.plot(x,yfit,label='tau=%f'%popt[2])
 
+x,y=extract_data('T1_brut_86uW_0B.txt')
+y=y/max(y)-0.02
+plt.plot(x,y,'x',label='OB_ordi2')
+popt,yfit=stretch_exp_fit(x,y)
+plt.plot(x,yfit,label='tau=%f'%popt[2])
+
+x,y=extract_data('T1_brut_86uW_100_3V.txt')
+y=y/max(y)-0.03
+plt.plot(x,y,'x',label='OB_ordi2')
+popt,yfit=stretch_exp_fit(x,y)
+plt.plot(x,yfit,label='tau=%f'%popt[2])
+
 plt.legend()
 plt.show()
