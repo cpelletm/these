@@ -476,12 +476,12 @@ taux=1/taux
 # plt.plot(xs,taux,'s')
 
 
-x,y=extract_data('T1_100_sub.txt')
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y,'x',label='100')
-popt,yfit=stretch_exp_fit(x,y)
-plt.plot(x,yfit,label='tau=%f'%popt[2])
+# x,y=extract_data('T1_100_sub.txt')
+# y=y-min(y)
+# y=y/max(y)
+# plt.plot(x,y,'x',label='100')
+# popt,yfit=stretch_exp_fit(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[2])
 
 
 x,y=extract_data('T1_sub_0B_weekend.txt')

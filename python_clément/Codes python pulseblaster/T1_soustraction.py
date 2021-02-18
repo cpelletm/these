@@ -40,11 +40,13 @@ class Photon_Counter(QMainWindow):
 		self.zoom_range=0.25 #Size of the zoomed area in proportion of total time scanned. Keep at same value than zoom_proportion for no zoom
 		self.refresh_rate=0.1
 
-		self.frequency=2865 # MHz
+		self.frequency=2760 # MHz
 		self.power=15 # dBm
 		self.t_pulse="1000 ns"
 
 		self.t_min="2000 ns"
+
+		self.time_last_save=time.time()
 		
 		##Creation of the graphical interface##
 
@@ -133,7 +135,6 @@ class Photon_Counter(QMainWindow):
 		self.addToolBar(Qt.BottomToolBarArea,
 						MyToolbar(dynamic_canvas, self))
 		self.dynamic_ax= dynamic_canvas.figure.subplots()
-
 		self.x=np.zeros(self.n_points)
 		self.y=np.zeros(self.n_points)
 		self.dynamic_line,=self.dynamic_ax.plot(self.x, self.y)
@@ -148,7 +149,7 @@ class Photon_Counter(QMainWindow):
 		#Define the buttons' action 
 		
 		self.start.clicked.connect(lambda : self.start_measure()) #De facon très étrange, sans la lambda fonction il me change initial en False...
-		self.stop.clicked.connect(self.stop_measure)
+		self.stop.clicked.connect(lambda : self.stop_measure())
 		self.keep_button.clicked.connect(self.keep_trace)
 		self.clear_button.clicked.connect(self.clear_trace)
 
@@ -217,6 +218,7 @@ class Photon_Counter(QMainWindow):
 		self.dynamic_ax.set_xlim([xmin,xmax]) 
 
 		self.dynamic_line.set_data(self.x,self.y)
+		
 	   
 
 
@@ -282,11 +284,12 @@ class Photon_Counter(QMainWindow):
 		
 
 	def measure(self):
-		try :
-			self.take_point()
-		except :
-			self.stop_measure()
-			self.start_measure(initial=False)
+		self.take_point()
+		# try :
+		# 	self.take_point()
+		# except :
+		# 	self.stop_measure(initial=False)
+		# 	self.start_measure(initial=False)
 
 
 
@@ -326,6 +329,7 @@ class Photon_Counter(QMainWindow):
 
 			self.labelIter.setText("iter # %i"%self.repeat)
 			self.time_last_refresh=time.time()
+			self.auto_save()
 	 
 
 	def config_uW(self):
@@ -345,8 +349,12 @@ class Photon_Counter(QMainWindow):
 		self.PG.write('*WAI')
 
 
-	def stop_measure(self):
+	def stop_measure(self,initial=True):
 		#A ameliorer en recuperant dirrectement les tasks depuis system.truc
+
+		if initial :
+			self.start.setEnabled(True)
+			self.stop.setEnabled(False)
 		try :
 			self.timer.stop()
 		except :
@@ -373,7 +381,26 @@ class Photon_Counter(QMainWindow):
 			pass
 		
 		
-		
+	def auto_save(self,filename='auto_save.txt',time_between_save=60):
+
+		if time.time()-self.time_last_save > time_between_save :
+			data=[]
+			fig=self.dynamic_ax.get_figure()
+			for ax in fig.get_axes() :
+				for line in ax.get_lines() :
+					data+=[line._x]
+					data+=[line._y]
+
+			with open(filename,'w') as f:
+				for i in range(len(data[0])) :
+					for ligne in data :
+						f.write("%5.4E \t"%ligne[i]) #Format = 5 significative numbers, scientific notation
+
+					f.write("\n")
+			self.time_last_save=time.time()
+			return 1
+		else :
+			return 0
 
 
 		
