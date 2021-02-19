@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{11}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -12,51 +12,28 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem[{\citenamefont{Delord et~al.}(2018)\citenamefont{Delord, Huillery,
-  Schwab, Nicolas, Lecordier, and H\'etet}}]{DelordPRL}
-\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}},
-  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Huillery}},
-  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Schwab}},
-  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Nicolas}},
-  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Lecordier}},
-  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{H\'etet}},
-  \bibinfo{journal}{Phys. Rev. Lett.} \textbf{\bibinfo{volume}{121}},
-  \bibinfo{pages}{053602} (\bibinfo{year}{2018}).
+\bibitem[{\citenamefont{Jarmola et~al.}(2012)\citenamefont{Jarmola, Acosta,
+  Jensen, Chemerisov, and Budker}}]{Jarmola}
+\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Jarmola}},
+  \bibinfo{author}{\bibfnamefont{V.~M.} \bibnamefont{Acosta}},
+  \bibinfo{author}{\bibfnamefont{K.}~\bibnamefont{Jensen}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Chemerisov}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Budker}},
+  \bibinfo{journal}{Phys. Rev. Lett.} \textbf{\bibinfo{volume}{108}},
+  \bibinfo{pages}{197601} (\bibinfo{year}{2012}).
 
-\bibitem[{\citenamefont{Delord}(2019)}]{DelordPhD}
-\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}}, Ph.D. thesis,
-  \bibinfo{school}{{\'E}cole Normale Sup{\'e}rieure} (\bibinfo{year}{2019}).
-
-\bibitem[{\citenamefont{Delord et~al.}(2020)\citenamefont{Delord, Huillery,
-  Nicolas, and H{\'e}tet}}]{DelordNat}
-\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}},
-  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Huillery}},
-  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Nicolas}}, \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{H{\'e}tet}},
-  \bibinfo{journal}{Nature} \textbf{\bibinfo{volume}{580}}, \bibinfo{pages}{56}
-  (\bibinfo{year}{2020}).
-
-\bibitem[{\citenamefont{Johansson et~al.}(2012)\citenamefont{Johansson, Nation,
-  and Nori}}]{qutip1}
-\bibinfo{author}{\bibfnamefont{J.~R.} \bibnamefont{Johansson}},
-  \bibinfo{author}{\bibfnamefont{P.~D.} \bibnamefont{Nation}},
-  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Nori}},
-  \bibinfo{journal}{Computer Physics Communications}
-  \textbf{\bibinfo{volume}{183}}, \bibinfo{pages}{1760} (\bibinfo{year}{2012}).
-
-\bibitem[{\citenamefont{Johansson}()}]{qutip2}
-\bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Johansson}},
-  \bibinfo{journal}{Comp. Phys. Comm} \textbf{\bibinfo{volume}{184}},
-  \bibinfo{pages}{1234} (????).
-
-\bibitem[{\citenamefont{van Oort and
-  Glasbeek}(1989)}]{van_oort_cross-relaxation_1989}
-\bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{van Oort}} \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Glasbeek}},
-  \bibinfo{journal}{Phys. Rev. B} \textbf{\bibinfo{volume}{40}},
-  \bibinfo{pages}{6509} (\bibinfo{year}{1989}), ISSN \bibinfo{issn}{0163-1829},
-  \bibinfo{note}{number: 10},
-  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevB.40.6509}.
+\bibitem[{\citenamefont{Mrózek et~al.}(2015)\citenamefont{Mrózek, Rudnicki,
+  Kehayias, Jarmola, Budker, and Gawlik}}]{mrozek_longitudinal_2015}
+\bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Mrózek}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Rudnicki}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Kehayias}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Jarmola}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Budker}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{W.}~\bibnamefont{Gawlik}},
+  \bibinfo{journal}{EPJ Quantum Technol.} \textbf{\bibinfo{volume}{2}},
+  \bibinfo{pages}{22} (\bibinfo{year}{2015}), ISSN \bibinfo{issn}{2196-0763},
+  \bibinfo{note}{number: 1},
+  \urlprefix\url{http://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-015-0035-z}.
 
 \bibitem[{\citenamefont{Choi et~al.}(2017)\citenamefont{Choi, Choi, Kucsko,
   Maurer, Shields, Sumiya, Onoda, Isoya, Demler, Jelezko
@@ -76,5 +53,85 @@
   (\bibinfo{year}{2017}), ISSN \bibinfo{issn}{0031-9007, 1079-7114},
   \bibinfo{note}{number: 9},
   \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevLett.118.093601}.
+
+\bibitem[{\citenamefont{Akhmedzhanov et~al.}(2017)\citenamefont{Akhmedzhanov,
+  Gushchin, Nizov, Nizov, Sobgayda, Zelensky, and
+  Hemmer}}]{akhmedzhanov_microwave-free_2017}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Akhmedzhanov}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Gushchin}},
+  \bibinfo{author}{\bibfnamefont{N.}~\bibnamefont{Nizov}},
+  \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Nizov}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Sobgayda}},
+  \bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Zelensky}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Hemmer}},
+  \bibinfo{journal}{Phys. Rev. A} \textbf{\bibinfo{volume}{96}},
+  \bibinfo{pages}{013806} (\bibinfo{year}{2017}), ISSN
+  \bibinfo{issn}{2469-9926, 2469-9934}, \bibinfo{note}{number: 1},
+  \urlprefix\url{http://link.aps.org/doi/10.1103/PhysRevA.96.013806}.
+
+\bibitem[{\citenamefont{Giri et~al.}(2018)\citenamefont{Giri, Gorrini,
+  Dorigoni, Avalos, Cazzanelli, Tambalo, and Bifone}}]{giri_coupled_2018}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Giri}},
+  \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Gorrini}},
+  \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Dorigoni}},
+  \bibinfo{author}{\bibfnamefont{C.~E.} \bibnamefont{Avalos}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Cazzanelli}},
+  \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Tambalo}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Bifone}},
+  \bibinfo{journal}{Phys. Rev. B} \textbf{\bibinfo{volume}{98}},
+  \bibinfo{pages}{045401} (\bibinfo{year}{2018}), ISSN
+  \bibinfo{issn}{2469-9950, 2469-9969}, \bibinfo{note}{number: 4},
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevB.98.045401}.
+
+\bibitem[{\citenamefont{Hall et~al.}(2016)\citenamefont{Hall, Kehayias,
+  Simpson, Jarmola, Stacey, Budker, and Hollenberg}}]{hall_detection_2016}
+\bibinfo{author}{\bibfnamefont{L.~T.} \bibnamefont{Hall}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Kehayias}},
+  \bibinfo{author}{\bibfnamefont{D.~A.} \bibnamefont{Simpson}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Jarmola}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Stacey}},
+  \bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Budker}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{L.~C.~L.} \bibnamefont{Hollenberg}},
+  \bibinfo{journal}{Nat Commun} \textbf{\bibinfo{volume}{7}},
+  \bibinfo{pages}{10211} (\bibinfo{year}{2016}), ISSN
+  \bibinfo{issn}{2041-1723}, \bibinfo{note}{number: 1},
+  \urlprefix\url{http://www.nature.com/articles/ncomms10211}.
+
+\bibitem[{\citenamefont{Delord et~al.}(2018)\citenamefont{Delord, Huillery,
+  Schwab, Nicolas, Lecordier, and H\'etet}}]{DelordPRL}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Huillery}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Schwab}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Nicolas}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Lecordier}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{H\'etet}},
+  \bibinfo{journal}{Phys. Rev. Lett.} \textbf{\bibinfo{volume}{121}},
+  \bibinfo{pages}{053602} (\bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Delord}(2019)}]{DelordPhD}
+\bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Delord}}, Ph.D. thesis,
+  \bibinfo{school}{{\'E}cole Normale Sup{\'e}rieure} (\bibinfo{year}{2019}).
+
+\bibitem[{\citenamefont{Johansson et~al.}(2012)\citenamefont{Johansson, Nation,
+  and Nori}}]{qutip1}
+\bibinfo{author}{\bibfnamefont{J.~R.} \bibnamefont{Johansson}},
+  \bibinfo{author}{\bibfnamefont{P.~D.} \bibnamefont{Nation}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Nori}},
+  \bibinfo{journal}{Computer Physics Communications}
+  \textbf{\bibinfo{volume}{183}}, \bibinfo{pages}{1760} (\bibinfo{year}{2012}).
+
+\bibitem[{\citenamefont{Johansson}(2013)}]{qutip2}
+\bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Johansson}},
+  \bibinfo{journal}{Comp. Phys. Comm} \textbf{\bibinfo{volume}{184}},
+  \bibinfo{pages}{1234} (\bibinfo{year}{2013}).
+
+\bibitem[{\citenamefont{van Oort and
+  Glasbeek}(1989)}]{van_oort_cross-relaxation_1989}
+\bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{van Oort}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Glasbeek}},
+  \bibinfo{journal}{Phys. Rev. B} \textbf{\bibinfo{volume}{40}},
+  \bibinfo{pages}{6509} (\bibinfo{year}{1989}), ISSN \bibinfo{issn}{0163-1829},
+  \bibinfo{note}{number: 10},
+  \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevB.40.6509}.
 
 \end{thebibliography}
