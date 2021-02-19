@@ -1,0 +1,4 @@
+Après pas mal de galère avec les solution de keysight qui sont payantes, finalement le plus simple c'est de le faire en VISA :
+"MEAS?" c'est la commande magique qui fait un auto-config et qui mesure en meme temps. Par contre si y'a pas de puissance en entrée il timeout.
+
+Pour envoyer la commande, le plus simple c'est l'utilitaire de keysight : "Keysight connection expert"; qui est encore plus simple que le VISA tester de RS.
