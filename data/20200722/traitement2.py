@@ -369,6 +369,11 @@ y=y[xmin:xmax]-yfit[xmin:xmax]
 plt.plot(x,y,'o',markerfacecolor="None")
 ylim=ax.get_ylim()
 
+C13=sum(y[13:58])
+VH=sum(y[111:155])/C13
+WAR1=sum(y[318:375])/C13
+
+print("C13 area : %F, VH ratio : %f, WAR1 ratio : %F"%(C13,VH,WAR1))
 
 c1 = next(ax._get_lines.prop_cycler)['color']
 c2 = next(ax._get_lines.prop_cycler)['color']

@@ -360,6 +360,7 @@ ax=plt.gca()
 
 
 # x,y=extract_data('T1_100_sub.txt')
+# x=x*1e3
 # x2=np.zeros(len(x)//4)
 # for i in range(len(x2)) :
 # 	x2[i]=(x[4*i]+x[4*i+1]+x[4*i+2]+x[4*i+3])/4
@@ -396,6 +397,14 @@ y=y-min(y)
 y=y/max(y)
 x=x[1:]
 y=y[1:]
+# x2=np.zeros(len(x)//4)
+# for i in range(len(x2)) :
+# 	x2[i]=(x[4*i]+x[4*i+1]+x[4*i+2]+x[4*i+3])/4
+# y2=np.zeros(len(y)//4)
+# for i in range(len(y2)) :
+# 	y2[i]=(y[4*i]+y[4*i+1]+y[4*i+2]+y[4*i+3])/4
+# x=x2
+# y=y2
 # plt.plot(x,y,'s',markerfacecolor="None",label='100')
 popt,yfit=stretch_exp_fit(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
@@ -631,23 +640,44 @@ def R2(y,yfit):
 	SSres=sum((y-yfit)**2)
 	return 1-SSres/SStot
 
-x,y=extract_data('T1_sub_0B_weekend.txt')
-x=x[0:]*1e3
-y=y[0:]
-y=y/max(y)
-plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
-popt,yfit=stretch_soustraction(x,y)
-print(R2(y,yfit),popt[1])
-plt.plot(x,yfit,label='stretch exponential fit',lw=2)
+# x,y=extract_data('T1_sub_100_1Mcoups.txt')
+# x=x[0:]*1e3
+# y=y[0:]
+# x2=np.zeros(len(x)//4)
+# for i in range(len(x2)) :
+# 	x2[i]=(x[4*i]+x[4*i+1]+x[4*i+2]+x[4*i+3])/4
+# y2=np.zeros(len(y)//4)
+# for i in range(len(y2)) :
+# 	y2[i]=(y[4*i]+y[4*i+1]+y[4*i+2]+y[4*i+3])/4
+# x=x2
+# y=y2
+# y=y/max(y)
+# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
+# popt,yfit=stretch_soustraction(x,y)
+# print(R2(y,yfit),popt[1])
+# plt.plot(x,yfit,label='stretch exponential fit',lw=2)
 
-x,y=extract_data('T1_sub_100_encore_plus_long.txt')
-x=x[0:]*1e3
-y=y[0:]
-y=y/max(y)
-plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
-popt,yfit=stretch_soustraction(x,y)
-print(R2(y,yfit),popt[1])
-plt.plot(x,yfit,label='stretch exponential fit',lw=2)
+
+# x,y=extract_data('T1_sub_0B_weekend.txt')
+# x=x[0:]*1e3
+# y=y[0:]+0.20084911*np.exp(-x/0.75443591)
+# y=y/max(y)
+# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
+# popt,yfit=stretch_soustraction(x,y)
+# print(R2(y,yfit),popt[1])
+# plt.plot(x,yfit,label='stretch exponential fit',lw=2)
+
+# x,y=extract_data('T1_sub_100_encore_plus_long.txt')
+# x=x[0:]*1e3
+# y=y/max(y)
+# y=y[0:]+0.20084911*np.exp(-x/0.75443591)
+# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
+# # popt,yfit=exp_fit(x,y,Amp=-0.3)
+# # print(popt)
+# # plt.plot(x,yfit)
+# popt,yfit=stretch_soustraction(x,y)
+# print(R2(y,yfit),popt[1])
+# plt.plot(x,yfit,label='stretch exponential fit',lw=2)
 
 
 ax.tick_params(labelsize=13)
