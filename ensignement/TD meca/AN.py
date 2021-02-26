@@ -2,7 +2,7 @@ from math import *
 
 kb=1.38E-23
 Na=6.02e23
-
+gamma=
 
 P=1e5
 T=300

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  23 FEB 2021 18:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  26 FEB 2021 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -285,50 +285,45 @@ e
 \openout3 = `CVD_para_full_arxivNotes.bib'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--46
+Underfull \hbox (badness 10000) in paragraph at lines 44--48
 []\OT1/cmr/m/n/10 Electron-Paramagnetic-Resonance (EPR) spec-
  []
 
 
-Underfull \hbox (badness 6396) in paragraph at lines 42--46
+Underfull \hbox (badness 6396) in paragraph at lines 44--48
 \OT1/cmr/m/n/10 con-cen-tra-tion of para-m-ag-netic de-fects in ma-te-ri-
- []
-
-
-Underfull \hbox (badness 1496) in paragraph at lines 42--46
-\OT1/cmr/m/n/10 for nanoscale sens-ing [[]] and quan-tum in-for-ma-tion
  []
 
 Package epstopdf Info: Source file: <Fig1.eps>
 (epstopdf)                    date: 2020-12-05 14:54:11
 (epstopdf)                    size: 3873214 bytes
 (epstopdf)             Output file: <Fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-12-05 14:54:15
-(epstopdf)                    size: 365541 bytes
+(epstopdf)                    date: 2021-02-26 16:17:01
+(epstopdf)                    size: 365753 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig1-eps-converted-to.pdf 
 Fig1.eps>
-(epstopdf)             \includegraphics on input line 49.
+(epstopdf)             \includegraphics on input line 51.
 Package epstopdf Info: Output file is already uptodate.
 <Fig1-eps-converted-to.pdf, id=1, 509.905pt x 306.14375pt>
 File: Fig1-eps-converted-to.pdf Graphic file (type pdf)
 <use Fig1-eps-converted-to.pdf>
-Package pdftex.def Info: Fig1-eps-converted-to.pdf  used on input line 49.
+Package pdftex.def Info: Fig1-eps-converted-to.pdf  used on input line 51.
 (pdftex.def)             Requested size: 246.0pt x 147.69942pt.
 <Carte_annotation.pdf, id=2, 626.66219pt x 700.67471pt>
 File: Carte_annotation.pdf Graphic file (type pdf)
 <use Carte_annotation.pdf>
-Package pdftex.def Info: Carte_annotation.pdf  used on input line 76.
+Package pdftex.def Info: Carte_annotation.pdf  used on input line 78.
 (pdftex.def)             Requested size: 246.0pt x 275.0475pt.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Fig1-eps-converted-to.
 pdf>]
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 92.
+ on input line 94.
 
 <Scans_fig4.pdf, id=25, 512.91624pt x 596.88695pt>
 File: Scans_fig4.pdf Graphic file (type pdf)
 <use Scans_fig4.pdf>
-Package pdftex.def Info: Scans_fig4.pdf  used on input line 108.
+Package pdftex.def Info: Scans_fig4.pdf  used on input line 110.
 (pdftex.def)             Requested size: 246.0pt x 286.27478pt.
 [2 <./Carte_annotation.pdf> <./Scans_fig4.pdf
 
@@ -336,172 +331,147 @@ pdfTeX warning: /usr/bin/pdflatex (file ./Scans_fig4.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-26.
+28.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 126.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
  [3]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 157.
-
 Package epstopdf Info: Source file: <Theorie_CR.eps>
 (epstopdf)                    date: 2020-12-05 15:34:44
 (epstopdf)                    size: 1223238 bytes
 (epstopdf)             Output file: <Theorie_CR-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-02-23 15:40:43
-(epstopdf)                    size: 33506 bytes
+(epstopdf)                    date: 2021-02-26 16:17:02
+(epstopdf)                    size: 45558 bytes
 (epstopdf)             Command: <repstopdf --outfile=Theorie_CR-eps-converted-t
 o.pdf Theorie_CR.eps>
-(epstopdf)             \includegraphics on input line 167.
+(epstopdf)             \includegraphics on input line 169.
 Package epstopdf Info: Output file is already uptodate.
-<Theorie_CR-eps-converted-to.pdf, id=83, 722.7pt x 454.69875pt>
+<Theorie_CR-eps-converted-to.pdf, id=84, 722.7pt x 454.69875pt>
 File: Theorie_CR-eps-converted-to.pdf Graphic file (type pdf)
 <use Theorie_CR-eps-converted-to.pdf>
 Package pdftex.def Info: Theorie_CR-eps-converted-to.pdf  used on input line 16
-7.
+9.
 (pdftex.def)             Requested size: 246.0pt x 154.77591pt.
-[4 <./Theorie_CR-eps-converted-to.pdf>]
+ [4 <./Theorie_CR-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <sumi4_13C.eps>
 (epstopdf)                    date: 2020-08-03 12:07:54
 (epstopdf)                    size: 29779 bytes
 (epstopdf)             Output file: <sumi4_13C-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-02-23 18:42:55
-(epstopdf)                    size: 16639 bytes
+(epstopdf)                    date: 2020-11-27 11:29:55
+(epstopdf)                    size: 16426 bytes
 (epstopdf)             Command: <repstopdf --outfile=sumi4_13C-eps-converted-to
 .pdf sumi4_13C.eps>
-(epstopdf)             \includegraphics on input line 201.
+(epstopdf)             \includegraphics on input line 204.
 Package epstopdf Info: Output file is already uptodate.
-<sumi4_13C-eps-converted-to.pdf, id=99, 462.72874pt x 346.29375pt>
+<sumi4_13C-eps-converted-to.pdf, id=96, 462.72874pt x 346.29375pt>
 File: sumi4_13C-eps-converted-to.pdf Graphic file (type pdf)
 <use sumi4_13C-eps-converted-to.pdf>
-Package pdftex.def Info: sumi4_13C-eps-converted-to.pdf  used on input line 201
+Package pdftex.def Info: sumi4_13C-eps-converted-to.pdf  used on input line 204
 .
 (pdftex.def)             Requested size: 246.0pt x 184.10019pt.
-
-
-Package natbib Warning: Citation `alvarez_local_2015' on page 5 undefined on in
-put line 224.
-
-
-Package natbib Warning: Citation `jiang2018estimation' on page 5 undefined on i
-nput line 224.
-
-
-Package natbib Warning: Citation `kamp2018continuous' on page 5 undefined on in
-put line 228.
-
-
-Package natbib Warning: Citation `alfasi2019detection' on page 5 undefined on i
-nput line 228.
-
-
-Package natbib Warning: Citation `lazda2020cross' on page 5 undefined on input 
-line 228.
-
-[5 <./sumi4_13C-eps-converted-to.pdf>]
-
-Package natbib Warning: Citation `alfasi2019detection' on page 6 undefined on i
-nput line 236.
-
-
-Package natbib Warning: Citation `lazda2020cross' on page 6 undefined on input 
-line 240.
-
+ [5 <./sumi4_13C-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Transis_P1.eps>
 (epstopdf)                    date: 2020-11-27 15:21:07
 (epstopdf)                    size: 42476 bytes
 (epstopdf)             Output file: <Transis_P1-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-02-23 18:42:34
-(epstopdf)                    size: 22616 bytes
+(epstopdf)                    date: 2020-11-27 15:22:20
+(epstopdf)                    size: 22403 bytes
 (epstopdf)             Command: <repstopdf --outfile=Transis_P1-eps-converted-t
 o.pdf Transis_P1.eps>
-(epstopdf)             \includegraphics on input line 243.
+(epstopdf)             \includegraphics on input line 246.
 Package epstopdf Info: Output file is already uptodate.
-<Transis_P1-eps-converted-to.pdf, id=141, 588.27782pt x 396.7623pt>
+<Transis_P1-eps-converted-to.pdf, id=138, 588.27782pt x 396.7623pt>
 File: Transis_P1-eps-converted-to.pdf Graphic file (type pdf)
 <use Transis_P1-eps-converted-to.pdf>
 Package pdftex.def Info: Transis_P1-eps-converted-to.pdf  used on input line 24
-3.
+6.
 (pdftex.def)             Requested size: 246.0pt x 165.91254pt.
-<scan_111_PL.pdf, id=142, 690.61278pt x 615.22707pt>
+<scan_111_PL.pdf, id=139, 690.61278pt x 615.22707pt>
 File: scan_111_PL.pdf Graphic file (type pdf)
 <use scan_111_PL.pdf>
-Package pdftex.def Info: scan_111_PL.pdf  used on input line 251.
+Package pdftex.def Info: scan_111_PL.pdf  used on input line 254.
 (pdftex.def)             Requested size: 246.0pt x 219.14406pt.
-<Transis_111_VHWAR.pdf, id=143, 794.97pt x 505.89pt>
+<Transis_111_VHWAR.pdf, id=140, 794.97pt x 505.89pt>
 File: Transis_111_VHWAR.pdf Graphic file (type pdf)
 <use Transis_111_VHWAR.pdf>
-Package pdftex.def Info: Transis_111_VHWAR.pdf  used on input line 256.
+Package pdftex.def Info: Transis_111_VHWAR.pdf  used on input line 259.
 (pdftex.def)             Requested size: 246.0pt x 156.54637pt.
-<Transis_111_13C.pdf, id=144, 698.12822pt x 471.20041pt>
+<Transis_111_13C.pdf, id=141, 698.12822pt x 471.20041pt>
 File: Transis_111_13C.pdf Graphic file (type pdf)
 <use Transis_111_13C.pdf>
-Package pdftex.def Info: Transis_111_13C.pdf  used on input line 262.
+Package pdftex.def Info: Transis_111_13C.pdf  used on input line 265.
 (pdftex.def)             Requested size: 246.0pt x 166.03705pt.
-[6 <./Transis_P1-eps-converted-to.pdf> <./scan_111_PL.pdf>]
+ [6 <./Transis_P1-eps-converted-to.pdf> <./scan_111_PL.pdf> <./Transis_111_VHWA
+R.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Transis_111_VHWAR.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>]
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 269.
+ on input line 272.
 
+<Gauss_vs_Lor_VH.pdf, id=305, 525.99165pt x 340.3047pt>
+File: Gauss_vs_Lor_VH.pdf Graphic file (type pdf)
+<use Gauss_vs_Lor_VH.pdf>
+Package pdftex.def Info: Gauss_vs_Lor_VH.pdf  used on input line 278.
+(pdftex.def)             Requested size: 262.99518pt x 170.15193pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--371
- []\OT1/cmr/m/n/9 M. E. New-ton, Chem-In-form \OT1/cmr/bx/n/9 38 \OT1/cmr/m/n/9
- (2007),
+Overfull \hbox (16.99518pt too wide) in paragraph at lines 278--279
+ [][] 
  []
 
-[7 <./Transis_111_VHWAR.pdf> <./Transis_111_13C.pdf
+[7 <./Transis_111_13C.pdf> <./Gauss_vs_Lor_VH.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Transis_111_13C.pdf): PDF inclusion: 
+pdfTeX warning: /usr/bin/pdflatex (file ./Gauss_vs_Lor_VH.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 1354) in paragraph at lines 478--485
- []\OT1/cmr/m/n/9 A. Wick-en-brock, H. Zheng, L. Bougas, N. Leefer,
+Underfull \hbox (badness 3240) in paragraph at lines 453--456
+ []\OT1/cmr/m/n/9 L Rondin, J-P Teti-enne, T Hin-gant, J-F Roch,
  []
 
 
-Underfull \hbox (badness 3240) in paragraph at lines 478--485
- \OT1/cmr/m/n/9 ker, Ap-plied Physics Let-ters \OT1/cmr/bx/n/9 109\OT1/cmr/m/n/
-9 , 053505 (2016),
+Underfull \hbox (badness 2165) in paragraph at lines 453--456
+ \OT1/cmr/m/n/9 nitrogen-vacancy de-fects in di-a-mond.  \OT1/cmr/m/it/9 Re-por
+ts on
  []
 
-
-Package natbib Warning: There were undefined citations.
-
-[8] (./CVD_para_full_arxiv.aux) ) 
+[8] (./CVD_para_full_arxiv.bbl) [9] (./CVD_para_full_arxiv.aux) ) 
 Here is how much of TeX's memory you used:
- 5124 strings out of 481239
- 73071 string characters out of 5920377
- 348545 words of memory out of 5000000
- 20340 multiletter control sequences out of 15000+600000
- 540966 words of font info for 53 fonts, out of 8000000 for 9000
+ 5126 strings out of 481239
+ 73379 string characters out of 5920377
+ 345854 words of memory out of 5000000
+ 20337 multiletter control sequences out of 15000+600000
+ 541301 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,8n,38p,1211b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/goo
-gle/arimo/Arimo.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
-x12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on CVD_para_full_arxiv.pdf (8 pages, 1324564 bytes).
+ 43i,8n,38p,1211b,356s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/te
+xmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fo
+nts/type1/google/arimo/Arimo.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf/f
+onts/type1/public/cm-super/sfrm1000.pfb>
+Output written on CVD_para_full_arxiv.pdf (9 pages, 1397026 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 210 compressed objects within 3 object streams
+ 456 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

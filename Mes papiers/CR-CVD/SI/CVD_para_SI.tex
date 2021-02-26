@@ -107,8 +107,75 @@ It is then significantly harder to find cross-relaxations signatures, since they
 Finally we have plotted in Fig.\ref{transis_13C} the expected cross-relaxations between NV and NV-$^{13}$C complex. It seems that these transitions are too diluted to appear in our experimental scan. The peak at $\sim$37 G in fig.\ref{scan_PL} could come from the resonance between NV and NV-$^{13}$C since they seem particularly dense at this particular field values.
 It is indeed  the only peak that is not matching any of the NV-VH$^-$ or NV-WAR1 resonance.
 
+\section{Fitting of the cross-relaxation scans}
+\begin{figure}
+\includegraphics[scale=0.5]{Gauss_vs_Lor_VH}
+\caption{Zoom-in on the VH$^-$ cross-relaxation line from Fig.3 of the main text with Gaussian (orange,plain line) and Lorentzian (red, dashed line) fit}
+\label{Gauss_vs_Lor}
+\end{figure}
+In order to extract quantitative information from Fig.3 of the main text, we had ta apply two distinct fits to the raw data : first a polynomial fit to subtract the slowly decaying PL due to sate-mixing, then a Lorentzian fit on the VH$^-$ and WAR1 resonance lines to measure the central position, width and amplitude of the lines.
 
-\bibliography{Biblio_CVD-CR}
+For the subtracting fit, we chose a polynomial fit because numerical solving of the transverse-field dependent spin depolarization could not properly fit our results. We had to use up a 4th order polynomial in order to obtain a tight fit to the data. Higher order polynomials did not significantly change the fitting envelope.
+
+The second and third peaks were fitted better on their wings by a Gaussian than by a Lorentzian lineshape, as can be seen in Fig. \ref{Gauss_vs_Lor} where the Gaussian fit yields a $R^2=0.983$ greater than the $R^2=0.974$ from the Lorentzian fit. This is coherent with the fact that the inhomogeneous broadening of the various spin species dominates the coupling strength between the spins.
+
+\section{Sample fabrication details}
+The main CVD sample of this study is presented in thorough details in \citep{TALLAIRE2020421}. It is a thick (100) oriented diamond grown in-house by CVD with an initial concentration [N]$\approx$25~ppm and separated from its HPHT substrate. It was electron irradiated at 10MeV and a fluence of $2\cdot 10^{18}$~cm$^{-2}$ and in situ annealed at 900°C during irradiation to give a final concentration [NV]$\approx$4.6~ppm.
+
+The HPHT sample used in Sec.I of the supplementary material is a thick (111)-oriented diamond from Sumitomo and was electron irradiated at an energy of 2 MeV and a fluence of $7\cdot 10^{18}$~cm$^{-2}$. It was then annealed in vacuum for 2h at 950°C.
+
+We also tried the same experiment on similar HPHT samples with a fluence ranging from $4\cdot 10^{18}$~cm$^{-2}$ to $1.5\cdot 10^{18}$~cm$^{-2}$, as well as on several heavily doped 15 $\mu$m diamonds bought from Adamas Nanotechnologies, and all the HPHT sample showed a feature at $\sim$20~G, but none of them showed any feature at 56 or 125~G.
+
+\begin{thebibliography}{1}
+
+\bibitem{alfasi2019detection}
+Nir Alfasi, Sergei Masis, Oleg Shtempluck, and Eyal Buks.
+\newblock Detection of paramagnetic defects in diamond using off-resonance
+  excitation of nv centers.
+\newblock {\em Physical Review B}, 99(21):214111, 2019.
+
+\bibitem{jiang2018estimation}
+Feng-Jian Jiang, Jian-Feng Ye, Zheng Jiao, Zhi-Yong Huang, and Hai-Jiang Lv.
+\newblock Estimation of vector static magnetic field by a nitrogen-vacancy
+  center with a single first-shell 13c nuclear (nv--13c) spin in diamond.
+\newblock {\em Chinese Physics B}, 27(5):057601, 2018.
+
+\bibitem{kamp2018continuous}
+EJ~Kamp, B~Carvajal, and N~Samarth.
+\newblock Continuous wave protocol for simultaneous polarization and optical
+  detection of p1-center electron spin resonance.
+\newblock {\em Physical Review B}, 97(4):045204, 2018.
+
+\bibitem{lazda2020cross}
+Reinis Lazda, Laima Busaite, Andris Berzins, Janis Smits, Marcis Auzinsh,
+  Dmitry Budker, Ruvin Ferber, and Florian Gahbauer.
+\newblock Cross-relaxation studies with optically detected magnetic resonances
+  in nitrogen-vacancy centers in diamond in an external magnetic field.
+\newblock {\em arXiv preprint arXiv:2007.00473}, 2020.
+
+\bibitem{simanovskaia_sidebands_2013}
+Maria Simanovskaia, Kasper Jensen, Andrey Jarmola, Kurt Aulenbacher, Neil
+  Manson, and Dmitry Budker.
+\newblock Sidebands in optically detected magnetic resonance signals of
+  nitrogen vacancy centers in diamond.
+\newblock {\em Phys. Rev. B}, 87(22):224106, June 2013.
+
+\bibitem{TALLAIRE2020421}
+Alexandre Tallaire, Ovidiu Brinza, Paul Huillery, Tom Delord, Clément
+  Pellet-Mary, Robert Staacke, Bernd Abel, Sébastien Pezzagna, Jan Meijer,
+  Nadia Touati, Laurent Binet, Alban Ferrier, Philippe Goldner, Gabriel Hetet,
+  and Jocelyn Achard.
+\newblock High nv density in a pink cvd diamond grown with n2o addition.
+\newblock {\em Carbon}, 170:421 -- 429, 2020.
+
+\bibitem{alvarez_local_2015}
+Gonzalo~A. Álvarez, Christian~O. Bretschneider, Ran Fischer, Paz London, Hisao
+  Kanda, Shinobu Onoda, Junichi Isoya, David Gershoni, and Lucio Frydman.
+\newblock Local and bulk {13C} hyperpolarization in nitrogen-vacancy-centred
+  diamonds at variable fields and orientations.
+\newblock {\em Nat Commun}, 6(1):8456, December 2015.
+
+\end{thebibliography}
 
 
 \end{document}

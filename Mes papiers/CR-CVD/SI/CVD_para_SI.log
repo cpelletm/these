@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  23 FEB 2021 10:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  26 FEB 2021 16:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -344,37 +344,52 @@ pdfTeX warning: /usr/bin/pdflatex (file ./Transis_111_VHWAR.pdf): PDF inclusion
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
  on input line 104.
 
-(./CVD_para_SI.bbl) [3 <./Transis_111_13C.pdf>] (./CVD_para_SI.aux) ) 
+<Gauss_vs_Lor_VH.pdf, id=226, 525.99165pt x 340.3047pt>
+File: Gauss_vs_Lor_VH.pdf Graphic file (type pdf)
+<use Gauss_vs_Lor_VH.pdf>
+Package pdftex.def Info: Gauss_vs_Lor_VH.pdf  used on input line 112.
+(pdftex.def)             Requested size: 262.99518pt x 170.15193pt.
+
+Overfull \hbox (16.99518pt too wide) in paragraph at lines 112--113
+ [][] 
+ []
+
+[3 <./Transis_111_13C.pdf> <./Gauss_vs_Lor_VH.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Gauss_vs_Lor_VH.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>] (./CVD_para_SI.bbl) [4] (./CVD_para_SI.aux) ) 
 Here is how much of TeX's memory you used:
- 4957 strings out of 481239
- 69849 string characters out of 5920377
- 336041 words of memory out of 5000000
- 20173 multiletter control sequences out of 15000+600000
- 540620 words of font info for 52 fonts, out of 8000000 for 9000
+ 4970 strings out of 481239
+ 70125 string characters out of 5920377
+ 336070 words of memory out of 5000000
+ 20185 multiletter control sequences out of 15000+600000
+ 540955 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,7n,38p,1203b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmti9.pfb>
-Output written on CVD_para_SI.pdf (3 pages, 342207 bytes).
+{/usr/share/texmf/fonts/enc/dvi
+ps/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf
+/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on CVD_para_SI.pdf (4 pages, 402088 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
+ 368 PDF objects out of 1000 (max. 8388607)
+ 178 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
