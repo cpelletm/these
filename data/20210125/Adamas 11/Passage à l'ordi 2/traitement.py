@@ -311,7 +311,7 @@ def ask_name():
 
 #510=6.85 ; 592=5.77 ; 1020=2.03
 
-xmax=-1
+ax=plt.gca()
 
 # x,y=extract_data('T1_brut_86uW_0B_long.txt')
 # x=x[:xmax]
@@ -360,25 +360,35 @@ xmax=-1
 
 
 # x,y=extract_data('T1_100_sub.txt')
-# y=y-min(y)
+# x=x*1e3
+# x2=np.zeros(len(x)//4)
+# for i in range(len(x2)) :
+# 	x2[i]=(x[4*i]+x[4*i+1]+x[4*i+2]+x[4*i+3])/4
+# y2=np.zeros(len(y)//4)
+# for i in range(len(y2)) :
+# 	y2[i]=(y[4*i]+y[4*i+1]+y[4*i+2]+y[4*i+3])/4
+# x=x2
+# y=y2
 # y=y/max(y)
-# x=x[1:]
-# y=y[1:]
 # plt.plot(x,y,'o',markerfacecolor="None",label='100')
-# popt,yfit=stretch_exp_fit(x,y)
-# plt.plot(x,yfit,label='tau=%f'%popt[2])
+# popt,yfit=stretch_soustraction(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
 
 
 # x,y=extract_data('T1_sub_0B_le_switch_est_mort.txt')
-# y=y-min(y)
+# x2=np.zeros(len(x)//4)
+# for i in range(len(x2)) :
+# 	x2[i]=(x[4*i]+x[4*i+1]+x[4*i+2]+x[4*i+3])/4
+# y2=np.zeros(len(y)//4)
+# for i in range(len(y2)) :
+# 	y2[i]=(y[4*i]+y[4*i+1]+y[4*i+2]+y[4*i+3])/4
+# x=x2
+# y=y2
 # y=y/max(y)
-# x=x[1:]
-# y=y[1:]
 # plt.plot(x,y,'s',markerfacecolor="None",label='0B')
-# popt,yfit=stretch_exp_fit(x,y)
-# plt.plot(x,yfit,label='tau=%f'%popt[2])
-# popt,yfit=stretch_arb_fit(x,y)
-# plt.plot(x,yfit,label='tau=%f,alpha=%f'%(popt[2],popt[3]))
+# popt,yfit=stretch_soustraction(x,y)
+# plt.plot(x,yfit,label='tau=%f'%popt[1])
+
 
 taux=[]
 
@@ -387,6 +397,14 @@ y=y-min(y)
 y=y/max(y)
 x=x[1:]
 y=y[1:]
+# x2=np.zeros(len(x)//4)
+# for i in range(len(x2)) :
+# 	x2[i]=(x[4*i]+x[4*i+1]+x[4*i+2]+x[4*i+3])/4
+# y2=np.zeros(len(y)//4)
+# for i in range(len(y2)) :
+# 	y2[i]=(y[4*i]+y[4*i+1]+y[4*i+2]+y[4*i+3])/4
+# x=x2
+# y=y2
 # plt.plot(x,y,'s',markerfacecolor="None",label='100')
 popt,yfit=stretch_exp_fit(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
@@ -544,39 +562,49 @@ taux=1/taux
 # popt,yfit=exp_fit(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
 
-ax=plt.gca()
+def comparaison_temps_long():
+	
+
+	x,y=extract_data('T1_sub_1111_mieux.txt')
+	x=x[2:]*1e3
+	y=y[2:]
+	y=y/max(y)
+	y=y+1
+	plt.plot(x,y,'v',markerfacecolor="None",ms=5,mew=1,label='1 class')
+	popt,yfit=stretch_exp_fit(x,y)
+	plt.plot(x,yfit,label=r'$\tau$= %3.0f $\mu$s'%(popt[2]*1e3),color='r')
+
+	x,y=extract_data('T1_sub_121.txt')
+	x=x[1:]*1e3
+	y=y[1:]
+	y=y/max(y)
+	y=y+0.5
+	plt.plot(x,y,'s',markerfacecolor="None",ms=5,mew=1,label='2 classes')
+	popt,yfit=stretch_exp_fit(x,y)
+	plt.plot(x,yfit,label=r'$\tau$= %3.0f $\mu$s'%(popt[2]*1e3),color='r')
 
 
-x,y=extract_data('T1_sub_1111_mieux.txt')
-x=x[2:]
-y=y[2:]
-y=y/max(y)
-# plt.plot(x,y,'v',markerfacecolor="None",ms=5,mew=1,label='1 class',color=color)
+
+	x,y=extract_data('T1_sub_100_5ms.txt')
+	x=x[1:]*1e3
+	y=y[1:]
+	y=y/max(y)
+	plt.plot(x,y,'o',markerfacecolor="None",ms=5,mew=1,label='4 classes')
+	popt,yfit=stretch_exp_fit(x,y)
+	plt.plot(x,yfit,label=r'$\tau$= %3.0f $\mu$s'%(popt[2]*1e3),color='r')
+
+
+
+
+# plt.plot(x,y,'v',markerfacecolor="None",ms=5,mew=1,label='1 class')
 # popt,yfit=stretch_exp_fit(x,y)
-# plt.plot(x,yfit,label='tau=%f'%popt[2],color=color,lw=2)
+# plt.plot(x,yfit,label='tau=%f'%popt[2],lw=2)
 # popt,yfit=stretch_et_phonon(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[1])
-# print(popt)
 
 
-def R2(y,yfit):
-	avg=np.sum(y)/len(y)
-	SStot=sum((y-avg)**2)
-	SSres=sum((y-yfit)**2)
-	return 1-SSres/SStot
 
-x,y=extract_data('T1_100_sub.txt')
-x=x[0:]*1e3
-y=y[0:]
-y=y/max(y)
-plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
-popt,yfit=stretch_soustraction(x,y)
-print(R2(y,yfit),popt[1])
-plt.plot(x,yfit,label='stretch exponential fit',lw=2)
-popt,yfit=exp_soustraction(x,y)
-print(R2(y,yfit),popt[1])
-plt.plot(x,yfit,'--',label='exponential fit',color='red',lw=2)
-ax.tick_params(labelsize=12)
+
 
 # popt,yfit=stretch_soustraction(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[1])
@@ -584,10 +612,7 @@ ax.tick_params(labelsize=12)
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
 # print(popt)
 
-x,y=extract_data('T1_sub_100_long.txt')
-y=y/max(y)
-x1=x[1:]
-y1=y[1:]
+
 
 # plt.plot(x,y,'x',label='100')
 # popt,yfit=stretch_exp_fit(x,y)
@@ -598,13 +623,7 @@ y1=y[1:]
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
 # print(popt)
 
-color = next(ax._get_lines.prop_cycler)['color']
-x,y=extract_data('T1_sub_100_long_2.txt')
-x=x[1:]
-y=y[1:]
-y=y/max(y)
-x=(x+x1)/2
-y=(y+y1)/2
+
 # plt.plot(x,y,'o',markerfacecolor="None",ms=5,mew=1,label='4 classes',color=color)
 # popt,yfit=stretch_exp_fit(x,y)
 # plt.plot(x,yfit,label='tau=%f'%popt[2],color=color,lw=2)
@@ -614,5 +633,53 @@ y=(y+y1)/2
 # plt.plot(x,yfit,label='tau=%f'%popt[2])
 # print(popt)
 
+
+def R2(y,yfit):
+	avg=np.sum(y)/len(y)
+	SStot=sum((y-avg)**2)
+	SSres=sum((y-yfit)**2)
+	return 1-SSres/SStot
+
+# x,y=extract_data('T1_sub_100_1Mcoups.txt')
+# x=x[0:]*1e3
+# y=y[0:]
+# x2=np.zeros(len(x)//4)
+# for i in range(len(x2)) :
+# 	x2[i]=(x[4*i]+x[4*i+1]+x[4*i+2]+x[4*i+3])/4
+# y2=np.zeros(len(y)//4)
+# for i in range(len(y2)) :
+# 	y2[i]=(y[4*i]+y[4*i+1]+y[4*i+2]+y[4*i+3])/4
+# x=x2
+# y=y2
+# y=y/max(y)
+# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
+# popt,yfit=stretch_soustraction(x,y)
+# print(R2(y,yfit),popt[1])
+# plt.plot(x,yfit,label='stretch exponential fit',lw=2)
+
+
+# x,y=extract_data('T1_sub_0B_weekend.txt')
+# x=x[0:]*1e3
+# y=y[0:]+0.20084911*np.exp(-x/0.75443591)
+# y=y/max(y)
+# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
+# popt,yfit=stretch_soustraction(x,y)
+# print(R2(y,yfit),popt[1])
+# plt.plot(x,yfit,label='stretch exponential fit',lw=2)
+
+# x,y=extract_data('T1_sub_100_encore_plus_long.txt')
+# x=x[0:]*1e3
+# y=y/max(y)
+# y=y[0:]+0.20084911*np.exp(-x/0.75443591)
+# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=1)
+# # popt,yfit=exp_fit(x,y,Amp=-0.3)
+# # print(popt)
+# # plt.plot(x,yfit)
+# popt,yfit=stretch_soustraction(x,y)
+# print(R2(y,yfit),popt[1])
+# plt.plot(x,yfit,label='stretch exponential fit',lw=2)
+
+
+ax.tick_params(labelsize=13)
 plt.legend()
 plt.show()

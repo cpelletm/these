@@ -1,51 +1,49 @@
-This is BibTeX, Version 0.99d (TeX Live 2019)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Meca_cross_SI.aux
 The style file: apsrev.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: trap.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Warning--empty year in qutip2; set to ????
-You've used 7 entries,
+You've used 11 entries,
             3411 wiz_defined-function locations,
-            1209 strings with 11544 characters,
-and the built_in function-call counts, 5615 in all, are:
-= -- 299
-> -- 226
-< -- 31
-+ -- 196
-- -- 56
-* -- 792
-:= -- 591
-add.period$ -- 7
-call.type$ -- 7
-change.case$ -- 30
-chr.to.int$ -- 7
-cite$ -- 8
-duplicate$ -- 494
-empty$ -- 444
-format.name$ -- 131
-if$ -- 1038
+            1241 strings with 12935 characters,
+and the built_in function-call counts, 10164 in all, are:
+= -- 522
+> -- 454
+< -- 59
++ -- 404
+- -- 112
+* -- 1501
+:= -- 1014
+add.period$ -- 11
+call.type$ -- 11
+change.case$ -- 50
+chr.to.int$ -- 11
+cite$ -- 11
+duplicate$ -- 883
+empty$ -- 780
+format.name$ -- 255
+if$ -- 1876
 int.to.chr$ -- 1
-int.to.str$ -- 8
-missing$ -- 76
-newline$ -- 36
-num.names$ -- 21
-pop$ -- 108
+int.to.str$ -- 12
+missing$ -- 136
+newline$ -- 48
+num.names$ -- 33
+pop$ -- 182
 preamble$ -- 1
-purify$ -- 28
+purify$ -- 44
 quote$ -- 0
-skip$ -- 218
+skip$ -- 381
 stack$ -- 0
-substring$ -- 165
-swap$ -- 415
-text.length$ -- 28
+substring$ -- 290
+swap$ -- 786
+text.length$ -- 56
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 42
-warning$ -- 1
-while$ -- 20
+type$ -- 66
+warning$ -- 0
+while$ -- 32
 width$ -- 0
-write$ -- 90
-(There was 1 warning)
+write$ -- 142

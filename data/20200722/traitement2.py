@@ -369,20 +369,40 @@ y=y[xmin:xmax]-yfit[xmin:xmax]
 plt.plot(x,y,'o',markerfacecolor="None")
 ylim=ax.get_ylim()
 
+C13=sum(y[13:58])
+VH=sum(y[111:155])/C13
+WAR1=sum(y[318:375])/C13
+
+print("C13 area : %F, VH ratio : %f, WAR1 ratio : %F"%(C13,VH,WAR1))
 
 c1 = next(ax._get_lines.prop_cycler)['color']
 c2 = next(ax._get_lines.prop_cycler)['color']
+c3 = next(ax._get_lines.prop_cycler)['color']
+
+def R2(y,yfit):
+	avg=np.sum(y)/len(y)
+	SStot=sum((y-avg)**2)
+	SSres=sum((y-yfit)**2)
+	return 1-SSres/SStot
 
 
-popt,yfit=gauss_fit(x[95:175],y[95:175])
-plt.plot(x[95:175],yfit,lw=2,color=c1)
-print(popt[2]*1.18)
+xmin_VH=70 #95
+xmax_VH=200 #175
+popt,yfit=gauss_fit(x[xmin_VH:xmax_VH],y[xmin_VH:xmax_VH])
+plt.plot(x[xmin_VH:xmax_VH],yfit,lw=2,color=c1,label="Gaussian")
+print(R2(y[xmin_VH:xmax_VH],yfit))
+popt,yfit=lor_fit(x[xmin_VH:xmax_VH],y[xmin_VH:xmax_VH])
+plt.plot(x[xmin_VH:xmax_VH],yfit,'--',lw=2,color=c3,label="Lorentzian")
+print(R2(y[xmin_VH:xmax_VH],yfit))
+# print(popt[2]*1.18)
 x_v=popt[1]
-plt.plot([x_v,x_v],[1,-1],'--',color=c2)
+# plt.plot([x_v,x_v],[1,-1],'--',color=c2)
 
 popt,yfit=gauss_fit(x[312:380],y[312:380])
 plt.plot(x[312:380],yfit,lw=2,color=c1)
-print(popt[2]*1.18)
+# popt,yfit=lor_fit(x[312:380],y[312:380])
+# plt.plot(x[312:380],yfit,lw=2,color=c3)
+# print(popt[2]*1.18)
 x_v=popt[1]
 plt.plot([x_v,x_v],[1,-1],'--',color=c2)
 
@@ -394,5 +414,6 @@ for x_v in x_C13 :
 
 
 ax.set_ylim(ylim)
+plt.legend()
 plt.show()
 

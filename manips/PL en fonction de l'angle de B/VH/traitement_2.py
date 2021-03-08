@@ -288,29 +288,43 @@ x,y=extract_data(fname+'.txt')
 y=y/max(y)
 x0=507
 xmin=537
+xmax=481
 x=x-x[x0]
 x=x[xmin:]
 y=y[xmin:]
 x=-x*66
 
+y=list(y)
+ytofit=y[0:15]+y[60:110]+y[160:320]+y[370:410]
+x=list(x)
+xtofit=x[0:15]+x[60:110]+x[160:320]+x[370:410]
+xtofit=np.array(xtofit)
+ytofit=np.array(ytofit)
+x=np.array(x)
+y=np.array(y)
+plt.plot(x,y,lw=2,label='Photoluminescence')
 
-# plt.plot(x,y,lw=2,label='Photoluminescence')
+popt,yfit=fit_ordre_4(xtofit,ytofit)
+[a,b,c,d,e]=popt
+yfit=a*x**4+b*x**3+c*x**2+d*x+e
+plt.plot(x,yfit)
 
-popt,yfit=fit_ordre_4(x,y)
-
-ax=plt.gca()
-ax.tick_params(labelsize=20)
-ax.set_xlabel(r'B $\parallel$[100] (G)', fontweight='bold' ,fontsize=25)
-ax.set_ylabel(r'Photoluminescence' , fontweight='bold', fontsize=25)
-plt.plot(x,(y-yfit)*100,'x-',linewidth=3,ms=8,mew=2)
-
-ylim=ax.get_ylim()
-color = next(ax._get_lines.prop_cycler)['color']
-x_transi=[54.211299328723314,123.0866685272786,17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
-for i in range(len(x_transi)) :
-	x0=x_transi[i]
-	plt.plot([x0,x0],[1,-1],'--',color=color,lw=2)
-ax.set_ylim(ylim)
 plt.show()
 
-print(x[-1])
+# ax=plt.gca()
+# ax.tick_params(labelsize=20)
+# ax.set_xlabel(r'B $\parallel$[100] (G)', fontweight='bold' ,fontsize=25)
+# ax.set_ylabel(r'Photoluminescence' , fontweight='bold', fontsize=25)
+# plt.plot(x,(y-yfit)*100,'x-',linewidth=3,ms=8,mew=2)
+
+# ylim=ax.get_ylim()
+# color = next(ax._get_lines.prop_cycler)['color']
+# x_transi=[54.211299328723314,123.0866685272786,17.953273372377286, 19.705551221857355, 24.31251459360322, 22.117301530072833]
+# for i in range(len(x_transi)) :
+# 	x0=x_transi[i]
+# 	plt.plot([x0,x0],[1,-1],'--',color=color,lw=2)
+# ax.set_ylim(ylim)
+# plt.show()
+
+# print(x[-1])
+

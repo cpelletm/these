@@ -1,77 +1,62 @@
-\documentclass[9pt,twocolumn,twoside]{osajnl}
-%% Please use 11pt if submitting to AOP
-% \documentclass[11pt,twocolumn,twoside]{osajnl}
-\usepackage{graphicx}% Include figure files
-\usepackage{dcolumn}% Align table columns on decimal point
-\usepackage{bm}% bold math
+\documentclass[9pt,twocolumn,twoside]{revtex4-1}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
 \usepackage{natbib}
+ \usepackage{soulutf8}
 \usepackage{physics}
 
-\journal{optica} % Choose journal (ao, aop, josaa, josab, ol, optica, pr)
+\usepackage{xcolor, soul}
+\sethlcolor{green}
+ \sethlcolor{green}
+    \newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}}}
 
-% See template introduction for guidance on setting shortarticle option
-\setboolean{shortarticle}{true}
-% true = letter / tutorial
-% false = research / review article
+
 \newcommand{\bea}{\begin{eqnarray}}
 \newcommand{\eea}{\end{eqnarray}}
 
-% (depending on journal).
+\begin{document}
+\title{Optical Detection of Paramagnetic Defects in a CVD-grown Diamond}
 
+\author{C. Pellet-Mary$^{1}$}
+\author{P. Huillery $^{1}$}
+\author{M. Perdriat $^{1}$}
+\author{A. Tallaire $^{2}$}
+\author{G. H\'etet$^{1}$} 
 
+\affiliation{$^1$Laboratoire de Physique de l'Ecole normale sup\'erieure, ENS, Universit\'e PSL, CNRS, Sorbonne Universit\'e, Universit\'e Paris-Diderot, Sorbonne Paris Cit\'e, Paris, France.}
+\affiliation{$^2$IRCP, Ecole Nationale Supérieure de Chimie de Paris, 11, rue Pierre et Marie Curie, 75005 Paris, France}
 
-
-\title{Optical detection of paramagnetic defects in a CVD-grown diamond using Nitrogen-Vacancy centers}
-
-\author[1]{C. Pellet-Mary}
-\author[1]{P. Huillery}
-\author[1]{M. Perdriat}
-\author[2]{A. Tallaire}
-\author[1]{G. H\'etet} 
-
-\affil[1]{Laboratoire de Physique de l'Ecole normale sup\'erieure, ENS, Universit\'e PSL, CNRS, Sorbonne Universit\'e, Universit\'e Paris-Diderot, Sorbonne Paris Cit\'e, Paris, France.}
-
-\affil[*]{Corresponding author: gabriel.hetet@ens.fr}
-
-%% To be edited by editor
-% \dates{Compiled \today}
-
-%\ociscodes{(140.3490) Lasers, distributed feedback; (060.2420) Fibers, polarization-maintaining;(060.3735) Fiber Bragg gratings.}
-
-%% To be edited by editor
-% \doi{\url{http://dx.doi.org/10.1364/XX.XX.XXXXXX}}
 
 \begin{abstract}
-The spins of Nitrogen Vacancy centers in Chemical Vapor Deposition (CVD) grown diamonds form ideal probes of magnetic fields and temperature, as well as ideal qu-bits for quantum information processing. 
-Studying and controlling the magnetic environment of NV centers in such high purity crystals is thus essential.
-In this letter, we demonstrate optical detection of paramagnetic species in a CVD grown diamond, such as hydrogen-related complexes, by coupling them to NV centers.
-%We also unravel the role played by double quantum processes at zero magnetic field in the NV relaxation. 
-The resonant transfer of NV centers spin-polarization to the electronic spins of these defects induces a loss of the NV photoluminescence, generating conspicuous features in the NV photoluminesence. 
-The resonant condition is tuned with high accuracy by scanning a magnetic field along the 100 crystal direction.
-Our results offer prospects for more detailed studies of CVD grown processes as well as for coherent control of the spin of a novel class of paramagnetic species.
+The electronic spins of the nitrogen-vacancy centers (NV centers) in Chemical-Vapor-Deposition (CVD) grown diamonds form ideal probes of magnetic fields and temperature, as well as promising qu-bits for quantum information processing. 
+Studying and controlling the magnetic environment of NV centers in such high purity crystals is thus essential for these applications.
+We demonstrate optical detection of paramagnetic species, such as hydrogen-related complexes, in a CVD-grown diamond.
+The resonant transfer of the NV centers' polarized electronic spins to the electronic spins of these species generates conspicuous features in the NV photoluminescence by employing magnetic field scans along the [100] crystal direction. 
+Our results offer prospects for more detailed studies of CVD-grown processes as well as for coherent control of the spin of novel classes of hyper-polarized paramagnetic species.
 \end{abstract}
 
-\setboolean{displaycopyright}{true}
-
-\begin{document}
 
 \maketitle
 
-\section{Introduction}
-The electronic spin properties of the negatively charged nitrogen-vacancy (NV$^-$) center in diamond has given rise to a wealth of applications in nanoscale sensing and quantum information science. One major reason is that it can be optically polarized and read-out and features long coherence time even at ambient conditions. 
+%Document
+%Voici un \hl{texte surligné en vert}
+The electronic spin properties of the negatively charged nitrogen-vacancy (NV$^-$) center in diamond has given rise to a wealth of applications in nanoscale sensing \cite{Rondin_2014} and quantum information science  \cite{DOHERTY20131}.
+One major reason is that it can be optically polarized and read-out and features long coherence time even at ambient conditions. 
 %The NV property can also then be employed to manipulate and to detect other dark spins that are interacting with it through dipole-dipole coupling, either inside or outside the diamond. 
-In order to optimize the capabilities of the NV center, its magnetic environment must be controlled carefully. 
-Synthetic growth of diamond crystal now reaches a level of control that makes pristine diamond crystals almost flawless, eliminating the source of magnetic noise from other nearby impurities. The standard growth technique works through Chemical Vapor Deposition (CVD) of carbon atoms from a methane gas in an ultra clean vacuum environment. It offers the possibility to work with 99.9\% purity as well as using 12C enriched methane, hence removing spin fluctuations fro 13C atoms. More results from CVD. 
+In order to optimize the capabilities of the NV center, its magnetic environment must be very well controlled. 
+Synthetic growth of diamond crystals is now reaching a level of maturity that makes the most pristine diamond crystals almost flawless, thus eliminating the source of magnetic noise from other nearby impurities than the  NV sensor. The standard growth technique works through Chemical Vapor Deposition (CVD) of carbon atoms from a methane gas in an ultra-high vacuum environment. It offers the possibility to use crystals with 99.9\% purity, as well as using $^{12}$C enriched methane, hence removing spin fluctuations from $^{13}$C atoms and enhancing further the sensing capabilities of NV centers \cite{Achard}.
 
-The control of the purity of the material is typically done using Electron-Paramagnetic-Resonance (EPR). 
-EPR operates with a very high resolution and was instrumental for detecting many species in diamond (uni of Warwick's review).
-It would also be ideal if the defects were detected in the same platform that is used to for nanoscale sensing and quantum information processing, namely confocal microscopy. 
-This would offer the opportunity to polarize these defects using the NV center, dynamically decouple them from the NV evolution for enhanced AC magnetometry and even to use them as ancilla qubits. 
+Electron-Paramagnetic-Resonance (EPR) spectroscopy is the method of choice for controlling the concentration of paramagnetic defects in materials.Thanks to their high resolution, EPR spectrometers are also essential tools for understanding the conformation of many defects that remain in
+CVD-grown diamond materials \cite{newton_epr_2007, glover_hydrogen_2004, glover_hydrogen_2003}. However, compared to confocal microscopy, this equipment is rather bulky and less cost-effective. 
+It would also be ideal if these defects were detected with the very same technology that is employed for nanoscale sensing \cite{Rondin_2014} and quantum information processing \cite{Yao}. 
+It would indeed offer the opportunity to hyper-polarize these defects using the optically polarized NV center and to employ them as quantum bits at ambient conditions.
 
  \begin{figure}[htbp]
 \centering
-\fbox{\includegraphics[width=\linewidth]{Fig1.eps}}
-\caption{Schematics showing various paramagnetic defects in CVD grown diamonds polarized by a Nitrogen Vacancy center. Bottom right :  crystalline structure of the diamond.}
+{\includegraphics[width=\linewidth]{Fig1}}
+\caption{Schematics showing various paramagnetic defects in CVD-grown diamonds interacting with the electronic spin of a negatively charged nitrogen-vacancy center. \textbf{Bottom right}: Atomic positions in the diamond unit cell.}
 \label{fig1}
 \end{figure}
 
@@ -85,133 +70,87 @@ This would offer the opportunity to polarize these defects using the NV center, 
 %It is more difficult to obtain large concentration of Nitrogen-Vacancy centers in diamonds made from Chemical vapour deposition (CVD). 
 %Cross-relaxation studies are more scarce using CVD doped diamonds.  
 
-Here, we use confocal microscopy and a high-density NV ensembles in a CVD grown diamond to detect paramagnetic defects from CVD grown sample.
-The detection was realized using cross-correlation studies through magnetic field scans. 
-Cross-relaxation typically takes place when the electronic or nuclear spins of two atomic species exchange their polarization via resonant magnetic dipole-dipole interactions. 
-If the spin of an NV center is polarized and coupled to an unpolarized spin B, it will lose part of its polarization at the expense of B and thus see a drop of its PL rate. 
-Tuning the frequency of both spin transitions will thus result in a drop of the NV photoluminescence when that they are co-resonant, thus enabling detection of the spin state of B.
-
-The hamiltonian that describes typical spin-1 defects in diamond under a magnetic field be written as 
-\bea
-\hat{H}=\hbar D S_z^2+\hbar \gamma_e\bm S \cdot \bm B
-\eea
-where $S$ is...
-The first term describes dipole interactions amongst the two electrons of the spin-1 system. The second term describes the Zeeman interaction.
-$D$ can vary significantly from one defect to another as it is sensitive to the local crystal field. It can then be used to find the structure of the defect in EPR measurements.
-Also, hyperfine interactions can add zero-field splittings that can be observed under high resolution scans. 
-The angle of the magnetic field can thus also be to bring defects into resonance. 
-
-Cross relaxation amongst closely-packed NV centers can take place at moderate magnetic fields \cite{van_oort_optically_1991, van_oort_cross-relaxation_1989, armstrong_nvnv_2010, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, choi_depolarization_2017}, thus far, other impurities generally require by scanning large magnetic fields (more than hundreds of gauss) along the 111 direction of diamond. 
-This is generally required to probe paramagnetic impurities that have a small ZFS. 
-Most of the measurements are done at the ESLAC/GLSAC. OORT, BUDKER, HOLLENBERG, BAJAJ, MANSON.
-Similar cross relaxation phenomena were studied by measuring changes in the optical hole depth in the zero-phonon line and studying decay rates oin stimulated spin-echo and spin-locking signals ? (BUDKER).
-
-This procedure was proven useful for detecting the spin of $^{13}C$ atoms and the substitutional nitrogen Vacancy center in diamonds in the past. Such measurements not only show detection of this dark spins but can also be used to polarize them (Polarisation of 13C at low fields : PINES, MERILES ?). 
-To date however, most studies have however been carried out using crystals grown by the High-Pressure-High-Temperature (HPHT) process, where a poor control over the paramagnetic defect density is available. In CVD grown samples, the typical paramagnetic impurities that have been detected by EPR are hydrogen complex such as the NVH, VH, VH2, where the hydrogen comes from the methane in the reactor. Fig.  \ref{fig1} shows a schematics of the various paramagnetic defects in a CVD grown diamonds that can be coupled to the Nitrogen Vacancy center in our study.
+Here, we use confocal laser microscopy to detect paramagnetic defects {\it via} the coupling to a high-density NV spin ensemble in a CVD-grown diamond.
+Fig. \ref{fig1} shows a schematics of the various paramagnetic defects that have been coupled to the nitrogen-vacancy center and detected optically in our study. These defects are the VH$^-$ and WAR1 defects, two spin-1 defects with comparable zero field splitting to the NV$^-$ center \citep{glover_hydrogen_2004, cruddace2007magnetic}, as well as $^{13}$C $1/2$-nuclear spin, through hyper-fine coupling with a secondary NV$^-$ center.
+The detection is realized by measuring the NV photoluminescence while performing magnetic field scans to resonantly enhance dipole-dipole interactions and observe cross-relaxations (CR).
+Cross-relaxation typically takes place when the electronic or nuclear spins of two atomic species exchange their polarizations via resonant magnetic dipole-dipole interactions. 
+If the spin of an NV center A is polarized and coupled to an unpolarized spin B with a much larger relaxation rate, it will lose part of its polarization at the expense of B and thus see a drop of its photoluminescence (PL) rate. 
+Tuning the frequency of both spin transitions so that are co-resonant will result in a reduction of the PL of NV A, thus enabling detection of the spin energy of B.
+%It can then be used to unambiguously identify the defect. The response to a change in the angle of a magnetic field can further be used to unravel the structure of the defect in EPR measurements.
+%Hyperfine interactions can add zero-field splittings that can be observed under high resolution scans. 
+%The angle of the magnetic field can thus also be to bring defects into resonance. 
 
 \begin{figure}[ht]
 \centering
-\fbox{\includegraphics[width=\linewidth]{Carte_annotation}}
-\caption{NV$^-$ photoluminescence as a function of a scanning magnetic field around the [100] crystalline directions with a fixed amplitude $|B|=115G$. The planes orthogonal to the [010],[001],[011], and [01$\bar 1$] directions are indicated by dashed lines.}
+{\includegraphics[width=\linewidth]{Carte_annotation}}
+\caption{a) NV$^-$ photoluminescence as a function of the magnetic field angle around the [100] crystalline direction, at a fixed amplitude $|\vec{B}|=115$G. The planes orthogonal to the [010], [001], [011], and [01$\bar 1$] directions are indicated by dashed lines. b) Left: Optically-detected-magnetic-resonance (ODMR) spectrum taken at the angular position $(\phi, \theta)=(3^\circ,3^\circ)$. Right: ODMR spectrum taken at the exact center of the map, {\it i.e.} the [100] direction.}
 \label{map}
 \end{figure}
- 
-Recent work in the doping processes has shown the possibility to reach NV centers concentrations in the 3 to 5 ppm range in CVD grown samples \cite{Edmonds, TALLAIRE2020421, MINDARAVA2020182}, without sacrificing the $T_2^*$ coherence time, opening a path towards detecting these hydrogen-related complexes using cross-relaxation with NV centers.
-%Several impurities in CVD grown diamonds have been detected using Electron-Paramagnetic Resonance.  In order to purify diamond crystal and optimize their conduction and properties for prolonged qubit lifetimes. 
+
+The negatively charged nitrogen-vacancy center has a zero-field splitting $D=(2\pi) 2.87$ GHz in the ground state, related to the dipole-dipole interaction between the spin of the two unpaired electrons. One of the most important properties of the spin of the NV$^-$ center is that it can be optically polarized and read-out and features long relaxation time ($\approx $ms) even at ambient conditions, which can be used to detect other species via CR and even to polarize them. 
+Many paramagnetic defects in diamond also carry a spin 1.
+The zero-field splittings are in fact a fingerprint of the defect. To measure it, one can tune the angle and magnitude of an external magnetic field angle to cause cross-relaxation with the NV centers. The obtained CR position can then be used to trace back the zero-field splitting of the defect.
+%Four possible directions of the NV axis in the crystalline diamond structure can then lead to CR amongst NV centers at moderate magnetic fields \cite{van_oort_optically_1991, van_oort_cross-relaxation_1989, armstrong_nvnv_2010, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, choi_depolarization_2017}.
+%Detecting paramagnetic impurities using the NV center often requires large magnetic fields (> 500 G) along the diamond [111] direction. 
+%This is generally required to probe impurities with an electronic spin 1/2 such as substitutional nitrogen, or the $^{13}$C nuclear spin.
+%\cite{Epstein,Wang, armstrong_nvnv_2010, Hall, Wickenbrock}.
+%Most of the measurements are done at the ESLAC/GLSAC. OORT, BUDKER, HOLLENBERG, BAJAJ, MANSON.
+%Similar cross relaxation phenomena were studied by measuring changes in the optical hole depth in the zero-phonon line and studying decay rates oin stimulated spin-echo and spin-locking signals ? (BUDKER).
+%This procedure was proven useful for detecting and understanding the spin of $^{13}C$ atoms and the substitutional nitrogen Vacancy center in diamonds in the past. 
+%Such measurements not only show detection of dark spins but can also be used to polarize them (Polarisation of 13C at low fields : PINES, MERILES ?). 
+
+%In CVD grown samples, the typical paramagnetic impurities that have been detected by EPR are hydrogen complex such as the NVH, VH, VH2, where the hydrogen comes from the methane in the reactor. Fig.  \ref{fig1} shows a schematics of the various paramagnetic defects in a CVD grown diamonds that are coupled to the Nitrogen Vacancy center in our study.
+Previous cross-relaxation studies with NV$^-$ centers have been mostly carried out using heavily doped crystals grown by the High-Pressure-High-Temperature (HPHT) process \citep{Epstein,Wang, armstrong_nvnv_2010, Hall, Wickenbrock, Alfasi}. 
+ Recent efforts in the doping processes have also made it possible to reach NV centers concentrations in the 3 to 5 ppm range in CVD grown samples \cite{Edmonds, TALLAIRE2020421, MINDARAVA2020182}, opening a path towards detecting other paramagnetic defects in CVD grown diamonds. 
+%these hydrogen-related complexes using cross-relaxation with NV centers.%Several impurities in CVD grown diamonds have been detected using Electron-Paramagnetic Resonance.  In order to purify diamond crystal and optimize their conduction and properties for prolonged qubit lifetimes. 
 %Extensive work has been done in the past twenty years to detect and characterize the various  that appear in EPR. 
-The sample we use in this study was grown using CVD with the addition of N$_2$0 in the methane phase. Then, high energy electron irradiation and in-situ annealing was realized in order to convert the nitrogen into NV centers. A concentration of 5 ppm of NV center was obtained.
-It was shown that in this sample the $T_2^*$ was not degraded after annealing, and that the NV density was large enough to enable the observation of $T_1$ dependent concentration.  It is well-known that when the NV concentration increases above 1 ppm, the longitudinal decay of NV centers is degraded. 
-Furthermore, it has been observed that cross-relaxation amongst closely pack NVs of different classes can be observed.
-It was postulated that such a degradation of the $T_1$ time came from the coupling of NV centers to other NV related defects whose spin fluctuates. 
+The sample we use in this study  correspond to the pink irradiated sample in \cite{TALLAIRE2020421}. It was grown using CVD with the addition of 500ppm of N$_2$0 to the H2/CH4 (96/4) gas phase.
+Then high energy (10MeV) electron irradiation at a fluence of $2\times18$ cm$^{-2}$ and at a temperature of 900 degrees celsius was realized,  giving a final concentration of NV$^-$ of about 4.6~ppm for an initial concentration of nitrogen in the sample of about 25~ppm.
+It was shown that in this sample the $T_2^*$ was not degraded after annealing, yet the NV density was large enough to enable concentration dependent longitudinal relaxation \cite{TALLAIRE2020421, jarmola_longitudinal_2015}.  
+%It is well-known that when the NV concentration increases above 1 ppm, the longitudinal decay of NV centers is degraded. 
+%Furthermore, it has been observed that cross-relaxation amongst closely pack NVs of different classes can be observed.
+%It was postulated that such a degradation of the $T_1$ time came from the coupling of NV centers to other NV-related defects. 
  
-To perform the cross-relaxation detection, we use a homebuilt confocal microscope that comprises a 1mW green laser, an objective with a numerical aperture of XX to focus the laser onto the sample as well as to collect the PL. The PL was filtered from the green laser using a dichroic mirror and a notch filter coupled to a multimode fiber and sent to avalanche photodiode. The magnetic field scans were realized using a C-shaped electromagnet driven by a XX generator.  We monitor the NV PL as the magnetic field is scanned. 
-
-
-Contrary the more commonly chosen $\langle 111 \rangle$ direction, we use magnetic field scans along the $\langle 100 \rangle$ direction. 
-Looking at the diamond structure (bottom right in Fig.  \ref{fig1})-a), we see that in this direction, the four possible projections of the NV centers along the magnetic field are the same. This means that doing a B field scan along this direction will not make NV centers energies from different classes cross. At arbitrary angles, this can result is several lines that could mask cross-relaxation from other species. 
-The down side of this choice of B field direction is that for large B field amplitudes, the transverse component of the B field makes the PL drop [], thus limiting the range of magnetic field amplitudes that can be employed.
-In order to find the $\langle 100 \rangle$ direction we perform a preliminary angular scan of the magnetic field using a goniometer at a fix magnetic field amplitude.
-Fig. \ref{map}-a)  shows the NV Photoluminescence as a function of magnetic field direction, referenced by azimuthal and polar angles $(\phi, \theta)$ in the above described CVD grown sample. The PL is seen to drop for particular values of the angle as anticipated.
-%The symmetric pattern suggests that the diamond crystalline main directions play a role. Because of the anisotropy of the NV center, see \ref{Cristallo}, the NV PL drop can indeed be a signature of the crystal direction.
-Such a drop of the PL along the crystal axis was already observed by many groups. LUKIN, HEMMER, BUDKER. JARMOLA. OORT
-\cite{van_oort_optically_1991, van_oort_cross-relaxation_1989, armstrong_nvnv_2010, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, choi_depolarization_2017} and correspond to situation where NV centers cross. 
-Using such a map enables to identify clearly the crystalline axis and, in particular, the central point on this map, the $\langle 100 \rangle$ direction.
-
-The planes orthogonal to the [010],[001],[011], and [01$\bar 1$] directions are indicated by dashed lines and show the locus of the cross relaxation, with a smaller PL contrast. 
-The width of the CR peak is compatible with the $T_2^*$ time at this B field values. The contrast is determined both by the fluctuating NV concentration and the polarized NVs.
-Such a map can in itself be a useful tool in order to measure magnetic fields without microwave, as already pointed out in \cite{}. 
-
-To double check these interpretations, we run an electron spin resonances by fixing the magnetic field amplitude and by scanning the microwave frequency. 
-Fig. \ref{map}-b) shows an ESR taken at the angle ... showing two degeneracies.
-Fig. \ref{map}-b) shows an ESR taken at the angle .. .showing four degeneracies. This hints towards the 100 direction. 
-
-We now tune the magnetic field along the 100 direction and scan the magnetic field amplitude. 
-Fig. \ref{scan} shows the PL as a function of magnetic field amplitude, along the $\langle 100 \rangle$ direction in the 15 G to 145 G range. 
-Careful calibration of the magnetic field amplitude was realized using a microwave tone of known frequency ....
-The angle was controlled to within XX. 
-For these data, the averaging was done for XX days. 
-Three features clearly appear in this spectrum : one broader feature at 20G, another one at 56 G and one last one at 122 G. 
-We also note an overall drop of the PL, as a the result of state mixing in the optically excited state. 
-We made attempts to fit this curve using the full 7 level model, but this only gave poor agreement with experimental data. Further work will be done in order to clarify this. 
-In order to let the three salient features detach better from the spectrum, we thus resorted to a 4th order polynomial fit without the spectral bumps, and subtract it from the curve. The subtracted curve is displayed below.  The width and contrast of each peak can now be compared and the position of each peak can be determined with great accuracy. 
-
-\begin{figure}[htbp]
+In this study, we use a homebuilt confocal microscope that comprises a 1mW green laser, an objective with a numerical aperture of 0.25 to focus the laser onto the sample as well as to collect the NV photoluminescence (PL). The PL was filtered from the green laser using a dichroic mirror and a notch filter. It was then coupled to a multimode fiber and detected by an avalanche photodiode. The magnetic field scans were realized using a C-shaped electromagnet driven by a current generator (HP 33120A).  We then monitor the NV PL synchronously with the changes in the magnetic field.
+\begin{figure}[ht]
 \centering
-\fbox{\includegraphics[width=\linewidth]{Scans_fig4}}
-\caption{Optical detection of cross-relaxations. \textbf{Top} NV$^-$ photoluminescence while scanning the magnetic field along the [100] crystalline direction (plain line) and polynomial fit to the fourth order (dashed line). \textbf{Bottom} Subtraction of the previous signal by the polynomial fit (circles), simulated CR magnetic field amplitude (dashed,vertical) and gaussian fits for the second and third dips (plain line)}
+{\includegraphics[width=\linewidth]{Scans_fig4}}
+\caption{Optical detection of cross-relaxations. {Top}: NV$^-$ photoluminescence counts as a function of the magnetic field amplitude along the [100] crystalline direction (plain line) and fourth-order polynomial fit (dashed line). {Bottom} Curve obtained by subtracting the polynomial fit to the above signal (circles). The simulated cross-relaxations positions are shown by the green dashed, vertical lines. Gaussian fits to the second and third dips are shown by plain orange lines.}
 \label{scan}
 \end{figure}
+Contrary to the more commonly employed $[ 111 ]$ direction, we scan the magnetic field along the diamond $[100]$ crystalline direction. 
+Looking at the diamond structure (bottom right in Fig.  \ref{fig1}), it can be noticed that, in this direction, the four possible projections of the NV centers (or any other $C_{3v}$ defect) along the magnetic field are identical. This means that a B field scan along this direction cannot make the transition energies of the different classes of NV centers cross. Under arbitrary angles, this could otherwise result in several low field PL features \cite{van_oort_optically_1991, akhmedzhanov_magnetometry_2019} that could mask cross-relaxation from other species and also reduce the CR contrast (see section 4 of the Supplementary Materials for data showing scans along the [111] direction). 
+The downside of this choice of the [100] direction is that at large amplitudes, the transverse component of the magnetic field depolarizes all classes of NVs, thus limiting the magnetic field range that can be employed and restricting this detection method to paramagnetic defects with zero-field splittings close to the NV center's.
 
-In order to attribute the the three features to their respective defects, we run a similar scan (not shown) on heavily doped HPHT diamond samples in the same 100 direction. Only the first feature appeared. 
-This observation led us to search for CVD specific defects as candidates for the last two peaks. Paramagnetic defects in CVD grown diamonds have been extensively studied using EPR at the university of Warwick. These studies demonstrate that  NVH, VH, VH2 complexes can be stable in diamond and they also estimate the zero-field splitting $D$ for most of them.
-Oxygen related complex may also occur here, due to our N2O are not resonant (https://core.ac.uk/download/pdf/46556.pdf)
-The first peak could then be coming from dipolar coupling between NVs and paramagnetic defects that are present in all diamonds, such as the substitutional nitrogen, also called $P_1$ centers ($[P_1]\approx 10 ppm$ ?) and the ${13}^C$ atoms (${13}^C= 1\%$). 
-Using the results from Budker et al. we first intended to correlate the peaks with NV centers that are coupled to $P_1$ centers. 
- $P_1$ centers have a small zero-field splitting so in order to appear a such small magnetic fields, they would first have to be coupled to an NV centers and then be coupled to a nearby polarized NV.
-The obtained eigenfrequencies were inconsistent with our observed peaks and our spectral resolution error (~1G). This lead us to consider the ${13}^C$ atoms. 
-In itself, the ${13}^C$ spin has a very small zero-field splitting too (=?). In order to give a contribution to the spectra, it would have to be strongly coupled to an NV center. 
-In this case, the $^{13}$C-NV pair would show 4 transitions corresponding to ....
+In order to identify the $[100]$ direction, we perform an angular scan of the magnetic field using a dual-axis goniometer (Thorlabs GNL20-Z8) that holds a permanent magnet at a fixed distance from the sample. 
+Fig. \ref{map}-a) shows the NV photoluminescence as a function of magnetic field direction, referenced by azimuthal and polar angles $(\phi, \theta)$ with respect to the $[100]$ direction, using the above described CVD-grown sample. The PL is seen to drop for particular values of the magnet angular coordinates that correspond to specific crystalline axes.
+Such a drop of the PL, also observed in
+\cite{van_oort_optically_1991, van_oort_cross-relaxation_1989, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, choi_depolarization_2017}, correspond to situation where the transitions of NV centers become degenerate. 
+The planes orthogonal to the [010], [001], [011], and [01$\bar 1$] directions are indicated by dashed lines and show the locus of the cross relaxation. These planes all cross on the [100] axis.
+The origin of these sharp changes in the photoluminescence was attributed to cross relaxation between polarized NV centers and rapidly decaying NV centers, so called fluctuators \cite{choi_depolarization_2017}, the precise origin of the latter remains unknown.
+The width of the CR features when the magnetic field crosses a plane perpendicularly was found to be compatible with the NV decoherence rate  ($\approx$ 6 MHz). The contrast is determined both by the fluctuating NV and polarized NV concentrations.
 
-Fig. \ref{energy-levels} shows the transition frequencies of the NV$^-$, the $^{13}$C-NV pair and the VH- as a function of the magnetic field amplitude along the 100 direction.
-The energy evolution of another defect, whose structure is unknown, and was coined the WAR1 defects is plotted on this graph. 
-The points were the NV levels cross the other defects would in principle correspond to an enhanced double quantum cross-relaxation process between the NV and the presumably unpolarized species. 
-The NV0 ?
+Such a map can in itself be useful for measuring magnetic fields without microwave \cite{akhmedzhanov_magnetometry_2019}. 
+It also enables to identify the crystalline axes. 
+To verify that the central line is the [100] axis, we realize microwave scans around the NV transitions. Away from the crystal planes, we consistently observe 8 ODMR lines coming from the four $| m_s=0\rangle$ to $| m_s=\pm1\rangle$ spin transitions of the \{111\}-oriented NV centers. On the planes orthogonal to the [010], [001], [011], and [01$\bar 1$] directions however, we expect degeneracies. 
+Fig. \ref{map}-b) shows an ODMR spectrum taken at $(\phi, \theta)=(3^\circ,3^\circ)$. As expected, at this position, two pairs of NV classes cross.
+Fig. \ref{map}-b) shows an ESR taken at the angle  $(\phi, \theta)=(0^\circ,0^\circ)$ showing only two features, as expected from a [100] axis. Using this goniometer, the magnetic field angle could be finely adjusted so that the four NV lines become fully degenerate along the $[100]$ direction with an error estimate of $\pm 0.5^\circ$.
 
+Fig. \ref{scan} shows the PL as a function of magnetic field amplitude along the $[ 100 ]$ direction, in the 15~G to 145~G range. 
+Calibration of the magnetic field amplitude was realized by applying microwave signals at varying frequencies in 2 MHz steps on several magnetic field scans. The microwave induced PL features in the scan are then used to relate the magnetic field to the applied voltage. 
+Three features appear in the overall PL evolution in this spectrum : one feature at 20~G,  56~G and 122~G. 
+For these data, the averaging was done for 24 hours, but the features appear already with a signal to noise ratio greater than 1 after 10 minutes.  
+We also note an overall drop of the PL, as a result of state mixing in the optically excited state \cite{DOHERTY20131}. 
 
-\begin{figure}[htbp]
-\centering
-\fbox{\includegraphics[width=\linewidth]{Theorie_CR}}
-\caption{Simulated transitions energies of the various spins considered as a function of a magnetic field aligned along the [100] axis. NV centers transitions are represented using a plain line, VH$^-$ using a dashed line, the WAR1 using a dash-dotted line and $^{13}$C-NV pair using a dotted line. The amplitudes of the magnetic field where the energy level of the NV center crosses the one of another species are represented by vertical dashed lines}
-\label{energy-levels}
-\end{figure}
+To let the three salient features detach better from the spectrum, we fitted a 4th-order polynomial to the PL evolution, without the spectral bumps, and subtract it from the data. Further details on the fitting choices are provided in Sec.V of the Supplementary material.
 
-
-The first peak that we observe coincides with cross-relaxation that is expected to take place with $^{13}$C atoms that is one shell away from the Nitrogen vacancy centers. 
-This drop of the PL is consistent with $^{13}$C-NV pair.  Using typical values found in the literature for the unpolarized NVs (also called fluctuators), we can estimate the concentration of this $^{13}$C-NV pair to be XX, making this hypothesis very likely. 
-The second peak that we observe coincides very well with the crossing between the 0 to -1 NV transition and the 0 to +1 VH- transition.
-Such a defect was studied in details in XXX and was found to have a $D=$. 
-Making a gaussian fit to this data show that the position of the detected peak is , which gives a $D=$.
-Estimation suggest that the concentration of this defect is about 100 ppb (?).
-
-The third peak corresponds to a spin defect that has a D=.
-We found in Cruddace that it was already observed in EPR, although its structure is unknown.
-
-
-
-NVH (H3) center (diamagnetic in ground state), paramagnetic only in excited state but requires UV light. 
-No other species were observed in the optical spectrum or EPR. 
-
-
-
-The technique can be used to detect the degree of polarisation of $^{13}$C atoms at room temperature.
-
-
-Table \ref{tab:shape-functions} 
-
-
+In order to attribute the three features to their respective defects, we run a similar scan (Section 1 in the Supplementary Materials) on a type Ib electron irradiated HPHT diamond crystal with a NV concentration expected to be in the 5-20 ppm range, in the same $[100]$ direction. Only the first feature appeared. 
+This observation guided us to search for CVD-related defects as good candidates for the last two features. Paramagnetic defects in CVD-grown diamonds have been extensively studied using EPR  \citep{Ashfold}. These studies demonstrate that hydrogen-related complex such as the NVH, VH, VH2 complexes can all be stable in diamond. Although their composition is not always known, several zero-field splittings $D$ can be found in the literature.
+Given the small difference between the NV transitions and the observed features, we only concentrate on the reported defects with ZFS that are close to the NV$^-$.
+The middle column of table \ref{table}, shows the zero-field splitting for two such spin-1 defects found in \citep{cruddace2007magnetic}, namely the negatively charged hydrogen-vacancy (VH$^-$) and WAR1 defects. The latter was analyzed in EPR but its exact structure is unknown \citep{cruddace2007magnetic}.
 \begin{table}[htbp]
 \centering
-\caption{\bf Zero-field splitting parameter $D_z$ for the different spin-1 species}
+\caption{\bf Zero-field splitting parameter $D$ for the spin-1 species in our sample}
 \begin{tabular}{ccc}
 \hline
 $D_z$ estimation (MHz) & Cruddace's work\citep{cruddace2007magnetic} & Our work \\
@@ -221,33 +160,484 @@ VH$^-$ & 2706(30) & 2694(5)  \\
 WAR1 & 2466(60) & 2470(10) \\
 \hline
 \end{tabular}
-  \label{tab:shape-functions}
+  \label{table}
 \end{table}
+Fig. \ref{energy-levels} shows the frequencies of the NV$^-$, the VH$^-$ and WAR1 spin transitions as a function of the magnetic field amplitude along the $[100]$ direction. Since the NV$^-$ and VH$^-$ are $C_{3v}$ defects, and the WAR1 is a pseudo-$C_{3v}$ defect \citep{cruddace2007magnetic}, all possible orientation are degenerate for this magnetic field orientation, giving only two lines corresponding to the $\ket{0} \to \ket{+1}$ and $\ket{0} \to \ket{-1}$ transitions. The points were the NV levels cross the other defects can give rise to cross-relaxation.
+
+Using this theoretical calculations, we find that the second peak in Fig. \ref{scan} coincides very well with a CR that would occur at the crossing between the $|m_s=0\rangle$ to $|m_s=-1\rangle$ NV transition and the $|m_s=0\rangle$ to $|m_s=+1\rangle$ VH$^-$ transition. 
+A gaussian fit to the feature in Fig. \ref{scan} enables us to extrapolate a value for $D=2694(5)$MHz that coincides very well to that of the VH$^-$ within the error margins indicated in \citep{cruddace2007magnetic}.
+The third peak at 122 G would correspond to a spin defect that has a $D=2470(10)$MHz that also matches well the one of the WAR1 defect. 
+The values of $D$ for these two defects and the error bars from our measurements are now included in the table \ref{table}.
+The error bars are estimated by taking into account the precision on the NV$^-$ ZFS, on the angle, on the magnetic field calibration and the precision of the fits. 
+We obtain a factor of 6 improvement over the precision reported in \citep{cruddace2007magnetic}. We thus attribute the second and third feature to cross relaxation between the NV center and the VH$^-$ and WAR1 defect. Scans along the [111] direction shown in the Supplementary Material also corroborate this conclusion.
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=\linewidth]{Theorie_CR}}
+\caption{Simulated transition energies of the various considered spins as a function of a magnetic field aligned to the [100] axis. The NV centers electronic spin transitions are shown by the plain thick line, the VH$^-$ using dashed lines, the WAR1 using dash-dotted lines and $^{13}$C-NV pair using dotted lines. The amplitudes of the magnetic field where the energy level of the NV center crosses the one of another species are represented by vertical dashed lines.}
+\label{energy-levels}
+\end{figure}
+The remaining broader feature in the spectrum could be coming from dipolar coupling between the spin of NV centers and paramagnetic defects that are present also in HPHT-grown diamonds, such as the substitutional nitrogen, also called $P_1$ centers ($[P_1]\approx 5-20$ ppm in our sample) or the $^{13}$C atoms (natural isotopic abundance [$^{13}$C]= 1\%). 
+Using the results from \cite{simanovskaia_sidebands_2013}, we first intended to correlate its spectral position to the transitions of dipolar-coupled NV and $P_1$ centers. 
+ $P_1$ centers have a zero-field splitting of only 100 MHz. In order to cross one of the two NV spin transitions at a magnetic field of 20 G, they would then have to be coupled off-resonantly to the spin of nearby NV centers. The resulting pair could then be coupled resonantly to a nearby polarized NV.
+The obtained eigenfrequencies of the dipolar coupled P$_1$-NV pair that we extracted were all inconsistent with the spectral positions of our observed peak within our spectral resolution error ($\approx$1G) (see Section 3 of the Supplementary Materials). This leads us to consider instead the nuclear spin of the $^{13}$C atoms as the most likely candidate.
+
+The nuclear spin of the $^{13}$C atoms do not have a ZFS and its gyromagnetic factor is four orders of magnitude lower than that of the electron. Here again, in order to give a CR contribution to the spectrum at modest magnetic fields, the nuclear spin of the $^{13}$C would first have to be strongly coupled to an NV center. The resulting pair could then be co-resonant with the spin transitions of a bare NV center, as depicted in Fig. 1. This situation can manifest itself when the nuclear spin of $^{13}$C atoms are a few shells distant from the nitrogen-vacancy centers. A strong hyperfine coupling rate of 130 MHz can for instance be reached with a $^{13}$C that is only one shell away from the NV center.  
+In contrast, higher order shells have a maximum hyperfine coupling of 15 MHz \cite{smeltzer201113c} making them hard to distinguish from the inhomogeneous broadening.
+The modeling of this interaction is presented in the section 2 of the Supplementary Materials. The dotted lines in Fig. \ref{energy-levels} show the four transition frequencies of the first shell $^{13}$C coupled to an NV center. The crossings between the $|m_s=0\rangle$ to $|m_s=\pm 1\rangle$ NV transition and the four transitions of this  $^{13}$C-NV pair occur at magnetic field values around 20~G. 
+We added these four lines to the experimental spectrum shown in Fig. \ref{scan}. A good agreement is found between the magnetic field at which of these four transitions cross the NV and the broad 20~G feature, letting us conclude that it is the result of a CR between an unpolarized $^{13}$C-NV pair and a polarized NV center.
+
+Because the sample we use has a very well determined concentration of $^{13}$C (natural 1.1\% abundance), we can use the first CR peak to calibrate the concentration of VH$^-$ and WAR1 in our sample. There are three possible sites for a first-shell $^{13}$C-NV pair, so the concentration of $^{13}$C-NV pair is about 3.3\% that of the NV centers, i.e. $\sim$135~ppb. Comparing the area of the second and third peak to the first one, we find [VH$^-$]$\approx$195~ppb and [WAR1]$\approx$124~ppb. Using areas is here more relevant than using amplitudes because inhomogeneous spread dominates over the spin-spin interaction. Note that the  WAR1 concentration is probably undervalued due to state mixing in the NV centers at the NV-WAR1 CR.
+
+In conclusion, we demonstrated all-optical detection of paramagnetic species in a diamond grown by the Chemical-Vapor-Deposition method. 
+Using magnetic field scans along the [100] direction, we identified 3-body interactions between NV centers and $^{13}$C-NV pairs, and cross-relaxations between the spin of NV centers and the VH$^-$ and the WAR1 defects, by coupling them to NV centers. Our results offer prospects for more detailed studies of CVD-grown processes as well as for realizing quantum networks with these newly coupled spins.
+
+\section*{Acknowledgments}
+We would like to thank Neil Manson and Carlos Meriles for fruitful discussions. 
+The authors would also like to thank SIRTEQ for funding. GH also acknowledges funding by the French National Research Agency (ANR) through the T-ERC project QUOVADIS. 
 
 
 
-\section{Funding}
-GH acknowledges funding by the French National Research Agency (ANR) through the T-ERC project QUOVADIS. 
-
-\section{Acknowledgments}
-We would like to thank Neil Manson and Carols Meriles for fruitful discussions. 
-
-
-
-
-
-\section{Disclosures}
-
-The authors declare no conflicts of interest.'
-
-% Bibliography
-\bibliography{Biblio_CVD-CR}
-
-% Full bibliography added automatically for Optics Letters submissions; the following line will simply be ignored if submitting to other journals.
-% Note that this extra page will not count against page length
-\bibliographyfullrefs{sample}
-
-
+%merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (-1) disabled
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{27}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Rondin}\ \emph {et~al.}(2014)\citenamefont {Rondin},
+  \citenamefont {Tetienne}, \citenamefont {Hingant}, \citenamefont {Roch},
+  \citenamefont {Maletinsky},\ and\ \citenamefont {Jacques}}]{Rondin_2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Rondin}}, \bibinfo {author} {\bibfnamefont {J.-P.}\ \bibnamefont
+  {Tetienne}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Hingant}},
+  \bibinfo {author} {\bibfnamefont {J.-F.}\ \bibnamefont {Roch}}, \bibinfo
+  {author} {\bibfnamefont {P.}~\bibnamefont {Maletinsky}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {V.}~\bibnamefont {Jacques}},\ }\href {\doibase
+  10.1088/0034-4885/77/5/056503} {\bibfield  {journal} {\bibinfo  {journal}
+  {Reports on Progress in Physics}\ }\textbf {\bibinfo {volume} {77}},\
+  \bibinfo {pages} {056503} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Doherty}\ \emph {et~al.}(2013)\citenamefont
+  {Doherty}, \citenamefont {Manson}, \citenamefont {Delaney}, \citenamefont
+  {Jelezko}, \citenamefont {Wrachtrup},\ and\ \citenamefont
+  {Hollenberg}}]{DOHERTY20131}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~W.}\ \bibnamefont
+  {Doherty}}, \bibinfo {author} {\bibfnamefont {N.~B.}\ \bibnamefont {Manson}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Delaney}}, \bibinfo
+  {author} {\bibfnamefont {F.}~\bibnamefont {Jelezko}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Wrachtrup}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {L.~C.}\ \bibnamefont {Hollenberg}},\ }\href {\doibase
+  https://doi.org/10.1016/j.physrep.2013.02.001} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physics Reports}\ }\textbf {\bibinfo {volume} {528}},\
+  \bibinfo {pages} {1 } (\bibinfo {year} {2013})},\ \bibinfo {note} {the
+  nitrogen-vacancy colour centre in diamond}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Achard}\ \emph {et~al.}(2020)\citenamefont {Achard},
+  \citenamefont {Jacques},\ and\ \citenamefont {Tallaire}}]{Achard}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Achard}}, \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Jacques}}, \
+  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Tallaire}},\ }\href
+  {\doibase 10.1088/1361-6463/ab81d1} {\bibfield  {journal} {\bibinfo
+  {journal} {Journal of Physics D: Applied Physics}\ }\textbf {\bibinfo
+  {volume} {53}},\ \bibinfo {pages} {313001} (\bibinfo {year}
+  {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Newton}(2007)}]{newton_epr_2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Newton}},\ }\href {\doibase 10.1002/chin.200747215} {\bibfield  {journal}
+  {\bibinfo  {journal} {ChemInform}\ }\textbf {\bibinfo {volume} {38}}
+  (\bibinfo {year} {2007}),\ 10.1002/chin.200747215}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Glover}\ \emph {et~al.}(2004)\citenamefont {Glover},
+  \citenamefont {Newton}, \citenamefont {Martineau}, \citenamefont {Quinn},\
+  and\ \citenamefont {Twitchen}}]{glover_hydrogen_2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Glover}}, \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont {Newton}},
+  \bibinfo {author} {\bibfnamefont {P.~M.}\ \bibnamefont {Martineau}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Quinn}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {D.~J.}\ \bibnamefont {Twitchen}},\ }\href {\doibase
+  10.1103/PhysRevLett.92.135502} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {92}},\ \bibinfo {pages}
+  {135502} (\bibinfo {year} {2004})},\ \bibinfo {note} {publisher: American
+  Physical Society}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Glover}\ \emph {et~al.}(2003)\citenamefont {Glover},
+  \citenamefont {Newton}, \citenamefont {Martineau}, \citenamefont {Twitchen},\
+  and\ \citenamefont {Baker}}]{glover_hydrogen_2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Glover}}, \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont {Newton}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Martineau}}, \bibinfo
+  {author} {\bibfnamefont {D.~J.}\ \bibnamefont {Twitchen}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Baker}},\ }\href {\doibase
+  10.1103/PhysRevLett.90.185507} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {90}},\ \bibinfo {pages}
+  {185507} (\bibinfo {year} {2003})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Yao}\ \emph {et~al.}(2012)\citenamefont {Yao},
+  \citenamefont {Jiang}, \citenamefont {Gorshkov}, \citenamefont {Maurer},
+  \citenamefont {Giedke}, \citenamefont {Cirac},\ and\ \citenamefont
+  {Lukin}}]{Yao}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~Y.}\ \bibnamefont
+  {Yao}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Jiang}}, \bibinfo
+  {author} {\bibfnamefont {A.~V.}\ \bibnamefont {Gorshkov}}, \bibinfo {author}
+  {\bibfnamefont {P.~C.}\ \bibnamefont {Maurer}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Giedke}}, \bibinfo {author} {\bibfnamefont
+  {J.~I.}\ \bibnamefont {Cirac}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {M.~D.}\ \bibnamefont {Lukin}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nature Communications}\ }\textbf {\bibinfo {volume}
+  {3}},\ \bibinfo {pages} {800} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cruddace}(2007)}]{cruddace2007magnetic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Cruddace}},\ }\emph {\bibinfo {title} {Magnetic resonance and optical
+  studies of point defects in single crystal CVD diamond}},\ \href@noop {}
+  {Ph.D. thesis},\ \bibinfo  {school} {University of Warwick} (\bibinfo {year}
+  {2007})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Epstein}\ \emph {et~al.}(2005)\citenamefont
+  {Epstein}, \citenamefont {Mendoza}, \citenamefont {Kato},\ and\ \citenamefont
+  {Awschalom}}]{Epstein}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont
+  {Epstein}}, \bibinfo {author} {\bibfnamefont {F.~M.}\ \bibnamefont
+  {Mendoza}}, \bibinfo {author} {\bibfnamefont {Y.~K.}\ \bibnamefont {Kato}}, \
+  and\ \bibinfo {author} {\bibfnamefont {D.~D.}\ \bibnamefont {Awschalom}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Nature Physics}\
+  }\textbf {\bibinfo {volume} {1}},\ \bibinfo {pages} {94} (\bibinfo {year}
+  {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wang}\ \emph {et~al.}(2014)\citenamefont {Wang},
+  \citenamefont {Shin}, \citenamefont {Seltzer}, \citenamefont {Avalos},
+  \citenamefont {Pines},\ and\ \citenamefont {Bajaj}}]{Wang}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.-J.}\ \bibnamefont
+  {Wang}}, \bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont {Shin}},
+  \bibinfo {author} {\bibfnamefont {S.~J.}\ \bibnamefont {Seltzer}}, \bibinfo
+  {author} {\bibfnamefont {C.~E.}\ \bibnamefont {Avalos}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Pines}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {V.~S.}\ \bibnamefont {Bajaj}},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature Communications}\ }\textbf {\bibinfo
+  {volume} {5}},\ \bibinfo {pages} {4135} (\bibinfo {year} {2014})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Armstrong}\ \emph {et~al.}(2010)\citenamefont
+  {Armstrong}, \citenamefont {Rogers}, \citenamefont {McMurtrie},\ and\
+  \citenamefont {Manson}}]{armstrong_nvnv_2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Armstrong}}, \bibinfo {author} {\bibfnamefont {L.~J.}\ \bibnamefont
+  {Rogers}}, \bibinfo {author} {\bibfnamefont {R.~L.}\ \bibnamefont
+  {McMurtrie}}, \ and\ \bibinfo {author} {\bibfnamefont {N.~B.}\ \bibnamefont
+  {Manson}},\ }\href {\doibase 10.1016/j.phpro.2010.01.223} {\bibfield
+  {journal} {\bibinfo  {journal} {Physics Procedia}\ }\textbf {\bibinfo
+  {volume} {3}},\ \bibinfo {pages} {1569} (\bibinfo {year} {2010})},\ \bibinfo
+  {note} {number: 4}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hall}\ \emph {et~al.}(2016)\citenamefont {Hall},
+  \citenamefont {Kehayias}, \citenamefont {Simpson}, \citenamefont {Jarmola},
+  \citenamefont {Stacey}, \citenamefont {Budker},\ and\ \citenamefont
+  {Hollenberg}}]{Hall}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~T.}\ \bibnamefont
+  {Hall}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Kehayias}},
+  \bibinfo {author} {\bibfnamefont {D.~A.}\ \bibnamefont {Simpson}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Jarmola}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Stacey}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Budker}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {L.~C.~L.}\ \bibnamefont {Hollenberg}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nature Communications}\ }\textbf {\bibinfo {volume}
+  {7}},\ \bibinfo {pages} {10211} (\bibinfo {year} {2016})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Wickenbrock}\ \emph {et~al.}(2016)\citenamefont
+  {Wickenbrock}, \citenamefont {Zheng}, \citenamefont {Bougas}, \citenamefont
+  {Leefer}, \citenamefont {Afach}, \citenamefont {Jarmola}, \citenamefont
+  {Acosta},\ and\ \citenamefont {Budker}}]{Wickenbrock}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Wickenbrock}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Zheng}},
+  \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Bougas}}, \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Leefer}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Afach}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Jarmola}}, \bibinfo {author} {\bibfnamefont {V.~M.}\
+  \bibnamefont {Acosta}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Budker}},\ }\href {\doibase 10.1063/1.4960171} {\bibfield
+  {journal} {\bibinfo  {journal} {Applied Physics Letters}\ }\textbf {\bibinfo
+  {volume} {109}},\ \bibinfo {pages} {053505} (\bibinfo {year} {2016})},\
+  \Eprint {http://arxiv.org/abs/https://doi.org/10.1063/1.4960171}
+  {https://doi.org/10.1063/1.4960171} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Alfasi}\ \emph {et~al.}(2019)\citenamefont {Alfasi},
+  \citenamefont {Masis}, \citenamefont {Shtempluck},\ and\ \citenamefont
+  {Buks}}]{Alfasi}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Alfasi}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Masis}},
+  \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Shtempluck}}, \ and\
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Buks}},\ }\href {\doibase
+  10.1103/PhysRevB.99.214111} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. B}\ }\textbf {\bibinfo {volume} {99}},\ \bibinfo {pages} {214111}
+  (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Edmonds}}\ \emph {et~al.}(2020)\citenamefont
+  {{Edmonds}}, \citenamefont {{Hart}}, \citenamefont {{Turner}}, \citenamefont
+  {{Colard}}, \citenamefont {{Schloss}}, \citenamefont {{Olsson}},
+  \citenamefont {{Trubko}}, \citenamefont {{Markham}}, \citenamefont
+  {{Rathmill}}, \citenamefont {{Horne-Smith}}, \citenamefont {{Lew}},
+  \citenamefont {{Manickam}}, \citenamefont {{Bruce}}, \citenamefont {{Kaup}},
+  \citenamefont {{Russo}}, \citenamefont {{DiMario}}, \citenamefont {{South}},
+  \citenamefont {{Hansen}}, \citenamefont {{Twitchen}},\ and\ \citenamefont
+  {{Walsworth}}}]{Edmonds}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {{Edmonds}}}, \bibinfo {author} {\bibfnamefont {C.~A.}\ \bibnamefont
+  {{Hart}}}, \bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont
+  {{Turner}}}, \bibinfo {author} {\bibfnamefont {P.-O.}\ \bibnamefont
+  {{Colard}}}, \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {{Schloss}}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {{Olsson}}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {{Trubko}}}, \bibinfo
+  {author} {\bibfnamefont {M.~L.}\ \bibnamefont {{Markham}}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {{Rathmill}}}, \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {{Horne-Smith}}}, \bibinfo {author}
+  {\bibfnamefont {W.}~\bibnamefont {{Lew}}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {{Manickam}}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {{Bruce}}}, \bibinfo {author} {\bibfnamefont {P.~G.}\
+  \bibnamefont {{Kaup}}}, \bibinfo {author} {\bibfnamefont {J.~C.}\
+  \bibnamefont {{Russo}}}, \bibinfo {author} {\bibfnamefont {M.~J.}\
+  \bibnamefont {{DiMario}}}, \bibinfo {author} {\bibfnamefont {J.~T.}\
+  \bibnamefont {{South}}}, \bibinfo {author} {\bibfnamefont {J.~T.}\
+  \bibnamefont {{Hansen}}}, \bibinfo {author} {\bibfnamefont {D.~J.}\
+  \bibnamefont {{Twitchen}}}, \ and\ \bibinfo {author} {\bibfnamefont {R.~L.}\
+  \bibnamefont {{Walsworth}}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {arXiv e-prints}\ ,\ \bibinfo {eid} {arXiv:2004.01746}} (\bibinfo
+  {year} {2020})},\ \Eprint {http://arxiv.org/abs/2004.01746} {arXiv:2004.01746
+  [cond-mat.mtrl-sci]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tallaire}\ \emph {et~al.}(2020)\citenamefont
+  {Tallaire}, \citenamefont {Brinza}, \citenamefont {Huillery}, \citenamefont
+  {Delord}, \citenamefont {Pellet-Mary}, \citenamefont {Staacke}, \citenamefont
+  {Abel}, \citenamefont {Pezzagna}, \citenamefont {Meijer}, \citenamefont
+  {Touati}, \citenamefont {Binet}, \citenamefont {Ferrier}, \citenamefont
+  {Goldner}, \citenamefont {Hetet},\ and\ \citenamefont
+  {Achard}}]{TALLAIRE2020421}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Tallaire}}, \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Brinza}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Huillery}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Delord}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Pellet-Mary}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Staacke}}, \bibinfo {author} {\bibfnamefont
+  {B.}~\bibnamefont {Abel}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Pezzagna}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Meijer}},
+  \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Touati}}, \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {Binet}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Ferrier}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Goldner}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Hetet}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Achard}},\ }\href {\doibase
+  https://doi.org/10.1016/j.carbon.2020.08.048} {\bibfield  {journal} {\bibinfo
+   {journal} {Carbon}\ }\textbf {\bibinfo {volume} {170}},\ \bibinfo {pages}
+  {421 } (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mindarava}\ \emph {et~al.}(2020)\citenamefont
+  {Mindarava}, \citenamefont {Blinder}, \citenamefont {Laube}, \citenamefont
+  {Knolle}, \citenamefont {Abel}, \citenamefont {Jentgens}, \citenamefont
+  {Isoya}, \citenamefont {Scheuer}, \citenamefont {Lang}, \citenamefont
+  {Schwartz}, \citenamefont {Naydenov},\ and\ \citenamefont
+  {Jelezko}}]{MINDARAVA2020182}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Mindarava}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Blinder}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Laube}}, \bibinfo
+  {author} {\bibfnamefont {W.}~\bibnamefont {Knolle}}, \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Abel}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Jentgens}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Isoya}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Scheuer}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Lang}}, \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Schwartz}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Naydenov}},
+  \ and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Jelezko}},\ }\href
+  {\doibase https://doi.org/10.1016/j.carbon.2020.07.077} {\bibfield  {journal}
+  {\bibinfo  {journal} {Carbon}\ }\textbf {\bibinfo {volume} {170}},\ \bibinfo
+  {pages} {182 } (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jarmola}\ \emph {et~al.}(2015)\citenamefont
+  {Jarmola}, \citenamefont {Berzins}, \citenamefont {Smits}, \citenamefont
+  {Smits}, \citenamefont {Prikulis}, \citenamefont {Gahbauer}, \citenamefont
+  {Ferber}, \citenamefont {Erts}, \citenamefont {Auzinsh},\ and\ \citenamefont
+  {Budker}}]{jarmola_longitudinal_2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Jarmola}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Berzins}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Smits}}, \bibinfo
+  {author} {\bibfnamefont {K.}~\bibnamefont {Smits}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Prikulis}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Gahbauer}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Ferber}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Erts}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Auzinsh}}, \ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Budker}},\ }\href {\doibase 10.1063/1.4937489} {\bibfield  {journal}
+  {\bibinfo  {journal} {Appl. Phys. Lett.}\ }\textbf {\bibinfo {volume}
+  {107}},\ \bibinfo {pages} {242403} (\bibinfo {year} {2015})},\ \bibinfo
+  {note} {number: 24}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {van Oort}\ and\ \citenamefont
+  {Glasbeek}(1991)}]{van_oort_optically_1991}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {van
+  Oort}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Glasbeek}},\
+  }\href {\doibase 10.1007/BF03166042} {\bibfield  {journal} {\bibinfo
+  {journal} {Appl Magn Reson}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo
+  {pages} {291} (\bibinfo {year} {1991})},\ \bibinfo {note} {number:
+  2}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Akhmedzhanov}\ \emph {et~al.}(2019)\citenamefont
+  {Akhmedzhanov}, \citenamefont {Gushchin}, \citenamefont {Nizov},
+  \citenamefont {Nizov}, \citenamefont {Sobgayda}, \citenamefont {Zelensky},\
+  and\ \citenamefont {Hemmer}}]{akhmedzhanov_magnetometry_2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Akhmedzhanov}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Gushchin}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Nizov}},
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Nizov}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Sobgayda}}, \bibinfo {author}
+  {\bibfnamefont {I.}~\bibnamefont {Zelensky}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Hemmer}},\ }\href {\doibase
+  10.1103/PhysRevA.100.043844} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo {pages}
+  {043844} (\bibinfo {year} {2019})},\ \bibinfo {note} {number: 4}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {van Oort}\ and\ \citenamefont
+  {Glasbeek}(1989)}]{van_oort_cross-relaxation_1989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {van
+  Oort}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Glasbeek}},\
+  }\href {\doibase 10.1103/PhysRevB.40.6509} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {40}},\ \bibinfo
+  {pages} {6509} (\bibinfo {year} {1989})},\ \bibinfo {note} {number:
+  10}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Akhmedzhanov}\ \emph {et~al.}(2017)\citenamefont
+  {Akhmedzhanov}, \citenamefont {Gushchin}, \citenamefont {Nizov},
+  \citenamefont {Nizov}, \citenamefont {Sobgayda}, \citenamefont {Zelensky},\
+  and\ \citenamefont {Hemmer}}]{akhmedzhanov_microwave-free_2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Akhmedzhanov}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Gushchin}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Nizov}},
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Nizov}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Sobgayda}}, \bibinfo {author}
+  {\bibfnamefont {I.}~\bibnamefont {Zelensky}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Hemmer}},\ }\href {\doibase
+  10.1103/PhysRevA.96.013806} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. A}\ }\textbf {\bibinfo {volume} {96}},\ \bibinfo {pages} {013806}
+  (\bibinfo {year} {2017})},\ \bibinfo {note} {number: 1}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Holliday}\ \emph {et~al.}(1989)\citenamefont
+  {Holliday}, \citenamefont {Manson}, \citenamefont {Glasbeek},\ and\
+  \citenamefont {Oort}}]{holliday_optical_1989}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Holliday}}, \bibinfo {author} {\bibfnamefont {N.~B.}\ \bibnamefont
+  {Manson}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Glasbeek}}, \
+  and\ \bibinfo {author} {\bibfnamefont {E.~v.}\ \bibnamefont {Oort}},\ }\href
+  {\doibase 10.1088/0953-8984/1/39/021} {\bibfield  {journal} {\bibinfo
+  {journal} {J. Phys.: Condens. Matter}\ }\textbf {\bibinfo {volume} {1}},\
+  \bibinfo {pages} {7093} (\bibinfo {year} {1989})},\ \bibinfo {note} {number:
+  39}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Choi}\ \emph {et~al.}(2017)\citenamefont {Choi},
+  \citenamefont {Choi}, \citenamefont {Kucsko}, \citenamefont {Maurer},
+  \citenamefont {Shields}, \citenamefont {Sumiya}, \citenamefont {Onoda},
+  \citenamefont {Isoya}, \citenamefont {Demler}, \citenamefont {Jelezko},
+  \citenamefont {Yao},\ and\ \citenamefont {Lukin}}]{choi_depolarization_2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Choi}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Choi}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Kucsko}}, \bibinfo {author}
+  {\bibfnamefont {P.~C.}\ \bibnamefont {Maurer}}, \bibinfo {author}
+  {\bibfnamefont {B.~J.}\ \bibnamefont {Shields}}, \bibinfo {author}
+  {\bibfnamefont {H.}~\bibnamefont {Sumiya}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Onoda}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Isoya}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Demler}}, \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Jelezko}}, \bibinfo {author} {\bibfnamefont {N.~Y.}\
+  \bibnamefont {Yao}}, \ and\ \bibinfo {author} {\bibfnamefont {M.~D.}\
+  \bibnamefont {Lukin}},\ }\href {\doibase 10.1103/PhysRevLett.118.093601}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {118}},\ \bibinfo {pages} {093601} (\bibinfo {year}
+  {2017})},\ \bibinfo {note} {number: 9}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ashfold}\ \emph {et~al.}(2020)\citenamefont
+  {Ashfold}, \citenamefont {Goss}, \citenamefont {Green}, \citenamefont {May},
+  \citenamefont {Newton},\ and\ \citenamefont {Peaker}}]{Ashfold}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~N.~R.}\
+  \bibnamefont {Ashfold}}, \bibinfo {author} {\bibfnamefont {J.~P.}\
+  \bibnamefont {Goss}}, \bibinfo {author} {\bibfnamefont {B.~L.}\ \bibnamefont
+  {Green}}, \bibinfo {author} {\bibfnamefont {P.~W.}\ \bibnamefont {May}},
+  \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont {Newton}}, \ and\
+  \bibinfo {author} {\bibfnamefont {C.~V.}\ \bibnamefont {Peaker}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Chemical Reviews}\
+  }\textbf {\bibinfo {volume} {120}},\ \bibinfo {pages} {5745} (\bibinfo {year}
+  {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Simanovskaia}\ \emph {et~al.}(2013)\citenamefont
+  {Simanovskaia}, \citenamefont {Jensen}, \citenamefont {Jarmola},
+  \citenamefont {Aulenbacher}, \citenamefont {Manson},\ and\ \citenamefont
+  {Budker}}]{simanovskaia_sidebands_2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Simanovskaia}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Jensen}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Jarmola}},
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Aulenbacher}}, \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Manson}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {Budker}},\ }\href {\doibase
+  10.1103/PhysRevB.87.224106} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. B}\ }\textbf {\bibinfo {volume} {87}},\ \bibinfo {pages} {224106}
+  (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Smeltzer}\ \emph {et~al.}(2011)\citenamefont
+  {Smeltzer}, \citenamefont {Childress},\ and\ \citenamefont
+  {Gali}}]{smeltzer201113c}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Smeltzer}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Childress}},
+  \ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Gali}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {New Journal of
+  Physics}\ }\textbf {\bibinfo {volume} {13}},\ \bibinfo {pages} {025021}
+  (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+ 
+\end{thebibliography}%
 
 
 \end{document}
