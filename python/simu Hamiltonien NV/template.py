@@ -824,7 +824,7 @@ def p1(three_body=True): #le soucis pour la 111 c'est que il y a 6 transitions d
 		ax.tick_params(labelsize=15)
 		plt.show()
 		
-p1(False)
+# p1(False)
 
 def NV_0():
 
@@ -1171,11 +1171,13 @@ def superpose_dir(ax):
 
 
 
-def Hamiltonian_NV_propre_base(B,E=3,D=2870) :
+def Hamiltonian_NV_propre_base(B,E=3,D=2870,affiche=False) :
 	#Unité naturelle : MHz,Gauss
 	B=np.array(B)
 	gamma=2.8
 	H=D*Sz**2+gamma*(B[0]*Sx+B[1]*Sy+B[2]*Sz)+E*(Sx.dot(Sx)-Sy.dot(Sy))
+	if affiche :
+		print(tabulate(sqrt(H.real**2+H.imag**2)))
 	return H
 
 def spin_NV_propre_base(B,gamma_las=1E-3,gamma_phonon=2E-4): #Attention : gamma en MHz
@@ -1228,9 +1230,6 @@ def torque_3nvx_1classe(amp):
 	# plt.show()
 	plt.savefig('torque une classe/simu torque 3 nvx 1 classe %iG.png'%amp)
 
-# for amp in np.arange(50,2050,50) :
-# 	torque_3nvx_1classe(amp)
-# 	print(amp)
 
 def torque_1classe_amplitude(theta):
 	amps=np.linspace(0,5000,200)
@@ -1255,7 +1254,6 @@ def torque_1classe_amplitude(theta):
 	plt.xlabel('theta dans le plan zOx')
 	plt.show()
 
-# torque_1classe_amplitude(0.3)
 
 def spin_3vx_4classes(B):
 	B=np.array(B)
@@ -1281,6 +1279,69 @@ def spin_3vx_4classes(B):
 		rho_0+=rho_0_base
 		spin+=Rretour[k].dot(spin_base)
 	return(spin.real,rho_0)	
+
+def rho_propre_base(B,gamma_las=1E-3,gamma_phonon=2E-4,affiche=False) :
+	H=Qobj(Hamiltonian_NV_propre_base(B,affiche=affiche))
+	val,vect=egvect(H)
+	if affiche :
+		print(val)
+		print(tabulate(vect.real**2+vect.imag**2))
+	dm=steadystate(H,make_collapse_list(gamma_las,gamma_phonon))
+	rho=np.array(dm)
+	return(rho)
+
+def PL_4classes(B,CR=False,gamma_las=1E-3,gamma_phonon=2E-4,normalized=True,affiche=False) :
+	B=np.array(B)
+	Rzplus=np.array([[sqrt(1/2),sqrt(1/2),0],[-sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+	Rzmoins=np.array([[sqrt(1/2),-sqrt(1/2),0],[sqrt(1/2),sqrt(1/2),0],[0,0,1]])
+
+	Rxplus=np.array([[1,0,0],[0,sqrt(1/3),sqrt(2/3)],[0,-sqrt(2/3),sqrt(1/3)]])
+	Rxmoins=np.array([[1,0,0],[0,sqrt(1/3),-sqrt(2/3)],[0,sqrt(2/3),sqrt(1/3)]])
+
+	Ryplus=np.array([[sqrt(1/3),0,sqrt(2/3)],[0,1,0],[-sqrt(2/3),0,sqrt(1/3)]])
+	Rymoins=np.array([[sqrt(1/3),0,-sqrt(2/3)],[0,1,0],[sqrt(2/3),0,sqrt(1/3)]])
+
+
+	R=Rxplus.dot(Rzplus)
+	Raller=[Rymoins.dot(Rzplus),Ryplus.dot(Rzplus),Rxplus.dot(Rzplus),Rxmoins.dot(Rzplus)]
+	Rretour=[Rzmoins.dot(Ryplus),Rzmoins.dot(Rymoins),Rzmoins.dot(Rxmoins),Rzmoins.dot(Rxplus)]
+	rho_0=0
+	for k in range(4) :
+		B_base=Raller[k].dot(B)
+		rho=rho_propre_base(B_base,gamma_las,gamma_phonon,affiche=affiche)
+		if affiche :
+			print(tabulate(rho.real))
+			print('\n\n')
+		rho_0+=rho[1,1].real
+	if normalized :
+		rho_0=rho_0*(gamma_las+3*gamma_phonon)/(gamma_las+gamma_phonon)
+	return(rho_0/4)
+
+
+Bval=3025/sqrt(3)
+B=np.array([Bval,Bval,Bval])
+Bt=np.array([5,-10,5])
+print(PL_4classes(B,affiche=True))
+
+
+def PL_plot_1() : #Je pense que ce qu'il me manque c'est le niveau excité. Ca explique pas trop pourquoi on verrait pas les +1 par contre.
+	Bs=np.linspace(0,1300,100)
+	Bt=np.array([1,-2,1])*5
+
+	PLs=[]
+	for Bval in Bs :
+		Bval=Bval/sqrt(3)
+		B=np.array([Bval,Bval,Bval]+Bt)
+		PLs+=[PL_4classes(B)]
+	plt.plot(Bs,PLs)
+
+	
+
+
+	plt.show()
+
+# PL_plot_1()
+
 
 def cart_to_spher(r):
 	x=r[0]
