@@ -71,7 +71,7 @@ It would indeed offer the opportunity to hyper-polarize these defects using the 
 %Cross-relaxation studies are more scarce using CVD doped diamonds.  
 
 Here, we use confocal laser microscopy to detect paramagnetic defects {\it via} the coupling to a high-density NV spin ensemble in a CVD-grown diamond.
-Fig. \ref{fig1} shows a schematics of the various paramagnetic defects that have been coupled to the nitrogen-vacancy center and detected optically in our study. These defects are the VH$^-$ and WAR1 defects, two spin-1 defects with comparable zero field splitting to the NV$^-$ center \citep{glover_hydrogen_2004, cruddace2007magnetic}, as well as $^{13}$C $1/2$-nuclear spin, through hyper-fine coupling with a secondary NV$^-$ center.
+Fig. \ref{fig1} shows a schematics of the various paramagnetic defects that have been coupled to the nitrogen-vacancy center and detected optically in our study. These defects are the VH$^-$ and WAR1 defects, two spin-1 defects with comparable zero field splitting than the NV$^-$ center \citep{glover_hydrogen_2004, cruddace2007magnetic}, as well as $^{13}$C spin $1/2$-nuclear spins, through hyperfine coupling with a secondary NV$^-$ center.
 The detection is realized by measuring the NV photoluminescence while performing magnetic field scans to resonantly enhance dipole-dipole interactions and observe cross-relaxations (CR).
 Cross-relaxation typically takes place when the electronic or nuclear spins of two atomic species exchange their polarizations via resonant magnetic dipole-dipole interactions. 
 If the spin of an NV center A is polarized and coupled to an unpolarized spin B with a much larger relaxation rate, it will lose part of its polarization at the expense of B and thus see a drop of its photoluminescence (PL) rate. 
@@ -104,9 +104,9 @@ Previous cross-relaxation studies with NV$^-$ centers have been mostly carried o
  Recent efforts in the doping processes have also made it possible to reach NV centers concentrations in the 3 to 5 ppm range in CVD grown samples \cite{Edmonds, TALLAIRE2020421, MINDARAVA2020182}, opening a path towards detecting other paramagnetic defects in CVD grown diamonds. 
 %these hydrogen-related complexes using cross-relaxation with NV centers.%Several impurities in CVD grown diamonds have been detected using Electron-Paramagnetic Resonance.  In order to purify diamond crystal and optimize their conduction and properties for prolonged qubit lifetimes. 
 %Extensive work has been done in the past twenty years to detect and characterize the various  that appear in EPR. 
-The sample we use in this study  correspond to the pink irradiated sample in \cite{TALLAIRE2020421}. It was grown using CVD with the addition of 500ppm of N$_2$0 to the H2/CH4 (96/4) gas phase.
-Then high energy (10MeV) electron irradiation at a fluence of $2\times18$ cm$^{-2}$ and at a temperature of 900 degrees celsius was realized,  giving a final concentration of NV$^-$ of about 4.6~ppm for an initial concentration of nitrogen in the sample of about 25~ppm.
-It was shown that in this sample the $T_2^*$ was not degraded after annealing, yet the NV density was large enough to enable concentration dependent longitudinal relaxation \cite{TALLAIRE2020421, jarmola_longitudinal_2015}.  
+The sample we use is the pink irradiated sample presented in \cite{TALLAIRE2020421}. It was grown using CVD with the addition of 500ppm of N$_2$0 to the H2/CH4 (96/4) gas phase.
+Then high energy (10MeV) electron irradiation at a fluence of $2\times18$ cm$^{-2}$ and at a temperature of 900 $^\circ$C was realized,  giving a final concentration of NV$^-$ of about 4.6~ppm. The initial concentration of nitrogen in the sample was about 25~ppm.
+It was shown that the $T_2^*$ was not degraded after annealing, yet the NV density was large enough to enable concentration dependent longitudinal relaxation \cite{TALLAIRE2020421, jarmola_longitudinal_2015}.  
 %It is well-known that when the NV concentration increases above 1 ppm, the longitudinal decay of NV centers is degraded. 
 %Furthermore, it has been observed that cross-relaxation amongst closely pack NVs of different classes can be observed.
 %It was postulated that such a degradation of the $T_1$ time came from the coupling of NV centers to other NV-related defects. 
@@ -119,34 +119,33 @@ In this study, we use a homebuilt confocal microscope that comprises a 1mW green
 \label{scan}
 \end{figure}
 Contrary to the more commonly employed $[ 111 ]$ direction, we scan the magnetic field along the diamond $[100]$ crystalline direction. 
-Looking at the diamond structure (bottom right in Fig.  \ref{fig1}), it can be noticed that, in this direction, the four possible projections of the NV centers (or any other $C_{3v}$ defect) along the magnetic field are identical. This means that a B field scan along this direction cannot make the transition energies of the different classes of NV centers cross. Under arbitrary angles, this could otherwise result in several low field PL features \cite{van_oort_optically_1991, akhmedzhanov_magnetometry_2019} that could mask cross-relaxation from other species and also reduce the CR contrast (see section 4 of the Supplementary Materials for data showing scans along the [111] direction). 
+Looking at the diamond structure (bottom right in Fig.  \ref{fig1}), it can be noticed that, in this direction, the projections of NV centers (or any other $C_{3v}$ defect) along the magnetic field are identical. This means the transition energies of the different classes of NV centers cannot cross under a B field scan along this direction. This could otherwise result in several low field PL features under arbitrary angles \cite{van_oort_optically_1991, akhmedzhanov_magnetometry_2019} that could mask cross-relaxation from other species and also reduce the CR contrast (see section 4 of the Supplementary Materials for data showing scans along the [111] direction). 
 The downside of this choice of the [100] direction is that at large amplitudes, the transverse component of the magnetic field depolarizes all classes of NVs, thus limiting the magnetic field range that can be employed and restricting this detection method to paramagnetic defects with zero-field splittings close to the NV center's.
 
 In order to identify the $[100]$ direction, we perform an angular scan of the magnetic field using a dual-axis goniometer (Thorlabs GNL20-Z8) that holds a permanent magnet at a fixed distance from the sample. 
 Fig. \ref{map}-a) shows the NV photoluminescence as a function of magnetic field direction, referenced by azimuthal and polar angles $(\phi, \theta)$ with respect to the $[100]$ direction, using the above described CVD-grown sample. The PL is seen to drop for particular values of the magnet angular coordinates that correspond to specific crystalline axes.
 Such a drop of the PL, also observed in
-\cite{van_oort_optically_1991, van_oort_cross-relaxation_1989, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, choi_depolarization_2017}, correspond to situation where the transitions of NV centers become degenerate. 
-The planes orthogonal to the [010], [001], [011], and [01$\bar 1$] directions are indicated by dashed lines and show the locus of the cross relaxation. These planes all cross on the [100] axis.
+\cite{van_oort_optically_1991, van_oort_cross-relaxation_1989, jarmola_longitudinal_2015, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, holliday_optical_1989, choi_depolarization_2017}, correspond to transitions of NV centers becoming degenerate. 
+The planes orthogonal to the [010], [001], [011], and [01$\bar 1$] directions are indicated by dashed lines and show the locus of the cross relaxation. They all cross on the [100] axis.
 The origin of these sharp changes in the photoluminescence was attributed to cross relaxation between polarized NV centers and rapidly decaying NV centers, so called fluctuators \cite{choi_depolarization_2017}, the precise origin of the latter remains unknown.
-The width of the CR features when the magnetic field crosses a plane perpendicularly was found to be compatible with the NV decoherence rate  ($\approx$ 6 MHz). The contrast is determined both by the fluctuating NV and polarized NV concentrations.
+The width of the CR features when the magnetic field crosses a plane perpendicularly, was found to be compatible with the NV decoherence rate  ($\approx$ 6 MHz). The contrast is determined both by the fluctuating NV and polarized NV concentrations.
 
 Such a map can in itself be useful for measuring magnetic fields without microwave \cite{akhmedzhanov_magnetometry_2019}. 
 It also enables to identify the crystalline axes. 
 To verify that the central line is the [100] axis, we realize microwave scans around the NV transitions. Away from the crystal planes, we consistently observe 8 ODMR lines coming from the four $| m_s=0\rangle$ to $| m_s=\pm1\rangle$ spin transitions of the \{111\}-oriented NV centers. On the planes orthogonal to the [010], [001], [011], and [01$\bar 1$] directions however, we expect degeneracies. 
 Fig. \ref{map}-b) shows an ODMR spectrum taken at $(\phi, \theta)=(3^\circ,3^\circ)$. As expected, at this position, two pairs of NV classes cross.
-Fig. \ref{map}-b) shows an ESR taken at the angle  $(\phi, \theta)=(0^\circ,0^\circ)$ showing only two features, as expected from a [100] axis. Using this goniometer, the magnetic field angle could be finely adjusted so that the four NV lines become fully degenerate along the $[100]$ direction with an error estimate of $\pm 0.5^\circ$.
+Fig. \ref{map}-b) shows an ESR taken at the angle  $(\phi, \theta)=(0^\circ,0^\circ)$ showing only two features, as expected from a [100] axis. Using this goniometer, the magnetic field angle could be finely adjusted so that the NV lines become fully degenerate along the $[100]$ direction with an error estimate of $\pm 0.5^\circ$.
 
 Fig. \ref{scan} shows the PL as a function of magnetic field amplitude along the $[ 100 ]$ direction, in the 15~G to 145~G range. 
 Calibration of the magnetic field amplitude was realized by applying microwave signals at varying frequencies in 2 MHz steps on several magnetic field scans. The microwave induced PL features in the scan are then used to relate the magnetic field to the applied voltage. 
-Three features appear in the overall PL evolution in this spectrum : one feature at 20~G,  56~G and 122~G. 
-For these data, the averaging was done for 24 hours, but the features appear already with a signal to noise ratio greater than 1 after 10 minutes.  
-We also note an overall drop of the PL, as a result of state mixing in the optically excited state \cite{DOHERTY20131}. 
-
+Three features appear in this spectrum : at 20~G,  56~G and 122~G. 
+Data averaging was done for 24 hours, but the features appear already with a signal to noise ratio greater than 1 after 10 minutes.  
+We also observe an overall drop of the PL as a result of state mixing in the optically excited state \cite{DOHERTY20131}. 
 To let the three salient features detach better from the spectrum, we fitted a 4th-order polynomial to the PL evolution, without the spectral bumps, and subtract it from the data. Further details on the fitting choices are provided in Sec.V of the Supplementary material.
 
-In order to attribute the three features to their respective defects, we run a similar scan (Section 1 in the Supplementary Materials) on a type Ib electron irradiated HPHT diamond crystal with a NV concentration expected to be in the 5-20 ppm range, in the same $[100]$ direction. Only the first feature appeared. 
-This observation guided us to search for CVD-related defects as good candidates for the last two features. Paramagnetic defects in CVD-grown diamonds have been extensively studied using EPR  \citep{Ashfold}. These studies demonstrate that hydrogen-related complex such as the NVH, VH, VH2 complexes can all be stable in diamond. Although their composition is not always known, several zero-field splittings $D$ can be found in the literature.
-Given the small difference between the NV transitions and the observed features, we only concentrate on the reported defects with ZFS that are close to the NV$^-$.
+In order to attribute the three features to their respective defects, we run a similar scan (Section 1 in the Supplementary Materials) on a type Ib electron irradiated HPHT diamond crystal with a NV concentration in the 5-20 ppm range. Only the first feature appeared. 
+This observation guided us to search for CVD-related defects as candidates for the last two features. Paramagnetic defects in CVD-grown diamonds have been extensively studied using EPR  \citep{Ashfold}. These studies demonstrate that hydrogen-related complex such as NVH, VH, VH2 can be stable in diamond. Although their compositions is not always known, several zero-field splittings $D$ can be found in the literature.
+Given the small difference between the NV transitions and the observed features, we only concentrate on reported defects with ZFS that are close to the NV$^-$.
 The middle column of table \ref{table}, shows the zero-field splitting for two such spin-1 defects found in \citep{cruddace2007magnetic}, namely the negatively charged hydrogen-vacancy (VH$^-$) and WAR1 defects. The latter was analyzed in EPR but its exact structure is unknown \citep{cruddace2007magnetic}.
 \begin{table}[htbp]
 \centering
@@ -162,14 +161,14 @@ WAR1 & 2466(60) & 2470(10) \\
 \end{tabular}
   \label{table}
 \end{table}
-Fig. \ref{energy-levels} shows the frequencies of the NV$^-$, the VH$^-$ and WAR1 spin transitions as a function of the magnetic field amplitude along the $[100]$ direction. Since the NV$^-$ and VH$^-$ are $C_{3v}$ defects, and the WAR1 is a pseudo-$C_{3v}$ defect \citep{cruddace2007magnetic}, all possible orientation are degenerate for this magnetic field orientation, giving only two lines corresponding to the $\ket{0} \to \ket{+1}$ and $\ket{0} \to \ket{-1}$ transitions. The points were the NV levels cross the other defects can give rise to cross-relaxation.
+Fig. \ref{energy-levels} shows the frequencies of the NV$^-$, the VH$^-$ and WAR1 spin transitions as a function of the magnetic field amplitude along the $[100]$ direction. Since the NV$^-$ and VH$^-$ are $C_{3v}$ defects, and the WAR1 is a pseudo-$C_{3v}$ defect \citep{cruddace2007magnetic}, all possible orientations are degenerate at this magnetic field orientation, giving only two lines corresponding to the $\ket{0} \to \ket{+1}$ and $\ket{0} \to \ket{-1}$ transitions. The points were the NV levels cross the other defects can give rise to cross-relaxation.
 
 Using this theoretical calculations, we find that the second peak in Fig. \ref{scan} coincides very well with a CR that would occur at the crossing between the $|m_s=0\rangle$ to $|m_s=-1\rangle$ NV transition and the $|m_s=0\rangle$ to $|m_s=+1\rangle$ VH$^-$ transition. 
-A gaussian fit to the feature in Fig. \ref{scan} enables us to extrapolate a value for $D=2694(5)$MHz that coincides very well to that of the VH$^-$ within the error margins indicated in \citep{cruddace2007magnetic}.
-The third peak at 122 G would correspond to a spin defect that has a $D=2470(10)$MHz that also matches well the one of the WAR1 defect. 
-The values of $D$ for these two defects and the error bars from our measurements are now included in the table \ref{table}.
+A gaussian fit to the feature in Fig. \ref{scan} enables us to extrapolate a value for $D=2694(5)$MHz that matches that of the VH$^-$ within the error margins indicated in \citep{cruddace2007magnetic}.
+The third peak at 122 G would correspond to a spin defect that has a $D=2470(10)$MHz that also matches the one of the WAR1 defect. 
+The values of $D$ for these two defects and the error bars from our measurements are included in the table \ref{table}.
 The error bars are estimated by taking into account the precision on the NV$^-$ ZFS, on the angle, on the magnetic field calibration and the precision of the fits. 
-We obtain a factor of 6 improvement over the precision reported in \citep{cruddace2007magnetic}. We thus attribute the second and third feature to cross relaxation between the NV center and the VH$^-$ and WAR1 defect. Scans along the [111] direction shown in the Supplementary Material also corroborate this conclusion.
+We obtain a factor of 6 improvement over the precision reported in \citep{cruddace2007magnetic} and attribute the second and third feature to cross relaxation between the NV center and the VH$^-$ and WAR1 defect. Scans along the [111] direction shown in the Supplementary Material also corroborate this conclusion.
 
 \begin{figure}[htbp]
 \centering
@@ -182,20 +181,19 @@ Using the results from \cite{simanovskaia_sidebands_2013}, we first intended to 
  $P_1$ centers have a zero-field splitting of only 100 MHz. In order to cross one of the two NV spin transitions at a magnetic field of 20 G, they would then have to be coupled off-resonantly to the spin of nearby NV centers. The resulting pair could then be coupled resonantly to a nearby polarized NV.
 The obtained eigenfrequencies of the dipolar coupled P$_1$-NV pair that we extracted were all inconsistent with the spectral positions of our observed peak within our spectral resolution error ($\approx$1G) (see Section 3 of the Supplementary Materials). This leads us to consider instead the nuclear spin of the $^{13}$C atoms as the most likely candidate.
 
-The nuclear spin of the $^{13}$C atoms do not have a ZFS and its gyromagnetic factor is four orders of magnitude lower than that of the electron. Here again, in order to give a CR contribution to the spectrum at modest magnetic fields, the nuclear spin of the $^{13}$C would first have to be strongly coupled to an NV center. The resulting pair could then be co-resonant with the spin transitions of a bare NV center, as depicted in Fig. 1. This situation can manifest itself when the nuclear spin of $^{13}$C atoms are a few shells distant from the nitrogen-vacancy centers. A strong hyperfine coupling rate of 130 MHz can for instance be reached with a $^{13}$C that is only one shell away from the NV center.  
+The nuclear spin of the $^{13}$C atoms do not have a ZFS and its gyromagnetic factor is four orders of magnitude lower than that of the electron. Here again, in order to give a CR contribution to the spectrum at modest magnetic fields, the nuclear spin of the $^{13}$C would first have to be strongly coupled to an NV center. The resulting pair could then be co-resonant with the spin transitions of a bare NV center, as depicted in Fig. 1. This situation can manifest itself when the nuclear spin of $^{13}$C atoms are a few shells away from the nitrogen-vacancy centers. A strong hyperfine coupling rate of 130 MHz can for instance be reached with a $^{13}$C that is only one shell away from the NV center.  
 In contrast, higher order shells have a maximum hyperfine coupling of 15 MHz \cite{smeltzer201113c} making them hard to distinguish from the inhomogeneous broadening.
 The modeling of this interaction is presented in the section 2 of the Supplementary Materials. The dotted lines in Fig. \ref{energy-levels} show the four transition frequencies of the first shell $^{13}$C coupled to an NV center. The crossings between the $|m_s=0\rangle$ to $|m_s=\pm 1\rangle$ NV transition and the four transitions of this  $^{13}$C-NV pair occur at magnetic field values around 20~G. 
 We added these four lines to the experimental spectrum shown in Fig. \ref{scan}. A good agreement is found between the magnetic field at which of these four transitions cross the NV and the broad 20~G feature, letting us conclude that it is the result of a CR between an unpolarized $^{13}$C-NV pair and a polarized NV center.
 
-Because the sample we use has a very well determined concentration of $^{13}$C (natural 1.1\% abundance), we can use the first CR peak to calibrate the concentration of VH$^-$ and WAR1 in our sample. There are three possible sites for a first-shell $^{13}$C-NV pair, so the concentration of $^{13}$C-NV pair is about 3.3\% that of the NV centers, i.e. $\sim$135~ppb. Comparing the area of the second and third peak to the first one, we find [VH$^-$]$\approx$195~ppb and [WAR1]$\approx$124~ppb. Using areas is here more relevant than using amplitudes because inhomogeneous spread dominates over the spin-spin interaction. Note that the  WAR1 concentration is probably undervalued due to state mixing in the NV centers at the NV-WAR1 CR.
+Because the sample we use has a very well determined concentration of $^{13}$C (natural 1.1\% abundance), we can use the first CR peak to calibrate the concentration of VH$^-$ and WAR1 in our sample. There are three possible sites for a first-shell $^{13}$C-NV pair, so the concentration of $^{13}$C-NV pair is about 3.3\% that of the NV centers, i.e. $\sim$135~ppb. Comparing the area of the second and third peak to the first one, we find [VH$^-$]$\approx$195~ppb and [WAR1]$\approx$124~ppb. Using areas is here more relevant than using amplitudes because inhomogeneous spread overwhelms the spin-spin interaction. Note that the WAR1 concentration is probably underestimated due to state mixing in the NV centers at the NV-WAR1 CR magnetic field.
 
 In conclusion, we demonstrated all-optical detection of paramagnetic species in a diamond grown by the Chemical-Vapor-Deposition method. 
-Using magnetic field scans along the [100] direction, we identified 3-body interactions between NV centers and $^{13}$C-NV pairs, and cross-relaxations between the spin of NV centers and the VH$^-$ and the WAR1 defects, by coupling them to NV centers. Our results offer prospects for more detailed studies of CVD-grown processes as well as for realizing quantum networks with these newly coupled spins.
-
-\section*{Acknowledgments}
+We identified 3-body interactions between the spin of NV centers and $^{13}$C-NV pairs as well as cross-relaxations between NV centers and the VH$^-$ and WAR1 defects. Our results offer prospects for more detailed studies of CVD-grown processes as well as for realizing quantum networks with these newly coupled spins.
+\begin{acknowledgments}
 We would like to thank Neil Manson and Carlos Meriles for fruitful discussions. 
 The authors would also like to thank SIRTEQ for funding. GH also acknowledges funding by the French National Research Agency (ANR) through the T-ERC project QUOVADIS. 
-
+\end{acknowledgments}
 
 
 %merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
