@@ -9,7 +9,7 @@ import nidaqmx.system
 
 import numpy as np
 
-
+import visa
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import (Qt, QTimer)
 from PyQt5.QtWidgets import (QWidget, QPushButton, 
@@ -30,19 +30,21 @@ class Photon_Counter(QMainWindow):
 
         self.dt=0.03 # value in s
 
-        
+        self.refresh_rate=0.1
 
 
         #Total number of points in the plot
         self.N=200
+        self.frequency=2865 #MHz
+        self.power=10 #dBm
 
         
-
+        self.n_glissant=10
         
 
         ##Creation of the graphical interface##
 
-        self.setWindowTitle("Photon Counter")
+        self.setWindowTitle("PL AM")
 
         self.main = QWidget()
         self.setCentralWidget(self.main)
@@ -90,16 +92,34 @@ class Photon_Counter(QMainWindow):
 
         self.ymax=0 # for the semi-autoscale, ymax needs to have a memory
 
+
+
         Vbox_gauche.addWidget(self.labelPL)
         Vbox_gauche.addWidget(self.PL)
         Vbox_gauche.addStretch(1)
         Vbox_gauche.addWidget(self.cbsemiscale)
         Vbox_gauche.addWidget(self.cbdownautoscale)
         Vbox_gauche.addStretch(1)
+        self.labelfrequency=QLabel("frequency (MHz)")
+        self.lectfrequency=QLineEdit(str(self.frequency))
+        Vbox_gauche.addWidget(self.labelfrequency)
+        Vbox_gauche.addWidget(self.lectfrequency)
+        self.labelpower=QLabel("power (dBm)")
+        self.lectpower=QLineEdit(str(self.power))
+        Vbox_gauche.addWidget(self.labelpower)
+        Vbox_gauche.addWidget(self.lectpower)
+        Vbox_gauche.addStretch(1)
         Vbox_gauche.addWidget(self.labeldt)
         Vbox_gauche.addWidget(self.textdt)
         Vbox_gauche.addWidget(self.labelN)
         Vbox_gauche.addWidget(self.textN)
+
+        self.labeln_glissant=QLabel("n_glissant (min=2)")
+        self.lectn_glissant=QLineEdit(str(self.n_glissant))
+        Vbox_gauche.addWidget(self.labeln_glissant)
+        Vbox_gauche.addWidget(self.lectn_glissant)
+
+
 
 
         
@@ -116,8 +136,8 @@ class Photon_Counter(QMainWindow):
         ## Matplotlib Setup ##
 
         self.dynamic_ax= self.dynamic_canvas.figure.subplots()
-        self.t=np.zeros(self.N+1) #Put to self.n if you want to start at 0
-        self.y=np.zeros(self.N+1)
+        self.t=np.zeros(self.N) #Put to self.n if you want to start at 0
+        self.y=np.zeros(self.N)
         
         self.dynamic_line,=self.dynamic_ax.plot(self.t, self.y)
 
@@ -151,30 +171,33 @@ class Photon_Counter(QMainWindow):
 
         self.y=np.roll(self.y,-1) #free a space at the end of the curve
 
-        self.sr.read_many_sample_double(self.data,number_of_samples_per_channel=len(self.data)) #read the N value during dt
-        
+        V=self.tension.read(self.n_glissant)        
 
-        self.y[-1]=(self.data[1]-self.data[0])/self.dt
-
-
-        self.PL.setText("%3.2E" % self.y[-1])
-   
-        self.dynamic_line.set_ydata(self.y)
+        V_avg=sum(V)/self.n_glissant
+        self.y[-1]=V_avg
 
 
-        if self.semi_auto_scale :
-            self.ymax=max(self.ymax,max(self.y))
-        else : 
-            self.ymax=max(self.y)
+        if time.time()-self.time_last_refresh>self.refresh_rate :
+            self.time_last_refresh=time.time()
 
-        if self.ymin_auto_scale :
-            self.ymin=min(self.y)
-        else :
-            self.ymin=0
-        
+            self.PL.setText("%3.2E" % self.y[-1])
+       
+            self.dynamic_line.set_ydata(self.y)
 
-        self.dynamic_ax.set_ylim([self.ymin,self.ymax])    
-        self.dynamic_canvas.draw()
+
+            if self.semi_auto_scale :
+                self.ymax=max(self.ymax,max(self.y))
+            else : 
+                self.ymax=max(self.y)
+
+            if self.ymin_auto_scale :
+                self.ymin=min(self.y)
+            else :
+                self.ymin=0
+            
+
+            self.dynamic_ax.set_ylim([self.ymin,self.ymax])    
+            self.dynamic_canvas.draw()
 
         
 
@@ -188,43 +211,36 @@ class Photon_Counter(QMainWindow):
         #Read integration input values
         self.dt=np.float(self.textdt.text())
         self.N=np.int(self.textN.text())
+        self.n_glissant=np.int(self.lectn_glissant.text())
+        
+        self.frequency=float(self.lectfrequency.text())
+        self.power=float(self.lectpower.text())
+
+        self.sampling_rate=1/self.dt*self.n_glissant
 
         #Sample Clock creation (On counter1)
 
-        self.sample_clock=nidaqmx.Task()
-        self.sample_clock.co_channels.add_co_pulse_chan_freq('Dev1/ctr1', freq=1/self.dt)
-        self.sample_clock.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS) #Else the clock sends a single pulse
-        self.sample_clock.start()
+        self.config_uW()
 
+        self.tension=nidaqmx.Task()
+        self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+        self.tension.timing.cfg_samp_clk_timing(self.sampling_rate,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N)
         
-        #Task Creation
-        self.task=nidaqmx.Task()
-        self.task.ci_channels.add_ci_count_edges_chan('Dev1/ctr0')
-        self.task.timing.cfg_samp_clk_timing(1/self.dt,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=2)
-        self.sr=nidaqmx.stream_readers.CounterReader(self.task.in_stream)
-        
-        #Buffer creation
-        self.data=np.zeros(2)
+ 
               
         #Adjust time axis
-        self.t=np.arange(0,self.N*self.dt,self.dt)
-        self.dynamic_line.set_xdata(self.t)
+        self.t=np.linspace(0,self.N*self.dt,self.N)
+        self.dynamic_line.set_data(self.t,self.y)
         xmax=max(self.t)
         self.dynamic_ax.set_xlim([0,xmax])
 
         
-
+        self.time_last_refresh=time.time()
 
         #Start the task, then the timer
-        self.task.start()      
+        self.tension.start()      
         self.timer.start() 
 
-
-        #Adjust number of points
-        if self.N != len(self.y) :
-            self.sr.read_many_sample_double(self.data,number_of_samples_per_channel=len(self.data))
-            init_value=(self.data[1]-self.data[0])/self.dt
-            self.y=np.ones(self.N)*init_value
 
     def stop_measure(self):
         #Stop the measuring, clear the tasks on both counters
@@ -233,15 +249,42 @@ class Photon_Counter(QMainWindow):
         except :
             pass
         try :
-            self.task.close()
+            self.tension.close()
         except :
             pass
         try :
-            self.sample_clock.close()
+            self.PG.write('*RST')
+            self.PG.write('*WAI')
         except :
             pass
         self.stop.setEnabled(False)
         self.start.setEnabled(True)
+
+    def config_uW(self):
+
+        #TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR
+        #USB0::0x0AAD::0x0054::110140::0::INSTR
+        resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+
+        rm = visa.ResourceManager()
+        self.PG = rm.open_resource( resourceString4 )
+        self.PG.write_termination = '\n'
+        self.PG.timeout=8000
+
+        self.PG.clear()  # Clear instrument io buffers and status
+        self.PG.write('*WAI')
+        self.PG.write('FREQ %f MHz'%self.frequency)
+        self.PG.write('*WAI')
+        self.PG.write('POW %f dBm'%self.power)
+        self.PG.write('*WAI')
+        self.PG.write(':SOUR:AM:SOUR EXT')
+        self.PG.write('*WAI')
+        self.PG.write(':SOUR:AM:DEPT 50')
+        self.PG.write('*WAI')
+        self.PG.write(':SOUR:AM:STATe ON')
+        self.PG.write('*WAI')       
+        self.PG.write('OUTP ON')
+        self.PG.write('*WAI')
         
         
 

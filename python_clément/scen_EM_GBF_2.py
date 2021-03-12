@@ -29,7 +29,7 @@ class Photon_Counter(QMainWindow):
 		super().__init__()
 		
 
-		self.f_cycle=1
+		self.f_cycle=1 # ATTENTION : régler le GBF à une fréquence plus rapide (genre 1.05 Hz)
 		self.n_acq=1000
 		self.refresh_rate=0.1
 
@@ -243,6 +243,7 @@ class Photon_Counter(QMainWindow):
 			self.repeat+=1
 
 		if time.time()-self.time_last_refresh>self.refresh_rate :
+			self.time_last_refresh=time.time()
 			self.dynamic_line.set_ydata(self.y)
 			ymin=min(self.y)
 			ymax=max(self.y)
@@ -255,7 +256,7 @@ class Photon_Counter(QMainWindow):
 			self.dynamic_ax.figure.canvas.draw()
 
 			self.labelIter.setText("iter # %i"%self.repeat)
-			self.time_last_refresh=time.time()
+			
 	 
 
 	def stop_measure(self):

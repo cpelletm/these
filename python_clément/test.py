@@ -77,7 +77,7 @@ def digital_out():
 		while not task.is_task_done() :
 			pass
 
-digital_out()
+# digital_out()
 		
 def do2() :
 	with nidaqmx.Task() as task:
@@ -985,16 +985,6 @@ def trig_gen_courant(): #on a pas acheté l'option...
 	print(PG.query('SYSTem:ERRor?'))
 	print(PG.query('SYSTem:ERRor?'))
 
-<<<<<<< HEAD
-def test_mask():
-	a=np.arange(10)
-	mask=np.ones(len(a))
-	mask[2:5]=0
-	mx=np.ma.masked_array(a,mask)
-	print(mx)
-
-test_mask()
-=======
 def TD_math():
 	x=np.linspace(-5,5,300)
 	y1=np.cos(x)**4
@@ -1035,5 +1025,96 @@ def matrice_pas_carree():
 	m=[a,b]
 	m2=np.array(m)
 	print(m,m2)
-matrice_pas_carree()
->>>>>>> be3989b34e65083d57739d74178ac2999ffdf446
+
+def Micro_onde_13GHz():
+	resourceString4 = 'USB0::0x0AAD::0x0054::182239::INSTR'
+	rm = visa.ResourceManager()
+	PG = rm.open_resource( resourceString4 )
+	rm = visa.ResourceManager()
+	PG.write_termination = '\n'
+	PG.timeout=5000
+	idn_response = PG.query('*IDN?')  # Query the Identification string
+	print ('Hello, I am ' + idn_response)
+	freq=2870
+	puissance=0
+	PG.write('FREQ %f MHz'%freq)
+	PG.write('*WAI')
+
+	PG.write('POW %f dBm'%puissance)
+	PG.write('*WAI')
+
+	PG.write('OUTP ON') #OFF/ON pour allumer éteindre la uW
+	PG.write('*WAI')   
+	idn_response = PG.query('*IDN?')  # Query the Identification string
+
+	PG.write('*RST')
+	PG.write('*WAI')  
+	print ('Hello, I am ' + idn_response)
+
+def nb_photons(longueur_donde,puissance):
+	h=6.63E-34
+	c=3E8
+	f=c/(longueur_donde*1E-9)
+	E_phot=h*f
+	nb_phot=puissance/E_phot
+	print('%e'%nb_phot)
+	return(nb_phot)
+
+def test_com_lockin():
+	rm = visa.ResourceManager()
+	itc4 = rm.open_resource("COM1")
+	print(itc4.query("ID"))
+
+def trig_extern():
+
+	with nidaqmx.Task() as tension :
+		tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+		tension.timing.cfg_samp_clk_timing(1000,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=1000)
+
+		tension.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/PFI0')
+		tension.triggers.start_trigger.retriggerable=True
+
+
+
+		tension.start()
+		y=tension.read(1000)
+		plt.plot(y)
+		y=tension.read(1000)
+		y=np.array(y)+0.5
+		plt.plot(y)
+
+
+	plt.show()
+
+def trig_extern_PL():
+
+
+	f_acq=1000
+	n_acq=1000
+	with nidaqmx.Task() as sample_clock:
+		with nidaqmx.Task() as apd:
+			sample_clock.co_channels.add_co_pulse_chan_freq('Dev1/ctr1', freq=f_acq)
+			apd.ci_channels.add_ci_count_edges_chan('Dev1/ctr0') 
+
+			sample_clock.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.FINITE,samps_per_chan=n_acq)
+			apd.timing.cfg_samp_clk_timing(f_acq,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=n_acq)
+
+			
+
+
+			sample_clock.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/PFI0')
+			sample_clock.triggers.start_trigger.retriggerable=True
+
+			sample_clock.start()
+			apd.start()
+
+			y1=apd.read(1000)
+			y2=apd.read(1000)
+			plt.plot(y1+y2)
+
+
+
+
+	plt.show()
+
+trig_extern_PL()

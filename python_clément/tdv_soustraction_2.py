@@ -31,21 +31,22 @@ class Photon_Counter(QMainWindow):
 		
 
 
-		self.n_points=50
+		self.n_points=80
 		self.f_uW=2.865
-		self.level=20 #dBm
-		self.time_acq=1E-3 #in s
+		self.level=15 #dBm
+		self.time_acq=5E-4 #in s
 
-		self.time_polarization=2E-4 #in s
-		self.time_read=2E-4 #in s
-		self.time_pulse_uW=20E-6 #in s. The pulse time might not pe precise
-		self.n_min_wait=2 #n_wait = l'unité de temps d'attente (le dt entre chaque point du dark time). n_min_wait dis à combien de dt est-ce qu'on commence, parce qu'il y a des pb si le temps d'attente est plus court que la pulse uw
+		self.time_polarization=2.5E-4 #in s
+		self.time_read=2.5E-4 #in s
+		self.time_pulse_uW=10E-6 #in s. The pulse time might not pe precise
+		self.n_min_wait=1 #n_wait = l'unité de temps d'attente (le dt entre chaque point du dark time). n_min_wait dis à combien de dt est-ce qu'on commence, parce qu'il y a des pb si le temps d'attente est plus court que la pulse uw
+		#§ATTENTION : n_min_wait ne fonctionne pas pour l'instant (pb d'indices dans PL_indices). Laisser à 1
 
 		self.refresh_rate=0.1 #Screen max refresh rate (in s), below 0.1 is probably too fast
 
 
 
-		self.sampling_rate=1E5
+		self.sampling_rate=5E5
 
 		self.n_pulse=int(self.time_pulse_uW*self.sampling_rate)
 		if self.n_pulse < 1 :
@@ -406,22 +407,22 @@ class MyToolbar(NavigationToolbar): #Modification of the toolbar to save data wi
 										 start, "Images (*.png)")
 
 		data=[]
-        lmax=0
-        for ax in self.canvas.figure.get_axes() :
-            for line in ax.get_lines() :
-                if len(line._x)>lmax :
-                    lmax=len(line._x)
+		lmax=0
+		for ax in self.canvas.figure.get_axes() :
+			for line in ax.get_lines() :
+				if len(line._x)>lmax :
+					lmax=len(line._x)
 
-        for ax in self.canvas.figure.get_axes() :
-            for line in ax.get_lines() :
-                x=list(line._x)
-                if len(x) < lmax :
-                    x+=[-1]*(lmax-len(x))
-                y=list(line._y)
-                if len(y) < lmax :
-                    y+=[-1]*(lmax-len(y))
-                data+=[x]
-                data+=[y]
+		for ax in self.canvas.figure.get_axes() :
+			for line in ax.get_lines() :
+				x=list(line._x)
+				if len(x) < lmax :
+					x+=[-1]*(lmax-len(x))
+				y=list(line._y)
+				if len(y) < lmax :
+					y+=[-1]*(lmax-len(y))
+				data+=[x]
+				data+=[y]
 
 		fdataname=fname[:-4]+".txt"
 		with open(fdataname,'w') as f: #Needs an update if the lines have differents sizes

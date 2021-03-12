@@ -17,14 +17,14 @@ n_debug=0
 resourceString1 = 'TCPIP::192.168.2.101::INSTR'  # Standard LAN connection (also called VXI-11)
 resourceString2 = 'TCPIP::192.168.2.101::hislip0'  # Hi-Speed LAN connection - see 1MA208
 resourceString3 = 'GPIB::20::INSTR'  # GPIB Connection
-resourceString4 = 'USB0::0x0AAD::0x0054::110693::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+resourceString4 = 'USB0::0x0AAD::0x0054::182239::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
 rm = visa.ResourceManager()
 PG = rm.open_resource( resourceString4 )
 #print(dir(PG))
 PG.write_termination = '\n'
 print(PG.query('SYSTem:ERRor:NEXT?')+'n_debug=%i'%n_debug)
-PG.clear()  # Clear instrument io buffers and status
+# PG.clear()  # Clear instrument io buffers and status
 
 idn_response = PG.query('*IDN?')  # Query the Identification string
 print ('Hello, I am ' + idn_response)
@@ -70,7 +70,7 @@ freq_list,pow_list=create_list_freq(2.8,2.95,0,151)
 PG.write(freq_list)
 PG.write('*WAI')
 print(PG.query('SYSTem:ERRor:NEXT?')+'n_debug=%i'%n_debug)
-n_debug+=1
+n_debug+=1 #¶5
 PG.write(pow_list)
 PG.write('*WAI')
 print(PG.query('SYSTem:ERRor:NEXT?')+'n_debug=%i'%n_debug)
@@ -90,7 +90,7 @@ n_debug+=1
 PG.write('LIST:MODE AUTO')
 PG.write('*WAI')
 print(PG.query('SYSTem:ERRor:NEXT?')+'n_debug=%i'%n_debug)
-n_debug+=1
+n_debug+=1 #10
 
 PG.write('SOURce:LIST:TRIGger:SOURce SINGle')
 PG.write('*WAI')
@@ -106,7 +106,7 @@ n_debug+=1
 PG.write('SOUR:LIST:TRIG:EXEC')
 PG.write('*WAI')
 print(PG.query('SYSTem:ERRor:NEXT?')+'n_debug=%i'%n_debug)
-n_debug+=1
+n_debug+=1 #13
 
 
 time.sleep(2)

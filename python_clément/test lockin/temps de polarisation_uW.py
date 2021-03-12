@@ -82,7 +82,7 @@ class Photon_Counter(QMainWindow):
         #Timing Parameter ##
         #The program aquires the total number of photons at a rate defined by real_sampling_rate, but will only display an average of it every dt
 
-        self.unit=2e-6
+        self.unit=1e-3
         self.time_pola=100
         self.time_wait=200
         self.time_read=200
@@ -95,7 +95,6 @@ class Photon_Counter(QMainWindow):
 
      
         self.refresh_rate=0.1  
-        self.time_last_refresh=time.time()
 
         
 
@@ -225,8 +224,8 @@ class Photon_Counter(QMainWindow):
         self.dt=self.unit
         self.sampling_rate=1/self.dt
 
-        self.x=np.arange(self.N_tot-1)*self.dt
-        self.y=np.zeros(self.N_tot-1)
+        self.x=np.arange(self.N_tot)*self.dt
+        self.y=np.zeros(self.N_tot)
         xmin=min(self.x)
         xmax=max(self.x)
         self.dynamic_ax.set_xlim([xmin,xmax]) 
@@ -235,28 +234,27 @@ class Photon_Counter(QMainWindow):
         self.data=np.zeros(self.N_tot)
 
         self.N_iter=1
-        
+        self.time_last_refresh=time.time()
 
     def update_canvas(self):       
         ##Update the plot and the value of the PL ##
 
-        self.sr.read_many_sample_double(self.data,number_of_samples_per_channel=len(self.data)) #read the N value during dt
       
 
-        PL=(self.data[1:]-self.data[:-1])*self.sampling_rate
+        PL=np.array(self.tension.read(self.N_tot))
 
 
-        
+        print('tutu')
         if min(PL) >= 0 :
             self.y=PL/self.N_iter+self.y*(1-1/self.N_iter)
             self.N_iter+=1
+            print('toto')
 
         if self.normalize_cb.isChecked() :
             yplot=self.y/max(self.y)
         else :
             yplot=self.y
         if time.time()-self.time_last_refresh>self.refresh_rate :
-            self.time_last_refresh=time.time()
             self.dynamic_line.set_ydata(yplot)
             y_relevant=list(yplot[:self.time_pola])+list(yplot[self.time_pola+self.time_wait+1:])
             ymax=max(y_relevant)
@@ -264,7 +262,7 @@ class Photon_Counter(QMainWindow):
             self.dynamic_ax.set_ylim([ymin,ymax])        
             self.dynamic_ax.figure.canvas.draw()
             self.labelIter.setText("iter # %i"%self.N_iter)
-            
+            self.time_last_refresh=time.time()
 
 
     def start_measure(self):
@@ -274,13 +272,9 @@ class Photon_Counter(QMainWindow):
 
         #Read parameters
         self.update_value()
-        # self.config_uW()
+        self.config_uW()
         #Sample Clock creation (On counter1)
 
-        self.sample_clock=nidaqmx.Task()
-        self.sample_clock.co_channels.add_co_pulse_chan_freq('Dev1/ctr1', freq=self.sampling_rate)
-        self.sample_clock.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS) #Else the clock sends a single pulse
-        self.sample_clock.start()
 
 
         
@@ -289,26 +283,21 @@ class Photon_Counter(QMainWindow):
 
 
         
-
-        #Counter creation
-        self.counter=nidaqmx.Task()
-        self.counter.ci_channels.add_ci_count_edges_chan('Dev1/ctr0')
-        self.counter.timing.cfg_samp_clk_timing(self.sampling_rate,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N_tot)
-        self.sr=nidaqmx.stream_readers.CounterReader(self.counter.in_stream)
-
-        self.counter.triggers.arm_start_trigger.dig_edge_src='/Dev1/100kHzTimebase'
-        self.counter.triggers.arm_start_trigger.trig_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE
-
+        self.tension=nidaqmx.Task()
+        self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+        self.tension.timing.cfg_samp_clk_timing(self.sampling_rate,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N_tot)
 
         
         
         #Pulse signal creation
         self.pulsed=nidaqmx.Task()
-        self.pulsed.do_channels.add_do_chan('Dev1/port0/line2')
-        self.pulsed.timing.cfg_samp_clk_timing(self.sampling_rate,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N_tot)
-
-        self.pulsed.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/Ctr0ArmStartTrigger') 
+        self.pulsed.do_channels.add_do_chan('Dev1/port0/line3')
+        self.pulsed.timing.cfg_samp_clk_timing(self.sampling_rate,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N_tot)
         self.pulsed.write(self.signal)
+
+        self.tension.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/do/StartTrigger')
+
+        self.tension.start()
         self.pulsed.start()
 
         
@@ -320,11 +309,12 @@ class Photon_Counter(QMainWindow):
     def config_uW(self):
 
 
-        resourceString4 = 'USB0::0x0AAD::0x0054::110693::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+        resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
         rm = visa.ResourceManager()
         self.PG = rm.open_resource( resourceString4 )
         self.PG.write_termination = '\n'
+        self.PG.timeout=8000
 
         self.PG.clear()  # Clear instrument io buffers and status
         self.PG.write('*WAI')
@@ -333,6 +323,12 @@ class Photon_Counter(QMainWindow):
         self.PG.write('*WAI')
 
         self.PG.write('POW %f dBm'%self.puissance)
+        self.PG.write('*WAI')
+
+        self.PG.write(':SOUR:AM:SOUR EXT')
+        self.PG.write('*WAI')
+
+        self.PG.write(':SOUR:AM:STATe ON')
         self.PG.write('*WAI')
 
         self.PG.write('OUTP ON') #OFF/ON pour allumer éteindre la uW
@@ -345,15 +341,11 @@ class Photon_Counter(QMainWindow):
         except :
             pass
         try :
-            self.sample_clock.close()
-        except :
-            pass
-        try :
             self.pulsed.close()
         except :
             pass
         try :
-            self.counter.close()
+            self.tension.close()
         except :
             pass
         try :
@@ -362,8 +354,8 @@ class Photon_Counter(QMainWindow):
         except :
             pass
         with nidaqmx.Task() as pulsed :
-            pulsed.do_channels.add_do_chan('Dev1/port0/line2')
-            pulsed.write(True)
+            pulsed.do_channels.add_do_chan('Dev1/port0/line3')
+            pulsed.write(False)
         self.stop.setEnabled(False)
         self.start.setEnabled(True)
         

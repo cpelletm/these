@@ -16,8 +16,10 @@ class Photon_Counter(QMainWindow):
 		self.setCentralWidget(self.main)
 		Vbox_gauche = QVBoxLayout()
 		Vbox_right = QVBoxLayout()
+		Vbox_right2 = QVBoxLayout()
 		layout.addLayout(Vbox_gauche)
 		layout.addLayout(Vbox_right)
+		layout.addLayout(Vbox_right2)
 		self.main.setLayout(layout)
 
 		self.frequency=2800
@@ -42,11 +44,20 @@ class Photon_Counter(QMainWindow):
 		Vbox_right.addWidget(self.start)
 		Vbox_right.addWidget(self.stop)
 
+		self.AM_on=QPushButton('AM On')
+		self.AM_off=QPushButton('AM off')
+		Vbox_right2.addWidget(self.AM_on)
+		Vbox_right2.addWidget(self.AM_off)
+
 		self.stop.setEnabled(False)
 		self.start.setEnabled(True) 
 		self.start.clicked.connect(self.open_uW)
 		self.stop.clicked.connect(self.close_uW)
+		self.AM_on.clicked.connect(self.open_AM)
+		self.AM_off.clicked.connect(self.close_AM)
 
+		#uW réseau : TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR
+		# USB0::0x0AAD::0x0054::110140::0::INSTR
 		resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
 		rm = visa.ResourceManager()
@@ -77,6 +88,19 @@ class Photon_Counter(QMainWindow):
 		self.PG.write('*WAI')
 		self.stop.setEnabled(False)
 		self.start.setEnabled(True) 
+
+	def open_AM(self):
+		self.PG.write(':SOUR:AM:SOUR EXT')
+		self.PG.write('*WAI')
+		self.PG.write(':SOUR:AM:DEPT 50')
+		self.PG.write('*WAI')
+		self.PG.write(':SOUR:AM:STATe ON')
+		self.PG.write('*WAI')  
+
+	def close_AM(self):
+		self.PG.write(':SOUR:AM:STATe OFF')
+		self.PG.write('*WAI') 
+	
 		
 
 qapp = QApplication(sys.argv)

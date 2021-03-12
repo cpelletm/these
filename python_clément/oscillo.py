@@ -29,7 +29,8 @@ class Photon_Counter(QMainWindow):
         #The program aquires the total number of photons at a rate defined by real_sampling_rate, but will only display an average of it every dt
 
         self.dt=0.03 # value in s
-
+        self.refresh_rate=0.1
+        self.time_last_refresh=time.time()
         
 
 
@@ -42,7 +43,7 @@ class Photon_Counter(QMainWindow):
 
         ##Creation of the graphical interface##
 
-        self.setWindowTitle("Photon Counter")
+        self.setWindowTitle("Oscillo")
 
         self.main = QWidget()
         self.setCentralWidget(self.main)
@@ -149,32 +150,34 @@ class Photon_Counter(QMainWindow):
         ##Update the plot and the value of the PL ##
 
 
-        self.y=np.roll(self.y,-1) #free a space at the end of the curve
+        self.y=np.roll(self.y,-2) #free a space at the end of the curve
 
-        self.sr.read_many_sample_double(self.data,number_of_samples_per_channel=len(self.data)) #read the N value during dt
-        
+        V=self.tension.read(2)        
 
-        self.y[-1]=(self.data[1]-self.data[0])/self.dt
-
-
-        self.PL.setText("%3.2E" % self.y[-1])
-   
-        self.dynamic_line.set_ydata(self.y)
+        self.y[-2]=V[0]
+        self.y[-1]=V[1]
 
 
-        if self.semi_auto_scale :
-            self.ymax=max(self.ymax,max(self.y))
-        else : 
-            self.ymax=max(self.y)
+        if time.time()-self.time_last_refresh>self.refresh_rate :
+            self.time_last_refresh=time.time()
+            self.PL.setText("%3.2E" % self.y[-1])
+       
+            self.dynamic_line.set_ydata(self.y)
 
-        if self.ymin_auto_scale :
-            self.ymin=min(self.y)
-        else :
-            self.ymin=0
-        
 
-        self.dynamic_ax.set_ylim([self.ymin,self.ymax])    
-        self.dynamic_canvas.draw()
+            if self.semi_auto_scale :
+                self.ymax=max(self.ymax,max(self.y))
+            else : 
+                self.ymax=max(self.y)
+
+            if self.ymin_auto_scale :
+                self.ymin=min(self.y)
+            else :
+                self.ymin=0
+            
+
+            self.dynamic_ax.set_ylim([self.ymin,self.ymax])    
+            self.dynamic_canvas.draw()
 
         
 
@@ -188,27 +191,20 @@ class Photon_Counter(QMainWindow):
         #Read integration input values
         self.dt=np.float(self.textdt.text())
         self.N=np.int(self.textN.text())
+        self.sampling_rate=1/self.dt
 
         #Sample Clock creation (On counter1)
 
-        self.sample_clock=nidaqmx.Task()
-        self.sample_clock.co_channels.add_co_pulse_chan_freq('Dev1/ctr1', freq=1/self.dt)
-        self.sample_clock.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS) #Else the clock sends a single pulse
-        self.sample_clock.start()
-
+        self.tension=nidaqmx.Task()
+        self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+        self.tension.timing.cfg_samp_clk_timing(self.sampling_rate,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N)
         
-        #Task Creation
-        self.task=nidaqmx.Task()
-        self.task.ci_channels.add_ci_count_edges_chan('Dev1/ctr0')
-        self.task.timing.cfg_samp_clk_timing(1/self.dt,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=2)
-        self.sr=nidaqmx.stream_readers.CounterReader(self.task.in_stream)
-        
-        #Buffer creation
-        self.data=np.zeros(2)
+ 
               
         #Adjust time axis
-        self.t=np.arange(0,self.N*self.dt,self.dt)
-        self.dynamic_line.set_xdata(self.t)
+        self.t=np.linspace(0,self.N*self.dt,self.N)
+        self.y=np.zeros(self.N)
+        self.dynamic_line.set_data(self.t,self.y)
         xmax=max(self.t)
         self.dynamic_ax.set_xlim([0,xmax])
 
@@ -216,15 +212,9 @@ class Photon_Counter(QMainWindow):
 
 
         #Start the task, then the timer
-        self.task.start()      
+        self.tension.start()      
         self.timer.start() 
 
-
-        #Adjust number of points
-        if self.N != len(self.y) :
-            self.sr.read_many_sample_double(self.data,number_of_samples_per_channel=len(self.data))
-            init_value=(self.data[1]-self.data[0])/self.dt
-            self.y=np.ones(self.N)*init_value
 
     def stop_measure(self):
         #Stop the measuring, clear the tasks on both counters
@@ -233,11 +223,7 @@ class Photon_Counter(QMainWindow):
         except :
             pass
         try :
-            self.task.close()
-        except :
-            pass
-        try :
-            self.sample_clock.close()
+            self.tension.close()
         except :
             pass
         self.stop.setEnabled(False)

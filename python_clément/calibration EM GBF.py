@@ -37,10 +37,10 @@ class Photon_Counter(QMainWindow):
 
 
        
-        self.folder_path='D:/DATA/20200821/Calibration EM/'
-        self.uW_freqs=np.linspace(2870,3150,200)
-        self.uW_power=10
-        self.acq_per_freq=1000
+        self.folder_path='D:/DATA/20210125/Adamas 8/Calibration EM/'
+        self.uW_freqs=np.linspace(2870,2780,19)
+        self.uW_power=5
+        self.acq_per_freq=100
 
         self.n_total_freq=len(self.uW_freqs)
         self.n_current_freq=0
@@ -97,7 +97,7 @@ class Photon_Counter(QMainWindow):
         self.tension_plot_line,=self.tension_plot_ax.plot(self.t, self.y)
 
 
-        resourceString4 = 'USB0::0x0AAD::0x0054::110693::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+        resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
         rm = visa.ResourceManager()
         self.PG = rm.open_resource( resourceString4 )
@@ -165,6 +165,10 @@ class Photon_Counter(QMainWindow):
         self.trig_gbf.do_channels.add_do_chan('Dev1/port0/line0')
         self.trig_gbf.timing.cfg_samp_clk_timing(self.f_acq,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_acq)
 
+        self.switch_uw=nidaqmx.Task()
+        self.switch_uw.do_channels.add_do_chan('Dev1/port0/line3')
+        self.switch_uw.write(False)
+
         self.tension.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/do/StartTrigger')
         self.sample_clock.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/do/StartTrigger')
         
@@ -199,10 +203,9 @@ class Photon_Counter(QMainWindow):
 
 
 
-
         lecture=self.apd.read(self.n_acq,timeout=nidaqmx.constants.WAIT_INFINITELY)
         tensions=self.tension.read(self.n_acq) 
-
+        self.switch_uw.write(True)
 
         PL=np.array([(lecture[i+1]-lecture[i])*self.f_acq for i in range(len(lecture)-1)])
 
@@ -222,10 +225,16 @@ class Photon_Counter(QMainWindow):
             self.first_time=False
 
 
-        PL=PL[self.borne_inf:self.borne_sup]
+        PL1=PL[self.borne_inf:self.borne_sup]
 
+        lecture=self.apd.read(self.n_acq,timeout=nidaqmx.constants.WAIT_INFINITELY)
+        tensions=self.tension.read(self.n_acq) 
+        self.switch_uw.write(False)
+        PL=np.array([(lecture[i+1]-lecture[i])*self.f_acq for i in range(len(lecture)-1)])
 
+        PL2=PL[self.borne_inf:self.borne_sup]
 
+        PL=PL1-PL2
 
         self.tension_plot_line.set_ydata(tensions) 
         ymin=min(tensions)
@@ -234,7 +243,7 @@ class Photon_Counter(QMainWindow):
         
         
 
-        if min(PL) >= 0 :
+        if min(PL1) >= 0  and min(PL2) >= 0:
             self.y=self.y*(1-1/self.repeat)+PL*(1/self.repeat)
             self.repeat+=1
 
@@ -276,8 +285,17 @@ class Photon_Counter(QMainWindow):
             self.trig_gbf.close()
         except :
             pass
-
-        with open(self.folder_path+'%f.txt'%self.uW_freqs[self.n_current_freq],'w') as f :
+        try :
+            self.switch_uw.close()
+        except :
+            pass
+        try : #J'ai pas compris pourquoi, mais le fait est que sans ça, ça marche pas.
+            self.PG.write('*RST')
+            self.PG.write('*WAI')
+            time.sleep(2)
+        except :
+            pass
+        with open(self.folder_path+'%f.txt'%self.frequency,'w') as f :
             for i in range(len(self.y)):
                 f.write('%f\t%f\n'%(self.x[i],self.y[i]))
         if self.n_current_freq == self.n_total_freq-1 :
@@ -306,6 +324,10 @@ class Photon_Counter(QMainWindow):
             pass
         try :
             self.trig_gbf.close()
+        except :
+            pass
+        try :
+            self.switch_uw.close()
         except :
             pass
         try :

@@ -190,7 +190,7 @@ class Photon_Counter(QMainWindow):
         
         #Pulse signal creation
         self.pulsed=nidaqmx.Task()
-        self.pulsed.do_channels.add_do_chan('Dev1/port0/line0')
+        self.pulsed.do_channels.add_do_chan('Dev1/port0/line2')
         self.pulsed.timing.cfg_samp_clk_timing(self.sampling_rate,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N)
 
         self.pulsed.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/Ctr0ArmStartTrigger') 
@@ -299,7 +299,7 @@ class Photon_Counter(QMainWindow):
             pass
         
         with nidaqmx.Task() as pulsed :
-            pulsed.do_channels.add_do_chan('Dev1/port0/line0')
+            pulsed.do_channels.add_do_chan('Dev1/port0/line2')
             pulsed.write(True)
 
         self.stop.setEnabled(False)
