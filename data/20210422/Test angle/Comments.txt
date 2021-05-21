@@ -1,0 +1,36 @@
+Oyez Oyez, je vais finalement abdiquer et écrire les fichiers ligne par ligne plutot que colonne par colonne. Je suis sur que ça ne posera aucuns problèmes dans le futur
+
+test 100 :
+V_osc=0.3 V
+f_Osc=590 Hz
+P_las=1mW
+sensi : ~800 nT
+
+
+test 1x4 : (Note : peut-etre sous-estimé vu que j'ai décentré l'EM, ça pourra se vérifier à l'ESR qui est tjr fait à 2V (1V=40G dans les sensis))
+sensi 1:
+V_osc=0.3 V
+f_Osc=590 Hz
+P_las=1mW
+sensi : ~750 nT
+
+sensi 2:
+V_osc=0.45 V
+f_Osc=590 Hz
+P_las=1mW
+sensi : ~620 nT
+
+
+test 2x2 :
+sensi 1:
+V_osc=0.3 V
+f_Osc=590 Hz
+P_las=1mW
+sensi : ~750 nT
+
+sensi 2:
+V_osc=0.4 V
+f_Osc=590 Hz
+P_las=1mW
+sensi : ~620 nT
+

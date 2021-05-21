@@ -1,0 +1,10 @@
+Test fait sur un adamas 15 um selon la 100
+Les conditions initiales sont :
+Photodiode balancée, laser pulsé
+f_mod=2090 Hz
+A_mod=1 V (plus et ça écrase un peu)
+P_las=0.5 mW
+T_scan=5 s C'est un peu overkill mais c'est quand même plus clean que 1s. Techniquement avec 1000 points il faudrait 10 sec vu que le passe bas est à 10ms
+J'ai aussi un n_glissant à 10, normalement pas très utile mais ça peut pas faire de mal
+
+Le premier scan (base) est moyenné 150 fois
