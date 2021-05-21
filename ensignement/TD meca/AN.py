@@ -2,18 +2,13 @@ from math import *
 
 kb=1.38E-23
 Na=6.02e23
-gamma=
+hbar=1.05e-34
+
+density_diam=3.5 #g/cm3
+m_carbon=12.01/Na #g
+
 
 P=1e5
 T=300
 
-m=30e-3/Na
-v=sqrt(8*kb*T/(pi*m))
-
-R=2e-10
-sigma=4*pi*R**2
-
-tc=kb*T/(P*v*sigma)
-l=tc*v
-
-print(3.57E-10*1/(4.6E-6*8)**(1/3))
+print(density_diam/m_carbon)

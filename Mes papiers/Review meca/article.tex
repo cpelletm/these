@@ -1,0 +1,32 @@
+\documentclass[a4paper]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+  \pagenumbering{gobble}
+  \maketitle
+  \newpage
+  \pagenumbering{arabic}  
+  \tableofcontents
+  \newpage
+  \section{Introduction}
+  \section{Bibliographie} % Ca marche si t'as un fichier biblio.bib dans le même dossier
+	\bibliographystyle{plain}
+	\bibliography{biblio}
+  \end{document}	
+  
+  
