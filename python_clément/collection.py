@@ -16,6 +16,7 @@ print(nidaqmx.system.device.Device('Dev1').terminals)
 
 
 # fig,ax=plt.subplots()
+# print(dir(ax))
 # x=range(100)
 # ax.plot(x,x)
 # ax.plot(x,x)

@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import visa
 import sys
 import traceback
+import statistics
 def voltmetre():
 	with nidaqmx.Task() as task :
 		task.ai_channels.add_ai_voltage_chan("Dev1/ai11") #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
@@ -26,6 +27,19 @@ def sapin_de_noel():
 			task.ai_channels.add_ao_voltage_chan("Dev1/ai%i"%i) #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
 			V=task.read()
 			print(V)
+
+def rampe_tension():
+	n_rampe=1000
+	vmin=-2
+	vmax=+2
+	tensions=list(np.linspace(vmin,vmax,n_rampe))+list(np.linspace(vmax,vmin,n_rampe))
+
+	with nidaqmx.Task() as task:
+		task.ao_channels.add_ao_voltage_chan('Dev1/ao0')
+		task.timing.cfg_samp_clk_timing(n_rampe,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS)
+		task.write(tensions)
+		task.start()
+		time.sleep(5)
 
 
 
@@ -1086,7 +1100,7 @@ def trig_extern():
 
 	plt.show()
 
-def trig_extern_PL():
+def trig_extern_PL(): #celui-ci fonctionne
 
 
 	f_acq=1000
@@ -1117,4 +1131,86 @@ def trig_extern_PL():
 
 	plt.show()
 
-trig_extern_PL()
+def histogram():
+	n=10000
+	x=np.random.normal(0,1,n)
+	m=statistics.mean(x)
+	sigma=statistics.pstdev(x)
+	t=np.linspace(m-5*sigma,m+5*sigma,200)
+	y=1/(sigma*np.sqrt(2*np.pi))*np.exp(-0.5*((t-m)/sigma)**2)
+	
+	fig,ax=plt.subplots()
+	ax.plot(t,y)
+	hist=np.histogram(x,bins=40,density=True,range=[-5,5])
+	bins=(hist[1][:-1]+hist[1][1:])/2
+	line,=ax.plot(bins,hist[0])
+
+	print(dir(line))
+	# print(line[0])
+	plt.show()
+
+def zero_hyst():
+	dt=1E-3
+	N=2000
+	f_oscill=50
+
+	tmax=N*dt
+	omega=f_oscill*2*np.pi
+	t=np.linspace(0,tmax,N)
+	Vlist=np.cos(t*omega)*(tmax-t)/tmax
+	plt.plot(t,Vlist)
+	plt.show()
+
+def print_line():
+	import csv
+	data=[1,4,9,3,5,7,8,2,4]
+	with open('test.csv','w',newline='') as csvfile :
+		spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+		spamwriter.writerow(data)
+		spamwriter.writerow(data*2)
+
+
+
+def read_line_csv():
+	import csv
+	with open('test.csv',newline='') as csvfile :
+		spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_NONNUMERIC)
+		for row in spamreader :
+			print (row)
+
+
+
+def test_laser_pulsed():
+	with nidaqmx.Task() as laser_trigg :
+		f_acq=1e7
+		n_acq=int(3E6)
+		laser_trigg.co_channels.add_co_pulse_chan_freq('Dev1/ctr0', freq=f_acq)
+		laser_trigg.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.FINITE,samps_per_chan=n_acq)
+		laser_trigg.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/PFI9')
+		laser_trigg.triggers.start_trigger.retriggerable=True
+		laser_trigg.start()
+		with nidaqmx.Task() as gate :
+			gate.do_channels.add_do_chan('Dev1/port0/line7')
+			gate.timing.cfg_samp_clk_timing(100,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS,samps_per_chan=200)
+			signal=[True]*100+[False]*100
+			gate.write(signal)
+			gate.start()
+			time.sleep(10)
+
+def test_laser_pulsed_2():
+	with nidaqmx.Task() as laser_trigg :
+		f_acq=1e7
+		n_acq=int(3E6)
+		laser_trigg.co_channels.add_co_pulse_chan_freq('Dev1/ctr0', freq=f_acq)
+		laser_trigg.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.FINITE,samps_per_chan=n_acq)
+		laser_trigg.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/ai/StartTrigger')
+		laser_trigg.triggers.start_trigger.retriggerable=True
+		laser_trigg.start()
+		with nidaqmx.Task() as read :
+			read.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+			read.timing.cfg_samp_clk_timing(100,sample_mode=nidaqmx.constants.AcquisitionType.FINITE,samps_per_chan=100)
+			for i in range(10):
+				read.read(100)
+
+
+

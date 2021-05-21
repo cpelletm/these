@@ -28,16 +28,16 @@ class Photon_Counter(QMainWindow):
 		#Timing Parameter ##
 		#The program aquires the total number of photons at a rate defined by real_sampling_rate, but will only display an average of it every dt
 
-		self.dt=0.03 # value in s
+		self.dt=1e-4
 		self.refresh_rate=0.1
 		self.time_last_refresh=time.time()
 		
-		self.n_glissant=1000
+		self.n_glissant=10
 
 		#Total number of points in the plot
 		self.N=200
 
-		
+		self.level=0
 
 		
 
@@ -62,16 +62,9 @@ class Photon_Counter(QMainWindow):
 		#Buttons on the right
 		self.stop=QPushButton('Stop')
 		self.start=QPushButton('Start')
-		self.laser_on_button=QPushButton('Pulse laser On')
-		self.laser_off_button=QPushButton('Pulse laser Off')
 		
-		Vbox_droite.addStretch(1)
 		Vbox_droite.addWidget(self.start)
 		Vbox_droite.addWidget(self.stop)
-		Vbox_droite.addStretch(1)
-		Vbox_droite.addWidget(self.laser_on_button)
-		Vbox_droite.addWidget(self.laser_off_button)
-		Vbox_droite.addStretch(1)
 
 		self.stop.setEnabled(False)
 		
@@ -79,30 +72,28 @@ class Photon_Counter(QMainWindow):
 		gras=QFont( "Consolas", 40, QFont.Bold)
 
 
-		self.textdt=QLineEdit(str(self.dt))
+		self.textdt=QLineEdit('%3.2E'%(self.dt))
 		self.labeldt=QLabel("dt (s) ")  
 		self.textN=QLineEdit(str(self.N))
 		self.labelN=QLabel("Number of points ")  
 		self.labelPL=QLabel("photocounts (s-1)") 
 		self.PL=QLabel()
 		self.PL.setFont(gras)
-		self.cbsemiscale=QCheckBox('Semi Ymax auto-scale', self)
-		self.cbdownautoscale=QCheckBox('Ymin auto-scale', self)
 
-		self.cbsemiscale.stateChanged.connect(self.Set_semi_auto_scale)
-		self.cbdownautoscale.stateChanged.connect(self.Set_ymin_auto_scale)
 
-		self.semi_auto_scale=False
-		self.ymin_auto_scale=True
-		self.cbdownautoscale.setChecked(True)
+
+
+
 
 		self.ymax=0 # for the semi-autoscale, ymax needs to have a memory
 
 		Vbox_gauche.addWidget(self.labelPL)
 		Vbox_gauche.addWidget(self.PL)
-		Vbox_gauche.addStretch(1)
-		Vbox_gauche.addWidget(self.cbsemiscale)
-		Vbox_gauche.addWidget(self.cbdownautoscale)
+
+		self.labellevel=QLabel("level")
+		self.lectlevel=QLineEdit(str(self.level))
+		Vbox_gauche.addWidget(self.labellevel)
+		Vbox_gauche.addWidget(self.lectlevel)
 		Vbox_gauche.addStretch(1)
 		Vbox_gauche.addWidget(self.labeldt)
 		Vbox_gauche.addWidget(self.textdt)
@@ -146,58 +137,35 @@ class Photon_Counter(QMainWindow):
 		
 		self.start.clicked.connect(self.start_measure)
 		self.stop.clicked.connect(self.stop_measure)
-		self.laser_on_button.clicked.connect(self.laser_on)
-		self.laser_off_button.clicked.connect(self.laser_off)
 
 		## Timer Setup ##
 
 		self.timer = QTimer(self,interval=0) 
 		self.timer.timeout.connect(self.update_canvas)
 
-		#CheckBoxes
-	def Set_semi_auto_scale(self,state) :
-		self.semi_auto_scale = state == Qt.Checked
-
-	def Set_ymin_auto_scale(self,state) :
-		self.ymin_auto_scale = state == Qt.Checked
 			
-	def laser_on(self):
-		self.laser_trigg=nidaqmx.Task()
-		self.laser_trigg.co_channels.add_co_pulse_chan_freq('Dev1/ctr0', freq=20E6)
-		self.laser_trigg.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS,samps_per_chan=10)
-		self.laser_trigg.start()
 
-	def laser_off(self):
-		self.laser_trigg.close()
 
 	def update_canvas(self):       
 		##Update the plot and the value of the PL ##
 
 
-		self.y=np.roll(self.y,-2) #free a space at the end of the curve
 
-		V=self.tension.read(2*self.n_glissant)        
 
-		self.y[-2]=sum(V[:self.n_glissant])/self.n_glissant
-		self.y[-1]=sum(V[self.n_glissant:])/self.n_glissant
+		lecture=self.tension.read(self.n_acq)    
+
+		for i in range(self.N) :
+			self.y[i]=sum(lecture[i*self.n_glissant:(i+1)*self.n_glissant])
 
 
 		if time.time()-self.time_last_refresh>self.refresh_rate :
 			self.time_last_refresh=time.time()
-			self.PL.setText("%3.2E" % self.y[-1])
+			self.PL.setText("%3.2E" % max(abs(self.y)))
 	   
 			self.dynamic_line.set_ydata(self.y)
 
-
-			if self.semi_auto_scale :
-				self.ymax=max(self.ymax,max(self.y))
-			else : 
-				self.ymax=max(self.y)
-
-			if self.ymin_auto_scale :
-				self.ymin=min(self.y)
-			else :
-				self.ymin=0
+			self.ymin=min(self.y)
+			self.ymax=max(self.y)
 			
 
 			self.dynamic_ax.set_ylim([self.ymin,self.ymax])    
@@ -212,22 +180,19 @@ class Photon_Counter(QMainWindow):
 		self.start.setEnabled(False)
 		self.stop.setEnabled(True)
 
-		try :
-			self.laser_on()
-		except :
-			pass
-
 		#Read integration input values
 		self.dt=np.float(self.textdt.text())
 		self.N=np.int(self.textN.text())
 		self.n_glissant=np.int(self.lectn_glissant.text())
 		self.sampling_rate=1/self.dt*self.n_glissant
 
+		self.n_acq=self.N*self.n_glissant
+
 		#Sample Clock creation (On counter1)
 
 		self.tension=nidaqmx.Task()
 		self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
-		self.tension.timing.cfg_samp_clk_timing(self.sampling_rate,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N)
+		self.tension.timing.cfg_samp_clk_timing(self.sampling_rate,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_acq)
 		
  
 			  
@@ -258,8 +223,6 @@ class Photon_Counter(QMainWindow):
 			pass
 		self.stop.setEnabled(False)
 		self.start.setEnabled(True)
-
-		self.laser_off()
 		
 		
 

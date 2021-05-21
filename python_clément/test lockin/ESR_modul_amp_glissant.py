@@ -30,10 +30,10 @@ class Photon_Counter(QMainWindow):
 		
 
 		self.sampling_rate=100 #Ne pas monter au dessus de 1E3
-		self.n_points=501
+		self.n_points=301
 		self.f_min=2.8
 		self.f_max=2.95 #GHz      
-		self.level=10 #dBm
+		self.level=15 #dBm
 		self.n_glissant=10
 
 
@@ -373,6 +373,9 @@ class Photon_Counter(QMainWindow):
 		self.PG.write('*WAI')
 
 		self.PG.write(':SOUR:AM:SOUR EXT')
+		self.PG.write('*WAI')
+
+		self.PG.write(':SOUR:AM:DEPT 100')
 		self.PG.write('*WAI')
 
 		self.PG.write(':SOUR:AM:STATe ON')
