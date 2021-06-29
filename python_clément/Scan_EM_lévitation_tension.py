@@ -28,8 +28,8 @@ class Photon_Counter(QMainWindow):
 		
 
 
-		self.n_points=200
-		self.t_scan=5
+		self.n_points=301
+		self.t_scan=1
 		self.V_min=-5
 		self.V_max=+5
 
@@ -277,7 +277,7 @@ class Photon_Counter(QMainWindow):
 		self.update_value()
 
 		self.tension=nidaqmx.Task()
-		self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+		self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11",min_val=-10,max_val=10)
 		self.tension.timing.cfg_samp_clk_timing(self.f_acq,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_tot)
 
 		self.voltage_out=nidaqmx.Task()

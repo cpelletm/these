@@ -29,11 +29,11 @@ class Photon_Counter(QMainWindow):
 
 
 		self.n_points=200
-		self.t_scan=2
+		self.t_scan=1E-2
 		self.f_meca=150
 		self.n_cycle=10
 
-		self.duty_cycle=0.1
+		self.duty_cycle=0.5
 		self.exc_form='pulses'
 
 
@@ -43,7 +43,7 @@ class Photon_Counter(QMainWindow):
 		self.time_last_refresh=time.time()
 		self.refresh_rate=0.1
 		
-		self.setWindowTitle("Scan EM")
+		self.setWindowTitle("Excitation param")
 
 		##Creation of the graphical interface##
 
@@ -71,6 +71,11 @@ class Photon_Counter(QMainWindow):
 		self.lectn_cycle=QLineEdit(str(self.n_cycle))
 		Vbox_gauche.addWidget(self.labeln_cycle)
 		Vbox_gauche.addWidget(self.lectn_cycle)
+
+		self.labelduty_cycle=QLabel("duty_cycle")
+		self.lectduty_cycle=QLineEdit(str(self.duty_cycle))
+		Vbox_gauche.addWidget(self.labelduty_cycle)
+		Vbox_gauche.addWidget(self.lectduty_cycle)
 		Vbox_gauche.addStretch(1)
 
 		self.labelt_scan=QLabel("t_scan")
@@ -92,11 +97,16 @@ class Photon_Counter(QMainWindow):
 		self.clear_button=QPushButton('Clear Last Trace')
 		self.fit_button=QPushButton('Fit')
 		self.normalize_cb=QCheckBox('Normalize')
+		self.show_full_cb=QCheckBox('Show full scan')
+		self.cooling_cb=QCheckBox('Cooling ON')
 
-		
+		self.show_full_cb.setChecked(True)
+	
 		self.labelIter=QLabel("iter # 0")
 
 		Vbox_droite.addWidget(self.normalize_cb)
+		Vbox_droite.addWidget(self.show_full_cb)
+		Vbox_droite.addWidget(self.cooling_cb)
 		Vbox_droite.addStretch(1)
 		Vbox_droite.addWidget(self.start)
 		Vbox_droite.addWidget(self.stop)
@@ -151,24 +161,43 @@ class Photon_Counter(QMainWindow):
 
 		self.n_points=np.int(self.lectn_points.text())
 		self.t_scan=np.float(self.lectt_scan.text())
-		self.V_min=np.float(self.lectV_min.text())
-		self.V_max=np.float(self.lectV_max.text())
+		self.n_cycle=np.int(self.lectn_cycle.text())
+		self.duty_cycle=np.float(self.lectduty_cycle.text())
+		self.f_meca=np.float(self.lectf_meca.text())
+
+		n_pas=100
+		self.f_acq=n_pas*self.f_meca
+		self.n_acq=int(self.f_acq*self.t_scan)
+		self.n_up=int(self.duty_cycle*n_pas)
+		if self.n_up==0 or self.n_up==n_pas :
+			print ("Mauvais duty cycle/pas de discrétisation !")
+		self.n_down=n_pas-self.n_up
+
+		if self.cooling_cb.isChecked():
+			self.signal=([True]*self.n_up+[False]*self.n_down)*self.n_cycle+[True]*self.n_acq
+		else :
+			self.signal=([True]*self.n_up+[False]*self.n_down)*self.n_cycle+[False]*self.n_acq
+
+		self.n_tot=len(self.signal)
+		self.t_tot=self.n_tot/self.f_acq
+
+		self.n_avg=int(np.ceil(self.t_scan*self.f_acq/self.n_points))
+		self.n_show=int(np.floor(self.n_tot/self.n_avg))-1 #le -1 c'est pour pas prendre de risques si n_avg=1
+
+		self.n_points=int(np.floor(self.n_acq/self.n_avg))
+
+		self.x=np.linspace(0,self.t_tot,self.n_show)
+		self.y=np.zeros(self.n_show)
+
+		if self.show_full_cb.isChecked() :
+			self.n_lect_min=0
+			self.n_lect_max=-1
+		else :
+			self.n_lect_min=-self.n_points
+			self.n_lect_max=-1
+			self.x=self.x-self.x[-self.n_points]
 
 
-		self.t_tot=2*self.t_scan
-		self.n_tot=2*self.n_points
-
-		self.n_lect_min=self.n_points//2
-		self.n_lect_max=3*self.n_points//2
-
-		self.f_acq=self.n_tot/self.t_tot
-		Vm=(self.V_min+self.V_max)/2
-		DV=(self.V_min-self.V_max)/2
-		Nm=self.n_points//2
-		self.V_list=list(np.linspace(Vm,self.V_min,Nm))+list(np.linspace(self.V_min,self.V_max,2*Nm))+list(np.linspace(self.V_max,Vm,self.n_tot-3*Nm))
-
-		self.x=np.linspace(self.V_min-DV,self.V_max+DV,self.n_tot-1)
-		self.y=np.zeros(self.n_tot-1)
 		self.dynamic_line.set_data(self.x[self.n_lect_min:self.n_lect_max],self.y[self.n_lect_min:self.n_lect_max])
 		self.set_lim(x=self.x[self.n_lect_min:self.n_lect_max],y=self.y[self.n_lect_min:self.n_lect_max])
 
@@ -242,9 +271,9 @@ class Photon_Counter(QMainWindow):
 
 
 
-		lecture=np.array(self.tension.read(self.n_tot,timeout=nidaqmx.constants.WAIT_INFINITELY))    
+		lecture=np.array(self.apd.read(self.n_tot,timeout=nidaqmx.constants.WAIT_INFINITELY))    
 
-		PL=(lecture[1:]-lecture[:-1])*self.f_acq
+		PL=np.array([lecture[(i+1)*self.n_avg]-lecture[i*self.n_avg] for i in range(self.n_show)])*self.f_acq/self.n_avg
 
 
 
@@ -278,17 +307,22 @@ class Photon_Counter(QMainWindow):
 		#Read integration input values
 		self.update_value()
 
-		self.tension=nidaqmx.Task()
-		self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
-		self.tension.timing.cfg_samp_clk_timing(self.f_acq,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_tot)
+		self.sample_clock=nidaqmx.Task()
+		self.sample_clock.co_channels.add_co_pulse_chan_freq('Dev1/ctr1', freq=self.f_acq)
+		self.sample_clock.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS) #Else the clock sends a single pulse
+
+		self.apd=nidaqmx.Task()
+		self.apd.ci_channels.add_ci_count_edges_chan('Dev1/ctr0')
+		self.apd.timing.cfg_samp_clk_timing(self.f_acq,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_tot)
 
 		self.voltage_out=nidaqmx.Task()
-		self.voltage_out.ao_channels.add_ao_voltage_chan('Dev1/ao0')
+		self.voltage_out.do_channels.add_do_chan('Dev1/port0/line3')
 		self.voltage_out.timing.cfg_samp_clk_timing(self.f_acq,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_tot)
-		self.voltage_out.write(self.V_list)
+		self.voltage_out.write(self.signal)
 
-		self.tension.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/ao/StartTrigger')
-		self.tension.start()
+		self.sample_clock.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/do/StartTrigger')
+		self.sample_clock.start()
+		self.apd.start()
 
 		self.repeat=1
 

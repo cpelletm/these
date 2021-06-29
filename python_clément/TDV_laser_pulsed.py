@@ -1,4 +1,5 @@
 import sys
+import os
 import time
 import random
 import nidaqmx
@@ -13,7 +14,7 @@ import numpy as np
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import (Qt, QTimer)
 from PyQt5.QtWidgets import (QWidget, QPushButton, 
-	QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget, QMainWindow, QLineEdit, QLabel, QCheckBox)
+	QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget, QMainWindow, QLineEdit, QLabel, QCheckBox, QFileDialog)
 
 from matplotlib.backends.backend_qt5agg import (FigureCanvas, NavigationToolbar2QT as NavigationToolbar)
 from matplotlib.figure import Figure
@@ -28,14 +29,14 @@ class Photon_Counter(QMainWindow):
 
 
 		self.f_acq=1E5
-		self.t_acq=5E-3
+		self.t_acq=15E-3
 
 
 		self.f_pulse=5E6
-		self.t_pulse=2E-3
-		self.t_lect=6E-4
+		self.t_pulse=1E-3
+		self.t_lect=4E-4
 
-		self.n_points=101
+		self.n_points=301
 
 
 		self.n_lect_min=0
@@ -212,8 +213,10 @@ class Photon_Counter(QMainWindow):
 		self.n_pulse_acq=int(self.f_acq*self.t_pulse)
 		self.n_lect=int(self.f_acq*self.t_lect)
 
-		self.t=np.linspace(0,self.t_acq,self.n_points) 
+		self.t=np.linspace(0,self.t_acq,self.n_points+1)
+		self.t=self.t[1:]
 		self.n_step_time=[int(t*self.f_acq) for t in self.t]
+		print(self.n_step_time)
 		self.n_acq=sum(self.n_step_time)+self.n_pulse_acq*self.n_points
 
 		self.gate_signal=[False]*self.n_acq
@@ -223,7 +226,7 @@ class Photon_Counter(QMainWindow):
 		self.bornes_lect=[[i*self.n_pulse_acq+sum(self.n_step_time[0:i+1]),i*self.n_pulse_acq+sum(self.n_step_time[0:i+1])+self.n_lect] for i in range(self.n_points)]
 
 		#Astuce de gitan, on prend le premier point à la fin de la pulse de polarisation plutot qu'au début
-		self.bornes_lect[0]=[self.n_pulse_acq-self.n_lect,self.n_pulse_acq]
+		# self.bornes_lect[0]=[self.n_pulse_acq-self.n_lect,self.n_pulse_acq]
 
 		
 		self.y=np.zeros(self.n_points)
@@ -355,6 +358,9 @@ class Photon_Counter(QMainWindow):
 class MyToolbar(NavigationToolbar): #Modification of the toolbar to save data with the plot
 	
 	def save_figure(self, *args): #Requires os and QFileDialog from PyQt5.QtWidgets
+
+		import os
+		from PyQt5.QtWidgets import QFileDialog
 
 		try : #Test if there is a previous path saved
 			if self.startpath :

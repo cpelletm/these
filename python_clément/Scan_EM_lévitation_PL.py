@@ -29,9 +29,9 @@ class Photon_Counter(QMainWindow):
 
 
 		self.n_points=200
-		self.t_scan=2
-		self.V_min=-5
-		self.V_max=+5
+		self.t_scan=1
+		self.V_min=-2
+		self.V_max=+2
 
 
 		self.n_lect_min=0
@@ -160,7 +160,7 @@ class Photon_Counter(QMainWindow):
 
 		self.f_acq=self.n_tot/self.t_tot
 		Vm=(self.V_min+self.V_max)/2
-		DV=(self.V_min-self.V_max)/2
+		DV=(self.V_max-self.V_min)/2
 		Nm=self.n_points//2
 		self.V_list=list(np.linspace(Vm,self.V_min,Nm))+list(np.linspace(self.V_min,self.V_max,2*Nm))+list(np.linspace(self.V_max,Vm,self.n_tot-3*Nm))
 
@@ -239,7 +239,7 @@ class Photon_Counter(QMainWindow):
 
 
 
-		lecture=np.array(self.tension.read(self.n_tot,timeout=nidaqmx.constants.WAIT_INFINITELY))    
+		lecture=np.array(self.apd.read(self.n_tot,timeout=nidaqmx.constants.WAIT_INFINITELY))    
 
 		PL=(lecture[1:]-lecture[:-1])*self.f_acq
 
@@ -275,17 +275,22 @@ class Photon_Counter(QMainWindow):
 		#Read integration input values
 		self.update_value()
 
-		self.tension=nidaqmx.Task()
-		self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
-		self.tension.timing.cfg_samp_clk_timing(self.f_acq,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_tot)
+		self.sample_clock=nidaqmx.Task()
+		self.sample_clock.co_channels.add_co_pulse_chan_freq('Dev1/ctr1', freq=self.f_acq)
+		self.sample_clock.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS) #Else the clock sends a single pulse
+
+		self.apd=nidaqmx.Task()
+		self.apd.ci_channels.add_ci_count_edges_chan('Dev1/ctr0')
+		self.apd.timing.cfg_samp_clk_timing(self.f_acq,source='/Dev1/Ctr1InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_tot)
 
 		self.voltage_out=nidaqmx.Task()
 		self.voltage_out.ao_channels.add_ao_voltage_chan('Dev1/ao0')
 		self.voltage_out.timing.cfg_samp_clk_timing(self.f_acq,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.n_tot)
 		self.voltage_out.write(self.V_list)
 
-		self.tension.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/ao/StartTrigger')
-		self.tension.start()
+		self.sample_clock.triggers.start_trigger.cfg_dig_edge_start_trig('/Dev1/ao/StartTrigger')
+		self.sample_clock.start()
+		self.apd.start()
 
 		self.repeat=1
 

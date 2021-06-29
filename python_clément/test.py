@@ -1212,5 +1212,14 @@ def test_laser_pulsed_2():
 			for i in range(10):
 				read.read(100)
 
+def mesure_x_et_y():
+	with nidaqmx.Task() as tension :
+		tension.ai_channels.add_ai_voltage_chan("Dev1/ai11",min_val=-10,max_val=10)
+		tension.ai_channels.add_ai_voltage_chan("Dev1/ai5",min_val=-10,max_val=10)
+		tension.timing.cfg_samp_clk_timing(1E3,sample_mode=nidaqmx.constants.AcquisitionType.FINITE,samps_per_chan=100)
+		tension.start()
+		lecture=tension.read(100)
+	print(lecture[1])
 
+mesure_x_et_y()
 

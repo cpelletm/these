@@ -29,11 +29,11 @@ class Photon_Counter(QMainWindow):
 		super().__init__()
 		
 
-		self.sampling_rate=100 #Ne pas monter au dessus de 1E3
+		self.sampling_rate=200 #Ne pas monter au dessus de 1E3
 		self.n_points=301
 		self.f_min=2.8
 		self.f_max=2.95 #GHz      
-		self.level=15 #dBm
+		self.level=-5 #dBm
 		self.n_glissant=10
 
 
@@ -288,7 +288,8 @@ class Photon_Counter(QMainWindow):
 		if time.time()-self.time_last_refresh>self.refresh_rate :
 			self.time_last_refresh=time.time()
 			if self.normalize_cb.isChecked() :
-				yplot=self.y/max(self.y)
+				yplot=self.y-min(self.y)
+				yplot=yplot/max(yplot)
 			else :
 				yplot=self.y
 			self.dynamic_line.set_ydata(yplot)

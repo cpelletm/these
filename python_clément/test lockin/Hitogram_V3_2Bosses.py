@@ -9,8 +9,8 @@ import nidaqmx.task
 import nidaqmx.system
 import nidaqmx.constants
 
-
 import visa
+
 import numpy as np
 import statistics
 
@@ -24,7 +24,7 @@ from PyQt5.QtWidgets import (QWidget, QPushButton,
 from matplotlib.backends.backend_qt5agg import (FigureCanvas, NavigationToolbar2QT as NavigationToolbar)
 from matplotlib.figure import Figure
 
-
+print(visa.__file__)
 
 class Photon_Counter(QMainWindow):
 	def __init__(self):
@@ -276,8 +276,10 @@ class Photon_Counter(QMainWindow):
 		self.xmin=self.mu-3*self.sigma
 		self.xmax=self.mu+3*self.sigma
 
+
 		hist=np.histogram(self.hist_data,density=True,bins=self.n_bins,range=[self.xmin,self.xmax])
 		self.y=hist[0]	
+
 		self.x=(hist[1][:-1]+hist[1][1:])/2
 
 		hist_plus=np.histogram(self.hist_data_plus,density=True,bins=self.n_bins,range=[self.xmin,self.xmax])
@@ -294,8 +296,7 @@ class Photon_Counter(QMainWindow):
 			self.dynamic_line.set_data(self.x,yplot)
 			# self.testpline.set_data(self.x,hist_plus[0])
 			# self.testmline.set_data(self.x,hist_moins[0])
-			ymin=min(yplot)
-			ymax=max(yplot)
+
 			self.dynamic_ax.set_ylim([ymin,ymax]) 
 			self.dynamic_ax.set_xlim([self.xmin,self.xmax])
 

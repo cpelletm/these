@@ -38,7 +38,7 @@ class Photon_Counter(QMainWindow):
 		self.N=200
 
 		
-
+		self.f_trigg_laser=5E6
 		
 
 		##Creation of the graphical interface##
@@ -163,7 +163,7 @@ class Photon_Counter(QMainWindow):
 			
 	def laser_on(self):
 		self.laser_trigg=nidaqmx.Task()
-		self.laser_trigg.co_channels.add_co_pulse_chan_freq('Dev1/ctr0', freq=20E6)
+		self.laser_trigg.co_channels.add_co_pulse_chan_freq('Dev1/ctr0', freq=self.f_trigg_laser)
 		self.laser_trigg.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS,samps_per_chan=10)
 		self.laser_trigg.start()
 
@@ -226,7 +226,7 @@ class Photon_Counter(QMainWindow):
 		#Sample Clock creation (On counter1)
 
 		self.tension=nidaqmx.Task()
-		self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+		self.tension.ai_channels.add_ai_voltage_chan("Dev1/ai11",min_val=-10,max_val=10)
 		self.tension.timing.cfg_samp_clk_timing(self.sampling_rate,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.N)
 		
  
