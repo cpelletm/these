@@ -72,6 +72,13 @@ def map_full() :
 		thetas+=[theta]
 	plt.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (01\bar{1})$ ',color=color)
 
+	#(111)
+	color = next(ax._get_lines.prop_cycler)['color']
+	thetas=[]
+	for phi in phis :
+		theta=scipy.optimize.root_scalar(lambda theta:sin(theta*pi/180)*cos(phi*pi/180)+sin(theta*pi/180)*sin(phi*pi/180)+cos(theta*pi/180),bracket=[0,180]).root
+		thetas+=[theta]
+	plt.plot(phis,thetas,linewidth=lw2,ls=ls2,label=r'Plane $\bot (111)$ ',color=color)
 
 	# plt.plot(phis,90+45*cos(pi/180*phis)) #Pour les mauvaises langues qui disent que ça sert à rien
 

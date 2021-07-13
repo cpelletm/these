@@ -308,9 +308,9 @@ def ask_name():
 
 
 
-x,y=extract_data('ESR 1 raie tranche 500 uW 0dB')
+x,y=extract_data('ESR face avant sans lentille 5dB 2 mW round 2')
 x=x*1e3
-premier_pic=3001.5
+premier_pic=2827.5
 centres=[premier_pic,premier_pic+2,premier_pic+4]
 
 plt.plot(x,y,'o',markerfacecolor="None",ms=5,mew=1)

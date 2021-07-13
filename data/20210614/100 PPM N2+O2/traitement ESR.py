@@ -308,9 +308,9 @@ def ask_name():
 
 
 
-x,y=extract_data('face avant sans lentille 500 uW')
+x,y=extract_data('tranche sans lentille bcp de galères')
 x=x*1e3
-premier_pic=3028
+premier_pic=2721
 centres=[premier_pic,premier_pic+2.5,premier_pic+5]
 
 plt.plot(x,y,'o',markerfacecolor="None",ms=5,mew=1)
