@@ -292,7 +292,7 @@ def ecris_gros():
 
 	ax=plt.gca()
 	ax.tick_params(labelsize=20)
-	ax.set_xlabel(r'B $\parallel$[100] (G)',fontsize=20,fontweight='bold')
+	ax.set_xlabel(r'B (G)',fontsize=20,fontweight='bold')
 	ax.set_ylabel(r'Photoluminescence' ,fontsize=20,fontweight='bold')
 	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2)
 
@@ -304,61 +304,24 @@ def ask_name():
 	return fname
 
 
-milieu=212
-
-f_uw=[2680,2700,2720,2750,2775,2800,2810,2820,2830,2840,2850,2860]
-V_moins=[]
-V_plus=[]
-B=[]
-for f in f_uw :
-	filename='scan substrat uw '+str(f)
-	x,y=extract_data(filename)
-	pos_moins=np.argmax(y[:milieu])
-	pos_plus=np.argmax(y[milieu:])+milieu
-	V_moins+=[x[pos_moins]]
-	V_plus+=[x[pos_plus]]
-	B+=[find_B_100(f,transi='-',B_max=300)]
 
 
 
-V_moins=np.array(V_moins)
-V_plus=np.array(V_plus)
-B=np.array(B)
-
-B_full=np.append(-B,B)
-V=np.append(V_moins,V_plus)
-
-# plt.plot(V,B_full,'x')
-a,b,yfit=lin_fit(V,B_full)
-# plt.plot(V,yfit,label='ax+b,a=%f,b=%f'%(a,b))
-
-
-x,y=extract_data('scan substrat uw 2860')
-# x=a*x+b
+x,y=extract_data('modulation 1f adamas 15um')
+x=x*42
 plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori
 
 
 ax=plt.gca()
 ax.tick_params(labelsize=20)
-ax.set_xlabel(r'Microwave frequency (GHz)',fontsize=20,fontweight='bold')
-ax.set_ylabel(r'PL' ,fontsize=20,fontweight='bold')
+ax.set_xlabel(r'B(G)',fontsize=20,fontweight='bold')
+ax.set_ylabel(r'Demodulated PL' ,fontsize=20,fontweight='bold')
 plt.plot(x,y,'-',lw='3')
 
 
 
 
-# plt.plot(x,yfit)
-# plt.plot(x,y-yfit)
-V_pic=[-3.781,-2.63,-1.742,-0.881,-0.635,-0.154,0.725,1.2,1.44,2.308,3.17,4.271]
-V_pic=np.array(V_pic)
-B_pic=a*V_pic+b
-# print(B_pic)
 
-x,y=extract_data('scan 100 diaphragme ouvert')
-V_pic=[-1,1.57]
-V_pic=np.array(V_pic)
-B_pic=a*V_pic+b
-print(B_pic)
 
 plt.legend()
 plt.show()
