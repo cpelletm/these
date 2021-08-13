@@ -6,7 +6,7 @@ import nidaqmx.system
 import time
 import numpy as np
 import matplotlib.pyplot as plt
-import visa
+import pyvisa as visa
 import sys
 import traceback
 import statistics
@@ -15,6 +15,24 @@ def voltmetre():
 		task.ai_channels.add_ai_voltage_chan("Dev1/ai11") #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
 		V=task.read()
 		print(V)
+
+def read_timed():
+	with nidaqmx.Task() as task :
+		task.ai_channels.add_ai_voltage_chan("Dev1/ai11")
+		task.timing.cfg_samp_clk_timing(100,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=20)
+		print(dir(task))	
+		task.start()
+		while not task.is_task_done() :
+			print('toto')
+		a=task.read(20)
+		task.stop()
+		print('task stopped')
+		task.start()
+		while not task.is_task_done() :
+			print('toto')
+		a=task.read(20)
+
+
 
 def sapin_de_noel():
 	for i in range(15):
@@ -1221,5 +1239,69 @@ def mesure_x_et_y():
 		lecture=tension.read(100)
 	print(lecture[1])
 
-mesure_x_et_y()
+def matplotlib_de_mort():
+	import matplotlib
+	fig,ax=plt.subplots()
+	x=np.linspace(0,10,100)
+	y=np.cos(x)
+	line=matplotlib.lines.Line2D(x,y)
+	print(dir(line))
+	plt.show()
 
+def pyqtgraph_test():
+	import pyqtgraph.examples
+	pyqtgraph.examples.run()
+
+def test_locals(a=1,b=2):
+	dic=locals()
+	print(dic)
+	for i in dic :
+		dic[i]=dic[i]+1
+	print(a)
+
+class fooclass():
+	def __init__(self,a=1):
+		self.v='toto'
+
+
+
+def test_autosave():
+	from datetime import datetime
+	now = datetime.now()
+	date_str=now.strftime("%Y-%m-%d %H-%M-%S")
+	print(date_str)
+
+def args(a,*args,b=1):
+	print(a,b,args)
+
+def test_is_task_done():
+	with nidaqmx.Task() as task :
+		task.ai_channels.add_ai_voltage_chan('Dev1/ai0')
+		samplingRate=10
+		samps_per_chan=30
+		sampleMode=nidaqmx.constants.AcquisitionType.FINITE
+		task.timing.cfg_samp_clk_timing(samplingRate,sample_mode=sampleMode, samps_per_chan=samps_per_chan)
+		task.start()
+		print (task.is_task_done())
+		time.sleep(1)
+		print (task.is_task_done())
+		time.sleep(1)
+		print (task.is_task_done())
+		time.sleep(1)
+		print (task.is_task_done())
+		time.sleep(1)
+		data=task.read(-1)
+	print(data)
+
+def mumuse_error():
+	try :
+		raise ValueError('Too big !')
+	except Exception as e :
+		print(e)
+
+def return_multiple(*args):
+	return(args)
+
+	
+
+print(np.any([0,1,2]))
