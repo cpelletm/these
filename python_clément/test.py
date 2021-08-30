@@ -1302,6 +1302,5 @@ def mumuse_error():
 def return_multiple(*args):
 	return(args)
 
-	
 
-print(np.any([0,1,2]))
+None.__class__.__repr__()

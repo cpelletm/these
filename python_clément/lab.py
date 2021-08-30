@@ -20,7 +20,7 @@ import pyqtgraph as pg
 
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import (Qt, QTimer,QSize)
-from PyQt5.QtWidgets import (QWidget, QPushButton, 
+from PyQt5.QtWidgets import (QWidget, QPushButton, QComboBox,
 	QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget, QMainWindow, QLineEdit, QLabel, QCheckBox, QFileDialog, QErrorMessage, QMessageBox)
 
 qapp = QApplication(sys.argv)
@@ -46,10 +46,8 @@ class Graphical_interface(QMainWindow) :
 	def run(self):
 		qapp.exec_()
 	def closeEvent(self, event): #Semble éviter les bugs. Un peu. Si tu veux rajouter des actions à faire en fermant c'est ici
-		startStopButton().stop_action()
+		startStopButton().stop_action(closeAnyway=True)
 		self.close()
-
-
 
 class label():
 	def __init__(self,name,style='normal',spaceAbove=1,spaceBelow=0):
@@ -65,28 +63,33 @@ class label():
 		box.addWidget(self.label)
 		box.addStretch(self.spaceBelow)	
 
-
-
-
 class field():
-	def __init__(self,name,initial_value=False,spaceAbove=1,spaceBelow=0): 
+	def __init__(self,name,initial_value='noValue',spaceAbove=1,spaceBelow=0): 
 		self.label=QLabel(name)
 		self.lect=QLineEdit()
-		if initial_value :
+		if initial_value != 'noValue' :
 			self.setValue(initial_value)
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
 	def updateValue(self):
-		temp=np.float(self.lect.text())
-		if temp==int(temp):
-			temp=int(temp)
-		self.v=temp
+		try :
+			self.v=int(self.lect.text())
+		except :
+			try :
+				self.v=float(self.lect.text())
+			except :
+				self.v=self.lect.text()
 	def setValue(self,new_value):
 		self.v=new_value
-		if abs(new_value)>1E4 or abs(new_value) <1E-3 :
+		if self.v==0:
+			self.lect.setText('0')
+		elif abs(new_value)>1E4 or abs(new_value) <1E-3 :
 			self.lect.setText('%e'%self.v)
 		else :
 			self.lect.setText(str(self.v))
+	def setEnabled(self,b):
+		self.label.setEnabled(b)
+		self.lect.setEnabled(b)
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.label)
@@ -109,12 +112,13 @@ class button():
 		box.addStretch(self.spaceBelow)
 
 class checkBox():
-	def __init__(self,name,action=False,spaceAbove=1,spaceBelow=0): 
+	def __init__(self,name,action=False,initialState=False,spaceAbove=1,spaceBelow=0): 
 		self.cb=QCheckBox(name)
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
+		self.setState(initialState)
 		if action :
-			self.setAction(action)
+			self.setAction(action)		
 	def setAction(self,action):		
 			self.cb.stateChanged.connect(action)
 	def setState(self,state):
@@ -124,6 +128,24 @@ class checkBox():
 		return(self.cb.isChecked())
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
+		box.addWidget(self.cb)
+		box.addStretch(self.spaceBelow)
+
+class dropDownMenu():
+	def __init__(self,name,*items,spaceAbove=1,spaceBelow=0):
+		self.label=QLabel(name)
+		self.cb=QComboBox()
+		for item in items :
+			self.cb.addItem(item)
+		self.spaceAbove=spaceAbove
+		self.spaceBelow=spaceBelow
+	def index(self):
+		return self.cb.currentIndex()
+	def text(self):
+		return self.cb.currentText()
+	def addToBox(self,box):
+		box.addStretch(self.spaceAbove)
+		box.addWidget(self.label)
 		box.addWidget(self.cb)
 		box.addStretch(self.spaceBelow)
 
@@ -210,15 +232,22 @@ class autoSaveMethod():
 			self.time_last_save=time.time()
 
 class startStopButton():
-	def __init__(self,setup=False,update=False,spaceAbove=1,spaceBelow=0,zeroAoOut=False, debug=False):
+	def __init__(self,setup=False,update=False,spaceAbove=1,spaceBelow=0,resetAO=False, debug=False, maxIter=np.infty, lineIter=False, showMaxIter=False):
 		self.setup=setup
-		self.update=update
+		self.updateFunc=update
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
-		self.zeroAoOut=zeroAoOut
+		self.resetAO=resetAO
 		self.debug=debug
+		self.maxIter=maxIter
+		self.lineIter=lineIter
+		self.showMaxIter=showMaxIter
 		self.startButton=button('Start',self.start_action, spaceAbove=spaceAbove, spaceBelow=0)
-		self.stopButton=button('Stop',self.stop_action, spaceAbove=0, spaceBelow=spaceBelow)
+		if self.showMaxIter :
+			self.stopButton=button('Stop',self.stop_action, spaceAbove=0, spaceBelow=0)
+			self.maxIterWidget=field('Max number',self.maxIter,spaceAbove=0, spaceBelow=spaceBelow)
+		else :
+			self.stopButton=button('Stop',self.stop_action, spaceAbove=0, spaceBelow=spaceBelow)
 		self.stopButton.button.setEnabled(False)
 		self.timer=QTimer()
 
@@ -226,22 +255,37 @@ class startStopButton():
 	def start_action(self):
 		self.startButton.button.setEnabled(False)
 		self.stopButton.button.setEnabled(True)
-		iters=get_objects(iterationWidget)
-		for it in iters :
-			it.reset()
+		if self.showMaxIter :
+			self.maxIter=val(self.maxIterWidget)
+		lines=get_objects(myLine)
+		for line in lines :
+			line.iteration=1
 		if self.setup :
-			failSafe(self.setup,debug=self.debug)
-		if self.update :
-			self.timer.timeout.connect(self.update)
+			self.updateArgs=failSafe(self.setup,debug=self.debug) #il va peut etre tej le failSafe
+		if self.updateFunc :
+			self.timer.timeout.connect(self.updateAction)
 			self.timer.start()
 
+	def updateAction(self):
+		if self.lineIter :
+			if self.lineIter.iteration > self.maxIter :
+				self.stop_action()
+				return	
+		
+		if isinstance(self.updateArgs,None.__class__) : #C'est déguelasse mais autrement numpy casse les couilles
+			failSafe(self.updateFunc,debug=self.debug)
+		elif isinstance(self.updateArgs,tuple) :
+			failSafe(self.updateFunc,*self.updateArgs,debug=self.debug)
+		else :
+			failSafe(self.updateFunc,self.updateArgs,debug=self.debug)
 
-	def stop_action(self): #C'est un peu brut mais bon ça fonctionne
-		tasks=get_objects(nidaqmx.Task)
+	def stop_action(self,closeAnyway=False): #C'est un peu brut mais bon ça fonctionne
+		self.timer.stop() #doublon mais bon
+		tasks=get_subclass(NIChan)
 		for task in tasks :
-			if task._handle is not None :
+			if task.task._handle is not None  and (task.toBeStopped or closeAnyway): #sinon il essaie de fermer des taches qui n'existent plus et ça fout des warnings
 				task.close()	
-		if self.zeroAoOut :
+		if self.resetAO :
 			for i in range(2):
 				with nidaqmx.Task() as tension :
 					tension.ao_channels.add_ao_voltage_chan('Dev1/ao%i'%i)
@@ -259,6 +303,8 @@ class startStopButton():
 	def addToBox(self,box):
 		self.startButton.addToBox(box)
 		self.stopButton.addToBox(box)
+		if self.showMaxIter :
+			self.maxIterWidget.addToBox(box)
 
 class microwave():
 	def __init__(self,ressourceName='mw_ludo',timeout=8000): #timeout in ms
@@ -266,25 +312,41 @@ class microwave():
 			ressourceName='TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 		self.PG = visa.ResourceManager().open_resource( ressourceName )
 		self.PG.write_termination = '\n'
-		self.PG.timeout=tiemout
+		self.PG.timeout=timeout
 		self.PG.clear()  # Clear instrument io buffers and status
 		self.PG.write('*WAI')
 
-	def setupESR(self,F_min=2800,F_max=2950,Power=-10,N_points=201,mod=None,AC_Depth=100):
+	def create_list_freq(self,fmin,fmax,level,n_points) :
+		#Frequecy given in MHz
+			freq_list=np.linspace(fmin,fmax,n_points)
+			instruction_f='SOUR:LIST:FREQ'
+			for f in freq_list :
+				if f==max(freq_list) :
+					instruction_f+=' %f MHz'%f
+				else :
+					instruction_f+=' %f MHz,'%f
+			instruction_pow='SOUR:LIST:POW'
+			for f in freq_list :
+				if f==max(freq_list) :
+					instruction_pow+=' %f dBm'%level
+				else :
+					instruction_pow+=' %f dBm,'%level
+			return instruction_f,instruction_pow
+
+	def setupESR(self,F_min=2800,F_max=2950,Power=-10,N_points=201,mod=None,AM_Depth=100):
 
 		fmin=val(F_min) #Note : ce serait possible d'automatiser tout ça avec du exec() mais après y'a moyen que ca casse tout, donc on va éviter
 		fmax=val(F_max)
 		n=val(N_points)
-		depth=val(AC_Depth)
+		depth=val(AM_Depth)
 		lvl=val(Power)
 
-		freq_list=np.linspace(fmin,fmax,n)
-		pow_list=np.ones(n)*lvl
+		freq_list,pow_list=self.create_list_freq(fmin,fmax,lvl,n)
 
 		self.PG.write(':LIST:DELete:ALL')
 		self.PG.write('*WAI')
 
-		if mod=='AC' :
+		if mod=='AM' :
 			self.PG.write(':SOUR:AM:SOUR EXT')
 			self.PG.write('*WAI')
 
@@ -293,6 +355,7 @@ class microwave():
 
 			self.PG.write(':SOUR:AM:STATe ON')
 			self.PG.write('*WAI')
+
 
 		self.PG.write('LIST:SEL "new_list"') #Il lui faut un nom, j'espere qu'il y a pas de blagues si je réécris dessus
 		self.PG.write('*WAI')
@@ -358,10 +421,10 @@ class useTheme():
 			pg.setConfigOption('foreground', 'k')			
 			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
 
-		pg.setConfigOptions(antialias=True)	
+		# pg.setConfigOptions(antialias=False)	
 	def nextLine(self,ax,typ=False):
 		if typ=='trace' :
-			pen=pg.mkPen(self.penColors[ax.currentPenIndex%len(self.penColors)],width=2,style=Qt.DashDotLine)
+			pen=pg.mkPen(self.penColors[ax.currentPenIndex%len(self.penColors)],width=2,style=Qt.DashDotLine) #ëvisiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
 			symbol=None
 			symbolPen=None
 			symbolBrush=None
@@ -374,12 +437,34 @@ class useTheme():
 		ax.currentPenIndex+=1
 		return pen,symbol,symbolPen,symbolBrush
 
-class AOChan():
-	def __init__(self,*physicalChannels): #Physical Channels = 'ao0' or 'ao1'		
+class NIChan():
+	def __init__(self,*physicalChannels):
+		self.trigged=False
+		self.running=False
+		self.nAvg=1
+		self.toBeStopped=True
+		self.setChannels(*physicalChannels)
+	def setChannels(self,*physicalChannels):
+		self.physicalChannels=physicalChannels
 		self.nChannels=len(physicalChannels)
-		self.triggerSignal='/Dev1/ao/StartTrigger'
-		self.physicalChannels=physicalChannels	
-		self.trigged=False		
+	def triggedOn(self,channels):
+		self.task.triggers.start_trigger.cfg_dig_edge_start_trig(channels.triggerSignal)
+		self.task.triggers.start_trigger.retriggerable=True
+		self.trigged=True
+		self.start()
+	def timeAxis(self):
+		n=int(self.sampsPerChan/self.nAvg)
+		return(np.linspace(0,self.sampsPerChan/self.samplingRate,n))
+	def start(self):
+		self.task.start()
+		self.running=True
+	def close(self):
+		self.task.close()
+
+class AOChan(NIChan):
+	def __init__(self,*physicalChannels): #Physical Channels = 'ao0' or 'ao1'	
+		super().__init__(*physicalChannels)	
+		self.triggerSignal='/Dev1/ao/StartTrigger'		
 	def createTask(self):
 		self.task=nidaqmx.Task()
 		for pc in self.physicalChannels :
@@ -393,7 +478,7 @@ class AOChan():
 	def updateContinuous(self,Value):
 		self.value=val(Value)
 		self.task.write(self.value)
-	def setupTimed(self,SampleFrequency,ValuesList,sampleMode='finite'): #sampleMode = 'finite' or 'continuous' ; ValuesList example : [[1,0.5,0],[3,2.5,3]] for two AO channels
+	def setupTimed(self,SampleFrequency,ValuesList,SampleMode='finite'): #sampleMode = 'finite' or 'continuous' ; ValuesList example : [[1,0.5,0],[3,2.5,3]] for two AO channels
 		self.createTask()
 		self.samplingRate=val(SampleFrequency)
 		self.signal=val(ValuesList)
@@ -401,32 +486,18 @@ class AOChan():
 			self.sampsPerChan=len(self.signal)
 		else :
 			self.sampsPerChan=len(self.signal[0]) #pas sur que ça marche ça, faudrait passer en numpy pour être clean
-		if sampleMode=='finite':
+		if SampleMode=='finite':
 			self.sampleMode=nidaqmx.constants.AcquisitionType.FINITE
-		elif sampleMode=='continuous':
+		elif SampleMode=='continuous':
 			self.sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
-		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=sampleMode, samps_per_chan=self.sampsPerChan)
-	def triggedOn(self,channels):
-		self.task.triggers.start_trigger.cfg_dig_edge_start_trig(channels.triggerSignal)
-		self.task.triggers.start_trigger.retriggerable=True
-		self.trigged=True
-		self.task.start()
-	def start(sef):
-		self.task.start()
-	def close(self):
-		self.task.close()
+		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
+		self.task.write(self.signal)
 
-class AIChan():
+class AIChan(NIChan):
 	def __init__(self,*physicalChannels,extendedRange=[-10,10]): #Physical Channels = 'ai0' to 'ai15'; if extendedRange=False : Vmin=-5 V and Vmax=+5 V		
-		self.nChannels=len(physicalChannels)
+		super().__init__(*physicalChannels)	
 		self.triggerSignal='/Dev1/ai/StartTrigger'
-		self.physicalChannels=physicalChannels
 		self.extendedRange=extendedRange
-		self.trigged=False
-		self.running=False
-	def setChannels(self,*physicalChannels):
-		self.physicalChannels=physicalChannels
-		self.nChannels=len(physicalChannels)
 	def createTask(self):
 		self.task=nidaqmx.Task()
 		for pc in self.physicalChannels :
@@ -437,22 +508,17 @@ class AIChan():
 				self.task.ai_channels.add_ai_voltage_chan(cname)
 	def setupSingle(self):
 		self.createTask()
-	def setupTimed(self,SampleFrequency,SamplesPerChan,sampleMode='finite',nAvg=1): 
+	def setupTimed(self,SampleFrequency,SamplesPerChan,SampleMode='finite',nAvg=1): 
 	#sampleMode = 'finite' or 'continuous' ; nAvg=average over n point for each sample
 		self.createTask()
 		self.nAvg=val(nAvg)
 		self.samplingRate=val(SampleFrequency)*self.nAvg
 		self.sampsPerChan=val(SamplesPerChan)*self.nAvg
-		if sampleMode=='finite':
+		if SampleMode=='finite':
 			self.sampleMode=nidaqmx.constants.AcquisitionType.FINITE
-		elif sampleMode=='continuous':
+		elif SampleMode=='continuous':
 			self.sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
 		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
-	def triggedOn(self,channels):
-		self.task.triggers.start_trigger.cfg_dig_edge_start_trig(channels.triggerSignal)
-		self.task.triggers.start_trigger.retriggerable=True
-		self.trigged=True
-		self.start()
 	def readTimed(self,waitForAcqui=False):
 		if self.sampleMode==nidaqmx.constants.AcquisitionType.CONTINUOUS:
 			data=self.task.read(self.sampsPerChan)
@@ -482,16 +548,57 @@ class AIChan():
 	
 	def readSingle(self):
 		return self.task.read()
-	def start(self):
-		self.task.start()
-		self.running=True
 	def readAndStop(self,sampsPerChan):
 		data=self.task.read(sampsPerChan)
 		self.task.stop()
 		self.running=False
 		return data
-	def close(self):
-		self.task.close()
+
+class DOChan(NIChan):
+	def __init__(self,*physicalChannels): #Physical Channels = 'p01' to 'p27' (p10 to p27 cannot be used in timed mode (I think, never understood what PFI were))		
+		super().__init__(*physicalChannels)	
+		self.triggerSignal='/Dev1/do/StartTrigger'	
+	def createTask(self):
+		self.task=nidaqmx.Task()
+		for pc in self.physicalChannels :
+			cname='Dev1/port'+pc[1]+'/line'+pc[2]
+			self.task.do_channels.add_do_chan(cname)	
+	def setupContinuous(self,Value): #Starts immediately. A noter que la c'est pour du continu constant, il faudrait éventuellement faire autre chose pour du continu avec un motif qui se répète
+		self.createTask()
+		self.value=val(Value)
+		self.task.write(self.value)
+		self.task.start()
+	def updateContinuous(self,Value):
+		self.value=val(Value)
+		self.task.write(self.value)
+	def setupTimed(self,SampleFrequency,ValuesList,SampleMode='finite'): #sampleMode = 'finite' or 'continuous' ; ValuesList example : [[True,False,True],[True,True,True]] for two DO channels
+		self.createTask()
+		self.samplingRate=val(SampleFrequency)
+		self.signal=val(ValuesList) #je vois pas dans quelle situation c'est utile
+		if self.nChannels==1:
+			self.sampsPerChan=len(self.signal)
+		else :
+			self.sampsPerChan=len(self.signal[0]) #pas sur que ça marche ça, faudrait passer en numpy pour être clean
+		if SampleMode=='finite':
+			self.sampleMode=nidaqmx.constants.AcquisitionType.FINITE
+		elif SampleMode=='continuous':
+			self.sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
+		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
+		self.task.write(self.signal)
+
+class COChan(NIChan):
+	def __init__(self,*physicalChannels): #Physical Channels = 'p01' to 'p27' (p10 to p27 cannot be used in timed mode (I think, never understood what PFI were))		
+		super().__init__(*physicalChannels)	
+		self.triggerSignal='/Dev1/co/StartTrigger'	#Pas sur avec le ArmStartTrigger, ce sera à vérifier. C'est la merde les trigg avec les compteurs
+	def createTask(self,freq):
+		self.task=nidaqmx.Task()
+		for pc in self.physicalChannels :
+			cname='Dev1/'+pc
+			self.task.co_channels.add_co_pulse_chan_freq('Dev1/ctr0',freq=freq)
+	def setupContinuous(self,Freq): #Starts immediately
+		self.createTask((val(Freq)))		
+		self.task.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS,samps_per_chan=10)
+		self.task.start()
 
 class graphics(pg.GraphicsLayoutWidget) :
 	def __init__(self,theme='white',debug=False):
@@ -499,7 +606,6 @@ class graphics(pg.GraphicsLayoutWidget) :
 		super().__init__()		
 
 		
-		self.it=False
 		self.norm=False
 		self.autoSave=False
 		self.debug=debug
@@ -513,32 +619,29 @@ class graphics(pg.GraphicsLayoutWidget) :
 		ax.currentPenIndex=0
 		self.axes+=[ax]
 		return ax
-	def addLine(self,x=[],y=[],ax=False,typ='instant',style='lm') : #style= :'l' =line, 'm' = marker, 'lm'=marker+line
+	def addLine(self,x=[],y=[],ax=False,typ='instant',style='lm',fast=False) : #style= :'l' =line, 'm' = marker, 'lm'=marker+line
 		if not ax :
 			ax=self.mainAx
 		if len(x)==0 :
 			x=np.linspace(0,10,100)
 		if len(y)==0 :
 			y=np.zeros(100)
-		line=myLine(x,y,ax,theme=self.theme,typ=typ,style=style)
+		line=myLine(x,y,ax,theme=self.theme,typ=typ,style=style,fast=fast)
 		self.lines+=[line]
 		return line
-	def iteration(self,spaceAbove=1,spaceBelow=0) :
-		self.it=iterationWidget(spaceAbove=spaceAbove,spaceBelow=spaceBelow)
-		return(self.it)
-	def normalize(self,initialState=True,spaceAbove=0,spaceBelow=0):
-		self.norm=normalizeWidget(initialState=initialState,spaceAbove=spaceAbove,spaceBelow=spaceBelow)
-		return(self.norm)
+	def normalize(self,initialState=False,spaceAbove=0,spaceBelow=0):
+		self.normWidget=checkBox(name='Normalize',action=self.normalizeActualize,initialState=initialState,spaceAbove=spaceAbove,spaceBelow=spaceBelow)
+		return(self.normWidget)
+	def normalizeActualize(self):
+		self.norm=self.normWidget.state()
+		for line in self.lines :
+			self.updateLine(line,line.xData,line.trueY)
 	def updateLine(self,line,x,y) :		
-		if self.norm :
-			norm=self.norm.state()
-		else :
-			norm=False
-		if not(isinstance(y,np.ndarray) or isinstance(y,list)) :
+		if not(isinstance(y,np.ndarray) or isinstance(y,list)) : #sécurité si jamais tu envoies rien, il ne se passe rien
 			return
 		if not(isinstance(x,np.ndarray) or isinstance(x,list)) :
 			x=line.xData
-		line.update(x,y,self.it,norm)
+		line.update(x,y,self.norm)
 
 		if self.autoSave :
 			self.autoSave.check()
@@ -547,7 +650,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 		box.addWidget(self)
 
 class myLine(pg.PlotDataItem) :
-	def __init__(self,x,y,ax,theme,typ,style): #typ=='instant','scroll', 'average' or 'trace'
+	def __init__(self,x,y,ax,theme,typ,style,fast): #typ=='instant','scroll', 'average' or 'trace'
 		self.theme=theme
 		self.ax=ax
 		self.typ=typ
@@ -557,19 +660,21 @@ class myLine(pg.PlotDataItem) :
 			pen=None
 		if not 'm' in style :
 			symbolPen=None
-		super().__init__(x,y,pen=pen,symbol=symbol,symbolPen=symbolPen,symbolBrush=symbolBrush)	#créé la ligne
+		super().__init__(x,y,pen=pen,symbol=symbol,symbolPen=symbolPen,symbolBrush=symbolBrush,antialias=not fast)	#créé la ligne
 		ax.addItem(self) #ajoute la ligne à l'axe
 
-		self.toBeUpdated=False
+		self.iteration=1
+		self.iterationWidget=False
 
-	def update(self,x,y,iteration,norm):
+	def update(self,x,y,norm):
 		oldY=self.trueY
 		if self.typ=='instant' :
-			newY=y
+			newY=y			
 		elif self.typ=='average' :
-			if not self.iteration :
-				raise ValueError('You need an iteration to average a measure')
-			newY=oldY*(1-1/self.iteration.counter)+y/self.iteration.counter
+			if np.any(oldY) : #Si il n'y a que des zéeros (donc première itération en pratique), il remplace directement. Mathématqiuement y'en a pas besoin mais sinon c'est galère avec les tailles
+				newY=oldY*(1-1/self.iteration)+y/self.iteration
+			else :
+				newY=y
 		elif self.typ=='scroll' :
 			n=len(y)
 			if n>len(x) :
@@ -579,30 +684,26 @@ class myLine(pg.PlotDataItem) :
 			else :
 				newY=np.roll(oldY,-n)
 				newY[-n:]=y
+		elif self.typ=='trace' :
+			newY=y	
 		self.trueY=newY
 		if norm :
-			ytoplot=self.trueY/max(abs(self.trueY))
+			ytoplot=normalize(self.trueY)
 		else :
 			ytoplot=self.trueY
 		self.setData(x,ytoplot)
-
-class normalizeWidget(checkBox):
-	def __init__(self,initialState,spaceAbove,spaceBelow):
-		super().__init__("Normalize",spaceAbove=spaceAbove,spaceBelow=spaceBelow)
-		self.setState(initialState)
+		self.iteration+=1
+		if self.iterationWidget :
+			self.iterationWidget.update(self.iteration)
 
 class iterationWidget():
-	def __init__(self,spaceAbove,spaceBelow):
+	def __init__(self,line,spaceAbove=1,spaceBelow=0):
 		self.label=QLabel('Iter #1')
-		self.counter=1
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
-	def increase(self):
-		self.counter+=1
-		self.label.setText('Iter #%i'%self.counter)
-	def reset(self):
-		self.counter=1
-		self.label.setText('Iter #%i'%self.counter)
+		line.iterationWidget=self
+	def update(self,value):
+		self.label.setText('Iter #%i'%value)		
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.label)
@@ -630,13 +731,36 @@ def failSafe(func,*args,debug=False):
 			quit()
 		else :
 			GUI=get_objects(Graphical_interface)[0]
-			startStopButton().stop_action()
+			startStopButton().stop_action() #
 			mb = QMessageBox(GUI)
 			mb.setStandardButtons(QMessageBox.Abort)
 			mb.setText(error.__str__())
 			mb.setInformativeText(''.join(tb.format())) #un peu barbare mais ça fonctionne
 			mb.show()
-			
+
+def visualize(*chans): #args must be channels which have been timeSetuped
+	offset=0
+	graph=pg.plot()
+	for chan in chans:
+		f=chan.samplingRate
+		n=chan.sampsPerChan
+		tmax=n/f
+		x=np.linspace(0,tmax,n)
+		if isinstance(chan,AIChan) :
+			x=np.linspace(0,tmax,2*n)
+			y=np.array([1,0]*n)
+		else :
+			y=chan.signal
+		y=normalize(y)+offset
+		offset+=2
+		graph.plot(x,y)
+
+
+def normalize(y): #y must be an arraylike
+	if isinstance(y,list):
+		y=np.array(y,dtype=float)
+	y=y/max(abs(y))
+	return y
 
 def val(x):
 	if isinstance(x, field) :
@@ -654,17 +778,22 @@ def get_objects(cls):
 			objs+=[obj]
 	return(objs)
 
+def get_subclass(cls):
+	import gc
+	objs=[]
+	for obj in gc.get_objects():
+		if issubclass(obj.__class__, cls):
+			objs+=[obj]
+	return(objs)
 
 def test_pg():
 	def setup():
-		pass
-	def update():
-		x=np.linspace(0,10,100)
+		return(np.linspace(0,10,100))
+	def update(x):
 		y=2*np.cos(x+time.time())
 		gra.updateLine(l3,False,y)
 		y0=np.cos(time.time())
 		gra.updateLine(l1,False,[y0])
-		it.increase()
 	def avertissement():
 		mb = QMessageBox(GUI)
 		mb.setText('Attention !')
@@ -682,10 +811,10 @@ def test_pg():
 
 
 
-	StartStop=startStopButton(setup=setup,update=update,debug=True)
+	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True)
 	save=saveButton(gra,autoSave=10)
 	trace=keepTraceButton(gra,l3)
-	it=gra.iteration()
+	it=iterationWidget(l3)
 	norm=gra.normalize()
 
 	buttons=[norm,StartStop,trace,save,it]

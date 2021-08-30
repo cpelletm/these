@@ -10,7 +10,7 @@ import nidaqmx.system
 import nidaqmx.constants
 
 
-import visa
+import pyvisa as visa
 import numpy as np
 
 
