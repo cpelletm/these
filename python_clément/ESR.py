@@ -2,7 +2,6 @@ from lab import *
 
 physicalChannels=['ai11','ai13']
 
-
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
 	if AM.state():
@@ -23,24 +22,18 @@ def setup():
 	x=np.linspace(val(fmin),val(fmax),n)
 	return x
 
-
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x):
 	y=ai.readTimed(waitForAcqui=False)
 	if not ai.running :
 		gra.updateLine(l1,x,y)
 
-
-
 def AM_OnOff():
 	AMDepth.setEnabled(AM.state())
-
-
 
 ## Create the communication (I/O) instances ##
 ai=AIChan()
 do=DOChan('p01')
-
 mw=microwave('mw_ludo')
 ## Setup the Graphical interface ##
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)

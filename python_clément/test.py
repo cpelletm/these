@@ -1,9 +1,11 @@
+import os
 import nidaqmx
 import nidaqmx.stream_writers
 import nidaqmx.stream_readers
 import nidaqmx.task
 import nidaqmx.system
 import time
+from datetime import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 import pyvisa as visa
@@ -1262,6 +1264,13 @@ def test_locals(a=1,b=2):
 class fooclass():
 	def __init__(self,a=1):
 		self.v='toto'
+		self.a=0
+	def recursion(self):
+		if self.v=='toto' :
+			self.v='tutu'
+			self.recursion()
+		elif self.v=='tutu':
+			print('Ca marche')
 
 
 
@@ -1302,5 +1311,18 @@ def mumuse_error():
 def return_multiple(*args):
 	return(args)
 
+def fonctionelle(func):
+	func()
 
-None.__class__.__repr__()
+def get_objects(cls):
+	import gc
+	objs=[]
+	for obj in gc.get_objects():
+		if isinstance(obj, cls):
+			objs+=[obj]
+	return(objs)
+
+
+print(callable(lambda:print('toto')))
+
+

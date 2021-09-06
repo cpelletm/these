@@ -1,14 +1,11 @@
 #To profile the code : @profile above the function tou want to profile, then run "kernprof -l script_to_profile.py" in terminal, then "python -m line_profiler script_to_profile.py.lprof" to visalize
 
-
 import sys
 import os
 import traceback
 import time
-import random
+from datetime import datetime
 import nidaqmx
-import nidaqmx.stream_writers
-import nidaqmx.stream_readers
 import nidaqmx.task
 import nidaqmx.system
 import pyvisa as visa
@@ -46,7 +43,7 @@ class Graphical_interface(QMainWindow) :
 	def run(self):
 		qapp.exec_()
 	def closeEvent(self, event): #Semble éviter les bugs. Un peu. Si tu veux rajouter des actions à faire en fermant c'est ici
-		startStopButton().stop_action(closeAnyway=True)
+		resetSetup(closeAnyway=True,stopTimers=True)
 		self.close()
 
 class label():
@@ -117,7 +114,7 @@ class checkBox():
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
 		self.setState(initialState)
-		if action :
+		if callable(action) :
 			self.setAction(action)		
 	def setAction(self,action):		
 			self.cb.stateChanged.connect(action)
@@ -160,6 +157,7 @@ class saveButton(button):
 			self.gra.autoSave=autoSaveMethod(self,autoSave)
 
 	def save(self,fname=False,saveData=True,saveFigure=True):
+		from pathlib import Path
 		#lines=get_objects(pg.graphicsItems.PlotDataItem.PlotDataItem) #C'est cradingue mais ça devrait fonctionner si besoin
 		start = os.path.join(self.startpath, "data")
 	
@@ -167,8 +165,11 @@ class saveButton(button):
 			fname, filter = QFileDialog.getSaveFileName(self.button.parent(),
 										 "Choose a filename to save to",
 										 start, "Images (*.png)")
-		self.startpath = os.path.dirname(fname)
-
+		dname=os.path.dirname(fname)
+		Path(dname).mkdir(parents=True, exist_ok=True)
+		self.startpath = os.path.dirname(dname)
+		if len(fname) < 5 or fname[-4]!='.' :
+			fname=fname+'.png'
 		if saveData :
 			fdataname=fname[:-4]+".csv"
 			import csv
@@ -224,7 +225,6 @@ class autoSaveMethod():
 		self.saveData=saveData
 	def check(self):
 		if time.time() > self.time_last_save + self.delay_s :
-			from datetime import datetime
 			now = datetime.now()
 			date_str=now.strftime("%Y-%m-%d %H-%M-%S")
 			filename='D:/DATA/AutoSave/'+date_str+'.png'
@@ -232,44 +232,110 @@ class autoSaveMethod():
 			self.time_last_save=time.time()
 
 class startStopButton():
-	def __init__(self,setup=False,update=False,spaceAbove=1,spaceBelow=0,resetAO=False, debug=False, maxIter=np.infty, lineIter=False, showMaxIter=False):
+	def __init__(self,setup=False,update=False,spaceAbove=1,spaceBelow=0, extraStop=False, debug=False, maxIter=np.infty, lineIter=False, showMaxIter=False,serie=False):
 		self.setup=setup
 		self.updateFunc=update
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
-		self.resetAO=resetAO
 		self.debug=debug
 		self.maxIter=maxIter
 		self.lineIter=lineIter
 		self.showMaxIter=showMaxIter
-		self.startButton=button('Start',self.start_action, spaceAbove=spaceAbove, spaceBelow=0)
+		self.serie=serie
+		self.extraStop=extraStop
+		if self.serie :
+			self.serieButton=button('Begin Serie', self.startSerie, spaceAbove=spaceAbove, spaceBelow=0)
+			self.serieLabel=label('Acquisition 0/?',spaceAbove=0, spaceBelow=0)
+			self.startButton=button('Start',self.startAction, spaceAbove=0, spaceBelow=0)
+		else :
+			self.startButton=button('Start',self.startAction, spaceAbove=spaceAbove, spaceBelow=0)
 		if self.showMaxIter :
-			self.stopButton=button('Stop',self.stop_action, spaceAbove=0, spaceBelow=0)
+			self.stopButton=button('Stop',self.stopAction, spaceAbove=0, spaceBelow=0)
 			self.maxIterWidget=field('Max number',self.maxIter,spaceAbove=0, spaceBelow=spaceBelow)
 		else :
-			self.stopButton=button('Stop',self.stop_action, spaceAbove=0, spaceBelow=spaceBelow)
+			self.stopButton=button('Stop',self.stopAction, spaceAbove=0, spaceBelow=spaceBelow)
 		self.stopButton.button.setEnabled(False)
 		self.timer=QTimer()
 
+	def setupSerie(self,nAcqui,iterPerAcqui,iterToCheck='default',acquiStart=False,acquiEnd=False): 
+	#nAcqui=number of acquisition for the serie ; iterPerAcqui= number of iteration for one acqui
+	#iterToCheck = function which is called and compared to  iterPerAcqui to check when the deed is done (typically some line.getIteration)
+		
+		self.nAcqui=nAcqui
+		self.serieLabel.setText('Acquisition 0/%i'%(self.nAcqui))
+		self.acquiStart=acquiStart
+		self.acquiEnd=acquiEnd
+		if isinstance(iterPerAcqui, (list, tuple, np.ndarray)) :			
+			self.iterPerAcqui=iterPerAcqui	
+		else :
+			self.iterPerAcqui=np.ones(self.nAcqui)*iterPerAcqui	
+		if iterToCheck=='default' :
+			try :
+				self.iterToCheck=self.lineIter.getIteration
+			except :
+				raise(ValueError('You need to setup a line in startStopButton(lineIter=) to begin a serie'))
+		else :
+			self.iterToCheck=iterToCheck
 
-	def start_action(self):
+	def startSerie(self):
+
+		self.serieButton.button.setEnabled(False)
+		self.startButton.button.setEnabled(False)
+		self.stopButton.button.setEnabled(True)
+
+		#~~Setup defaultFolder
+		i=1
+		folderName='D:/DATA/'+datetime.now().strftime("%Y%m%d")+'/Serie 1/'
+		while os.path.exists(folderName) :
+			i+=1
+			folderName='D:/DATA/'+datetime.now().strftime("%Y%m%d")+'/Serie %i/'%i
+		self.defaultFolder=folderName
+		#~~Fin de setup default Folder
+
+		self.iAcqui=0 #Counter of the current acquisition
+		self.maxIter=np.infty #j'utilise un autre système de compteur finalement,ça devrait éviter les embrouilles
+		self.nextAcqui()
+		self.timer.timeout.connect(self.updateSerie)
+		self.timer.start()
+
+	def nextAcqui(self):
+		self.acquiStart(self.iAcqui)
+		self.updateArgs=self.setup()
+		resetLines()
+		self.serieLabel.setText('Acquisition %i/%i'%(self.iAcqui+1,self.nAcqui))
+
+
+	def updateSerie(self):
+		if self.iterToCheck() <= self.iterPerAcqui[self.iAcqui] :
+			self.updateAction()
+		elif self.iAcqui+1 < self. nAcqui :
+			resetSetup(closeAnyway=False,stopTimers=False)
+			self.acquiEnd(self.iAcqui)
+			self.iAcqui+=1
+			self.nextAcqui()		
+		else :
+			self.acquiEnd(self.iAcqui)
+			self.stopAction()
+
+
+	def startAction(self):
+		if self.serie :
+			self.serieButton.button.setEnabled(False)
 		self.startButton.button.setEnabled(False)
 		self.stopButton.button.setEnabled(True)
 		if self.showMaxIter :
 			self.maxIter=val(self.maxIterWidget)
-		lines=get_objects(myLine)
-		for line in lines :
-			line.iteration=1
+		resetLines()
 		if self.setup :
 			self.updateArgs=failSafe(self.setup,debug=self.debug) #il va peut etre tej le failSafe
 		if self.updateFunc :
 			self.timer.timeout.connect(self.updateAction)
-			self.timer.start()
+			self.timer.start(10)
 
 	def updateAction(self):
 		if self.lineIter :
 			if self.lineIter.iteration > self.maxIter :
-				self.stop_action()
+				self.stopAction()
 				return	
 		
 		if isinstance(self.updateArgs,None.__class__) : #C'est déguelasse mais autrement numpy casse les couilles
@@ -279,35 +345,30 @@ class startStopButton():
 		else :
 			failSafe(self.updateFunc,self.updateArgs,debug=self.debug)
 
-	def stop_action(self,closeAnyway=False): #C'est un peu brut mais bon ça fonctionne
-		self.timer.stop() #doublon mais bon
-		tasks=get_subclass(NIChan)
-		for task in tasks :
-			if task.task._handle is not None  and (task.toBeStopped or closeAnyway): #sinon il essaie de fermer des taches qui n'existent plus et ça fout des warnings
-				task.close()	
-		if self.resetAO :
-			for i in range(2):
-				with nidaqmx.Task() as tension :
-					tension.ao_channels.add_ao_voltage_chan('Dev1/ao%i'%i)
-					tension.write(0)
-					tension.start()
-		mws=get_objects(microwave)
-		for mw in mws :
-			mw.close()
-		timers=get_objects(QTimer)
-		for timer in timers :
-			timer.stop()
+	def stopAction(self): 
+		self.timer.stop()
+		resetSetup(closeAnyway=False,stopTimers=False,extraStop=extraStop)
 		self.startButton.button.setEnabled(True)
 		self.stopButton.button.setEnabled(False)
+		if self.serie :
+			self.serieButton.button.setEnabled(True)
 
 	def addToBox(self,box):
+		if self.serie :
+			self.serieButton.addToBox(box)
+			self.serieLabel.addToBox(box)
 		self.startButton.addToBox(box)
 		self.stopButton.addToBox(box)
 		if self.showMaxIter :
 			self.maxIterWidget.addToBox(box)
 
-class microwave():
+class device(): #Pour l'instant ça sert juste à les regrouper pour les fermer
+	def __init__(self):
+		self.toBeClosed=True
+
+class microwave(device):
 	def __init__(self,ressourceName='mw_ludo',timeout=8000): #timeout in ms
+		super().__init__()
 		if ressourceName=='mw_ludo' :
 			ressourceName='TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 		self.PG = visa.ResourceManager().open_resource( ressourceName )
@@ -442,7 +503,8 @@ class NIChan():
 		self.trigged=False
 		self.running=False
 		self.nAvg=1
-		self.toBeStopped=True
+		self.toBeClosed=True
+		self.taskOpened=False
 		self.setChannels(*physicalChannels)
 	def setChannels(self,*physicalChannels):
 		self.physicalChannels=physicalChannels
@@ -458,8 +520,13 @@ class NIChan():
 	def start(self):
 		self.task.start()
 		self.running=True
-	def close(self):
-		self.task.close()
+		self.taskOpened=True
+	def close(self,closeAnyway=False):
+		if self.taskOpened :
+			if self.toBeClosed or closeAnyway :
+				self.task.close()
+				self.taskOpened=False
+				self.running=False
 
 class AOChan(NIChan):
 	def __init__(self,*physicalChannels): #Physical Channels = 'ao0' or 'ao1'	
@@ -470,11 +537,12 @@ class AOChan(NIChan):
 		for pc in self.physicalChannels :
 			cname='Dev1/'+pc
 			self.task.ao_channels.add_ao_voltage_chan(cname)	
+		self.taskOpened=True
 	def setupContinuous(self,Value): #Starts immediately
 		self.createTask()
 		self.value=val(Value)
 		self.task.write(self.value)
-		self.task.start()
+		self.start()
 	def updateContinuous(self,Value):
 		self.value=val(Value)
 		self.task.write(self.value)
@@ -492,6 +560,11 @@ class AOChan(NIChan):
 			self.sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
 		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
 		self.task.write(self.signal)
+	def setTo(self,value=0):
+		if self.running :
+			self.close()
+		self.setupContinuous(value)
+		self.close()
 
 class AIChan(NIChan):
 	def __init__(self,*physicalChannels,extendedRange=[-10,10]): #Physical Channels = 'ai0' to 'ai15'; if extendedRange=False : Vmin=-5 V and Vmax=+5 V		
@@ -506,6 +579,7 @@ class AIChan(NIChan):
 				self.task.ai_channels.add_ai_voltage_chan(cname,min_val=self.extendedRange[0],max_val=self.extendedRange[1])
 			else :
 				self.task.ai_channels.add_ai_voltage_chan(cname)
+		self.taskOpened=True
 	def setupSingle(self):
 		self.createTask()
 	def setupTimed(self,SampleFrequency,SamplesPerChan,SampleMode='finite',nAvg=1): 
@@ -563,11 +637,12 @@ class DOChan(NIChan):
 		for pc in self.physicalChannels :
 			cname='Dev1/port'+pc[1]+'/line'+pc[2]
 			self.task.do_channels.add_do_chan(cname)	
+		self.taskOpened=True
 	def setupContinuous(self,Value): #Starts immediately. A noter que la c'est pour du continu constant, il faudrait éventuellement faire autre chose pour du continu avec un motif qui se répète
 		self.createTask()
 		self.value=val(Value)
 		self.task.write(self.value)
-		self.task.start()
+		self.start()
 	def updateContinuous(self,Value):
 		self.value=val(Value)
 		self.task.write(self.value)
@@ -594,18 +669,17 @@ class COChan(NIChan):
 		self.task=nidaqmx.Task()
 		for pc in self.physicalChannels :
 			cname='Dev1/'+pc
-			self.task.co_channels.add_co_pulse_chan_freq('Dev1/ctr0',freq=freq)
+			self.task.co_channels.add_co_pulse_chan_freq(cname,freq=freq)
+		self.taskOpened=True
 	def setupContinuous(self,Freq): #Starts immediately
 		self.createTask((val(Freq)))		
 		self.task.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS,samps_per_chan=10)
-		self.task.start()
+		self.start()
 
 class graphics(pg.GraphicsLayoutWidget) :
 	def __init__(self,theme='white',debug=False):
 		self.theme=useTheme(theme)
-		super().__init__()		
-
-		
+		super().__init__()			
 		self.norm=False
 		self.autoSave=False
 		self.debug=debug
@@ -638,13 +712,13 @@ class graphics(pg.GraphicsLayoutWidget) :
 			self.updateLine(line,line.xData,line.trueY)
 	def updateLine(self,line,x,y) :		
 		if not(isinstance(y,np.ndarray) or isinstance(y,list)) : #sécurité si jamais tu envoies rien, il ne se passe rien
-			return
+			return False
 		if not(isinstance(x,np.ndarray) or isinstance(x,list)) :
 			x=line.xData
 		line.update(x,y,self.norm)
-
 		if self.autoSave :
 			self.autoSave.check()
+		return True
 
 	def addToBox(self,box):
 		box.addWidget(self)
@@ -665,16 +739,18 @@ class myLine(pg.PlotDataItem) :
 
 		self.iteration=1
 		self.iterationWidget=False
+	def getIteration(self):
+		return self.iteration
 
 	def update(self,x,y,norm):
 		oldY=self.trueY
 		if self.typ=='instant' :
 			newY=y			
 		elif self.typ=='average' :
-			if np.any(oldY) : #Si il n'y a que des zéeros (donc première itération en pratique), il remplace directement. Mathématqiuement y'en a pas besoin mais sinon c'est galère avec les tailles
-				newY=oldY*(1-1/self.iteration)+y/self.iteration
-			else :
+			if self.iteration == 1 : #Mathématqiuement y'en a pas besoin mais sinon c'est galère avec les tailles
 				newY=y
+			else :			
+				newY=oldY*(1-1/self.iteration)+y/self.iteration
 		elif self.typ=='scroll' :
 			n=len(y)
 			if n>len(x) :
@@ -709,6 +785,114 @@ class iterationWidget():
 		box.addWidget(self.label)
 		box.addStretch(self.spaceBelow)
 
+class pulsedLaserWidget():
+	def __init__(self,spaceAbove=1,spaceBelow=0,chan='ctr0',freq=20E6,ignoreWarning=False):
+		self.laserCb=checkBox('Laser On',action=self.lasOnOff,spaceAbove=spaceAbove)
+		self.laserFreq=field('Laser frequency',freq,spaceAbove=0)
+		self.laser=pulsedLaserControl(channel=chan,ignoreWarning=ignoreWarning)
+	def lasOnOff(self):
+		if self.laserCb.state() :
+			self.laser.start(self.laserFreq)
+		else :
+			self.laser.stop()
+	def addToBox(self,box):
+		self.laserCb.addToBox(box)
+		self.laserFreq.addToBox(box)
+
+class pulsedLaserControl():
+	def __init__(self,channel='ctr0',ignoreWarning=False):
+		self.co=COChan(channel)
+		self.state='Off'
+		self.freq=0
+		self.co.toBeClosed=False
+		self.ignoreWarning=ignoreWarning
+	def start(self,freq):
+		freq=val(freq)
+		if self.state=='Off':
+			self.freq=freq
+			try :
+				self.co.setupContinuous(self.freq)	
+			except :
+				if not self.ignoreWarning :
+					warning('Could not start pulsed laser \n Probably used in another program')
+			self.state='On'
+		elif freq != self.freq : 
+			self.freq=freq
+			self.stop()
+			self.start(self.freq)
+		else :
+			pass
+	def stop(self):
+		if self.state=='On':
+			self.co.close(closeAnyway=True)
+			self.state='Off'
+
+class continuousLaserWidget():
+	def __init__(self,spaceAbove=1,spaceBelow=0,chanAOM='ao1',chanPM='ai9',power=200,caliber=1000): #Power in uW ; caliber=power in uW for U=1V
+		self.laserCb=checkBox('Laser On',action=self.lasOnOff,spaceAbove=spaceAbove)
+		self.laserPow=field('Laser power (uW)',power,spaceAbove=0)
+		self.AOM=AOChan(chanAOM)
+		self.PM=powerMeterAnalog(chan=chanPM,caliber=caliber)
+	def lasOnOff(self):
+		if self.laserCb.state() :			
+			self.AOM.setupContinuous(0)
+			self.setTo(val(self.laserPow))
+			self.AOM.close()
+		else :
+			self.AOM.setupContinuous(0)
+			self.AOM.close()
+
+
+	def setTo(self,target,precision=0.001):
+		mini=0
+		maxi=0.45
+		self.PM.setup()
+		while maxi-mini > precision :
+			val=(maxi+mini)/2
+			self.AOM.updateContinuous(val)
+			lect=self.PM.read()
+			if lect > target :
+				maxi=val
+			else :
+				mini=val
+		self.PM.close()
+	def addToBox(self,box):
+		self.laserCb.addToBox(box)
+		self.laserPow.addToBox(box)
+
+class powerMeterAnalog():
+	def __init__(self,chan,caliber):
+		self.Ai=AIChan(chan,extendedRange=[-0.5,2.5])
+		self.caliber=caliber
+	def setup(self,nAvg=100,facq=1E4):
+		self.Ai.setupTimed(SampleFrequency=facq,SamplesPerChan=nAvg)
+	def close(self):
+		self.Ai.close()
+	def read(self):
+		res=self.Ai.readTimed(waitForAcqui=True)
+		return(sum(res)/len(res)*self.caliber)
+
+
+
+def resetSetup(closeAnyway=False,stopTimers=True,extraStop=False): #C'est un peu brut mais bon ça fonctionne
+	if stopTimers :
+		timers=get_objects(QTimer)
+		for timer in timers :
+			timer.stop()
+	tasks=get_subclass(NIChan)
+	for task in tasks :
+		task.close(closeAnyway=closeAnyway)	
+	devices=get_subclass(device)
+	for d in devices :
+		if d.toBeClosed :
+			d.close()
+	if callable(extraStop):
+		extraStop()
+	
+def resetLines():
+	lines=get_objects(myLine)
+	for line in lines :
+		line.iteration=1
 
 def average(y,nAvg):
 	if len(y)%nAvg!=0 :
@@ -727,11 +911,11 @@ def failSafe(func,*args,debug=False):
 		if debug :
 			print(error)
 			print(''.join(tb.format()))
-			startStopButton().stop_action()
+			resetSetup(closeAnyway=True,stopTimers=True)
 			quit()
 		else :
 			GUI=get_objects(Graphical_interface)[0]
-			startStopButton().stop_action() #
+			resetSetup(closeAnyway=True,stopTimers=True)
 			mb = QMessageBox(GUI)
 			mb.setStandardButtons(QMessageBox.Abort)
 			mb.setText(error.__str__())
@@ -755,6 +939,15 @@ def visualize(*chans): #args must be channels which have been timeSetuped
 		offset+=2
 		graph.plot(x,y)
 
+def warning(message):
+	try :
+		GUI=get_objects(Graphical_interface)[0]
+	except :
+		print(message)
+		raise(ValueError('Could not find graphical interface to print error message'))
+	mb = QMessageBox(GUI)
+	mb.setText(message)
+	mb.show()
 
 def normalize(y): #y must be an arraylike
 	if isinstance(y,list):
@@ -795,9 +988,17 @@ def test_pg():
 		y0=np.cos(time.time())
 		gra.updateLine(l1,False,[y0])
 	def avertissement():
-		mb = QMessageBox(GUI)
-		mb.setText('Attention !')
-		mb.show()
+		warning('Attention !')
+	def acquiStart(i):
+		ftoto.setValue(3*i)
+	def acquiEnd(i):
+		fname=StartStop.defaultFolder+'acqui #%i'%i
+		save.save(fname=fname)
+	def dummyf(e):
+		pos=e[0]
+		# print(pos.pos())
+		mousePoint = gra.mainAx.vb.mapSceneToView(pos.pos())
+		print(mousePoint.x(),mousePoint.y())
 	x=np.linspace(0,10,100)
 	y=np.cos(x)
 	gra=graphics()
@@ -806,23 +1007,36 @@ def test_pg():
 	ax2=gra.addAx()
 	l3=gra.addLine(x,-y,ax=ax2,typ='instant')
 
+	las=continuousLaserWidget()
 	ftoto=field('toto',10,spaceBelow=1)
 	attention=button('Warning',avertissement)
+	fields=[las,ftoto,attention]
 
 
-
-	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True)
+	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True)
+	StartStop.setupSerie(nAcqui=3,iterPerAcqui=[100,150,50],acquiStart=acquiStart,acquiEnd=acquiEnd)
 	save=saveButton(gra,autoSave=10)
 	trace=keepTraceButton(gra,l3)
 	it=iterationWidget(l3)
 	norm=gra.normalize()
+	# print(dir(gra.scene()))
+	proxy = pg.SignalProxy(gra.scene().sigMouseClicked, rateLimit=60, slot=dummyf)
 
 	buttons=[norm,StartStop,trace,save,it]
-	GUI=Graphical_interface([ftoto,attention],gra,buttons,title='Example GUI')
+	GUI=Graphical_interface(fields,gra,buttons,title='Example GUI')
 
 	GUI.run()
 
-
+def test_multiple_tasks():
+	ao1=AOChan('ao0')
+	ao2=AOChan('ao1')
+	ao3=AOChan('ao0')
+	ao2.setupContinuous(0.5)
+	values=np.linspace(-1,1,100)
+	ao1.setupTimed(100,values)
+	ao1.start()
+	time.sleep(1)
+	resetSetup(extraStop=lambda: ao2.setTo(0.45))
 
 
 if __name__ == "__main__":
