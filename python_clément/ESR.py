@@ -13,7 +13,7 @@ def setup():
 
 	mw.setupESR(F_min=fmin,F_max=fmax,Power=level,N_points=n,mod=mod,AM_Depth=AMDepth)
 	ai.setChannels(channels.text())
-	ai.setupTimed(SampleFrequency=f,SamplesPerChan=n,nAvg=nAvg)
+	ai.setupTimed(SampleFrequency=f,SamplesPerChan=n,nAvg='auto')
 
 	doSequence=[True,False]*n
 	do.setupTimed(SampleFrequency=2*f,ValuesList=doSequence)
@@ -48,17 +48,16 @@ AM.setState(True)
 AMDepth.setEnabled(AM.state())
 
 nPoints=field('n points',151,spaceAbove=3)
-nAvg=field('Average over :',10,spaceAbove=1)
 fsweep=field('sweep frequency (Hz)',300,spaceAbove=0)
 
-fields=[channels,fmin,fmax,level,AM,AMDepth,nPoints,nAvg,fsweep]
+fields=[channels,fmin,fmax,level,AM,AMDepth,nPoints,fsweep]
 
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l1,showMaxIter=True)
 save=saveButton(gra,autoSave=10)
-trace=keepTraceButton(gra,l1)
+trace=keepTraceButton(l1)
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)

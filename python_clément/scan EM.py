@@ -1,15 +1,14 @@
 from lab import *
 
-nRuns=51
-iterPerRun=np.linspace(400,20,nRuns)
-iterPerRun=[int(x) for x in iterPerRun]
-laserValues=np.linspace(5E5,2E7,nRuns)
+laserPowers=list(np.linspace(5e-6,5e-5,40))+list(np.linspace(5e-5,4e-4,41))[1:]
+ns=[int(500*5e-6/p+20) for p in laserPowers]
+
 def acquiStart(i):
-	laserFreq.setValue(laserValues[i])
+	laser.setPower(laserPowers[i])
 
 
 def acquiEnd(i):
-	fname=StartStop.defaultFolder+'P=%f'%(laserValues[i]*200/2E7)+' mW'
+	fname=StartStop.defaultFolder+'P=%f'%(laser.getPower()*1e6)+' uW'
 	save.save(fname=fname)
 	
 
@@ -24,7 +23,7 @@ def setup():
 	voltageSignal=np.concatenate((np.linspace(xmed,xmin,nstart),np.linspace(xmin,xmax,n),np.linspace(xmax,xmed,nstart)))
 	nTot=len(voltageSignal)
 	ao.setupTimed(SampleFrequency=fsweep,ValuesList=voltageSignal)
-	ai.setupTimed(SampleFrequency=fsweep,SamplesPerChan=nTot,nAvg=nAvg)
+	ai.setupTimed(SampleFrequency=fsweep,SamplesPerChan=nTot,nAvg='auto')
 	ao.triggedOn(ai)
 	x=voltageSignal[nstart:nend]
 	return(nstart,nend,x)
@@ -47,14 +46,13 @@ ao=AOChan('ao0')
 
 ## Setup the Graphical interface ##
 
-laser=pulsedLaserWidget()
+laser=continuousLaserWidget()
 vmin=field('V min (V)',-5,spaceAbove=3)
 vmax=field('V max (V)',5,spaceAbove=0)
 nPoints=field('n points',501,spaceAbove=3)
-nAvg=field('Average over :',100,spaceAbove=1)
 fsweep=field('sweep frequency (Hz)',200,spaceAbove=0)
 
-fields=[laser,vmin,vmax,nPoints,nAvg,fsweep]
+fields=[laser,vmin,vmax,nPoints,fsweep]
 
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
@@ -62,9 +60,9 @@ ax2=gra.addAx()
 l2=gra.addLine(typ='average',style='lm',ax=ax2)
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=lambda: ao.setTo(0))
-StartStop.setupSerie(nAcqui=nRuns,iterPerAcqui=iterPerRun,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=len(ns),iterPerAcqui=ns,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=10)
-trace=keepTraceButton(gra,l1,l2)
+trace=keepTraceButton(l1,l2)
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)

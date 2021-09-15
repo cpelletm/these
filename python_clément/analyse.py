@@ -128,8 +128,21 @@ def stretch_exp_fit(x,y,Amp=None,ss=None,tau=None) :
 	def f(x,Amp,ss,tau) :
 		return Amp*np.exp(-np.sqrt(x/tau))+ss
 	p0=[Amp,ss,tau]
-	popt, pcov = curve_fit(f, x, y, p0)
+	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1],popt[2]))
+
+def stretch_arb_exp_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5):
+	if not Amp :
+		Amp=max(y)-min(y)
+	if not ss :
+		ss=y[-1]
+	if not tau :
+		tau=x[int(len(x)/10)]-x[0]
+	def f(x,Amp,ss,tau,alpha) :
+		return Amp*np.exp(-(x/tau)**alpha)+ss
+	p0=[Amp,ss,tau,alpha]
+	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
+	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
 
 def stretch_soustraction(x,y,Amp=None,tau=None) :
 	if not Amp :
@@ -153,16 +166,18 @@ def third_stretch(x,y,Amp=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_et_phonon(x,y,Amp=None,tau=None) :
+def stretch_et_phonons(x,y,Amp=None,tau=None,ss=None,T1ph=5E-3) :
 	if not Amp :
 		Amp=max(y)-min(y)
+	if not ss :
+		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-np.sqrt(x/tau)-x/5E-3)
-	p0=[Amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
+	def f(x,Amp,ss,tau) :
+		return Amp*np.exp(-x/((T1ph*np.sqrt(x*tau))/(T1ph+np.sqrt(x*tau))))+ss
+	p0=[Amp,ss,tau]
+	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
+	return(popt,f(x,popt[0],popt[1],popt[2]))
 
 def fit_B_dipole(x,y,B0=2000,x0=10) : #x : distance en mm, y : champ mag en G
 	def f(x,B0,x0):
