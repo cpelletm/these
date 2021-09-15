@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  17 FEB 2021 18:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.7)  23 AUG 2021 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -425,22 +425,12 @@ File: scan_CR.pdf Graphic file (type pdf)
 Package pdftex.def Info: scan_CR.pdf  used on input line 84.
 (pdftex.def)             Requested size: 443.9542pt x 255.14268pt.
  [5] [6 <./scan_CR.pdf>]
-Package epstopdf Info: Source file: <setup.eps>
-(epstopdf)                    date: 2021-02-07 10:57:25
-(epstopdf)                    size: 271553 bytes
-(epstopdf)             Output file: <setup-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-02-07 10:57:25
-(epstopdf)                    size: 69193 bytes
-(epstopdf)             Command: <repstopdf --outfile=setup-eps-converted-to.pdf
- setup.eps>
-(epstopdf)             \includegraphics on input line 102.
-Package epstopdf Info: Output file is already uptodate.
-<setup-eps-converted-to.pdf, id=123, 1230.5975pt x 732.7375pt>
-File: setup-eps-converted-to.pdf Graphic file (type pdf)
-<use setup-eps-converted-to.pdf>
-Package pdftex.def Info: setup-eps-converted-to.pdf  used on input line 102.
-(pdftex.def)             Requested size: 1230.59451pt x 732.73572pt.
- [7 <./setup-eps-converted-to.pdf>]
+<setup.pdf, id=123, 1392.57509pt x 733.0725pt>
+File: setup.pdf Graphic file (type pdf)
+<use setup.pdf>
+Package pdftex.def Info: setup.pdf  used on input line 102.
+(pdftex.def)             Requested size: 1392.5717pt x 733.07071pt.
+ [7 <./setup.pdf>]
 Package epstopdf Info: Source file: <T1_soustraction_shema.eps>
 (epstopdf)                    date: 2021-02-07 10:57:25
 (epstopdf)                    size: 35634 bytes
@@ -450,15 +440,16 @@ Package epstopdf Info: Source file: <T1_soustraction_shema.eps>
 (epstopdf)                    size: 14389 bytes
 (epstopdf)             Command: <repstopdf --outfile=T1_soustraction_shema-eps-
 converted-to.pdf T1_soustraction_shema.eps>
-(epstopdf)             \includegraphics on input line 115.
+(epstopdf)             \includegraphics on input line 117.
 Package epstopdf Info: Output file is already uptodate.
-<T1_soustraction_shema-eps-converted-to.pdf, id=140, 351.3125pt x 46.1725pt>
+<T1_soustraction_shema-eps-converted-to.pdf, id=282, 351.3125pt x 46.1725pt>
 File: T1_soustraction_shema-eps-converted-to.pdf Graphic file (type pdf)
 <use T1_soustraction_shema-eps-converted-to.pdf>
 Package pdftex.def Info: T1_soustraction_shema-eps-converted-to.pdf  used on in
-put line 115.
+put line 117.
 (pdftex.def)             Requested size: 351.31163pt x 46.17236pt.
- [8 <./T1_soustraction_shema-eps-converted-to.pdf>] [9]
+ [8 <./T1_soustraction_shema-eps-converted-to.pdf>]
+[9]
 Package epstopdf Info: Source file: <axes.eps>
 (epstopdf)                    date: 2021-02-10 17:15:41
 (epstopdf)                    size: 1626830 bytes
@@ -467,37 +458,37 @@ Package epstopdf Info: Source file: <axes.eps>
 (epstopdf)                    size: 18156 bytes
 (epstopdf)             Command: <repstopdf --outfile=axes-eps-converted-to.pdf 
 axes.eps>
-(epstopdf)             \includegraphics on input line 165.
+(epstopdf)             \includegraphics on input line 167.
 Package epstopdf Info: Output file is already uptodate.
-<axes-eps-converted-to.pdf, id=153, 410.53375pt x 319.1925pt>
+<axes-eps-converted-to.pdf, id=295, 410.53375pt x 319.1925pt>
 File: axes-eps-converted-to.pdf Graphic file (type pdf)
 <use axes-eps-converted-to.pdf>
-Package pdftex.def Info: axes-eps-converted-to.pdf  used on input line 165.
+Package pdftex.def Info: axes-eps-converted-to.pdf  used on input line 167.
 (pdftex.def)             Requested size: 410.53275pt x 319.19171pt.
  [10 <./axes-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 213--215
+Underfull \hbox (badness 10000) in paragraph at lines 215--217
 
  []
 
 [11]
-<map_torque_1_classe.pdf, id=175, 1151.31938pt x 472.82925pt>
+<map_torque_1_classe.pdf, id=317, 1151.31938pt x 472.82925pt>
 File: map_torque_1_classe.pdf Graphic file (type pdf)
 <use map_torque_1_classe.pdf>
-Package pdftex.def Info: map_torque_1_classe.pdf  used on input line 217.
+Package pdftex.def Info: map_torque_1_classe.pdf  used on input line 219.
 (pdftex.def)             Requested size: 1151.31657pt x 472.8281pt.
  [12 <./map_torque_1_classe.pdf>] [13]
-<22-total.pdf, id=220, 1055.71661pt x 716.83017pt>
+<22-total.pdf, id=362, 1055.71661pt x 716.83017pt>
 File: 22-total.pdf Graphic file (type pdf)
 <use 22-total.pdf>
-Package pdftex.def Info: 22-total.pdf  used on input line 272.
+Package pdftex.def Info: 22-total.pdf  used on input line 274.
 (pdftex.def)             Requested size: 1055.71404pt x 716.82841pt.
  [14] [15 <./22-total.pdf>] [16]
 [17] (./Meca_cross_SI.bbl [18]) [19] (./Meca_cross_SI.aux) ) 
 Here is how much of TeX's memory you used:
- 5868 strings out of 481239
- 84189 string characters out of 5920377
+ 5855 strings out of 481239
+ 83998 string characters out of 5920377
  342784 words of memory out of 5000000
- 21064 multiletter control sequences out of 15000+600000
+ 21051 multiletter control sequences out of 15000+600000
  544287 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,10n,47p,1386b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -521,10 +512,10 @@ ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
 ic/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on Meca_cross_SI.pdf (19 pages, 916572 bytes).
+Output written on Meca_cross_SI.pdf (19 pages, 952784 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
- 319 compressed objects within 4 object streams
+ 616 PDF objects out of 1000 (max. 8388607)
+ 415 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

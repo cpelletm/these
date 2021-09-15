@@ -9,7 +9,6 @@ from datetime import datetime
 import nidaqmx
 import nidaqmx.task
 import nidaqmx.system
-import usb
 import pyvisa as visa
 
 import numpy as np
@@ -842,7 +841,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 			self.nextRow()
 		ax=self.addPlot(title=title)
 		ax.currentPenIndex=0
-		ax.legend=ax.addLegend()
+		ax.legend=ax.addLegend(labelTextSize='8pt')
 		self.axes+=[ax]
 		return ax
 	def addLine(self,x=[],y=[],ax=False,typ='instant',style='lm',fast=False,label=False) : #style= :'l' =line, 'm' = marker, 'lm'=marker+line
@@ -859,13 +858,44 @@ class graphics(pg.GraphicsLayoutWidget) :
 	def addInfiniteLine(self,pos,angle=90,movable=True,ax=False):
 		if not ax :
 			ax=self.mainAx
-		line=pg.InfiniteLine(pos=pos,angle=angle,movable=movable)
+		class myInfiniteLine(pg.InfiniteLine) :
+			def __init__(self,pos,angle,movable):
+				self.color=(100,100,100)
+				super().__init__(pos=pos,angle=angle,movable=movable,pen=pg.mkPen(color=self.color,width=2))
+				self.sigClicked.connect(self.clicked)
+				self.sigPositionChanged.connect(self.moved) #Change to sigPositionChangeFinished if lagging
+			def clicked(self,line,e):
+				if e.button()==4 :
+					self.remove()
+			def remove(self):
+				self.ax.removeItem(self)
+				self.ax.removeItem(self.label)
+				self.graphicsWidget.infiniteLines.remove(self)
+			def moved(self):
+				line.label.moveToLine()
+		line=myInfiniteLine(pos=pos,angle=angle,movable=movable)
 		ax.addItem(line)
+		self.infiniteLines+=[line]
 		line.ax=ax
 		line.graphicsWidget=self
-		def remove(self):
-			self.ax.removeItem(self)
-
+		class infiniteLineLabel(pg.TextItem) :
+			def __init__(self,line):
+				self.line=line			
+				super().__init__(color=line.color)
+				self.setFont(QFont( "Consolas", 20, QFont.Bold))
+				self.moveToLine()
+				line.ax.addItem(self)
+			def moveToLine(self):
+				xAnch=self.line.pos()[0]
+				yAnch=(self.line.ax.viewRange()[1][0]+self.line.ax.viewRange()[1][1])/2
+				self.setPos(xAnch,yAnch)
+				self.setText(repr_numbers(xAnch,precision=3))
+		line.label=infiniteLineLabel(line)
+		# label=pg.TextItem(text='toto',anchor=(0,0), color=(100,100,100))
+		# label.setFont(QFont( "Consolas", 20, QFont.Bold))
+		# ymil=gra.mainAx.viewRange()[1][0]+gra.mainAx.viewRange()[1][1]
+		# label.setPos(2,ymil)
+		# gra.mainAx.addItem(label)
 		return line
 	def normalize(self,initialState=False,spaceAbove=0,spaceBelow=0):
 		self.normWidget=checkBox(name='Normalize',action=self.normalizeActualize,initialState=initialState,spaceAbove=spaceAbove,spaceBelow=spaceBelow)
@@ -1344,12 +1374,11 @@ def test_pg():
 	ax2=gra.addAx()
 	l3=gra.addLine(x,-y,ax=ax2,typ='instant',label='L3')
 
+	print(dir(l1))
 
-
-	las=continuousLaserWidget(PMType='USB',power=2E-4)
 	ftoto=field('toto',10,spaceBelow=1)
 	attention=button('Warning',avertissement)
-	fields=[las,ftoto,attention]
+	fields=[ftoto,attention]
 
 
 	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True)
@@ -1376,16 +1405,14 @@ def test_mouseControl():
 		# print(mousePoint.x(),mousePoint.y())
 		if pos.double() :
 			l=gra.addInfiniteLine(mousePoint.x())
-			l.sigClicked.connect(deleteLine)
-	def deleteLine(line,e):
-		if e.button()==2 :
-			print(dir(line))
 
 	gra=graphics()
 	x=np.linspace(0,10,100)
 	y=np.cos(x)
 	l1=gra.addLine(x,y)
 	l2=gra.addInfiniteLine(2)
+	
+	
 	proxy = pg.SignalProxy(gra.mainAx.scene().sigMouseClicked, rateLimit=60, slot=clicker)
 	GUI=Graphical_interface(gra,title='test')
 	GUI.run()
@@ -1402,6 +1429,6 @@ def test_multiple_tasks():
 
 
 if __name__ == "__main__":
-	test_pg()
+	test_mouseControl()
 
 
