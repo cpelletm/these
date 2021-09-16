@@ -2,7 +2,7 @@ import sys
 import glob
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.optimize import curve_fit,root_scalar
+from scipy.optimize import curve_fit,root_scalar,minimize
 from scipy import fftpack
 from PyQt5.QtWidgets import QApplication,QFileDialog
 
@@ -186,7 +186,7 @@ def fit_B_dipole(x,y,B0=2000,x0=10) : #x : distance en mm, y : champ mag en G
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def ESR_n_pics(x,y,cs,width=8,ss=None,amp=None) :
+def ESR_n_pics(x,y,cs,width=False,ss=None,amp=None,typ='gauss') : #typ="gauss" ou "lor"
 	if not ss :
 		ss=y[0]
 	if not amp :
@@ -194,6 +194,13 @@ def ESR_n_pics(x,y,cs,width=8,ss=None,amp=None) :
 			amp=max(y)-ss
 		else :
 			amp=min(y)-ss
+	if not width :
+		if max(x) < 50 : #Je sq c'est des GHz
+			width=8e-3
+		elif max(x) < 5E4 : #Je sq c'es des Mhz
+			width=8
+		else : #Je sq c'es des Hz
+			width=8E6
 	n=len(cs)
 	widths=np.ones(n)*width
 	amps=np.ones(n)*amp
@@ -212,7 +219,10 @@ def ESR_n_pics(x,y,cs,width=8,ss=None,amp=None) :
 			c=params[1+i]
 			width=params[1+n+i]
 			amp=params[1+2*n+i]
-			y+=amp*np.exp(-((x-c)/width)**2)
+			if typ=="gauss" :
+				y+=amp*np.exp(-((x-c)/width)**2)
+			elif typ=="lor" :
+				y+=amp*1/(1+((x-c)/width)**2)
 		return(y)
 	popt, pcov = curve_fit(f, x, y, p0)
 	variables=(x,)
@@ -277,6 +287,123 @@ def find_B_100(freq,transi='-',B_max=100) :
 	RR=root_scalar(f,bracket=[0,B_max])
 	return RR.root
 
+class NVHamiltonian(): #x,y and z axis are taken as (100) axis
+	D=2870 #Mhz
+	gamma_e=2.8 #Mhz/gauss
+
+	Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
+	Sy=np.array([[0,-1j,0],[1j,0,-1j],[0,1j,0]])*1/np.sqrt(2)
+	Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])*1/np.sqrt(2)
+	Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
+
+	c1=np.array([-1,1.,-1])/np.sqrt(3)
+	c2=np.array([1,1,1])/np.sqrt(3)
+	c3=np.array([-1,-1,1])/np.sqrt(3)
+	c4=np.array([1,-1,-1])/np.sqrt(3)
+	cs=[c1,c2,c3,c4]
+	def __init__(self,B,c=1): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz]
+		if not isinstance(B,magneticField):
+			B=magneticField(x=B[0],y=B[1],z=B[2])
+		Bz=self.cs[c].dot(B.cartesian) #Attention, ici Bz est dans la base du NV (Bz')
+		Bx=np.sqrt(abs(B.amp**2-Bz**2))#le amp est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
+		self.H=self.D*self.Sz2+self.gamma_e*(Bz*self.Sz+Bx*self.Sx) #Rajoute des fioritures si tu veux
+	def transitions(self):
+		egva,egve=np.linalg.eigh(self.H)
+		egva=np.sort(egva)
+		return [egva[1]-egva[0],egva[2]-egva[0]]
+
+class magneticField():
+	def __init__(self,x=False,y=False,z=False,theta=False,phi=False,amp=False): #Give either x,y,z or theta,phi,amp (polar/azimutal from the z axis)
+		if not x:
+			self.x=amp*np.cos(theta)*np.sin(phi)
+			self.y=amp*np.sin(theta)*np.sin(phi)
+			self.z=amp*np.cos(phi)
+			self.theta=theta
+			self.phi=phi
+			self.amp=amp
+		elif not theta :
+			self.amp=np.sqrt(x**2+y**2+z**2)
+			self.theta=np.arccos(z/self.amp)
+			self.phi=np.arctan2(y,x)
+			self.x=x
+			self.y=y
+			self.z=z
+		self.cartesian=np.array([self.x,self.y,self.z])
+		self.sphericalDeg=np.array([self.theta*180/np.pi,self.phi*180/np.pi])
+	def transitions4Classes(self):
+		transis=[]
+		for i in range(4):
+			t=NVHamiltonian(self,c=i).transitions()
+			transis+=[t[0],t[1]]
+		return np.sort(transis)
+	def transitions4ClassesPlus(self):
+		transis=[]
+		for i in range(4):
+			t=NVHamiltonian(self,c=i).transitions()
+			transis+=[t[1]]
+		return np.sort(transis)
+	def transitions4ClassesMoins(self):
+		transis=[]
+		for i in range(4):
+			t=NVHamiltonian(self,c=i).transitions()
+			transis+=[t[0]]
+		return np.sort(transis)
+
+def find_B(peaks,Bmax=1000): #B in gauss
+	peaks=np.sort(peaks)
+	if len(peaks)==8 :
+		def err_func(peaks,B): #B is given in the form [amp,theta,phi]
+			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+			simuPeaks=B.transitions4Classes()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	elif len(peaks)==2:
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+			simuPeaks=B.transitions4Classes()
+			completePeaks=np.sort([peaks[0]]*4+[peaks[1]]*4)
+			err=np.linalg.norm(completePeaks-simuPeaks)
+			return err
+	elif len(peaks)==4: #Merde y'a le cas de la 111
+		print('not implemented yet')
+	sol=minimize(err_func,x0=[100,0.4777,0.3927],args=peaks,bounds=[(0,Bmax),(-0.05,0.9554),(-0.05,0.7854)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
+	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
+
+def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
+	n=len(peaks)
+	if not (isinstance(widths,list) or isinstance(widths,np.ndarray)):
+		widths=[widths]*n
+	if not (isinstance(amps,list) or isinstance(amps,np.ndarray)):
+		amps=[amps]*n
+	y=np.ones(len(x))*ss
+	for i in range(n):
+		c=peaks[i]
+		width=widths[i]
+		amp=amps[i]
+		if typ=='gauss' :
+			y+=amp*np.exp(-((x-c)/width)**2)
+		elif typ=="lor" :
+			y+=amp*1/(1+((x-c)/width)**2)
+	return y
+
+def find_nearest_ESR(x,y,peaks,Bmax=100,typ='gauss'): #peaks : centers of resonances in MHz
+	popt,yfit= ESR_n_pics(x,y,peaks)
+	n=len(peaks)
+	ss=popt[0]
+	peaks=popt[1:n+1]
+	widths=popt[n+1:2*n+1]
+	amps=popt[2*n+1:]
+	B=find_B(peaks,Bmax=Bmax)
+	cs=B.transitions4Classes()
+	if n==2 :
+		widths=[widths[0]]*4+[widths[1]]*4
+		amps=[amps[0]/4]*4+[amps[1]/4]*4
+	elif n==4 :
+		pass #A implanter avec la 111, comme find_B
+	yfit=simu_ESR(x,cs,widths,amps,ss,typ=typ)
+	popt=[B.amp,B.theta*180/np.pi,B.phi*180/np.pi,sum(widths)/len(widths),]
+	return popt,yfit
+
 def extract_2d(fname):
 	data=[]
 	with open(fname,'r',encoding = "ISO-8859-1") as f:
@@ -312,3 +439,11 @@ def ask_name():
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
+# x,y=extract_data('ESR 100 2V')
+# x=x*1000
+# cs=[2765,3020]
+# plt.plot(x,y)
+# popt,yfit=find_nearest_ESR(x,y,cs)
+# print(popt)
+# plt.plot(x,yfit)
+# plt.show()

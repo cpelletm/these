@@ -399,13 +399,22 @@ class fitButton():
 			from analyse import stretch_exp_fit as f
 			self.func=f
 			self.paramsToShow=[2]
+		elif fit=='ESR' :
+			from analyse import find_nearest_ESR
+			def f(x,y): #Est-ce que je suis sensé rajouter un self ? non.
+				cs=[]
+				for l in line.ax.infiniteLines :
+					cs+=[l.pos()[0]]
+				return find_nearest_ESR(x,y,cs)		
+			self.func=f
+			self.paramsToShow=[0,1,2,3]
 	def addFit(self):
 		x=self.line.xData
 		y=self.line.trueY
 		popt,yfit=self.func(x,y)
 		label=''
 		for i in range(len(self.paramsToShow)) :
-			label+='p%i : '%i+repr_numbers(popt[self.paramsToShow[i]])
+			label+='p%i : '%i+repr_numbers(popt[self.paramsToShow[i]])+'; '
 		self.line.graphicsWidget.addLine(x,yfit,ax=self.line.ax,typ='fit',label=label)
 	def removeFit(self):
 		curves=self.line.ax.curves
@@ -836,13 +845,38 @@ class graphics(pg.GraphicsLayoutWidget) :
 		self.infiniteLines=[]
 		self.axes=[]
 		self.mainAx=self.addAx(where=False)
-	def addAx(self,where='bellow',title=None) :
+	def addAx(self,where='bellow',title=None,verticalLines=True) :
 		if where=='bellow' :
 			self.nextRow()
-		ax=self.addPlot(title=title)
-		ax.currentPenIndex=0
-		ax.legend=ax.addLegend(labelTextSize='8pt')
+		class myAx(pg.PlotItem): #And myAx !
+			def __init__(self,title):
+				super().__init__(title=title)
+				self.currentPenIndex=0
+				self.legend=self.addLegend(labelTextSize='15pt')
+				self.infiniteLines=[]
+			def clicked(self,e):
+				pos=e[0]
+				mousePoint = self.vb.mapSceneToView(pos.scenePos())
+				if mousePoint.x() > ax.viewRange()[0][0] and mousePoint.x() < ax.viewRange()[0][1] and mousePoint.y() > ax.viewRange()[1][0] and mousePoint.y() < ax.viewRange()[1][1] :
+					if pos.double() :
+						if pos.button()==1 :
+							l=self.addInfiniteLine(mousePoint.x())
+						elif pos.button()==4 :
+							self.clearInfiniteLines()
+			def addLine(self,*args,**kwargs):
+				return self.graphicsWidget.addLine(*args,ax=self,**kwargs)
+			def addInfiniteLine(self,*args,**kwargs):
+				return self.graphicsWidget.addInfiniteLine(*args,ax=self,**kwargs)
+			def clearInfiniteLines(self):
+				while self.infiniteLines != [] : #C'est un peu chelou, mais comme je supprime les élléments de la liste au fur et à mesure il comprend pas sinon
+					line=self.infiniteLines[0]
+					line.remove()
+		ax=myAx(title=title)
+		self.addItem(ax)
+		ax.graphicsWidget=self
 		self.axes+=[ax]
+		if verticalLines :
+			ax.proxy = pg.SignalProxy(ax.scene().sigMouseClicked, rateLimit=60, slot=ax.clicked)
 		return ax
 	def addLine(self,x=[],y=[],ax=False,typ='instant',style='lm',fast=False,label=False) : #style= :'l' =line, 'm' = marker, 'lm'=marker+line
 		if not ax :
@@ -870,12 +904,14 @@ class graphics(pg.GraphicsLayoutWidget) :
 			def remove(self):
 				self.ax.removeItem(self)
 				self.ax.removeItem(self.label)
+				self.ax.infiniteLines.remove(self)
 				self.graphicsWidget.infiniteLines.remove(self)
 			def moved(self):
 				line.label.moveToLine()
 		line=myInfiniteLine(pos=pos,angle=angle,movable=movable)
 		ax.addItem(line)
 		self.infiniteLines+=[line]
+		ax.infiniteLines+=[line]
 		line.ax=ax
 		line.graphicsWidget=self
 		class infiniteLineLabel(pg.TextItem) :
@@ -891,12 +927,11 @@ class graphics(pg.GraphicsLayoutWidget) :
 				self.setPos(xAnch,yAnch)
 				self.setText(repr_numbers(xAnch,precision=3))
 		line.label=infiniteLineLabel(line)
-		# label=pg.TextItem(text='toto',anchor=(0,0), color=(100,100,100))
-		# label.setFont(QFont( "Consolas", 20, QFont.Bold))
-		# ymil=gra.mainAx.viewRange()[1][0]+gra.mainAx.viewRange()[1][1]
-		# label.setPos(2,ymil)
-		# gra.mainAx.addItem(label)
 		return line
+	def clearInfinteLines(self):
+		while self.infiniteLines != [] : #C'est un peu chelou, mais comme je supprime les élléments de la liste au fur et à mesure il comprend pas sinon
+			line=self.infiniteLines[0]
+			line.remove()
 	def normalize(self,initialState=False,spaceAbove=0,spaceBelow=0):
 		self.normWidget=checkBox(name='Normalize',action=self.normalizeActualize,initialState=initialState,spaceAbove=spaceAbove,spaceBelow=spaceBelow)
 		return(self.normWidget)
@@ -1372,9 +1407,8 @@ def test_pg():
 	l1=gra.addLine(x,y,typ='scroll',label='L1')
 	l2=gra.addLine(x,-y)
 	ax2=gra.addAx()
-	l3=gra.addLine(x,-y,ax=ax2,typ='instant',label='L3')
+	l3=ax2.addLine(x,-y,typ='instant',label='L3')
 
-	print(dir(l1))
 
 	ftoto=field('toto',10,spaceBelow=1)
 	attention=button('Warning',avertissement)
@@ -1383,7 +1417,7 @@ def test_pg():
 
 	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True)
 	StartStop.setupSerie(nAcqui=3,iterPerAcqui=[100,150,50],acquiStart=acquiStart,acquiEnd=acquiEnd)
-	save=saveButton(gra,autoSave=10)
+	save=saveButton(gra,autoSave=False)
 	trace=keepTraceButton(l1,l3)
 	it=iterationWidget(l3)
 	norm=gra.normalize()
@@ -1395,26 +1429,14 @@ def test_pg():
 
 	GUI.run()
 
-def test_mouseControl():
-	def clicker(e):
-		pos=e[0]
-		# print(dir(pos))
-		# print(pos.button()) #pos.button=1 for left click, 2 for right click, 4 for wheel click
-		# print(pos.double()) #True pour un double clic, faux sinon. Ne marche que pour le clic gauche
-		mousePoint = gra.mainAx.vb.mapSceneToView(pos.scenePos())
-		# print(mousePoint.x(),mousePoint.y())
-		if pos.double() :
-			l=gra.addInfiniteLine(mousePoint.x())
-
+def test_fitESR():
+	from analyse import extract_data
+	x,y=extract_data('ESR 100 2V')
+	x=x*1000
 	gra=graphics()
-	x=np.linspace(0,10,100)
-	y=np.cos(x)
 	l1=gra.addLine(x,y)
-	l2=gra.addInfiniteLine(2)
-	
-	
-	proxy = pg.SignalProxy(gra.mainAx.scene().sigMouseClicked, rateLimit=60, slot=clicker)
-	GUI=Graphical_interface(gra,title='test')
+	fitESR=fitButton(line=l1,fit='ESR',name='fit ESR')
+	GUI=Graphical_interface(fitESR,gra,title='test')
 	GUI.run()
 def test_multiple_tasks():
 	ao1=AOChan('ao0')
@@ -1429,6 +1451,6 @@ def test_multiple_tasks():
 
 
 if __name__ == "__main__":
-	test_mouseControl()
+	test_fitESR()
 
 

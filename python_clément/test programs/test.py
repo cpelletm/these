@@ -1284,6 +1284,7 @@ def test_locals(a=1,b=2):
 	print(a)
 
 class fooclass():
+	classarg='tutu'
 	def __init__(self,a=1):
 		self.v='toto'
 		self.a=0
@@ -1299,10 +1300,12 @@ class fooclass():
 	def printarg(self,*args,**kwargs):
 		print(args)
 		#kwarg c'est pas maitrisé, faudra passer par un dico
+	def f1(self):
+		def f2(a):
+			print(a)
+		self.f=f2
 
-
-
-
+print([0,1,2][1:2])
 
 def test_autosave():
 	from datetime import datetime
@@ -1465,8 +1468,7 @@ def limitTask():
 		do.write(signal)
 		do.start()
 
-
-
-a=[1,2,3]
-a.remove(2)
-print(a)
+def ftuyau(a=1,b=2,c=3):
+	print('a=%f ; b=%f; c=%f'%(a,b,c))
+def fkwargs(*args,**kwargs):
+	ftuyau(*args,c=4,**kwargs)
