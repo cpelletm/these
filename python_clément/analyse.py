@@ -9,8 +9,8 @@ from PyQt5.QtWidgets import QApplication,QFileDialog
 
 
 
-def extract_data(filename,xcol=0,ycol=1,exclude_neg=True):
-
+def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='auto'):
+	import csv
 	if filename[-4]!='.' :
 		if glob.glob(filename+'.txt') :
 			f=glob.glob(filename+'.txt')[0]
@@ -27,7 +27,7 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True):
 			for line in f :
 				line=line.split()
 				try :
-					if exclude_neg :
+					if exclude_neg : #c'est extrèmement gitan ça monsieur
 						if float(line[xcol])!=-1 :
 							x+=[float(line[xcol])]
 							y+=[float(line[ycol])]
@@ -37,17 +37,46 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True):
 				except :
 					pass
 		return(np.array(x),np.array(y))
-	elif filename[-4:] =='.csv' :
+	elif filename[-4:] =='.csv' and data=='line':
+		if delimiter=='auto' :
+			delimiter=' '
 		with open(filename,'r',encoding = "ISO-8859-1") as f:
 			content=f.readlines()
 			x=content[xcol]
 			x=x.split()
-			x=[np.float(item) for item in x]
+			xdata=[]
+			for item in x :
+				try :
+					xdata+=[np.float(item)]
+				except :
+					pass
 			y=content[ycol]
 			y=y.split()
 			y=[np.float(item) for item in y]
-		return(np.array(x),np.array(y))
+			ydata=[]
+			for item in y :
+				try :
+					ydata+=[np.float(item)]
+				except :
+					pass
+		return(np.array(xdata),np.array(ydata))
+	elif filename[-4:] =='.csv' and (data=='column' or data=='col'):
+		if delimiter=='auto' :
+			delimiter=','
+		with open(filename,'r',encoding = "ISO-8859-1") as f:
+			reader = csv.reader(f, delimiter=delimiter, quotechar='|')
+			xdata=[]
+			ydata=[]
+			for line in reader:
+				try :
+					xdata+=[np.float(line[xcol])]
+					ydata+=[np.float(line[ycol])]
+				except :
+					continue #pass marcherait aussi mais je me la pète
+		return(np.array(xdata),np.array(ydata))
 
+
+#~~~~ Fits ~~~~
 def lin_fit(x,y) :
 	A=np.vstack([x,np.ones(len(x))]).T
 	a,b = np.linalg.lstsq(A, y, rcond=None)[0]
@@ -67,7 +96,6 @@ def fit_ordre_6(x,y) :
 	A=np.vstack([x**6,x**5,x**4,x**3,x**2,x,np.ones(len(x))]).T
 	w,z,a,b,c,d,e = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([w,z,a,b,c,d,e],w*x**6+z*x**5+a*x**4+b*x**3+c*x**2+d*x+e)
-
 
 def gauss_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
 	if not ss :
@@ -288,7 +316,7 @@ def find_B_100(freq,transi='-',B_max=100) :
 	return RR.root
 
 class NVHamiltonian(): #x,y and z axis are taken as (100) axis
-	D=2870 #Mhz
+	D=2873 #Mhz
 	gamma_e=2.8 #Mhz/gauss
 
 	Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
@@ -348,11 +376,13 @@ class magneticField():
 			t=NVHamiltonian(self,c=i).transitions()
 			transis+=[t[0]]
 		return np.sort(transis)
+	def __repr__(self):
+		return('Bx=%f; By=%f, Bz= %f'%(self.x,self.y,self.z))
 
-def find_B(peaks,Bmax=1000): #B in gauss
+def find_B_spherical(peaks,Bmax=1000): #B in gauss
 	peaks=np.sort(peaks)
 	if len(peaks)==8 :
-		def err_func(peaks,B): #B is given in the form [amp,theta,phi]
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
 			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
 			simuPeaks=B.transitions4Classes()
 			err=np.linalg.norm(peaks-simuPeaks)
@@ -368,6 +398,30 @@ def find_B(peaks,Bmax=1000): #B in gauss
 		print('not implemented yet')
 	sol=minimize(err_func,x0=[100,0.4777,0.3927],args=peaks,bounds=[(0,Bmax),(-0.05,0.9554),(-0.05,0.7854)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
 	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
+
+def find_B_cartesian(peaks,Bmax=1000): #B in gauss ; Ca m'a la'ir de moins bien marcher que l'autre
+	peaks=np.sort(peaks)
+	if len(peaks)==8 :
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+			B=magneticField(x=B[0],y=B[1],z=B[2])
+			simuPeaks=B.transitions4Classes()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	elif len(peaks)==2:
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+			B=magneticField(x=B[0],y=B[1],z=B[2])
+			simuPeaks=B.transitions4Classes()
+			completePeaks=np.sort([peaks[0]]*4+[peaks[1]]*4)
+			err=np.linalg.norm(completePeaks-simuPeaks)
+			return err
+	elif len(peaks)==4: #Merde y'a le cas de la 111
+		print('not implemented yet')
+	sol=minimize(err_func,x0=[0,0,0],args=peaks,bounds=[(-Bmax,Bmax),(-Bmax,Bmax),(-Bmax,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
+	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
+
+# peaks=[2626,2702,2805,2867,2989,3042,3115,3160]
+# print(find_B_spherical(peaks))
+# print(find_B_spherical(peaks).transitions4Classes())
 
 def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 	n=len(peaks)
@@ -386,14 +440,14 @@ def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 			y+=amp*1/(1+((x-c)/width)**2)
 	return y
 
-def find_nearest_ESR(x,y,peaks,Bmax=100,typ='gauss'): #peaks : centers of resonances in MHz
+def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss'): #peaks : centers of resonances in MHz
 	popt,yfit= ESR_n_pics(x,y,peaks)
 	n=len(peaks)
 	ss=popt[0]
 	peaks=popt[1:n+1]
 	widths=popt[n+1:2*n+1]
 	amps=popt[2*n+1:]
-	B=find_B(peaks,Bmax=Bmax)
+	B=find_B_spherical(peaks,Bmax=Bmax)
 	cs=B.transitions4Classes()
 	if n==2 :
 		widths=[widths[0]]*4+[widths[1]]*4
@@ -401,9 +455,37 @@ def find_nearest_ESR(x,y,peaks,Bmax=100,typ='gauss'): #peaks : centers of resona
 	elif n==4 :
 		pass #A implanter avec la 111, comme find_B
 	yfit=simu_ESR(x,cs,widths,amps,ss,typ=typ)
-	popt=[B.amp,B.theta*180/np.pi,B.phi*180/np.pi,sum(widths)/len(widths),]
+	def angleFrom100(B):
+		scalar=max(abs(B.x),abs(B.y),abs(B.z))/B.amp
+		angle=np.arccos(scalar)
+		return angle*180/np.pi
+	def angleFrom111(B):
+		scalar=0
+		for c in NVHamiltonian.cs :
+			if abs(c.dot(B.cartesian)) > scalar :
+				scalar=abs(c.dot(B.cartesian))
+		scalar=scalar/B.amp
+		angle=np.arccos(scalar)
+		return angle*180/np.pi
+	popt=[B.amp,angleFrom100(B),angleFrom111(B),sum(widths)/len(widths)]
 	return popt,yfit
 
+#~~~~~~ stats ~~~~~~
+def mean(y):
+	return np.average(y)
+
+def hist_mean(x,y):
+	return np.average(x,weights=y)
+
+def sigma(y):
+	mu=mean(y)
+	return np.sqrt(np.average((y-mu)**2))
+
+def hist_sigma(x,y):
+	mu=hist_mean(x,y)
+	return np.sqrt(np.average((x-mu)**2,weights=y))
+
+#~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
 	data=[]
 	with open(fname,'r',encoding = "ISO-8859-1") as f:
@@ -423,6 +505,8 @@ def print_map(array,xmin=0,xmax=1,ymin=0,ymax=1):
 	c=ax.pcolormesh(x_axis, y_axis, array)
 	cb=fig.colorbar(c,ax=ax)
 	plt.show()
+
+#~~~~~~ Présentation ~~~~~~
 
 def ecris_gros():
 	plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori

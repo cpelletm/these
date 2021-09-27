@@ -15,8 +15,8 @@ def update():
 		return
 	if not ai.running :
 		gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
-		mu.setText('mu=%3.2E'%l1.mu) 
-		sigma.setText('sigma=%3.2E'%l1.sigma) 
+		mu.setText('mu=%3.2E'%l1.mu()) 
+		sigma.setText('sigma=%3.2E'%l1.sigma()) 
 		qapp.processEvents() #Ok ça et le try du dessus c'est ma conclusion après 4h pour avoir un truc qui marche vite tout le temps. En théorie faut pas utiliser processEvents mais c'est tout ce que j'ai pu trouver d'efficace
 ## Create the communication (I/O) instances ##
 ai=AIChan()
@@ -31,7 +31,7 @@ fields=[mu,sigma,laser,nPoints,nAvg,freq]
 
 gra=graphics()
 l1=gra.addLine(typ='hist',style='m',fast=True)
-l1.setNBins(50)
+l1.histSetup(typ='instant',nBins=100)
 #typ='scroll' for scrolling data, 'average' for averaging data or 'instant' for immediate data
 #style='l', 'm' or 'lm' for lines and/or marker
 #fast=True/False (default False) : apply antialias or not on the lines. With anti-alias (fast=False), it takes ~0.1s to update a set with a lot of lines
@@ -39,7 +39,7 @@ l1.setNBins(50)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,debug=True)
 save=saveButton(gra,autoSave=False)
-trace=keepTraceButton(gra,l1)
+trace=keepTraceButton(l1)
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)

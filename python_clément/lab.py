@@ -13,6 +13,7 @@ import pyvisa as visa
 
 import numpy as np
 import statistics
+import analyse
 
 # import PyQt6 #Ca a pas du tout l'air compatible
 import pyqtgraph as pg 
@@ -110,6 +111,12 @@ class field():
 	def __rtruediv__(self,b):
 		self.updateValue()
 		return b/self.v
+	def __float__(self):
+		return float(self.v)
+	def __int__(self):
+		return int(self.v)
+	def __repr__(self):
+		return("Field of value %f"%self.v)
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.label)
@@ -391,14 +398,17 @@ class fitButton():
 		self.addFitButton=button(name=name,action=self.addFit,spaceAbove=spaceAbove,spaceBelow=0)
 		self.removeFitButton=button(name='clear fit',action=self.removeFit,spaceAbove=0,spaceBelow=spaceBelow)
 		self.line=line
+		self.labelNames=False
 		if fit=='exp' :
 			from analyse import exp_fit as f
 			self.func=f
 			self.paramsToShow=[2]
+			self.labelNames=['tau']
 		elif fit=='stretch' :
 			from analyse import stretch_exp_fit as f
 			self.func=f
 			self.paramsToShow=[2]
+			self.labelNames=['tau']
 		elif fit=='ESR' :
 			from analyse import find_nearest_ESR
 			def f(x,y): #Est-ce que je suis sensé rajouter un self ? non.
@@ -408,13 +418,17 @@ class fitButton():
 				return find_nearest_ESR(x,y,cs)		
 			self.func=f
 			self.paramsToShow=[0,1,2,3]
+			self.labelNames=['B amp (G)','Angle from 100 (°)', 'Angle from 111 (°)', 'Width (Mhz)']
 	def addFit(self):
 		x=self.line.xData
 		y=self.line.trueY
 		popt,yfit=self.func(x,y)
 		label=''
 		for i in range(len(self.paramsToShow)) :
-			label+='p%i : '%i+repr_numbers(popt[self.paramsToShow[i]])+'; '
+			if self.labelNames :
+				label+=self.labelNames[i]+'='+repr_numbers(popt[self.paramsToShow[i]],precision=3)+'; '
+			else :
+				label+='p%i : '%i+repr_numbers(popt[self.paramsToShow[i]])+'; '
 		self.line.graphicsWidget.addLine(x,yfit,ax=self.line.ax,typ='fit',label=label)
 	def removeFit(self):
 		curves=self.line.ax.curves
@@ -558,9 +572,9 @@ class useTheme():
 		ax.penIndices[penIndex]=False
 		if typ=='trace' or typ=='fit':
 			pen=pg.mkPen(self.penColors[penIndex],width=2,style=Qt.DashDotLine) #ëvisiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
-			symbol='x'
-			symbolPen=pg.mkPen(self.penColors[penIndex],width=1,style=Qt.SolidLine)
-			symbolBrush=pg.mkBrush(self.penColors[penIndex])
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
 		else :
 			pen=pg.mkPen(self.penColors[penIndex],width=3,style=Qt.SolidLine)
 			symbol='o'
@@ -965,29 +979,38 @@ class graphics(pg.GraphicsLayoutWidget) :
 		box.addWidget(self)
 
 class myLine(pg.PlotDataItem) :
-	def __init__(self,x,y,ax,theme,typ='instant',style='lm',fast=False,label=False,*args): #typ=='instant','scroll', 'average', 'hist', 'trace' or 'fit'
+	def __init__(self,x,y,ax,theme,typ='instant',style='lm',fast=False,label=False,**kwargs): #typ=='instant','scroll', 'average', 'hist', 'trace' or 'fit'
 		self.theme=theme
 		self.ax=ax
 		self.typ=typ
 		self.label=label
 		self.trueY=y #Keep the real unnormalized value of y
 		if self.typ=='hist':
-			self.histBoundsType='auto'
-			self.histNSamples=0
-			self.histNbins=50
+			self.histSetup()
+			#makes sure that histSetup is called at least once. You can call it again and overwrite the default parameters
 		pen,symbol,symbolPen,symbolBrush,penIndex=self.theme.nextLine(ax,typ=typ)
 		self.penIndex=penIndex
 		if not 'l' in style :
 			pen=None
 		if not 'm' in style :
 			symbolPen=None
-		super().__init__(x,y,pen=pen,symbol=symbol,symbolPen=symbolPen,symbolBrush=symbolBrush,antialias=not fast,*args)	#créé la ligne
+		super().__init__(x,y,pen=pen,symbol=symbol,symbolPen=symbolPen,symbolBrush=symbolBrush,antialias=not fast,**kwargs)	#créé la ligne
 		ax.addItem(self) #ajoute la ligne à l'axe
 		if label :
 			ax.legend.addItem(self,label)
 		self.iteration=1
 		self.nRepeat=1
 		self.iterationWidget=False
+	def histSetup(self,typ='fast',nBins=100,bounds='auto'):
+		self.histType=typ #fast : the data is overwritten each time, you only keep the average of all the histograms. slow : you keep all the data and make a new histogram of it each time
+		if typ=='slow' :
+			self.histData=[] 
+		self.histNbins=nBins
+		if bounds=='auto' :
+			self.histBoundsType='auto'
+		else :
+			self.histBoundsType='manual'
+			self.histBounds=bounds
 	def remove(self):
 		self.ax.removeItem(self)
 		self.ax.penIndices[self.penIndex]=True
@@ -995,7 +1018,6 @@ class myLine(pg.PlotDataItem) :
 			self.ax.legend.removeItem(self)
 		self.graphicsWidget.lines.remove(self)
 	def clicked(self,ev): #self et line sont équivalents ici
-		print('toto')
 		if self.typ=='trace' or self.typ=='fit' :
 			if ev.double() :
 				pass
@@ -1023,22 +1045,39 @@ class myLine(pg.PlotDataItem) :
 				newY=np.roll(oldY,-n)
 				newY[-n:]=y
 		elif self.typ=='hist' :
-			if self.iteration==1 :
-				oldY=np.zeros(self.histNbins)
+			if self.histType=='fast' :
+				if self.iteration==1 :
+					oldY=np.zeros(self.histNbins)
+					if self.histBoundsType=='auto':
+						mu=analyse.mean(y)
+						sigma=analyse.sigma(y)
+						self.histBounds=[mu-5*sigma,mu+5*sigma]
+				hist,bins=np.histogram(y,density=False,bins=val(self.histNbins),range=self.histBounds)
+				x=(bins[1:]+bins[:-1])/2
+				newY=oldY+hist
+			elif self.histType=='slow' :
+				self.histData+=list(y)
 				if self.histBoundsType=='auto':
-					mu=statistics.mean(y)
-					sigma=statistics.pstdev(y)
-					self.histBounds=[mu-4*sigma,mu+4*sigma]
-
-			hist,bins=np.histogram(y,density=False,bins=self.histNbins,range=self.histBounds)
-			x=(bins[1:]+bins[:-1])/2
-			newY=oldY+hist
-			self.mu=np.average(x,weights=newY)
-			self.sigma=np.sqrt(np.average((x - self.mu)**2, weights=newY))
-			
-			
+					mu=self.mu()
+					sigma=self.sigma()
+					self.histBounds=[mu-5*sigma,mu+5*sigma]
+				hist,bins=np.histogram(self.histData,density=False,bins=val(self.histNbins),range=self.histBounds)
+				x=(bins[1:]+bins[:-1])/2
+				newY=hist
+			elif self.histType=='instant' :
+				if self.iteration==1 :
+					oldY=np.zeros(self.histNbins)
+					if self.histBoundsType=='auto':
+						mu=analyse.mean(y)
+						sigma=analyse.sigma(y)
+						self.histBounds=[mu-5*sigma,mu+5*sigma]
+				hist,bins=np.histogram(y,density=False,bins=val(self.histNbins),range=self.histBounds)
+				x=(bins[1:]+bins[:-1])/2
+				newY=hist
+				self.histData=y
 
 		self.trueY=newY
+		self.x=x
 		if norm :
 			if self.typ=='hist' :
 				ytoplot=self.trueY/sum(self.trueY)
@@ -1046,11 +1085,30 @@ class myLine(pg.PlotDataItem) :
 				ytoplot=normalize(self.trueY)
 		else :
 			ytoplot=self.trueY
+		if len(ytoplot) != len(x) :
+			raise ValueError('len(x)=%i does not match len(y)=%i'%(len(x),len(ytoplot)))
 		if show :
 			self.setData(x,ytoplot)
 		self.iteration+=self.nRepeat
 		if self.iterationWidget :
 			self.iterationWidget.update(self.iteration)
+
+	def mu(self):
+		if self.typ=='hist' :
+			if self.histType=='fast':
+				return analyse.hist_mean(self.x,self.trueY)
+			elif self.histType=='slow' or self.histType=='instant':
+				return analyse.mean(self.histData)
+		else :
+			return analyse.mean(self.trueY)
+	def sigma(self):
+		if self.typ=='hist' :
+			if self.histType=='fast' :
+				return analyse.hist_sigma(self.x,self.trueY)
+			elif self.histType=='slow' or self.histType=='instant':
+				return analyse.sigma(self.histData)
+		else :
+			return analyse.sigma(self.trueY)
 
 	def setHistBounds(self,bmin,bmax):
 		self.histBounds=[bmin,bmax]
@@ -1058,6 +1116,8 @@ class myLine(pg.PlotDataItem) :
 		self.histNbins=n
 	def reset(self):
 		self.iteration=1
+		if self.typ=='hist' and self.histType=='slow' :
+			self.histData=[]
 
 class iterationWidget():
 	def __init__(self,line,spaceAbove=1,spaceBelow=0):
@@ -1216,6 +1276,7 @@ class doubleSignal():
 				pulsedSignal+=[False,False]
 		self.l=pulsedSignal
 
+
 def resetSetup(closeAnyway=False,stopTimers=True,extraStop=False): #C'est un peu brut mais bon ça fonctionne
 	if stopTimers :
 		timers=get_objects(QTimer)
@@ -1306,7 +1367,6 @@ def ignoreWarnings(f,*args):
 	with warnings.catch_warnings() :
 		warnings.simplefilter('ignore')
 		return f(*args)
-
 
 def normalize(y): #y must be an arraylike
 	if isinstance(y,list):
@@ -1431,13 +1491,19 @@ def test_pg():
 
 def test_fitESR():
 	from analyse import extract_data
-	x,y=extract_data('ESR 100 2V')
-	x=x*1000
+	# x,y=extract_data('ESR 100 2V')
+	# x=x*1000
+
+
+
+	x,y=extract_data('ESR 1x1x1x1 2V')
+	# x0s=[2626,2702,2805,2867,2989,3042,3115,3160]
 	gra=graphics()
 	l1=gra.addLine(x,y)
 	fitESR=fitButton(line=l1,fit='ESR',name='fit ESR')
 	GUI=Graphical_interface(fitESR,gra,title='test')
 	GUI.run()
+
 def test_multiple_tasks():
 	ao1=AOChan('ao0')
 	ao2=AOChan('ao1')
@@ -1449,8 +1515,13 @@ def test_multiple_tasks():
 	time.sleep(1)
 	resetSetup(extraStop=lambda: ao2.setTo(0.45))
 
+def test_laser():
+	ao=AOChan('ao1')
+	ao.setupContinuous(0.45)
+	do=DOChan('p03')
+	do.setupContinuous(False)
 
 if __name__ == "__main__":
-	test_fitESR()
+	test_pg()
 
 

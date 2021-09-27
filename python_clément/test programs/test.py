@@ -1305,8 +1305,6 @@ class fooclass():
 			print(a)
 		self.f=f2
 
-print([0,1,2][1:2])
-
 def test_autosave():
 	from datetime import datetime
 	now = datetime.now()
@@ -1472,3 +1470,6 @@ def ftuyau(a=1,b=2,c=3):
 	print('a=%f ; b=%f; c=%f'%(a,b,c))
 def fkwargs(*args,**kwargs):
 	ftuyau(*args,c=4,**kwargs)
+
+a=2
+print(dir(a))

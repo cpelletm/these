@@ -61,7 +61,8 @@ trace=keepTraceButton(l1)
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)
-buttons=[norm,StartStop,trace,save,it]
+fit=fitButton(line=l1,fit='ESR',name='fit ESR')
+buttons=[norm,StartStop,trace,fit,save,it]
 
 ## Create the graphical interface and launch the program ##
 GUI=Graphical_interface(fields,gra,buttons,title='ESR')
