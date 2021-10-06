@@ -25,8 +25,9 @@ from PyQt5.QtWidgets import (QWidget, QPushButton, QComboBox,
 
 qapp = QApplication(sys.argv)
 
+
 class Graphical_interface(QMainWindow) :
-	def __init__(self,*itemLists,title='Unnamed'):
+	def __init__(self,*itemLists,title='Unnamed',theme='light'):
 		super().__init__()
 		self.setWindowTitle(title)
 		main = QWidget()
@@ -43,6 +44,9 @@ class Graphical_interface(QMainWindow) :
 		main.setLayout(layout)
 		self.resize(1200,800)
 		self.show()		
+		if theme=='dark' :
+			import qdarkstyle
+			qapp.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 	def run(self):
 		qapp.exec_()
 	def closeEvent(self, event): #Semble éviter les bugs. Un peu. Si tu veux rajouter des actions à faire en fermant c'est ici
@@ -181,7 +185,12 @@ class saveButton(button):
 		self.gra=graphicWidget
 		self.qapp=qapp
 		super().__init__("Save data",spaceAbove=spaceAbove,spaceBelow=spaceBelow)
-		self.startpath="D:/DATA"
+		if os.path.isdir("D:/DATA") :
+			self.startpath="D:/DATA"
+		elif os.path.isdir("C:/DATA") :
+			self.startpath="C:/DATA"
+		else :
+			self.startpath=''
 		self.setAction(self.save)
 		if autoSave :
 			self.gra.autoSave=autoSaveMethod(self,autoSave)
@@ -195,6 +204,8 @@ class saveButton(button):
 			fname, filter = QFileDialog.getSaveFileName(self.button.parent(),
 										 "Choose a filename to save to",
 										 start, "Images (*.png)")
+			if fname=='' :
+				return
 		dname=os.path.dirname(fname)
 		Path(dname).mkdir(parents=True, exist_ok=True)
 		self.startpath = os.path.dirname(dname)
@@ -552,6 +563,123 @@ class microwave(device):
 		self.PG.write('*RST')
 		self.PG.write('*WAI')
 
+class pulseBlaster(device):
+	def __init__(self,clockFrequency=300,chanOn=(),verbose=False): #frequency in MHz, frequency of the pb in the entrance computer is 300 MHz, frequency of the pb in the back computer is 500 MHz
+		#chanOn : channels (1,2,3, or 4) to leave on True when the pulseblaster is closed
+		#le verbose ne sert présentement à rien (il est bavard quand je le lance dans lab quoiqu'il arrive, mais pas quand je le lance d'ailleurs ce qui est très bien)
+		super().__init__()
+		import spinapi as sp
+		self.verbose=verbose
+		self.sp=sp
+		self.sp.pb_set_debug(1)
+		self.clockFrequency=clockFrequency
+		self.chanOn=chanOn
+	def initPb(self):
+		self.sp.pb_select_board(0)
+		if self.sp.pb_init() != 0:
+			raise ValueError("Error initializing board: %s" % self.sp.pb_get_error())
+		self.sp.pb_core_clock(self.clockFrequency)
+
+	def setupContinuous(self,ch1=0,ch2=0,ch3=0,ch4=0):
+		self.initPb()
+		self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
+		self.writeInst([ch1,ch2,ch3,ch4],1e-3,inst=self.sp.Inst.BRANCH,inst_data=0)
+		self.sp.pb_stop_programming()
+		self.start()
+		self.sp.pb_close()
+	def setupPulsed(self,dt=1e-6,ch1='unused',ch2='unused',ch3='unused',ch4='unused',finite=True, toBeClosed=True): #timeUnit in s (default 1 us)
+		self.initPb()
+		self.toBeClosed=toBeClosed
+		dt=1*dt
+		channels=[ch1,ch2,ch3,ch4]
+
+		for ch in channels :
+			if ch !='unused' :
+				n=len(ch)
+
+		a=np.zeros((n,4),np.dtype(int))
+		for i in range(4):
+			ch=channels[i]
+			if ch =='unused' :
+				pass
+			else :
+				a[:,i]=ch
+
+		self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
+
+		for i in range(0,n-1) :
+			self.writeInst(a[i,:],dt)
+		if finite :
+			self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.STOP,inst_data=0)
+		else :
+			self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.BRANCH,inst_data=0)
+		self.sp.pb_stop_programming()
+
+	def writeInst(self,flags,length,inst=0,inst_data=0): #flags : array of length 4 for the four channels with either 0(Down), 1(Up) or 2(Pulse); inst=InstType (see spinapi.py); inst_data= input for the instruction; length= length in s.
+		length=length*1e9 #the base unit of the pb is the ns
+		Pulse=False
+		for k in flags : 
+			if k==2 :
+				Pulse=True
+		if Pulse :
+			#Il faudra p-e modifier pour mettre la pulse la plus courte possible (une dizaine de ns je crois), mais j'ai un peu peur qu'elles ne soit pas toujours détectée (la micro-onde m'a deja fait des blagues)
+			flagBis=[min(1,i) for i in flags] #ca transforme les 2 en 1
+			cmd=self.convertLineToBin(flagBis)
+			self.sp.pb_inst_pbonly(cmd, self.sp.Inst.CONTINUE, 0, 20) #les pulses font 20 ns up.
+			flagBis=[i%2 for i in flags] #c'est un peu ridicule mais en vrai je suis fier de moi. Ca transforme les 2 en 0 et pas les 1
+			cmd=self.convertLineToBin(flagBis)
+			if inst_data==self.sp.Inst.STOP :
+				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.CONTINUE, length-20) #Il y a une instruction en plus parce que la pulseblaster considère qu'elle a fini des qu'elle lance la dernière instruction, et pas quand la dernière instrucion est terminée
+				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.STOP, 20)
+			else :
+				self.sp.pb_inst_pbonly(cmd, inst, inst_data, length-20)
+		else :
+			cmd=self.convertLineToBin(flags)
+			if inst_data==self.sp.Inst.STOP :
+				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.CONTINUE, length)
+				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.STOP, 20)
+			else :
+				self.sp.pb_inst_pbonly(cmd, inst, inst_data, length)
+
+
+	def convertLineToBin(self,line):
+		#En gros la pb prend en entrée une série de 6*4 bits sous la forme d'un entier 32 bits (c'est pareil sur l'interpreter), mais nous on a que
+		#4 sorties qui correspondent aux 4 derniers bits. Donc je part d'un cas ou tout est à 0, et j'ajoute la channel i en modifiant l'avant dernier i-eme bit (aka 2^i)
+		cmd=0XFFFFF0 #Je fout des 1 sur tous les bits non utilisés. Je crois que techiquement il n'y a que le premier qui est indispensable mais bon
+		for i in range(len(line)):
+			if line[i]!=0 and line[i]!=1 :
+				raise ValueError('Invalid command sent to the pulseblaster (not 0 or 1) :',line[i])
+			cmd+=2**i*line[i]
+		return(int(cmd))
+
+
+	def isDone(self):
+		ret=self.sp.pb_read_status()
+		if ret<=3 :
+			return True
+		else :
+			return False
+	def start(self):
+		self.sp.pb_reset() #pas bien compris à quoi il sert le reset
+		self.sp.pb_start()
+	def stop(self):
+		self.sp.pb_stop()
+	def close(self):
+		line=[0,0,0,0]
+		for i in self.chanOn :
+			line[i-1]=1
+		self.sp.pb_close()
+		self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
+
+class hiddenPrints:
+    def __enter__(self):
+        self._original_stdout = sys.stdout
+        sys.stdout = open(os.devnull, 'w')
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stdout.close()
+        sys.stdout = self._original_stdout
+
 class useTheme():
 	def __init__(self,theme='white'):
 		self.theme=theme
@@ -559,6 +687,9 @@ class useTheme():
 			pg.setConfigOption('background', 'w')
 			pg.setConfigOption('foreground', 'k')			
 			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
+		if theme=='black' :
+			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
+
 
 		# pg.setConfigOptions(antialias=False)	
 	def nextLine(self,ax,typ=False):
@@ -683,6 +814,8 @@ class AIChan(NIChan):
 	def setupSingle(self):
 		self.createTask()
 		self.mode='single'
+	def getMaxFreq(self):
+		return (nidaqmx.system.device.Device('Dev1').ai_max_single_chan_rate/self.nChannels)
 	def setupTimed(self,SampleFrequency,SamplesPerChan,SampleMode='finite',nAvg='auto',sourceClock='auto'): 
 	#sampleMode = 'finite' or 'continuous' ; nAvg=average over n point for each sample
 	#cf def testSynchro(): in test, there is up to a ~2/1000 difference between the AI clock and th DO clock depending on frequency
@@ -691,8 +824,8 @@ class AIChan(NIChan):
 		self.mode='timed'
 		self.nAvg=val(nAvg)
 		if self.nAvg=='auto' :
-			base=5E5/self.nChannels #C'est assez curieux mais la fréquence max d'acquisition vaut 5E5/le nombre de channels que tu mesure
-			self.nAvg=(base/val(SampleFrequency)).__trunc__()
+			fmax=self.getMaxFreq()
+			self.nAvg=(fmax/val(SampleFrequency)).__trunc__()
 		self.samplingRate=val(SampleFrequency)*self.nAvg
 		self.sampsPerChan=val(SamplesPerChan)*self.nAvg*self.nRepeat
 		if SampleMode=='finite':
@@ -712,23 +845,43 @@ class AIChan(NIChan):
 		#chan is the physical channel of the pulsed signal input
 		self.createTask()
 		self.mode='pulsed'
-		self.nAvg=(5E5/val(freq)).__trunc__()
+		fmax=self.getMaxFreq()
+		self.nAvg=(fmax/val(freq)).__trunc__() 
 		pulsedSignal=doubleSignal(signal)
 		self.sampsPerChan=sum(signal)*self.nAvg*self.nRepeat
-		self.task.timing.cfg_samp_clk_timing(5E5,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.nAvg) #Rajouter source='/Dev1/do/SampleClock' si ça merde
+		self.task.timing.cfg_samp_clk_timing(fmax,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.nAvg) #Rajouter source='/Dev1/do/SampleClock' si ça merde
 		self.triggedOn(chan)
 		return pulsedSignal
+
+	def setupWithPb(self,signal,freq,chan='/Dev1/PFI9'):
+		self.createTask()
+		self.mode='withPB'
+		fmax=self.getMaxFreq()
+		self.nAvg=(fmax/(freq*1.05)).__trunc__() #j'augmente la freq d'acquisition de 5% pour être sur qu'il a le temps de finir l'acquisition entre chaque pulse
+		mask=[el==2 for el in signal]
+		self.sampsPerChan=sum(mask)*self.nAvg*self.nRepeat #note : si tu veux custom la lecture avec des 0 et des 1, n'utilise pas le read(nSample='auto'), ca devrait marcher.
+		self.task.timing.cfg_samp_clk_timing(fmax,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.nAvg)
+		self.triggedOn(chan)
+
 		
-	def read(self,waitForAcqui=False) :
+	def read(self,nRead='auto',waitForAcqui=False) :
 		if self.mode=='single' :
 			return(self.readSingle())
 		if self.mode=='timed' :
 			return(self.readTimed(waitForAcqui=waitForAcqui))
 		if self.mode=='pulsed' :
-			return(self.readPulsed())
+			return(self.readPulsed(nRead=self.sampsPerChan))
+		if self.mode=='withPB' :
+			return(self.readPulsed(nRead=nRead))
 
-	def readPulsed(self) :
-		data=self.task.read(self.sampsPerChan)
+
+
+	def readPulsed(self,nRead='auto') :
+		if nRead=='auto':
+			nRead=self.sampsPerChan
+		else :
+			nRead=nRead*self.nAvg*self.nRepeat
+		data=self.task.read(nRead)
 		return average(data,self.nAvg,self.nRepeat)
 
 		
@@ -828,7 +981,7 @@ class DOChan(NIChan):
 		self.task.write(self.signal)
 
 class COChan(NIChan):
-	def __init__(self,*physicalChannels): #Physical Channels = 'p01' to 'p27' (p10 to p27 cannot be used in timed mode (I think, never understood what PFI were))		
+	def __init__(self,*physicalChannels): #Physical Channel = 'ctr0' to 'ctr3' . Counters can only contain one channel (i believe)		
 		super().__init__(*physicalChannels)	
 		self.triggerSignal='/Dev1/co/StartTrigger'	#Pas sur avec le ArmStartTrigger, ce sera à vérifier. C'est la merde les trigg avec les compteurs
 	def createTask(self,freq):
@@ -838,14 +991,89 @@ class COChan(NIChan):
 			self.task.co_channels.add_co_pulse_chan_freq(cname,freq=freq)
 		self.taskOpened=True
 	def setupContinuous(self,Freq,gate=False,gateChan='/Dev1/PFI9'): #Starts immediately
-		self.createTask((val(Freq)))		
+		freq=val(Freq)
+		self.createTask(freq)		
 		self.task.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS,samps_per_chan=10)
 		if gate :
 			self.task.triggers.pause_trigger.trig_type=nidaqmx.constants.TriggerType.DIGITAL_LEVEL
 			self.task.triggers.pause_trigger.dig_lvl_src=gateChan
 			self.task.triggers.pause_trigger.dig_lvl_when=nidaqmx.constants.Level.LOW
 		self.start()
+
+class CIChan(NIChan):
+	def __init__(self,*physicalChannels): #Physical Channel = 'ctr0' to 'ctr3' . Counters can only contain one channel (i believe)
+		super().__init__(*physicalChannels)	
+		self.triggerSignal='NOT IMPLEMENTED YET' #ça devrait passer par un sampling via la pb sur le pc de l'entrée
+		self.nBitsCounter=nidaqmx.system.device.Device('Dev1').ci_max_size
+	def createTask(self):
+		self.task=nidaqmx.Task()
+		for pc in self.physicalChannels :
+			cname='Dev1/'+pc
+			self.task.ci_channels.add_ci_count_edges_chan(cname)
+		self.taskOpened=True
+	def setupContinuous(self,frequency,nSample=1000): #prévu pour fonctionner en autonome (sans trig externe). En gros juste pour l'appli "PL"
+		self.createTask()
+		self.mode='continuous'
+		self.freq=val(frequency)
+		n=val(nSample)
+		if self.physicalChannels[0] == 'ctr0' :
+			SCChan='ctr1'
+		if self.physicalChannels[0] == 'ctr1' :
+			SCChan='ctr0'
+		if self.physicalChannels[0] == 'ctr2' :
+			SCChan='ctr3'
+		if self.physicalChannels[0] == 'ctr3' :
+			SCChan='ctr2'
+		self.sampleClock=COChan(SCChan)
+		self.task.timing.cfg_samp_clk_timing(self.freq,source='/Dev1/Ctr'+SCChan[-1]+'InternalOutput',sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=n)
+		self.sampleClock.setupContinuous(Freq=self.freq,gate=False)
+		self.start()
+
+	def readContinuous(self,nRead=2): #pas de waitForAcqui en continuous. Pas de waitForAcqui avec les compteurs en faite, ce sera plus simple
+		if nRead=='auto':
+			nRead=2
+		data=np.array(self.task.read(val(nRead)))
+		PL=((data[1:]-data[:-1])%(1<<self.nBitsCounter))*self.freq #C'est pour prendre en compte les reset de compteurs : je prends le modulo 2^32 de la différence du nombre de coup pour être tjr positif
+		return PL
+
+	def setupWithPb(self,signal,freq,chan='auto'):
+		if chan=='auto' : #ce sont les gate terminals des différents compteurs. Je pensais que le problème de ctr3 venait de la, mais visiblement c'est plus compliqué (la gate est court-circuité ? j'en sais rien)
+			if self.physicalChannels[0] == 'ctr0' :
+				chan='/Dev1/PFI9'
+			if self.physicalChannels[0] == 'ctr1' :
+				chan='/Dev1/PFI4'
+			if self.physicalChannels[0] == 'ctr2' :
+				chan='/Dev1/PFI1'
+			if self.physicalChannels[0] == 'ctr3' :
+				chan='/Dev1/PFI6'
+		self.createTask()
+		self.mode='withPB'
+		self.freq=val(freq)
+		mask=[el==2 for el in signal]
+		self.sampsPerChan=sum(mask)*self.nRepeat
+		self.task.timing.cfg_samp_clk_timing(self.freq,source=chan,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.sampsPerChan)
+		self.start()
+
+	def readPulsed(self,nRead='auto',counts=False) :
+		if nRead=='auto':
+			nRead=self.sampsPerChan
+		else :
+			nRead=nRead*self.nRepeat
+		data=np.array(self.task.read(val(nRead)))
+		if counts :
+			return data
+		else :
+			PL=((data[1:]-data[:-1])%(1<<self.nBitsCounter))*self.freq #C'est pour prendre en compte les reset de compteurs : je prends le modulo 2^32 de la différence du nombre de coup pour être tjr positif
+			return PL
+
+	def read(self,nRead='auto') :
+		if self.mode=='continuous' :
+			return(self.readContinuous(nRead=nRead))
+		if self.mode=='withPB' :
+			return(self.readPulsed(nRead=nRead))
+
 		
+
 class graphics(pg.GraphicsLayoutWidget) :
 	def __init__(self,theme='white',debug=False,refreshRate=False):
 		self.theme=useTheme(theme)
@@ -1277,6 +1505,26 @@ class doubleSignal():
 		self.l=pulsedSignal
 
 
+def failSafe(func,*args,debug=True):
+	try :
+		res=func(*args)
+		return res
+	except Exception as error :		
+		tb=traceback.extract_tb(error.__traceback__)
+		if debug :
+			print(error)
+			print(''.join(tb.format()))
+			resetSetup(closeAnyway=True,stopTimers=True)
+			quit()
+		else :
+			GUI=get_objects(Graphical_interface)[0]
+			resetSetup(closeAnyway=True,stopTimers=True)
+			mb = QMessageBox(GUI)
+			mb.setStandardButtons(QMessageBox.Abort)
+			mb.setText(error.__str__())
+			mb.setInformativeText(''.join(tb.format())) #un peu barbare mais ça fonctionne
+			mb.show()
+
 def resetSetup(closeAnyway=False,stopTimers=True,extraStop=False): #C'est un peu brut mais bon ça fonctionne
 	if stopTimers :
 		timers=get_objects(QTimer)
@@ -1311,26 +1559,6 @@ def average(y,nAvg=1,nRepeat=1): #see def of nAvg and nRepeat in NIChan
 			yAvg[k]=sum(ySeg[k*nAvg:(k+1)*nAvg])/nAvg
 		yRep+=yAvg
 	return yRep/nRepeat
-
-def failSafe(func,*args,debug=False):
-	try :
-		res=func(*args)
-		return res
-	except Exception as error :		
-		tb=traceback.extract_tb(error.__traceback__)
-		if debug :
-			print(error)
-			print(''.join(tb.format()))
-			resetSetup(closeAnyway=True,stopTimers=True)
-			quit()
-		else :
-			GUI=get_objects(Graphical_interface)[0]
-			resetSetup(closeAnyway=True,stopTimers=True)
-			mb = QMessageBox(GUI)
-			mb.setStandardButtons(QMessageBox.Abort)
-			mb.setText(error.__str__())
-			mb.setInformativeText(''.join(tb.format())) #un peu barbare mais ça fonctionne
-			mb.show()
 
 def visualize(*chans): #args must be channels which have been timeSetuped
 	offset=0
@@ -1393,7 +1621,7 @@ def get_objects(cls):
 		if isinstance(obj, cls):
 			objs+=[obj]
 	return(objs)
-
+	
 def get_subclass(cls):
 	import gc
 	objs=[]
@@ -1439,6 +1667,13 @@ def repr_numbers(value,precision='exact'):
 		else :
 			label=('{:.{}f}'.format(value,precision))
 	return label
+
+def fhp(f,verbose,*args,**kwargs): ##fhp = function hidden print
+	if verbose :
+		return(f(*args,**kwargs))
+	else :
+		with hiddenPrints() :
+			return(f(*args,**kwargs))
 
 
 def test_pg():

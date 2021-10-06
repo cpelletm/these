@@ -1,4 +1,4 @@
-import os
+import os, sys
 import nidaqmx
 import nidaqmx.stream_writers
 import nidaqmx.stream_readers
@@ -12,6 +12,8 @@ import pyvisa as visa
 import sys
 import traceback
 import statistics
+sys.path.append("C:\\Users\\Tom\\Documents\\GitHub\\these\\python_clément")
+from lab import *
 def voltmetre():
 	with nidaqmx.Task() as task :
 		task.ai_channels.add_ai_voltage_chan("Dev1/ai11") #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
@@ -1471,5 +1473,64 @@ def ftuyau(a=1,b=2,c=3):
 def fkwargs(*args,**kwargs):
 	ftuyau(*args,c=4,**kwargs)
 
-a=2
-print(dir(a))
+
+def test_bin_hex_pb():
+	seq=[1,0,1,1]
+	cmd=0xFFFFF0
+	for i in range(len(seq)):
+		cmd+=2**i*seq[i]
+		#Attention : le premier bit de seq correspond au dernier bit de cmd (en binaire)
+
+	print(bin(cmd))
+
+def test_pb_trigg():
+	pb=pulseBlaster()
+	n=150
+	trigAcqui=[2]*n
+	f=500
+	dt=1/f
+	pb.setupPulsed(dt=dt,ch1=trigAcqui,finite=True)
+	ai=AIChan()
+	ai.setChannels('ai8')
+	ai.setupWithPb(freq=1/dt,signal=trigAcqui) 
+	print(ai.sampsPerChan)
+	#Ok il y a un truc très bizarre : si tu attends qu'il ait acqui toutes ses datas avant de le call, il bug et te dis nan vtff. Il faut le call pendant qu'il est encore en train d'acquérir (en faite probabalement avant qu'il ait recu plus de nacq samples, et le call lui dit combien de sample tu veux donc il augment son buffer à ce moment la).
+	#faudrait touver un moyen de lui dire la taille du buffer en avance, p-e via les in_stream & co
+	pb.start()
+	res=ai.read(n)
+	print(res)
+	pb.start()
+	res=ai.read(n)
+	print(res)
+	pb.start()
+	res=ai.read(n)
+	print(res)
+	ai.close()
+
+
+def test_pb_trigg_counter():
+	pb=pulseBlaster()
+	trigAcqui=[2,2]
+	dt=0.05
+	pb.setupPulsed(dt=dt,ch1=trigAcqui,finite=False)
+	pb.start()
+	ci=CIChan()
+	ci.setChannels('ctr0')
+	# Bon y'a un pb avec ctr3. Le truc c'est que :
+	# - ctr0 marche quelque soit la gate que je met (pfi6 ou pfi9)
+	# - ctr3 marche quand j'utilise un compteur interne (donc a priori pas de pb sur la channel pfi5 ?)
+	# - ctr3 ne marche pas en pulsé quelque soit la gate que j'utilise (en faite j'ai l'impression que le compteur trigg la gate. Mias c'est bizarre que ce soit le cas pour les 2 gates)
+	ci.setupWithPb(freq=1/dt,signal=trigAcqui,chan='/Dev1/PFI9')
+	# ci.setupContinuous(frequency=1/dt)
+	
+	while True :
+		y=ci.readPulsed(2,counts=True)
+		print (y[0])
+		if y[1] < y[0] :
+			print ('break : ',y[0],y[1])
+			break
+	ci.close()
+	pb.close()
+	# ci.sampleClock.close()
+
+print(-50%(1<<32))
