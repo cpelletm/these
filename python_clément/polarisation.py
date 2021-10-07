@@ -8,44 +8,96 @@ def setup():
 	nRead=val(NRead)
 	freq=nRead/val(tRead)
 	nWait=int(freq*val(tWait))
-	totalTime=val(tWait)+val(tRead)
+	nPola=int(freq*val(tPola))
+	totalTime=val(tWait)+val(tRead)+val(tPola)
 	if fullView.state() :
-		x=np.linspace(0,totalTime,(nWait+nRead))
-		lect=[True]*(nWait+nRead)
+		x=np.linspace(0,totalTime,(nWait+nRead+nPola))
+		lect=[True]*(nWait+nRead+nPola)
 	else :
 		x=np.linspace(0,val(tRead),+nRead)
-		lect=([False]*(nWait+1)+[True]*(nRead-1))
+		lect=([False]*(nWait+1)+[True]*(nRead-1)+[False]*(nPola))
 		x=x[1:]
 	ai.setChannels(channels.text()) 
 	pulseLect=ai.setupPulsed(freq=freq,signal=lect)
-	gateLaser=[False]*nWait+[True]*nRead
-	do.setupTimed(SampleFrequency=freq,ValuesList=[pulseLect,gateLaser])
+
+	redLaserGate=[]
+	greenLaserGate=[]
+	if waitMenu.text()=='green' :
+		greenLaserGate+=[True]*nWait
+		redLaserGate+=[False]*nWait
+	elif waitMenu.text()=='red' :
+		greenLaserGate+=[False]*nWait
+		redLaserGate+=[True]*nWait
+	elif waitMenu.text()=='both' :
+		greenLaserGate+=[True]*nWait
+		redLaserGate+=[True]*nWait
+	elif waitMenu.text()=='none' :
+		greenLaserGate+=[False]*nWait
+		redLaserGate+=[False]*nWait
+
+	if readMenu.text()=='green' :
+		greenLaserGate+=[True]*nRead
+		redLaserGate+=[False]*nRead
+	elif readMenu.text()=='red' :
+		greenLaserGate+=[False]*nRead
+		redLaserGate+=[True]*nRead
+	elif readMenu.text()=='both' :
+		greenLaserGate+=[True]*nRead
+		redLaserGate+=[True]*nRead
+	elif readMenu.text()=='none' :
+		greenLaserGate+=[False]*nRead
+		redLaserGate+=[False]*nRead
+
+	if polaMenu.text()=='green' :
+		greenLaserGate+=[True]*nPola
+		redLaserGate+=[False]*nPola
+	elif polaMenu.text()=='red' :
+		greenLaserGate+=[False]*nPola
+		redLaserGate+=[True]*nPola
+	elif polaMenu.text()=='both' :
+		greenLaserGate+=[True]*nPola
+		redLaserGate+=[True]*nPola
+	elif polaMenu.text()=='none' :
+		greenLaserGate+=[False]*nPola
+		redLaserGate+=[False]*nPola
+
+
+
+	do.setChannels('p06','p07','p03')
+	do.setupTimed(SampleFrequency=freq,ValuesList=[pulseLect,greenLaserGate,redLaserGate])
 	do.start()
 	return x
 	
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x):
-	if do.done():
+	# if do.done():
+	if True :
 		y=ai.read()
 		gra.updateLine(l1,x,y) 
 		do.restart()
 
 def extraStop() :
-	do.setupContinuous([[True],[True]])
+	do.setupContinuous([[False],[True],[AOM.state()]])
+	
 
 ## Create the communication (I/O) instances ##
 ai=AIChan()
-do=DOChan('p06','p07')
+do=DOChan()
 
 ## Setup the Graphical interface ##
 # laser=continuousLaserWidget(power=2E-4,spaceAbove=0)
 laser=pulsedLaserWidget(gate=True)
+AOM=AOMWidget()
 fullView=checkBox('Full View')
 NRead=field('n read',200)
+waitMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tWait=field('dark time (s)',1e-3)
+readMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tRead=field('read time (s)',1e-3)
+polaMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
+tPola=field('pola time(s)',1e-3)
 nRep=field('n repeat',2)
-fields=[laser,fullView,NRead,tWait,tRead,nRep]
+fields=[laser,AOM,fullView,NRead,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,nRep]
 
 gra=graphics(refreshRate=0.1)
 l1=gra.addLine(typ='average',style='m',fast=True)

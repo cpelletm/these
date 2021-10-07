@@ -31,6 +31,10 @@ def update(x):
 def AM_OnOff():
 	AMDepth.setEnabled(AM.state())
 
+def switchAction():
+	switchState=switchButton.state()
+	switchDo=DOChan('p02')
+	switchDo.setupContinuous(switchState,close=True)
 ## Create the communication (I/O) instances ##
 ai=AIChan()
 do=DOChan('p01')
@@ -47,10 +51,12 @@ AMDepth=field('AM depth (%)',100,spaceAbove=0)
 AM.setState(True)
 AMDepth.setEnabled(AM.state())
 
+switchButton=checkBox('Switch On',action=switchAction)
+
 nPoints=field('n points',151,spaceAbove=3)
 fsweep=field('sweep frequency (Hz)',300,spaceAbove=0)
 
-fields=[channels,fmin,fmax,level,AM,AMDepth,nPoints,fsweep]
+fields=[channels,fmin,fmax,level,AM,AMDepth,switchButton,nPoints,fsweep]
 
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
@@ -64,6 +70,20 @@ norm.setState(False)
 fit=fitButton(line=l1,fit='ESR',name='fit ESR')
 buttons=[norm,StartStop,trace,fit,save,it]
 
+def ESRInLine(Fmin,Fmax,Power,NPoints,NRuns,AmpMod=True):
+	if AmpMod :
+		AM.setState(True)
+	fmin.setValue(Fmin)
+	fmax.setValue(Fmax)
+	level.setValue(Power)
+	nPoints.setValue(NPoints)
+	# StartStop.maxIterWidget.setValue(NRuns) #j'en ai pas vraiment besoin
+	StartStop.start()
+	while it.value < nRuns+1 :
+		pass #j'ai très peur, je sais pas si il continue l'eventloop ici. Sinon faudra le faire à la main et c'est chiant
+	return (l1.x,l1.trueY)
+
 ## Create the graphical interface and launch the program ##
-GUI=Graphical_interface(fields,gra,buttons,title='ESR')
-GUI.run()
+if __name__ == "__main__":
+	GUI=Graphical_interface(fields,gra,buttons,title='ESR')
+	GUI.run()

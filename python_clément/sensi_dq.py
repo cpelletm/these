@@ -4,6 +4,7 @@ physicalChannels=['ai11','ai13','ai9']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
+	nrep=10
 	ai.setChannels(channels.text()) 
 	freq=nPoints/switchTime
 	ai.setupTimed(SampleFrequency=freq,SamplesPerChan=nPoints,nAvg='auto',SampleMode='finite') 
@@ -11,6 +12,9 @@ def setup():
 	Vmoins=V0-dV/2
 	ao.setupContinuous(Vmoins,close=False)
 	time.sleep(val(deadTime))
+	t=np.linspace(0,nrep*switchTime,nrep*nPoints)
+	y0=np.zeros(len(t))
+	gra.updateLine(l3,t,y0)
 	return(Vplus,Vmoins)
 
 
@@ -19,10 +23,12 @@ def update(Vplus,Vmoins):
 	y=ai.readTimed(waitForAcqui=False)
 	if not ai.running :
 		gra.updateLine(l1,False,y) 
+		gra.updateLine(l3,False,y)
 		ao.updateContinuous(Vplus)
 		time.sleep(val(deadTime))
 		y2=ai.readTimed(waitForAcqui=True)
 		gra.updateLine(l2,False,y2) 
+		gra.updateLine(l3,False,y2)
 		diff=np.array(l1.histData) - np.array(l2.histData) 
 		mean=abs(analyse.mean(diff))
 		sigma=analyse.sigma(diff)
@@ -53,6 +59,8 @@ l1=gra.addLine(typ='hist',style='lm',fast=False)
 l1.histSetup(typ='slow',nBins=nBins)
 l2=gra.addLine(typ='hist',style='lm',fast=False)
 l2.histSetup(typ='slow',nBins=nBins)
+ax2=gra.addAx()
+l3=ax2.addLine(typ='scroll',fast=True,style='l')
 #typ='scroll' for scrolling data, 'average' for averaging data or 'instant' for immediate data
 #style='l', 'm' or 'lm' for lines and/or marker
 #fast=True/False (default False) : apply antialias or not on the lines. With anti-alias (fast=False), it takes ~0.1s to update a set with a lot of lines

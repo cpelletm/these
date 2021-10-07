@@ -13,6 +13,7 @@ import sys
 import traceback
 import statistics
 sys.path.append("C:\\Users\\Tom\\Documents\\GitHub\\these\\python_clément")
+sys.path.append('D:\\These Clément\\these\\python_clément')
 from lab import *
 def voltmetre():
 	with nidaqmx.Task() as task :
@@ -1452,7 +1453,8 @@ def trigAiWithDo():
 			time.sleep(0.1)
 			print(ai.is_task_done())
 			data=ai.read(20)
-	print(data)
+			print(data)
+			# print(ai.read(1))
 
 def subfinder(mylist, pattern):
 	pattern = set(pattern)
@@ -1472,7 +1474,6 @@ def ftuyau(a=1,b=2,c=3):
 	print('a=%f ; b=%f; c=%f'%(a,b,c))
 def fkwargs(*args,**kwargs):
 	ftuyau(*args,c=4,**kwargs)
-
 
 def test_bin_hex_pb():
 	seq=[1,0,1,1]
@@ -1507,7 +1508,6 @@ def test_pb_trigg():
 	print(res)
 	ai.close()
 
-
 def test_pb_trigg_counter():
 	pb=pulseBlaster()
 	trigAcqui=[2,2]
@@ -1533,4 +1533,11 @@ def test_pb_trigg_counter():
 	pb.close()
 	# ci.sampleClock.close()
 
-print(-50%(1<<32))
+def ai_max_buffer():
+	ai=AIChan('ai0')
+	ai.setupTimed(SampleFrequency=100,SamplesPerChan=100)
+	y=ai.readTimed(waitForAcqui=True)
+	print(y)
+	ai.close()
+
+ai_max_buffer()

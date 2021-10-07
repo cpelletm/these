@@ -15,24 +15,21 @@ def setup():
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update():
-	try :
-		y=ai.readTimed(waitForAcqui=False) #read the number of samples required in SamplesPerChan ; with waitForAcqui=True the program wil freeze until the acquisition is complete (more stable)
-	except :
-		return
+	y=ai.readTimed(waitForAcqui=False) #read the number of samples required in SamplesPerChan ; with waitForAcqui=True the program wil freeze until the acquisition is complete (more stable)
 	if not ai.running :
 		gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
 		PL.setText('%3.2E'%y[1]) #Modify the PL label with the last acquisition point
-		qapp.processEvents() #Ok ça et le try du dessus c'est ma conclusion après 4h pour avoir un truc qui marche vite tout le temps. En théorie faut pas utiliser processEvents mais c'est tout ce que j'ai pu trouver d'efficace
 ## Create the communication (I/O) instances ##
 ai=AIChan()
 ## Setup the Graphical interface ##
 laser=pulsedLaserWidget()
+AOM=AOMWidget(spaceAbove=0)
 # laser=continuousLaserWidget()
 nPoints=field('n points',151,spaceAbove=3)
 nAvg=field('Average over :','auto',spaceAbove=1)
 dt=field('dt (ms)',30,spaceAbove=1,spaceBelow=3)
 PL=label('Off',style='BIG',spaceAbove=0)
-fields=[PL,laser,nPoints,nAvg,dt]
+fields=[PL,laser,AOM,nPoints,nAvg,dt]
 
 gra=graphics()
 l1=gra.addLine(typ='scroll',style='lm',fast=True)

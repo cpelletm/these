@@ -146,6 +146,17 @@ def exp_fit(x,y,Amp=None,ss=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
+def exp_fit_zero(x,y,Amp=None,tau=None) :
+	if not Amp :
+		Amp=max(y)-min(y)
+	if not tau :
+		tau=x[int(len(x)/10)]-x[0]
+	def f(x,Amp,tau) :
+		return Amp*np.exp(-x/tau)
+	p0=[Amp,tau]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,popt[0],popt[1]))
+
 def stretch_exp_fit(x,y,Amp=None,ss=None,tau=None) :
 	if not Amp :
 		Amp=max(y)-min(y)
@@ -159,6 +170,17 @@ def stretch_exp_fit(x,y,Amp=None,ss=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
+def stretch_exp_fit_zero(x,y,Amp=None,tau=None) :
+	if not Amp :
+		Amp=max(y)-min(y)
+	if not tau :
+		tau=x[int(len(x)/10)]-x[0]
+	def f(x,Amp,tau) :
+		return Amp*np.exp(-np.sqrt(x/tau))
+	p0=[Amp,tau]
+	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
+	return(popt,f(x,popt[0],popt[1]))
+
 def stretch_arb_exp_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5):
 	if not Amp :
 		Amp=max(y)-min(y)
@@ -171,17 +193,6 @@ def stretch_arb_exp_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5):
 	p0=[Amp,ss,tau,alpha]
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
-
-def stretch_soustraction(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
-	if not tau :
-		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-np.sqrt(x/tau))
-	p0=[Amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
 
 def third_stretch(x,y,Amp=None,tau=None) :
 	if not Amp :

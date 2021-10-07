@@ -38,12 +38,15 @@ def update(x,nRead,nT1):
 		y=[]
 		for i in range(nT1):
 			segment=data[i*nRead:(i+1)*nRead]
-			y+=[sum(segment)/max(segment)]
+			if maxwidg.state():
+				y+=[sum(segment)/segment[-1]]
+			else :
+				y+=[sum(segment)/max(segment)]
 		gra.updateLine(l1,x,y) 
 		do.restart()
 
 def extraStop() :
-	do.setupContinuous([[True],[True]])
+	do.setupContinuous([[False],[True]])
 
 ## Create the communication (I/O) instances ##
 ai=AIChan()
@@ -63,6 +66,7 @@ fields=[laser,nT1,tT1,tRead,tPola,nRep]
 gra=graphics(refreshRate=0.1)
 l1=gra.addLine(typ='average',style='m',fast=True)
 
+maxwidg=checkBox('max/last')
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
 StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
@@ -73,7 +77,7 @@ trace=keepTraceButton(l1)
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)
-buttons=[channels,norm,StartStop,trace,expfit,stretchfit,save,it]
+buttons=[channels,maxwidg,norm,StartStop,trace,expfit,stretchfit,save,it]
 
 ## Create the graphical interface and launch the program ##
 GUI=Graphical_interface(fields,gra,buttons,title='T1')
