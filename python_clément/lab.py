@@ -379,7 +379,7 @@ class startStopButton():
 
 	def updateAction(self):
 		if self.running==False :
-			print("tried to update while closed")
+			# print("tried to update while closed")
 			return
 		if self.lineIter :
 			if self.lineIter.iteration > self.maxIter :
@@ -392,7 +392,7 @@ class startStopButton():
 			failSafe(self.updateFunc,*self.updateArgs,debug=self.debug)
 		else :
 			failSafe(self.updateFunc,self.updateArgs,debug=self.debug)
-		# qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer.
+		qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer.
 
 	def stopAction(self): 
 		self.timer.stop()
@@ -478,10 +478,12 @@ class microwave(device):
 		super().__init__()
 		if ressourceName=='mw_ludo' :
 			ressourceName='TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
+		if ressourceName=='mw1' :
+			ressourceName= 'USB0::0x0AAD::0x0054::182239::INSTR'
 		self.PG = visa.ResourceManager().open_resource( ressourceName )
 		self.PG.write_termination = '\n'
 		self.PG.timeout=timeout
-		self.PG.clear()  # Clear instrument io buffers and status
+		# self.PG.clear()  # Clear instrument io buffers and status
 		self.PG.write('*WAI')
 
 	def create_list_freq(self,fmin,fmax,level,n_points) :
@@ -643,11 +645,11 @@ class pulseBlaster(device):
 			#Il faudra p-e modifier pour mettre la pulse la plus courte possible (une dizaine de ns je crois), mais j'ai un peu peur qu'elles ne soit pas toujours détectée (la micro-onde m'a deja fait des blagues)
 			flagBis=[min(1,i) for i in flags] #ca transforme les 2 en 1
 			cmd=self.convertLineToBin(flagBis)
-			self.sp.pb_inst_pbonly(cmd, self.sp.Inst.CONTINUE, 0, 20) #les pulses font 20 ns up.
+			self.sp.pb_inst_pbonly(cmd, self.sp.Inst.CONTINUE, 0, length/2) #les pulses font 20 ns up.
 			flagBis=[i%2 for i in flags] #c'est un peu ridicule mais en vrai je suis fier de moi. Ca transforme les 2 en 0 et pas les 1
 			cmd=self.convertLineToBin(flagBis)
 			if inst_data==self.sp.Inst.STOP :
-				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.CONTINUE, length-20) #Il y a une instruction en plus parce que la pulseblaster considère qu'elle a fini des qu'elle lance la dernière instruction, et pas quand la dernière instrucion est terminée
+				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.CONTINUE, length/2) #Il y a une instruction en plus parce que la pulseblaster considère qu'elle a fini des qu'elle lance la dernière instruction, et pas quand la dernière instrucion est terminée
 				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.STOP, 20)
 			else :
 				self.sp.pb_inst_pbonly(cmd, inst, inst_data, length-20)
@@ -1081,6 +1083,7 @@ class CIChan(NIChan):
 		if counts :
 			return data
 		else :
+			# PL=((data[1:]-data[:-1]))*self.freq
 			PL=((data[1:]-data[:-1])%(1<<self.nBitsCounter))*self.freq #C'est pour prendre en compte les reset de compteurs : je prends le modulo 2^32 de la différence du nombre de coup pour être tjr positif
 			return PL
 

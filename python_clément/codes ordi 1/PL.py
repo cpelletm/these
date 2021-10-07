@@ -18,13 +18,9 @@ def setup():
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update():
-	try :
-		y=ci.readContinuous(2)
-		gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
-		PL.setText('%3.2E'%y[0]) #Modify the PL label with the last acquisition point
-		qapp.processEvents() 
-	except :
-		pass
+	y=ci.readContinuous(2)
+	gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
+	PL.setText('%3.2E'%y[0]) #Modify the PL label with the last acquisition point
 ## Create the communication (I/O) instances ##
 ci=CIChan()
 ## Setup the Graphical interface ##

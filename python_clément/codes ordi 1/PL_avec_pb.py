@@ -19,18 +19,13 @@ def setup():
 		x=np.linspace(0,val(dt)*val(nPoints),val(nPoints))
 		y=np.ones(val(nPoints))*y0
 		gra.updateLine(l1,x,y)
-	pb.start()
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update():
-	if pb.isDone() :
-		y=ci.read()
-		pb.start()#je le met la pour pas perdre de temps
-		gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
-		PL.setText('%3.2E'%y[0]) #Modify the PL label with the last acquisition point
-		qapp.processEvents() #Ok ça et le try du dessus c'est ma conclusion après 4h pour avoir un truc qui marche vite tout le temps. En théorie faut pas utiliser processEvents mais c'est tout ce que j'ai pu trouver d'efficace
-	else :
-		return
+	pb.start()
+	y=ci.read()	
+	gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
+	PL.setText('%3.2E'%y[0]) #Modify the PL label with the last acquisition point
 
 
 ## Create the communication (I/O) instances ##

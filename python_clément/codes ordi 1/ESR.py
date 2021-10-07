@@ -28,11 +28,10 @@ def setup():
 	pb.setupPulsed(dt=1/f,ch1=trigAcqui,ch2=trigMicrowave,ch3=trigMicrowave,ch4=trigMicrowave)#temporaire, il faut trouver le bon cable
 
 	x=np.linspace(val(fmin),val(fmax),n)
-	pb.start()
-	return x,acqui,mode
+	return x,acqui,mode,n
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
-def update(x,acqui,mode):
+def update(x,acqui,mode,n):
 	pb.start()
 	y=acqui.read()
 	if mode=='ctr' :
@@ -49,7 +48,7 @@ def AM_OnOff():
 ai=AIChan()
 ci=CIChan()
 pb=pulseBlaster()
-mw=microwave('mw_ludo')
+mw=microwave('mw1')
 ## Setup the Graphical interface ##
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 
@@ -67,7 +66,7 @@ fsweep=field('sweep frequency (Hz)',500,spaceAbove=0)
 
 fields=[channels,fmin,fmax,level,AM,AMDepth,nPoints,fsweep]
 
-gra=graphics()
+gra=graphics(theme='black')
 l1=gra.addLine(typ='average',style='lm')
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l1,showMaxIter=True)
