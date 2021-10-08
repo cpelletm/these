@@ -218,6 +218,21 @@ def stretch_et_phonons(x,y,Amp=None,tau=None,ss=None,T1ph=5E-3) :
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
+def Rabi_fit(x,y,Amp=None,omega=None,tau=None,ss=None):
+	if not Amp :
+		Amp=max(y)-min(y)
+	if not ss :
+		ss=y[-1]
+	if not tau :
+		tau=x[int(len(x)/3)]-x[0]
+	if not omega :
+		omega=1/(x[int(len(x)/10)]-x[0])
+	def f(x,Amp,ss,tau,omega) :
+		return Amp*np.exp(-x/tau)*np.cos(omega*x)+ss
+	p0=[Amp,ss,tau,omega]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,*popt))
+
 def fit_B_dipole(x,y,B0=2000,x0=10) : #x : distance en mm, y : champ mag en G
 	def f(x,B0,x0):
 		return(B0/(x+x0)**3)
@@ -325,6 +340,9 @@ def find_B_100(freq,transi='-',B_max=100) :
 
 	RR=root_scalar(f,bracket=[0,B_max])
 	return RR.root
+
+
+
 
 class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 	D=2873 #Mhz
