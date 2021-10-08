@@ -1,0 +1,26 @@
+fmod : 1033 Hz, ampmod=800 mV, PL=0.5V, Plas=184 uW
+La pl a diminué pendant la mesure mais j'ai check que ca change pas grand chose
+Pour ce qui est d'augmenter l'amplitude de Bscan, effectivement quand t'es pas aligné ça a l'air d'augmenter, mais pas tant que ça. En revanche tu es bcp plus loin du shot noise limit avec un gros Bscan qu'un petit.
+Angle sensi(nT/sqrt(Hz)
+0 98.7
+2 105
+4 99.9
+6 103
+8 88.1
+10 85.0
+12 92.5
+14 87.8
+16 92.4
+18 87.4
+20 84.3
+22 85.8
+24 92.0
+26 88.0
+28 94.7
+30 84.6
+
+
+
+
+
+
