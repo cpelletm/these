@@ -1,0 +1,8 @@
+Il se passe un truc bizarre avec la trace en bleu clair. C'était une trace que j'ai eu avec 10 dBm en zoomant un peu plus, et c'était reproductible sur le coup mais 5 min après j'arrive plus à l'avoir. Je sais pas trop ce qui est vrai la dedans.
+Dans tous les cas j'ai l'impression qu'il y a un optimum de puissance pour la largeur (cad élargissement à basse puissance aussi, à noter que je suis globalement à très faible puissance puisque antenne externe et sans ampli)
+
+Plus le temps passe et plus ça s'élargit. j'y comprends rien
+
+Ok je pense que j'ai compris. C'est hyper sensible à l'aligenement. C'est pas hyper rassurant pour être honnête. En plus j'ai un peu peur que le capteur sature, je retombe toujours sur la meme valeur de 4.22 V a la photodiode. Ce qui me fait dire ça c'est qu'en plus les bosses de C13 sont la quand j'ai un gros spectre et pas la  quand le spectre est fin.
+
+Ok c'est confirmé, quand l'APD sature visiblement ça affine les raies. Ca fallait le savoir. Mais que je mette un diaphragme, une densité ou meme le notch dans tous les cas j'ai un spectre plus large qui se superpose super bien d'une fois à l'autre.

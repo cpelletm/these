@@ -1,0 +1,55 @@
+2019-12-09 17:47:46 info __main__ Loading Qudi...
+2019-12-09 17:47:46 error core.util.helpers No Package "git" installed! It is recommended to have this package installed. Perform e.g.
+
+    pip install gitpython
+
+in the console to install the missing package.
+2019-12-09 17:47:46 debug core.manager Main thread is <sip.voidptr object at 0x000000000519B7D8>
+2019-12-09 17:47:46 info core.manager load.cfg config file found at D:\Users\manip\Desktop\python_clément\qudi\qudi-master\config\load.cfg
+2019-12-09 17:47:46 info core.manager Starting Manager configuration from D:/Users/manip/Desktop/python_clément/qudi/qudi-master/config/example/tutorial_01_getting_started.cfg
+2019-12-09 17:47:46 info core.manager Manager configuration complete.
+2019-12-09 17:47:46 info core.manager Qudi started.
+2019-12-09 17:47:46 info core.manager Loading module ".gui.manager.managergui"
+2019-12-09 17:47:46 info core.manager Configuring ManagerGui as man
+2019-12-09 17:47:46 debug gui.manager.managergui.ManagerGui Activation in thread <sip.voidptr object at 0x0000000006DE2210>
+2019-12-09 17:47:47 debug gui.manager.managergui.ManagerGui IPy activation in thread <sip.voidptr object at 0x0000000006DE2DA0>
+2019-12-09 17:47:47 info gui.manager.managergui.ManagerGui IPython has kernel True
+2019-12-09 17:47:47 info gui.manager.managergui.ManagerGui IPython kernel alive True
+2019-12-09 17:47:47 debug core.manager Activation success: True
+2019-12-09 17:47:47 info core.manager Loading module ".gui.trayicon"
+2019-12-09 17:47:47 info core.manager Configuring TrayIcon as tray
+2019-12-09 17:47:47 debug gui.trayicon.TrayIcon Activation in thread <sip.voidptr object at 0x0000000008B35440>
+2019-12-09 17:47:47 debug core.manager Activation success: True
+2019-12-09 17:47:55 info core.manager Loading module ".logic.save_logic"
+2019-12-09 17:47:55 info core.manager Configuring SaveLogic as save
+2019-12-09 17:47:55 warning logic.save_logic.SaveLogic No variable >> log_into_daily_directory << configured, using default value False instead.
+2019-12-09 17:47:55 debug core.threadmanager Creating thread: "mod-logic-save".
+2019-12-09 17:47:55 debug logic.save_logic.SaveLogic Activation in thread <sip.voidptr object at 0x000000000C0122B0>
+2019-12-09 17:47:55 debug core.manager Activation success: True
+2019-12-09 17:47:55 info core.manager Loading module ".hardware.slow_counter_dummy"
+2019-12-09 17:47:55 info core.manager Configuring SlowCounterDummy as mydummycounter
+2019-12-09 17:47:55 warning hardware.slow_counter_dummy.SlowCounterDummy No variable >> samples_number << configured, using default value 10 instead.
+2019-12-09 17:47:55 warning hardware.slow_counter_dummy.SlowCounterDummy No variable >> source_channels << configured, using default value 2 instead.
+2019-12-09 17:47:55 error core.manager Remote module sharing does not work as no server configured or server startup failed earlier. Check your configuration and log.
+2019-12-09 17:47:55 warning core.manager Nonfatal loading error, going on.
+2019-12-09 17:47:55 debug hardware.slow_counter_dummy.SlowCounterDummy Activation in thread <sip.voidptr object at 0x000000000C012288>
+2019-12-09 17:47:55 debug core.manager Activation success: True
+2019-12-09 17:47:55 info core.manager Loading module ".logic.counter_logic"
+2019-12-09 17:47:55 info core.manager Configuring CounterLogic as counter
+2019-12-09 17:47:55 debug logic.counter_logic.CounterLogic The following configuration was found.
+2019-12-09 17:47:55 debug logic.counter_logic.CounterLogic module.Class: counter_logic.CounterLogic
+2019-12-09 17:47:55 debug logic.counter_logic.CounterLogic connect: OrderedDict([('counter1', 'mydummycounter'), ('savelogic', 'save')])
+2019-12-09 17:47:55 info core.manager Connecting logic.counter.counter1 to hardware.mydummycounter
+2019-12-09 17:47:55 info core.manager Connecting logic.counter.savelogic to logic.save
+2019-12-09 17:47:55 debug core.threadmanager Creating thread: "mod-logic-counter".
+2019-12-09 17:47:55 debug logic.counter_logic.CounterLogic Activation in thread <sip.voidptr object at 0x000000000C03F710>
+2019-12-09 17:47:55 debug core.manager Activation success: True
+2019-12-09 17:47:56 info core.manager Loading module ".gui.counter.countergui"
+2019-12-09 17:47:56 info core.manager Configuring CounterGui as countergui
+2019-12-09 17:47:56 info core.manager Connecting gui.countergui.counterlogic1 to logic.counter
+2019-12-09 17:47:56 debug gui.counter.countergui.CounterGui Activation in thread <sip.voidptr object at 0x000000000C03F940>
+2019-12-09 17:47:56 debug core.manager Activation success: True
+2019-12-09 17:47:58 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>set_up_clock
+2019-12-09 17:47:59 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>set_up_counter
+2019-12-09 17:48:02 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>close_counter
+2019-12-09 17:48:02 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>close_clock

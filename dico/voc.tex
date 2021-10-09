@@ -35,10 +35,35 @@ Dans le cas des NV, tu n'as même pas besoin d'un champ mag vu que tu as naturel
 
 \item \textbf{Jahn-Teller Effect} : c'es un effet de brisure spontanée de symétrie (à suivre...)
 \end{itemize}
+
+\item \textbf{Cathodoluminescence}  : production de PL par bombardement d'électrons. L'idée c'est simplement que tu excites des électrons de valence avec ton jet, et que ces électrons vont se recombiner en émettant de la PL. Dans la pratique c'est un peu plus crade vu que ton jet d'électron est trop énergétique, tu as plein de sous produits (rayons X etc) avant d'arriver à exciter tes électrons de valence.
+
+Ca permet de faire de la microscopie fine, en combinant un dispositif pour mesurer la PL a un TEM, mais c'est aussi tout simplement le mécanisme qui génère de la lumière dans le TV à tubes cathodiques.
   \section{Matériel}
   \begin{itemize}
   \item \textbf{FEL0700} (c'est un zéro): Filtre longpass, c'est à dire passe haut en longueur d'onde, donc passe-bas en énergie, jusqu'au $\lambda$ indiqué (en nm). C'est des filtres interférentiels, donc il faut faire un peu gaffe à l'angle d'incidence. La petite flèche indique le sens de transmission.
   \item \textbf{FES1200} : Pareil mais shortpass.
+  \end{itemize}
+  
+  \section{Échantillons}
+  \begin{itemize}
+  \item \textbf{hBN} : Nitrure de Bore hexagonal (d'après JMC17, talk de Cassabois dispo sur youtube). C'est un matériel 2D 50\% B 50\%N quasi similaire au graphène (les haxagones se superposent contrairement au graphite) à grand gap indirect (6 eV). Il sert en particulier d'isolant pour les hétérostructures (il a une lattice constant proche du graphene). Il peut aussi servir à émettre dans l'UV au niveau de son gap (avec une PL 10$^3$ plus grande que le diamant, ce qui est assez étonnant), et il peut héberger des défauts colorés. En particulier le défaut de B semble présenter de l'ODMR avec un ZFS de 3.5 GHz.
+  \item \textbf{TMD ou TMDC} : Transition metal dichalcogenide. Grande famille de matériaux 2D composé d'un métal de transition et d'un (di)chacogenide, cad un élément de la famille de l'oxygène (souvent on exclue l'oxygène, donc il reste S, Se et Te, les éléments qui puent). Ils ont toujours la formule MD$_2$ pour leur forme 2D, ex : WSe$_2$. Contrairement au hBN et au graphène, ils n'ont pas une strcture parfaitement plane : les atomes de chalcogenides se mettent au dessus et en dessous de la couche de métal.
+  
+  Au niveau application ça va dépendre du TMD, mais certains sont à gap direct, d'autres sont supra conducteur, et enfin la plupart ont un grand couplage spin orbite (resolvable en spectro) ce qui permet visiblement de faire de la spintronique
+  \item \textbf{Van der Waals heterostructures} : C'est des empilement de couches 2D de différents matériaux. Demander à Marin pour plus d'infos.
+  \end{itemize}
+  \item \textbf{Mott insulator} : Un matériaux qui est sensé être métallique d'après la théorie des bandes, mais qui est isolant à cause de l'interaction électron-électron (milieu à électrons fortement corrélés). On peut en général modéliser cette interaction avec un modèle de Hubbard
+  \item \textbf{Hubbard model} : La page wikipedia est pas claire
+  \item \textbf{CMOS} :
+  \end{itemize}
+  \section{Techniques expérimentales}
+  \begin{itemize}
+  \item \textbf{Epithaxy} :
+  \item \textbf{MBE}
+  \item \textbf{CVD}
+  \item \textbf{spin-coating}
+  
   \end{itemize}
   
  

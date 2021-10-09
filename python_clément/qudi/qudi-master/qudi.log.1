@@ -1,0 +1,828 @@
+2019-12-09 17:20:46 info __main__ Loading Qudi...
+2019-12-09 17:20:46 error core.util.helpers No Package "git" installed! It is recommended to have this package installed. Perform e.g.
+
+    pip install gitpython
+
+in the console to install the missing package.
+2019-12-09 17:20:46 debug core.manager Main thread is <sip.voidptr object at 0x00000000051BCFA8>
+2019-12-09 17:20:47 info core.manager Starting Manager configuration from D:\Users\manip\Desktop\python_clément\qudi\qudi-master\config\example\default.cfg
+2019-12-09 17:20:47 info core.manager Manager configuration complete.
+2019-12-09 17:20:47 debug core.threadmanager Creating thread: "rpyc-server".
+2019-12-09 17:20:47 info core.remote Started module server at localhost on port 12345
+2019-12-09 17:20:47 info core.manager Started server rpyc://localhost:12345
+2019-12-09 17:20:47 info core.manager Qudi started.
+2019-12-09 17:20:47 info core.manager Loading module ".gui.manager.managergui"
+2019-12-09 17:20:47 info RemoteModule/12345 server started on [127.0.0.1]:12345
+2019-12-09 17:20:47 info core.manager Configuring ManagerGui as man
+2019-12-09 17:20:47 debug gui.manager.managergui.ManagerGui Activation in thread <sip.voidptr object at 0x000000000544A968>
+2019-12-09 17:20:49 debug gui.manager.managergui.ManagerGui IPy activation in thread <sip.voidptr object at 0x0000000007323850>
+2019-12-09 17:20:49 info gui.manager.managergui.ManagerGui IPython has kernel True
+2019-12-09 17:20:49 info gui.manager.managergui.ManagerGui IPython kernel alive True
+2019-12-09 17:20:49 debug core.manager Activation success: True
+2019-12-09 17:20:49 info core.manager Loading module ".gui.trayicon"
+2019-12-09 17:20:49 info core.manager Configuring TrayIcon as tray
+2019-12-09 17:20:49 debug gui.trayicon.TrayIcon Activation in thread <sip.voidptr object at 0x0000000008EB8F30>
+2019-12-09 17:20:49 debug core.manager Activation success: True
+2019-12-09 17:20:49 info core.manager Loading module ".logic.taskrunner"
+2019-12-09 17:20:49 info core.manager Configuring TaskRunner as tasklogic
+2019-12-09 17:20:49 debug core.threadmanager Creating thread: "mod-logic-tasklogic".
+2019-12-09 17:20:49 debug logic.taskrunner.TaskRunner Activation in thread <sip.voidptr object at 0x0000000008F17698>
+2019-12-09 17:20:49 info core.manager Task runner registered.
+2019-12-09 17:20:49 info core.manager Loading module ".logic.fit_logic"
+2019-12-09 17:20:50 info matplotlib.font_manager font search path ['D:\\Users\\manip\\Anaconda3\\envs\\qudi\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf', 'D:\\Users\\manip\\Anaconda3\\envs\\qudi\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\afm', 'D:\\Users\\manip\\Anaconda3\\envs\\qudi\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\pdfcorefonts']
+2019-12-09 17:20:52 info matplotlib.font_manager generated new fontManager
+2019-12-09 17:20:52 info core.manager Configuring FitLogic as fitlogic
+2019-12-09 17:20:52 info logic.fit_logic.FitLogic Methods were included to FitLogic, but only if naming is right: check the doxygen documentation if you added a new method and it does not show.
+2019-12-09 17:20:52 debug core.threadmanager Creating thread: "mod-logic-fitlogic".
+2019-12-09 17:20:52 debug logic.fit_logic.FitLogic Activation in thread <sip.voidptr object at 0x0000000007AF51C0>
+2019-12-09 17:20:52 debug core.manager Activation success: True
+2019-12-09 17:20:52 info core.manager Loading module ".hardware.confocal_scanner_dummy"
+2019-12-09 17:20:52 info core.manager Configuring ConfocalScannerDummy as mydummyscanner
+2019-12-09 17:20:52 info core.manager Connecting hardware.mydummyscanner.fitlogic to logic.fitlogic
+2019-12-09 17:20:52 debug hardware.confocal_scanner_dummy.ConfocalScannerDummy Activation in thread <sip.voidptr object at 0x0000000007AF5378>
+2019-12-09 17:20:52 debug core.manager Activation success: True
+2019-12-09 17:20:52 info core.manager Loading module ".logic.interfuse.scanner_tilt_interfuse"
+2019-12-09 17:20:52 info core.manager Configuring ScannerTiltInterfuse as scanner_tilt_interfuse
+2019-12-09 17:20:52 info core.manager Connecting logic.scanner_tilt_interfuse.confocalscanner1 to hardware.mydummyscanner
+2019-12-09 17:20:52 debug core.threadmanager Creating thread: "mod-logic-scanner_tilt_interfuse".
+2019-12-09 17:20:52 debug logic.interfuse.scanner_tilt_interfuse.ScannerTiltInterfuse Activation in thread <sip.voidptr object at 0x0000000007B0BEE0>
+2019-12-09 17:20:52 debug core.manager Activation success: True
+2019-12-09 17:20:52 info core.manager Loading module ".logic.optimizer_logic"
+2019-12-09 17:20:52 info core.manager Configuring OptimizerLogic as optimizerlogic
+2019-12-09 17:20:52 info core.manager Connecting logic.optimizerlogic.confocalscanner1 to logic.scanner_tilt_interfuse
+2019-12-09 17:20:52 info core.manager Connecting logic.optimizerlogic.fitlogic to logic.fitlogic
+2019-12-09 17:20:52 debug core.threadmanager Creating thread: "mod-logic-optimizerlogic".
+2019-12-09 17:20:52 debug logic.optimizer_logic.OptimizerLogic Activation in thread <sip.voidptr object at 0x000000001C2B6530>
+2019-12-09 17:20:52 debug core.manager Activation success: True
+2019-12-09 17:20:53 debug core.manager Activation success: True
+2019-12-09 17:24:47 info core.manager Loading module ".hardware.slow_counter_dummy"
+2019-12-09 17:24:47 info core.manager Configuring SlowCounterDummy as mydummycounter
+2019-12-09 17:24:47 warning hardware.slow_counter_dummy.SlowCounterDummy No variable >> samples_number << configured, using default value 10 instead.
+2019-12-09 17:24:47 info core.remote Shared module mydummycounter.
+2019-12-09 17:24:47 debug hardware.slow_counter_dummy.SlowCounterDummy Activation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:24:47 debug core.manager Activation success: True
+2019-12-09 17:25:00 info core.manager Loading module ".hardware.odmr_counter_dummy"
+2019-12-09 17:25:00 info core.manager Configuring ODMRCounterDummy as mydummyodmrcounter
+2019-12-09 17:25:00 info core.manager Connecting hardware.mydummyodmrcounter.fitlogic to logic.fitlogic
+2019-12-09 17:25:00 debug hardware.odmr_counter_dummy.ODMRCounterDummy Activation in thread <sip.voidptr object at 0x000000000F2BE760>
+2019-12-09 17:25:00 debug core.manager Activation success: True
+2019-12-09 17:25:00 info core.manager Loading module ".hardware.spectrometer.spectrometer_dummy"
+2019-12-09 17:25:00 info core.manager Configuring SpectrometerInterfaceDummy as myspectrometer
+2019-12-09 17:25:00 info core.manager Connecting hardware.myspectrometer.fitlogic to logic.fitlogic
+2019-12-09 17:25:00 debug hardware.spectrometer.spectrometer_dummy.SpectrometerInterfaceDummy Activation in thread <sip.voidptr object at 0x0000000009158080>
+2019-12-09 17:25:00 debug core.manager Activation success: True
+2019-12-09 17:25:00 info core.manager Loading module ".logic.save_logic"
+2019-12-09 17:25:00 info core.manager Configuring SaveLogic as savelogic
+2019-12-09 17:25:00 debug core.threadmanager Creating thread: "mod-logic-savelogic".
+2019-12-09 17:25:00 debug logic.save_logic.SaveLogic Activation in thread <sip.voidptr object at 0x000000001C059EB8>
+2019-12-09 17:25:00 warning logic.save_logic.SaveLogic The specified Data Directory in the config file does not exist. Using default for win system instead. The directory C:/Data was created
+2019-12-09 17:25:00 info logic.save_logic.SaveLogic Creating directory for today's data in 
+C:/Data\2019\12\20191209
+2019-12-09 17:25:00 debug core.manager Activation success: True
+2019-12-09 17:25:00 info core.manager Loading module ".logic.counter_logic"
+2019-12-09 17:25:00 info core.manager Configuring CounterLogic as counterlogic
+2019-12-09 17:25:00 debug logic.counter_logic.CounterLogic The following configuration was found.
+2019-12-09 17:25:00 debug logic.counter_logic.CounterLogic module.Class: counter_logic.CounterLogic
+2019-12-09 17:25:00 debug logic.counter_logic.CounterLogic connect: OrderedDict([('counter1', 'mydummycounter'), ('savelogic', 'savelogic')])
+2019-12-09 17:25:00 info core.manager Connecting logic.counterlogic.counter1 to hardware.mydummycounter
+2019-12-09 17:25:00 info core.manager Connecting logic.counterlogic.savelogic to logic.savelogic
+2019-12-09 17:25:00 debug core.threadmanager Creating thread: "mod-logic-counterlogic".
+2019-12-09 17:25:00 debug logic.counter_logic.CounterLogic Activation in thread <sip.voidptr object at 0x0000000008D55710>
+2019-12-09 17:25:00 debug core.manager Activation success: True
+2019-12-09 17:25:00 info core.manager Loading module ".gui.counter.countergui"
+2019-12-09 17:25:00 info core.manager Configuring CounterGui as counter
+2019-12-09 17:25:00 info core.manager Connecting gui.counter.counterlogic1 to logic.counterlogic
+2019-12-09 17:25:00 debug gui.counter.countergui.CounterGui Activation in thread <sip.voidptr object at 0x0000000008D55878>
+2019-12-09 17:25:01 debug core.manager Activation success: True
+2019-12-09 17:25:01 info core.manager Loading module ".logic.confocal_logic"
+2019-12-09 17:25:01 info core.manager Configuring ConfocalLogic as scannerlogic
+2019-12-09 17:25:01 info core.manager Connecting logic.scannerlogic.confocalscanner1 to logic.scanner_tilt_interfuse
+2019-12-09 17:25:01 info core.manager Connecting logic.scannerlogic.savelogic to logic.savelogic
+2019-12-09 17:25:01 debug core.threadmanager Creating thread: "mod-logic-scannerlogic".
+2019-12-09 17:25:01 debug logic.confocal_logic.ConfocalLogic Activation in thread <sip.voidptr object at 0x000000000F2BEE18>
+2019-12-09 17:25:01 debug core.manager Activation success: True
+2019-12-09 17:25:01 info core.manager Loading module ".gui.confocal.confocalgui"
+2019-12-09 17:25:01 info core.manager Configuring ConfocalGui as confocal
+2019-12-09 17:25:01 info core.manager Connecting gui.confocal.confocallogic1 to logic.scannerlogic
+2019-12-09 17:25:01 info core.manager Connecting gui.confocal.savelogic to logic.savelogic
+2019-12-09 17:25:01 info core.manager Connecting gui.confocal.optimizerlogic1 to logic.optimizerlogic
+2019-12-09 17:25:01 debug gui.confocal.confocalgui.ConfocalGui Activation in thread <sip.voidptr object at 0x0000000008D55328>
+2019-12-09 17:25:02 debug core.manager Activation success: True
+2019-12-09 17:25:02 info core.manager Loading module ".logic.poi_manager_logic"
+2019-12-09 17:25:02 info core.manager Configuring PoiManagerLogic as poimanagerlogic
+2019-12-09 17:25:02 info core.manager Connecting logic.poimanagerlogic.scannerlogic to logic.scannerlogic
+2019-12-09 17:25:02 info core.manager Connecting logic.poimanagerlogic.optimiserlogic to logic.optimizerlogic
+2019-12-09 17:25:02 info core.manager Connecting logic.poimanagerlogic.savelogic to logic.savelogic
+2019-12-09 17:25:02 debug core.threadmanager Creating thread: "mod-logic-poimanagerlogic".
+2019-12-09 17:25:02 debug logic.poi_manager_logic.PoiManagerLogic Activation in thread <sip.voidptr object at 0x000000001C798530>
+2019-12-09 17:25:02 debug core.manager Activation success: True
+2019-12-09 17:25:03 info core.manager Loading module ".gui.poimanager.poimangui"
+2019-12-09 17:25:03 info core.manager Configuring PoiManagerGui as poimanager
+2019-12-09 17:25:03 info core.manager Connecting gui.poimanager.poimanagerlogic to logic.poimanagerlogic
+2019-12-09 17:25:03 info core.manager Connecting gui.poimanager.scannerlogic to logic.scannerlogic
+2019-12-09 17:25:03 debug gui.poimanager.poimangui.PoiManagerGui Activation in thread <sip.voidptr object at 0x000000001C7988F0>
+2019-12-09 17:25:03 debug core.manager Activation success: True
+2019-12-09 17:25:03 info core.manager Loading module ".hardware.microwave.mw_source_dummy"
+2019-12-09 17:25:03 info core.manager Configuring MicrowaveDummy as microwave_dummy
+2019-12-09 17:25:03 debug hardware.microwave.mw_source_dummy.MicrowaveDummy Activation in thread <sip.voidptr object at 0x000000001C798E68>
+2019-12-09 17:25:03 debug core.manager Activation success: True
+2019-12-09 17:25:03 info core.manager Loading module ".logic.odmr_logic"
+2019-12-09 17:25:03 info core.manager Configuring ODMRLogic as odmrlogic
+2019-12-09 17:25:03 warning logic.odmr_logic.ODMRLogic No variable >> scanmode << configured, using default value LIST instead.
+2019-12-09 17:25:03 info core.manager Connecting logic.odmrlogic.odmrcounter to hardware.mydummyodmrcounter
+2019-12-09 17:25:03 info core.manager Connecting logic.odmrlogic.fitlogic to logic.fitlogic
+2019-12-09 17:25:03 info core.manager Connecting logic.odmrlogic.microwave1 to hardware.microwave_dummy
+2019-12-09 17:25:03 info core.manager Connecting logic.odmrlogic.savelogic to logic.savelogic
+2019-12-09 17:25:03 info core.manager Connecting logic.odmrlogic.taskrunner to logic.tasklogic
+2019-12-09 17:25:03 debug core.threadmanager Creating thread: "mod-logic-odmrlogic".
+2019-12-09 17:25:03 debug logic.odmr_logic.ODMRLogic Activation in thread <sip.voidptr object at 0x000000001C781120>
+2019-12-09 17:25:03 info hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>ext_trigger set
+2019-12-09 17:25:03 info hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>off
+2019-12-09 17:25:03 debug hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>set_cw, frequency: 2870000000.000000, power -30.000000:
+2019-12-09 17:25:03 debug core.manager Activation success: True
+2019-12-09 17:25:04 info core.manager Loading module ".gui.odmr.odmrgui"
+2019-12-09 17:25:04 info core.manager Configuring ODMRGui as odmr
+2019-12-09 17:25:04 info core.manager Connecting gui.odmr.odmrlogic1 to logic.odmrlogic
+2019-12-09 17:25:04 info core.manager Connecting gui.odmr.savelogic to logic.savelogic
+2019-12-09 17:25:04 debug gui.odmr.odmrgui.ODMRGui Activation in thread <sip.voidptr object at 0x000000001C7810A8>
+2019-12-09 17:25:04 debug core.manager Activation success: True
+2019-12-09 17:25:04 info core.manager Loading module ".hardware.wavemeter_dummy"
+2019-12-09 17:25:04 info core.manager Configuring WavemeterDummy as mydummywavemeter
+2019-12-09 17:25:04 debug hardware.wavemeter_dummy.WavemeterDummy Activation in thread <sip.voidptr object at 0x0000000008E16B48>
+2019-12-09 17:25:04 debug core.manager Activation success: True
+2019-12-09 17:25:04 info core.manager Loading module ".logic.wavemeter_logger_logic"
+2019-12-09 17:25:04 info core.manager Configuring WavemeterLoggerLogic as wavemeterloggerlogic
+2019-12-09 17:25:04 info core.manager Connecting logic.wavemeterloggerlogic.wavemeter1 to hardware.mydummywavemeter
+2019-12-09 17:25:04 info core.manager Connecting logic.wavemeterloggerlogic.savelogic to logic.savelogic
+2019-12-09 17:25:04 info core.manager Connecting logic.wavemeterloggerlogic.counterlogic to logic.counterlogic
+2019-12-09 17:25:04 info core.manager Connecting logic.wavemeterloggerlogic.fitlogic to logic.fitlogic
+2019-12-09 17:25:05 debug core.threadmanager Creating thread: "mod-logic-wavemeterloggerlogic".
+2019-12-09 17:25:05 debug logic.wavemeter_logger_logic.WavemeterLoggerLogic Activation in thread <sip.voidptr object at 0x000000001C781788>
+2019-12-09 17:25:05 debug core.manager Activation success: True
+2019-12-09 17:25:05 info core.manager Loading module ".gui.wavemeterlogger.wavemeterloggui"
+2019-12-09 17:25:05 info core.manager Configuring WavemeterLogGui as wavemeterlogger
+2019-12-09 17:25:05 debug gui.wavemeterlogger.wavemeterloggui.WavemeterLogGui The following configuration was found.
+2019-12-09 17:25:05 info gui.wavemeterlogger.wavemeterloggui.WavemeterLogGui module.Class: wavemeterlogger.wavemeterloggui.WavemeterLogGui
+2019-12-09 17:25:05 info gui.wavemeterlogger.wavemeterloggui.WavemeterLogGui connect: OrderedDict([('wavemeterloggerlogic1', 'wavemeterloggerlogic'), ('savelogic', 'savelogic')])
+2019-12-09 17:25:05 info core.manager Connecting gui.wavemeterlogger.wavemeterloggerlogic1 to logic.wavemeterloggerlogic
+2019-12-09 17:25:05 info core.manager Connecting gui.wavemeterlogger.savelogic to logic.savelogic
+2019-12-09 17:25:05 debug gui.wavemeterlogger.wavemeterloggui.WavemeterLogGui Activation in thread <sip.voidptr object at 0x000000001C781670>
+2019-12-09 17:25:05 debug core.manager Activation success: True
+2019-12-09 17:25:05 info core.manager Loading module ".hardware.switches.switch_dummy"
+2019-12-09 17:25:05 info core.manager Configuring SwitchDummy as mydummyswitch1
+2019-12-09 17:25:05 debug hardware.switches.switch_dummy.SwitchDummy Activation in thread <sip.voidptr object at 0x0000000008E16DA0>
+2019-12-09 17:25:05 debug core.manager Activation success: True
+2019-12-09 17:25:05 info core.manager Loading module ".hardware.switches.switch_dummy"
+2019-12-09 17:25:05 info core.manager Configuring SwitchDummy as mydummyswitch2
+2019-12-09 17:25:05 debug hardware.switches.switch_dummy.SwitchDummy Activation in thread <sip.voidptr object at 0x000000001C71F0F8>
+2019-12-09 17:25:05 debug core.manager Activation success: True
+2019-12-09 17:25:05 info core.manager Loading module ".logic.switch_logic"
+2019-12-09 17:25:06 info core.manager Configuring SwitchLogic as switchlogic
+2019-12-09 17:25:06 warning core.manager Connector switch1 in logic.switchlogic is a legacy connector.
+Use core.module.Connector to declare connectors.
+2019-12-09 17:25:06 info core.manager Connecting logic.switchlogic.switch1 to hardware.mydummyswitch1
+2019-12-09 17:25:06 warning core.manager Connector switch2 in logic.switchlogic is a legacy connector.
+Use core.module.Connector to declare connectors.
+2019-12-09 17:25:06 info core.manager Connecting logic.switchlogic.switch2 to hardware.mydummyswitch2
+2019-12-09 17:25:06 debug core.threadmanager Creating thread: "mod-logic-switchlogic".
+2019-12-09 17:25:06 debug logic.switch_logic.SwitchLogic Activation in thread <sip.voidptr object at 0x000000001C71F918>
+2019-12-09 17:25:06 debug core.manager Activation success: True
+2019-12-09 17:25:06 info core.manager Loading module ".gui.switcher.switchgui"
+2019-12-09 17:25:06 info core.manager Configuring SwitchGui as switches
+2019-12-09 17:25:06 info core.manager Connecting gui.switches.switchlogic to logic.switchlogic
+2019-12-09 17:25:06 debug gui.switcher.switchgui.SwitchGui Activation in thread <sip.voidptr object at 0x000000001C71F300>
+2019-12-09 17:25:06 debug core.manager Activation success: True
+2019-12-09 17:25:06 info core.manager Loading module ".gui.taskrunner.taskgui"
+2019-12-09 17:25:06 info core.manager Configuring TaskGui as taskrunner
+2019-12-09 17:25:06 info core.manager Connecting gui.taskrunner.tasklogic to logic.tasklogic
+2019-12-09 17:25:06 debug gui.taskrunner.taskgui.TaskGui Activation in thread <sip.voidptr object at 0x0000000008DBF5F8>
+2019-12-09 17:25:06 debug core.manager Activation success: True
+2019-12-09 17:25:07 info core.manager Loading module ".logic.automation"
+2019-12-09 17:25:07 info core.manager Configuring AutomationLogic as automationlogic
+2019-12-09 17:25:07 info core.manager Connecting logic.automationlogic.taskrunner to logic.tasklogic
+2019-12-09 17:25:07 debug core.threadmanager Creating thread: "mod-logic-automationlogic".
+2019-12-09 17:25:07 debug logic.automation.AutomationLogic Activation in thread <sip.voidptr object at 0x0000000020ACF828>
+2019-12-09 17:25:07 debug core.manager Activation success: True
+2019-12-09 17:25:07 info core.manager Loading module ".gui.automation.automationgui"
+2019-12-09 17:25:07 info core.manager Configuring AutomationGui as automation
+2019-12-09 17:25:07 info core.manager Connecting gui.automation.automationlogic to logic.automationlogic
+2019-12-09 17:25:07 debug gui.automation.automationgui.AutomationGui Activation in thread <sip.voidptr object at 0x0000000020ACF940>
+2019-12-09 17:25:07 debug core.manager Activation success: True
+2019-12-09 17:25:07 info core.manager Loading module ".logic.spectrum"
+2019-12-09 17:25:07 info core.manager Configuring SpectrumLogic as spectrumlogic
+2019-12-09 17:25:07 info core.manager Connecting logic.spectrumlogic.spectrometer to hardware.myspectrometer
+2019-12-09 17:25:07 info core.manager Connecting logic.spectrumlogic.savelogic to logic.savelogic
+2019-12-09 17:25:07 info core.manager Connecting logic.spectrumlogic.odmrlogic to logic.odmrlogic
+2019-12-09 17:25:08 info core.manager Connecting logic.spectrumlogic.fitlogic to logic.fitlogic
+2019-12-09 17:25:08 debug core.threadmanager Creating thread: "mod-logic-spectrumlogic".
+2019-12-09 17:25:08 debug logic.spectrum.SpectrumLogic Activation in thread <sip.voidptr object at 0x0000000020ACFE18>
+2019-12-09 17:25:08 debug core.manager Activation success: True
+2019-12-09 17:25:08 info core.manager Loading module ".gui.spectrometer.spectrometergui"
+2019-12-09 17:25:08 info core.manager Configuring SpectrometerGui as spectrometer
+2019-12-09 17:25:08 info core.manager Connecting gui.spectrometer.spectrumlogic to logic.spectrumlogic
+2019-12-09 17:25:08 debug gui.spectrometer.spectrometergui.SpectrometerGui Activation in thread <sip.voidptr object at 0x0000000020AF9170>
+2019-12-09 17:25:08 debug core.manager Activation success: True
+2019-12-09 17:25:08 info core.manager Loading module ".hardware.pulser_dummy"
+2019-12-09 17:25:08 info core.manager Configuring PulserDummy as mydummypulser
+2019-12-09 17:25:08 info hardware.pulser_dummy.PulserDummy Dummy Pulser: I will simulate an AWG :) !
+2019-12-09 17:25:08 debug hardware.pulser_dummy.PulserDummy Activation in thread <sip.voidptr object at 0x000000001C71FCD8>
+2019-12-09 17:25:08 debug core.manager Activation success: True
+2019-12-09 17:25:08 info core.manager Loading module ".hardware.fast_counter_dummy"
+2019-12-09 17:25:08 info core.manager Configuring FastCounterDummy as mydummyfastcounter
+2019-12-09 17:25:08 warning hardware.fast_counter_dummy.FastCounterDummy No variable >> gated << configured, using default value False instead.
+2019-12-09 17:25:08 debug hardware.fast_counter_dummy.FastCounterDummy The following configuration was found.
+2019-12-09 17:25:08 info hardware.fast_counter_dummy.FastCounterDummy module.Class: fast_counter_dummy.FastCounterDummy
+2019-12-09 17:25:09 debug hardware.fast_counter_dummy.FastCounterDummy Activation in thread <sip.voidptr object at 0x000000001C71FCD8>
+2019-12-09 17:25:09 debug core.manager Activation success: True
+2019-12-09 17:25:09 info core.manager Loading module ".logic.pulsed.pulsed_measurement_logic"
+2019-12-09 17:25:09 info core.manager Configuring PulsedMeasurementLogic as pulsedmeasurementlogic
+2019-12-09 17:25:09 debug logic.pulsed.pulsed_measurement_logic.PulsedMeasurementLogic The following configuration was found.
+2019-12-09 17:25:09 debug logic.pulsed.pulsed_measurement_logic.PulsedMeasurementLogic module.Class: pulsed.pulsed_measurement_logic.PulsedMeasurementLogic
+2019-12-09 17:25:09 debug logic.pulsed.pulsed_measurement_logic.PulsedMeasurementLogic raw_data_save_type: text
+2019-12-09 17:25:09 debug logic.pulsed.pulsed_measurement_logic.PulsedMeasurementLogic connect: OrderedDict([('fastcounter', 'mydummyfastcounter'), ('pulsegenerator', 'mydummypulser'), ('fitlogic', 'fitlogic'), ('savelogic', 'savelogic'), ('microwave', 'microwave_dummy')])
+2019-12-09 17:25:09 info core.manager Connecting logic.pulsedmeasurementlogic.fastcounter to hardware.mydummyfastcounter
+2019-12-09 17:25:09 info core.manager Connecting logic.pulsedmeasurementlogic.pulsegenerator to hardware.mydummypulser
+2019-12-09 17:25:09 info core.manager Connecting logic.pulsedmeasurementlogic.fitlogic to logic.fitlogic
+2019-12-09 17:25:09 info core.manager Connecting logic.pulsedmeasurementlogic.savelogic to logic.savelogic
+2019-12-09 17:25:09 info core.manager Connecting logic.pulsedmeasurementlogic.microwave to hardware.microwave_dummy
+2019-12-09 17:25:09 debug core.threadmanager Creating thread: "mod-logic-pulsedmeasurementlogic".
+2019-12-09 17:25:09 debug logic.pulsed.pulsed_measurement_logic.PulsedMeasurementLogic Activation in thread <sip.voidptr object at 0x0000000021620968>
+2019-12-09 17:25:10 debug core.manager Activation success: True
+2019-12-09 17:25:10 info core.manager Loading module ".logic.pulsed.sequence_generator_logic"
+2019-12-09 17:25:10 info core.manager Configuring SequenceGeneratorLogic as sequencegeneratorlogic
+2019-12-09 17:25:10 warning logic.pulsed.sequence_generator_logic.SequenceGeneratorLogic No variable >> assets_storage_path << configured, using default value D:\Users\manip\saved_pulsed_assets instead.
+2019-12-09 17:25:11 debug logic.pulsed.sequence_generator_logic.SequenceGeneratorLogic The following configuration was found.
+2019-12-09 17:25:11 debug logic.pulsed.sequence_generator_logic.SequenceGeneratorLogic module.Class: pulsed.sequence_generator_logic.SequenceGeneratorLogic
+2019-12-09 17:25:11 debug logic.pulsed.sequence_generator_logic.SequenceGeneratorLogic connect: OrderedDict([('pulsegenerator', 'mydummypulser')])
+2019-12-09 17:25:11 info core.manager Connecting logic.sequencegeneratorlogic.pulsegenerator to hardware.mydummypulser
+2019-12-09 17:25:11 debug core.threadmanager Creating thread: "mod-logic-sequencegeneratorlogic".
+2019-12-09 17:25:11 debug logic.pulsed.sequence_generator_logic.SequenceGeneratorLogic Activation in thread <sip.voidptr object at 0x0000000021C75C60>
+2019-12-09 17:25:11 debug core.manager Activation success: True
+2019-12-09 17:25:11 info core.manager Loading module ".logic.pulsed.pulsed_master_logic"
+2019-12-09 17:25:11 info core.manager Configuring PulsedMasterLogic as pulsedmasterlogic
+2019-12-09 17:25:11 info core.manager Connecting logic.pulsedmasterlogic.pulsedmeasurementlogic to logic.pulsedmeasurementlogic
+2019-12-09 17:25:11 info core.manager Connecting logic.pulsedmasterlogic.sequencegeneratorlogic to logic.sequencegeneratorlogic
+2019-12-09 17:25:11 debug core.threadmanager Creating thread: "mod-logic-pulsedmasterlogic".
+2019-12-09 17:25:11 debug logic.pulsed.pulsed_master_logic.PulsedMasterLogic Activation in thread <sip.voidptr object at 0x0000000021559530>
+2019-12-09 17:25:11 debug core.manager Activation success: True
+2019-12-09 17:25:11 info core.manager Loading module ".gui.pulsed.pulsed_maingui"
+2019-12-09 17:25:11 info core.manager Configuring PulsedMeasurementGui as pulsedmeasurement
+2019-12-09 17:25:11 info core.manager Connecting gui.pulsedmeasurement.pulsedmasterlogic to logic.pulsedmasterlogic
+2019-12-09 17:25:11 debug gui.pulsed.pulsed_maingui.PulsedMeasurementGui Activation in thread <sip.voidptr object at 0x00000000211EA580>
+2019-12-09 17:25:12 debug core.manager Activation success: True
+2019-12-09 17:25:12 info core.manager Loading module ".hardware.simple_data_dummy"
+2019-12-09 17:25:12 info core.manager Configuring SimpleDummy as simpledatadummy
+2019-12-09 17:25:12 debug hardware.simple_data_dummy.SimpleDummy Activation in thread <sip.voidptr object at 0x00000000211EA468>
+2019-12-09 17:25:12 debug core.manager Activation success: True
+2019-12-09 17:25:12 info core.manager Loading module ".logic.simple_data_logic"
+2019-12-09 17:25:12 info core.manager Configuring SimpleDataLogic as simpledatalogic
+2019-12-09 17:25:12 info core.manager Connecting logic.simpledatalogic.simpledata to hardware.simpledatadummy
+2019-12-09 17:25:12 debug core.threadmanager Creating thread: "mod-logic-simpledatalogic".
+2019-12-09 17:25:12 debug logic.simple_data_logic.SimpleDataLogic Activation in thread <sip.voidptr object at 0x0000000021C75350>
+2019-12-09 17:25:12 debug core.manager Activation success: True
+2019-12-09 17:25:12 info core.manager Loading module ".gui.simpledatagui.simpledatagui"
+2019-12-09 17:25:13 info core.manager Configuring SimpleDataGui as simpledata
+2019-12-09 17:25:13 debug gui.simpledatagui.simpledatagui.SimpleDataGui The following configuration was found.
+2019-12-09 17:25:13 info gui.simpledatagui.simpledatagui.SimpleDataGui module.Class: simpledatagui.simpledatagui.SimpleDataGui
+2019-12-09 17:25:13 info gui.simpledatagui.simpledatagui.SimpleDataGui connect: OrderedDict([('simplelogic', 'simpledatalogic')])
+2019-12-09 17:25:13 info core.manager Connecting gui.simpledata.simplelogic to logic.simpledatalogic
+2019-12-09 17:25:13 debug gui.simpledatagui.simpledatagui.SimpleDataGui Activation in thread <sip.voidptr object at 0x00000000211F4648>
+2019-12-09 17:25:13 debug core.manager Activation success: True
+2019-12-09 17:25:13 info core.manager Loading module ".logic.counter_logic"
+2019-12-09 17:25:13 info core.manager Configuring CounterLogic as gatedcounterlogic
+2019-12-09 17:25:13 debug logic.counter_logic.CounterLogic The following configuration was found.
+2019-12-09 17:25:13 debug logic.counter_logic.CounterLogic module.Class: counter_logic.CounterLogic
+2019-12-09 17:25:13 debug logic.counter_logic.CounterLogic connect: OrderedDict([('counter1', 'mydummycounter'), ('savelogic', 'savelogic')])
+2019-12-09 17:25:13 info core.manager Connecting logic.gatedcounterlogic.counter1 to hardware.mydummycounter
+2019-12-09 17:25:13 info core.manager Connecting logic.gatedcounterlogic.savelogic to logic.savelogic
+2019-12-09 17:25:13 debug core.threadmanager Creating thread: "mod-logic-gatedcounterlogic".
+2019-12-09 17:25:13 debug logic.counter_logic.CounterLogic Activation in thread <sip.voidptr object at 0x0000000021C912D8>
+2019-12-09 17:25:13 debug core.manager Activation success: True
+2019-12-09 17:25:13 info core.manager Loading module ".logic.trace_analysis_logic"
+2019-12-09 17:25:14 info core.manager Configuring TraceAnalysisLogic as trace_analysis_logic
+2019-12-09 17:25:14 debug logic.trace_analysis_logic.TraceAnalysisLogic The following configuration was found.
+2019-12-09 17:25:14 debug logic.trace_analysis_logic.TraceAnalysisLogic module.Class: trace_analysis_logic.TraceAnalysisLogic
+2019-12-09 17:25:14 debug logic.trace_analysis_logic.TraceAnalysisLogic connect: OrderedDict([('counterlogic1', 'gatedcounterlogic'), ('savelogic', 'savelogic'), ('fitlogic', 'fitlogic')])
+2019-12-09 17:25:14 info core.manager Connecting logic.trace_analysis_logic.counterlogic1 to logic.gatedcounterlogic
+2019-12-09 17:25:14 info core.manager Connecting logic.trace_analysis_logic.savelogic to logic.savelogic
+2019-12-09 17:25:14 info core.manager Connecting logic.trace_analysis_logic.fitlogic to logic.fitlogic
+2019-12-09 17:25:14 debug core.threadmanager Creating thread: "mod-logic-trace_analysis_logic".
+2019-12-09 17:25:14 debug logic.trace_analysis_logic.TraceAnalysisLogic Activation in thread <sip.voidptr object at 0x0000000020E876C0>
+2019-12-09 17:25:14 debug core.manager Activation success: True
+2019-12-09 17:25:14 info core.manager Loading module ".hardware.magnet.magnet_dummy"
+2019-12-09 17:25:14 info core.manager Configuring MagnetDummy as magnetdummy
+2019-12-09 17:25:14 debug hardware.magnet.magnet_dummy.MagnetDummy Activation in thread <sip.voidptr object at 0x0000000020EAA468>
+2019-12-09 17:25:14 debug core.manager Activation success: True
+2019-12-09 17:25:14 info core.manager Loading module ".logic.magnet_logic"
+2019-12-09 17:25:14 info core.manager Configuring MagnetLogic as magnet_logic
+2019-12-09 17:25:14 info core.manager Connecting logic.magnet_logic.magnetstage to hardware.magnetdummy
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.optimizerlogic to logic.optimizerlogic
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.counterlogic to logic.counterlogic
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.odmrlogic to logic.odmrlogic
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.savelogic to logic.savelogic
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.scannerlogic to logic.scannerlogic
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.traceanalysis to logic.trace_analysis_logic
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.gatedcounterlogic to logic.gatedcounterlogic
+2019-12-09 17:25:15 info core.manager Connecting logic.magnet_logic.sequencegeneratorlogic to logic.sequencegeneratorlogic
+2019-12-09 17:25:15 debug core.threadmanager Creating thread: "mod-logic-magnet_logic".
+2019-12-09 17:25:15 debug logic.magnet_logic.MagnetLogic Activation in thread <sip.voidptr object at 0x00000000215ECB20>
+2019-12-09 17:25:15 debug core.manager Activation success: True
+2019-12-09 17:25:15 info core.manager Loading module ".gui.magnet.magnet_gui"
+2019-12-09 17:25:16 info core.manager Configuring MagnetGui as magnet
+2019-12-09 17:25:16 info core.manager Connecting gui.magnet.magnetlogic1 to logic.magnet_logic
+2019-12-09 17:25:16 info core.manager Connecting gui.magnet.savelogic to logic.savelogic
+2019-12-09 17:25:16 debug gui.magnet.magnet_gui.MagnetGui Activation in thread <sip.voidptr object at 0x0000000020EAAF80>
+2019-12-09 17:25:16 debug core.manager Activation success: True
+2019-12-09 17:25:16 info core.manager Loading module ".gui.gated_counter.gated_counter_gui"
+2019-12-09 17:25:16 info core.manager Configuring GatedCounterGui as gatedcounter
+2019-12-09 17:25:16 debug gui.gated_counter.gated_counter_gui.GatedCounterGui The following configuration was found.
+2019-12-09 17:25:16 info gui.gated_counter.gated_counter_gui.GatedCounterGui module.Class: gated_counter.gated_counter_gui.GatedCounterGui
+2019-12-09 17:25:16 info gui.gated_counter.gated_counter_gui.GatedCounterGui connect: OrderedDict([('gatedcounterlogic1', 'gatedcounterlogic'), ('traceanalysislogic1', 'trace_analysis_logic')])
+2019-12-09 17:25:16 info core.manager Connecting gui.gatedcounter.gatedcounterlogic1 to logic.gatedcounterlogic
+2019-12-09 17:25:17 info core.manager Connecting gui.gatedcounter.traceanalysislogic1 to logic.trace_analysis_logic
+2019-12-09 17:25:17 debug gui.gated_counter.gated_counter_gui.GatedCounterGui Activation in thread <sip.voidptr object at 0x0000000020EAA4B8>
+2019-12-09 17:25:17 debug logic.counter_logic.CounterLogic New counting mode: CountingMode.FINITE_GATED
+2019-12-09 17:25:17 debug core.manager Activation success: True
+2019-12-09 17:25:17 info core.manager Loading module ".hardware.process_dummy"
+2019-12-09 17:25:17 info core.manager Configuring ProcessDummy as processdummy
+2019-12-09 17:25:17 debug hardware.process_dummy.ProcessDummy Activation in thread <sip.voidptr object at 0x0000000020EAA4B8>
+2019-12-09 17:25:17 debug core.manager Activation success: True
+2019-12-09 17:25:17 info core.manager Loading module ".logic.software_pid_controller"
+2019-12-09 17:25:17 info core.manager Configuring SoftPIDController as softpid
+2019-12-09 17:25:17 debug logic.software_pid_controller.SoftPIDController The following configuration was found.
+2019-12-09 17:25:17 debug logic.software_pid_controller.SoftPIDController module.Class: software_pid_controller.SoftPIDController
+2019-12-09 17:25:17 debug logic.software_pid_controller.SoftPIDController connect: OrderedDict([('process', 'processdummy'), ('control', 'processdummy')])
+2019-12-09 17:25:17 info core.manager Connecting logic.softpid.process to hardware.processdummy
+2019-12-09 17:25:17 info core.manager Connecting logic.softpid.control to hardware.processdummy
+2019-12-09 17:25:18 debug core.threadmanager Creating thread: "mod-logic-softpid".
+2019-12-09 17:25:18 debug logic.software_pid_controller.SoftPIDController Activation in thread <sip.voidptr object at 0x0000000021CD4EB8>
+2019-12-09 17:25:18 debug core.manager Activation success: True
+2019-12-09 17:25:18 info core.manager Loading module ".logic.pid_logic"
+2019-12-09 17:25:18 info core.manager Configuring PIDLogic as pidlogic
+2019-12-09 17:25:18 debug logic.pid_logic.PIDLogic The following configuration was found.
+2019-12-09 17:25:18 info core.manager Connecting logic.pidlogic.controller to logic.softpid
+2019-12-09 17:25:18 info core.manager Connecting logic.pidlogic.savelogic to logic.savelogic
+2019-12-09 17:25:18 debug core.threadmanager Creating thread: "mod-logic-pidlogic".
+2019-12-09 17:25:18 debug logic.pid_logic.PIDLogic Activation in thread <sip.voidptr object at 0x0000000021CC9E68>
+2019-12-09 17:25:18 debug core.manager Activation success: True
+2019-12-09 17:25:18 info core.manager Loading module ".gui.pidgui.pidgui"
+2019-12-09 17:25:19 info core.manager Configuring PIDGui as pidcontrol
+2019-12-09 17:25:19 debug gui.pidgui.pidgui.PIDGui The following configuration was found.
+2019-12-09 17:25:19 info gui.pidgui.pidgui.PIDGui module.Class: pidgui.pidgui.PIDGui
+2019-12-09 17:25:19 info gui.pidgui.pidgui.PIDGui connect: OrderedDict([('pidlogic', 'pidlogic')])
+2019-12-09 17:25:19 info core.manager Connecting gui.pidcontrol.pidlogic to logic.pidlogic
+2019-12-09 17:25:19 debug gui.pidgui.pidgui.PIDGui Activation in thread <sip.voidptr object at 0x00000000215EC788>
+2019-12-09 17:25:19 debug core.manager Activation success: True
+2019-12-09 17:25:19 info core.manager Loading module ".logic.qdplot_logic"
+2019-12-09 17:25:19 info core.manager Configuring QdplotLogic as qdplotlogic
+2019-12-09 17:25:19 info core.manager Connecting logic.qdplotlogic.savelogic to logic.savelogic
+2019-12-09 17:25:19 debug core.threadmanager Creating thread: "mod-logic-qdplotlogic".
+2019-12-09 17:25:19 debug logic.qdplot_logic.QdplotLogic Activation in thread <sip.voidptr object at 0x0000000021C260F8>
+2019-12-09 17:25:19 debug core.manager Activation success: True
+2019-12-09 17:25:19 info core.manager Loading module ".gui.qdplotter.qdplottergui"
+2019-12-09 17:25:20 info core.manager Configuring QdplotterGui as qdplotter
+2019-12-09 17:25:20 info core.manager Connecting gui.qdplotter.qdplotlogic1 to logic.qdplotlogic
+2019-12-09 17:25:20 debug gui.qdplotter.qdplottergui.QdplotterGui Activation in thread <sip.voidptr object at 0x0000000021C26170>
+2019-12-09 17:25:20 debug core.manager Activation success: True
+2019-12-09 17:25:20 info core.manager Loading module ".logic.nuclear_operations_logic"
+2019-12-09 17:25:20 info core.manager Configuring NuclearOperationsLogic as nuopslogic
+2019-12-09 17:25:21 debug logic.nuclear_operations_logic.NuclearOperationsLogic The following configuration was found.
+2019-12-09 17:25:21 info logic.nuclear_operations_logic.NuclearOperationsLogic module.Class: nuclear_operations_logic.NuclearOperationsLogic
+2019-12-09 17:25:21 info logic.nuclear_operations_logic.NuclearOperationsLogic connect: OrderedDict([('sequencegenerationlogic', 'sequencegeneratorlogic'), ('traceanalysislogic', 'trace_analysis_logic'), ('gatedcounterlogic', 'gatedcounterlogic'), ('odmrlogic', 'odmrlogic'), ('optimizerlogic', 'optimizerlogic'), ('scannerlogic', 'scannerlogic'), ('savelogic', 'savelogic')])
+2019-12-09 17:25:21 info core.manager Connecting logic.nuopslogic.sequencegenerationlogic to logic.sequencegeneratorlogic
+2019-12-09 17:25:21 info core.manager Connecting logic.nuopslogic.traceanalysislogic to logic.trace_analysis_logic
+2019-12-09 17:25:21 info core.manager Connecting logic.nuopslogic.gatedcounterlogic to logic.gatedcounterlogic
+2019-12-09 17:25:21 info core.manager Connecting logic.nuopslogic.odmrlogic to logic.odmrlogic
+2019-12-09 17:25:21 info core.manager Connecting logic.nuopslogic.optimizerlogic to logic.optimizerlogic
+2019-12-09 17:25:21 info core.manager Connecting logic.nuopslogic.scannerlogic to logic.scannerlogic
+2019-12-09 17:25:21 info core.manager Connecting logic.nuopslogic.savelogic to logic.savelogic
+2019-12-09 17:25:22 debug core.threadmanager Creating thread: "mod-logic-nuopslogic".
+2019-12-09 17:25:22 debug logic.nuclear_operations_logic.NuclearOperationsLogic Activation in thread <sip.voidptr object at 0x0000000021CF1990>
+2019-12-09 17:25:22 debug core.manager Activation success: True
+2019-12-09 17:25:22 info core.manager Loading module ".gui.nuclear_operations.nuclear_operations"
+2019-12-09 17:25:22 info core.manager Configuring NuclearOperationsGui as nuclearops
+2019-12-09 17:25:22 info core.manager Connecting gui.nuclearops.nuclearoperationslogic to logic.nuopslogic
+2019-12-09 17:25:22 info core.manager Connecting gui.nuclearops.savelogic to logic.savelogic
+2019-12-09 17:25:22 debug gui.nuclear_operations.nuclear_operations.NuclearOperationsGui Activation in thread <sip.voidptr object at 0x0000000021CF1760>
+2019-12-09 17:25:22 debug core.manager Activation success: True
+2019-12-09 17:25:22 info core.manager Loading module ".hardware.laser.simple_laser_dummy"
+2019-12-09 17:25:22 info core.manager Configuring SimpleLaserDummy as laserdummy
+2019-12-09 17:25:23 debug hardware.laser.simple_laser_dummy.SimpleLaserDummy Activation in thread <sip.voidptr object at 0x0000000021CC93F0>
+2019-12-09 17:25:23 debug core.manager Activation success: True
+2019-12-09 17:25:23 info core.manager Loading module ".logic.laser_logic"
+2019-12-09 17:25:23 info core.manager Configuring LaserLogic as laserlogic
+2019-12-09 17:25:23 info core.manager Connecting logic.laserlogic.laser to hardware.laserdummy
+2019-12-09 17:25:23 debug core.threadmanager Creating thread: "mod-logic-laserlogic".
+2019-12-09 17:25:23 debug logic.laser_logic.LaserLogic Activation in thread <sip.voidptr object at 0x0000000021D25BE8>
+2019-12-09 17:25:23 debug core.manager Activation success: True
+2019-12-09 17:25:23 info core.manager Loading module ".gui.laser.laser"
+2019-12-09 17:25:23 info core.manager Configuring LaserGUI as laser
+2019-12-09 17:25:23 info core.manager Connecting gui.laser.laserlogic to logic.laserlogic
+2019-12-09 17:25:23 debug gui.laser.laser.LaserGUI Activation in thread <sip.voidptr object at 0x0000000021D25C60>
+2019-12-09 17:25:24 debug core.manager Activation success: True
+2019-12-09 17:25:24 info core.manager Loading module ".logic.laser_scanner_logic"
+2019-12-09 17:25:24 info core.manager Configuring LaserScannerLogic as laserscannerlogic
+2019-12-09 17:25:24 info core.manager Connecting logic.laserscannerlogic.confocalscanner1 to hardware.mydummyscanner
+2019-12-09 17:25:24 info core.manager Connecting logic.laserscannerlogic.savelogic to logic.savelogic
+2019-12-09 17:25:24 debug core.threadmanager Creating thread: "mod-logic-laserscannerlogic".
+2019-12-09 17:25:24 debug logic.laser_scanner_logic.LaserScannerLogic Activation in thread <sip.voidptr object at 0x0000000021CF1788>
+2019-12-09 17:25:24 debug core.manager Activation success: True
+2019-12-09 17:25:24 info core.manager Loading module ".gui.laserscanner.laserscannergui"
+2019-12-09 17:25:25 info core.manager Configuring VoltScanGui as laserscanner
+2019-12-09 17:25:25 info core.manager Connecting gui.laserscanner.voltagescannerlogic1 to logic.laserscannerlogic
+2019-12-09 17:25:25 info core.manager Connecting gui.laserscanner.savelogic to logic.savelogic
+2019-12-09 17:25:25 debug gui.laserscanner.laserscannergui.VoltScanGui Activation in thread <sip.voidptr object at 0x0000000021C26800>
+2019-12-09 17:25:25 debug core.manager Activation success: True
+2019-12-09 17:25:25 info core.manager Loading module ".logic.interfuse.odmr_counter_microwave_interfuse"
+2019-12-09 17:25:25 info core.manager Configuring ODMRCounterMicrowaveInterfuse as odmr_counter_microwave_interfuse
+2019-12-09 17:25:25 info core.manager Connecting logic.odmr_counter_microwave_interfuse.slowcounter to hardware.mydummycounter
+2019-12-09 17:25:26 info core.manager Connecting logic.odmr_counter_microwave_interfuse.microwave to hardware.microwave_dummy
+2019-12-09 17:25:26 debug core.threadmanager Creating thread: "mod-logic-odmr_counter_microwave_interfuse".
+2019-12-09 17:25:26 debug logic.interfuse.odmr_counter_microwave_interfuse.ODMRCounterMicrowaveInterfuse Activation in thread <sip.voidptr object at 0x0000000022F05CB0>
+2019-12-09 17:25:26 debug core.manager Activation success: True
+2019-12-09 17:25:26 info core.manager Loading module ".logic.odmr_logic"
+2019-12-09 17:25:26 info core.manager Configuring ODMRLogic as odmrlogic2
+2019-12-09 17:25:26 info core.manager Connecting logic.odmrlogic2.odmrcounter to logic.odmr_counter_microwave_interfuse
+2019-12-09 17:25:26 info core.manager Connecting logic.odmrlogic2.fitlogic to logic.fitlogic
+2019-12-09 17:25:26 info core.manager Connecting logic.odmrlogic2.microwave1 to logic.odmr_counter_microwave_interfuse
+2019-12-09 17:25:26 info core.manager Connecting logic.odmrlogic2.savelogic to logic.savelogic
+2019-12-09 17:25:27 info core.manager Connecting logic.odmrlogic2.taskrunner to logic.tasklogic
+2019-12-09 17:25:27 debug core.threadmanager Creating thread: "mod-logic-odmrlogic2".
+2019-12-09 17:25:27 debug logic.odmr_logic.ODMRLogic Activation in thread <sip.voidptr object at 0x0000000020EEF148>
+2019-12-09 17:25:27 info hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>ext_trigger set
+2019-12-09 17:25:27 info hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>off
+2019-12-09 17:25:27 debug hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>set_cw, frequency: 2870000000.000000, power -30.000000:
+2019-12-09 17:25:27 debug core.manager Activation success: True
+2019-12-09 17:25:27 info core.manager Loading module ".gui.odmr.odmrgui"
+2019-12-09 17:25:27 info core.manager Configuring ODMRGui as odmrgui_program_trigger
+2019-12-09 17:25:27 info core.manager Connecting gui.odmrgui_program_trigger.odmrlogic1 to logic.odmrlogic2
+2019-12-09 17:25:28 info core.manager Connecting gui.odmrgui_program_trigger.savelogic to logic.savelogic
+2019-12-09 17:25:28 debug gui.odmr.odmrgui.ODMRGui Activation in thread <sip.voidptr object at 0x000000001C781B98>
+2019-12-09 17:25:28 debug core.manager Activation success: True
+2019-12-09 17:25:28 info core.manager Loading module ".hardware.camera.camera_dummy"
+2019-12-09 17:25:28 info core.manager Configuring CameraDummy as cameradummy
+2019-12-09 17:25:28 debug hardware.camera.camera_dummy.CameraDummy Activation in thread <sip.voidptr object at 0x0000000021D25990>
+2019-12-09 17:25:28 debug core.manager Activation success: True
+2019-12-09 17:25:28 info core.manager Loading module ".logic.camera_logic"
+2019-12-09 17:25:29 info core.manager Configuring CameraLogic as camera_logic
+2019-12-09 17:25:29 info core.manager Connecting logic.camera_logic.hardware to hardware.cameradummy
+2019-12-09 17:25:29 info core.manager Connecting logic.camera_logic.savelogic to logic.savelogic
+2019-12-09 17:25:29 debug core.threadmanager Creating thread: "mod-logic-camera_logic".
+2019-12-09 17:25:29 debug logic.camera_logic.CameraLogic Activation in thread <sip.voidptr object at 0x000000002354AE90>
+2019-12-09 17:25:29 debug core.manager Activation success: True
+2019-12-09 17:25:29 info core.manager Loading module ".gui.camera.cameragui"
+2019-12-09 17:25:29 info core.manager Configuring CameraGUI as camera_gui
+2019-12-09 17:25:29 info core.manager Connecting gui.camera_gui.camera_logic to logic.camera_logic
+2019-12-09 17:25:29 info core.manager Connecting gui.camera_gui.savelogic to logic.savelogic
+2019-12-09 17:25:30 debug gui.camera.cameragui.CameraGUI Activation in thread <sip.voidptr object at 0x000000002354AAF8>
+2019-12-09 17:25:30 debug core.manager Activation success: True
+2019-12-09 17:25:30 info core.manager Loading module ".hardware.motor.motor_dummy"
+2019-12-09 17:25:30 info core.manager Configuring MotorDummy as motordummy
+2019-12-09 17:25:30 debug hardware.motor.motor_dummy.MotorDummy The following configuration was found.
+2019-12-09 17:25:30 info hardware.motor.motor_dummy.MotorDummy module.Class: motor.motor_dummy.MotorDummy
+2019-12-09 17:25:30 debug hardware.motor.motor_dummy.MotorDummy Activation in thread <sip.voidptr object at 0x00000000237D9058>
+2019-12-09 17:25:30 debug core.manager Activation success: True
+2019-12-09 17:25:30 info core.manager Loading module ".logic.interfuse.magnet_motor_interfuse"
+2019-12-09 17:25:31 info core.manager Configuring MagnetMotorInterfuse as magnet_motor_interfuse
+2019-12-09 17:25:31 info core.manager Connecting logic.magnet_motor_interfuse.motorstage to hardware.motordummy
+2019-12-09 17:25:31 debug core.threadmanager Creating thread: "mod-logic-magnet_motor_interfuse".
+2019-12-09 17:25:31 debug logic.interfuse.magnet_motor_interfuse.MagnetMotorInterfuse Activation in thread <sip.voidptr object at 0x00000000237D9C38>
+2019-12-09 17:25:31 debug core.manager Activation success: True
+2019-12-09 17:25:31 info core.manager Start all modules finished.
+2019-12-09 17:26:45 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>set_up_clock
+2019-12-09 17:26:45 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>set_up_counter
+2019-12-09 17:26:51 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>close_counter
+2019-12-09 17:26:51 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>close_clock
+2019-12-09 17:47:25 info core.manager Set loaded configuration to D:/Users/manip/Desktop/python_clément/qudi/qudi-master/config/example/tutorial_01_getting_started.cfg
+2019-12-09 17:47:25 info core.manager Restarting Qudi after configuration reload.
+2019-12-09 17:47:25 info core.manager Deactivating hardware.mydummyscanner
+2019-12-09 17:47:25 debug hardware.confocal_scanner_dummy.ConfocalScannerDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:25 warning hardware.confocal_scanner_dummy.ConfocalScannerDummy Scanning Device will be reset.
+2019-12-09 17:47:25 debug core.manager Deactivation success: True
+2019-12-09 17:47:25 info core.manager Deactivating hardware.mydummycounter
+2019-12-09 17:47:26 debug hardware.slow_counter_dummy.SlowCounterDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:26 warning hardware.slow_counter_dummy.SlowCounterDummy slowcounterdummy>deactivation
+2019-12-09 17:47:26 debug core.manager Deactivation success: True
+2019-12-09 17:47:26 info core.manager Deactivating hardware.mydummyodmrcounter
+2019-12-09 17:47:26 debug hardware.odmr_counter_dummy.ODMRCounterDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:26 debug hardware.odmr_counter_dummy.ODMRCounterDummy ODMR counter is shutting down.
+2019-12-09 17:47:26 debug core.manager Deactivation success: True
+2019-12-09 17:47:26 info core.manager Deactivating hardware.myspectrometer
+2019-12-09 17:47:26 debug hardware.spectrometer.spectrometer_dummy.SpectrometerInterfaceDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:26 debug core.manager Deactivation success: True
+2019-12-09 17:47:26 info core.manager Deactivating hardware.microwave_dummy
+2019-12-09 17:47:26 debug hardware.microwave.mw_source_dummy.MicrowaveDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:26 debug core.manager Deactivation success: True
+2019-12-09 17:47:26 info core.manager Deactivating hardware.mydummywavemeter
+2019-12-09 17:47:27 debug hardware.wavemeter_dummy.WavemeterDummy Deactivation in thread <sip.voidptr object at 0x000000000F2BE530>
+2019-12-09 17:47:27 warning hardware.wavemeter_dummy.WavemeterDummy Wavemeter was already stopped, stopping it anyway!
+2019-12-09 17:47:27 warning hardware.wavemeter_dummy.WavemeterDummy stopping Wavemeter
+2019-12-09 17:47:27 debug core.manager Deactivation success: True
+2019-12-09 17:47:27 info core.manager Deactivating hardware.mydummyswitch1
+2019-12-09 17:47:27 debug hardware.switches.switch_dummy.SwitchDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:27 debug core.manager Deactivation success: True
+2019-12-09 17:47:27 info core.manager Deactivating hardware.mydummyswitch2
+2019-12-09 17:47:27 debug hardware.switches.switch_dummy.SwitchDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:27 debug core.manager Deactivation success: True
+2019-12-09 17:47:27 info core.manager Deactivating hardware.mydummypulser
+2019-12-09 17:47:28 debug hardware.pulser_dummy.PulserDummy Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:28 debug core.manager Deactivation success: True
+2019-12-09 17:47:28 info core.manager Deactivating hardware.mydummyfastcounter
+2019-12-09 17:47:28 debug hardware.fast_counter_dummy.FastCounterDummy Deactivation in thread <sip.voidptr object at 0x000000000F2BE828>
+2019-12-09 17:47:28 debug core.manager Deactivation success: True
+2019-12-09 17:47:28 info core.manager Deactivating hardware.simpledatadummy
+2019-12-09 17:47:28 debug hardware.simple_data_dummy.SimpleDummy Deactivation in thread <sip.voidptr object at 0x000000000F2BE828>
+2019-12-09 17:47:28 debug core.manager Deactivation success: True
+2019-12-09 17:47:28 info core.manager Deactivating hardware.magnetdummy
+2019-12-09 17:47:28 debug hardware.magnet.magnet_dummy.MagnetDummy Deactivation in thread <sip.voidptr object at 0x000000000F2BE828>
+2019-12-09 17:47:28 debug core.manager Deactivation success: True
+2019-12-09 17:47:28 info core.manager Deactivating hardware.processdummy
+2019-12-09 17:47:28 debug hardware.process_dummy.ProcessDummy Deactivation in thread <sip.voidptr object at 0x000000000F2BE828>
+2019-12-09 17:47:28 debug core.manager Deactivation success: True
+2019-12-09 17:47:29 info core.manager Deactivating hardware.laserdummy
+2019-12-09 17:47:29 debug hardware.laser.simple_laser_dummy.SimpleLaserDummy Deactivation in thread <sip.voidptr object at 0x0000000007AF55A8>
+2019-12-09 17:47:29 debug core.manager Deactivation success: True
+2019-12-09 17:47:29 info core.manager Deactivating hardware.cameradummy
+2019-12-09 17:47:29 debug hardware.camera.camera_dummy.CameraDummy Deactivation in thread <sip.voidptr object at 0x0000000007AF55A8>
+2019-12-09 17:47:29 debug core.manager Deactivation success: True
+2019-12-09 17:47:29 info core.manager Deactivating hardware.motordummy
+2019-12-09 17:47:29 debug hardware.motor.motor_dummy.MotorDummy Deactivation in thread <sip.voidptr object at 0x0000000007AF55A8>
+2019-12-09 17:47:29 debug core.manager Deactivation success: True
+2019-12-09 17:47:29 info core.manager Deactivating gui.man
+2019-12-09 17:47:29 debug gui.manager.managergui.ManagerGui Deactivation in thread <sip.voidptr object at 0x0000000007AF55A8>
+2019-12-09 17:47:29 debug gui.manager.managergui.ManagerGui IPy deactivation: <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:30 debug core.manager Deactivation success: True
+2019-12-09 17:47:30 info core.manager Deactivating gui.tray
+2019-12-09 17:47:30 debug gui.trayicon.TrayIcon Deactivation in thread <sip.voidptr object at 0x000000000F2BE3A0>
+2019-12-09 17:47:30 debug core.manager Deactivation success: True
+2019-12-09 17:47:30 info core.manager Deactivating gui.counter
+2019-12-09 17:47:30 debug gui.counter.countergui.CounterGui Deactivation in thread <sip.voidptr object at 0x000000000F2BE3A0>
+2019-12-09 17:47:30 debug core.manager Deactivation success: True
+2019-12-09 17:47:30 info core.manager Deactivating gui.confocal
+2019-12-09 17:47:30 debug gui.confocal.confocalgui.ConfocalGui Deactivation in thread <sip.voidptr object at 0x000000000F2BE3A0>
+2019-12-09 17:47:30 debug core.manager Deactivation success: True
+2019-12-09 17:47:30 info core.manager Deactivating gui.poimanager
+2019-12-09 17:47:30 debug gui.poimanager.poimangui.PoiManagerGui Deactivation in thread <sip.voidptr object at 0x000000000F2BE418>
+2019-12-09 17:47:30 debug core.manager Deactivation success: True
+2019-12-09 17:47:31 info core.manager Deactivating gui.odmr
+2019-12-09 17:47:31 debug gui.odmr.odmrgui.ODMRGui Deactivation in thread <sip.voidptr object at 0x000000000F2BE418>
+2019-12-09 17:47:31 debug core.manager Deactivation success: True
+2019-12-09 17:47:31 info core.manager Deactivating gui.wavemeterlogger
+2019-12-09 17:47:31 debug gui.wavemeterlogger.wavemeterloggui.WavemeterLogGui Deactivation in thread <sip.voidptr object at 0x000000000F2BE418>
+2019-12-09 17:47:31 debug core.manager Deactivation success: True
+2019-12-09 17:47:31 info core.manager Deactivating gui.switches
+2019-12-09 17:47:31 debug gui.switcher.switchgui.SwitchGui Deactivation in thread <sip.voidptr object at 0x000000000F2BE418>
+2019-12-09 17:47:31 debug core.manager Deactivation success: True
+2019-12-09 17:47:31 info core.manager Deactivating gui.taskrunner
+2019-12-09 17:47:31 debug gui.taskrunner.taskgui.TaskGui Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:31 debug core.manager Deactivation success: True
+2019-12-09 17:47:32 info core.manager Deactivating gui.automation
+2019-12-09 17:47:32 debug gui.automation.automationgui.AutomationGui Deactivation in thread <sip.voidptr object at 0x0000000021239238>
+2019-12-09 17:47:32 debug core.manager Deactivation success: True
+2019-12-09 17:47:32 info core.manager Deactivating gui.spectrometer
+2019-12-09 17:47:32 debug gui.spectrometer.spectrometergui.SpectrometerGui Deactivation in thread <sip.voidptr object at 0x00000000212394B8>
+2019-12-09 17:47:32 debug core.manager Deactivation success: True
+2019-12-09 17:47:32 info core.manager Deactivating gui.pulsedmeasurement
+2019-12-09 17:47:32 debug gui.pulsed.pulsed_maingui.PulsedMeasurementGui Deactivation in thread <sip.voidptr object at 0x00000000212394B8>
+2019-12-09 17:47:32 debug core.manager Deactivation success: True
+2019-12-09 17:47:32 info core.manager Deactivating gui.simpledata
+2019-12-09 17:47:32 debug gui.simpledatagui.simpledatagui.SimpleDataGui Deactivation in thread <sip.voidptr object at 0x00000000237D9D50>
+2019-12-09 17:47:32 debug core.manager Deactivation success: True
+2019-12-09 17:47:33 info core.manager Deactivating gui.magnet
+2019-12-09 17:47:33 debug gui.magnet.magnet_gui.MagnetGui Deactivation in thread <sip.voidptr object at 0x00000000212394B8>
+2019-12-09 17:47:33 debug core.manager Deactivation success: True
+2019-12-09 17:47:33 info core.manager Deactivating gui.gatedcounter
+2019-12-09 17:47:33 debug gui.gated_counter.gated_counter_gui.GatedCounterGui Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:33 debug core.manager Deactivation success: True
+2019-12-09 17:47:33 info core.manager Deactivating gui.pidcontrol
+2019-12-09 17:47:33 debug gui.pidgui.pidgui.PIDGui Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:33 debug core.manager Deactivation success: True
+2019-12-09 17:47:33 info core.manager Deactivating gui.qdplotter
+2019-12-09 17:47:33 debug gui.qdplotter.qdplottergui.QdplotterGui Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:33 debug core.manager Deactivation success: True
+2019-12-09 17:47:34 info core.manager Deactivating gui.nuclearops
+2019-12-09 17:47:34 debug gui.nuclear_operations.nuclear_operations.NuclearOperationsGui Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:34 debug core.manager Deactivation success: True
+2019-12-09 17:47:34 info core.manager Deactivating gui.laser
+2019-12-09 17:47:34 debug gui.laser.laser.LaserGUI Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:34 debug core.manager Deactivation success: True
+2019-12-09 17:47:34 info core.manager Deactivating gui.laserscanner
+2019-12-09 17:47:34 debug gui.laserscanner.laserscannergui.VoltScanGui Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:34 debug core.manager Deactivation success: True
+2019-12-09 17:47:34 info core.manager Deactivating gui.odmrgui_program_trigger
+2019-12-09 17:47:35 debug gui.odmr.odmrgui.ODMRGui Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:35 debug core.manager Deactivation success: True
+2019-12-09 17:47:35 info core.manager Deactivating gui.camera_gui
+2019-12-09 17:47:35 debug gui.camera.cameragui.CameraGUI Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:35 debug core.manager Deactivation success: True
+2019-12-09 17:47:35 info core.manager Deactivating logic.tasklogic
+2019-12-09 17:47:35 debug logic.taskrunner.TaskRunner Deactivation in thread <sip.voidptr object at 0x0000000007B0B6C0>
+2019-12-09 17:47:35 info core.manager Task runner removed.
+2019-12-09 17:47:35 debug core.threadmanager Quitting thread mod-logic-tasklogic.
+2019-12-09 17:47:35 debug core.threadmanager Waiting for thread mod-logic-tasklogic to end.
+2019-12-09 17:47:35 debug core.manager Deactivation success: True
+2019-12-09 17:47:35 debug core.threadmanager Thread mod-logic-tasklogic has quit.
+2019-12-09 17:47:35 debug core.threadmanager Cleaning up thread mod-logic-tasklogic.
+2019-12-09 17:47:35 info core.manager Deactivating logic.fitlogic
+2019-12-09 17:47:36 debug logic.fit_logic.FitLogic Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:36 debug core.threadmanager Quitting thread mod-logic-fitlogic.
+2019-12-09 17:47:36 debug core.threadmanager Waiting for thread mod-logic-fitlogic to end.
+2019-12-09 17:47:36 debug core.manager Deactivation success: True
+2019-12-09 17:47:36 info core.manager Deactivating logic.scanner_tilt_interfuse
+2019-12-09 17:47:36 debug logic.interfuse.scanner_tilt_interfuse.ScannerTiltInterfuse Deactivation in thread <sip.voidptr object at 0x0000000008EB8AA8>
+2019-12-09 17:47:36 debug core.threadmanager Quitting thread mod-logic-scanner_tilt_interfuse.
+2019-12-09 17:47:36 debug core.threadmanager Waiting for thread mod-logic-scanner_tilt_interfuse to end.
+2019-12-09 17:47:36 debug core.manager Deactivation success: True
+2019-12-09 17:47:36 info core.manager Deactivating logic.optimizerlogic
+2019-12-09 17:47:36 debug logic.optimizer_logic.OptimizerLogic Deactivation in thread <sip.voidptr object at 0x0000000007B0B698>
+2019-12-09 17:47:36 debug core.threadmanager Quitting thread mod-logic-optimizerlogic.
+2019-12-09 17:47:36 debug core.threadmanager Waiting for thread mod-logic-optimizerlogic to end.
+2019-12-09 17:47:36 debug core.manager Deactivation success: True
+2019-12-09 17:47:36 info core.manager Deactivating logic.savelogic
+2019-12-09 17:47:36 debug logic.save_logic.SaveLogic Deactivation in thread <sip.voidptr object at 0x0000000007AF55A8>
+2019-12-09 17:47:36 debug core.threadmanager Quitting thread mod-logic-savelogic.
+2019-12-09 17:47:36 debug core.threadmanager Waiting for thread mod-logic-savelogic to end.
+2019-12-09 17:47:36 debug core.manager Deactivation success: True
+2019-12-09 17:47:36 debug core.threadmanager Thread mod-logic-savelogic has quit.
+2019-12-09 17:47:36 debug core.threadmanager Cleaning up thread mod-logic-savelogic.
+2019-12-09 17:47:36 info core.manager Deactivating logic.counterlogic
+2019-12-09 17:47:37 debug logic.counter_logic.CounterLogic Deactivation in thread <sip.voidptr object at 0x0000000007B0B738>
+2019-12-09 17:47:37 debug core.threadmanager Quitting thread mod-logic-counterlogic.
+2019-12-09 17:47:37 debug core.threadmanager Waiting for thread mod-logic-counterlogic to end.
+2019-12-09 17:47:37 debug core.manager Deactivation success: True
+2019-12-09 17:47:37 debug core.threadmanager Thread mod-logic-counterlogic has quit.
+2019-12-09 17:47:37 debug core.threadmanager Cleaning up thread mod-logic-counterlogic.
+2019-12-09 17:47:37 info core.manager Deactivating logic.scannerlogic
+2019-12-09 17:47:37 debug logic.confocal_logic.ConfocalLogic Deactivation in thread <sip.voidptr object at 0x0000000021239238>
+2019-12-09 17:47:37 debug core.threadmanager Quitting thread mod-logic-scannerlogic.
+2019-12-09 17:47:37 debug core.threadmanager Waiting for thread mod-logic-scannerlogic to end.
+2019-12-09 17:47:37 debug core.manager Deactivation success: True
+2019-12-09 17:47:37 debug core.threadmanager Thread mod-logic-scannerlogic has quit.
+2019-12-09 17:47:37 debug core.threadmanager Cleaning up thread mod-logic-scannerlogic.
+2019-12-09 17:47:37 info core.manager Deactivating logic.poimanagerlogic
+2019-12-09 17:47:37 debug logic.poi_manager_logic.PoiManagerLogic Deactivation in thread <sip.voidptr object at 0x00000000034F7F58>
+2019-12-09 17:47:37 debug core.threadmanager Quitting thread mod-logic-poimanagerlogic.
+2019-12-09 17:47:37 debug core.threadmanager Waiting for thread mod-logic-poimanagerlogic to end.
+2019-12-09 17:47:37 debug core.manager Deactivation success: True
+2019-12-09 17:47:37 debug core.threadmanager Thread mod-logic-poimanagerlogic has quit.
+2019-12-09 17:47:37 debug core.threadmanager Cleaning up thread mod-logic-poimanagerlogic.
+2019-12-09 17:47:37 info core.manager Deactivating logic.odmrlogic
+2019-12-09 17:47:37 debug logic.odmr_logic.ODMRLogic Deactivation in thread <sip.voidptr object at 0x00000000237D9DA0>
+2019-12-09 17:47:37 info hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>off
+2019-12-09 17:47:37 debug core.threadmanager Quitting thread mod-logic-odmrlogic.
+2019-12-09 17:47:37 debug core.threadmanager Waiting for thread mod-logic-odmrlogic to end.
+2019-12-09 17:47:37 debug core.manager Deactivation success: True
+2019-12-09 17:47:38 debug core.threadmanager Thread mod-logic-odmrlogic has quit.
+2019-12-09 17:47:38 debug core.threadmanager Cleaning up thread mod-logic-odmrlogic.
+2019-12-09 17:47:38 info core.manager Deactivating logic.wavemeterloggerlogic
+2019-12-09 17:47:38 debug logic.wavemeter_logger_logic.WavemeterLoggerLogic Deactivation in thread <sip.voidptr object at 0x00000000237D90D0>
+2019-12-09 17:47:38 debug core.threadmanager Quitting thread mod-logic-wavemeterloggerlogic.
+2019-12-09 17:47:38 debug core.threadmanager Waiting for thread mod-logic-wavemeterloggerlogic to end.
+2019-12-09 17:47:38 debug core.manager Deactivation success: True
+2019-12-09 17:47:38 debug core.threadmanager Thread mod-logic-wavemeterloggerlogic has quit.
+2019-12-09 17:47:38 debug core.threadmanager Cleaning up thread mod-logic-wavemeterloggerlogic.
+2019-12-09 17:47:38 info core.manager Deactivating logic.switchlogic
+2019-12-09 17:47:38 debug logic.switch_logic.SwitchLogic Deactivation in thread <sip.voidptr object at 0x00000000237D9120>
+2019-12-09 17:47:38 debug core.threadmanager Quitting thread mod-logic-switchlogic.
+2019-12-09 17:47:38 debug core.threadmanager Waiting for thread mod-logic-switchlogic to end.
+2019-12-09 17:47:38 debug core.manager Deactivation success: True
+2019-12-09 17:47:38 debug core.threadmanager Thread mod-logic-switchlogic has quit.
+2019-12-09 17:47:38 debug core.threadmanager Cleaning up thread mod-logic-switchlogic.
+2019-12-09 17:47:38 info core.manager Deactivating logic.automationlogic
+2019-12-09 17:47:38 debug logic.automation.AutomationLogic Deactivation in thread <sip.voidptr object at 0x000000001C781CD8>
+2019-12-09 17:47:38 debug core.threadmanager Quitting thread mod-logic-automationlogic.
+2019-12-09 17:47:38 debug core.threadmanager Waiting for thread mod-logic-automationlogic to end.
+2019-12-09 17:47:38 debug core.manager Deactivation success: True
+2019-12-09 17:47:39 debug core.threadmanager Thread mod-logic-automationlogic has quit.
+2019-12-09 17:47:39 debug core.threadmanager Cleaning up thread mod-logic-automationlogic.
+2019-12-09 17:47:39 info core.manager Deactivating logic.spectrumlogic
+2019-12-09 17:47:39 debug logic.spectrum.SpectrumLogic Deactivation in thread <sip.voidptr object at 0x000000001C71F530>
+2019-12-09 17:47:39 debug core.threadmanager Quitting thread mod-logic-spectrumlogic.
+2019-12-09 17:47:39 debug core.threadmanager Waiting for thread mod-logic-spectrumlogic to end.
+2019-12-09 17:47:39 debug core.manager Deactivation success: True
+2019-12-09 17:47:39 debug core.threadmanager Thread mod-logic-spectrumlogic has quit.
+2019-12-09 17:47:39 debug core.threadmanager Cleaning up thread mod-logic-spectrumlogic.
+2019-12-09 17:47:39 info core.manager Deactivating logic.pulsedmeasurementlogic
+2019-12-09 17:47:39 debug logic.pulsed.pulsed_measurement_logic.PulsedMeasurementLogic Deactivation in thread <sip.voidptr object at 0x00000000237D9058>
+2019-12-09 17:47:39 debug core.threadmanager Quitting thread mod-logic-pulsedmeasurementlogic.
+2019-12-09 17:47:39 debug core.threadmanager Waiting for thread mod-logic-pulsedmeasurementlogic to end.
+2019-12-09 17:47:39 debug core.manager Deactivation success: True
+2019-12-09 17:47:39 debug core.threadmanager Thread mod-logic-pulsedmeasurementlogic has quit.
+2019-12-09 17:47:39 debug core.threadmanager Cleaning up thread mod-logic-pulsedmeasurementlogic.
+2019-12-09 17:47:39 info core.manager Deactivating logic.sequencegeneratorlogic
+2019-12-09 17:47:39 debug logic.pulsed.sequence_generator_logic.SequenceGeneratorLogic Deactivation in thread <sip.voidptr object at 0x00000000237D9D50>
+2019-12-09 17:47:39 debug core.threadmanager Quitting thread mod-logic-sequencegeneratorlogic.
+2019-12-09 17:47:39 debug core.threadmanager Waiting for thread mod-logic-sequencegeneratorlogic to end.
+2019-12-09 17:47:39 debug core.manager Deactivation success: True
+2019-12-09 17:47:39 debug core.threadmanager Thread mod-logic-sequencegeneratorlogic has quit.
+2019-12-09 17:47:39 debug core.threadmanager Cleaning up thread mod-logic-sequencegeneratorlogic.
+2019-12-09 17:47:39 info core.manager Deactivating logic.pulsedmasterlogic
+2019-12-09 17:47:40 debug logic.pulsed.pulsed_master_logic.PulsedMasterLogic Deactivation in thread <sip.voidptr object at 0x00000000237D9FD0>
+2019-12-09 17:47:40 debug core.threadmanager Quitting thread mod-logic-pulsedmasterlogic.
+2019-12-09 17:47:40 debug core.threadmanager Waiting for thread mod-logic-pulsedmasterlogic to end.
+2019-12-09 17:47:40 debug core.manager Deactivation success: True
+2019-12-09 17:47:40 debug core.threadmanager Thread mod-logic-pulsedmasterlogic has quit.
+2019-12-09 17:47:40 debug core.threadmanager Cleaning up thread mod-logic-pulsedmasterlogic.
+2019-12-09 17:47:40 info core.manager Deactivating logic.simpledatalogic
+2019-12-09 17:47:40 debug logic.simple_data_logic.SimpleDataLogic Deactivation in thread <sip.voidptr object at 0x00000000216209B8>
+2019-12-09 17:47:40 debug core.threadmanager Quitting thread mod-logic-simpledatalogic.
+2019-12-09 17:47:40 debug core.threadmanager Waiting for thread mod-logic-simpledatalogic to end.
+2019-12-09 17:47:40 debug core.manager Deactivation success: True
+2019-12-09 17:47:40 debug core.threadmanager Thread mod-logic-simpledatalogic has quit.
+2019-12-09 17:47:40 debug core.threadmanager Cleaning up thread mod-logic-simpledatalogic.
+2019-12-09 17:47:40 info core.manager Deactivating logic.gatedcounterlogic
+2019-12-09 17:47:40 debug logic.counter_logic.CounterLogic Deactivation in thread <sip.voidptr object at 0x0000000021C91238>
+2019-12-09 17:47:40 debug core.threadmanager Quitting thread mod-logic-gatedcounterlogic.
+2019-12-09 17:47:40 debug core.threadmanager Waiting for thread mod-logic-gatedcounterlogic to end.
+2019-12-09 17:47:40 debug core.manager Deactivation success: True
+2019-12-09 17:47:40 debug core.threadmanager Thread mod-logic-gatedcounterlogic has quit.
+2019-12-09 17:47:40 debug core.threadmanager Cleaning up thread mod-logic-gatedcounterlogic.
+2019-12-09 17:47:40 info core.manager Deactivating logic.trace_analysis_logic
+2019-12-09 17:47:40 debug logic.trace_analysis_logic.TraceAnalysisLogic Deactivation in thread <sip.voidptr object at 0x000000001C602418>
+2019-12-09 17:47:40 debug core.threadmanager Quitting thread mod-logic-trace_analysis_logic.
+2019-12-09 17:47:40 debug core.threadmanager Waiting for thread mod-logic-trace_analysis_logic to end.
+2019-12-09 17:47:40 debug core.manager Deactivation success: True
+2019-12-09 17:47:40 debug core.threadmanager Thread mod-logic-trace_analysis_logic has quit.
+2019-12-09 17:47:40 debug core.threadmanager Cleaning up thread mod-logic-trace_analysis_logic.
+2019-12-09 17:47:40 info core.manager Deactivating logic.magnet_logic
+2019-12-09 17:47:41 debug logic.magnet_logic.MagnetLogic Deactivation in thread <sip.voidptr object at 0x0000000021C75DF0>
+2019-12-09 17:47:41 debug core.threadmanager Quitting thread mod-logic-magnet_logic.
+2019-12-09 17:47:41 debug core.threadmanager Waiting for thread mod-logic-magnet_logic to end.
+2019-12-09 17:47:41 debug core.manager Deactivation success: True
+2019-12-09 17:47:41 debug core.threadmanager Thread mod-logic-magnet_logic has quit.
+2019-12-09 17:47:41 debug core.threadmanager Cleaning up thread mod-logic-magnet_logic.
+2019-12-09 17:47:41 info core.manager Deactivating logic.softpid
+2019-12-09 17:47:41 debug logic.software_pid_controller.SoftPIDController Deactivation in thread <sip.voidptr object at 0x000000001C781CD8>
+2019-12-09 17:47:41 debug core.threadmanager Quitting thread mod-logic-softpid.
+2019-12-09 17:47:41 debug core.threadmanager Waiting for thread mod-logic-softpid to end.
+2019-12-09 17:47:41 debug core.manager Deactivation success: True
+2019-12-09 17:47:41 debug core.threadmanager Thread mod-logic-softpid has quit.
+2019-12-09 17:47:41 debug core.threadmanager Cleaning up thread mod-logic-softpid.
+2019-12-09 17:47:41 info core.manager Deactivating logic.pidlogic
+2019-12-09 17:47:41 debug logic.pid_logic.PIDLogic Deactivation in thread <sip.voidptr object at 0x000000001C71F530>
+2019-12-09 17:47:41 debug core.threadmanager Quitting thread mod-logic-pidlogic.
+2019-12-09 17:47:41 debug core.threadmanager Waiting for thread mod-logic-pidlogic to end.
+2019-12-09 17:47:41 debug core.manager Deactivation success: True
+2019-12-09 17:47:41 debug core.threadmanager Thread mod-logic-pidlogic has quit.
+2019-12-09 17:47:41 debug core.threadmanager Cleaning up thread mod-logic-pidlogic.
+2019-12-09 17:47:41 info core.manager Deactivating logic.qdplotlogic
+2019-12-09 17:47:41 debug logic.qdplot_logic.QdplotLogic Deactivation in thread <sip.voidptr object at 0x000000001C65E5A8>
+2019-12-09 17:47:41 debug core.threadmanager Quitting thread mod-logic-qdplotlogic.
+2019-12-09 17:47:41 debug core.threadmanager Waiting for thread mod-logic-qdplotlogic to end.
+2019-12-09 17:47:41 debug core.manager Deactivation success: True
+2019-12-09 17:47:42 debug core.threadmanager Thread mod-logic-qdplotlogic has quit.
+2019-12-09 17:47:42 debug core.threadmanager Cleaning up thread mod-logic-qdplotlogic.
+2019-12-09 17:47:42 info core.manager Deactivating logic.nuopslogic
+2019-12-09 17:47:42 debug logic.nuclear_operations_logic.NuclearOperationsLogic Deactivation in thread <sip.voidptr object at 0x0000000021CC9E18>
+2019-12-09 17:47:42 debug core.threadmanager Quitting thread mod-logic-nuopslogic.
+2019-12-09 17:47:42 debug core.threadmanager Waiting for thread mod-logic-nuopslogic to end.
+2019-12-09 17:47:42 debug core.manager Deactivation success: True
+2019-12-09 17:47:42 debug core.threadmanager Thread mod-logic-nuopslogic has quit.
+2019-12-09 17:47:42 debug core.threadmanager Cleaning up thread mod-logic-nuopslogic.
+2019-12-09 17:47:42 info core.manager Deactivating logic.laserlogic
+2019-12-09 17:47:42 debug logic.laser_logic.LaserLogic Deactivation in thread <sip.voidptr object at 0x00000000034F7F58>
+2019-12-09 17:47:43 debug core.threadmanager Quitting thread mod-logic-laserlogic.
+2019-12-09 17:47:43 debug core.threadmanager Waiting for thread mod-logic-laserlogic to end.
+2019-12-09 17:47:43 debug core.manager Deactivation success: True
+2019-12-09 17:47:43 debug core.threadmanager Thread mod-logic-laserlogic has quit.
+2019-12-09 17:47:43 debug core.threadmanager Cleaning up thread mod-logic-laserlogic.
+2019-12-09 17:47:43 info core.manager Deactivating logic.laserscannerlogic
+2019-12-09 17:47:43 debug logic.laser_scanner_logic.LaserScannerLogic Deactivation in thread <sip.voidptr object at 0x0000000021CF19E0>
+2019-12-09 17:47:43 debug core.threadmanager Quitting thread mod-logic-laserscannerlogic.
+2019-12-09 17:47:43 debug core.threadmanager Waiting for thread mod-logic-laserscannerlogic to end.
+2019-12-09 17:47:43 debug core.manager Deactivation success: True
+2019-12-09 17:47:43 debug core.threadmanager Thread mod-logic-laserscannerlogic has quit.
+2019-12-09 17:47:43 debug core.threadmanager Cleaning up thread mod-logic-laserscannerlogic.
+2019-12-09 17:47:43 info core.manager Deactivating logic.odmr_counter_microwave_interfuse
+2019-12-09 17:47:43 debug logic.interfuse.odmr_counter_microwave_interfuse.ODMRCounterMicrowaveInterfuse Deactivation in thread <sip.voidptr object at 0x0000000008EDDA30>
+2019-12-09 17:47:43 debug core.threadmanager Quitting thread mod-logic-odmr_counter_microwave_interfuse.
+2019-12-09 17:47:43 debug core.threadmanager Waiting for thread mod-logic-odmr_counter_microwave_interfuse to end.
+2019-12-09 17:47:43 debug core.manager Deactivation success: True
+2019-12-09 17:47:43 debug core.threadmanager Thread mod-logic-odmr_counter_microwave_interfuse has quit.
+2019-12-09 17:47:43 debug core.threadmanager Cleaning up thread mod-logic-odmr_counter_microwave_interfuse.
+2019-12-09 17:47:43 info core.manager Deactivating logic.odmrlogic2
+2019-12-09 17:47:44 debug logic.odmr_logic.ODMRLogic Deactivation in thread <sip.voidptr object at 0x0000000021C263F0>
+2019-12-09 17:47:44 info hardware.microwave.mw_source_dummy.MicrowaveDummy MicrowaveDummy>off
+2019-12-09 17:47:44 debug core.threadmanager Quitting thread mod-logic-odmrlogic2.
+2019-12-09 17:47:44 debug core.threadmanager Waiting for thread mod-logic-odmrlogic2 to end.
+2019-12-09 17:47:44 debug core.manager Deactivation success: True
+2019-12-09 17:47:44 debug core.threadmanager Thread mod-logic-odmrlogic2 has quit.
+2019-12-09 17:47:44 debug core.threadmanager Cleaning up thread mod-logic-odmrlogic2.
+2019-12-09 17:47:44 info core.manager Deactivating logic.camera_logic
+2019-12-09 17:47:44 debug logic.camera_logic.CameraLogic Deactivation in thread <sip.voidptr object at 0x0000000008D55738>
+2019-12-09 17:47:44 debug core.threadmanager Quitting thread mod-logic-camera_logic.
+2019-12-09 17:47:44 debug core.threadmanager Waiting for thread mod-logic-camera_logic to end.
+2019-12-09 17:47:44 debug core.manager Deactivation success: True
+2019-12-09 17:47:44 debug core.threadmanager Thread mod-logic-camera_logic has quit.
+2019-12-09 17:47:44 debug core.threadmanager Cleaning up thread mod-logic-camera_logic.
+2019-12-09 17:47:44 info core.manager Deactivating logic.magnet_motor_interfuse
+2019-12-09 17:47:44 debug logic.interfuse.magnet_motor_interfuse.MagnetMotorInterfuse Deactivation in thread <sip.voidptr object at 0x0000000022F058A0>
+2019-12-09 17:47:44 debug core.threadmanager Quitting thread mod-logic-magnet_motor_interfuse.
+2019-12-09 17:47:44 debug core.threadmanager Waiting for thread mod-logic-magnet_motor_interfuse to end.
+2019-12-09 17:47:44 debug core.manager Deactivation success: True
+2019-12-09 17:47:44 debug core.threadmanager Thread mod-logic-magnet_motor_interfuse has quit.
+2019-12-09 17:47:44 debug core.threadmanager Cleaning up thread mod-logic-magnet_motor_interfuse.
+2019-12-09 17:47:44 info __main__ Closing windows...
+2019-12-09 17:47:45 info __main__ Stopping threads...
+2019-12-09 17:47:45 debug core.threadmanager Quit all threads.
+2019-12-09 17:47:45 info __main__ Qudi is closed!  Ciao.

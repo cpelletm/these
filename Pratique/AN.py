@@ -10,4 +10,15 @@ m_carbon=12.01/Na #g
 
 P=1e5
 T=300
+eV=1.6E-19
+
+
+
+def pola_NV(T):
+	dE=2.87E9*2*pi*hbar
+	pzero=1/(1+2*exp(-(dE)/(kb*T)))
+	dp=pzero-1/3
+	print(pzero,dp)
+
+pola_NV(0.065)
 

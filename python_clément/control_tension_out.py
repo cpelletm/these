@@ -1,3 +1,5 @@
+#C'est un vieux code mais il marche bien et j'ai la flemme de l'actualiser
+
 import sys
 
 import numpy as np
