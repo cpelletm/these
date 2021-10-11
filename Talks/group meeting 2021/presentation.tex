@@ -24,12 +24,17 @@
 \begin{frame}
 \maketitle
 \end{frame}
+\begin{frame}
+\tableofcontents
+\end{frame}
+\section{The NV center}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
 \begin{frame}{The Nitrogen Vacancy Center}
 \begin{center}
 \includegraphics[scale=.4]{Nitrogen-vacancy_center}
 \end{center}
-
-\section{The NV center}
 \begin{itemize}
 \item 0D fluorescent object with ZPL at 638 nm
 \item Controllable and readable spin at room temperature (!)
@@ -57,6 +62,9 @@
 \includegraphics[scale=.4]{ESR_8raies_article}
 \end{frame}
 \section{Probing dark spins with cross-relaxations}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
 \begin{frame}{Principle of spin cross-relaxation (CR)}
 \centering
 \includegraphics[scale=.23]{Slide_CR}
@@ -65,11 +73,81 @@
 \centering
 \includegraphics[scale=.35]{Slide_CR_CVD}
 \end{frame}
-\begin{frame}{NV-NV Cross-Relaxation}
-%Le plot avec les 3 trois bosses du CR-méca (+ Mrozek ?)
+\begin{frame}{Side-note : effect of transverse field on the PL}
+\centering
+\includegraphics[scale=.18]{slide_champ_transverse}
 \end{frame}
-\begin{frame}{Mechanically detetcted Cross-Relaxation}
-%Le papier CR-méca
+\section{NV-NV Cross-relaxation}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+\begin{frame}{NV-NV Cross-Relaxation}
+\centering
+\includegraphics[scale=.2]{Slide_CR_NV-NV}
+\end{frame}
+\begin{frame}{NV-NV Cross-Relaxation : spin lifetime}
+\centering
+\includegraphics[scale=.28]{Slide_CR_NV-NV_T1}
+\end{frame}
+\begin{frame}{Origin of the NV-NV cross-relaxation}
+Why is it weird ? Because the flip-flop process is spin preserving
+
+$\to$ They should not change the total spin polarization of the NV ensemble.
+\bigskip
+
+Hypotheses for the origin of the NV-NV Cross-relaxation :
+\begin{itemize}
+\item Spin diffusion to unpolarized spins (out of the laser spot)
+
+$\to$ The numbers are off by several order of magnitudes \& it still works with nano-diamond
+
+\item Superradiance $\to$ effect independent of temperature
+\item Fluctuators : Some NV have their spin heavily depolarized by tunneling in and out of nearby sites
+\item Polarization of the laser ?
+\end{itemize}
+\end{frame}
+\begin{frame}{Mechanically detected Cross-Relaxation}
+\centering
+\includegraphics[scale=.45]{slide_cr_meca}
 \end{frame}
 \section{magnetometry with cross-relaxations}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+\begin{frame}{Principle of the magnetometer}
+\centering
+\includegraphics[scale=.22]{Slide_principe_magnetoNVNV}
+\end{frame}
+\begin{frame}{Low field dependence of the PL}
+\centering
+\includegraphics[scale=.23]{slide_magneto_scan}
+\end{frame}
+\begin{frame}{Sensitivity of the measure}
+\centering
+\includegraphics[scale=.26]{slide_sensi_measure}
+\end{frame}
+\begin{frame}{Comparison with other magnetometer}
+\begin{itemize}
+\item NV ensemble : $\approx 1$ pT$\sqrt{\textrm{Hz}}$
+\item Microwave-less NV ensemble : $\approx 1$ nT$\sqrt{\textrm{Hz}}$
+\item SQUIDs(superconducting circuits)/vapor cells : $\approx 1$ fT$\sqrt{\textrm{Hz}}$
+\end{itemize}
+\bigskip
+
+But,
+
+\begin{itemize}
+\item Based on smaller diamonds (10 $\mu$m diamond VS few mm diamonds)
+\item Does not require well-defined crystal axis Vs magnetic field orientation
+
+$\to$ Can use poly-crystalline/powdered samples, diamond flow in solution, etc...
+
+\item Better than transverse field by several orders of magnitude
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Bonus : Double quantum cross-relaxation in zero-field}
+\centering
+\includegraphics[scale=.22]{slide_DQ}
+\end{frame}
 \end{document}

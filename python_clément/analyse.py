@@ -469,7 +469,7 @@ def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 			y+=amp*1/(1+((x-c)/width)**2)
 	return y
 
-def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss'): #peaks : centers of resonances in MHz
+def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss',TrueAngles=False): #peaks : centers of resonances in MHz
 	popt,yfit= ESR_n_pics(x,y,peaks)
 	n=len(peaks)
 	ss=popt[0]
@@ -496,7 +496,10 @@ def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss'): #peaks : centers of reson
 		scalar=scalar/B.amp
 		angle=np.arccos(scalar)
 		return angle*180/np.pi
-	popt=[B.amp,angleFrom100(B),angleFrom111(B),sum(widths)/len(widths)]
+	if TrueAngles :
+		popt=[B.amp,B.theta,B.phi]
+	else :
+		popt=[B.amp,angleFrom100(B),angleFrom111(B),sum(widths)/len(widths)]
 	return popt,yfit
 
 #~~~~~~ stats ~~~~~~
