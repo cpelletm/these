@@ -392,7 +392,8 @@ class startStopButton():
 			failSafe(self.updateFunc,*self.updateArgs,debug=self.debug)
 		else :
 			failSafe(self.updateFunc,self.updateArgs,debug=self.debug)
-		qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer.
+		qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer. 
+		#En gros ça force l'image à s'actualiser, mais ça fout le bordel dans les timers (je pense que ça joue sur les threads), et en gros tu peux te retrouver à call update (plusieurs fois meme) alors que le timer est sensé être stoppé.
 
 	def stopAction(self): 
 		self.timer.stop()
@@ -712,8 +713,8 @@ class useTheme():
 
 
 		# pg.setConfigOptions(antialias=False)	
-	def nextLine(self,ax,typ=False):
-		try : ax.penIndices
+	def nextLine(self,ax,typ=False,big=True):
+		try : ax.penIndices #je fais plus trop ça maintenant normalement, mais bon
 		except :
 			ax.penIndices=[True]*len(self.penColors)
 		for i in range(len(self.penColors)) : #Si jamais toutes les couleurs sont prises, il reste sur la dernière
@@ -721,19 +722,44 @@ class useTheme():
 				break
 		penIndex=i
 		ax.penIndices[penIndex]=False
+		if big :
+			widths=[2,3]
+		else :
+			widths=[1,1]
 		if typ=='trace' or typ=='fit':
-			pen=pg.mkPen(self.penColors[penIndex],width=2,style=Qt.DashDotLine) #ëvisiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) #visiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
 			symbol=None
 			symbolPen=None
 			symbolBrush=None
 		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=3,style=Qt.SolidLine)
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.SolidLine)
 			symbol='o'
 			symbolPen=pen
 			symbolBrush=pg.mkBrush(None)
 
 		ax.currentPenIndex+=1
 		return pen,symbol,symbolPen,symbolBrush,penIndex
+	def penSizeChange(self,line):
+		n=len(line.x)
+		big = n<=300
+		penIndex=line.penIndex
+		ax=line.ax
+		if big :
+			widths=[2,3]
+		else :
+			widths=[1,1]
+		typ=line.typ
+		if typ=='trace' or typ=='fit':
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) #visiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		else :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.SolidLine)
+			symbol='o'
+			symbolPen=pen
+			symbolBrush=pg.mkBrush(None)
+		return pen,symbol,symbolPen,symbolBrush
 
 class NIChan():
 	def __init__(self,*physicalChannels):
@@ -764,7 +790,10 @@ class NIChan():
 		self.task.start()
 		self.running=True
 		self.taskOpened=True
-	def restart(self):
+	def restart(self,wait=True):
+		if wait :
+			while not self.done():
+				pass
 		self.task.stop()
 		self.start()
 	def close(self,closeAnyway=False):
@@ -884,29 +913,29 @@ class AIChan(NIChan):
 		self.triggedOn(chan)
 
 		
-	def read(self,nRead='auto',waitForAcqui=False) :
+	def read(self,nRead='auto',waitForAcqui=False,timeout=10) :
 		if self.mode=='single' :
-			return(self.readSingle())
+			return(self.readSingle(timeout=timeout))
 		elif self.mode=='timed' :
-			return(self.readTimed(waitForAcqui=waitForAcqui))
+			return(self.readTimed(waitForAcqui=waitForAcqui,timeout=timeout))
 		elif self.mode=='pulsed' :
-			return(self.readPulsed(nRead=nRead))
+			return(self.readPulsed(nRead=nRead,timeout=timeout))
 		elif self.mode=='withPB' :
-			return(self.readPulsed(nRead=nRead))
+			return(self.readPulsed(nRead=nRead,timeout=timeout))
 
 
 
-	def readPulsed(self,nRead='auto') :
+	def readPulsed(self,nRead='auto',timeout=10) :
 		if nRead=='auto':
 			nRead=self.sampsPerChan
 		else :
 			nRead=nRead*self.nAvg*self.nRepeat
-		data=self.task.read(nRead)
+		data=self.task.read(nRead,timeout=timeout)
 		return average(data,self.nAvg,self.nRepeat)
 
 		
 
-	def readTimed(self,waitForAcqui=False):
+	def readTimed(self,waitForAcqui=False,timeout=10):
 		if self.sampleMode==nidaqmx.constants.AcquisitionType.CONTINUOUS:
 			data=self.task.read(self.sampsPerChan)
 			return average(data,self.nAvg) #je gère pas le multi channel en continuous. Faut pas utiliser continuous de toute facon
@@ -918,7 +947,7 @@ class AIChan(NIChan):
 			self.task.wait_until_done()
 
 		if self.task.is_task_done() :
-			data=self.readAndStop(self.sampsPerChan)
+			data=self.readAndStop(self.sampsPerChan,timeout=timeout)
 		else :
 			return False
 
@@ -933,11 +962,11 @@ class AIChan(NIChan):
 			return(res)
 
 	
-	def readSingle(self):
-		return self.task.read()
+	def readSingle(self,timeout=10):
+		return self.task.read(timeout=timeout)
 
-	def readAndStop(self,sampsPerChan):
-		data=self.task.read(sampsPerChan)
+	def readAndStop(self,sampsPerChan,timeout=10):
+		data=self.task.read(sampsPerChan,timeout=timeout)
 		self.task.stop()
 		self.running=False
 		return data
@@ -1337,7 +1366,8 @@ class myLine(pg.PlotDataItem) :
 		if len(ytoplot) != len(x) :
 			raise ValueError('len(x)=%i does not match len(y)=%i'%(len(x),len(ytoplot)))
 		if show :
-			self.setData(x,ytoplot)
+			pen,symbol,symbolPen,symbolBrush=self.theme.penSizeChange(self)
+			self.setData(x,ytoplot,pen=pen,symbol=symbol,symbolPen=symbolPen,symbolBrush=symbolBrush)
 		self.iteration+=self.nRepeat
 		if self.iterationWidget :
 			self.iterationWidget.update(self.iteration)
@@ -1711,7 +1741,7 @@ def fhp(f,verbose,*args,**kwargs): ##fhp = function hidden print
 
 def test_pg():
 	def setup():
-		return(np.linspace(0,10,100))
+		return(x)
 	def update(x):
 		y=2*np.cos(x+time.time())
 		gra.updateLine(l3,False,y)
@@ -1729,7 +1759,7 @@ def test_pg():
 		# print(pos.pos())
 		mousePoint = gra.mainAx.vb.mapSceneToView(pos.pos())
 		print(mousePoint.x(),mousePoint.y())
-	x=np.linspace(0,10,100)
+	x=np.linspace(0,10,500)
 	y=np.cos(x)
 	gra=graphics()
 	l1=gra.addLine(x,y,typ='scroll',label='L1')
