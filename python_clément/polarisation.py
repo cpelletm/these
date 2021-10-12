@@ -70,11 +70,10 @@ def setup():
 	
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x):
-	# if do.done():
-	if True :
-		y=ai.read()
-		gra.updateLine(l1,x,y) 
-		do.restart()
+	
+	y=ai.read(timeout=30)
+	gra.updateLine(l1,x,y) 
+	do.restart()
 
 def extraStop() :
 	do.setupContinuous([[False],[True],[AOM.state()]])
@@ -100,7 +99,7 @@ nRep=field('n repeat',2)
 fields=[laser,AOM,fullView,NRead,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,nRep]
 
 gra=graphics(refreshRate=0.1)
-l1=gra.addLine(typ='average',style='m',fast=True)
+l1=gra.addLine(typ='instant',style='m',fast=True)
 
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,debug=True,extraStop=extraStop)

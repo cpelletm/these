@@ -112,7 +112,7 @@ def digital_out():
 		while not task.is_task_done() :
 			pass
 
-# digital_out()
+digital_out()
 		
 def do2() :
 	with nidaqmx.Task() as task:
@@ -1540,4 +1540,3 @@ def ai_max_buffer():
 	print(y)
 	ai.close()
 
-ai_max_buffer()
