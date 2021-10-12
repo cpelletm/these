@@ -269,7 +269,7 @@ class autoSaveMethod():
 		if time.time() > self.time_last_save + self.delay_s :
 			now = datetime.now()
 			date_str=now.strftime("%Y-%m-%d %H-%M-%S")
-			filename='D:/DATA/AutoSave/'+date_str+'.png'
+			filename=self.sb.startpath+'/AutoSave/'+date_str+'.png'
 			self.sb.save(fname=filename,saveData=self.saveData,saveFigure=self.saveFigure)
 			self.time_last_save=time.time()
 
