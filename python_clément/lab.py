@@ -913,7 +913,7 @@ class AIChan(NIChan):
 		self.triggedOn(chan)
 
 		
-	def read(self,nRead='auto',waitForAcqui=False,timeout=10) :
+	def read(self,nRead='auto',waitForAcqui=False,timeout=nidaqmx.constants.WAIT_INFINITELY) :
 		if self.mode=='single' :
 			return(self.readSingle(timeout=timeout))
 		elif self.mode=='timed' :
