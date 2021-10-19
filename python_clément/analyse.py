@@ -80,7 +80,7 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 def lin_fit(x,y) :
 	A=np.vstack([x,np.ones(len(x))]).T
 	a,b = np.linalg.lstsq(A, y, rcond=None)[0]
-	return(a,b,a*x+b)
+	return([a,b],a*x+b)
 
 def quad_fit(x,y) :
 	A=np.vstack([x**2,x,np.ones(len(x))]).T
