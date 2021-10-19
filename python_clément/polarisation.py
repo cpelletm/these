@@ -76,7 +76,7 @@ def update(x):
 	do.restart()
 
 def extraStop() :
-	do.setupContinuous([[False],[False],[AOM.state()]])
+	do.setupContinuous([[False],[True],[AOM.state()]])
 
 def avgWidgAction() :
 	if avgWidg.state():
@@ -97,6 +97,7 @@ NRead=field('n read',200)
 waitMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tWait=field('dark time (s)',1e-3)
 readMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
+readMenu.setIndex('green')
 tRead=field('read time (s)',1e-3)
 polaMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tPola=field('pola time(s)',1e-3)

@@ -20,7 +20,7 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 			print('file not found')
 			quit()
 		filename=f
-	if filename[-4:] =='.txt' :
+	if filename[-4:] =='.txt' : #Assumes that data is in column
 		x=[]
 		y=[]
 		with open(filename,'r',encoding = "ISO-8859-1") as f:
@@ -181,18 +181,24 @@ def stretch_exp_fit_zero(x,y,Amp=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_arb_exp_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5):
+def stretch_arb_exp_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5,fixed=False):
 	if not Amp :
 		Amp=max(y)-min(y)
 	if not ss :
 		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,ss,tau,alpha) :
-		return Amp*np.exp(-(x/tau)**alpha)+ss
-	p0=[Amp,ss,tau,alpha]
-	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
-	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
+	if fixed :
+		def f(x,Amp,ss,tau) :
+			return Amp*np.exp(-(x/tau)**alpha)+ss
+		p0=[Amp,ss,tau]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
+	else :
+		def f(x,Amp,ss,tau,alpha) :
+			return Amp*np.exp(-(x/tau)**alpha)+ss
+		p0=[Amp,ss,tau,alpha]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
+	return(popt,f(x,*popt))
 
 def third_stretch(x,y,Amp=None,tau=None) :
 	if not Amp :
@@ -279,10 +285,55 @@ def ESR_n_pics(x,y,cs,width=False,ss=None,amp=None,typ='gauss') : #typ="gauss" o
 				y+=amp*1/(1+((x-c)/width)**2)
 		return(y)
 	popt, pcov = curve_fit(f, x, y, p0)
-	variables=(x,)
-	for p in popt :
-		variables+=(p,)
-	return(popt,f(*variables))
+	ss=popt[0]
+	centers=popt[1:n+1]
+	widths=popt[n+1:2*n+1]
+	amps=popt[2*n+1:]
+	params=[ss,centers,widths,amps]
+	return(params,f(x,*popt))
+
+def ESR_n_pics_auto(x,y,width=False,ss=None,amp=None,typ='gauss'):
+	if not ss :
+		ss=y[0]
+	if not amp : #Attention sur les noms, cette fonction n'utilise que amps, amp sera directement transmis à ESR_n_pics
+		if max(y)-ss > ss-min(y) :
+			amp=max(y)-ss
+			def extremum(x,y):
+				return(x[list(y).index(max(y))])
+		else :
+			amp=min(y)-ss
+			def extremum(x,y):
+				return(x[list(y).index(min(y))])
+	if not width :
+		if max(x) < 50 : #Je sq c'est des GHz
+			width=8e-3
+		elif max(x) < 5E4 : #Je sq c'es des Mhz
+			width=8
+		else : #Je sq c'es des Hz
+			width=8E6
+	OGy=y
+	threshold=0.2
+	cs=[]
+	amps=[]
+	cs+=[extremum(x,y)]
+	popt,yfit=ESR_n_pics(x,y,[extremum(x,y)])
+	amps+=[abs(popt[3])]
+	for i in range(100):
+		y=y-yfit
+		c=extremum(x,y)
+		try :
+			popt,yfit=ESR_n_pics(x,y,[c])
+		except :
+			break #Si le truc est trop bizarre il arrive pas à fitter
+		if abs(popt[3]) < amps[0]*threshold :
+			break
+		elif min([abs(c-ci) for ci in cs]) < width/2 : #Si il retrouve un pic trop proche d'un pic précédent il l'enregistre pas
+			continue
+		else :
+			cs+=[c]
+			amps+=[abs(popt[3])]
+	# return(cs)	
+	return(ESR_n_pics(x,OGy,cs=cs,width=width,ss=ss,amp=amp,typ=typ))
 
 def find_B_111(freq,transi='-') : #freq en MHz
 	D=2870
