@@ -1,11 +1,19 @@
 from lab import *
+from ESR import ESRInLine
+from analyse import ESR_n_pics_auto
 
 physicalChannels=['ai13','ai11','ai9']
 
-Voltages=np.linspace(-5,5,200)
+Voltages=np.linspace(-3,3,200)
 def acquiStart(i):
 	v=Voltages[i]
 	ao.setupContinuous(v)
+	x,y=ESRInLine(Fmin=2400,Fmax=3200,Power=10,NPoints=1001,NRuns=3,Fsweep=400,AmpMod=False)
+	gra.updateLine(l4,x,y)
+	cs=ESR_n_pics_auto(x,y)
+	print(min(cs)) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
+	frequW.setValue(min(cs))
+
 
 def acquiEnd(i):
 	fname=StartStop.defaultFolder+'V=%f'%(Voltages[i])+' V'
@@ -81,6 +89,8 @@ l1=gra.addLine(typ='average',style='m',fast=True)
 l2=gra.addLine(typ='average',style='m',fast=True)
 ax2=gra.addAx()
 l3=ax2.addLine(typ='average',style='m',fast=True)
+ax3=gra.addAx()
+l4=ax3.addLine(typ='instant',style='m',fast=True)
 
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 debutfin=checkBox('debut(check)\nfin(uncheck)')
@@ -88,7 +98,7 @@ StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIt
 StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
-save=saveButton(gra,autoSave=10)
+save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1,l2,l3)
 it=iterationWidget(l1)
 norm=gra.normalize()

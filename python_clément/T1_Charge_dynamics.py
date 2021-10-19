@@ -43,10 +43,10 @@ def update(x,nRead,nT1):
 			segment=data[i*nRead:(i+1)*nRead]
 
 			if maxwidg.state():
-				# prop=0.5
-				# nLect=int(prop*nRead)
-				# val=(sum(segment[:nLect])-sum(segment[-nLect:])) #Rq : il y a peut etre un pb avec la polarisation du spin pour le temps courts
-				val=segment[10]-segment[-1]
+				prop=0.5
+				nLect=int(prop*nRead)
+				val=(sum(segment[:nLect])-sum(segment[-nLect:])) #Rq : il y a peut etre un pb avec la polarisation du spin pour le temps courts
+				# val=segment[10]-segment[-1]
 				y+=[val]
 			else :
 				prop=0.1

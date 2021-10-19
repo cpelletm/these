@@ -2,7 +2,7 @@ from lab import *
 
 physicalChannels=['ai13','ai11','ai9']
 
-Voltages=np.linspace(-5,5,200)
+Voltages=np.linspace(-1,1,100)
 def acquiStart(i):
 	v=Voltages[i]
 	ao.setupContinuous(v)
@@ -33,13 +33,13 @@ def setup():
 	
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x,nRead,nT1):
-	if do.done():
+	if True:
 		data=ai.read()
 		y=[]
 		for i in range(nT1):
 			segment=data[i*nRead:(i+1)*nRead]
 			if maxwidg.state():
-				y+=[sum(segment)/segment[-1]]
+				y+=[sum(segment[nRead//2:])-sum(segment[:nRead//2])]
 			else :
 				y+=[sum(segment)/max(segment)]
 		gra.updateLine(l1,x,y) 
@@ -69,7 +69,7 @@ l1=gra.addLine(typ='average',style='m',fast=True)
 maxwidg=checkBox('max/last')
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=30,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l1,fit='exp',name='exp fit')
 stretchfit=fitButton(line=l1,fit='stretch',name='stretch fit')
 save=saveButton(gra,autoSave=False)

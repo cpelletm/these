@@ -112,7 +112,6 @@ def digital_out():
 		while not task.is_task_done() :
 			pass
 
-digital_out()
 		
 def do2() :
 	with nidaqmx.Task() as task:
@@ -1540,3 +1539,10 @@ def ai_max_buffer():
 	print(y)
 	ai.close()
 
+def test_dico():
+	dic={}
+	dic[0]='toto'
+	print(dic,dic.keys(),dic.values())
+
+from getmac import get_mac_address as gma
+print(gma())
