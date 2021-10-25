@@ -33,7 +33,13 @@ if macAdressOfCurrentPC=='64:00:6a:5f:1e:5b' : #Ordi 2 (le mien)
 	computerUsed='Ordi2'
 	defaultDataPath="D:/DATA/"
 	defaultTheme='light'
+
+elif macAdressOfCurrentPC=='d8:9e:f3:23:bb:26' : #Ordi 1 (de l'entrée)
+	computerUsed='Ordi1'
+	defaultDataPath="C:/DATA/"
+	defaultTheme='dark'
 else :
+	print('current mac adress : ',gma())
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
 
 class Graphical_interface(QMainWindow) :
@@ -784,16 +790,18 @@ class pulseBlaster(device):
 		else :
 			return False
 	def start(self):
-		self.sp.pb_reset() #pas bien compris à quoi il sert le reset
-		self.sp.pb_start()
+		with stdout_redirected() :
+			self.sp.pb_reset() #pas bien compris à quoi il sert le reset
+			self.sp.pb_start()
 	def stop(self):
 		self.sp.pb_stop()
 	def close(self):
-		line=[0,0,0,0]
-		for i in self.chanOn :
-			line[i-1]=1
-		self.sp.pb_close()
-		self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
+		with stdout_redirected() :
+			line=[0,0,0,0]
+			for i in self.chanOn :
+				line[i-1]=1
+			self.sp.pb_close()
+			self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
 class hiddenPrints:
 	def __enter__(self):
@@ -807,11 +815,11 @@ class hiddenPrints:
 class useTheme():
 	def __init__(self,theme='white'):
 		self.theme=theme
-		if theme=='light' :
+		if theme=='light' or theme=='white' :
 			pg.setConfigOption('background', 'w')
 			pg.setConfigOption('foreground', 'k')			
 			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-		if theme=='dark' :
+		if theme=='dark' or theme=='black' :
 			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
 
 
