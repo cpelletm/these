@@ -2,6 +2,8 @@
 
 import sys
 import os
+from getmac import get_mac_address as gma
+from contextlib import contextmanager
 import warnings
 import traceback
 import time
@@ -22,12 +24,20 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtCore import (Qt, QTimer,QSize)
 from PyQt5.QtWidgets import (QWidget, QPushButton, QComboBox,
 	QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget, QMainWindow, QLineEdit, QLabel, QCheckBox, QFileDialog, QErrorMessage, QMessageBox)
+import qdarkstyle
 
 qapp = QApplication(sys.argv)
 
+macAdressOfCurrentPC=gma()
+if macAdressOfCurrentPC=='64:00:6a:5f:1e:5b' : #Ordi 2 (le mien)
+	computerUsed='Ordi2'
+	defaultDataPath="D:/DATA/"
+	defaultTheme='light'
+else :
+	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
 
 class Graphical_interface(QMainWindow) :
-	def __init__(self,*itemLists,title='Unnamed',theme='light'):
+	def __init__(self,*itemLists,title='Unnamed',theme=defaultTheme):
 		super().__init__()
 		self.setWindowTitle(title)
 		main = QWidget()
@@ -45,7 +55,6 @@ class Graphical_interface(QMainWindow) :
 		self.resize(1200,800)
 		self.show()		
 		if theme=='dark' :
-			import qdarkstyle
 			qapp.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 	def run(self):
 		qapp.exec_()
@@ -70,13 +79,15 @@ class label():
 		box.addStretch(self.spaceBelow)	
 
 class field():
-	def __init__(self,name,initial_value='noValue',spaceAbove=1,spaceBelow=0): 
+	def __init__(self,name,initial_value='noValue',action=False,spaceAbove=1,spaceBelow=0): 
 		self.label=QLabel(name)
 		self.lect=QLineEdit()
 		if initial_value != 'noValue' :
 			self.setValue(initial_value)
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
+		if action :
+			self.lect.returnPressed.connect(action)
 	def updateValue(self):
 		try : 
 			self.v=float(self.lect.text())
@@ -137,6 +148,8 @@ class button():
 			self.setAction(action)
 	def setAction(self,action):		
 			self.button.clicked.connect(action)
+	def setEnabled(self,b):
+		self.button.setEnabled(b)
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.button)
@@ -163,21 +176,61 @@ class checkBox():
 		box.addStretch(self.spaceBelow)
 
 class dropDownMenu():
-	def __init__(self,name,*items,spaceAbove=1,spaceBelow=0):
+	def __init__(self,name,*items,action=False,spaceAbove=1,spaceBelow=0):
 		self.label=QLabel(name)
 		self.cb=QComboBox()
+		self.dic={}
 		for item in items :
-			self.cb.addItem(item)
+			self.addItem(item)
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
+		if action :
+			self.cb.currentIndexChanged.connect(action)
 	def index(self):
 		return self.cb.currentIndex()
+	def setIndex(self,index):
+		if isinstance(index,str) :
+			i=self.dic[index]
+		else :
+			i=index
+		return self.cb.setCurrentIndex(i)
 	def text(self):
 		return self.cb.currentText()
+	def addItem(self,item):
+		self.dic[item]=self.cb.count() #je le fait avant pour qu'il commence à 0
+		self.cb.addItem(item)
+	def removeItem(self,item):
+		if isinstance(item,str) :
+			i=self.dic[item]
+		else :
+			i=item
+		return self.cb.removeItem(i)
+	def removeAll(self):
+		# for item in self.dic.keys():
+		# 	self.removeItem(item)
+		self.cb.clear()
+	def setEnabled(self,b):
+		self.label.setEnabled(b)
+		self.cb.setEnabled(b)
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.label)
 		box.addWidget(self.cb)
+		box.addStretch(self.spaceBelow)
+
+class box():
+	def __init__(self,*items,typ='H',spaceAbove=1,spaceBelow=0): #typ='H' or 'V', pour les Hbox, spaceAbove/below devient gauche/droite
+		self.spaceAbove=spaceAbove
+		self.spaceBelow=spaceBelow
+		if typ=='H':
+			self.box=QHBoxLayout()
+		elif typ=='V':
+			self.box=QVBoxLayout()
+		for item in items :
+			item.addToBox(self.box)
+	def addToBox(self,box):
+		box.addStretch(self.spaceAbove)
+		box.addLayout(self.box)
 		box.addStretch(self.spaceBelow)
 
 class saveButton(button):
@@ -185,11 +238,9 @@ class saveButton(button):
 		self.gra=graphicWidget
 		self.qapp=qapp
 		super().__init__("Save data",spaceAbove=spaceAbove,spaceBelow=spaceBelow)
-		if os.path.isdir("D:/DATA") :
-			self.startpath="D:/DATA"
-		elif os.path.isdir("C:/DATA") :
-			self.startpath="C:/DATA"
-		else :
+		try :
+			self.startpath=defaultDataPath
+		except :
 			self.startpath=''
 		self.setAction(self.save)
 		if autoSave :
@@ -217,9 +268,8 @@ class saveButton(button):
 			with open(fdataname,'w',newline='') as csvfile :
 				spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 				for line in self.gra.lines :
-					data=line.getData()
-					spamwriter.writerow(data[0])
-					spamwriter.writerow(data[1])
+					spamwriter.writerow(line.x)
+					spamwriter.writerow(line.trueY)
 
 
 		if saveFigure :
@@ -269,7 +319,7 @@ class autoSaveMethod():
 		if time.time() > self.time_last_save + self.delay_s :
 			now = datetime.now()
 			date_str=now.strftime("%Y-%m-%d %H-%M-%S")
-			filename=self.sb.startpath+'/AutoSave/'+date_str+'.png'
+			filename=defaultDataPath+'/AutoSave/'+date_str+'.png'
 			self.sb.save(fname=filename,saveData=self.saveData,saveFigure=self.saveFigure)
 			self.time_last_save=time.time()
 
@@ -328,10 +378,10 @@ class startStopButton():
 
 		#~~Setup defaultFolder
 		i=1
-		folderName='D:/DATA/'+datetime.now().strftime("%Y%m%d")+'/Serie 1/'
+		folderName=defaultDataPath+datetime.now().strftime("%Y%m%d")+'/Serie 1/'
 		while os.path.exists(folderName) :
 			i+=1
-			folderName='D:/DATA/'+datetime.now().strftime("%Y%m%d")+'/Serie %i/'%i
+			folderName=defaultDataPath+datetime.now().strftime("%Y%m%d")+'/Serie %i/'%i
 		self.defaultFolder=folderName
 		#~~Fin de setup default Folder
 
@@ -414,11 +464,31 @@ class startStopButton():
 			self.maxIterWidget.addToBox(box)
 
 class fitButton():
-	def __init__(self,line,fit,name='fit',spaceAbove=1,spaceBelow=0): #Y'a eu une tentative d'utilisation de *args, mais en vrai faudrait utilser **kwargs et c'est chiant. La  faut mettre tous les arguments dans l'ordre
-		self.addFitButton=button(name=name,action=self.addFit,spaceAbove=spaceAbove,spaceBelow=0)
+	def __init__(self,line,fit='lin',name='fit',menu=False,spaceAbove=1,spaceBelow=0): 
+
+		self.fitLibrary=['lin','exp','stretch','arb stretch','ESR']
+
+		if menu :
+			self.menu=dropDownMenu('Chose fit','--No fit chosen--',*self.fitLibrary,action=self.itemChosenMenu,spaceAbove=spaceAbove,spaceBelow=0)
+		else :
+			self.menu=False
+		if menu :
+			self.addFitButton=button(name=name,action=self.addFit,spaceAbove=0,spaceBelow=0)
+			self.addFitButton.setEnabled(False)
+		else :
+			self.addFitButton=button(name=name,action=self.addFit,spaceAbove=spaceAbove,spaceBelow=0)
 		self.removeFitButton=button(name='clear fit',action=self.removeFit,spaceAbove=0,spaceBelow=spaceBelow)
 		self.line=line
 		self.labelNames=False
+		
+		
+		self.setFitFunction(fit)
+	def setFitFunction(self,fit):
+		if fit=='lin' :
+			from analyse import lin_fit as f
+			self.func=f
+			self.paramsToShow=[0,1]
+			self.labelNames=['slope','y0']
 		if fit=='exp' :
 			from analyse import exp_fit as f
 			self.func=f
@@ -429,6 +499,11 @@ class fitButton():
 			self.func=f
 			self.paramsToShow=[2]
 			self.labelNames=['tau']
+		elif fit=='arb stretch' :
+			from analyse import stretch_arb_exp_fit as f
+			self.func=f
+			self.paramsToShow=[2,3]
+			self.labelNames=['tau','alpha']
 		if fit=='expZero' :
 			from analyse import exp_fit_zero as f
 			self.func=f
@@ -440,19 +515,42 @@ class fitButton():
 			self.paramsToShow=[1]
 			self.labelNames=['tau']
 		elif fit=='ESR' :
+			from analyse import ESR_n_pics,find_ESR_peaks
+			def f(x,y):
+				if len(self.line.ax.infiniteLines) <= 1 :
+					cs=find_ESR_peaks(x,y)
+				else :
+					cs=[]
+					for l in self.line.ax.infiniteLines :
+						cs+=[l.pos()[0]]
+				return ESR_n_pics(x,y,cs)
+			self.func=f
+			self.paramsToShow=[]
+			self.labelNames=[]
+		elif fit=='ESR and B' :
 			from analyse import find_nearest_ESR
-			def f(x,y): #Est-ce que je suis sensé rajouter un self ? non.
+			def f(x,y):
 				cs=[]
-				for l in line.ax.infiniteLines :
+				for l in self.line.ax.infiniteLines :
 					cs+=[l.pos()[0]]
 				return find_nearest_ESR(x,y,cs)		
 			self.func=f
 			self.paramsToShow=[0,1,2,3]
 			self.labelNames=['B amp (G)','Angle from 100 (°)', 'Angle from 111 (°)', 'Width (Mhz)']
+	def itemChosenMenu(self):
+		self.setFitFunction(fit=self.menu.text())
+		self.addFitButton.setEnabled(True)
 	def addFit(self):
 		x=self.line.xData
 		y=self.line.trueY
-		popt,yfit=self.func(x,y)
+		with warnings.catch_warnings() :
+			warnings.simplefilter('error')
+			try :
+				popt,yfit=self.func(x,y)
+			except Exception as error :		
+				tb=traceback.extract_tb(error.__traceback__)
+				warningGUI(str(error)) #.join(tb.format()) Pour l'erreur complète
+				return
 		label=''
 		for i in range(len(self.paramsToShow)) :
 			if self.labelNames :
@@ -467,6 +565,8 @@ class fitButton():
 				curves[-i].remove()
 				break
 	def addToBox(self,box):
+		if self.menu :
+			self.menu.addToBox(box)
 		self.addFitButton.addToBox(box)
 		self.removeFitButton.addToBox(box)
 
@@ -484,7 +584,7 @@ class microwave(device):
 		self.PG = visa.ResourceManager().open_resource( ressourceName )
 		self.PG.write_termination = '\n'
 		self.PG.timeout=timeout
-		# self.PG.clear()  # Clear instrument io buffers and status
+		# self.PG.clear()  # Clear instrument io buffers and status. Fait planter la microonde de l'entrée
 		self.PG.write('*WAI')
 
 	def create_list_freq(self,fmin,fmax,level,n_points) :
@@ -537,6 +637,12 @@ class microwave(device):
 		self.PG.write(pow_list)
 		self.PG.write('*WAI')
 
+		self.PG.write('OUTP ON') #OFF/ON pour allumer éteindre la uW
+		self.PG.write('*WAI')
+
+		self.PG.write('FREQ:MODE LIST') #on doit allumer la uW avant de passer en mode liste
+		self.PG.write('*WAI')
+
 		self.PG.write('LIST:LEAR') #Peut etre bien facultatif
 		self.PG.write('*WAI')
 
@@ -546,15 +652,10 @@ class microwave(device):
 		self.PG.write('LIST:TRIG:SOUR EXT')
 		self.PG.write('*WAI')
 
-		self.PG.write('OUTP ON') #OFF/ON pour allumer éteindre la uW
-		self.PG.write('*WAI')
-
-		self.PG.write('FREQ:MODE LIST') #on doit allumer la uW avant de passer en mode liste
-		self.PG.write('*WAI')
-
 		self.PG.write('LIST:RES') #Ca par contre ca a l'air de jouer curieusement
 		self.PG.write('*WAI')
 
+		time.sleep(1)
 	def setupContinuous(self,Frequency=2800,Power=-10,mod=None,AC_Depth=100):
 		f=val(Frequency)
 		lvl=val(Power)
@@ -602,39 +703,41 @@ class pulseBlaster(device):
 		self.sp.pb_core_clock(self.clockFrequency)
 
 	def setupContinuous(self,ch1=0,ch2=0,ch3=0,ch4=0):
-		self.initPb()
-		self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
-		self.writeInst([ch1,ch2,ch3,ch4],1e-3,inst=self.sp.Inst.BRANCH,inst_data=0)
-		self.sp.pb_stop_programming()
-		self.start()
-		self.sp.pb_close()
+		with stdout_redirected() :
+			self.initPb()
+			self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
+			self.writeInst([ch1,ch2,ch3,ch4],1e-3,inst=self.sp.Inst.BRANCH,inst_data=0)
+			self.sp.pb_stop_programming()
+			self.start()
+			self.sp.pb_close()
 	def setupPulsed(self,dt=1e-6,ch1='unused',ch2='unused',ch3='unused',ch4='unused',finite=True, toBeClosed=True): #timeUnit in s (default 1 us)
-		self.initPb()
-		self.toBeClosed=toBeClosed
-		dt=1*dt
-		channels=[ch1,ch2,ch3,ch4]
+		with stdout_redirected() :
+			self.initPb()
+			self.toBeClosed=toBeClosed
+			dt=1*dt
+			channels=[ch1,ch2,ch3,ch4]
 
-		for ch in channels :
-			if ch !='unused' :
-				n=len(ch)
+			for ch in channels :
+				if ch !='unused' :
+					n=len(ch)
 
-		a=np.zeros((n,4),np.dtype(int))
-		for i in range(4):
-			ch=channels[i]
-			if ch =='unused' :
-				pass
+			a=np.zeros((n,4),np.dtype(int))
+			for i in range(4):
+				ch=channels[i]
+				if ch =='unused' :
+					pass
+				else :
+					a[:,i]=ch
+
+			self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
+
+			for i in range(0,n-1) :
+				self.writeInst(a[i,:],dt)
+			if finite :
+				self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.STOP,inst_data=0)
 			else :
-				a[:,i]=ch
-
-		self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
-
-		for i in range(0,n-1) :
-			self.writeInst(a[i,:],dt)
-		if finite :
-			self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.STOP,inst_data=0)
-		else :
-			self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.BRANCH,inst_data=0)
-		self.sp.pb_stop_programming()
+				self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.BRANCH,inst_data=0)
+			self.sp.pb_stop_programming()
 
 	def writeInst(self,flags,length,inst=0,inst_data=0): #flags : array of length 4 for the four channels with either 0(Down), 1(Up) or 2(Pulse); inst=InstType (see spinapi.py); inst_data= input for the instruction; length= length in s.
 		length=length*1e9 #the base unit of the pb is the ns
@@ -693,22 +796,22 @@ class pulseBlaster(device):
 		self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
 class hiddenPrints:
-    def __enter__(self):
-        self._original_stdout = sys.stdout
-        sys.stdout = open(os.devnull, 'w')
+	def __enter__(self):
+		self._original_stdout = sys.stdout
+		sys.stdout = open(os.devnull, 'w')
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        sys.stdout.close()
-        sys.stdout = self._original_stdout
+	def __exit__(self, exc_type, exc_val, exc_tb):
+		sys.stdout.close()
+		sys.stdout = self._original_stdout
 
 class useTheme():
 	def __init__(self,theme='white'):
 		self.theme=theme
-		if theme=='white' :
+		if theme=='light' :
 			pg.setConfigOption('background', 'w')
 			pg.setConfigOption('foreground', 'k')			
 			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-		if theme=='black' :
+		if theme=='dark' :
 			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
 
 
@@ -723,16 +826,21 @@ class useTheme():
 		penIndex=i
 		ax.penIndices[penIndex]=False
 		if big :
-			widths=[2,3]
+			widths=[2,2,3]
 		else :
-			widths=[1,1]
-		if typ=='trace' or typ=='fit':
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) #visiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
 			symbol=None
 			symbolPen=None
 			symbolBrush=None
 		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.SolidLine)
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
 			symbol='o'
 			symbolPen=pen
 			symbolBrush=pg.mkBrush(None)
@@ -744,18 +852,23 @@ class useTheme():
 		big = n<=300
 		penIndex=line.penIndex
 		ax=line.ax
-		if big :
-			widths=[2,3]
-		else :
-			widths=[1,1]
 		typ=line.typ
-		if typ=='trace' or typ=='fit':
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) #visiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
+		if big :
+			widths=[2,2,3]
+		else :
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
 			symbol=None
 			symbolPen=None
 			symbolBrush=None
 		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.SolidLine)
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
 			symbol='o'
 			symbolPen=pen
 			symbolBrush=pg.mkBrush(None)
@@ -914,7 +1027,7 @@ class AIChan(NIChan):
 		self.triggedOn(chan)
 
 		
-	def read(self,nRead='auto',waitForAcqui=False,timeout=30) :
+	def read(self,nRead='auto',waitForAcqui=False,timeout=60) :
 		if self.mode=='single' :
 			return(self.readSingle(timeout=timeout))
 		elif self.mode=='timed' :
@@ -1124,7 +1237,7 @@ class CIChan(NIChan):
 			return(self.readPulsed(nRead=nRead))	
 
 class graphics(pg.GraphicsLayoutWidget) :
-	def __init__(self,theme='white',debug=False,refreshRate=False):
+	def __init__(self,theme=defaultTheme,debug=False,refreshRate=False):
 		self.theme=useTheme(theme)
 		super().__init__()			
 		self.norm=False
@@ -1178,6 +1291,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 			y=np.zeros(100)
 		line=myLine(x,y,ax,theme=self.theme,typ=typ,style=style,fast=fast,label=label)
 		line.update(x,y,norm=self.norm)
+		line.reset()
 		self.lines+=[line]
 		line.graphicsWidget=self
 		return line
@@ -1718,7 +1832,7 @@ def repr_numbers(value,precision='exact'):
 		label=(value)
 	elif value==0:
 		label=('0')
-	elif abs(value)>1E4 or abs(value) <1E-3 :
+	elif abs(value)>1E4 or abs(value) <1E-1 :
 		if precision=='exact' :
 			label=('%e'%value)
 		else :
@@ -1739,6 +1853,32 @@ def fhp(f,verbose,*args,**kwargs): ##fhp = function hidden print
 		with hiddenPrints() :
 			return(f(*args,**kwargs))
 
+@contextmanager
+def stdout_redirected(to=os.devnull):
+	'''
+	import os
+
+	with stdout_redirected(to=filename):
+		print("from Python")
+		os.system("echo non-Python applications are also supported")
+	'''
+	fd = sys.stdout.fileno()
+
+	##### assert that Python and C stdio write using the same file descriptor
+	####assert libc.fileno(ctypes.c_void_p.in_dll(libc, "stdout")) == fd == 1
+
+	def _redirect_stdout(to):
+		sys.stdout.close() # + implicit flush()
+		os.dup2(to.fileno(), fd) # fd writes to 'to' file
+		sys.stdout = os.fdopen(fd, 'w') # Python writes to fd
+
+	with os.fdopen(os.dup(fd), 'w') as old_stdout:
+		with open(to, 'w') as file:
+			_redirect_stdout(to=file)
+		try:
+			yield # allow code to be run with the redirected stdout
+		finally:
+			_redirect_stdout(to=old_stdout) # restore stdout.
 
 def test_pg():
 	def setup():

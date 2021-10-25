@@ -4,13 +4,13 @@ sys.path.append('/home/zouzou/these/python_clément')
 from analyse import *
 
 
-# fname="T1 100 3V pulse début read"
-# x,y=extract_data(fname,xcol=0,ycol=5)
-# popt,yfit=exp_fit(x,y)
-# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,label='T1')
-# plt.plot(x,yfit)
-# plt.legend()
-# plt.show()
+fname="T1 100 3V pulse début read"
+x,y=extract_data(fname,xcol=0,ycol=5)
+popt,yfit=exp_fit(x,y)
+plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,label='T1')
+plt.plot(x,yfit)
+plt.legend()
+plt.show()
 
 
 
@@ -73,22 +73,22 @@ from analyse import *
 # ax2.set_ylabel(r'Measured magnetic field ($\mu$T)' ,fontsize=20)
 # plt.show()
 
-fname='scan 100'
-fig,ax=plt.subplots(2,figsize=(9,12),dpi=80)
-ax1=ax[0]
-ax2=ax[1]
-dB=1e-2*3.5e-3
-x1,y1=extract_data(fname,xcol=2,ycol=3)
-x2,y2=extract_data(fname,xcol=0,ycol=1)
-y1=y1/max(y1)
-ratio=3.5*1e-3
-x1=x1*ratio*1e3
-x2=x2*ratio*1e3
-ax1.plot(x1,y1,'o-',markerfacecolor="None",ms=8,mew=2)
-ax2.plot(x2,y2,'o-',markerfacecolor="None",ms=8,mew=2)
-ax1.tick_params(labelsize=15)
-ax1.set_ylabel(r'Photoluminescence (AU)',fontsize=20)
-ax2.tick_params(labelsize=15)
-ax2.set_xlabel(r'magnetic field (mT)',fontsize=20)
-ax2.set_ylabel(r'Demodulated PL (AU)' ,fontsize=20)
-plt.show()
+# fname='scan 100'
+# fig,ax=plt.subplots(2,figsize=(9,12),dpi=80)
+# ax1=ax[0]
+# ax2=ax[1]
+# dB=1e-2*3.5e-3
+# x1,y1=extract_data(fname,xcol=2,ycol=3)
+# x2,y2=extract_data(fname,xcol=0,ycol=1)
+# y1=y1/max(y1)
+# ratio=3.5*1e-3
+# x1=x1*ratio*1e3
+# x2=x2*ratio*1e3
+# ax1.plot(x1,y1,'o-',markerfacecolor="None",ms=8,mew=2)
+# ax2.plot(x2,y2,'o-',markerfacecolor="None",ms=8,mew=2)
+# ax1.tick_params(labelsize=15)
+# ax1.set_ylabel(r'Photoluminescence (AU)',fontsize=20)
+# ax2.tick_params(labelsize=15)
+# ax2.set_xlabel(r'magnetic field (mT)',fontsize=20)
+# ax2.set_ylabel(r'Demodulated PL (AU)' ,fontsize=20)
+# plt.show()

@@ -3,6 +3,7 @@ import glob
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit,root_scalar,minimize
+from scipy.signal import find_peaks
 from scipy import fftpack
 from PyQt5.QtWidgets import QApplication,QFileDialog
 
@@ -11,7 +12,7 @@ from PyQt5.QtWidgets import QApplication,QFileDialog
 
 def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='auto'):
 	import csv
-	if filename[-4]!='.' :
+	if len(filename)<=4 or filename[-4]!='.' :
 		if glob.glob(filename+'.txt') :
 			f=glob.glob(filename+'.txt')[0]
 		elif glob.glob(filename+'.csv') :
@@ -20,7 +21,7 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 			print('file not found')
 			quit()
 		filename=f
-	if filename[-4:] =='.txt' :
+	if filename[-4:] =='.txt' : #Assumes that data is in column
 		x=[]
 		y=[]
 		with open(filename,'r',encoding = "ISO-8859-1") as f:
@@ -80,7 +81,7 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 def lin_fit(x,y) :
 	A=np.vstack([x,np.ones(len(x))]).T
 	a,b = np.linalg.lstsq(A, y, rcond=None)[0]
-	return(a,b,a*x+b)
+	return([a,b],a*x+b)
 
 def quad_fit(x,y) :
 	A=np.vstack([x**2,x,np.ones(len(x))]).T
@@ -97,139 +98,159 @@ def fit_ordre_6(x,y) :
 	w,z,a,b,c,d,e = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([w,z,a,b,c,d,e],w*x**6+z*x**5+a*x**4+b*x**3+c*x**2+d*x+e)
 
-def gauss_fit(x,y,Amp=None,x0=None,sigma=None,ss=0) :
+def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0) :
 	if not ss :
 		ss=y[0]
-	if not Amp :
+	if not amp :
 		if max(y)-ss > ss-min(y) :
-			Amp=max(y)-ss
+			amp=max(y)-ss
 		else :
-			Amp=min(y)-ss
+			amp=min(y)-ss
 	if not x0 :
 		x0=x[int(len(x)/2)]
 	if not sigma :
 		sigma=x[int(len(x)/5)]-x[0]
-	def f(x,Amp,x0,sigma,ss) : #HWHM=1.18*sigma (sqrt(2*ln(2)))
-		return Amp*np.exp(-(x-x0)**2/(2*sigma**2))+ss
-	p0=[Amp,x0,sigma,ss]
+	def f(x,amp,x0,sigma,ss) : #HWHM=1.18*sigma (sqrt(2*ln(2)))
+		return amp*np.exp(-(x-x0)**2/(2*sigma**2))+ss
+	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
 
-def lor_fit(x,y,Amp=None,x0=None,sigma=None,ss=None) :
+def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
 	if not ss :
 		ss=y[0]
-	if not Amp :
+	if not amp :
 		if max(y)-ss > ss-min(y) :
-			Amp=max(y)-ss
+			amp=max(y)-ss
 		else :
-			Amp=min(y)-ss
+			amp=min(y)-ss
 	if not x0 :
 		x0=x[int(len(x)/2)]
 	if not sigma :
 		sigma=x[int(len(x)/5)]-x[0]
-	def f(x,Amp,x0,sigma,ss) :
-		return ss+Amp*1/(1+((x-x0)/(2*sigma))**2)
-	p0=[Amp,x0,sigma,ss]
+	def f(x,amp,x0,sigma,ss) :
+		return ss+amp*1/(1+((x-x0)/(2*sigma))**2)
+	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
 
-def exp_fit(x,y,Amp=None,ss=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
+def cos_fit(x,y,amp=None,omega=None,phi=0,ss=None):
+	if not amp :
+		amp=max(y)-min(y)
+	if not omega :
+		omega=2*np.pi/(max(x)-min(x))
+	if not ss :
+		ss=y[-1]
+	def f(x,amp,omega,phi,ss):
+		return amp*np.cos(omega*x+phi)+ss
+	p0=[amp,omega,phi,ss]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,*popt))
+
+
+def exp_fit(x,y,amp=None,ss=None,tau=None) :
+	if not amp :
+		amp=max(y)-min(y)
 	if not ss :
 		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,ss,tau) :
-		return Amp*np.exp(-x/tau)+ss
-	p0=[Amp,ss,tau]
+	def f(x,amp,ss,tau) :
+		return amp*np.exp(-x/tau)+ss
+	p0=[amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
-def exp_fit_zero(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
+def exp_fit_zero(x,y,amp=None,tau=None) :
+	if not amp :
+		amp=max(y)-min(y)
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-x/tau)
-	p0=[Amp,tau]
+	def f(x,amp,tau) :
+		return amp*np.exp(-x/tau)
+	p0=[amp,tau]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_exp_fit(x,y,Amp=None,ss=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
+def stretch_exp_fit(x,y,amp=None,ss=None,tau=None) :
+	if not amp :
+		amp=max(y)-min(y)
 	if not ss :
 		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,ss,tau) :
-		return Amp*np.exp(-np.sqrt(x/tau))+ss
-	p0=[Amp,ss,tau]
+	def f(x,amp,ss,tau) :
+		return amp*np.exp(-np.sqrt(x/tau))+ss
+	p0=[amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
-def stretch_exp_fit_zero(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
+def stretch_exp_fit_zero(x,y,amp=None,tau=None) :
+	if not amp :
+		amp=max(y)-min(y)
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-np.sqrt(x/tau))
-	p0=[Amp,tau]
+	def f(x,amp,tau) :
+		return amp*np.exp(-np.sqrt(x/tau))
+	p0=[amp,tau]
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_arb_exp_fit(x,y,Amp=None,ss=None,tau=None,alpha=0.5):
-	if not Amp :
-		Amp=max(y)-min(y)
+def stretch_arb_exp_fit(x,y,amp=None,ss=None,tau=None,alpha=0.5,fixed=False):
+	if not amp :
+		amp=max(y)-min(y)
 	if not ss :
 		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,ss,tau,alpha) :
-		return Amp*np.exp(-(x/tau)**alpha)+ss
-	p0=[Amp,ss,tau,alpha]
-	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
-	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
+	if fixed :
+		def f(x,amp,ss,tau) :
+			return amp*np.exp(-(x/tau)**alpha)+ss
+		p0=[amp,ss,tau]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
+	else :
+		def f(x,amp,ss,tau,alpha) :
+			return amp*np.exp(-(x/tau)**alpha)+ss
+		p0=[amp,ss,tau,alpha]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
+	return(popt,f(x,*popt))
 
-def third_stretch(x,y,Amp=None,tau=None) :
-	if not Amp :
-		Amp=max(y)-min(y)
+def third_stretch(x,y,amp=None,tau=None) :
+	if not amp :
+		amp=max(y)-min(y)
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,tau) :
-		return Amp*np.exp(-(x/tau)^(1/3))
-	p0=[Amp,tau]
+	def f(x,amp,tau) :
+		return amp*np.exp(-(x/tau)^(1/3))
+	p0=[amp,tau]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_et_phonons(x,y,Amp=None,tau=None,ss=None,T1ph=5E-3) :
-	if not Amp :
-		Amp=max(y)-min(y)
+def stretch_et_phonons(x,y,amp=None,tau=None,ss=None,T1ph=5E-3) :
+	if not amp :
+		amp=max(y)-min(y)
 	if not ss :
 		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,Amp,ss,tau) :
-		return Amp*np.exp(-x/((T1ph*np.sqrt(x*tau))/(T1ph+np.sqrt(x*tau))))+ss
-	p0=[Amp,ss,tau]
+	def f(x,amp,ss,tau) :
+		return amp*np.exp(-x/((T1ph*np.sqrt(x*tau))/(T1ph+np.sqrt(x*tau))))+ss
+	p0=[amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
-def Rabi_fit(x,y,Amp=None,omega=None,tau=None,ss=None):
-	if not Amp :
-		Amp=max(y)-min(y)
+def Rabi_fit(x,y,amp=None,omega=None,tau=None,ss=None):
+	if not amp :
+		amp=max(y)-min(y)
 	if not ss :
 		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/3)]-x[0]
 	if not omega :
 		omega=1/(x[int(len(x)/10)]-x[0])
-	def f(x,Amp,ss,tau,omega) :
-		return Amp*np.exp(-x/tau)*np.cos(omega*x)+ss
-	p0=[Amp,ss,tau,omega]
+	def f(x,amp,ss,tau,omega) :
+		return amp*np.exp(-x/tau)*np.cos(omega*x)+ss
+	p0=[amp,ss,tau,omega]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
 
@@ -279,10 +300,38 @@ def ESR_n_pics(x,y,cs,width=False,ss=None,amp=None,typ='gauss') : #typ="gauss" o
 				y+=amp*1/(1+((x-c)/width)**2)
 		return(y)
 	popt, pcov = curve_fit(f, x, y, p0)
-	variables=(x,)
-	for p in popt :
-		variables+=(p,)
-	return(popt,f(*variables))
+	ss=popt[0]
+	centers=popt[1:n+1]
+	widths=popt[n+1:2*n+1]
+	amps=popt[2*n+1:]
+	params=[ss,centers,widths,amps]
+	return(params,f(x,*popt))
+
+def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x'):
+	'''
+	width in unit of x  
+	thrsehold = min peak height in proportion of max peak height 
+	returnUnit='x' : return the x position of the peaks ; ='n' return the index of the peaks
+	'''
+	if not width :
+		distance=int(10/(x[1]-x[0])) #assumes that x is in MHz, and takes an ESR width of 10 MHz
+	else :
+		distance=int(width/(x[1]-x[0]))
+
+	y=y-min(y)
+	y=y/max(y)
+	if y[0]-min(y) > max(y)-y[0] : #Setup "ESR PL" (pics à l'envers)
+		y=1-y
+	height=threshold
+
+	ns=find_peaks(y,height=height,distance=distance) 
+	
+
+	if returnUnit=='x' :
+		cs=[x[i] for i in ns[0]]
+		return(np.array(cs))
+	if returnUnit=='n' :
+		return(ns[0])
 
 def find_B_111(freq,transi='-') : #freq en MHz
 	D=2870

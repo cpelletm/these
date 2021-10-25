@@ -77,7 +77,12 @@ def update(x):
 
 def extraStop() :
 	do.setupContinuous([[False],[True],[AOM.state()]])
-	
+
+def avgWidgAction() :
+	if avgWidg.state():
+		l1.typ='average'
+	else :
+		l1.typ='instant'
 
 ## Create the communication (I/O) instances ##
 ai=AIChan()
@@ -92,6 +97,7 @@ NRead=field('n read',200)
 waitMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tWait=field('dark time (s)',1e-3)
 readMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
+readMenu.setIndex('green')
 tRead=field('read time (s)',1e-3)
 polaMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tPola=field('pola time(s)',1e-3)
@@ -101,14 +107,17 @@ fields=[laser,AOM,fullView,NRead,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,nR
 gra=graphics(refreshRate=0.1)
 l1=gra.addLine(typ='instant',style='m',fast=True)
 
+avgWidg=checkBox('instant/avg',action=avgWidgAction) #Uncheck = instant, check = avg
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,debug=True,extraStop=extraStop)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
+expfit=fitButton(line=l1,fit='exp',name='exp fit')
+stretchfit=fitButton(line=l1,fit='stretch',name='stretch fit')
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)
-buttons=[channels,norm,StartStop,trace,save,it]
+buttons=[channels,avgWidg,norm,StartStop,trace,expfit,stretchfit,save,it]
 
 ## Create the graphical interface and launch the program ##
 GUI=Graphical_interface(fields,gra,buttons,title='Polarisation')
