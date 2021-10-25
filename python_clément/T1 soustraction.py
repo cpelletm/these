@@ -1,16 +1,16 @@
 from lab import *
 from ESR import ESRInLine
-from analyse import ESR_n_pics_auto
+from analyse import find_ESR_peaks
 
 physicalChannels=['ai13','ai11','ai9']
 
-Voltages=np.linspace(-3,3,200)
+Voltages=np.linspace(-2,2,130)
 def acquiStart(i):
 	v=Voltages[i]
 	ao.setupContinuous(v)
-	x,y=ESRInLine(Fmin=2400,Fmax=3200,Power=10,NPoints=1001,NRuns=3,Fsweep=400,AmpMod=False)
+	x,y=ESRInLine(Fmin=2400,Fmax=3200,Power=10,NPoints=1001,NRuns=3,Fsweep=400,AmpMod=True)
 	gra.updateLine(l4,x,y)
-	cs=ESR_n_pics_auto(x,y)
+	cs=find_ESR_peaks(x,y)
 	print(min(cs)) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
 	frequW.setValue(min(cs))
 
@@ -47,7 +47,7 @@ def setup():
 	
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x,nRead,nT1):
-	if do.done():
+	if True:
 		data=ai.read()
 		y1=[]
 		y2=[]
@@ -89,8 +89,8 @@ l1=gra.addLine(typ='average',style='m',fast=True)
 l2=gra.addLine(typ='average',style='m',fast=True)
 ax2=gra.addAx()
 l3=ax2.addLine(typ='average',style='m',fast=True)
-ax3=gra.addAx()
-l4=ax3.addLine(typ='instant',style='m',fast=True)
+# ax3=gra.addAx()
+# l4=ax3.addLine(typ='instant',style='m',fast=True)
 
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 debutfin=checkBox('debut(check)\nfin(uncheck)')

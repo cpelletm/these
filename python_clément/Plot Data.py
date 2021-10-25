@@ -30,10 +30,7 @@ def choseLineAction():
 def changeWindowAction():
 	try :
 		gra.updateLine(l1,x[val(beginSelect):val(endSelect)],y[val(beginSelect):val(endSelect)])
-	except Exception as error :		
-		tb=traceback.extract_tb(error.__traceback__)
-		print(error)
-		print(''.join(tb.format()))
+	except :		
 		warningGUI('Could not plot the selected window (min=0,max=%i)'%len(x))
 
 
@@ -53,11 +50,11 @@ leftFields=[choseFile,lineSelection,beginSelect,endSelect]
 gra=graphics()
 l1=gra.addLine()
 
-
+fit=fitButton(l1,menu=True)
 trace=keepTraceButton(l1,spaceBelow=1)
 norm=gra.normalize()
 norm.setState(False)
-rightFields=[norm,trace]
+rightFields=[norm,fit,trace]
 
 GUI=Graphical_interface(leftFields,gra,rightFields,title='Plot Data')
 GUI.run()

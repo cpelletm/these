@@ -3,6 +3,16 @@ from lab import *
 physicalChannels=['ai11','ai13']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
+
+Voltages=np.linspace(1,2,100)
+def acquiStart(i):
+	v=Voltages[i]
+	ao.setupContinuous(v)
+
+def acquiEnd(i):
+	fname=StartStop.defaultFolder+'V=%f'%(Voltages[i])+' V'
+	save.save(fname=fname)
+
 def setup(): 
 	if AM.state():
 		mod='AM'
@@ -38,6 +48,7 @@ def switchAction():
 ## Create the communication (I/O) instances ##
 ai=AIChan()
 do=DOChan('p01')
+ao=AOChan('ao0')
 mw=microwave('mw_ludo')
 ## Setup the Graphical interface ##
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
@@ -61,7 +72,8 @@ fields=[channels,fmin,fmax,level,AM,AMDepth,switchButton,nPoints,fsweep]
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
 
-StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l1,showMaxIter=True)
+StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,showMaxIter=True)
+StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=5,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
 it=iterationWidget(l1)

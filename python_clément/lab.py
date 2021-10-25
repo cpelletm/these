@@ -3,6 +3,7 @@
 import sys
 import os
 from getmac import get_mac_address as gma
+from contextlib import contextmanager
 import warnings
 import traceback
 import time
@@ -30,7 +31,7 @@ qapp = QApplication(sys.argv)
 macAdressOfCurrentPC=gma()
 if macAdressOfCurrentPC=='64:00:6a:5f:1e:5b' : #Ordi 2 (le mien)
 	computerUsed='Ordi2'
-	defaultDataPath="D:/DATA"
+	defaultDataPath="D:/DATA/"
 	defaultTheme='light'
 else :
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
@@ -147,6 +148,8 @@ class button():
 			self.setAction(action)
 	def setAction(self,action):		
 			self.button.clicked.connect(action)
+	def setEnabled(self,b):
+		self.button.setEnabled(b)
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.button)
@@ -461,17 +464,31 @@ class startStopButton():
 			self.maxIterWidget.addToBox(box)
 
 class fitButton():
-	def __init__(self,line,fit='fit',name='fit',spaceAbove=1,spaceBelow=0): #Y'a eu une tentative d'utilisation de *args, mais en vrai faudrait utilser **kwargs et c'est chiant. La  faut mettre tous les arguments dans l'ordre
-		self.addFitButton=button(name=name,action=self.addFit,spaceAbove=spaceAbove,spaceBelow=0)
+	def __init__(self,line,fit='lin',name='fit',menu=False,spaceAbove=1,spaceBelow=0): 
+
+		self.fitLibrary=['lin','exp','stretch','arb stretch','ESR']
+
+		if menu :
+			self.menu=dropDownMenu('Chose fit','--No fit chosen--',*self.fitLibrary,action=self.itemChosenMenu,spaceAbove=spaceAbove,spaceBelow=0)
+		else :
+			self.menu=False
+		if menu :
+			self.addFitButton=button(name=name,action=self.addFit,spaceAbove=0,spaceBelow=0)
+			self.addFitButton.setEnabled(False)
+		else :
+			self.addFitButton=button(name=name,action=self.addFit,spaceAbove=spaceAbove,spaceBelow=0)
 		self.removeFitButton=button(name='clear fit',action=self.removeFit,spaceAbove=0,spaceBelow=spaceBelow)
 		self.line=line
 		self.labelNames=False
-		self.fitLibrary=['lin','exp']
+		
+		
 		self.setFitFunction(fit)
-
 	def setFitFunction(self,fit):
 		if fit=='lin' :
-			
+			from analyse import lin_fit as f
+			self.func=f
+			self.paramsToShow=[0,1]
+			self.labelNames=['slope','y0']
 		if fit=='exp' :
 			from analyse import exp_fit as f
 			self.func=f
@@ -482,6 +499,11 @@ class fitButton():
 			self.func=f
 			self.paramsToShow=[2]
 			self.labelNames=['tau']
+		elif fit=='arb stretch' :
+			from analyse import stretch_arb_exp_fit as f
+			self.func=f
+			self.paramsToShow=[2,3]
+			self.labelNames=['tau','alpha']
 		if fit=='expZero' :
 			from analyse import exp_fit_zero as f
 			self.func=f
@@ -493,19 +515,42 @@ class fitButton():
 			self.paramsToShow=[1]
 			self.labelNames=['tau']
 		elif fit=='ESR' :
+			from analyse import ESR_n_pics,find_ESR_peaks
+			def f(x,y):
+				if len(self.line.ax.infiniteLines) <= 1 :
+					cs=find_ESR_peaks(x,y)
+				else :
+					cs=[]
+					for l in self.line.ax.infiniteLines :
+						cs+=[l.pos()[0]]
+				return ESR_n_pics(x,y,cs)
+			self.func=f
+			self.paramsToShow=[]
+			self.labelNames=[]
+		elif fit=='ESR and B' :
 			from analyse import find_nearest_ESR
 			def f(x,y):
 				cs=[]
-				for l in line.ax.infiniteLines :
+				for l in self.line.ax.infiniteLines :
 					cs+=[l.pos()[0]]
 				return find_nearest_ESR(x,y,cs)		
 			self.func=f
 			self.paramsToShow=[0,1,2,3]
 			self.labelNames=['B amp (G)','Angle from 100 (°)', 'Angle from 111 (°)', 'Width (Mhz)']
+	def itemChosenMenu(self):
+		self.setFitFunction(fit=self.menu.text())
+		self.addFitButton.setEnabled(True)
 	def addFit(self):
 		x=self.line.xData
 		y=self.line.trueY
-		popt,yfit=self.func(x,y)
+		with warnings.catch_warnings() :
+			warnings.simplefilter('error')
+			try :
+				popt,yfit=self.func(x,y)
+			except Exception as error :		
+				tb=traceback.extract_tb(error.__traceback__)
+				warningGUI(str(error)) #.join(tb.format()) Pour l'erreur complète
+				return
 		label=''
 		for i in range(len(self.paramsToShow)) :
 			if self.labelNames :
@@ -520,6 +565,8 @@ class fitButton():
 				curves[-i].remove()
 				break
 	def addToBox(self,box):
+		if self.menu :
+			self.menu.addToBox(box)
 		self.addFitButton.addToBox(box)
 		self.removeFitButton.addToBox(box)
 
@@ -656,39 +703,41 @@ class pulseBlaster(device):
 		self.sp.pb_core_clock(self.clockFrequency)
 
 	def setupContinuous(self,ch1=0,ch2=0,ch3=0,ch4=0):
-		self.initPb()
-		self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
-		self.writeInst([ch1,ch2,ch3,ch4],1e-3,inst=self.sp.Inst.BRANCH,inst_data=0)
-		self.sp.pb_stop_programming()
-		self.start()
-		self.sp.pb_close()
+		with stdout_redirected() :
+			self.initPb()
+			self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
+			self.writeInst([ch1,ch2,ch3,ch4],1e-3,inst=self.sp.Inst.BRANCH,inst_data=0)
+			self.sp.pb_stop_programming()
+			self.start()
+			self.sp.pb_close()
 	def setupPulsed(self,dt=1e-6,ch1='unused',ch2='unused',ch3='unused',ch4='unused',finite=True, toBeClosed=True): #timeUnit in s (default 1 us)
-		self.initPb()
-		self.toBeClosed=toBeClosed
-		dt=1*dt
-		channels=[ch1,ch2,ch3,ch4]
+		with stdout_redirected() :
+			self.initPb()
+			self.toBeClosed=toBeClosed
+			dt=1*dt
+			channels=[ch1,ch2,ch3,ch4]
 
-		for ch in channels :
-			if ch !='unused' :
-				n=len(ch)
+			for ch in channels :
+				if ch !='unused' :
+					n=len(ch)
 
-		a=np.zeros((n,4),np.dtype(int))
-		for i in range(4):
-			ch=channels[i]
-			if ch =='unused' :
-				pass
+			a=np.zeros((n,4),np.dtype(int))
+			for i in range(4):
+				ch=channels[i]
+				if ch =='unused' :
+					pass
+				else :
+					a[:,i]=ch
+
+			self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
+
+			for i in range(0,n-1) :
+				self.writeInst(a[i,:],dt)
+			if finite :
+				self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.STOP,inst_data=0)
 			else :
-				a[:,i]=ch
-
-		self.sp.pb_start_programming(self.sp.PULSE_PROGRAM)
-
-		for i in range(0,n-1) :
-			self.writeInst(a[i,:],dt)
-		if finite :
-			self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.STOP,inst_data=0)
-		else :
-			self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.BRANCH,inst_data=0)
-		self.sp.pb_stop_programming()
+				self.writeInst(a[n-1,:],dt,inst=self.sp.Inst.BRANCH,inst_data=0)
+			self.sp.pb_stop_programming()
 
 	def writeInst(self,flags,length,inst=0,inst_data=0): #flags : array of length 4 for the four channels with either 0(Down), 1(Up) or 2(Pulse); inst=InstType (see spinapi.py); inst_data= input for the instruction; length= length in s.
 		length=length*1e9 #the base unit of the pb is the ns
@@ -747,13 +796,13 @@ class pulseBlaster(device):
 		self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
 class hiddenPrints:
-    def __enter__(self):
-        self._original_stdout = sys.stdout
-        sys.stdout = open(os.devnull, 'w')
+	def __enter__(self):
+		self._original_stdout = sys.stdout
+		sys.stdout = open(os.devnull, 'w')
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        sys.stdout.close()
-        sys.stdout = self._original_stdout
+	def __exit__(self, exc_type, exc_val, exc_tb):
+		sys.stdout.close()
+		sys.stdout = self._original_stdout
 
 class useTheme():
 	def __init__(self,theme='white'):
@@ -777,16 +826,21 @@ class useTheme():
 		penIndex=i
 		ax.penIndices[penIndex]=False
 		if big :
-			widths=[2,3]
+			widths=[2,2,3]
 		else :
-			widths=[1,1]
-		if typ=='trace' or typ=='fit':
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) #visiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
 			symbol=None
 			symbolPen=None
 			symbolBrush=None
 		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.SolidLine)
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
 			symbol='o'
 			symbolPen=pen
 			symbolBrush=pg.mkBrush(None)
@@ -798,18 +852,23 @@ class useTheme():
 		big = n<=300
 		penIndex=line.penIndex
 		ax=line.ax
-		if big :
-			widths=[2,3]
-		else :
-			widths=[1,1]
 		typ=line.typ
-		if typ=='trace' or typ=='fit':
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) #visiblement y'a moyen de faire ça avec iter() et next() mais c'est pas mal non plus ça
+		if big :
+			widths=[2,2,3]
+		else :
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
 			symbol=None
 			symbolPen=None
 			symbolBrush=None
 		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.SolidLine)
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
 			symbol='o'
 			symbolPen=pen
 			symbolBrush=pg.mkBrush(None)
@@ -967,7 +1026,7 @@ class AIChan(NIChan):
 		self.triggedOn(chan)
 
 		
-	def read(self,nRead='auto',waitForAcqui=False,timeout=nidaqmx.constants.WAIT_INFINITELY) :
+	def read(self,nRead='auto',waitForAcqui=False,timeout=60) :
 		if self.mode=='single' :
 			return(self.readSingle(timeout=timeout))
 		elif self.mode=='timed' :
@@ -1772,7 +1831,7 @@ def repr_numbers(value,precision='exact'):
 		label=(value)
 	elif value==0:
 		label=('0')
-	elif abs(value)>1E4 or abs(value) <1E-3 :
+	elif abs(value)>1E4 or abs(value) <1E-1 :
 		if precision=='exact' :
 			label=('%e'%value)
 		else :
@@ -1793,6 +1852,32 @@ def fhp(f,verbose,*args,**kwargs): ##fhp = function hidden print
 		with hiddenPrints() :
 			return(f(*args,**kwargs))
 
+@contextmanager
+def stdout_redirected(to=os.devnull):
+	'''
+	import os
+
+	with stdout_redirected(to=filename):
+		print("from Python")
+		os.system("echo non-Python applications are also supported")
+	'''
+	fd = sys.stdout.fileno()
+
+	##### assert that Python and C stdio write using the same file descriptor
+	####assert libc.fileno(ctypes.c_void_p.in_dll(libc, "stdout")) == fd == 1
+
+	def _redirect_stdout(to):
+		sys.stdout.close() # + implicit flush()
+		os.dup2(to.fileno(), fd) # fd writes to 'to' file
+		sys.stdout = os.fdopen(fd, 'w') # Python writes to fd
+
+	with os.fdopen(os.dup(fd), 'w') as old_stdout:
+		with open(to, 'w') as file:
+			_redirect_stdout(to=file)
+		try:
+			yield # allow code to be run with the redirected stdout
+		finally:
+			_redirect_stdout(to=old_stdout) # restore stdout.
 
 def test_pg():
 	def setup():
