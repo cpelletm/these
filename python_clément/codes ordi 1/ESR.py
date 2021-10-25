@@ -34,6 +34,7 @@ def setup():
 def update(x,acqui,mode,n):
 	pb.start()
 	y=acqui.read()
+	print(acqui.sampsPerChan,acqui.nAvg,acqui.nRepeat)
 	if mode=='ctr' :
 		gra.updateLine(l1,x[:-1],y)
 	elif mode=='ai' :
