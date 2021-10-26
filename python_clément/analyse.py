@@ -302,9 +302,45 @@ def ESR_n_pics(x,y,cs,width=False,ss=None,amp=None,typ='gauss') : #typ="gauss" o
 	popt, pcov = curve_fit(f, x, y, p0)
 	ss=popt[0]
 	centers=popt[1:n+1]
-	widths=popt[n+1:2*n+1]
+	widths=abs(popt[n+1:2*n+1])
 	amps=popt[2*n+1:]
 	params=[ss,centers,widths,amps]
+	return(params,f(x,*popt))
+
+def ESR_fixed_amp_and_width(x,y,cs,amp=False,width=False,ss=False,typ='gauss'):
+	if not ss :
+		ss=y[0]
+	if not amp :
+		if max(y)-ss > ss-min(y) :
+			amp=max(y)-ss
+		else :
+			amp=min(y)-ss
+	if not width :
+		if max(x) < 50 : #Je sq c'est des GHz
+			width=1e-3
+		elif max(x) < 5E4 : #Je sq c'es des Mhz
+			width=1
+		else : #Je sq c'es des Hz
+			width=1E6
+	p0=[ss,amp,width,*cs]
+	def f(x,*params):
+		ss=params[0]
+		amp=params[1]
+		width=params[2]
+		cs=params[3:]
+		y=ss
+		for c in cs :
+			if typ=="gauss" :
+				y+=amp*np.exp(-((x-c)/width)**2)
+			elif typ=="lor" :
+				y+=amp*1/(1+((x-c)/width)**2)
+		return(y)
+	popt, pcov = curve_fit(f, x, y, p0)
+	ss=popt[0]
+	centers=popt[3:]
+	width=abs(popt[2])
+	amp=popt[1]
+	params=[ss,centers,width,amp]
 	return(params,f(x,*popt))
 
 def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x'):

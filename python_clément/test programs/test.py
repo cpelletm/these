@@ -1544,5 +1544,6 @@ def test_dico():
 	dic[0]='toto'
 	print(dic,dic.keys(),dic.values())
 
-from getmac import get_mac_address as gma
-print(gma())
+a=[1,2,3]
+b=[*a,4,5]
+print(b)
