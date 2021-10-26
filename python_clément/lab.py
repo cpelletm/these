@@ -33,7 +33,13 @@ if macAdressOfCurrentPC=='64:00:6a:5f:1e:5b' : #Ordi 2 (le mien)
 	computerUsed='Ordi2'
 	defaultDataPath="D:/DATA/"
 	defaultTheme='light'
+
+elif macAdressOfCurrentPC=='d8:9e:f3:23:bb:26' : #Ordi 1 (de l'entrée)
+	computerUsed='Ordi1'
+	defaultDataPath="C:/DATA/"
+	defaultTheme='dark'
 else :
+	print('current mac adress : ',gma())
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
 
 class Graphical_interface(QMainWindow) :
@@ -688,7 +694,7 @@ class microwave(device):
 class pulseBlaster(device):
 	def __init__(self,clockFrequency=300,chanOn=(),verbose=False): #frequency in MHz, frequency of the pb in the entrance computer is 300 MHz, frequency of the pb in the back computer is 500 MHz
 		#chanOn : channels (1,2,3, or 4) to leave on True when the pulseblaster is closed
-		#le verbose ne sert présentement à rien (il est bavard quand je le lance dans lab quoiqu'il arrive, mais pas quand je le lance d'ailleurs ce qui est très bien)
+		#le verbose ne sert présentement à rien
 		super().__init__()
 		import spinapi as sp
 		self.verbose=verbose
@@ -749,14 +755,14 @@ class pulseBlaster(device):
 			#Il faudra p-e modifier pour mettre la pulse la plus courte possible (une dizaine de ns je crois), mais j'ai un peu peur qu'elles ne soit pas toujours détectée (la micro-onde m'a deja fait des blagues)
 			flagBis=[min(1,i) for i in flags] #ca transforme les 2 en 1
 			cmd=self.convertLineToBin(flagBis)
-			self.sp.pb_inst_pbonly(cmd, self.sp.Inst.CONTINUE, 0, length/2) #les pulses font 20 ns up.
+			self.sp.pb_inst_pbonly(cmd, self.sp.Inst.CONTINUE, 0, length//2) #les pulses font 20 ns up.
 			flagBis=[i%2 for i in flags] #c'est un peu ridicule mais en vrai je suis fier de moi. Ca transforme les 2 en 0 et pas les 1
 			cmd=self.convertLineToBin(flagBis)
 			if inst_data==self.sp.Inst.STOP :
-				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.CONTINUE, length/2) #Il y a une instruction en plus parce que la pulseblaster considère qu'elle a fini des qu'elle lance la dernière instruction, et pas quand la dernière instrucion est terminée
+				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.CONTINUE, length//2) #Il y a une instruction en plus parce que la pulseblaster considère qu'elle a fini des qu'elle lance la dernière instruction, et pas quand la dernière instrucion est terminée
 				self.sp.pb_inst_pbonly(cmd, inst, self.sp.Inst.STOP, 20)
 			else :
-				self.sp.pb_inst_pbonly(cmd, inst, inst_data, length-20)
+				self.sp.pb_inst_pbonly(cmd, inst, inst_data, length-length//2)
 		else :
 			cmd=self.convertLineToBin(flags)
 			if inst_data==self.sp.Inst.STOP :
@@ -784,16 +790,18 @@ class pulseBlaster(device):
 		else :
 			return False
 	def start(self):
-		self.sp.pb_reset() #pas bien compris à quoi il sert le reset
-		self.sp.pb_start()
+		with stdout_redirected() :
+			self.sp.pb_reset() #pas bien compris à quoi il sert le reset
+			self.sp.pb_start()
 	def stop(self):
 		self.sp.pb_stop()
 	def close(self):
-		line=[0,0,0,0]
-		for i in self.chanOn :
-			line[i-1]=1
-		self.sp.pb_close()
-		self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
+		with stdout_redirected() :
+			line=[0,0,0,0]
+			for i in self.chanOn :
+				line[i-1]=1
+			self.sp.pb_close()
+			self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
 class hiddenPrints:
 	def __enter__(self):
@@ -807,11 +815,11 @@ class hiddenPrints:
 class useTheme():
 	def __init__(self,theme='white'):
 		self.theme=theme
-		if theme=='light' :
+		if theme=='light' or theme=='white' :
 			pg.setConfigOption('background', 'w')
 			pg.setConfigOption('foreground', 'k')			
 			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-		if theme=='dark' :
+		if theme=='dark' or theme=='black' :
 			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
 
 
@@ -1020,6 +1028,7 @@ class AIChan(NIChan):
 		self.mode='withPB'
 		fmax=self.getMaxFreq()
 		self.nAvg=(fmax/(freq*1.05)).__trunc__() #j'augmente la freq d'acquisition de 5% pour être sur qu'il a le temps de finir l'acquisition entre chaque pulse
+		# self.nAvg=2
 		mask=[el==2 for el in signal]
 		self.sampsPerChan=sum(mask)*self.nAvg*self.nRepeat #note : si tu veux custom la lecture avec des 0 et des 1, n'utilise pas le read(nSample='auto'), ca devrait marcher.
 		self.task.timing.cfg_samp_clk_timing(fmax,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.nAvg)
@@ -1221,7 +1230,7 @@ class CIChan(NIChan):
 			nRead=self.sampsPerChan
 		else :
 			nRead=nRead*self.nRepeat
-		data=np.array(self.task.read(val(nRead)))
+		data=np.array(self.task.read(val(nRead),timeout=60))
 		if counts :
 			return data
 		else :
