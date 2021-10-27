@@ -38,6 +38,11 @@ elif macAdressOfCurrentPC=='d8:9e:f3:23:bb:26' : #Ordi 1 (de l'entrée)
 	computerUsed='Ordi1'
 	defaultDataPath="C:/DATA/"
 	defaultTheme='dark'
+
+elif macAdressOfCurrentPC=='f0:79:59:2f:4b:78' : #Ordi perso
+	computerUsed='OrdiPerso'
+	defaultDataPath="../data/"
+	defaultTheme='light'
 else :
 	print('current mac adress : ',gma())
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))

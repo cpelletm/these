@@ -302,12 +302,48 @@ def ESR_n_pics(x,y,cs,width=False,ss=None,amp=None,typ='gauss') : #typ="gauss" o
 	popt, pcov = curve_fit(f, x, y, p0)
 	ss=popt[0]
 	centers=popt[1:n+1]
-	widths=popt[n+1:2*n+1]
+	widths=abs(popt[n+1:2*n+1])
 	amps=popt[2*n+1:]
 	params=[ss,centers,widths,amps]
 	return(params,f(x,*popt))
 
-def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x'):
+def ESR_fixed_amp_and_width(x,y,cs,amp=False,width=False,ss=False,typ='gauss'):
+	if not ss :
+		ss=y[0]
+	if not amp :
+		if max(y)-ss > ss-min(y) :
+			amp=max(y)-ss
+		else :
+			amp=min(y)-ss
+	if not width :
+		if max(x) < 50 : #Je sq c'est des GHz
+			width=1e-3
+		elif max(x) < 5E4 : #Je sq c'es des Mhz
+			width=1
+		else : #Je sq c'es des Hz
+			width=1E6
+	p0=[ss,amp,width,*cs]
+	def f(x,*params):
+		ss=params[0]
+		amp=params[1]
+		width=params[2]
+		cs=params[3:]
+		y=ss
+		for c in cs :
+			if typ=="gauss" :
+				y+=amp*np.exp(-((x-c)/width)**2)
+			elif typ=="lor" :
+				y+=amp*1/(1+((x-c)/width)**2)
+		return(y)
+	popt, pcov = curve_fit(f, x, y, p0)
+	ss=popt[0]
+	centers=popt[3:]
+	width=abs(popt[2])
+	amp=popt[1]
+	params=[ss,centers,width,amp]
+	return(params,f(x,*popt))
+
+def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x',precise=False):
 	'''
 	width in unit of x  
 	thrsehold = min peak height in proportion of max peak height 
@@ -324,14 +360,22 @@ def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x'):
 		y=1-y
 	height=threshold
 
-	ns=find_peaks(y,height=height,distance=distance) 
-	
+	ns=find_peaks(y,height=height,distance=distance)[0]
+	cs=[x[i] for i in ns]
+
+	if precise :
+		popt,yfit=ESR_n_pics(x,y,cs,width=width)
+		cs=popt[1]
+		for k in range(len(cs)):
+			i=0
+			while x[i]<cs[k] :
+				i+=1
+			ns[k]=i
 
 	if returnUnit=='x' :
-		cs=[x[i] for i in ns[0]]
 		return(np.array(cs))
 	if returnUnit=='n' :
-		return(ns[0])
+		return(ns)
 
 def find_B_111(freq,transi='-') : #freq en MHz
 	D=2870
@@ -454,10 +498,11 @@ class magneticField():
 			t=NVHamiltonian(self,c=i).transitions()
 			transis+=[t[0]]
 		return np.sort(transis)
+
 	def __repr__(self):
 		return('Bx=%f; By=%f, Bz= %f'%(self.x,self.y,self.z))
 
-def find_B_spherical(peaks,Bmax=1000): #B in gauss
+def find_B_spherical(peaks,Bmax=1000,startingB=False): #B in gauss
 	peaks=np.sort(peaks)
 	if len(peaks)==8 :
 		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
@@ -474,7 +519,11 @@ def find_B_spherical(peaks,Bmax=1000): #B in gauss
 			return err
 	elif len(peaks)==4: #Merde y'a le cas de la 111
 		print('not implemented yet')
-	sol=minimize(err_func,x0=[100,0.4777,0.3927],args=peaks,bounds=[(0,Bmax),(-0.05,0.9554),(-0.05,0.7854)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
+	if startingB :
+		x0=[startingB.amp,startingB.theta,startingB.phi]
+	else :
+		x0=[100,0.4777,0.3927]
+	sol=minimize(err_func,x0=x0,args=peaks,bounds=[(0,Bmax),(-0.05,0.9554),(-0.05,0.7854)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
 	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
 
 def find_B_cartesian(peaks,Bmax=1000): #B in gauss ; Ca m'a la'ir de moins bien marcher que l'autre
@@ -518,13 +567,13 @@ def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 			y+=amp*1/(1+((x-c)/width)**2)
 	return y
 
-def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss',TrueAngles=False): #peaks : centers of resonances in MHz
+def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss',returnType='default'): #peaks : centers of resonances in MHz
 	popt,yfit= ESR_n_pics(x,y,peaks)
 	n=len(peaks)
 	ss=popt[0]
-	peaks=popt[1:n+1]
-	widths=popt[n+1:2*n+1]
-	amps=popt[2*n+1:]
+	peaks=popt[1]
+	widths=popt[2]
+	amps=popt[3]
 	B=find_B_spherical(peaks,Bmax=Bmax)
 	cs=B.transitions4Classes()
 	if n==2 :
@@ -545,8 +594,10 @@ def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss',TrueAngles=False): #peaks :
 		scalar=scalar/B.amp
 		angle=np.arccos(scalar)
 		return angle*180/np.pi
-	if TrueAngles :
+	if returnType=='spherical' :
 		popt=[B.amp,B.theta,B.phi]
+	elif returnType=='cartesian' :
+		popt=[B.x,B.y,B.z]
 	else :
 		popt=[B.amp,angleFrom100(B),angleFrom111(B),sum(widths)/len(widths)]
 	return popt,yfit

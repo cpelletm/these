@@ -4,7 +4,7 @@ physicalChannels=['ai11','ai13']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 
-Voltages=np.linspace(1,2,100)
+Voltages=np.linspace(1,3,300)
 def acquiStart(i):
 	v=Voltages[i]
 	ao.setupContinuous(v)
@@ -73,7 +73,7 @@ gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,showMaxIter=True)
-StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=5,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=20,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
 it=iterationWidget(l1)
