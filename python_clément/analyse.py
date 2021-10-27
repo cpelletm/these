@@ -343,7 +343,7 @@ def ESR_fixed_amp_and_width(x,y,cs,amp=False,width=False,ss=False,typ='gauss'):
 	params=[ss,centers,width,amp]
 	return(params,f(x,*popt))
 
-def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x'):
+def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x',precise=False):
 	'''
 	width in unit of x  
 	thrsehold = min peak height in proportion of max peak height 
@@ -360,14 +360,22 @@ def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x'):
 		y=1-y
 	height=threshold
 
-	ns=find_peaks(y,height=height,distance=distance) 
-	
+	ns=find_peaks(y,height=height,distance=distance)[0]
+	cs=[x[i] for i in ns]
+
+	if precise :
+		popt,yfit=ESR_n_pics(x,y,cs,width=width)
+		cs=popt[1]
+		for k in range(len(cs)):
+			i=0
+			while x[i]<cs[k] :
+				i+=1
+			ns[k]=i
 
 	if returnUnit=='x' :
-		cs=[x[i] for i in ns[0]]
 		return(np.array(cs))
 	if returnUnit=='n' :
-		return(ns[0])
+		return(ns)
 
 def find_B_111(freq,transi='-') : #freq en MHz
 	D=2870
