@@ -6,32 +6,36 @@ physicalChannels=['ctr0','ctr3','ai8']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
-	if AM.state():
-		mod='AM'
-	else :
-		mod=False
-	n=val(nPoints)
-	f=val(fsweep)
 	if channels.text()[:3]=='ctr' :
 		acqui=ci
 		mode='ctr'
 	elif channels.text()[:2]=='ai' :
 		acqui=ai
 		mode='ai'
-	mw.setupESR(F_min=fmin,F_max=fmax,Power=level,N_points=n,mod=mod,AM_Depth=AMDepth)
 
-	trigAcqui=[0]*10+[2]*n+[0]*10
+	nRead=val(NRead)
+	freq=nRead/val(tRead)
+	nWait=int(freq*val(tWait))
+	totalTime=val(tWait)+val(tRead)
+
+	if fullView.state() :
+		x=np.linspace(0,totalTime,(nWait+nRead))
+		trigAcqui=[2]*(nWait+nRead)
+	else :
+		x=np.linspace(0,val(tRead),nRead)
+		trigAcqui=[0]*nWait+[2]*nRead
+		
 	acqui.setChannels(channels.text())
-	acqui.setupWithPb(freq=f,signal=trigAcqui)
-	
-	trigMicrowave=[0]*10+[2]*n+[0]*10
-	pb.setupPulsed(dt=1/f,ch1=trigAcqui,ch2=trigMicrowave,ch3=trigMicrowave,ch4=trigMicrowave)#temporaire, il faut trouver le bon cable
+	acqui.setupWithPb(freq=freq,signal=trigAcqui)
 
-	x=np.linspace(val(fmin),val(fmax),n)
-	return x,acqui,mode,n
+	
+	trigMicrowave=[0]*nWait+[1]*nRead
+	pb.setupPulsed(dt=1/freq,ch1=trigAcqui,ch2=trigMicrowave,ch3=trigMicrowave,ch4=trigMicrowave)#temporaire, il faut trouver le bon cable
+
+	return x,acqui,mode
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
-def update(x,acqui,mode,n):
+def update(x,acqui,mode):
 	pb.start()
 	y=acqui.read()
 	if mode=='ctr' :
@@ -41,8 +45,15 @@ def update(x,acqui,mode,n):
 	
 
 
-def AM_OnOff():
-	AMDepth.setEnabled(AM.state())
+def mw_OnOff():
+	mw.setupContinuous(Frequency=mwFreq,Power=mwLvl)
+
+def switch_OnOff():
+	if switchOn.state() :
+		pb.setupContinuous(ch1=0,ch2=1,ch3=1,ch4=1)
+
+	else :
+		pb.setupContinuous(ch1=0,ch2=0,ch3=0,ch4=0)
 
 ## Create the communication (I/O) instances ##
 ai=AIChan()
@@ -52,19 +63,18 @@ mw=microwave('mw1')
 ## Setup the Graphical interface ##
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 
-fmin=field('min freq (MHz)',2800,spaceAbove=3)
-fmax=field('max freq (MHz)',2950,spaceAbove=0)
-level=field('power (dBm)',0.)
 
-AM=checkBox('Amplitude Modulation',action=AM_OnOff)
-AMDepth=field('AM depth (%)',100,spaceAbove=0)
-AM.setState(False)
-AMDepth.setEnabled(AM.state())
+fullView=checkBox('Full View')
+fullView.setState(True)
+NRead=field('n read',200)
+tWait=field('dark time (s)',1e-3)
+tRead=field('read time (s)',1e-3)
+mwFreq=field('microwave frequency (MHz)',2880)
+mwLvl=field('microwave power (dBm)',15)
+mwOn=checkBox('Microwave on/off',action=mw_OnOff)
+switchOn=checkBox('Switch on/off',action=switch_OnOff)
 
-nPoints=field('n points',150,spaceAbove=3)
-fsweep=field('sweep frequency (Hz)',500,spaceAbove=0)
-
-fields=[channels,fmin,fmax,level,AM,AMDepth,nPoints,fsweep]
+fields=[channels,fullView,NRead,tWait,tRead,mwFreq,mwLvl,mwOn,switchOn]
 
 gra=graphics(theme='black')
 l1=gra.addLine(typ='average',style='lm')
@@ -79,5 +89,5 @@ fit=fitButton(line=l1,fit='ESR',name='fit ESR')
 buttons=[norm,StartStop,trace,fit,save,it]
 
 ## Create the graphical interface and launch the program ##
-GUI=Graphical_interface(fields,gra,buttons,title='ESR',theme='dark')
+GUI=Graphical_interface(fields,gra,buttons,title='Polarisation',theme='dark')
 GUI.run()

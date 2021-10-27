@@ -819,9 +819,10 @@ class useTheme():
 			pg.setConfigOption('background', 'w')
 			pg.setConfigOption('foreground', 'k')			
 			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
+			self.infiniteLineColor=(100,100,100)
 		if theme=='dark' or theme=='black' :
 			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-
+			self.infiniteLineColor=(255,255,255)
 
 		# pg.setConfigOptions(antialias=False)	
 	def nextLine(self,ax,typ=False,big=True):
@@ -1307,8 +1308,8 @@ class graphics(pg.GraphicsLayoutWidget) :
 		if not ax :
 			ax=self.mainAx
 		class myInfiniteLine(pg.InfiniteLine) :
-			def __init__(self,pos,angle,movable):
-				self.color=(100,100,100)
+			def __init__(self,pos,angle,movable,color):
+				self.color=color
 				super().__init__(pos=pos,angle=angle,movable=movable,pen=pg.mkPen(color=self.color,width=2))
 				self.sigClicked.connect(self.clicked)
 				self.sigPositionChanged.connect(self.moved) #Change to sigPositionChangeFinished if lagging
@@ -1322,7 +1323,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 				self.graphicsWidget.infiniteLines.remove(self)
 			def moved(self):
 				line.label.moveToLine()
-		line=myInfiniteLine(pos=pos,angle=angle,movable=movable)
+		line=myInfiniteLine(pos=pos,angle=angle,movable=movable,color=self.theme.infiniteLineColor)
 		ax.addItem(line)
 		self.infiniteLines+=[line]
 		ax.infiniteLines+=[line]
