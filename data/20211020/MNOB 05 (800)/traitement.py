@@ -44,16 +44,17 @@ y=y[xmin:xmax]
 plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='MNOB 05 (800°)')
 
 
-fname='scan MNOB 03 (1200)'
-x,y=extract_data(fname)
-x=49.217*x-9.477
-y=y+0.01
-xmin=300
-xmax=450
-x=x[xmin:xmax]
-y=y[xmin:xmax]
-plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='MNOB 03 (1200°)')
-plt.xlabel('Magnetic field (G)')
-plt.ylabel('demodulated PL (UA)')
-plt.legend()
+# fname='scan MNOB 03 (1200)'
+# x,y=extract_data(fname)
+# x=49.217*x-9.477
+# y=y+0.01
+# xmin=300
+# xmax=450
+# x=x[xmin:xmax]
+# y=y[xmin:xmax]
+# plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='MNOB 03 (1200°)')
+ax=plt.gca()
+ax.tick_params(labelsize=20)
+# ax.set_xlabel(r'B $\parallel$[100] (G)',fontsize=20)
+# ax.set_ylabel(r'Demodulated PL' ,fontsize=20)
 plt.show()

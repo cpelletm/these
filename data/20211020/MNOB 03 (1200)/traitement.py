@@ -41,8 +41,10 @@ xmin=300
 xmax=450
 x=x[xmin:xmax]
 y=y[xmin:xmax]
+plt.ylim((-0.015112794129843515, 0.0158428339153203))
 plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1)
-
+ax=plt.gca()
+ax.tick_params(labelsize=20)
 
 
 
