@@ -20,16 +20,16 @@ def setup():
 
 	if fullView.state() :
 		x=np.linspace(0,totalTime,(nWait+nRead))
-		trigAcqui=[2]*(nWait+nRead)
+		trigAcqui=[2]*(nWait+nRead)+[0]
 	else :
 		x=np.linspace(0,val(tRead),nRead)
-		trigAcqui=[0]*nWait+[2]*nRead
+		trigAcqui=[0]*nWait+[2]*nRead+[0]
 		
 	acqui.setChannels(channels.text())
 	acqui.setupWithPb(freq=freq,signal=trigAcqui)
 
 	
-	trigMicrowave=[0]*nWait+[1]*nRead
+	trigMicrowave=[0]*nWait+[1]*nRead+[0]
 	pb.setupPulsed(dt=1/freq,ch1=trigAcqui,ch2=trigMicrowave,ch3=trigMicrowave,ch4=trigMicrowave)#temporaire, il faut trouver le bon cable
 
 	return x,acqui,mode
@@ -50,7 +50,7 @@ def mw_OnOff():
 
 def switch_OnOff():
 	if switchOn.state() :
-		pb.setupContinuous(ch1=0,ch2=1,ch3=1,ch4=1)
+		pb.setupContinuous(ch1=0,ch2=1,ch3=1,ch4=1) #Ici c'est channel 3 (le 27/10/2021)
 
 	else :
 		pb.setupContinuous(ch1=0,ch2=0,ch3=0,ch4=0)
@@ -67,8 +67,8 @@ channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 fullView=checkBox('Full View')
 fullView.setState(True)
 NRead=field('n read',200)
-tWait=field('dark time (s)',1e-3)
-tRead=field('read time (s)',1e-3)
+tWait=field('dark time (s)',1e-2)
+tRead=field('read time (s)',1e-2)
 mwFreq=field('microwave frequency (MHz)',2880)
 mwLvl=field('microwave power (dBm)',15)
 mwOn=checkBox('Microwave on/off',action=mw_OnOff)
@@ -79,7 +79,7 @@ fields=[channels,fullView,NRead,tWait,tRead,mwFreq,mwLvl,mwOn,switchOn]
 gra=graphics(theme='black')
 l1=gra.addLine(typ='average',style='lm')
 
-StartStop=startStopButton(setup=setup,update=update,debug=False,lineIter=l1,showMaxIter=True)
+StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l1,showMaxIter=True)
 save=saveButton(gra,autoSave=10)
 trace=keepTraceButton(l1)
 it=iterationWidget(l1)

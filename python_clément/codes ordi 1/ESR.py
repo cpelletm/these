@@ -69,7 +69,7 @@ fields=[channels,fmin,fmax,level,AM,AMDepth,nPoints,fsweep]
 gra=graphics(theme='black')
 l1=gra.addLine(typ='average',style='lm')
 
-StartStop=startStopButton(setup=setup,update=update,debug=False,lineIter=l1,showMaxIter=True)
+StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l1,showMaxIter=True)
 save=saveButton(gra,autoSave=10)
 trace=keepTraceButton(l1)
 it=iterationWidget(l1)
