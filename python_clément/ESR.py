@@ -34,7 +34,7 @@ def setup():
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x):
-	y=ai.readTimed(waitForAcqui=False)
+	y=ai.read(waitForAcqui=False)
 	if not ai.running :
 		gra.updateLine(l1,x,y)
 

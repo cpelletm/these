@@ -436,9 +436,8 @@ def find_B_100(freq,transi='-',B_max=100) :
 
 
 
-
 class NVHamiltonian(): #x,y and z axis are taken as (100) axis
-	D=2873 #Mhz
+	D=2870 #Mhz
 	gamma_e=2.8 #Mhz/gauss
 
 	Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
@@ -463,21 +462,23 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 		return [egva[1]-egva[0],egva[2]-egva[0]]
 
 class magneticField():
-	def __init__(self,x=False,y=False,z=False,theta=False,phi=False,amp=False): #Give either x,y,z or theta,phi,amp (polar/azimutal from the z axis)
-		if not x:
+	def __init__(self,x='spherical',y='spherical',z='spherical',theta='cartesian',phi='cartesian',amp='cartesian'): #Give either x,y,z or theta,phi,amp (polar/azimutal from the z axis)
+		if x=='spherical':
 			self.x=amp*np.cos(theta)*np.sin(phi)
 			self.y=amp*np.sin(theta)*np.sin(phi)
 			self.z=amp*np.cos(phi)
 			self.theta=theta
 			self.phi=phi
 			self.amp=amp
-		elif not theta :
+		elif theta=='cartesian' :
 			self.amp=np.sqrt(x**2+y**2+z**2)
 			self.theta=np.arccos(z/self.amp)
 			self.phi=np.arctan2(y,x)
 			self.x=x
 			self.y=y
 			self.z=z
+		else :
+			raise(ValueError('You must either give (x,y,z) or (theta,phi,amp )'))
 		self.cartesian=np.array([self.x,self.y,self.z])
 		self.sphericalDeg=np.array([self.theta*180/np.pi,self.phi*180/np.pi])
 	def transitions4Classes(self):
@@ -545,10 +546,6 @@ def find_B_cartesian(peaks,Bmax=1000): #B in gauss ; Ca m'a la'ir de moins bien 
 		print('not implemented yet')
 	sol=minimize(err_func,x0=[0,0,0],args=peaks,bounds=[(-Bmax,Bmax),(-Bmax,Bmax),(-Bmax,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
 	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
-
-# peaks=[2626,2702,2805,2867,2989,3042,3115,3160]
-# print(find_B_spherical(peaks))
-# print(find_B_spherical(peaks).transitions4Classes())
 
 def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 	n=len(peaks)
