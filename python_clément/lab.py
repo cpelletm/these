@@ -452,9 +452,14 @@ class startStopButton():
 				self.resetCounter.reset()
 				self.stopAction()
 				return
+			elif self.resetCounter.v >= 1 :
+				pass
+			else :
+				resetLines()
+		else :
+			resetLines()
 		if self.showMaxIter :
-			self.maxIter=val(self.maxIterWidget)
-		resetLines()
+			self.maxIter=val(self.maxIterWidget)		
 		if self.setup :
 			self.updateArgs=failSafe(self.setup,debug=self.debug) #il va peut etre tej le failSafe
 			if isinstance(self.updateArgs,str) and self.updateArgs=='plantage' : #merci numpy de me forcer à faire  des trucs aussi moche....
