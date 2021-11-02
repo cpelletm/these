@@ -244,6 +244,22 @@ class box():
 		box.addLayout(self.box)
 		box.addStretch(self.spaceBelow)
 
+class counter(label):
+	def __init__(self,name='counter',**kwargs):
+		self.name=name
+		super().__init__(name=name+'# 0',**kwargs)
+		self.v=0
+	def update(self,value='auto'):
+		if value!='auto' :
+			self.v=val(value)
+		self.setText(self.name+'# %i'%self.v)
+	def increase(self):
+		self.v+=1
+		self.update()
+	def reset(self):
+		self.v=0
+		self.update()
+
 class saveButton(button):
 	def __init__(self,graphicWidget,autoSave=False,spaceAbove=1,spaceBelow=0): 
 		self.gra=graphicWidget
@@ -358,6 +374,9 @@ class startStopButton():
 			self.maxIterWidget=field('Max number',self.maxIter,spaceAbove=0, spaceBelow=spaceBelow)
 		else :
 			self.stopButton=button('Stop',self.stopAction, spaceAbove=0, spaceBelow=spaceBelow)
+		if not self.debug :
+			self.resetCounter=counter('Reset counts',spaceAbove=0)
+			self.maxResetCount=3
 		self.stopButton.button.setEnabled(False)
 		self.timer=QTimer()
 
@@ -428,11 +447,19 @@ class startStopButton():
 			self.serieButton.button.setEnabled(False)
 		self.startButton.button.setEnabled(False)
 		self.stopButton.button.setEnabled(True)
+		if not self.debug :
+			if self.resetCounter.v >= self.maxResetCount :
+				self.resetCounter.reset()
+				self.stopAction()
+				return
 		if self.showMaxIter :
 			self.maxIter=val(self.maxIterWidget)
 		resetLines()
 		if self.setup :
 			self.updateArgs=failSafe(self.setup,debug=self.debug) #il va peut etre tej le failSafe
+			if isinstance(self.updateArgs,str) and self.updateArgs=='plantage' : #merci numpy de me forcer à faire  des trucs aussi moche....
+				self.stopAction()
+				return
 		if self.updateFunc :
 			self.timer.timeout.connect(self.updateAction)
 			self.timer.start(self.timeDelay)
@@ -448,11 +475,17 @@ class startStopButton():
 				return	
 		
 		if isinstance(self.updateArgs,None.__class__) : #C'est déguelasse mais autrement numpy casse les couilles
-			failSafe(self.updateFunc,debug=self.debug)
+			res=failSafe(self.updateFunc,debug=self.debug)
 		elif isinstance(self.updateArgs,tuple) :
-			failSafe(self.updateFunc,*self.updateArgs,debug=self.debug)
+			res=failSafe(self.updateFunc,*self.updateArgs,debug=self.debug)
 		else :
-			failSafe(self.updateFunc,self.updateArgs,debug=self.debug)
+			res=failSafe(self.updateFunc,self.updateArgs,debug=self.debug)
+		if res=='plantage' :
+			self.resetCounter.increase()
+			self.startAction()
+			return 
+		elif not self.debug :
+			self.resetCounter.reset()
 		qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer. 
 		#En gros ça force l'image à s'actualiser, mais ça fout le bordel dans les timers (je pense que ça joue sur les threads), et en gros tu peux te retrouver à call update (plusieurs fois meme) alors que le timer est sensé être stoppé.
 
@@ -473,6 +506,8 @@ class startStopButton():
 		self.stopButton.addToBox(box)
 		if self.showMaxIter :
 			self.maxIterWidget.addToBox(box)
+		if not self.debug :
+			self.resetCounter.addToBox(box)
 
 class fitButton():
 	def __init__(self,line,fit='lin',name='fit',menu=False,spaceAbove=1,spaceBelow=0): 
@@ -586,7 +621,7 @@ class device(): #Pour l'instant ça sert juste à les regrouper pour les fermer
 		self.toBeClosed=True
 
 class microwave(device):
-	def __init__(self,ressourceName='mw_ludo',timeout=8000): #timeout in ms
+	def __init__(self,ressourceName='mw_ludo',timeout=15000): #timeout in ms
 		super().__init__()
 		if ressourceName=='mw_ludo' :
 			ressourceName='TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
@@ -1529,7 +1564,7 @@ class myLine(pg.PlotDataItem) :
 
 class iterationWidget():
 	def __init__(self,line,spaceAbove=1,spaceBelow=0):
-		self.label=QLabel('Iter #1')
+		self.label=QLabel('Iter #0')
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
 		line.iterationWidget=self
@@ -1708,13 +1743,15 @@ def failSafe(func,*args,debug=True):
 			resetSetup(closeAnyway=True,stopTimers=True)
 			quit()
 		else :
-			GUI=get_objects(Graphical_interface)[0]
-			resetSetup(closeAnyway=True,stopTimers=True)
-			mb = QMessageBox(GUI)
-			mb.setStandardButtons(QMessageBox.Abort)
-			mb.setText(error.__str__())
-			mb.setInformativeText(''.join(tb.format())) #un peu barbare mais ça fonctionne
-			mb.show()
+			resetSetup(closeAnyway=False,stopTimers=True)
+			return 'plantage'
+			# GUI=get_objects(Graphical_interface)[0]
+			# resetSetup(closeAnyway=True,stopTimers=True)
+			# mb = QMessageBox(GUI)
+			# mb.setStandardButtons(QMessageBox.Abort)
+			# mb.setText(error.__str__())
+			# mb.setInformativeText(''.join(tb.format())) #un peu barbare mais ça fonctionne
+			# mb.show()
 
 def resetSetup(closeAnyway=False,stopTimers=True,extraStop=False): #C'est un peu brut mais bon ça fonctionne
 	if stopTimers :
@@ -1914,6 +1951,10 @@ def test_pg():
 		# print(pos.pos())
 		mousePoint = gra.mainAx.vb.mapSceneToView(pos.pos())
 		print(mousePoint.x(),mousePoint.y())
+	def actionCounter():
+		cookieClicker.increase()
+		if cookieClicker.v>10 :
+			cookieClicker.reset()
 	x=np.linspace(0,10,500)
 	y=np.cos(x)
 	gra=graphics()
@@ -1925,18 +1966,20 @@ def test_pg():
 
 	ftoto=field('toto',10,spaceBelow=1)
 	attention=button('Warning',avertissement)
-	fields=[ftoto,attention]
+	counterButton=button('Click counter',actionCounter)
+	fields=[ftoto,attention,counterButton]
 
 
-	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True)
+	StartStop=startStopButton(setup=setup,update=update,debug=False,lineIter=l3,showMaxIter=True,serie=True)
 	StartStop.setupSerie(nAcqui=3,iterPerAcqui=[100,150,50],acquiStart=acquiStart,acquiEnd=acquiEnd)
 	save=saveButton(gra,autoSave=False)
 	trace=keepTraceButton(l1,l3)
 	it=iterationWidget(l3)
 	norm=gra.normalize()
+	cookieClicker=counter('Clicked')
 	# print(dir(gra.scene()))
 
-	buttons=[norm,StartStop,trace,save,it]
+	buttons=[norm,StartStop,trace,save,cookieClicker,it]
 
 	GUI=Graphical_interface(fields,gra,buttons,title='Example GUI')
 
