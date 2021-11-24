@@ -20,7 +20,7 @@ import analyse
 # import PyQt6 #Ca a pas du tout l'air compatible
 import pyqtgraph as pg 
 
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont,QTransform
 from PyQt5.QtCore import (Qt, QTimer,QSize)
 from PyQt5.QtWidgets import (QWidget, QPushButton, QComboBox,
 	QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget, QMainWindow, QLineEdit, QLabel, QCheckBox, QFileDialog, QErrorMessage, QMessageBox)
@@ -48,7 +48,7 @@ else :
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
 
 class Graphical_interface(QMainWindow) :
-	def __init__(self,*itemLists,title='Unnamed',theme=defaultTheme):
+	def __init__(self,*itemLists,title='Unnamed',theme=defaultTheme,size='default'):
 		super().__init__()
 		self.setWindowTitle(title)
 		main = QWidget()
@@ -63,7 +63,12 @@ class Graphical_interface(QMainWindow) :
 			else :
 				itemList.addToBox(vBox)
 		main.setLayout(layout)
-		self.resize(1200,800)
+		if size=='default' :
+			self.resize(1200,800)
+		elif size=='auto' :
+			pass
+		else :
+			self.resize(size[0],size[1])
 		self.show()		
 		if theme=='dark' :
 			qapp.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
@@ -98,7 +103,7 @@ class field():
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
 		if action :
-			self.lect.returnPressed.connect(action)
+			self.setAction(action)
 	def updateValue(self):
 		try : 
 			self.v=float(self.lect.text())
@@ -113,6 +118,10 @@ class field():
 	def setEnabled(self,b):
 		self.label.setEnabled(b)
 		self.lect.setEnabled(b)
+	def setAction(self,action,signal='Return Pressed'):
+		if signal=='Return Pressed' :
+			self.lect.returnPressed.connect(action)
+
 	def __mul__(self,b):
 		self.updateValue()
 		return self.v*b
@@ -143,6 +152,8 @@ class field():
 		return int(self.v)
 	def __repr__(self):
 		return("Field of value %f"%self.v)
+
+
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.label)
@@ -290,15 +301,30 @@ class saveButton(button):
 		if len(fname) < 5 or fname[-4]!='.' :
 			fname=fname+'.png'
 		if saveData :
-			fdataname=fname[:-4]+".csv"
 			import csv
-			with open(fdataname,'w',newline='') as csvfile :
-				spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-				for line in self.gra.lines :
-					spamwriter.writerow(line.x)
-					spamwriter.writerow(line.trueY)
-
-
+			if len(self.gra.lines) >= 1 :
+				fdataname=fname[:-4]+".csv"
+				with open(fdataname,'w',newline='') as csvfile :
+					spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+					for line in self.gra.lines :
+						spamwriter.writerow(line.x)
+						spamwriter.writerow(line.trueY)
+			if len(self.gra.maps) >=1 :
+				if len(self.gra.maps) ==1 :
+					m=self.gra.maps[0]
+					fdataname=fname[:-4]+"_map.csv"
+					with open(fdataname,'w',newline='') as csvfile :
+						spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+						for line in m.rawData:
+							spamwriter.writerow(line)
+				else :
+					for i in range(len(self.gra.maps)) :
+						m=self.gra.maps[i]
+						fdataname=fname[:-4]+"_map_%i.csv"%i
+						with open(fdataname,'w',newline='') as csvfile :
+							spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+							for line in m:
+								spamwriter.writerow(line)
 		if saveFigure :
 			self.qapp.primaryScreen().grabWindow(self.gra.parentWidget().winId()).save(fname,'png')
 
@@ -418,6 +444,7 @@ class startStopButton():
 		self.iAcqui=0 #Counter of the current acquisition
 		self.maxIter=np.infty #j'utilise un autre système de compteur finalement,ça devrait éviter les embrouilles
 		self.nextAcqui()
+		self.timer=QTimer()
 		self.timer.timeout.connect(self.updateSerie)
 		self.timer.start(self.timeDelay)
 		self.running=True
@@ -466,6 +493,7 @@ class startStopButton():
 				self.stopAction()
 				return
 		if self.updateFunc :
+			self.timer=QTimer()
 			self.timer.timeout.connect(self.updateAction)
 			self.timer.start(self.timeDelay)
 		self.running=True
@@ -475,7 +503,7 @@ class startStopButton():
 			# print("tried to update while closed")
 			return
 		if self.lineIter :
-			if self.lineIter.iteration > self.maxIter :
+			if self.lineIter.getIteration() > self.maxIter :
 				self.stopAction()
 				return	
 		
@@ -655,12 +683,13 @@ class microwave(device):
 					instruction_pow+=' %f dBm,'%level
 			return instruction_f,instruction_pow
 
-	def setupESR(self,F_min=2800,F_max=2950,Power=-10,N_points=201,mod=None,AM_Depth=100):
+	def setupESR(self,F_min=2800,F_max=2950,Power=-10,N_points=201,mod=None,AM_Depth=100,FM_Dev=1E6):
 
 		fmin=val(F_min) #Note : ce serait possible d'automatiser tout ça avec du exec() mais après y'a moyen que ca casse tout, donc on va éviter
 		fmax=val(F_max)
 		n=val(N_points)
 		depth=val(AM_Depth)
+		fm_dev=val(FM_Dev)
 		lvl=val(Power)
 
 		freq_list,pow_list=self.create_list_freq(fmin,fmax,lvl,n)
@@ -678,6 +707,15 @@ class microwave(device):
 			self.PG.write(':SOUR:AM:STATe ON')
 			self.PG.write('*WAI')
 
+		elif mod=='FM' :
+			self.PG.write(':SOUR:FM:SOUR EXT')
+			self.PG.write('*WAI')
+
+			self.PG.write(':SOUR:FM:DEV %f'%fm_dev)
+			self.PG.write('*WAI')
+
+			self.PG.write(':SOUR:FM:STATe ON')
+			self.PG.write('*WAI') 
 
 		self.PG.write('LIST:SEL "new_list"') #Il lui faut un nom, j'espere qu'il y a pas de blagues si je réécris dessus
 		self.PG.write('*WAI')
@@ -706,7 +744,7 @@ class microwave(device):
 		self.PG.write('LIST:RES') #Ca par contre ca a l'air de jouer curieusement
 		self.PG.write('*WAI')
 
-		time.sleep(1)
+		
 	def setupContinuous(self,Frequency=2800,Power=-10,mod=None,AC_Depth=100):
 		f=val(Frequency)
 		lvl=val(Power)
@@ -848,6 +886,42 @@ class pulseBlaster(device):
 			self.sp.pb_close()
 			self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
+class PiezoCube3axes(device):
+	def __init__(self,deviceName='CubePI-P611'):
+		super().__init__()
+		if deviceName=='CubePI-P611' :
+			chanX='cDAQ1Mod1/ao7'
+			chanZ='cDAQ1Mod1/ao6'
+			chanY='cDAQ1Mod1/ao5'
+		self.taskX=AOChan(chanX)
+		self.taskY=AOChan(chanY)
+		self.taskZ=AOChan(chanZ)
+		#Note : on peut utiliser 3 tasks tant qu'on ne les fait pas fonctionner en même temps (fin sans timing quoi), ce qui est probablement plus sage pour l'ampli de toute facon
+
+	def move(self,value,ax='all',close=True): #value=[0,1,2] if ax='all' or 1 if ax='x' 'y' or 'z'
+		if ax=='all' :
+			self.taskX.setupContinuous(val(value[0]),close=close)
+			self.taskY.setupContinuous(val(value[1]),close=close)
+			self.taskZ.setupContinuous(val(value[2]),close=close)
+		elif ax=='x' or ax=='X' :
+			self.taskX.setupContinuous(val(value),close=close)
+		elif ax=='y' or ax=='Y' :
+			self.taskY.setupContinuous(val(value),close=close)
+		elif ax=='z' or ax=='Z' :
+			self.taskZ.setupContinuous(val(value),close=close)
+
+	def autoZ(self,vmin=-2,vmax=2,chanPL='ai13'):
+		ai=AIChan(chanPL)
+		ai.setupTimed(SampleFrequency=10,SamplesPerChan=1)
+		#Il va falloir que je mesure le temps de réponse avant d'aller plus loin
+
+
+
+	def close(self):
+		self.taskX.close()
+		self.taskY.close()
+		self.taskZ.close()
+
 class hiddenPrints:
 	def __enter__(self):
 		self._original_stdout = sys.stdout
@@ -971,13 +1045,16 @@ class NIChan():
 				self.running=False
 
 class AOChan(NIChan):
-	def __init__(self,*physicalChannels): #Physical Channels = 'ao0' or 'ao1'	
+	def __init__(self,*physicalChannels): #Physical Channels = 'ao0' or 'ao1'	or full name (for cDaqs)
 		super().__init__(*physicalChannels)	
 		self.triggerSignal='/Dev1/ao/StartTrigger'		
 	def createTask(self):
 		self.task=nidaqmx.Task()
 		for pc in self.physicalChannels :
-			cname='Dev1/'+pc
+			if pc[:2]=='ao' :
+				cname='Dev1/'+pc
+			else :
+				cname=pc
 			self.task.ao_channels.add_ao_voltage_chan(cname)	
 		self.taskOpened=True
 	def setupContinuous(self,Value,close=True): #Starts immediately
@@ -1007,7 +1084,7 @@ class AOChan(NIChan):
 			self.sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
 		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
 		self.task.write(self.signal)
-	def setTo(self,value=0):
+	def setTo(self,value=0): #doublon moins utile de setupContinuous
 		if self.running :
 			self.close()
 		self.setupContinuous(value)
@@ -1034,7 +1111,7 @@ class AIChan(NIChan):
 		return (nidaqmx.system.device.Device('Dev1').ai_max_single_chan_rate/self.nChannels)
 	def setupTimed(self,SampleFrequency,SamplesPerChan,SampleMode='finite',nAvg='auto',sourceClock='auto'): 
 	#sampleMode = 'finite' or 'continuous' ; nAvg=average over n point for each sample
-	#cf def testSynchro(): in test, there is up to a ~2/1000 difference between the AI clock and th DO clock depending on frequency
+	#cf def testSynchro() in test.py, there is up to a ~2/1000 difference between the AI clock and th DO clock depending on frequency
 	#but if you want to use the DO sample Clock, you have to make sure its frequency matches the real samplingRate (pourquoi je m'inflige ça...)
 		self.createTask()
 		self.mode='timed'
@@ -1112,7 +1189,7 @@ class AIChan(NIChan):
 			self.start()
 
 		if waitForAcqui :
-			self.task.wait_until_done()
+			self.task.wait_until_done(timeout=timeout)
 
 		if self.task.is_task_done() :
 			data=self.readAndStop(self.sampsPerChan,timeout=timeout)
@@ -1300,6 +1377,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 		self.timeLastUpdate=time.time()
 		self.debug=debug
 		self.lines=[]
+		self.maps=[]
 		self.infiniteLines=[]
 		self.axes=[]
 		self.mainAx=self.addAx(where=False)
@@ -1336,6 +1414,14 @@ class graphics(pg.GraphicsLayoutWidget) :
 		if verticalLines :
 			ax.proxy = pg.SignalProxy(ax.scene().sigMouseClicked, rateLimit=60, slot=ax.clicked)
 		return ax
+	def addMap(self,ax=False,data='noData',xsize=10,ysize=10,typ='instant'):
+		if not ax :
+			ax=self.mainAx
+		m=map2D(ax=ax,data=data,xsize=xsize,ysize=ysize,typ=typ)
+		self.maps+=[m]
+		m.graphicsWidget=self
+		return m
+
 	def addLine(self,x=[],y=[],ax=False,typ='instant',style='lm',fast=False,label=False) : #style= :'l' =line, 'm' = marker, 'lm'=marker+line
 		if not ax :
 			ax=self.mainAx
@@ -1421,6 +1507,17 @@ class graphics(pg.GraphicsLayoutWidget) :
 		if self.autoSave :
 			self.autoSave.check()
 		return True
+
+	def updateMap(self,m,data,x='auto',y='auto'):
+		if isinstance(data,np.ndarray) :
+			m.updateFull(data)
+		else :
+			m.updatePxl(data,x,y)
+		if self.autoSave :
+			self.autoSave.check()
+		return True
+
+
 
 	def addToBox(self,box):
 		box.addWidget(self)
@@ -1566,6 +1663,109 @@ class myLine(pg.PlotDataItem) :
 		self.iteration=1
 		if self.typ=='hist' and self.histType=='slow' :
 			self.histData=[]
+
+class map2D(pg.ImageItem) :
+	def __init__(self,ax,data='noData',xsize=10,ysize=10,typ='instant'):
+		super().__init__()
+		self.ax=ax	
+		self.ax.addItem(self)
+		self.typ=typ	
+		self.xindex=0
+		self.yindex=0
+
+		self.setSize(data=data,xsize=xsize,ysize=ysize)
+
+		self.cmap = pg.colormap.get('CET-L9')
+		self.bar = pg.ColorBarItem(interactive=False, values= (0,1), cmap=self.cmap)
+		self.bar.setImageItem(self, insert_in=self.ax)
+
+	def setSize(self,data='noData',xsize='auto',ysize='auto'): #fait aussi office de première initialisation
+		xsize=val(xsize)
+		ysize=val(ysize)
+		if isinstance(data,np.ndarray):
+			self.xsize=len(data[:,0])
+			self.ysize=len(data[0,:])
+		elif isinstance(xsize,int) and isinstance(ysize,int) :		
+			self.xsize=xsize
+			self.ysize=ysize
+			data=np.zeros((self.xsize,self.ysize))
+		else :
+			raise ValueError('You must enter either a valid data array or a size for the x and y axis')
+		self.iterArray=np.ones((self.xsize,self.ysize))
+		self.rawData=data
+		self.setImage(image=self.rawData)
+
+	def setLim(self,xi,xf,yi,yf):
+		xi=val(xi)
+		xf=val(xf)
+		yi=val(yi)
+		yf=val(yf)
+		dx=xf-xi
+		dy=yf-yi
+		self.setRect(xi,yi,dx,dy)
+
+	def updateMap(self,data,x='auto',y='auto'):
+		self.graphicsWidget.updateMap(self,data,x,y)
+
+	def updateFull(self,data):
+		if self.typ=='instant' :
+			self.rawData=data
+			
+		elif self.typ=='average' :
+			self.rawData=self.rawData*(1-1/self.iterArray)+data*1/self.iterArray
+
+		self.setImage(image=self.rawData)	
+		self.bar.setLevels((np.amin(self.rawData),np.amax(self.rawData)))
+
+		if self.iterationWidget :
+			self.iterationWidget.update(self.getIteration())
+
+	def updatePxl(self,value,x='auto',y='auto'):
+
+		if x=='auto' and y=='auto' :
+			x,y=self.xindex,self.yindex
+			self.xindex,self.yindex=self.nextPxl() #Pour la prochaine itération
+
+		if self.typ=='instant' :
+			self.rawData[x,y]=value
+			
+		elif self.typ=='average' :
+			self.rawData[x,y]=self.rawData[x,y]*(1-1/self.iterArray[x,y])+value*1/self.iterArray[x,y]
+			self.iterArray[x,y]+=1
+
+		self.setImage(image=self.rawData)	
+		self.bar.setLevels((np.amin(self.rawData),np.amax(self.rawData)))
+
+		if self.iterationWidget :
+			self.iterationWidget.update(self.getIteration())
+
+			
+
+	def nextPxl(self):
+		#J'ai fait un snake parce que c'est marrant
+		if self.yindex==self.ysize-1 and ((self.xindex==self.xsize-1 and self.ysize%2==1) or (self.xindex==0 and self.ysize%2==0)) :
+			return(0,0)		
+		elif self.yindex%2==0 :
+			if self.xindex<self.xsize-1 :
+				return (self.xindex+1,self.yindex)
+			elif self.xindex==self.xsize-1 :
+				return (self.xindex,self.yindex+1)
+		elif self.yindex%2==1 :
+			if self.xindex>0 :
+				return (self.xindex-1,self.yindex)
+			elif self.xindex==0 :
+				return (self.xindex,self.yindex+1)
+
+	def getIteration(self):
+		if self.ysize%2==0 :
+			return self.iterArray[0,-1]
+		else :
+			return self.iterArray[-1,-1]
+
+	def reset(self):
+		self.iterArray=np.ones((self.xsize,self.ysize))
+		self.xindex=0
+		self.yindex=0
 
 class iterationWidget():
 	def __init__(self,line,spaceAbove=1,spaceBelow=0):
@@ -1777,6 +1977,9 @@ def resetLines():
 	lines=get_objects(myLine)
 	for line in lines :
 		line.reset()
+	maps=get_objects(map2D)
+	for m in maps:
+		m.reset()
 
 def average(y,nAvg=1,nRepeat=1): #see def of nAvg and nRepeat in NIChan
 	if len(y)%nRepeat!=0 :

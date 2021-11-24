@@ -88,6 +88,28 @@ def quad_fit(x,y) :
 	a,b,c = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([a,b,c],a*x**2+b*x+c)
 
+def parabola_fit(x,y):
+	if y[0]-min(y) > max(y)-y[0] :
+		typ='upside'
+	else :
+		typ='downside'
+
+	if typ=='upside' :
+		x0=x[list(y).index(min(y))]
+		y0=min(y)
+		a=(y[0]-min(y))/(x[0]-x0)**2
+	else :
+		x0=x[list(y).index(max(y))]
+		y0=max(y)
+		a=(y[0]-max(y))/(x[0]-x0)**2
+
+	def f(x,a,x0,y0):
+		return a*(x-x0)**2+y0
+
+	p0=[a,x0,y0]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,*popt))
+
 def fit_ordre_4(x,y) :
 	A=np.vstack([x**4,x**3,x**2,x,np.ones(len(x))]).T
 	a,b,c,d,e = np.linalg.lstsq(A, y, rcond=None)[0]
@@ -628,10 +650,16 @@ def extract_2d(fname):
 	return(np.array(data))
 
 def print_map(array,xmin=0,xmax=1,ymin=0,ymax=1):
-	x_axis=np.linspace(xmin,xmax,len(array[0,:]))
-	y_axis=np.linspace(ymin,ymax,len(array[:,0]))
+	xsize=len(array[:,0])
+	ysize=len(array[0,:])
+	arrayToPlot=np.zeros((xsize+1,ysize+1))
+	for i in range(xsize):
+		for j in range(ysize):
+			arrayToPlot[i,j]=array[i,j]
+	x_axis=np.linspace(xmin,xmax,xsize+1)
+	y_axis=np.linspace(ymin,ymax,ysize+1)
 	fig,ax=plt.subplots()
-	c=ax.pcolormesh(x_axis, y_axis, array)
+	c=ax.pcolormesh(x_axis, y_axis, arrayToPlot.T)
 	cb=fig.colorbar(c,ax=ax)
 	plt.show()
 

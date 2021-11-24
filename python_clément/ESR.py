@@ -4,24 +4,40 @@ physicalChannels=['ai11','ai13']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 
-Voltages=np.linspace(1,3,300)
+nSide=30
+xs=np.linspace(0,10,nSide)
+ys=np.linspace(0,10,nSide)
+
 def acquiStart(i):
-	v=Voltages[i]
-	ao.setupContinuous(v)
+	ix=i%nSide
+	iy=i//nSide
+	xV=xs[ix]
+	yV=ys[iy]
+	cube.move(xV,ax='x')	
+	cube.move(yV,ax='y')
 
 def acquiEnd(i):
-	fname=StartStop.defaultFolder+'V=%f'%(Voltages[i])+' V'
-	save.save(fname=fname)
+	ix=i%nSide
+	iy=i//nSide
+	xV=xs[ix]
+	yV=ys[iy]
+	fname=StartStop.defaultFolder+'x=%f,y=%f'%(xV,yV)
+	if i==0 :
+		save.save(fname=fname,saveFigure=True)
+	else :
+		save.save(fname=fname,saveFigure=False)
 
 def setup(): 
 	if AM.state():
 		mod='AM'
+	elif FM.state():
+		mod='FM'
 	else :
 		mod=False
 	n=val(nPoints)
 	f=val(fsweep)
 
-	mw.setupESR(F_min=fmin,F_max=fmax,Power=level,N_points=n,mod=mod,AM_Depth=AMDepth)
+	mw.setupESR(F_min=fmin,F_max=fmax,Power=level,N_points=n,mod=mod,AM_Depth=AMDepth,FM_Dev=FMDev)
 	ai.setChannels(channels.text())
 	ai.setupTimed(SampleFrequency=f,SamplesPerChan=n,nAvg='auto')
 
@@ -40,6 +56,13 @@ def update(x):
 
 def AM_OnOff():
 	AMDepth.setEnabled(AM.state())
+	if AM.state():
+		FM.setState(False)
+
+def FM_OnOff():
+	FMDev.setEnabled(FM.state())
+	if FM.state():
+		AM.setState(False)
 
 def switchAction():
 	switchState=switchButton.state()
@@ -50,30 +73,37 @@ ai=AIChan()
 do=DOChan('p01')
 ao=AOChan('ao0')
 mw=microwave('mw_ludo')
+cube=PiezoCube3axes()
+
 ## Setup the Graphical interface ##
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 
-fmin=field('min freq (MHz)',2800,spaceAbove=3)
-fmax=field('max freq (MHz)',2950,spaceAbove=0)
-level=field('power (dBm)',0.)
+fmin=field('min freq (MHz)',2850,spaceAbove=3)
+fmax=field('max freq (MHz)',2890,spaceAbove=0)
+level=field('power (dBm)',-5)
 
 AM=checkBox('Amplitude Modulation',action=AM_OnOff)
 AMDepth=field('AM depth (%)',100,spaceAbove=0)
+FM=checkBox('Frequency Modulation',action=FM_OnOff)
+FMDev=field('FM deviation (Hz)',1E6,spaceAbove=0)
+
 AM.setState(True)
 AMDepth.setEnabled(AM.state())
+FM.setState(False)
+FMDev.setEnabled(FM.state())
 
 switchButton=checkBox('Switch On',action=switchAction)
 
-nPoints=field('n points',151,spaceAbove=3)
-fsweep=field('sweep frequency (Hz)',300,spaceAbove=0)
+nPoints=field('n points',501,spaceAbove=3)
+fsweep=field('sweep frequency (Hz)',100,spaceAbove=0)
 
-fields=[channels,fmin,fmax,level,AM,AMDepth,switchButton,nPoints,fsweep]
+fields=[channels,fmin,fmax,level,AM,AMDepth,FM,FMDev,switchButton,nPoints,fsweep]
 
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,showMaxIter=True)
-StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=20,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=10,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
 it=iterationWidget(l1)

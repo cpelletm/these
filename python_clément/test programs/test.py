@@ -1544,6 +1544,53 @@ def test_dico():
 	dic[0]='toto'
 	print(dic,dic.keys(),dic.values())
 
-a=[1,2,3]
-b=[*a,4,5]
-print(b)
+def testScan3Axes():
+	with nidaqmx.Task() as ao :
+		with nidaqmx.Task() as ao2 :
+			ao.ao_channels.add_ao_voltage_chan('cDAQ1Mod1/ao5')
+			ao.write(2)
+			time.sleep(1)
+			ao.write(0)
+			time.sleep(1)
+			ao.write(2)
+			time.sleep(1)
+
+
+def test_map_pg():
+	xs=np.linspace(0,10,100)
+	ys=np.linspace(0,10,100)
+	data=np.zeros((100,100))
+	for i in range(100):
+		for j in range(100):
+			data[i,j]=xs[i]*ys[j]
+
+
+
+	i1=pg.ImageItem()
+	i1.setImage(image=data)
+	print(dir(i1))
+	print(i1.getPixmap())
+	tr = QTransform() 
+	tr.scale(0.1, 0.1) 
+	tr.translate(50,50) # C'est un peu de la merde, ça ne prend pas en compte le scaling préalable
+	# i1.setTransform(tr)
+	i1.setRect(-5,5,10,15)# x0,y0,DeltaX,DeltaY . C'est plus simple comme ça
+	gra=graphics()
+	gra.mainAx.addItem(i1)
+	cmap = pg.colormap.get('CET-L9')
+	bar = pg.ColorBarItem(interactive=False, values= (0,1), cmap=cmap, label='toto')
+	bar.setImageItem(i1, insert_in=gra.mainAx)
+	bar.setLevels((np.amin(data),np.amax(data)))
+	p1=gra.mainAx
+	for key in ['left','right','top','bottom']:
+		p1.showAxis(key)
+		axis = p1.getAxis(key)
+		# axis.setZValue(1)
+		# axis.setScale(0.1)
+		if key in ['top', 'right']: 
+			p1.getAxis(key).setStyle( showValues=False )
+	GUI=Graphical_interface(gra,size='auto',title='Piezo Map')
+	GUI.run()
+
+a=np.ones((3,3))
+print(a[0:2,0:2])

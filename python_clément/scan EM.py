@@ -1,15 +1,29 @@
 from lab import *
 
-laserPowers=list(np.linspace(5e-6,5e-5,40))+list(np.linspace(5e-5,4e-4,41))[1:]
-ns=[int(500*5e-6/p+20) for p in laserPowers]
+
+nSide=30
+xs=np.linspace(0,10,nSide)
+ys=np.linspace(0,10,nSide)
 
 def acquiStart(i):
-	laser.setPower(laserPowers[i])
+	ix=i%nSide
+	iy=i//nSide
+	xV=xs[ix]
+	yV=ys[iy]
+	cube.move(xV,ax='x')	
+	cube.move(yV,ax='y')
 
 
 def acquiEnd(i):
-	fname=StartStop.defaultFolder+'P=%f'%(laser.getPower()*1e6)+' uW'
-	save.save(fname=fname)
+	ix=i%nSide
+	iy=i//nSide
+	xV=xs[ix]
+	yV=ys[iy]
+	fname=StartStop.defaultFolder+'x=%f,y=%f'%(xV,yV)
+	if i==0 :
+		save.save(fname=fname,saveFigure=True)
+	else :
+		save.save(fname=fname,saveFigure=False)
 	
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
@@ -42,17 +56,17 @@ def update(nstart,nend,x):
 ## Create the communication (I/O) instances ##
 ai=AIChan('ai11','ai13')
 ao=AOChan('ao0')
-
+cube=PiezoCube3axes()
 
 ## Setup the Graphical interface ##
 
-laser=continuousLaserWidget()
+
 vmin=field('V min (V)',-5,spaceAbove=3)
 vmax=field('V max (V)',5,spaceAbove=0)
 nPoints=field('n points',501,spaceAbove=3)
 fsweep=field('sweep frequency (Hz)',200,spaceAbove=0)
 
-fields=[laser,vmin,vmax,nPoints,fsweep]
+fields=[vmin,vmax,nPoints,fsweep]
 
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
@@ -60,8 +74,8 @@ ax2=gra.addAx()
 l2=gra.addLine(typ='average',style='lm',ax=ax2)
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=lambda: ao.setTo(0))
-StartStop.setupSerie(nAcqui=len(ns),iterPerAcqui=ns,acquiStart=acquiStart,acquiEnd=acquiEnd)
-save=saveButton(gra,autoSave=10)
+StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=10,acquiStart=acquiStart,acquiEnd=acquiEnd)
+save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1,l2)
 it=iterationWidget(l1)
 norm=gra.normalize()
