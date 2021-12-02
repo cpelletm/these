@@ -1,11 +1,14 @@
 from lab import *
 
 
-nSide=30
-xs=np.linspace(0,10,nSide)
-ys=np.linspace(0,10,nSide)
-laser_freqs=np.linspace(2E6,2E7,10)
+# nSide=11
+# xs=np.linspace(0,10,nSide)
+# ys=np.linspace(0,10,nSide)
 
+# laser_freqs=np.linspace(2E6,2E7,10)
+
+nLine=30
+ys=np.linspace(0,10,nLine)
 
 def acquiStart(i):
 	# ix=i%nSide
@@ -14,9 +17,12 @@ def acquiStart(i):
 	# yV=ys[iy]
 	# cube.move(xV,ax='x')	
 	# cube.move(yV,ax='y')
-	laser.laserFreq.setValue(laser_freqs[i])
-	laser.lasOnOff()
 
+	# laser.laserFreq.setValue(laser_freqs[i])
+	# laser.lasOnOff()
+
+	yV=ys[i]
+	cube.move(yV,ax='y')
 
 def acquiEnd(i):
 	# ix=i%nSide
@@ -24,8 +30,12 @@ def acquiEnd(i):
 	# xV=xs[ix]
 	# yV=ys[iy]
 	# fname=StartStop.defaultFolder+'x=%f,y=%f'%(xV,yV)
-	laser.laser.stop()
-	fname='fLas=%f'%laser_freqs[i]
+
+	# laser.laser.stop()
+	# fname='fLas=%f'%laser_freqs[i]
+
+	yV=ys[i]
+	fname=StartStop.defaultFolder+'x=0,y=%f'%(yV)
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
 	else :
@@ -80,7 +90,7 @@ ax2=gra.addAx()
 l2=gra.addLine(typ='average',style='lm',ax=ax2)
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=lambda: ao.setTo(0))
-StartStop.setupSerie(nAcqui=10,iterPerAcqui=100,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=10,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1,l2)
 it=iterationWidget(l1)

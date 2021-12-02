@@ -1390,6 +1390,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 				self.currentPenIndex=0
 				self.legend=self.addLegend(labelTextSize='15pt')
 				self.infiniteLines=[]
+				self.lines=[]
 			def clicked(self,e):
 				pos=e[0]
 				mousePoint = self.vb.mapSceneToView(pos.scenePos())
@@ -1407,6 +1408,14 @@ class graphics(pg.GraphicsLayoutWidget) :
 				while self.infiniteLines != [] : #C'est un peu chelou, mais comme je supprime les élléments de la liste au fur et à mesure il comprend pas sinon
 					line=self.infiniteLines[0]
 					line.remove()
+			def remove(self):
+				self.clearInfiniteLines()
+				for line in self.lines :
+					line.remove()
+				self.graphicsWidget.axes.remove(self)
+				self.graphicsWidget.removeItem(self)
+
+
 		ax=myAx(title=title)
 		self.addItem(ax)
 		ax.graphicsWidget=self
@@ -1433,6 +1442,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 		line.update(x,y,norm=self.norm)
 		line.reset()
 		self.lines+=[line]
+		line.ax.lines+=[line]
 		line.graphicsWidget=self
 		return line
 	def addInfiniteLine(self,pos,angle=90,movable=True,ax=False):
@@ -1484,7 +1494,7 @@ class graphics(pg.GraphicsLayoutWidget) :
 	def normalizeActualize(self):
 		self.norm=self.normWidget.state()
 		for line in self.lines :
-			self.updateLine(line,line.xData,line.trueY)
+			line.update(line.xData,line.trueY,self.norm,show=True)
 	def updateLine(self,line,x,y,noRefresh=False) :		
 		if not(isinstance(y,np.ndarray) or isinstance(y,list)) : #sécurité si jamais tu envoies rien, il ne se passe rien
 			return False

@@ -1592,5 +1592,6 @@ def test_map_pg():
 	GUI=Graphical_interface(gra,size='auto',title='Piezo Map')
 	GUI.run()
 
-a=np.ones((3,3))
-print(a[0:2,0:2])
+a=[0,15,2,3]
+x=a.pop(1)
+print(a)

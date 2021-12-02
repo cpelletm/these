@@ -4,20 +4,34 @@ from analyse import find_ESR_peaks
 
 physicalChannels=['ai13','ai11','ai9']
 
-Voltages=np.linspace(-2,2,130)
+# Voltages=np.linspace(-2,2,130)
+
+nLine=30
+ys=np.linspace(0,10,nLine)
+
 def acquiStart(i):
-	v=Voltages[i]
-	ao.setupContinuous(v)
-	x,y=ESRInLine(Fmin=2400,Fmax=3200,Power=10,NPoints=1001,NRuns=3,Fsweep=400,AmpMod=True)
-	gra.updateLine(l4,x,y)
-	cs=find_ESR_peaks(x,y)
-	print(min(cs)) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
-	frequW.setValue(min(cs))
+	# v=Voltages[i]
+	# ao.setupContinuous(v)
+	# x,y=ESRInLine(Fmin=2400,Fmax=3200,Power=10,NPoints=1001,NRuns=3,Fsweep=400,AmpMod=True)
+	# gra.updateLine(l4,x,y)
+	# cs=find_ESR_peaks(x,y)
+	# print(min(cs)) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
+	# frequW.setValue(min(cs))
+
+	yV=ys[i]
+	cube.move(yV,ax='y')
 
 
 def acquiEnd(i):
-	fname=StartStop.defaultFolder+'V=%f'%(Voltages[i])+' V'
-	save.save(fname=fname)
+	# fname=StartStop.defaultFolder+'V=%f'%(Voltages[i])+' V'
+
+	yV=ys[i]
+	fname=StartStop.defaultFolder+'x=0,y=%f'%(yV)
+
+	if i==0 :
+		save.save(fname=fname,saveFigure=True)
+	else :
+		save.save(fname=fname,saveFigure=False)
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
@@ -32,13 +46,13 @@ def setup():
 	readSignal=[False]*nPola
 	switchSignal=[False]*nPola
 	x=[]
-	for i in range(1,nT1+1):
-		gateLaser+=([False]*i+[True]*nPola)*2
-		readSignal+=([False]*i+[True]*nRead+[False]*(nPola-nRead))*2
+	for i in range(1,nT1+1): #Je fais 4 sequences : sans pulse, avec pulse; avec pulse, sans pulse. La différence avec 2 séquences c'est que ça devrait limiter l'effet des drifts (si ils sont linéaires)
+		gateLaser+=([False]*i+[True]*nPola)*4
+		readSignal+=([False]*i+[True]*nRead+[False]*(nPola-nRead))*4
 		if debutfin.state() : #pulse au début du dark time
-			switchSignal+=([False]*(nPola+i))+([True]+[False]*(nPola+i-1))
+			switchSignal+=([False]*(nPola+i))+([True]+[False]*(nPola+i-1))+([True]+[False]*(nPola+i-1))+([False]*(nPola+i))
 		else : #pulse à la fin du dark time 
-			switchSignal+=([False]*i+[False]*nPola)+([False]*(i-1)+[True]+[False]*nPola)
+			switchSignal+=([False]*(nPola+i))+([False]*(i-1)+[True]+[False]*nPola)+([False]*(i-1)+[True]+[False]*nPola)+([False]*(nPola+i))
 		x+=[i*dt]
 	pulseRead=ai.setupPulsed(freq=freq,signal=readSignal)
 	do.setupTimed(SampleFrequency=freq,ValuesList=[pulseRead,gateLaser,switchSignal])
@@ -52,10 +66,12 @@ def update(x,nRead,nT1):
 		y1=[]
 		y2=[]
 		for i in range(nT1):
-			segment1=data[2*i*nRead:(2*i+1)*nRead]
-			y1+=[sum(segment1)/len(segment1)]
-			segment2=data[(2*i+1)*nRead:(2*i+2)*nRead]
-			y2+=[sum(segment2)/len(segment2)]
+			segment1=data[4*i*nRead:(4*i+1)*nRead]
+			segment2=data[(4*i+1)*nRead:(4*i+2)*nRead]
+			segment3=data[(4*i+2)*nRead:(4*i+3)*nRead]
+			segment4=data[(4*i+3)*nRead:(4*i+4)*nRead]
+			y1+=[sum(segment1)/len(segment1)+sum(segment4)/len(segment4)]		
+			y2+=[sum(segment2)/len(segment2)+sum(segment3)/len(segment3)]
 		y1=np.array(y1)
 		y2=np.array(y2)
 		gra.updateLine(l1,x,y1,noRefresh=True) 
@@ -71,6 +87,7 @@ ai=AIChan()
 ao=AOChan('ao0')
 do=DOChan('p06','p07','p02')
 mw=microwave('mw_ludo')
+cube=PiezoCube3axes()
 
 ## Setup the Graphical interface ##
 # laser=continuousLaserWidget(power=2E-4,spaceAbove=0)
@@ -88,14 +105,14 @@ gra=graphics(refreshRate=0.1)
 l1=gra.addLine(typ='average',style='m',fast=True)
 l2=gra.addLine(typ='average',style='m',fast=True)
 ax2=gra.addAx()
-l3=ax2.addLine(typ='average',style='m',fast=True)
+l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 # ax3=gra.addAx()
 # l4=ax3.addLine(typ='instant',style='m',fast=True)
 
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 debutfin=checkBox('debut(check)\nfin(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=len(Voltages),iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=30,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)
@@ -103,7 +120,7 @@ trace=keepTraceButton(l1,l2,l3)
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)
-buttons=[channels,debutfin,norm,StartStop,trace,expfit,stretchfit,save,it]
+buttons=[channels,norm,debutfin,StartStop,trace,expfit,stretchfit,save,it]
 
 ## Create the graphical interface and launch the program ##
 GUI=Graphical_interface(fields,gra,buttons,title='T1 soustraction')
