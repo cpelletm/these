@@ -90,7 +90,7 @@ ax2=gra.addAx()
 l2=gra.addLine(typ='average',style='lm',ax=ax2)
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=lambda: ao.setTo(0))
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=10,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1,l2)
 it=iterationWidget(l1)
