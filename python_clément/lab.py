@@ -43,6 +43,11 @@ elif macAdressOfCurrentPC=='f0:79:59:2f:4b:78' : #Ordi perso
 	computerUsed='OrdiPerso'
 	defaultDataPath="../data/"
 	defaultTheme='light'
+
+elif macAdressOfCurrentPC=='e4:b9:7a:ea:ff:e5' : #Ordi 3 (du fond)
+	computerUsed='Ordi3'
+	defaultDataPath="D:/DATA/"
+	defaultTheme='dark'
 else :
 	print('current mac adress : ',gma())
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
@@ -2188,7 +2193,7 @@ def test_pg():
 	fields=[ftoto,attention,counterButton]
 
 
-	StartStop=startStopButton(setup=setup,update=update,debug=False,lineIter=l3,showMaxIter=True,serie=True)
+	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True)
 	StartStop.setupSerie(nAcqui=3,iterPerAcqui=[100,150,50],acquiStart=acquiStart,acquiEnd=acquiEnd)
 	save=saveButton(gra,autoSave=False)
 	trace=keepTraceButton(l1,l3)
