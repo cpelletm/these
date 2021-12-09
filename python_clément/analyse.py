@@ -17,6 +17,8 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 			f=glob.glob(filename+'.txt')[0]
 		elif glob.glob(filename+'.csv') :
 			f=glob.glob(filename+'.csv')[0]
+		elif glob.glob(filename+'.asc') :
+			f=glob.glob(filename+'.asc')[0]
 		else :
 			print('file not found')
 			quit()
@@ -35,6 +37,25 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 					else :
 						x+=[float(line[xcol])]
 						y+=[float(line[ycol])]				
+				except :
+					pass
+		return(np.array(x),np.array(y))
+	elif filename[-4:] =='.asc' :
+		x=[]
+		y=[]
+		def convert_comma_number(x):
+			x=x.split(',')
+			if len(x)==2 :
+				y=float(x[0])+float(x[1])*10**(-len(x[1]))
+			elif len(x)==1 :
+				y=float(x[0])
+			return y
+		with open(filename,'r',encoding = "ISO-8859-1") as f:
+			for line in f:
+				line=line.split()
+				try :
+					x+=[convert_comma_number(line[0])]
+					y+=[convert_comma_number(line[1])]
 				except :
 					pass
 		return(np.array(x),np.array(y))

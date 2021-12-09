@@ -2,6 +2,46 @@ from lab import *
 
 physicalChannels=['ai13','ai11','ai9']
 
+nSide=30
+zs=np.linspace(-5,5,nSide)
+ys=np.linspace(0,10,nSide)
+
+# laser_freqs=np.linspace(2E6,2E7,10)
+
+# nLine=30
+# ys=np.linspace(0,10,nLine)
+
+def acquiStart(i):
+	iz=i%nSide
+	iy=i//nSide
+	zV=zs[iz]
+	yV=ys[iy]
+	cube.move(zV,ax='z')	
+	cube.move(yV,ax='y')
+
+	# laser.laserFreq.setValue(laser_freqs[i])
+	# laser.lasOnOff()
+
+	# yV=ys[i]
+	# cube.move(yV,ax='y')
+
+def acquiEnd(i):
+	iz=i%nSide
+	iy=i//nSide
+	zV=zs[iz]
+	yV=ys[iy]
+	fname=StartStop.defaultFolder+'z=%f,y=%f'%(zV,yV)
+
+	# laser.laser.stop()
+	# fname='fLas=%f'%laser_freqs[i]
+
+	# yV=ys[i]
+	# fname=StartStop.defaultFolder+'x=0,y=%f'%(yV)
+	if i==0 :
+		save.save(fname=fname,saveFigure=True)
+	else :
+		save.save(fname=fname,saveFigure=False)
+
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
 	apply_repeat(nRep,ai,do,l1)
@@ -87,6 +127,7 @@ def avgWidgAction() :
 ## Create the communication (I/O) instances ##
 ai=AIChan()
 do=DOChan()
+cube=PiezoCube3axes()
 
 ## Setup the Graphical interface ##
 # laser=continuousLaserWidget(power=2E-4,spaceAbove=0)
@@ -109,7 +150,8 @@ l1=gra.addLine(typ='instant',style='m',fast=True)
 
 avgWidg=checkBox('instant/avg',action=avgWidgAction) #Uncheck = instant, check = avg
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
-StartStop=startStopButton(setup=setup,update=update,debug=True,extraStop=extraStop)
+StartStop=startStopButton(setup=setup,update=update,serie=True,lineIter=l1,debug=True,extraStop=extraStop)
+StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
 expfit=fitButton(line=l1,fit='exp',name='exp fit')
