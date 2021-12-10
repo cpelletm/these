@@ -47,12 +47,14 @@ def setup():
 	switchSignal=[False]*nPola
 	x=[]
 	for i in range(1,nT1+1): #Je fais 4 sequences : sans pulse, avec pulse; avec pulse, sans pulse. La différence avec 2 séquences c'est que ça devrait limiter l'effet des drifts (si ils sont linéaires)
-		gateLaser+=([False]*i+[True]*nPola)*4
-		readSignal+=([False]*i+[True]*nRead+[False]*(nPola-nRead))*4
-		if debutfin.state() : #pulse au début du dark time
-			switchSignal+=([False]*(nPola+i))+([True]+[False]*(nPola+i-1))+([True]+[False]*(nPola+i-1))+([False]*(nPola+i))
-		else : #pulse à la fin du dark time 
-			switchSignal+=([False]*(nPola+i))+([False]*(i-1)+[True]+[False]*nPola)+([False]*(i-1)+[True]+[False]*nPola)+([False]*(nPola+i))
+		gateLaser+=([True]*nPola+[False]*i+[True]*nRead)*4
+		readSignal+=([False]*(i+nPola)+[True]*nRead)*4
+		if zeromoinsunCB.state() : #mesure du T1 du -1 (ou+1) : pulse au début du dark time puis soustraction
+			switchSignal+=([False]*(nPola-1)+[True]+[False]*(i+nRead))   +   ([False]*(nPola-1)+[True]+[False]*(i-1)+[True]+[False]*(nRead)) \
+			+([False]*(nPola-1)+[True]+[False]*(i-1)+[True]+[False]*(nRead))   +   ([False]*(nPola-1)+[True]+[False]*(i+nRead))
+		else : #mesure du T1 du zero
+			switchSignal+=([False]*(nPola+i+nRead))   +   ([False]*(nPola+i-1)+[True]+[False]*nRead) \
+			+([False]*(nPola+i-1)+[True]+[False]*nRead)   +   ([False]*(nPola+i+nRead))
 		x+=[i*dt]
 	pulseRead=ai.setupPulsed(freq=freq,signal=readSignal)
 	do.setupTimed(SampleFrequency=freq,ValuesList=[pulseRead,gateLaser,switchSignal])
@@ -110,7 +112,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 # l4=ax3.addLine(typ='instant',style='m',fast=True)
 
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
-debutfin=checkBox('debut(check)\nfin(uncheck)')
+zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
 StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=30,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
@@ -120,7 +122,7 @@ trace=keepTraceButton(l1,l2,l3)
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)
-buttons=[channels,norm,debutfin,StartStop,trace,expfit,stretchfit,save,it]
+buttons=[channels,norm,zeromoinsunCB,StartStop,trace,expfit,stretchfit,save,it]
 
 ## Create the graphical interface and launch the program ##
 GUI=Graphical_interface(fields,gra,buttons,title='T1 soustraction')

@@ -2,29 +2,29 @@ from lab import *
 
 
 nSide=30
-zs=np.linspace(-5,5,nSide)
+xs=np.linspace(0,10,nSide)
 ys=np.linspace(0,10,nSide)
 
 # nLine=30
 # ys=np.linspace(0,10,nLine)
 
 def acquiStart(i):
-	iz=i%nSide
+	ix=i%nSide
 	iy=i//nSide
-	zV=zs[iz]
+	xV=xs[ix]
 	yV=ys[iy]
-	cube.move(zV,ax='z')	
+	cube.move(xV,ax='x')	
 	cube.move(yV,ax='y')
 
 	# yV=ys[i]
 	# cube.move(yV,ax='y')
 
 def acquiEnd(i):
-	iz=i%nSide
+	ix=i%nSide
 	iy=i//nSide
-	zV=zs[iz]
+	xV=xs[ix]
 	yV=ys[iy]
-	fname=StartStop.defaultFolder+'z=%f,y=%f'%(zV,yV)
+	fname=StartStop.defaultFolder+'x=%f,y=%f'%(xV,yV)
 
 	# yV=ys[i]
 	# fname=StartStop.defaultFolder+'x=0,y=%f'%(yV)

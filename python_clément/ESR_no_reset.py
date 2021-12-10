@@ -11,6 +11,8 @@ ys=np.linspace(0,10,nSide)
 # nLine=30
 # ys=np.linspace(0,10,nLine)
 
+
+
 def acquiStart(i):
 	iz=i%nSide
 	iy=i//nSide
@@ -21,6 +23,7 @@ def acquiStart(i):
 
 	# yV=ys[i]
 	# cube.move(yV,ax='y')
+
 
 def acquiEnd(i):
 	iz=i%nSide
