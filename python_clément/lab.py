@@ -28,6 +28,7 @@ import qdarkstyle
 
 qapp = QApplication(sys.argv)
 
+
 macAdressOfCurrentPC=gma()
 if macAdressOfCurrentPC=='64:00:6a:5f:1e:5b' : #Ordi 2 (le mien)
 	computerUsed='Ordi2'
@@ -409,7 +410,7 @@ class startStopButton():
 			self.resetCounter=counter('Reset counts',spaceAbove=0)
 			self.maxResetCount=3
 		self.stopButton.button.setEnabled(False)
-		self.timer=QTimer()
+		# self.timer=QTimer()
 
 	def setupSerie(self,nAcqui,iterPerAcqui,iterToCheck='default',acquiStart=False,acquiEnd=False): 
 	#nAcqui=number of acquisition for the serie ; iterPerAcqui= number of iteration for one acqui
@@ -524,8 +525,11 @@ class startStopButton():
 			return 
 		elif not self.debug :
 			self.resetCounter.reset()
-		qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer. 
-		#En gros ça force l'image à s'actualiser, mais ça fout le bordel dans les timers (je pense que ça joue sur les threads), et en gros tu peux te retrouver à call update (plusieurs fois meme) alors que le timer est sensé être stoppé.
+		if computerUsed=='Ordi3' :
+			pass
+		else :
+			qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer. 
+			#En gros ça force l'image à s'actualiser, mais ça fout le bordel dans les timers (je pense que ça joue sur les threads), et en gros tu peux te retrouver à call update (plusieurs fois meme) alors que le timer est sensé être stoppé.
 
 	def stopAction(self): 
 		self.timer.stop()
@@ -780,7 +784,7 @@ class microwave(device):
 		self.PG.write('*WAI')
 
 class pulseBlaster(device):
-	def __init__(self,clockFrequency=300,chanOn=(),verbose=False): #frequency in MHz, frequency of the pb in the entrance computer is 300 MHz, frequency of the pb in the back computer is 500 MHz
+	def __init__(self,clockFrequency='auto',chanOn=(),verbose=False): #frequency in MHz, frequency of the pb in the entrance computer is 300 MHz, frequency of the pb in the back computer is 500 MHz
 		#chanOn : channels (1,2,3, or 4) to leave on True when the pulseblaster is closed
 		#le verbose ne sert présentement à rien
 		super().__init__()
@@ -788,7 +792,13 @@ class pulseBlaster(device):
 		self.verbose=verbose
 		self.sp=sp
 		self.sp.pb_set_debug(1)
-		self.clockFrequency=clockFrequency
+		if clockFrequency=='auto' :
+			if computerUsed=='Ordi1' :
+				self.clockFrequency=300
+			elif computerUsed=='Ordi3' :
+				self.clockFrequency=500
+		else :
+			self.clockFrequency=clockFrequency
 		self.chanOn=chanOn
 	def initPb(self):
 		self.sp.pb_select_board(0)
@@ -890,6 +900,7 @@ class pulseBlaster(device):
 				line[i-1]=1
 			self.sp.pb_close()
 			self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
+
 
 class PiezoCube3axes(device):
 	def __init__(self,deviceName='CubePI-P611'):
@@ -2156,12 +2167,16 @@ def stdout_redirected(to=os.devnull):
 
 def test_pg():
 	def setup():
-		return(x)
-	def update(x):
-		y=2*np.cos(x+time.time())
+		return()
+	def update():	
+		y=2*np.cos(x+time.time())	
 		gra.updateLine(l3,False,y)
 		y0=np.cos(time.time())
 		gra.updateLine(l1,False,[y0])
+	def simpleUpdate():
+		x=np.linspace(0,10,500)
+		y=np.cos(x+time.time())
+		gra.updateLine(l1,False,y)
 	def avertissement():
 		warningGUI('Attention !')
 	def acquiStart(i):
@@ -2178,6 +2193,10 @@ def test_pg():
 		cookieClicker.increase()
 		if cookieClicker.v>10 :
 			cookieClicker.reset()
+	def altStartAction():
+		timer.start()
+	def altStopAction():
+		timer.stop()
 	x=np.linspace(0,10,500)
 	y=np.cos(x)
 	gra=graphics()
@@ -2193,8 +2212,13 @@ def test_pg():
 	fields=[ftoto,attention,counterButton]
 
 
-	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True)
+	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True,timeDelay=10)
 	StartStop.setupSerie(nAcqui=3,iterPerAcqui=[100,150,50],acquiStart=acquiStart,acquiEnd=acquiEnd)
+
+	altStart=button('Start (alt)',action=altStartAction,spaceBelow=0)
+	altStop=button('Stop (alt)',action=altStopAction)
+	timer=QTimer()
+	timer.timeout.connect(update)
 	save=saveButton(gra,autoSave=False)
 	trace=keepTraceButton(l1,l3)
 	it=iterationWidget(l3)
@@ -2202,7 +2226,7 @@ def test_pg():
 	cookieClicker=counter('Clicked')
 	# print(dir(gra.scene()))
 
-	buttons=[norm,StartStop,trace,save,cookieClicker,it]
+	buttons=[norm,StartStop,altStart,altStop,trace,save,cookieClicker,it]
 
 	GUI=Graphical_interface(fields,gra,buttons,title='Example GUI')
 
@@ -2241,6 +2265,7 @@ def test_laser():
 	do.setupContinuous(False)
 
 if __name__ == "__main__":
-	test_pg()
+	pass
+	# test_pg()
 
 

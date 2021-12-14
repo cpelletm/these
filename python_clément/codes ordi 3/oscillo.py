@@ -2,7 +2,7 @@ import sys
 sys.path.append("D:\\these\\python_clément")
 from lab import *
 
-physicalChannels=['ai0']
+physicalChannels=['ai%i'%i for i in range(16)]
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
