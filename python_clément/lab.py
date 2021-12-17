@@ -1148,19 +1148,33 @@ class AIChan(NIChan):
 		else :
 			self.task.timing.cfg_samp_clk_timing(self.samplingRate,source=sourceClock,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
 
-	def setupPulsed(self,signal,freq,chan='/Dev1/PFI11'): #j'ai décidé qu'il n'y aurait plus de continuous. Ni de multiChannels (pour l'instant)
-		#signal : True=1 sample; False = no sample
+	def setupPulsed(self,signal,freq,chan='/Dev1/PFI11',nAvg='auto',nRepeat=1): #j'ai décidé qu'il n'y aurait plus de continuous. Ni de multiChannels (pour l'instant) (c'est dommage pour le multi Chan mais ça a l'air effectivement galère, surtout si les deux voies ne sont pas synchro)
+		#signal : 2=1 sample; False = no sample
 		#freq is the frequency of the signal
 		#chan is the physical channel of the pulsed signal input
+		self.nRepeat=val(nRepeat)
+
+		if nAvg=='auto' :
+			fmax=self.getMaxFreq()
+			self.nAvg=(fmax/val(freq)).__trunc__() 
+			freq=fmax
+		else :
+			self.nAvg=val(nAvg)
+			freq=val(freq)*self.nAvg
+
+
 		self.createTask()
 		self.mode='pulsed'
-		fmax=self.getMaxFreq()
-		self.nAvg=(fmax/val(freq)).__trunc__() 
-		pulsedSignal=doubleSignal(signal)
-		self.sampsPerChan=sum(signal)*self.nAvg*self.nRepeat
-		self.task.timing.cfg_samp_clk_timing(fmax,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.nAvg) #Rajouter source='/Dev1/do/SampleClock' si ça merde
-		self.triggedOn(chan)
-		return pulsedSignal
+		
+		nsamps=0
+		for elem in signal :
+			if elem==2 :
+				nsamps+=1
+		self.sampsPerChan=nsamps*self.nAvg*self.nRepeat
+
+		self.task.timing.cfg_samp_clk_timing(freq,source=chan,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.sampsPerChan) 
+		self.start()
+		return self.nAvg
 
 	def setupWithPb(self,signal,freq,chan='/Dev1/PFI9'):
 		self.createTask()
@@ -1180,18 +1194,23 @@ class AIChan(NIChan):
 		elif self.mode=='timed' :
 			return(self.readTimed(waitForAcqui=waitForAcqui,timeout=timeout))
 		elif self.mode=='pulsed' :
-			return(self.readPulsed(nRead=nRead,timeout=timeout))
+			return(self.readPulsed(nRead=nRead,waitForAcqui=waitForAcqui,timeout=timeout))
 		elif self.mode=='withPB' :
 			return(self.readPulsed(nRead=nRead,timeout=timeout))
 
 
 
-	def readPulsed(self,nRead='auto',timeout=10) :
+	def readPulsed(self,nRead='auto',waitForAcqui=True,timeout=10) :
+		if waitForAcqui :
+			self.task.wait_until_done(timeout=timeout)
+		elif not self.task.is_task_done() :
+			return False
 		if nRead=='auto':
 			nRead=self.sampsPerChan
 		else :
 			nRead=nRead*self.nAvg*self.nRepeat
 		data=self.task.read(nRead,timeout=timeout)
+		self.restart()
 		return average(data,self.nAvg,self.nRepeat)
 
 		
@@ -1255,6 +1274,7 @@ class DOChan(NIChan):
 	def updateContinuous(self,Value):
 		self.value=val(Value)
 		self.task.write(self.value)
+
 	def setupTimed(self,ValuesList,SampleFrequency,SampleMode='finite'): #sampleMode = 'finite' or 'continuous' ; ValuesList example : [[True,False,True],[True,True,True]] for two DO channels
 		self.createTask()
 		self.samplingRate=val(SampleFrequency)
@@ -1289,6 +1309,53 @@ class DOChan(NIChan):
 			self.sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
 		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
 		self.task.write(self.signal)
+
+	def setupPulsed(self,ValuesList,freq,nAvg=1,nRepeat=1,SampleMode='finite'):
+		self.nRepeat=val(nRepeat)
+		self.createTask()
+		#Check des erreurs : 
+		if isinstance(ValuesList[0],(list,np.ndarray)) :
+			signal=ValuesList
+			if len(signal)!=self.nChannels :
+				raise(ValueError('The number of DO signals do not match the nomber of DO channels'))
+			n0=len(signal[0])
+			for line in signal :
+				if len(line)!=n0 :
+					raise(ValueError('The length of the different DO signals do not match : %i != %i'%(len(line),n0)))
+		else :
+			signal=[ValuesList]
+			if self.nChannels!=1 :
+				raise(ValueError('The number of DO signals do not match the nomber of DO channels'))
+		includePulses=False
+		for line in signal :
+			for elem in line :
+				if elem==2 :
+					includePulses=True
+				elif elem==1 or elem==0 :
+					pass
+				else :
+					raise(ValueError('An element of a DO signal is neither a 0, a 1 or a 2'))
+
+		new_signal=[]
+		if includePulses :
+			freq=2*freq*nAvg			
+			for line in signal :
+				new_signal+=[extend_signal(line,nAvg*2)*nRepeat]
+		else :
+			freq=freq*nAvg
+			for line in signal :
+				new_signal+=[extend_signal(line,nAvg)*nRepeat]
+		signal=new_signal
+
+		if SampleMode=='finite':
+			sampleMode=nidaqmx.constants.AcquisitionType.FINITE
+		elif SampleMode=='continuous':
+			sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
+
+		sampsPerChan=len(signal[0])
+		self.task.timing.cfg_samp_clk_timing(freq,sample_mode=sampleMode, samps_per_chan=sampsPerChan)
+		self.task.write(signal)
+
 
 class COChan(NIChan):
 	def __init__(self,*physicalChannels): #Physical Channel = 'ctr0' to 'ctr3' . Counters can only contain one channel (i believe)		
@@ -2100,7 +2167,12 @@ def apply_repeat(nRepeat,*Objs):
 def extend_signal(signal,n):
 	l=[]
 	for elem in signal :
-		l+=[elem]*n
+		if elem ==2 :
+			if n%2 != 0 :
+				raise(ValueError('n sould be divisable by 2'))
+			l+=[False,True]*(n//2) #Ce trou de balle de daqmx a des bugs si tu mets des 0 et des 1 à la place
+		else :
+			l+=[elem]*n
 	return l
 
 def scale_signal(signal,baseFreq,newFreq=1e6):

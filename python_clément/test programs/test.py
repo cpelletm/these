@@ -1555,7 +1555,6 @@ def testScan3Axes():
 			ao.write(2)
 			time.sleep(1)
 
-
 def test_map_pg():
 	xs=np.linspace(0,10,100)
 	ys=np.linspace(0,10,100)
@@ -1592,6 +1591,34 @@ def test_map_pg():
 	GUI=Graphical_interface(gra,size='auto',title='Piezo Map')
 	GUI.run()
 
-a=[0,15,2,3]
-x=a.pop(1)
-print(a)
+def test_lect_pulsed():
+	with nidaqmx.Task() as ai :
+		with nidaqmx.Task() as do :
+			ai.ai_channels.add_ai_voltage_chan("Dev1/ai13")
+			do.do_channels.add_do_chan("Dev1/port0/line6")
+			freq=1000
+			nsamps=10
+			ai.timing.cfg_samp_clk_timing(freq,source='/Dev1/PFI11',sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=nsamps)
+			ai.start()
+			signal=([True]+[False])*(nsamps//2)+[False]*100+([True]+[False])*(nsamps//2)
+			do.timing.cfg_samp_clk_timing(2*freq,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=len(signal))
+			do.write(signal)			
+			print(do.is_task_done())
+			do.start()
+			print(do.is_task_done())
+			time.sleep(0.2)
+			print(do.is_task_done())
+			print(ai.read(nsamps,timeout=2)) #Note : je peux lui en demander plus que nsamps, il me rend nsamps mais sans erreur. Franchement je comprends pas trop
+			print(do.is_task_done())
+			ai.stop()
+			ai.start()
+
+			
+
+
+
+
+
+print(True==1)
+
+

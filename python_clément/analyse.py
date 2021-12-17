@@ -563,7 +563,7 @@ class magneticField():
 	def __repr__(self):
 		return('Bx=%f; By=%f, Bz= %f'%(self.x,self.y,self.z))
 
-def find_B_spherical(peaks,Bmax=1000,startingB=False): #B in gauss
+def find_B_spherical(peaks,Bmax=1000,startingB=False,transis='all'): #B in gauss
 	peaks=np.sort(peaks)
 	if len(peaks)==8 :
 		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
@@ -578,16 +578,26 @@ def find_B_spherical(peaks,Bmax=1000,startingB=False): #B in gauss
 			completePeaks=np.sort([peaks[0]]*4+[peaks[1]]*4)
 			err=np.linalg.norm(completePeaks-simuPeaks)
 			return err
-	elif len(peaks)==4: #Merde y'a le cas de la 111
-		print('not implemented yet')
+	elif len(peaks)==4 and transis=='-': 
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+			simuPeaks=B.transitions4ClassesMoins()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	elif len(peaks)==4 and transis=='+': 
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+			simuPeaks=B.transitions4ClassesPlus()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
 	if startingB :
 		x0=[startingB.amp,startingB.theta,startingB.phi]
 	else :
-		x0=[100,0.4777,0.3927]
+		x0=[100,0.5,0.4]
 	sol=minimize(err_func,x0=x0,args=peaks,bounds=[(0,Bmax),(-0.05,0.9554),(-0.05,0.7854)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
 	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
 
-def find_B_cartesian(peaks,Bmax=1000): #B in gauss ; Ca m'a la'ir de moins bien marcher que l'autre
+def find_B_cartesian(peaks,Bmax=1000,startingB=False,transis='all'): #B in gauss ; Ca m'a la'ir de moins bien marcher que l'autre
 	peaks=np.sort(peaks)
 	if len(peaks)==8 :
 		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
@@ -602,9 +612,23 @@ def find_B_cartesian(peaks,Bmax=1000): #B in gauss ; Ca m'a la'ir de moins bien 
 			completePeaks=np.sort([peaks[0]]*4+[peaks[1]]*4)
 			err=np.linalg.norm(completePeaks-simuPeaks)
 			return err
-	elif len(peaks)==4: #Merde y'a le cas de la 111
-		print('not implemented yet')
-	sol=minimize(err_func,x0=[0,0,0],args=peaks,bounds=[(-Bmax,Bmax),(-Bmax,Bmax),(-Bmax,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
+	elif len(peaks)==4 and transis=='-': 
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+			simuPeaks=B.transitions4ClassesMoins()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	elif len(peaks)==4 and transis=='+': 
+		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+			simuPeaks=B.transitions4ClassesPlus()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	if startingB :
+		x0=[startingB.amp,startingB.theta,startingB.phi]
+	else :
+		x0=[100,0,0]
+	sol=minimize(err_func,x0=x0,args=peaks,bounds=[(-Bmax,Bmax),(-Bmax,Bmax),(-Bmax,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
 	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
 
 def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
@@ -624,15 +648,24 @@ def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 			y+=amp*1/(1+((x-c)/width)**2)
 	return y
 
-def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss',returnType='default'): #peaks : centers of resonances in MHz
+def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss',returnType='default',transis='all',fittingProtocol='spherical'): #peaks : centers of resonances in MHz
 	popt,yfit= ESR_n_pics(x,y,peaks)
 	n=len(peaks)
 	ss=popt[0]
 	peaks=popt[1]
 	widths=popt[2]
 	amps=popt[3]
-	B=find_B_spherical(peaks,Bmax=Bmax)
-	cs=B.transitions4Classes()
+	if fittingProtocol=='spherical' :
+		B=find_B_spherical(peaks,Bmax=Bmax,transis=transis)
+	elif fittingProtocol=='cartesian' :
+		B=find_B_cartesian(peaks,Bmax=Bmax,transis=transis)
+	if transis=='all' :
+		cs=B.transitions4Classes()
+	elif transis=='+':
+		cs=B.transitions4ClassesPlus()
+	elif transis=='-':
+		cs=B.transitions4ClassesMoins()
+
 	if n==2 :
 		widths=[widths[0]]*4+[widths[1]]*4
 		amps=[amps[0]/4]*4+[amps[1]/4]*4

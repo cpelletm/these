@@ -52,13 +52,14 @@ def setup():
 	totalTime=val(tWait)+val(tRead)+val(tPola)
 	if fullView.state() :
 		x=np.linspace(0,totalTime,(nWait+nRead+nPola))
-		lect=[True]*(nWait+nRead+nPola)
+		lect=[2]*(nWait+nRead+nPola)
 	else :
 		x=np.linspace(0,val(tRead),+nRead)
-		lect=([False]*(nWait+1)+[True]*(nRead-1)+[False]*(nPola))
+		lect=[False]*(nWait+1)+[2]*(nRead-1)+[False]*(nPola)
 		x=x[1:]
+
 	ai.setChannels(channels.text()) 
-	pulseLect=ai.setupPulsed(freq=freq,signal=lect)
+	nAvg=ai.setupPulsed(signal=lect,freq=freq)
 
 	redLaserGate=[]
 	greenLaserGate=[]
@@ -104,14 +105,14 @@ def setup():
 
 
 	do.setChannels('p06','p07','p03')
-	do.setupTimed(SampleFrequency=freq,ValuesList=[pulseLect,greenLaserGate,redLaserGate])
+	do.setupPulsed(ValuesList=[lect,greenLaserGate,redLaserGate],freq=freq,nAvg=nAvg,nRepeat=nRep)
 	do.start()
 	return x
 	
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x):
 	
-	y=ai.read(timeout=30)
+	y=ai.read(timeout=5)
 	gra.updateLine(l1,x,y) 
 	do.restart()
 
@@ -142,13 +143,14 @@ readMenu.setIndex('green')
 tRead=field('read time (s)',1e-3)
 polaMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tPola=field('pola time(s)',1e-3)
-nRep=field('n repeat',2)
+nRep=field('n repeat',1)
 fields=[laser,AOM,fullView,NRead,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,nRep]
 
 gra=graphics(refreshRate=0.1)
 l1=gra.addLine(typ='instant',style='m',fast=True)
 
 avgWidg=checkBox('instant/avg',action=avgWidgAction) #Uncheck = instant, check = avg
+avgWidg.setState(True)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,serie=True,lineIter=l1,debug=True,extraStop=extraStop)
 StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)

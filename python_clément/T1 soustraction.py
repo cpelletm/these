@@ -48,7 +48,7 @@ def setup():
 	x=[]
 	for i in range(1,nT1+1): #Je fais 4 sequences : sans pulse, avec pulse; avec pulse, sans pulse. La différence avec 2 séquences c'est que ça devrait limiter l'effet des drifts (si ils sont linéaires)
 		gateLaser+=([True]*nPola+[False]*i+[True]*nRead)*4
-		readSignal+=([False]*(i+nPola)+[True]*nRead)*4
+		readSignal+=([False]*(i+nPola)+[2]*nRead)*4
 		if zeromoinsunCB.state() : #mesure du T1 du -1 (ou+1) : pulse au début du dark time puis soustraction
 			switchSignal+=([False]*(nPola-1)+[True]+[False]*(i+nRead))   +   ([False]*(nPola-1)+[True]+[False]*(i-1)+[True]+[False]*(nRead)) \
 			+([False]*(nPola-1)+[True]+[False]*(i-1)+[True]+[False]*(nRead))   +   ([False]*(nPola-1)+[True]+[False]*(i+nRead))
@@ -56,14 +56,14 @@ def setup():
 			switchSignal+=([False]*(nPola+i+nRead))   +   ([False]*(nPola+i-1)+[True]+[False]*nRead) \
 			+([False]*(nPola+i-1)+[True]+[False]*nRead)   +   ([False]*(nPola+i+nRead))
 		x+=[i*dt]
-	pulseRead=ai.setupPulsed(freq=freq,signal=readSignal)
-	do.setupTimed(SampleFrequency=freq,ValuesList=[pulseRead,gateLaser,switchSignal])
+	nAvg=ai.setupPulsed(freq=freq,signal=readSignal,nRepeat=nRep)
+	do.setupPulsed(ValuesList=[readSignal,gateLaser,switchSignal],freq=freq,nAvg=nAvg,nRepeat=nRep)
 	do.start()
 	return x,nRead,val(nT1)
 	
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x,nRead,nT1):
-	if True:
+	if do.done():
 		data=ai.read()
 		y1=[]
 		y2=[]
