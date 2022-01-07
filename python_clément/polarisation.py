@@ -47,6 +47,7 @@ def setup():
 	apply_repeat(nRep,ai,do,l1)
 	nRead=val(NRead)
 	freq=nRead/val(tRead)
+
 	nWait=int(freq*val(tWait))
 	nPola=int(freq*val(tPola))
 	totalTime=val(tWait)+val(tRead)+val(tPola)
@@ -59,7 +60,8 @@ def setup():
 		x=x[1:]
 
 	ai.setChannels(channels.text()) 
-	nAvg=ai.setupPulsed(signal=lect,freq=freq)
+	nAvg=ai.setupPulsed(signal=lect,freq=freq,nAvg=nAvgWidg)
+
 
 	redLaserGate=[]
 	greenLaserGate=[]
@@ -104,6 +106,10 @@ def setup():
 
 
 
+	lect+=[False]*10
+	greenLaserGate+=[False]*10
+	redLaserGate+=[False]*10
+
 	do.setChannels('p06','p07','p03')
 	do.setupPulsed(ValuesList=[lect,greenLaserGate,redLaserGate],freq=freq,nAvg=nAvg,nRepeat=nRep)
 	do.start()
@@ -112,9 +118,11 @@ def setup():
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x):
 	
-	y=ai.read(timeout=5)
-	gra.updateLine(l1,x,y) 
-	do.restart()
+	if do.done() :
+		y=ai.read(timeout=5)
+		do.restart()
+		gra.updateLine(l1,x,y) 
+	
 
 def extraStop() :
 	do.setupContinuous([[False],[True],[AOM.state()]])
@@ -135,22 +143,24 @@ cube=PiezoCube3axes()
 laser=pulsedLaserWidget(gate=True)
 AOM=AOMWidget()
 fullView=checkBox('Full View')
+fullView.setState(True)
 NRead=field('n read',200)
 waitMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
-tWait=field('dark time (s)',1e-3)
+tWait=field('dark time (s)',10e-3)
 readMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
-readMenu.setIndex('green')
-tRead=field('read time (s)',1e-3)
+readMenu.setIndex('both')
+tRead=field('read time (s)',20e-3)
 polaMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
-tPola=field('pola time(s)',1e-3)
+tPola=field('pola time(s)',10e-3)
 nRep=field('n repeat',1)
-fields=[laser,AOM,fullView,NRead,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,nRep]
+nAvgWidg=field('n avg','auto')
+fields=[laser,AOM,fullView,NRead,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,nRep,nAvgWidg]
 
 gra=graphics(refreshRate=0.1)
 l1=gra.addLine(typ='instant',style='m',fast=True)
 
 avgWidg=checkBox('instant/avg',action=avgWidgAction) #Uncheck = instant, check = avg
-avgWidg.setState(True)
+avgWidg.setState(False)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,serie=True,lineIter=l1,debug=True,extraStop=extraStop)
 StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)

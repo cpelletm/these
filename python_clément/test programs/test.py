@@ -1596,22 +1596,44 @@ def test_lect_pulsed():
 		with nidaqmx.Task() as do :
 			ai.ai_channels.add_ai_voltage_chan("Dev1/ai13")
 			do.do_channels.add_do_chan("Dev1/port0/line6")
-			freq=1000
-			nsamps=10
+			do.do_channels.add_do_chan("Dev1/port0/line3")
+			freq=500000
+			nsamps=20000
+			x=np.linspace(0,nsamps/freq,nsamps)
 			ai.timing.cfg_samp_clk_timing(freq,source='/Dev1/PFI11',sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=nsamps)
 			ai.start()
-			signal=([True]+[False])*(nsamps//2)+[False]*100+([True]+[False])*(nsamps//2)
-			do.timing.cfg_samp_clk_timing(2*freq,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=len(signal))
-			do.write(signal)			
-			print(do.is_task_done())
+			trigAI=[True,False]*nsamps
+			signal=[False]*(nsamps//2)+[True]*(nsamps)+[False]*(nsamps//2)
+			DOInput=[trigAI,signal]
+			do.timing.cfg_samp_clk_timing(2*freq,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=2*nsamps)
+			do.write(DOInput)			
 			do.start()
-			print(do.is_task_done())
-			time.sleep(0.2)
-			print(do.is_task_done())
-			print(ai.read(nsamps,timeout=2)) #Note : je peux lui en demander plus que nsamps, il me rend nsamps mais sans erreur. Franchement je comprends pas trop
-			print(do.is_task_done())
+			do.wait_until_done()
+
+			# print(ai.read(nsamps,timeout=2)) #Note : je peux lui en demander plus que nsamps, il me rend nsamps mais sans erreur. Franchement je comprends pas trop
+			y=ai.read(nsamps,timeout=1)
+			plt.plot(x,y)
+
+			
 			ai.stop()
 			ai.start()
+			do.stop()
+			do.start()
+			do.wait_until_done()
+			y=ai.read(nsamps,timeout=1)
+			plt.plot(x,y)
+
+			
+			ai.stop()		
+			ai.start()
+			do.stop()
+			do.start()
+			do.wait_until_done()
+			y=ai.read(nsamps,timeout=1)
+			plt.plot(x,y)
+
+
+	plt.show()
 
 			
 
@@ -1619,6 +1641,7 @@ def test_lect_pulsed():
 
 
 
-print(True==1)
+test_lect_pulsed()
+
 
 

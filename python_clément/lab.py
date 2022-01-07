@@ -658,6 +658,8 @@ class fitButton():
 		self.addFitButton.addToBox(box)
 		self.removeFitButton.addToBox(box)
 
+
+
 class device(): #Pour l'instant ça sert juste à les regrouper pour les fermer
 	def __init__(self):
 		self.toBeClosed=True
@@ -901,6 +903,67 @@ class pulseBlaster(device):
 			self.sp.pb_close()
 			self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
+class pulseBlasterInterpreter(device):
+	def __init__(self,instructionFileName='PB_instructions.txt',clockFrequency='auto'): #timeout in ms
+		super().__init__()
+		self.instFile=instructionFileName
+		if clockFrequency=='auto' :
+			if computerUsed=='Ordi1' :
+				self.clockFrequency=300
+			elif computerUsed=='Ordi3' :
+				self.clockFrequency=500
+		else :
+			self.clockFrequency=clockFrequency
+		self.resetInst()
+
+	def resetInst(self,typ='finite'):
+		self.instStr=''
+
+	def addLine(self,ch1=0,ch2=0,ch3=0,ch4=0,t=1,unit='ms'):
+		self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, %f %s \n'%(ch1,ch2,ch3,ch4,t,unit)
+
+	def addPulses(self,ch1=2,ch2=0,ch3=0,ch4=0,t=1,unit='ms',nLoop=1):
+		chs=[ch1,ch2,ch3,ch4]
+		in1=''
+		in2=''
+		for ch in chs :
+			if ch==2 :
+				in1+='1'
+				in2+='0'
+			else :
+				in1+=str(ch)
+				in2+=str(ch)
+		if nLoop > 1 :
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, LOOP, %i \n'%(in1,t/2,unit,nLoop)
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, END_LOOP \n'%(in2,t/2,unit)
+		else :
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in1,t/2,unit)
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in2,t/2,unit)
+
+
+
+	def contInst(self,ch1=0,ch2=0,ch3=0,ch4=0):
+		self.instStr+='cont : 0b0000 0000 0000 0000 0000 %i%i%i%i, 1 ms, BRANCH, cont \n'%(ch1,ch2,ch3,ch4)
+
+
+	def load(self):
+		with open(self.instFile,'w') as f:
+			f.write(self.instStr)
+		self.resetInst()
+
+		with stdout_redirected() :
+			os.system('spbicl load %s %i'%(self.instFile,self.clockFrequency))
+
+	def start(self):
+		with stdout_redirected() :
+			os.system('spbicl start')
+
+	def stop(self):
+		with stdout_redirected() :
+			os.system('spbicl stop')
+
+	def close(self):
+		self.stop()
 
 class PiezoCube3axes(device):
 	def __init__(self,deviceName='CubePI-P611'):
@@ -938,85 +1001,33 @@ class PiezoCube3axes(device):
 		self.taskY.close()
 		self.taskZ.close()
 
-class hiddenPrints:
-	def __enter__(self):
-		self._original_stdout = sys.stdout
-		sys.stdout = open(os.devnull, 'w')
-
-	def __exit__(self, exc_type, exc_val, exc_tb):
-		sys.stdout.close()
-		sys.stdout = self._original_stdout
-
-class useTheme():
-	def __init__(self,theme='white'):
-		self.theme=theme
-		if theme=='light' or theme=='white' :
-			pg.setConfigOption('background', 'w')
-			pg.setConfigOption('foreground', 'k')			
-			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-			self.infiniteLineColor=(100,100,100)
-		if theme=='dark' or theme=='black' :
-			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-			self.infiniteLineColor=(255,255,255)
-
-		# pg.setConfigOptions(antialias=False)	
-	def nextLine(self,ax,typ=False,big=True):
-		try : ax.penIndices #je fais plus trop ça maintenant normalement, mais bon
+class powerMeterUSB(device):
+	def __init__(self,ressourceName='tl_rouge'):
+		super().__init__()
+		if ressourceName=='tl_rouge':
+			ressourceName='USB0::0x1313::0x8079::P1002303::INSTR'
+		self.ressourceName=ressourceName
+		#A noter que ça marche aussi avec du visa et self.PG.query('MEAS?'), j'ai juste pas accès au calibre vu que je connais pas la commande visa
+		sys.path.append('C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\TLPM\\Example\\Python')
+		global TLPM,byref,c_double,c_bool,c_int16
+		import TLPM
+		from ctypes import byref,c_double,c_bool,c_int16
+	def setup(self,powerRange=2E-3,wavelength=532): #range in [W], wl in [nm]
+		self.tlPM = TLPM.TLPM()
+		self.tlPM.open(b'USB0::0x1313::0x8079::P1002303::INSTR', c_bool(True), c_bool(True))
+		self.tlPM.setPowerRange(c_double(powerRange))
+		self.tlPM.setWavelength(c_double(wavelength))
+		time.sleep(1.5) #The powermeter needs some time to adjust to the new caliber
+	def read(self):	
+		power=c_double()
+		self.tlPM.measPower(byref(power))
+		return(power.value)
+	def close(self):
+		try :
+			self.tlPM.close()
 		except :
-			ax.penIndices=[True]*len(self.penColors)
-		for i in range(len(self.penColors)) : #Si jamais toutes les couleurs sont prises, il reste sur la dernière
-			if ax.penIndices[i] :
-				break
-		penIndex=i
-		ax.penIndices[penIndex]=False
-		if big :
-			widths=[2,2,3]
-		else :
-			widths=[1,2,1]
-		if typ=='trace' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		elif typ=='fit' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
-			symbol='o'
-			symbolPen=pen
-			symbolBrush=pg.mkBrush(None)
+			pass
 
-		ax.currentPenIndex+=1
-		return pen,symbol,symbolPen,symbolBrush,penIndex
-	def penSizeChange(self,line):
-		n=len(line.x)
-		big = n<=300
-		penIndex=line.penIndex
-		ax=line.ax
-		typ=line.typ
-		if big :
-			widths=[2,2,3]
-		else :
-			widths=[1,2,1]
-		if typ=='trace' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		elif typ=='fit' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
-			symbol='o'
-			symbolPen=pen
-			symbolBrush=pg.mkBrush(None)
-		return pen,symbol,symbolPen,symbolBrush
 
 class NIChan():
 	def __init__(self,*physicalChannels):
@@ -1030,12 +1041,12 @@ class NIChan():
 	def setChannels(self,*physicalChannels):
 		self.physicalChannels=physicalChannels
 		self.nChannels=len(physicalChannels)
-	def triggedOn(self,chan):
+	def triggedOn(self,chan,retriggerable=True):
 		if isinstance(chan,str) :
 			self.task.triggers.start_trigger.cfg_dig_edge_start_trig(chan)
 		else :
 			self.task.triggers.start_trigger.cfg_dig_edge_start_trig(chan.triggerSignal)
-		self.task.triggers.start_trigger.retriggerable=True
+		self.task.triggers.start_trigger.retriggerable=retriggerable
 		self.trigged=True
 		self.start()
 	def timeAxis(self):
@@ -1153,11 +1164,14 @@ class AIChan(NIChan):
 		#freq is the frequency of the signal
 		#chan is the physical channel of the pulsed signal input
 		self.nRepeat=val(nRepeat)
+		nAvg=val(nAvg)
 
 		if nAvg=='auto' :
 			fmax=self.getMaxFreq()
 			self.nAvg=(fmax/val(freq)).__trunc__() 
-			freq=fmax
+			# if self.nAvg > 10 :
+			# 	self.nAvg=10
+			freq=freq*self.nAvg
 		else :
 			self.nAvg=val(nAvg)
 			freq=val(freq)*self.nAvg
@@ -1170,10 +1184,9 @@ class AIChan(NIChan):
 		for elem in signal :
 			if elem==2 :
 				nsamps+=1
-		self.sampsPerChan=nsamps*self.nAvg*self.nRepeat
-
+		self.sampsPerChan=nsamps*self.nAvg*self.nRepeat		
 		self.task.timing.cfg_samp_clk_timing(freq,source=chan,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.sampsPerChan) 
-		self.start()
+		self.triggedOn(chan,retriggerable=False)
 		return self.nAvg
 
 	def setupWithPb(self,signal,freq,chan='/Dev1/PFI9'):
@@ -1209,7 +1222,10 @@ class AIChan(NIChan):
 			nRead=self.sampsPerChan
 		else :
 			nRead=nRead*self.nAvg*self.nRepeat
-		data=self.task.read(nRead,timeout=timeout)
+		
+		data=self.task.read(-1,timeout=timeout)	
+		if len(data) != nRead :
+			raise(ValueError('Number of samples aquired %i does not match number of samples required %i'%(len(data),nRead)))
 		self.restart()
 		return average(data,self.nAvg,self.nRepeat)
 
@@ -1353,9 +1369,13 @@ class DOChan(NIChan):
 			sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
 
 		sampsPerChan=len(signal[0])
+		
 		self.task.timing.cfg_samp_clk_timing(freq,sample_mode=sampleMode, samps_per_chan=sampsPerChan)
 		self.task.write(signal)
 
+		# for line in signal :
+		# 	save_list(line)
+		# 	time.sleep(1)
 
 class COChan(NIChan):
 	def __init__(self,*physicalChannels): #Physical Channel = 'ctr0' to 'ctr3' . Counters can only contain one channel (i believe)		
@@ -1449,6 +1469,8 @@ class CIChan(NIChan):
 			return(self.readContinuous(nRead=nRead))
 		if self.mode=='withPB' :
 			return(self.readPulsed(nRead=nRead))	
+
+
 
 class graphics(pg.GraphicsLayoutWidget) :
 	def __init__(self,theme=defaultTheme,debug=False,refreshRate=False):
@@ -1860,6 +1882,79 @@ class map2D(pg.ImageItem) :
 		self.xindex=0
 		self.yindex=0
 
+class useTheme():
+	def __init__(self,theme='white'):
+		self.theme=theme
+		if theme=='light' or theme=='white' :
+			pg.setConfigOption('background', 'w')
+			pg.setConfigOption('foreground', 'k')			
+			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
+			self.infiniteLineColor=(100,100,100)
+		if theme=='dark' or theme=='black' :
+			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
+			self.infiniteLineColor=(255,255,255)
+
+		# pg.setConfigOptions(antialias=False)	
+	def nextLine(self,ax,typ=False,big=True):
+		try : ax.penIndices #je fais plus trop ça maintenant normalement, mais bon
+		except :
+			ax.penIndices=[True]*len(self.penColors)
+		for i in range(len(self.penColors)) : #Si jamais toutes les couleurs sont prises, il reste sur la dernière
+			if ax.penIndices[i] :
+				break
+		penIndex=i
+		ax.penIndices[penIndex]=False
+		if big :
+			widths=[2,2,3]
+		else :
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		else :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
+			symbol='o'
+			symbolPen=pen
+			symbolBrush=pg.mkBrush(None)
+
+		ax.currentPenIndex+=1
+		return pen,symbol,symbolPen,symbolBrush,penIndex
+	def penSizeChange(self,line):
+		n=len(line.x)
+		big = n<=300
+		penIndex=line.penIndex
+		ax=line.ax
+		typ=line.typ
+		if big :
+			widths=[2,2,3]
+		else :
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		else :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
+			symbol='o'
+			symbolPen=pen
+			symbolBrush=pg.mkBrush(None)
+		return pen,symbol,symbolPen,symbolBrush
+
+
+
 class iterationWidget():
 	def __init__(self,line,spaceAbove=1,spaceBelow=0):
 		self.label=QLabel('Iter #0')
@@ -1982,33 +2077,6 @@ class powerMeterAnalog():
 		res=self.Ai.readTimed(waitForAcqui=True)
 		return(sum(res)/len(res)*self.caliber)
 
-class powerMeterUSB(device):
-	def __init__(self,ressourceName='tl_rouge'):
-		super().__init__()
-		if ressourceName=='tl_rouge':
-			ressourceName='USB0::0x1313::0x8079::P1002303::INSTR'
-		self.ressourceName=ressourceName
-		#A noter que ça marche aussi avec du visa et self.PG.query('MEAS?'), j'ai juste pas accès au calibre vu que je connais pas la commande visa
-		sys.path.append('C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\TLPM\\Example\\Python')
-		global TLPM,byref,c_double,c_bool,c_int16
-		import TLPM
-		from ctypes import byref,c_double,c_bool,c_int16
-	def setup(self,powerRange=2E-3,wavelength=532): #range in [W], wl in [nm]
-		self.tlPM = TLPM.TLPM()
-		self.tlPM.open(b'USB0::0x1313::0x8079::P1002303::INSTR', c_bool(True), c_bool(True))
-		self.tlPM.setPowerRange(c_double(powerRange))
-		self.tlPM.setWavelength(c_double(wavelength))
-		time.sleep(1.5) #The powermeter needs some time to adjust to the new caliber
-	def read(self):	
-		power=c_double()
-		self.tlPM.measPower(byref(power))
-		return(power.value)
-	def close(self):
-		try :
-			self.tlPM.close()
-		except :
-			pass
-
 class doubleSignal():
 	def __init__(self,signal):
 		pulsedSignal=[]
@@ -2027,6 +2095,14 @@ class AOMWidget(checkBox):
 	def action(self):		
 		self.do.setupContinuous(self.state(),close=True)
 
+class hiddenPrints:
+	def __enter__(self):
+		self._original_stdout = sys.stdout
+		sys.stdout = open(os.devnull, 'w')
+
+	def __exit__(self, exc_type, exc_val, exc_tb):
+		sys.stdout.close()
+		sys.stdout = self._original_stdout
 
 
 def failSafe(func,*args,debug=True):
@@ -2236,6 +2312,37 @@ def stdout_redirected(to=os.devnull):
 			yield # allow code to be run with the redirected stdout
 		finally:
 			_redirect_stdout(to=old_stdout) # restore stdout.
+
+def save_list(l,fname='auto'):
+	if fname=='auto':
+		from pathlib import Path
+		now = datetime.now()
+		date_str=now.strftime("%Y-%m-%d %H-%M-%S")
+		fname=defaultDataPath+'/AutoSave/'+date_str+'.txt'
+		dname=os.path.dirname(fname)
+		Path(dname).mkdir(parents=True, exist_ok=True)
+	with open(fname,'w') as f :
+		for elem in l:
+			f.write(str(elem)+'\n')
+
+def read_list_from_file(fname,dtype='str'):
+	l=[]
+	with open(fname,'r') as f:
+		for line in f:
+			if dtype=='str' :
+				l+=[line]
+			elif dtype=='int' :
+				l+=[int(line)]
+			elif dtype=='float' :
+				l+=[float(line)]
+			elif dtype=='bool' :
+				if line[:-1]=='False' :
+					l+=[False]
+				elif line[:-1]=='True' :
+					l+=[True]
+	return(l)
+
+
 
 def test_pg():
 	def setup():
