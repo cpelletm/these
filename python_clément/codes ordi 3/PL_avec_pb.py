@@ -29,7 +29,7 @@ def update():
 
 
 ## Create the communication (I/O) instances ##
-pb=pulseBlaster(chanOn=[])
+pb=pulseBlasterInterpreter()
 ci=CIChan()
 ## Setup the Graphical interface ##
 
