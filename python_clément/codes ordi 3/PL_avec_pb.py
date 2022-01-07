@@ -7,14 +7,13 @@ physicalChannels=['ctr0']
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
 	trigAcqui=[2,2]
-	pb.setupPulsed(dt=dt,ch1=trigAcqui,ch2=[2,2],ch3=[2,2],ch4=[2,2])
+	pb.setType('continuous')
+	pb.addLine(ch4=2,dt=dt,unit='s')
 	ci.setChannels(channels.text()) #define the physical pin on the Ni USB device where the tension should be read
 	ci.setupWithPb(freq=1/dt,signal=trigAcqui)
 	# number of samples to be read each time ai.readTimed() is called, number of samples to be average over and sampling mode : 'continuous' or 'finite' (please always use 'finite')
+	pb.start()
 	if len(l1.xData) != val(nPoints) : #condition to avoid being stuck at 0 PL the first time the program is launched, optional
-		pb.start()
-		while not pb.isDone():
-			pass
 		y0=ci.read()[0]
 		x=np.linspace(0,val(dt)*val(nPoints),val(nPoints))
 		y=np.ones(val(nPoints))*y0
@@ -22,7 +21,6 @@ def setup():
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update():
-	pb.start()
 	y=ci.read()	
 	gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
 	PL.setText('%3.2E'%y[0]) #Modify the PL label with the last acquisition point

@@ -75,5 +75,6 @@ ch4OnButton=button('Ch4 ON',ch4OnAction)
 ch4OffButton=button('Ch4 OFF',ch4OffAction)
 ch4OffButton.setEnabled(False)
 
+
 GUI=Graphical_interface([ch1OnButton,ch1OffButton],[ch2OnButton,ch2OffButton],[ch3OnButton,ch3OffButton],[ch4OnButton,ch4OffButton],size='auto',title='PB manual')
 GUI.run()

@@ -1641,7 +1641,8 @@ def test_lect_pulsed():
 
 
 
-test_lect_pulsed()
+a='abcde'
+print(a[:-2])
 
 
 

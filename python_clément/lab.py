@@ -914,15 +914,42 @@ class pulseBlasterInterpreter(device):
 				self.clockFrequency=500
 		else :
 			self.clockFrequency=clockFrequency
+		self.setType()
+
+
+	def setType(self,typ='finite'):
+		self.typ=typ
 		self.resetInst()
 
-	def resetInst(self,typ='finite'):
-		self.instStr=''
+	def resetInst(self):
+		if self.typ=='finite' :
+			self.instStr=''
+		elif self.typ=='continuous' :
+			self.instStr='Start'
 
-	def addLine(self,ch1=0,ch2=0,ch3=0,ch4=0,t=1,unit='ms'):
-		self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, %f %s \n'%(ch1,ch2,ch3,ch4,t,unit)
 
-	def addPulses(self,ch1=2,ch2=0,ch3=0,ch4=0,t=1,unit='ms',nLoop=1):
+
+	def addLine(self,ch1=0,ch2=0,ch3=0,ch4=0,dt=1,unit='ms'):
+		dt=val(dt)
+		chs=[ch1,ch2,ch3,ch4]
+		if max(chs)==2 :
+			chs=[ch1,ch2,ch3,ch4]
+			in1=''
+			in2=''
+			for ch in chs :
+				if ch==2 :
+					in1+='1'
+					in2+='0'
+				else :
+					in1+=str(ch)
+					in2+=str(ch)
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in1,dt/2,unit)
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in2,dt/2,unit)
+		else :
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(chs,dt,unit)
+
+	def addPulses(self,ch1=2,ch2=0,ch3=0,ch4=0,dt=1,unit='ms',nLoop=1):
+		dt=val(dt)
 		chs=[ch1,ch2,ch3,ch4]
 		in1=''
 		in2=''
@@ -933,12 +960,10 @@ class pulseBlasterInterpreter(device):
 			else :
 				in1+=str(ch)
 				in2+=str(ch)
-		if nLoop > 1 :
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, LOOP, %i \n'%(in1,t/2,unit,nLoop)
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, END_LOOP \n'%(in2,t/2,unit)
-		else :
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in1,t/2,unit)
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in2,t/2,unit)
+
+		self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, LOOP, %i \n'%(in1,dt/2,unit,nLoop)
+		self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, END_LOOP \n'%(in2,dt/2,unit)
+
 
 
 
@@ -947,8 +972,12 @@ class pulseBlasterInterpreter(device):
 
 
 	def load(self):
+		self.instStr=self.instStr[:-2] #Retire le dernier \n
+		if self.typ=='continuous' :
+			self.instStr+=', Branch, Start'
 		with open(self.instFile,'w') as f:
 			f.write(self.instStr)
+
 		self.resetInst()
 
 		with stdout_redirected() :
