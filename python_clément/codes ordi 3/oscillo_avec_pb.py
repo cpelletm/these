@@ -2,35 +2,36 @@ import sys
 sys.path.append("D:\\these\\python_clément")
 from lab import *
 
-physicalChannels=['ctr0']
+physicalChannels=['ai10']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
 	trigAcqui=[2,2]
+	ai.setChannels(channels.text())
+	nAvg=ai.setupPulsed(signal=trigAcqui,freq=1000/dt)
+	
 	pb.setType('continuous')
-	pb.addLine(ch4=2,dt=dt,unit='ms')
+	pb.addLine(ch4=2,dt=dt/nAvg,unit='ms')
 	pb.load()
-	ci.setChannels(channels.text()) #define the physical pin on the Ni USB device where the tension should be read
-	ci.setupWithPb(freq=1000/dt,signal=trigAcqui)
 	# number of samples to be read each time ai.readTimed() is called, number of samples to be average over and sampling mode : 'continuous' or 'finite' (please always use 'finite')
 
 	pb.start()
 	if len(l1.xData) != val(nPoints) : #condition to avoid being stuck at 0 PL the first time the program is launched, optional
-		y0=ci.read()[0]
+		y0=ai.read(waitForAcqui=True)[0]
 		x=np.linspace(0,val(dt)*val(nPoints),val(nPoints))
 		y=np.ones(val(nPoints))*y0
 		gra.updateLine(l1,x,y)
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update():
-	y=ci.read()	
+	y=ai.read(waitForAcqui=True)	
 	gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
 	PL.setText('%3.2E'%y[0]) #Modify the PL label with the last acquisition point
 
 
 ## Create the communication (I/O) instances ##
 pb=pulseBlasterInterpreter()
-ci=CIChan()
+ai=AIChan()
 ## Setup the Graphical interface ##
 
 nPoints=field('n points',151,spaceAbove=3)

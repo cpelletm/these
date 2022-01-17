@@ -925,7 +925,7 @@ class pulseBlasterInterpreter(device):
 		if self.typ=='finite' :
 			self.instStr=''
 		elif self.typ=='continuous' :
-			self.instStr='Start'
+			self.instStr='Start : '
 
 
 
@@ -943,10 +943,10 @@ class pulseBlasterInterpreter(device):
 				else :
 					in1+=str(ch)
 					in2+=str(ch)
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in1,dt/2,unit)
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in2,dt/2,unit)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in1,dt/2,unit)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in2,dt/2,unit)
 		else :
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s \n'%(chs,dt,unit)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(chs,dt,unit)
 
 	def addPulses(self,ch1=2,ch2=0,ch3=0,ch4=0,dt=1,unit='ms',nLoop=1):
 		dt=val(dt)
@@ -961,8 +961,8 @@ class pulseBlasterInterpreter(device):
 				in1+=str(ch)
 				in2+=str(ch)
 
-		self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, LOOP, %i \n'%(in1,dt/2,unit,nLoop)
-		self.instStr+='\t : 0b0000 0000 0000 0000 0000 %s, %f %s, END_LOOP \n'%(in2,dt/2,unit)
+		self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s, LOOP, %i \n'%(in1,dt/2,unit,nLoop)
+		self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s, END_LOOP \n'%(in2,dt/2,unit)
 
 
 
@@ -974,7 +974,7 @@ class pulseBlasterInterpreter(device):
 	def load(self):
 		self.instStr=self.instStr[:-2] #Retire le dernier \n
 		if self.typ=='continuous' :
-			self.instStr+=', Branch, Start'
+			self.instStr+=', BRANCH, Start'
 		with open(self.instFile,'w') as f:
 			f.write(self.instStr)
 
@@ -1188,12 +1188,18 @@ class AIChan(NIChan):
 		else :
 			self.task.timing.cfg_samp_clk_timing(self.samplingRate,source=sourceClock,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
 
-	def setupPulsed(self,signal,freq,chan='/Dev1/PFI11',nAvg='auto',nRepeat=1): #j'ai décidé qu'il n'y aurait plus de continuous. Ni de multiChannels (pour l'instant) (c'est dommage pour le multi Chan mais ça a l'air effectivement galère, surtout si les deux voies ne sont pas synchro)
+	def setupPulsed(self,signal,freq,chan='auto',nAvg='auto',nRepeat=1): #j'ai décidé qu'il n'y aurait plus de continuous. Ni de multiChannels (pour l'instant) (c'est dommage pour le multi Chan mais ça a l'air effectivement galère, surtout si les deux voies ne sont pas synchro)
 		#signal : 2=1 sample; False = no sample
 		#freq is the frequency of the signal
 		#chan is the physical channel of the pulsed signal input
 		self.nRepeat=val(nRepeat)
 		nAvg=val(nAvg)
+
+		if chan=='auto':
+			if computerUsed=='Ordi2' :
+				chan='/Dev1/PFI11'
+			elif computerUsed=='Ordi3' or computerUsed=='Ordi1' :
+				chan='/Dev1/PFI9'
 
 		if nAvg=='auto' :
 			fmax=self.getMaxFreq()
@@ -1455,10 +1461,10 @@ class CIChan(NIChan):
 		self.sampleClock.setupContinuous(Freq=self.freq,gate=False)
 		self.start()
 
-	def readContinuous(self,nRead=2): #pas de waitForAcqui en continuous. Pas de waitForAcqui avec les compteurs en faite, ce sera plus simple
+	def readContinuous(self,nRead=2,timeout=10): #pas de waitForAcqui en continuous. Pas de waitForAcqui avec les compteurs en faite, ce sera plus simple
 		if nRead=='auto':
 			nRead=2
-		data=np.array(self.task.read(val(nRead)))
+		data=np.array(self.task.read(val(nRead),timeout=timeout))
 		PL=((data[1:]-data[:-1])%(1<<self.nBitsCounter))*self.freq #C'est pour prendre en compte les reset de compteurs : je prends le modulo 2^32 de la différence du nombre de coup pour être tjr positif
 		return PL
 
@@ -1480,12 +1486,12 @@ class CIChan(NIChan):
 		self.task.timing.cfg_samp_clk_timing(self.freq,source=chan,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.sampsPerChan)
 		self.start()
 
-	def readPulsed(self,nRead='auto',counts=False) :
+	def readPulsed(self,nRead='auto',counts=False,timeout=10) :
 		if nRead=='auto':
 			nRead=self.sampsPerChan
 		else :
 			nRead=nRead*self.nRepeat
-		data=np.array(self.task.read(val(nRead),timeout=60))
+		data=np.array(self.task.read(val(nRead),timeout=timeout))
 		if counts :
 			return data
 		else :
@@ -1493,11 +1499,11 @@ class CIChan(NIChan):
 			PL=((data[1:]-data[:-1])%(1<<self.nBitsCounter))*self.freq #C'est pour prendre en compte les reset de compteurs : je prends le modulo 2^32 de la différence du nombre de coup pour être tjr positif
 			return PL
 
-	def read(self,nRead='auto') :
+	def read(self,nRead='auto',timeout=10) :
 		if self.mode=='continuous' :
-			return(self.readContinuous(nRead=nRead))
+			return(self.readContinuous(nRead=nRead,timeout=timeout))
 		if self.mode=='withPB' :
-			return(self.readPulsed(nRead=nRead))	
+			return(self.readPulsed(nRead=nRead,timeout=timeout))	
 
 
 
