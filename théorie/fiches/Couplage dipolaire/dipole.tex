@@ -1,0 +1,147 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage{unicode-math}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usepackage{xcolor} % Pour avoir des couleurs dans les équations
+\usepackage{changepage}
+\usetikzlibrary{optics}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+
+\title{Titre}
+\author{Clément Pellet-Mary}
+\date\today
+
+\begin{document}
+  \section{Intéraction dipolaire}
+  \subsection{Formulation classique}
+  Dans tous les cas on considère deux moment magnétiques suffisament éloignés pour être considéré comme ponctuel, dont le premier se trouve en 0 et le second en $\mathbf{r}=r\mathbf{u}$.
+  
+  En classique on considère deux moments magnétiques $\mathbf{m_1}$ et $\mathbf{m_2}$ dont la position et l'orientation sont parfaitement définies. L'énergie d'interaction entre ces deux moments (dont découle la Force et le couple via les gradients) est :
+  
+  \begin{equation}
+  H=-\frac{\mu_0}{4 \pi r^3}[3(\mathbf{m_1}\cdot \mathbf{u})(\mathbf{m_2}\cdot \mathbf{u})-\mathbf{m_1}\cdot \mathbf{m_2}]
+  \end{equation}
+ Il ya en plus un terme en $\delta (r)$ qui ne joue pas dans ce cas de figure, mais qui est peut etre à l'origine du contact de Fermi (je verrai ça plus tard)
+ 
+ \textbf{Note :} C'est directement $H=-\mathbf{m_1} \cdot \mathbf{B}(m_2)$ le produit d'un dipole par le champ généré par l'autre dipole au point $\mathbf{r}$. Le terme en $\delta$ vient en gros de ce qu'il se passe à l'intérieur du dipole (avec un comportement différent en foncttion de si c'est deux monopoles magnétiques ou une boucle de courant)
+ 
+ \subsection{Formulation quantique}
+ On mets des chapeaux et c'est parti. Je vais quand même me concentrer rapidement sur ce qui m'interesse, à savoir des interactions entre spins dans des solides, donc je vais considérer la position des spins comme une variable classique (c'est sans doute un peu plus chiant pour le spin-orbite ou la position du moment magnétique n'est peut-etre pas aussi bien définie ? En plus il doit y avoir des merdes relativistes). 
+ 
+ Je vais aussi négliger pour l'instant l'intéraction de contact de Fermi, qui si je dis pas de bétise vient du recouvrement potentiel de la fonction d'onde de l'électron avec un autre dipole (typiquement un noyau pour une orbitale s).
+ 
+ On se retrouve donc avec deux dipoles quantiques $\mathbf{\hat{m}_1}= \gamma_1 \hbar \mathbf{\hat{S}_1}$ et $\mathbf{\hat{m}_2}= \gamma_2 \hbar \mathbf{\hat{S}_2}$ ou $\gamma_{1,2}$ sont les rapports gyromagnétiques des spins. D'ou : 
+ \begin{equation}
+  \mathcal{H}_{dd}=-\frac{\mu_0 \gamma_1 \gamma_2 \hbar ^2}{4 \pi r^3}[3(\mathbf{\hat{S}_1}\cdot \mathbf{u})(\mathbf{\hat{S}_2}\cdot \mathbf{u})-\mathbf{\hat{S}_1}\cdot \mathbf{\hat{S}_2}]
+  \end{equation}
+  
+  La base de l'espace de Hilbert par défaut pour représenter ce Hamiltonien est $\hat{S}_z^1 \ast \hat{S}_z^2$, c'est à dire la base des états $\ket{m_s^1=i,m_s^2=j}$ pour un axe \textbf{z} donné. 
+  
+  Tu peux en théorie choisir 2 axes \textbf{z} différents pour tes 2 spins, mais ça va vite devenir galère quand il faudra développer les termes du Hamiltonien (sinon il faut décomposer \textbf{u} sur deux bases différentes).
+  
+  Dans les papiers, on regroupe en général tout le préfacteur numérique 
+  \begin{equation}
+  J_0=\frac{\mu_0 \gamma_1 \gamma_2 \hbar ^2}{4 \pi}
+  \end{equation}
+  $J_0 \approx (2\pi)56 \textrm{MHz/nm}^3$ pour deux spins électroniques ($\gamma \approx \gamma_0$). D'ou finalement :
+   \begin{equation}
+  \mathcal{H}_{dd}=-\frac{J_0}{r^3}[3(\mathbf{\hat{S}_1}\cdot \mathbf{u})(\mathbf{\hat{S}_2}\cdot \mathbf{u})-\mathbf{\hat{S}_1}\cdot \mathbf{\hat{S}_2}]
+  \end{equation}
+  
+  \section{Différents couplages}
+  \subsection{Couplage NV-NV même classe en champs moyen}
+  En champ moyen ($D >> \gamma B_z >> d_\perp E_\perp$), on peut simplifier le Hamiltonien du centre NV au premier ordre à :
+  \begin{equation}
+  \mathcal{H}_{NV}=D S_z^2 + \gamma B_z S_z= 
+  \begin{pmatrix}
+	D-\gamma B_z &0&0 \\
+	0 &0&0\\
+	0&0& D+ \gamma B_z
+  \end{pmatrix}
+  \begin{matrix}
+  \bra{-1} \\
+  \bra{0} \\
+  \bra{+1}
+  \end{matrix}
+  \end{equation}
+  
+  Les opérateurs de spins s'écrivent naturellement dans cette base (normal vu qu'on a choisi la base comme les états propres de Sz) : 
+  \begin{gather*}
+  S_x = \begin{pmatrix}
+  0&1/\sqrt{2}&0 \\
+  1/\sqrt{2}&0&1/\sqrt{2} \\
+  0&1/\sqrt{2}&0
+  \end{pmatrix}
+  \begin{matrix}
+  \bra{-1} \\
+  \bra{0} \\
+  \bra{+1}
+  \end{matrix}  
+  , \quad 
+  S_y = \begin{pmatrix}
+  0&i/\sqrt{2}&0 \\
+  -i/\sqrt{2}&0&i/\sqrt{2} \\
+  0&-i/\sqrt{2}&0
+  \end{pmatrix} 
+  \begin{matrix}
+  \bra{-1} \\
+  \bra{0} \\
+  \bra{+1}
+  \end{matrix} 
+  \\ 
+  S_z = \begin{pmatrix}
+  -1&0&0 \\
+  0&0&0\\
+  0&0&1
+  \end{pmatrix}
+  \begin{matrix}
+  \bra{-1} \\
+  \bra{0} \\
+  \bra{+1}
+  \end{matrix}
+  \end{gather*}
+  
+  \textbf{Note} : Si on veut prendre en compte le champ transverse, il faudra appliquer une (petite) rotation au Hamiltonien pour se placer dans la base du "NV" (= Hamiltonien diagonal), mais il faudra aussi appliquer cette rotation a $S_x$, $S_y$ et $S_z$. (En particulier les transitions $\ket{-1;+1} \to \ket{+1;-1}$ deviennent possibles, comme avec la micro-onde)
+  
+  Le hamiltonien complet des deux spins s'écrit alors :
+  \begin{equation}
+  \mathcal{H}=\mathcal{H}_{NV1} \ast \mathbb{1}_{NV2} + \mathbb{1}_{NV1} \ast \mathcal{H}_{NV2} + \mathcal{H}_{dd}
+  \end{equation}
+  \begin{adjustwidth}{-100pt}{-100pt}
+  $$
+ \begin{pmatrix}
+  \textcolor{red}{2D - 2\gamma B_z + J_{zz}} &0&0&0&0&0&0&0&0\\
+  0& \textcolor{red}{D- \gamma B_z} &0&\textcolor{blue}{J_{xx}+J_{yy}}&0&0&0&0&0\\
+  0&0& \textcolor{red}{2D-J_{zz}} &0&0&0&\textcolor{blue}{0}&0&0 \\
+  0&\textcolor{blue}{J_{xx}+J_{yy}}&0& \textcolor{red}{D- \gamma B_z}&0&0&0&0&0\\
+  0&0&0&0& \textcolor{red}{0} &0&0&0&0\\
+  0&0&0&0&0& \textcolor{red}{D+ \gamma B_z} &0&\textcolor{blue}{J_{xx}+J_{yy}}&0\\
+  0&0&0&0&0&0& \textcolor{red}{2D-J_{zz}} &0&0\\
+  0&0&0&0&0&\textcolor{blue}{J_{xx}+J_{yy}}&0& \textcolor{red}{D+ \gamma B_z} &0\\
+  0&0&0&0&0&0&0&0& \textcolor{red}{2D+ 2\gamma B_z + J_{zz}}
+  \end{pmatrix}
+  \begin{matrix}
+  \bra{-1,-1} \\
+  \bra{-1,0} \\
+  \bra{-1,+1}\\
+  \bra{0,-1} \\
+  \bra{0,0} \\
+  \bra{0,+1}\\
+  \bra{1,-1} \\
+  \bra{1,0} \\
+  \bra{1,+1}
+  \end{matrix}
+  $$
+  \end{adjustwidth}
+  \end{document}	
+  
+
+  

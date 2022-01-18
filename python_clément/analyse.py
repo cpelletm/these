@@ -520,6 +520,7 @@ class magneticField():
 			raise(ValueError('You must either give (x,y,z) or (theta,phi,amp )'))
 		self.cartesian=np.array([self.x,self.y,self.z])
 		self.sphericalDeg=np.array([self.theta*180/np.pi,self.phi*180/np.pi])
+	#Note : toutes les transitions suivantes sont calculées avec E=0
 	def transitions4Classes(self):
 		transis=[]
 		for i in range(4):
@@ -541,6 +542,10 @@ class magneticField():
 
 	def __repr__(self):
 		return('Bx=%f; By=%f, Bz= %f'%(self.x,self.y,self.z))
+
+class electricField():
+	def __init__(*params,base='NV'):
+		pass
 
 def find_B_spherical(peaks,Bmax=1000,startingB=False): #B in gauss
 	peaks=np.sort(peaks)

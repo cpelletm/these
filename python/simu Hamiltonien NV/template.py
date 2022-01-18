@@ -74,15 +74,39 @@ def egvect(H) :
 	return(val,vec)
 
 def print_matrix(M,bname) :
-	headers=['']+['|'+name+'>' for name in bname]
-	table=[]
-	for i in range(len(bname)) :
-		line=[]
-		line+=['<'+bname[i]+'|']
-		values=list(M[:,i])
-		line+=values
-		table+=[line]
-	print(tabulate(table,headers))
+	
+	if M.dtype.name=='float64' :
+		headers=['']+['|'+name+'>' for name in bname]
+		table=[]
+		for i in range(len(bname)) :
+			line=[]
+			line+=['<'+bname[i]+'|']
+			values=list(M[:,i])
+			line+=values
+			table+=[line]
+		print(tabulate(table,headers))
+
+	elif M.dtype.name=='complex128' :
+		print('Real Part :')
+		headers=['']+['|'+name+'>' for name in bname]
+		table=[]
+		for i in range(len(bname)) :
+			line=[]
+			line+=['<'+bname[i]+'|']
+			line+=[v.real for v in M[:,i]]
+			table+=[line]
+		print(tabulate(table,headers),'\n')
+
+		print('Imaginary Part :')
+		headers=['']+['|'+name+'>' for name in bname]
+		table=[]
+		for i in range(len(bname)) :
+			line=[]
+			line+=['<'+bname[i]+'|']
+			line+=[v.imag for v in M[:,i]]
+			table+=[line]
+		print(tabulate(table,headers))
+
 
 def print_vector(v,bname) :
 	table=[]
@@ -1318,10 +1342,6 @@ def PL_4classes(B,CR=False,gamma_las=1E-3,gamma_phonon=2E-4,normalized=True,affi
 	return(rho_0/4)
 
 
-Bval=3025/sqrt(3)
-B=np.array([Bval,Bval,Bval])
-Bt=np.array([5,-10,5])
-print(PL_4classes(B,affiche=True))
 
 
 def PL_plot_1() : #Je pense que ce qu'il me manque c'est le niveau excité. Ca explique pas trop pourquoi on verrait pas les +1 par contre.
@@ -1724,5 +1744,17 @@ def Lukin(B,gamma_las=1E-3,gamma_phonon=3E-4,gamma_f=1): #En Mhz
 		egplus+=[val[2]-val[0]]
 	
 
+def Operateurs_champs_nul():
+	U=np.array([[1/sqrt(2),0,-1/sqrt(2)],[0,1,0],[1/sqrt(2),0,1/sqrt(2)]])
+	Udag=U.T
+	D=2870
+	E=3
+	H=np.array([[D,0,E],[0,0,0],[E,0,D]])
+	Hprime=Udag.dot(H.dot(U))
+	Sxprime=Udag.dot(Sx.dot(U))
+	Syprime=Udag.dot(Sy.dot(U))
+	Szprime=Udag.dot(Sz.dot(U))
+	print_matrix(Syprime,bname=bnamez)
 
+Operateurs_champs_nul()
 

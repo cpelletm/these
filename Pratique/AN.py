@@ -20,5 +20,6 @@ def pola_NV(T):
 	dp=pzero-1/3
 	print(pzero,dp)
 
-pola_NV(0.065)
+# pola_NV(0.065)
 
+print(3.75+7+7+19)
