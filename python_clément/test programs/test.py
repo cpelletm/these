@@ -1555,7 +1555,6 @@ def testScan3Axes():
 			ao.write(2)
 			time.sleep(1)
 
-
 def test_map_pg():
 	xs=np.linspace(0,10,100)
 	ys=np.linspace(0,10,100)
@@ -1592,6 +1591,61 @@ def test_map_pg():
 	GUI=Graphical_interface(gra,size='auto',title='Piezo Map')
 	GUI.run()
 
-a=[0,15,2,3]
-x=a.pop(1)
-print(a)
+def test_lect_pulsed():
+	with nidaqmx.Task() as ai :
+		with nidaqmx.Task() as do :
+			ai.ai_channels.add_ai_voltage_chan("Dev1/ai13")
+			do.do_channels.add_do_chan("Dev1/port0/line6")
+			do.do_channels.add_do_chan("Dev1/port0/line3")
+			freq=500000
+			nsamps=20000
+			x=np.linspace(0,nsamps/freq,nsamps)
+			ai.timing.cfg_samp_clk_timing(freq,source='/Dev1/PFI11',sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=nsamps)
+			ai.start()
+			trigAI=[True,False]*nsamps
+			signal=[False]*(nsamps//2)+[True]*(nsamps)+[False]*(nsamps//2)
+			DOInput=[trigAI,signal]
+			do.timing.cfg_samp_clk_timing(2*freq,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=2*nsamps)
+			do.write(DOInput)			
+			do.start()
+			do.wait_until_done()
+
+			# print(ai.read(nsamps,timeout=2)) #Note : je peux lui en demander plus que nsamps, il me rend nsamps mais sans erreur. Franchement je comprends pas trop
+			y=ai.read(nsamps,timeout=1)
+			plt.plot(x,y)
+
+			
+			ai.stop()
+			ai.start()
+			do.stop()
+			do.start()
+			do.wait_until_done()
+			y=ai.read(nsamps,timeout=1)
+			plt.plot(x,y)
+
+			
+			ai.stop()		
+			ai.start()
+			do.stop()
+			do.start()
+			do.wait_until_done()
+			y=ai.read(nsamps,timeout=1)
+			plt.plot(x,y)
+
+
+	plt.show()
+
+			
+def test_pfi_lect():
+	with nidaqmx.Task() as pfi :
+		pfi.di_channels.add_di_chan("Dev1/port1/line0")
+		print(pfi.read())
+	#Affaire à suivre : vérifier que PFI0 fonctionne (jai vérifié sur du AI et ca marche), et faire en sorte que ça puisse trig le laser. Allez bisous et bonne semaine)
+
+print(int('True'))
+
+
+
+
+
+

@@ -1,235 +1,25 @@
 SpinCore Technologies, Inc. SpinAPI ver. 20171214
-Logfile created: Mon Oct  4 11:58:33 2021
+Logfile created: Mon Dec 13 19:30:15 2021
 
 Markers: (I) info, (W) warning, (E) error.
 
 ================================================================================================
     TIME     FUNCTION                     MESSAGE                      
 ================================================================================================
-(I) 11:58:33 os_count_boards:177         Registering WinDriver...
-(I) 11:58:33 RegisterWinDriver:135       Using WinDriver version 1031.
-(I) 11:58:33 RegisterWinDriver:151       lic.dwLicense:  0x2051dfc
-(I) 11:58:33 RegisterWinDriver:152       lic.dwLicense2: 0x88
-(I) 11:58:33 RegisterWinDriver:153       license setup succeeded
-(I) 11:58:33 os_usb_count_devices:71     os_usb_count_devices: Enumerating USB Devices...
-(I) 11:58:33 os_usb_count_devices:86     os_usb_count_devices: Enumeration Completed. Found 0 Devices.
-(I) 11:58:33 pb_count_boards:144         pb_count_boards(): Detected 1 boards in your system.
-(I) 11:58:33 pb_init:188                 Entering pb_init. cur_board = 0
-(I) 11:58:33 os_usb_count_devices:71     os_usb_count_devices: Enumerating USB Devices...
-(I) 11:58:33 os_usb_count_devices:86     os_usb_count_devices: Enumeration Completed. Found 0 Devices.
-(I) 11:58:33 pb_count_boards:144         pb_count_boards(): Detected 1 boards in your system.
-(I) 11:58:33 do_os_init:1623             do_os_init: board # 0
-(I) 11:58:33 do_os_init:1624             do_os_init: num_pci_boards: 1
-(I) 11:58:33 do_os_init:1625             do_os_init: num_usb_devices: 0
-(I) 11:58:33 do_os_init:1630             do_os_init: initializing pci
-(I) 11:58:33 os_init:226                 card_num: 0
-(I) 11:58:33 os_init:227                 PciScanCards found 1 SpinCore cards, 0 other cards.
-(I) 11:58:33 os_init:228                 Found Product ID: 8878
-(I) 11:58:33 os_init:235                 	PulseBlasterESR-PRO
-(I) 11:58:33 os_init:235                 	PulseBlaster-24 (SP17)
-(I) 11:58:33 os_init:235                 	PulseBlaster-16 (SP17)
-(I) 11:58:33 os_init:235                 	PulseBlaster-12 (SP17)
-(I) 11:58:33 get_caps:22                 dev_id=0x8878
-(I) 11:58:33 get_caps:107                Detected PulseBlasterESR board (r 0x913)
-(I) 11:58:33 pb_start_programming:265    pb_start_programming (device=0)
-(I) 11:58:33 pb_start_programming:328    pb_start_programming: reset
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 0, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 2, data a. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 3, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 4, data 0. Using the direct protocol.
-(I) 11:58:33 pb_inst_pbonly64:856        pb_inst_pbonly: inst=665719930880, inst_data=0,length=500000000.000000, flags=0x00fffff0
-(I) 11:58:33 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x0, flags=0x00fffff0, delay=149999997
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 8. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data d1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 7d. Using the direct protocol.
-(I) 11:58:33 pb_inst_pbonly64:856        pb_inst_pbonly: inst=665719930880, inst_data=0,length=500000000.000000, flags=0x00fffff1
-(I) 11:58:33 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x0, flags=0x00fffff1, delay=149999997
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 8. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data d1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 7d. Using the direct protocol.
-(I) 11:58:33 pb_inst_pbonly64:856        pb_inst_pbonly: inst=665719930880, inst_data=0,length=500000000.000000, flags=0x00fffff0
-(I) 11:58:33 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x0, flags=0x00fffff0, delay=149999997
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 8. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data d1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 7d. Using the direct protocol.
-(I) 11:58:33 pb_inst_pbonly64:856        pb_inst_pbonly: inst=665719930880, inst_data=0,length=500000000.000000, flags=0x00fffff1
-(I) 11:58:33 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x0, flags=0x00fffff1, delay=149999997
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 8. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data d1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 7d. Using the direct protocol.
-(I) 11:58:33 pb_inst_pbonly64:856        pb_inst_pbonly: inst=665719930880, inst_data=0,length=500000000.000000, flags=0x00fffff0
-(I) 11:58:33 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x0, flags=0x00fffff0, delay=149999997
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 8. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data d1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 7d. Using the direct protocol.
-(I) 11:58:33 pb_inst_pbonly64:856        pb_inst_pbonly: inst=665719930880, inst_data=0,length=500000000.000000, flags=0x00fffff1
-(I) 11:58:33 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x0, flags=0x00fffff1, delay=149999997
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 8. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data d1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 7d. Using the direct protocol.
-(I) 11:58:33 pb_inst_pbonly64:856        pb_inst_pbonly: inst=665719930881, inst_data=0,length=500000000.000000, flags=0x00fffff1
-(I) 11:58:33 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x1, flags=0x00fffff1, delay=149999997
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 8. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data d1. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 6, data 7d. Using the direct protocol.
-(I) 11:58:33 pb_stop_programming:429     pb_stop_programming: (device=0)
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 7, data 0. Using the direct protocol.
-(I) 11:58:33 pb_reset:583                pb_reset():
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 0, data 0. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 2, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 3, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 4, data ff. Using the direct protocol.
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 7, data 0. Using the direct protocol.
-(I) 11:58:33 pb_start:488                pb_start():
-(I) 11:58:33 pb_outp:1551                pb_outp: addr 1, data 0. Using the direct protocol.
-(I) 11:58:36 pb_reset:583                pb_reset():
-(I) 11:58:36 pb_outp:1551                pb_outp: addr 0, data 0. Using the direct protocol.
-(I) 11:58:36 pb_outp:1551                pb_outp: addr 2, data ff. Using the direct protocol.
-(I) 11:58:36 pb_outp:1551                pb_outp: addr 3, data ff. Using the direct protocol.
-(I) 11:58:36 pb_outp:1551                pb_outp: addr 4, data ff. Using the direct protocol.
-(I) 11:58:36 pb_outp:1551                pb_outp: addr 7, data 0. Using the direct protocol.
-(I) 11:58:36 pb_start:488                pb_start():
-(I) 11:58:36 pb_outp:1551                pb_outp: addr 1, data 0. Using the direct protocol.
-(I) 11:58:39 do_os_close:1650            do_os_close: closing pci
-(I) 11:58:39 pb_init:188                 Entering pb_init. cur_board = 0
-(I) 11:58:39 os_usb_count_devices:71     os_usb_count_devices: Enumerating USB Devices...
-(I) 11:58:39 os_usb_count_devices:86     os_usb_count_devices: Enumeration Completed. Found 0 Devices.
-(I) 11:58:39 pb_count_boards:144         pb_count_boards(): Detected 1 boards in your system.
-(I) 11:58:39 do_os_init:1623             do_os_init: board # 0
-(I) 11:58:39 do_os_init:1624             do_os_init: num_pci_boards: 1
-(I) 11:58:39 do_os_init:1625             do_os_init: num_usb_devices: 0
-(I) 11:58:39 do_os_init:1630             do_os_init: initializing pci
-(I) 11:58:39 os_init:226                 card_num: 0
-(I) 11:58:39 os_init:227                 PciScanCards found 1 SpinCore cards, 0 other cards.
-(I) 11:58:39 os_init:228                 Found Product ID: 8878
-(I) 11:58:39 os_init:235                 	PulseBlasterESR-PRO
-(I) 11:58:39 os_init:235                 	PulseBlaster-24 (SP17)
-(I) 11:58:39 os_init:235                 	PulseBlaster-16 (SP17)
-(I) 11:58:39 os_init:235                 	PulseBlaster-12 (SP17)
-(I) 11:58:39 get_caps:22                 dev_id=0x8878
-(I) 11:58:39 get_caps:107                Detected PulseBlasterESR board (r 0x913)
-(I) 11:58:39 pb_start_programming:265    pb_start_programming (device=0)
-(I) 11:58:39 pb_start_programming:328    pb_start_programming: reset
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 0, data 0. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 2, data a. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 3, data 0. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 4, data 0. Using the direct protocol.
-(I) 11:58:39 pb_inst_pbonly64:856        pb_inst_pbonly: inst=6, inst_data=0,length=1000000.000000, flags=0x00fffff0
-(I) 11:58:39 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x6, flags=0x00fffff0, delay=299997
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data 6. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data 4. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data 93. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 6, data dd. Using the direct protocol.
-(I) 11:58:39 pb_stop_programming:429     pb_stop_programming: (device=0)
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 7, data 0. Using the direct protocol.
-(I) 11:58:39 pb_reset:583                pb_reset():
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 0, data 0. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 2, data ff. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 3, data ff. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 4, data ff. Using the direct protocol.
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 7, data 0. Using the direct protocol.
-(I) 11:58:39 pb_start:488                pb_start():
-(I) 11:58:39 pb_outp:1551                pb_outp: addr 1, data 0. Using the direct protocol.
-(I) 11:58:39 do_os_close:1650            do_os_close: closing pci
-(E) 16:25:48 pb_close:252                pb_close: Board is already closed
-(I) 16:25:48 pb_init:188                 Entering pb_init. cur_board = 0
-(I) 16:25:48 os_usb_count_devices:71     os_usb_count_devices: Enumerating USB Devices...
-(I) 16:25:48 os_usb_count_devices:86     os_usb_count_devices: Enumeration Completed. Found 0 Devices.
-(I) 16:25:48 pb_count_boards:144         pb_count_boards(): Detected 1 boards in your system.
-(I) 16:25:48 do_os_init:1623             do_os_init: board # 0
-(I) 16:25:48 do_os_init:1624             do_os_init: num_pci_boards: 1
-(I) 16:25:48 do_os_init:1625             do_os_init: num_usb_devices: 0
-(I) 16:25:48 do_os_init:1630             do_os_init: initializing pci
-(I) 16:25:48 os_init:226                 card_num: 0
-(I) 16:25:48 os_init:227                 PciScanCards found 1 SpinCore cards, 0 other cards.
-(I) 16:25:48 os_init:228                 Found Product ID: 8878
-(I) 16:25:48 os_init:235                 	PulseBlasterESR-PRO
-(I) 16:25:48 os_init:235                 	PulseBlaster-24 (SP17)
-(I) 16:25:48 os_init:235                 	PulseBlaster-16 (SP17)
-(I) 16:25:48 os_init:235                 	PulseBlaster-12 (SP17)
-(I) 16:25:48 get_caps:22                 dev_id=0x8878
-(I) 16:25:48 get_caps:107                Detected PulseBlasterESR board (r 0x913)
-(I) 16:25:48 pb_start_programming:265    pb_start_programming (device=0)
-(I) 16:25:48 pb_start_programming:328    pb_start_programming: reset
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 0, data 0. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 2, data a. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 3, data 0. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 4, data 0. Using the direct protocol.
-(I) 16:25:48 pb_inst_pbonly64:856        pb_inst_pbonly: inst=6, inst_data=0,length=1000000.000000, flags=0x00fffff0
-(I) 16:25:48 pb_inst_direct:1116         pb_inst_direct: OPCODE=0x6, flags=0x00fffff0, delay=299997
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data ff. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data f0. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data 6. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data 0. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data 4. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data 93. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 6, data dd. Using the direct protocol.
-(I) 16:25:48 pb_stop_programming:429     pb_stop_programming: (device=0)
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 7, data 0. Using the direct protocol.
-(I) 16:25:48 pb_reset:583                pb_reset():
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 0, data 0. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 2, data ff. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 3, data ff. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 4, data ff. Using the direct protocol.
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 7, data 0. Using the direct protocol.
-(I) 16:25:48 pb_start:488                pb_start():
-(I) 16:25:48 pb_outp:1551                pb_outp: addr 1, data 0. Using the direct protocol.
-(I) 16:25:48 do_os_close:1650            do_os_close: closing pci
+(I) 19:30:15 os_count_boards:177         Registering WinDriver...
+(E) 19:30:15 RegisterWinDriver:132       Incorrect WinDriver version. (found 0, compiled with 1001)
+(E) 19:30:15 os_count_boards:181         failed to register WinDriver
+(E) 19:30:15 pb_count_boards:125         pb_count_boards(): error counting PCI boards. Please check to make sure WinDriver is properly installed.
+(I) 19:30:15 os_usb_count_devices:71     os_usb_count_devices: Enumerating USB Devices...
+(I) 19:30:15 os_usb_count_devices:86     os_usb_count_devices: Enumeration Completed. Found 0 Devices.
+(I) 19:30:15 pb_count_boards:144         pb_count_boards(): Detected 0 boards in your system.
+(E) 19:30:15 pb_select_board:164         pb_select_board(..):  Board number out of range (num_boards=0)
+(I) 19:30:15 pb_init:188                 Entering pb_init. cur_board = 0
+(I) 19:30:15 os_count_boards:177         Registering WinDriver...
+(E) 19:30:15 RegisterWinDriver:132       Incorrect WinDriver version. (found 0, compiled with 1001)
+(E) 19:30:15 os_count_boards:181         failed to register WinDriver
+(E) 19:30:15 pb_count_boards:125         pb_count_boards(): error counting PCI boards. Please check to make sure WinDriver is properly installed.
+(I) 19:30:15 os_usb_count_devices:71     os_usb_count_devices: Enumerating USB Devices...
+(I) 19:30:15 os_usb_count_devices:86     os_usb_count_devices: Enumeration Completed. Found 0 Devices.
+(I) 19:30:15 pb_count_boards:144         pb_count_boards(): Detected 0 boards in your system.
+(E) 19:30:15 pb_init:228                 pb_init(): No board selected: No PulseBlaster Board found!

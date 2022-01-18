@@ -4,24 +4,16 @@ physicalChannels=['ai11','ai13']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 
-nSide=30
-xs=np.linspace(0,10,nSide)
-ys=np.linspace(0,10,nSide)
+nSerie=30
+uWpows=np.linspace(-20,15,nSerie)
 
 def acquiStart(i):
-	ix=i%nSide
-	iy=i//nSide
-	xV=xs[ix]
-	yV=ys[iy]
-	cube.move(xV,ax='x')	
-	cube.move(yV,ax='y')
+	p=uWpows[i]
+	level.setValue(p)
 
 def acquiEnd(i):
-	ix=i%nSide
-	iy=i//nSide
-	xV=xs[ix]
-	yV=ys[iy]
-	fname=StartStop.defaultFolder+'x=%f,y=%f'%(xV,yV)
+	p=uWpows[i]
+	fname=StartStop.defaultFolder+'p=%f'%(p)
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
 	else :
@@ -103,7 +95,7 @@ gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,showMaxIter=True)
-StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=10,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nSerie,iterPerAcqui=20,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
 it=iterationWidget(l1)

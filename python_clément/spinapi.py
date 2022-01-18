@@ -22,7 +22,10 @@ import time
 
 PULSE_PROGRAM = 0
 FREQ_REGS = 1  
-   
+ 
+
+spinapi = ctypes.CDLL("./spinapi.dll")
+
 try:
 	spinapi = ctypes.CDLL("spinapi64")
 except:

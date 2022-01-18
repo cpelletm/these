@@ -28,6 +28,7 @@ import qdarkstyle
 
 qapp = QApplication(sys.argv)
 
+
 macAdressOfCurrentPC=gma()
 if macAdressOfCurrentPC=='64:00:6a:5f:1e:5b' : #Ordi 2 (le mien)
 	computerUsed='Ordi2'
@@ -43,6 +44,11 @@ elif macAdressOfCurrentPC=='f0:79:59:2f:4b:78' : #Ordi perso
 	computerUsed='OrdiPerso'
 	defaultDataPath="../data/"
 	defaultTheme='light'
+
+elif macAdressOfCurrentPC=='e4:b9:7a:ea:ff:e5' : #Ordi 3 (du fond)
+	computerUsed='Ordi3'
+	defaultDataPath="D:/DATA/"
+	defaultTheme='dark'
 else :
 	print('current mac adress : ',gma())
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
@@ -404,7 +410,7 @@ class startStopButton():
 			self.resetCounter=counter('Reset counts',spaceAbove=0)
 			self.maxResetCount=3
 		self.stopButton.button.setEnabled(False)
-		self.timer=QTimer()
+		# self.timer=QTimer()
 
 	def setupSerie(self,nAcqui,iterPerAcqui,iterToCheck='default',acquiStart=False,acquiEnd=False): 
 	#nAcqui=number of acquisition for the serie ; iterPerAcqui= number of iteration for one acqui
@@ -519,8 +525,11 @@ class startStopButton():
 			return 
 		elif not self.debug :
 			self.resetCounter.reset()
-		qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer. 
-		#En gros ça force l'image à s'actualiser, mais ça fout le bordel dans les timers (je pense que ça joue sur les threads), et en gros tu peux te retrouver à call update (plusieurs fois meme) alors que le timer est sensé être stoppé.
+		if computerUsed=='Ordi3' :
+			pass
+		else :
+			qapp.processEvents() #Danger, mais je pense que c'est la bonne direction. Ca et/ou gérer le buffer. 
+			#En gros ça force l'image à s'actualiser, mais ça fout le bordel dans les timers (je pense que ça joue sur les threads), et en gros tu peux te retrouver à call update (plusieurs fois meme) alors que le timer est sensé être stoppé.
 
 	def stopAction(self): 
 		self.timer.stop()
@@ -649,6 +658,8 @@ class fitButton():
 		self.addFitButton.addToBox(box)
 		self.removeFitButton.addToBox(box)
 
+
+
 class device(): #Pour l'instant ça sert juste à les regrouper pour les fermer
 	def __init__(self):
 		self.toBeClosed=True
@@ -775,7 +786,7 @@ class microwave(device):
 		self.PG.write('*WAI')
 
 class pulseBlaster(device):
-	def __init__(self,clockFrequency=300,chanOn=(),verbose=False): #frequency in MHz, frequency of the pb in the entrance computer is 300 MHz, frequency of the pb in the back computer is 500 MHz
+	def __init__(self,clockFrequency='auto',chanOn=(),verbose=False): #frequency in MHz, frequency of the pb in the entrance computer is 300 MHz, frequency of the pb in the back computer is 500 MHz
 		#chanOn : channels (1,2,3, or 4) to leave on True when the pulseblaster is closed
 		#le verbose ne sert présentement à rien
 		super().__init__()
@@ -783,7 +794,13 @@ class pulseBlaster(device):
 		self.verbose=verbose
 		self.sp=sp
 		self.sp.pb_set_debug(1)
-		self.clockFrequency=clockFrequency
+		if clockFrequency=='auto' :
+			if computerUsed=='Ordi1' :
+				self.clockFrequency=300
+			elif computerUsed=='Ordi3' :
+				self.clockFrequency=500
+		else :
+			self.clockFrequency=clockFrequency
 		self.chanOn=chanOn
 	def initPb(self):
 		self.sp.pb_select_board(0)
@@ -886,6 +903,101 @@ class pulseBlaster(device):
 			self.sp.pb_close()
 			self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
+class pulseBlasterInterpreter(device):
+	def __init__(self,instructionFileName='PB_instructions.txt',clockFrequency='auto'): #timeout in ms
+		super().__init__()
+		self.instFile=instructionFileName
+		if clockFrequency=='auto' :
+			if computerUsed=='Ordi1' :
+				self.clockFrequency=300
+			elif computerUsed=='Ordi3' :
+				self.clockFrequency=500
+		else :
+			self.clockFrequency=clockFrequency
+		self.setType()
+
+
+	def setType(self,typ='finite'):
+		self.typ=typ
+		self.resetInst()
+
+	def resetInst(self):
+		if self.typ=='finite' :
+			self.instStr=''
+		elif self.typ=='continuous' :
+			self.instStr='Start : '
+
+
+
+	def addLine(self,ch1=0,ch2=0,ch3=0,ch4=0,dt=1,unit='ms'):
+		dt=val(dt)
+		chs=[int(val(ch1)),int(val(ch2)),int(val(ch3)),int(val(ch4))]
+		if max(chs)==2 :
+			chs=[ch1,ch2,ch3,ch4]
+			in1=''
+			in2=''
+			for ch in chs :
+				if ch==2 :
+					in1+='1'
+					in2+='0'
+				else :
+					in1+=str(ch)
+					in2+=str(ch)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in1,dt/2,unit)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in2,dt/2,unit)
+		else :
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(chs,dt,unit)
+
+	def addPulses(self,ch1=2,ch2=0,ch3=0,ch4=0,dt=1,unit='ms',nLoop=1):
+		dt=val(dt)
+		chs=[ch1,ch2,ch3,ch4]
+		in1=''
+		in2=''
+		for ch in chs :
+			if ch==2 :
+				in1+='1'
+				in2+='0'
+			else :
+				in1+=str(ch)
+				in2+=str(ch)
+
+		self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s, LOOP, %i \n'%(in1,dt/2,unit,nLoop)
+		self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s, END_LOOP \n'%(in2,dt/2,unit)
+
+
+
+
+	def contInst(self,ch1=0,ch2=0,ch3=0,ch4=0):
+		self.instStr+='cont : 0b0000 0000 0000 0000 0000 %i%i%i%i, 1 ms, BRANCH, cont \n'%(ch1,ch2,ch3,ch4)
+
+
+	def load(self):
+		self.instStr=self.instStr[:-2] #Retire le dernier \n
+		if self.typ=='continuous' :
+			self.instStr+=', BRANCH, Start'
+		with open(self.instFile,'w') as f:
+			f.write(self.instStr)
+
+		self.resetInst()
+
+		with stdout_redirected() :
+			os.system('spbicl load %s %i'%(self.instFile,self.clockFrequency))
+
+	def start(self):
+		with stdout_redirected() :
+			os.system('spbicl start')
+
+	def stop(self):
+		with stdout_redirected() :
+			os.system('spbicl stop')
+
+	def restart(self): #Est-ce que ça sert à quelque chose ? Ou est-ce qu'on peut juste start à l'infini
+		self.stop()
+		self.start()
+
+	def close(self):
+		self.stop()
+
 class PiezoCube3axes(device):
 	def __init__(self,deviceName='CubePI-P611'):
 		super().__init__()
@@ -922,85 +1034,33 @@ class PiezoCube3axes(device):
 		self.taskY.close()
 		self.taskZ.close()
 
-class hiddenPrints:
-	def __enter__(self):
-		self._original_stdout = sys.stdout
-		sys.stdout = open(os.devnull, 'w')
-
-	def __exit__(self, exc_type, exc_val, exc_tb):
-		sys.stdout.close()
-		sys.stdout = self._original_stdout
-
-class useTheme():
-	def __init__(self,theme='white'):
-		self.theme=theme
-		if theme=='light' or theme=='white' :
-			pg.setConfigOption('background', 'w')
-			pg.setConfigOption('foreground', 'k')			
-			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-			self.infiniteLineColor=(100,100,100)
-		if theme=='dark' or theme=='black' :
-			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
-			self.infiniteLineColor=(255,255,255)
-
-		# pg.setConfigOptions(antialias=False)	
-	def nextLine(self,ax,typ=False,big=True):
-		try : ax.penIndices #je fais plus trop ça maintenant normalement, mais bon
+class powerMeterUSB(device):
+	def __init__(self,ressourceName='tl_rouge'):
+		super().__init__()
+		if ressourceName=='tl_rouge':
+			ressourceName='USB0::0x1313::0x8079::P1002303::INSTR'
+		self.ressourceName=ressourceName
+		#A noter que ça marche aussi avec du visa et self.PG.query('MEAS?'), j'ai juste pas accès au calibre vu que je connais pas la commande visa
+		sys.path.append('C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\TLPM\\Example\\Python')
+		global TLPM,byref,c_double,c_bool,c_int16
+		import TLPM
+		from ctypes import byref,c_double,c_bool,c_int16
+	def setup(self,powerRange=2E-3,wavelength=532): #range in [W], wl in [nm]
+		self.tlPM = TLPM.TLPM()
+		self.tlPM.open(b'USB0::0x1313::0x8079::P1002303::INSTR', c_bool(True), c_bool(True))
+		self.tlPM.setPowerRange(c_double(powerRange))
+		self.tlPM.setWavelength(c_double(wavelength))
+		time.sleep(1.5) #The powermeter needs some time to adjust to the new caliber
+	def read(self):	
+		power=c_double()
+		self.tlPM.measPower(byref(power))
+		return(power.value)
+	def close(self):
+		try :
+			self.tlPM.close()
 		except :
-			ax.penIndices=[True]*len(self.penColors)
-		for i in range(len(self.penColors)) : #Si jamais toutes les couleurs sont prises, il reste sur la dernière
-			if ax.penIndices[i] :
-				break
-		penIndex=i
-		ax.penIndices[penIndex]=False
-		if big :
-			widths=[2,2,3]
-		else :
-			widths=[1,2,1]
-		if typ=='trace' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		elif typ=='fit' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
-			symbol='o'
-			symbolPen=pen
-			symbolBrush=pg.mkBrush(None)
+			pass
 
-		ax.currentPenIndex+=1
-		return pen,symbol,symbolPen,symbolBrush,penIndex
-	def penSizeChange(self,line):
-		n=len(line.x)
-		big = n<=300
-		penIndex=line.penIndex
-		ax=line.ax
-		typ=line.typ
-		if big :
-			widths=[2,2,3]
-		else :
-			widths=[1,2,1]
-		if typ=='trace' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		elif typ=='fit' :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
-			symbol=None
-			symbolPen=None
-			symbolBrush=None
-		else :
-			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
-			symbol='o'
-			symbolPen=pen
-			symbolBrush=pg.mkBrush(None)
-		return pen,symbol,symbolPen,symbolBrush
 
 class NIChan():
 	def __init__(self,*physicalChannels):
@@ -1014,12 +1074,12 @@ class NIChan():
 	def setChannels(self,*physicalChannels):
 		self.physicalChannels=physicalChannels
 		self.nChannels=len(physicalChannels)
-	def triggedOn(self,chan):
+	def triggedOn(self,chan,retriggerable=True):
 		if isinstance(chan,str) :
 			self.task.triggers.start_trigger.cfg_dig_edge_start_trig(chan)
 		else :
 			self.task.triggers.start_trigger.cfg_dig_edge_start_trig(chan.triggerSignal)
-		self.task.triggers.start_trigger.retriggerable=True
+		self.task.triggers.start_trigger.retriggerable=retriggerable
 		self.trigged=True
 		self.start()
 	def timeAxis(self):
@@ -1132,19 +1192,45 @@ class AIChan(NIChan):
 		else :
 			self.task.timing.cfg_samp_clk_timing(self.samplingRate,source=sourceClock,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
 
-	def setupPulsed(self,signal,freq,chan='/Dev1/PFI11'): #j'ai décidé qu'il n'y aurait plus de continuous. Ni de multiChannels (pour l'instant)
-		#signal : True=1 sample; False = no sample
+	def setupPulsed(self,signal,freq,chan='auto',nAvg='auto',nRepeat=1): #j'ai décidé qu'il n'y aurait plus de continuous. Ni de multiChannels (pour l'instant) (c'est dommage pour le multi Chan mais ça a l'air effectivement galère, surtout si les deux voies ne sont pas synchro)
+		#signal : 2=1 sample; False = no sample
 		#freq is the frequency of the signal
 		#chan is the physical channel of the pulsed signal input
+		self.nRepeat=val(nRepeat)
+		nAvg=val(nAvg)
+
+		if chan=='auto':
+			if computerUsed=='Ordi2' :
+				chan='/Dev1/PFI11'
+			elif computerUsed=='Ordi3' or computerUsed=='Ordi1' :
+				chan='/Dev1/PFI9'
+
+		if nAvg=='auto' :
+			fmax=self.getMaxFreq()
+			self.nAvg=(fmax/val(freq)).__trunc__() 
+			# if self.nAvg > 10 :
+			# 	self.nAvg=10
+			freq=freq*self.nAvg
+		else :
+			self.nAvg=val(nAvg)
+			freq=val(freq)*self.nAvg
+
+		self.freq=freq
+
 		self.createTask()
 		self.mode='pulsed'
-		fmax=self.getMaxFreq()
-		self.nAvg=(fmax/val(freq)).__trunc__() 
-		pulsedSignal=doubleSignal(signal)
-		self.sampsPerChan=sum(signal)*self.nAvg*self.nRepeat
-		self.task.timing.cfg_samp_clk_timing(fmax,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.nAvg) #Rajouter source='/Dev1/do/SampleClock' si ça merde
-		self.triggedOn(chan)
-		return pulsedSignal
+		
+		nsamps=0
+		if isinstance(val(signal),int):
+			nsamps=signal
+		else :
+			for elem in signal :
+				if elem==2 :
+					nsamps+=1
+		self.sampsPerChan=nsamps*self.nAvg*self.nRepeat		
+		self.task.timing.cfg_samp_clk_timing(freq,source=chan,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.sampsPerChan) 
+		self.triggedOn(chan,retriggerable=False)
+		return self.nAvg
 
 	def setupWithPb(self,signal,freq,chan='/Dev1/PFI9'):
 		self.createTask()
@@ -1164,18 +1250,26 @@ class AIChan(NIChan):
 		elif self.mode=='timed' :
 			return(self.readTimed(waitForAcqui=waitForAcqui,timeout=timeout))
 		elif self.mode=='pulsed' :
-			return(self.readPulsed(nRead=nRead,timeout=timeout))
+			return(self.readPulsed(nRead=nRead,waitForAcqui=waitForAcqui,timeout=timeout))
 		elif self.mode=='withPB' :
 			return(self.readPulsed(nRead=nRead,timeout=timeout))
 
 
 
-	def readPulsed(self,nRead='auto',timeout=10) :
+	def readPulsed(self,nRead='auto',waitForAcqui=True,timeout=10) :
+		if waitForAcqui :
+			self.task.wait_until_done(timeout=timeout)
+		elif not self.task.is_task_done() :
+			return False
 		if nRead=='auto':
 			nRead=self.sampsPerChan
 		else :
 			nRead=nRead*self.nAvg*self.nRepeat
-		data=self.task.read(nRead,timeout=timeout)
+		
+		data=self.task.read(-1,timeout=timeout)	
+		if len(data) != nRead :
+			raise(ValueError('Number of samples aquired %i does not match number of samples required %i'%(len(data),nRead)))
+		self.restart()
 		return average(data,self.nAvg,self.nRepeat)
 
 		
@@ -1239,6 +1333,7 @@ class DOChan(NIChan):
 	def updateContinuous(self,Value):
 		self.value=val(Value)
 		self.task.write(self.value)
+
 	def setupTimed(self,ValuesList,SampleFrequency,SampleMode='finite'): #sampleMode = 'finite' or 'continuous' ; ValuesList example : [[True,False,True],[True,True,True]] for two DO channels
 		self.createTask()
 		self.samplingRate=val(SampleFrequency)
@@ -1273,6 +1368,57 @@ class DOChan(NIChan):
 			self.sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
 		self.task.timing.cfg_samp_clk_timing(self.samplingRate,sample_mode=self.sampleMode, samps_per_chan=self.sampsPerChan)
 		self.task.write(self.signal)
+
+	def setupPulsed(self,ValuesList,freq,nAvg=1,nRepeat=1,SampleMode='finite'):
+		self.nRepeat=val(nRepeat)
+		self.createTask()
+		#Check des erreurs : 
+		if isinstance(ValuesList[0],(list,np.ndarray)) :
+			signal=ValuesList
+			if len(signal)!=self.nChannels :
+				raise(ValueError('The number of DO signals do not match the nomber of DO channels'))
+			n0=len(signal[0])
+			for line in signal :
+				if len(line)!=n0 :
+					raise(ValueError('The length of the different DO signals do not match : %i != %i'%(len(line),n0)))
+		else :
+			signal=[ValuesList]
+			if self.nChannels!=1 :
+				raise(ValueError('The number of DO signals do not match the nomber of DO channels'))
+		includePulses=False
+		for line in signal :
+			for elem in line :
+				if elem==2 :
+					includePulses=True
+				elif elem==1 or elem==0 :
+					pass
+				else :
+					raise(ValueError('An element of a DO signal is neither a 0, a 1 or a 2'))
+
+		new_signal=[]
+		if includePulses :
+			freq=2*freq*nAvg			
+			for line in signal :
+				new_signal+=[extend_signal(line,nAvg*2)*nRepeat]
+		else :
+			freq=freq*nAvg
+			for line in signal :
+				new_signal+=[extend_signal(line,nAvg)*nRepeat]
+		signal=new_signal
+
+		if SampleMode=='finite':
+			sampleMode=nidaqmx.constants.AcquisitionType.FINITE
+		elif SampleMode=='continuous':
+			sampleMode=nidaqmx.constants.AcquisitionType.CONTINUOUS
+
+		sampsPerChan=len(signal[0])
+		
+		self.task.timing.cfg_samp_clk_timing(freq,sample_mode=sampleMode, samps_per_chan=sampsPerChan)
+		self.task.write(signal)
+
+		# for line in signal :
+		# 	save_list(line)
+		# 	time.sleep(1)
 
 class COChan(NIChan):
 	def __init__(self,*physicalChannels): #Physical Channel = 'ctr0' to 'ctr3' . Counters can only contain one channel (i believe)		
@@ -1323,10 +1469,10 @@ class CIChan(NIChan):
 		self.sampleClock.setupContinuous(Freq=self.freq,gate=False)
 		self.start()
 
-	def readContinuous(self,nRead=2): #pas de waitForAcqui en continuous. Pas de waitForAcqui avec les compteurs en faite, ce sera plus simple
+	def readContinuous(self,nRead=2,timeout=10): #pas de waitForAcqui en continuous. Pas de waitForAcqui avec les compteurs en faite, ce sera plus simple
 		if nRead=='auto':
 			nRead=2
-		data=np.array(self.task.read(val(nRead)))
+		data=np.array(self.task.read(val(nRead),timeout=timeout))
 		PL=((data[1:]-data[:-1])%(1<<self.nBitsCounter))*self.freq #C'est pour prendre en compte les reset de compteurs : je prends le modulo 2^32 de la différence du nombre de coup pour être tjr positif
 		return PL
 
@@ -1348,12 +1494,12 @@ class CIChan(NIChan):
 		self.task.timing.cfg_samp_clk_timing(self.freq,source=chan,sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS, samps_per_chan=self.sampsPerChan)
 		self.start()
 
-	def readPulsed(self,nRead='auto',counts=False) :
+	def readPulsed(self,nRead='auto',counts=False,timeout=10) :
 		if nRead=='auto':
 			nRead=self.sampsPerChan
 		else :
 			nRead=nRead*self.nRepeat
-		data=np.array(self.task.read(val(nRead),timeout=60))
+		data=np.array(self.task.read(val(nRead),timeout=timeout))
 		if counts :
 			return data
 		else :
@@ -1361,11 +1507,13 @@ class CIChan(NIChan):
 			PL=((data[1:]-data[:-1])%(1<<self.nBitsCounter))*self.freq #C'est pour prendre en compte les reset de compteurs : je prends le modulo 2^32 de la différence du nombre de coup pour être tjr positif
 			return PL
 
-	def read(self,nRead='auto') :
+	def read(self,nRead='auto',timeout=10) :
 		if self.mode=='continuous' :
-			return(self.readContinuous(nRead=nRead))
+			return(self.readContinuous(nRead=nRead,timeout=timeout))
 		if self.mode=='withPB' :
-			return(self.readPulsed(nRead=nRead))	
+			return(self.readPulsed(nRead=nRead,timeout=timeout))	
+
+
 
 class graphics(pg.GraphicsLayoutWidget) :
 	def __init__(self,theme=defaultTheme,debug=False,refreshRate=False):
@@ -1777,6 +1925,79 @@ class map2D(pg.ImageItem) :
 		self.xindex=0
 		self.yindex=0
 
+class useTheme():
+	def __init__(self,theme='white'):
+		self.theme=theme
+		if theme=='light' or theme=='white' :
+			pg.setConfigOption('background', 'w')
+			pg.setConfigOption('foreground', 'k')			
+			self.penColors=[(31, 119, 180),(255, 127, 14),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
+			self.infiniteLineColor=(100,100,100)
+		if theme=='dark' or theme=='black' :
+			self.penColors=[(255, 127, 14),(31, 119, 180),(44, 160, 44),(214, 39, 40),(148, 103, 189),(140, 86, 75),(227, 119, 194),(127, 127, 127),(188, 189, 34),(23, 190, 207)] #j'ai volé les couleurs de matplotlib
+			self.infiniteLineColor=(255,255,255)
+
+		# pg.setConfigOptions(antialias=False)	
+	def nextLine(self,ax,typ=False,big=True):
+		try : ax.penIndices #je fais plus trop ça maintenant normalement, mais bon
+		except :
+			ax.penIndices=[True]*len(self.penColors)
+		for i in range(len(self.penColors)) : #Si jamais toutes les couleurs sont prises, il reste sur la dernière
+			if ax.penIndices[i] :
+				break
+		penIndex=i
+		ax.penIndices[penIndex]=False
+		if big :
+			widths=[2,2,3]
+		else :
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		else :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
+			symbol='o'
+			symbolPen=pen
+			symbolBrush=pg.mkBrush(None)
+
+		ax.currentPenIndex+=1
+		return pen,symbol,symbolPen,symbolBrush,penIndex
+	def penSizeChange(self,line):
+		n=len(line.x)
+		big = n<=300
+		penIndex=line.penIndex
+		ax=line.ax
+		typ=line.typ
+		if big :
+			widths=[2,2,3]
+		else :
+			widths=[1,2,1]
+		if typ=='trace' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[0],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		elif typ=='fit' :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[1],style=Qt.DashDotLine) 
+			symbol=None
+			symbolPen=None
+			symbolBrush=None
+		else :
+			pen=pg.mkPen(self.penColors[penIndex],width=widths[2],style=Qt.SolidLine)
+			symbol='o'
+			symbolPen=pen
+			symbolBrush=pg.mkBrush(None)
+		return pen,symbol,symbolPen,symbolBrush
+
+
+
 class iterationWidget():
 	def __init__(self,line,spaceAbove=1,spaceBelow=0):
 		self.label=QLabel('Iter #0')
@@ -1814,7 +2035,7 @@ class pulsedLaserControl():
 		self.co.toBeClosed=False
 		self.ignoreWarning=ignoreWarning
 		self.gate=gate
-		self.gateChan='/Dev1/PFI9'
+		self.gateChan=gateChan
 	def start(self,freq):
 		freq=val(freq)
 		if self.state=='Off':
@@ -1899,33 +2120,6 @@ class powerMeterAnalog():
 		res=self.Ai.readTimed(waitForAcqui=True)
 		return(sum(res)/len(res)*self.caliber)
 
-class powerMeterUSB(device):
-	def __init__(self,ressourceName='tl_rouge'):
-		super().__init__()
-		if ressourceName=='tl_rouge':
-			ressourceName='USB0::0x1313::0x8079::P1002303::INSTR'
-		self.ressourceName=ressourceName
-		#A noter que ça marche aussi avec du visa et self.PG.query('MEAS?'), j'ai juste pas accès au calibre vu que je connais pas la commande visa
-		sys.path.append('C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\TLPM\\Example\\Python')
-		global TLPM,byref,c_double,c_bool,c_int16
-		import TLPM
-		from ctypes import byref,c_double,c_bool,c_int16
-	def setup(self,powerRange=2E-3,wavelength=532): #range in [W], wl in [nm]
-		self.tlPM = TLPM.TLPM()
-		self.tlPM.open(b'USB0::0x1313::0x8079::P1002303::INSTR', c_bool(True), c_bool(True))
-		self.tlPM.setPowerRange(c_double(powerRange))
-		self.tlPM.setWavelength(c_double(wavelength))
-		time.sleep(1.5) #The powermeter needs some time to adjust to the new caliber
-	def read(self):	
-		power=c_double()
-		self.tlPM.measPower(byref(power))
-		return(power.value)
-	def close(self):
-		try :
-			self.tlPM.close()
-		except :
-			pass
-
 class doubleSignal():
 	def __init__(self,signal):
 		pulsedSignal=[]
@@ -1944,6 +2138,14 @@ class AOMWidget(checkBox):
 	def action(self):		
 		self.do.setupContinuous(self.state(),close=True)
 
+class hiddenPrints:
+	def __enter__(self):
+		self._original_stdout = sys.stdout
+		sys.stdout = open(os.devnull, 'w')
+
+	def __exit__(self, exc_type, exc_val, exc_tb):
+		sys.stdout.close()
+		sys.stdout = self._original_stdout
 
 
 def failSafe(func,*args,debug=True):
@@ -2084,7 +2286,12 @@ def apply_repeat(nRepeat,*Objs):
 def extend_signal(signal,n):
 	l=[]
 	for elem in signal :
-		l+=[elem]*n
+		if elem ==2 :
+			if n%2 != 0 :
+				raise(ValueError('n sould be divisable by 2'))
+			l+=[False,True]*(n//2) #Ce trou de balle de daqmx a des bugs si tu mets des 0 et des 1 à la place
+		else :
+			l+=[elem]*n
 	return l
 
 def scale_signal(signal,baseFreq,newFreq=1e6):
@@ -2149,14 +2356,49 @@ def stdout_redirected(to=os.devnull):
 		finally:
 			_redirect_stdout(to=old_stdout) # restore stdout.
 
+def save_list(l,fname='auto'):
+	if fname=='auto':
+		from pathlib import Path
+		now = datetime.now()
+		date_str=now.strftime("%Y-%m-%d %H-%M-%S")
+		fname=defaultDataPath+'/AutoSave/'+date_str+'.txt'
+		dname=os.path.dirname(fname)
+		Path(dname).mkdir(parents=True, exist_ok=True)
+	with open(fname,'w') as f :
+		for elem in l:
+			f.write(str(elem)+'\n')
+
+def read_list_from_file(fname,dtype='str'):
+	l=[]
+	with open(fname,'r') as f:
+		for line in f:
+			if dtype=='str' :
+				l+=[line]
+			elif dtype=='int' :
+				l+=[int(line)]
+			elif dtype=='float' :
+				l+=[float(line)]
+			elif dtype=='bool' :
+				if line[:-1]=='False' :
+					l+=[False]
+				elif line[:-1]=='True' :
+					l+=[True]
+	return(l)
+
+
+
 def test_pg():
 	def setup():
-		return(x)
-	def update(x):
-		y=2*np.cos(x+time.time())
+		return()
+	def update():	
+		y=2*np.cos(x+time.time())	
 		gra.updateLine(l3,False,y)
 		y0=np.cos(time.time())
 		gra.updateLine(l1,False,[y0])
+	def simpleUpdate():
+		x=np.linspace(0,10,500)
+		y=np.cos(x+time.time())
+		gra.updateLine(l1,False,y)
 	def avertissement():
 		warningGUI('Attention !')
 	def acquiStart(i):
@@ -2173,6 +2415,10 @@ def test_pg():
 		cookieClicker.increase()
 		if cookieClicker.v>10 :
 			cookieClicker.reset()
+	def altStartAction():
+		timer.start()
+	def altStopAction():
+		timer.stop()
 	x=np.linspace(0,10,500)
 	y=np.cos(x)
 	gra=graphics()
@@ -2188,8 +2434,13 @@ def test_pg():
 	fields=[ftoto,attention,counterButton]
 
 
-	StartStop=startStopButton(setup=setup,update=update,debug=False,lineIter=l3,showMaxIter=True,serie=True)
+	StartStop=startStopButton(setup=setup,update=update,debug=True,lineIter=l3,showMaxIter=True,serie=True,timeDelay=10)
 	StartStop.setupSerie(nAcqui=3,iterPerAcqui=[100,150,50],acquiStart=acquiStart,acquiEnd=acquiEnd)
+
+	altStart=button('Start (alt)',action=altStartAction,spaceBelow=0)
+	altStop=button('Stop (alt)',action=altStopAction)
+	timer=QTimer()
+	timer.timeout.connect(update)
 	save=saveButton(gra,autoSave=False)
 	trace=keepTraceButton(l1,l3)
 	it=iterationWidget(l3)
@@ -2197,7 +2448,7 @@ def test_pg():
 	cookieClicker=counter('Clicked')
 	# print(dir(gra.scene()))
 
-	buttons=[norm,StartStop,trace,save,cookieClicker,it]
+	buttons=[norm,StartStop,altStart,altStop,trace,save,cookieClicker,it]
 
 	GUI=Graphical_interface(fields,gra,buttons,title='Example GUI')
 
@@ -2236,6 +2487,7 @@ def test_laser():
 	do.setupContinuous(False)
 
 if __name__ == "__main__":
-	test_pg()
+	pass
+	# test_pg()
 
 
