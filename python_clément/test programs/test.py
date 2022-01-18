@@ -1636,13 +1636,16 @@ def test_lect_pulsed():
 	plt.show()
 
 			
+def test_pfi_lect():
+	with nidaqmx.Task() as pfi :
+		pfi.di_channels.add_di_chan("Dev1/port1/line0")
+		print(pfi.read())
+	#Affaire à suivre : vérifier que PFI0 fonctionne (jai vérifié sur du AI et ca marche), et faire en sorte que ça puisse trig le laser. Allez bisous et bonne semaine)
+
+print(int('True'))
 
 
 
-
-
-a='abcde'
-print(a[:-2])
 
 
 

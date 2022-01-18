@@ -931,7 +931,7 @@ class pulseBlasterInterpreter(device):
 
 	def addLine(self,ch1=0,ch2=0,ch3=0,ch4=0,dt=1,unit='ms'):
 		dt=val(dt)
-		chs=[ch1,ch2,ch3,ch4]
+		chs=[int(val(ch1)),int(val(ch2)),int(val(ch3)),int(val(ch4))]
 		if max(chs)==2 :
 			chs=[ch1,ch2,ch3,ch4]
 			in1=''
@@ -990,6 +990,10 @@ class pulseBlasterInterpreter(device):
 	def stop(self):
 		with stdout_redirected() :
 			os.system('spbicl stop')
+
+	def restart(self): #Est-ce que ça sert à quelque chose ? Ou est-ce qu'on peut juste start à l'infini
+		self.stop()
+		self.start()
 
 	def close(self):
 		self.stop()
@@ -1211,14 +1215,18 @@ class AIChan(NIChan):
 			self.nAvg=val(nAvg)
 			freq=val(freq)*self.nAvg
 
+		self.freq=freq
 
 		self.createTask()
 		self.mode='pulsed'
 		
 		nsamps=0
-		for elem in signal :
-			if elem==2 :
-				nsamps+=1
+		if isinstance(val(signal),int):
+			nsamps=signal
+		else :
+			for elem in signal :
+				if elem==2 :
+					nsamps+=1
 		self.sampsPerChan=nsamps*self.nAvg*self.nRepeat		
 		self.task.timing.cfg_samp_clk_timing(freq,source=chan,sample_mode=nidaqmx.constants.AcquisitionType.FINITE, samps_per_chan=self.sampsPerChan) 
 		self.triggedOn(chan,retriggerable=False)
@@ -2027,7 +2035,7 @@ class pulsedLaserControl():
 		self.co.toBeClosed=False
 		self.ignoreWarning=ignoreWarning
 		self.gate=gate
-		self.gateChan='/Dev1/PFI9'
+		self.gateChan=gateChan
 	def start(self,freq):
 		freq=val(freq)
 		if self.state=='Off':
