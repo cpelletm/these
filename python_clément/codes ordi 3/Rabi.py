@@ -15,13 +15,16 @@ def setup():
 	freq=ai.freq
 	dtAcqui=1/freq
 	tlist=np.linspace(val(tmin),val(tmax),val(nPoints))
-	#ch1=laser, ch2= mw, ch3= ??, ch4=PL
+	#ch1=laser, ch2= ??, ch3= mw, ch4=PL
 	pb.addLine(ch1=1,dt=tpola+tread,unit='us')
 	for t in tlist :
-		pb.addLine(ch2=1,dt=t,unit='ns')
-		pb.addPulses(ch1=1,ch4=2,dt=dtAcqui,unit='s')
+		pb.addLine(ch1=1,ch3=1,dt=t,unit='ns')
+		pb.addPulses(ch1=1,ch4=2,dt=dtAcqui,unit='s',nLoop=nAvg)
+		pb.addLine(ch1=1,dt=tpola,unit='us')
 
 
+	mw.setupContinuous(Frequency=uwFreq,Power=uwPower)
+	pb.load()
 	pb.start()
 
 	return(tlist)
@@ -52,7 +55,7 @@ tread=field('t read (µs)',500,spaceAbove=0)
 fields=[uwFreq,uwPower,tmin,tmax,nPoints,tpola,tread]
 
 gra=graphics(theme='black')
-l1=gra.addLine(typ='scroll',style='lm',fast=True)
+l1=gra.addLine(typ='average',style='lm',fast=True)
 #typ='scroll' for scrolling data, 'average' for averaging data or 'instant' for immediate data
 #style='l', 'm' or 'lm' for lines and/or marker
 #fast=True/False (default False) : apply antialias or not on the lines. With anti-alias (fast=False), it takes ~0.1s to update a set with a lot of lines
@@ -67,5 +70,5 @@ norm.setState(False)
 buttons=[channels,norm,StartStop,trace,save,it]
 
 ## Create the graphical interface and launch the program ##
-GUI=Graphical_interface(fields,gra,buttons,title='PL+PB',theme='dark')
+GUI=Graphical_interface(fields,gra,buttons,title='Rabi',theme='dark')
 GUI.run()

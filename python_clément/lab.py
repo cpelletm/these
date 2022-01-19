@@ -933,7 +933,6 @@ class pulseBlasterInterpreter(device):
 		dt=val(dt)
 		chs=[int(val(ch1)),int(val(ch2)),int(val(ch3)),int(val(ch4))]
 		if max(chs)==2 :
-			chs=[ch1,ch2,ch3,ch4]
 			in1=''
 			in2=''
 			for ch in chs :
@@ -946,7 +945,8 @@ class pulseBlasterInterpreter(device):
 			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in1,dt/2,unit)
 			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(in2,dt/2,unit)
 		else :
-			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(chs,dt,unit)
+			ins='%i%i%i%i'%(chs[0],chs[1],chs[2],chs[3])
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s \n'%(ins,dt,unit)
 
 	def addPulses(self,ch1=2,ch2=0,ch3=0,ch4=0,dt=1,unit='ms',nLoop=1):
 		dt=val(dt)
@@ -975,6 +975,8 @@ class pulseBlasterInterpreter(device):
 		self.instStr=self.instStr[:-2] #Retire le dernier \n
 		if self.typ=='continuous' :
 			self.instStr+=', BRANCH, Start'
+		elif self.typ=='finite' :
+			self.instStr+='\nSTOP'
 		with open(self.instFile,'w') as f:
 			f.write(self.instStr)
 
