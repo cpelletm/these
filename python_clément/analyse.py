@@ -567,11 +567,6 @@ class electricField():
 	def __init__(*params,base='NV'):
 		pass
 
-def find_B_spherical(peaks,Bmax=1000,startingB=False): #B in gauss
-
-def find_B_spherical(peaks,Bmax=1000,startingB=False,transis='all'): #B in gauss
-
-
 def find_B_cartesian(peaks,Bmax=1000,startingB=False,transis='all'): #B in gauss ; Ca m'a la'ir de moins bien marcher que l'autre
 	peaks=np.sort(peaks)
 	if len(peaks)==8 :

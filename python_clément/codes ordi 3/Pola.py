@@ -9,25 +9,44 @@ physicalChannels=['ai10']
 def setup(): 
 
 	pb.setType('finite')
+	#ch1=laser, ch2= ??, ch3= mw, ch4=PL
 	ai.setChannels(channels.text()) #define the physical pin on the Ni USB device where the tension should be read
 
-	nAvg=ai.setupPulsed(signal=nPoints,freq=1e6/tread)
-	freq=ai.freq
-	dtAcqui=1/freq
-	tlist=np.linspace(val(tmin),val(tmax),val(nPoints))
-	#ch1=laser, ch2= ??, ch3= mw, ch4=PL
-	pb.addLine(ch1=1,dt=tpola+tread,unit='us')
-	for t in tlist :
-		pb.addLine(ch1=1,ch3=1,dt=t,unit='ns')
-		pb.addPulses(ch1=1,ch4=2,dt=dtAcqui,unit='s',nLoop=nAvg)
+
+	if fullView.state() :
+		nPointsPola=int(nPoints*tpola/tread)
+		nPointsRead=int(nPoints*tread/tread)
+		nPointsDark=int(nPoints*tdark/tread)
+		nPointsTotal=nPointsPola+nPointsRead+nPointsDark
+		facq=1e6/tread*nPointsRead
+		nAvg=ai.setupPulsed(signal=nPointsTotal,freq=facq)
+		freqPB=ai.freq
+		dtPB=1/freqPB
+		nPBPola=nPointsPola*nAvg
+		nPBRead=nPointsRead*nAvg
+		nPBDark=nPointsDark*nAvg
+		pb.addPulses(ch1=1,ch4=2,dt=dtPB,unit='s',nLoop=nPBPola)
+		pb.addPulses(ch1=0,ch4=2,dt=dtPB,unit='s',nLoop=nPBDark)
+		pb.addPulses(ch1=1,ch4=2,dt=dtPB,unit='s',nLoop=nPBRead)
+		x=np.linspace(0,dtPB*(nPBPola+nPBRead+nPBDark),nPointsTotal)
+	else :
+		nPointsTotal=val(nPoints)
+		facq=1e6/tread*nPoints
+		nAvg=ai.setupPulsed(signal=nPointsTotal,freq=facq)
+		freqPB=ai.freq
+		dtPB=1/freqPB
+		nPB=nPointsTotal*nAvg
 		pb.addLine(ch1=1,dt=tpola,unit='us')
+		pb.addLine(ch1=0,dt=tdark,unit='us')
+		pb.addPulses(ch1=1,ch4=2,dt=dtPB,unit='s',nLoop=nPB)
+		x=np.linspace(0,dtPB*nPB,nPointsTotal)
+	
 
 
-	mw.setupContinuous(Frequency=uwFreq,Power=uwPower)
 	pb.load()
 	pb.start()
 
-	return(tlist)
+	return(x)
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x):
@@ -39,20 +58,18 @@ def update(x):
 
 ## Create the communication (I/O) instances ##
 pb=pulseBlasterInterpreter()
-mw=microwave('mw_ludo')
 ai=AIChan()
 ## Setup the Graphical interface ##
 
-uwFreq=field('mw freq (MHz)',2880)
-uwPower=field('mw power (dBm)',5,spaceAbove=0)
 
-tmin=field('t pulse min (ns)',20)
-tmax=field('t pulse max (ns)',1000,spaceAbove=0)
-nPoints=field('n points pulse',151,spaceAbove=0)
 
-tpola=field('t polarisation (µs)',500)
+fullView=checkBox('Full View')
+fullView.setState(True)
+tdark=field('t dark (µs)',500)
+tpola=field('t polarisation (µs)',500,spaceAbove=0)
 tread=field('t read (µs)',500,spaceAbove=0)
-fields=[uwFreq,uwPower,tmin,tmax,nPoints,tpola,tread]
+nPoints=field('n points pulse',151)
+fields=[fullView,tdark,tread,tpola,nPoints]
 
 gra=graphics(theme='black')
 l1=gra.addLine(typ='average',style='lm',fast=True)
