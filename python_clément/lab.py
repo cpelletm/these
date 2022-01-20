@@ -922,10 +922,7 @@ class pulseBlasterInterpreter(device):
 		self.resetInst()
 
 	def resetInst(self):
-		if self.typ=='finite' :
-			self.instStr=''
-		elif self.typ=='continuous' :
-			self.instStr='Start : '
+		self.instStr='Start : '
 
 
 
@@ -973,12 +970,14 @@ class pulseBlasterInterpreter(device):
 		self.instStr+='cont : 0b0000 0000 0000 0000 0000 %i%i%i%i, 1 ms, BRANCH, cont \n'%(ch1,ch2,ch3,ch4)
 
 
-	def load(self):
-		self.instStr=self.instStr[:-2] #Retire le dernier \n
+	def lastInst(self,ch1=0,ch2=0,ch3=0,ch4=0) :
 		if self.typ=='continuous' :
-			self.instStr+=', BRANCH, Start'
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, BRANCH, Start \n'%(ch1,ch2,ch3,ch4)
 		elif self.typ=='finite' :
-			self.instStr+='\nSTOP'
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, WAIT \n'%(ch1,ch2,ch3,ch4)
+			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, BRANCH, Start \n'%(ch1,ch2,ch3,ch4)
+
+	def load(self):
 		with open(self.instFile,'w') as f:
 			f.write(self.instStr)
 
@@ -995,7 +994,7 @@ class pulseBlasterInterpreter(device):
 		with stdout_redirected() :
 			os.system('spbicl stop')
 
-	def restart(self): #Est-ce que ça sert à quelque chose ? Ou est-ce qu'on peut juste start à l'infini
+	def restart(self): #Est-ce que ça sert à quelque chose ? Ou est-ce qu'on peut juste start à l'infini. On peut juste start avec des WAIT, sinon il faut restart
 		self.stop()
 		self.start()
 

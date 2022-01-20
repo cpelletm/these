@@ -42,7 +42,7 @@ def setup():
 		x=np.linspace(0,dtPB*nPB,nPointsTotal)
 	
 
-
+	pb.lastInst(ch1=1)
 	pb.load()
 	pb.start()
 

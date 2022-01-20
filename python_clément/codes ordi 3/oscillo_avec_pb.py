@@ -11,7 +11,8 @@ def setup():
 	nAvg=ai.setupPulsed(signal=trigAcqui,freq=1000/dt)
 	
 	pb.setType('continuous')
-	pb.addLine(ch4=2,dt=dt/nAvg,unit='ms')
+	pb.addLine(ch1=1,ch4=2,dt=dt/nAvg,unit='ms')
+	pb.lastInst(ch1=1)
 	pb.load()
 	# number of samples to be read each time ai.readTimed() is called, number of samples to be average over and sampling mode : 'continuous' or 'finite' (please always use 'finite')
 

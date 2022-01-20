@@ -8,7 +8,8 @@ physicalChannels=['ctr0']
 def setup(): 
 	trigAcqui=[2,2]
 	pb.setType('continuous')
-	pb.addLine(ch4=2,dt=dt,unit='ms')
+	pb.addLine(ch1=1,ch4=2,dt=dt,unit='ms')
+	pb.lastInst(ch1=1)
 	pb.load()
 	ci.setChannels(channels.text()) #define the physical pin on the Ni USB device where the tension should be read
 	ci.setupWithPb(freq=1000/dt,signal=trigAcqui)
