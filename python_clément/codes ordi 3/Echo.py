@@ -14,7 +14,7 @@ def setup():
 	nAvg=ai.setupPulsed(signal=nPoints,freq=1e6/tread)
 	freq=ai.freq
 	dtAcqui=1/freq
-	tlist=np.linspace(0,val(tscan),val(nPoints))
+	tlist=np.linspace(40e-3,val(tscan),val(nPoints))
 	tpi=val(tpulse)
 	#ch1=laser, ch2= ??, ch3= mw, ch4=PL
 	pb.addLine(ch1=1,dt=tpola+tread,unit='us')

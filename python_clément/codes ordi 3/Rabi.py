@@ -58,7 +58,7 @@ nPoints=field('n points pulse',151,spaceAbove=0)
 
 tpola=field('t polarisation (µs)',500)
 tread=field('t read (µs)',500,spaceAbove=0)
-fields=[uwFreq,uwPower,tmin,tmax,nPoints,tpola,tread]
+fields=[laserOn,uwFreq,uwPower,tmin,tmax,nPoints,tpola,tread]
 
 gra=graphics(theme='black')
 l1=gra.addLine(typ='average',style='lm',fast=True)
