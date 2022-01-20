@@ -45,7 +45,7 @@ ai=AIChan()
 
 
 
-tscan=field('t scan (ms)',5,spaceAbove=0)
+tscan=field('t scan (ms)',5)
 nPoints=field('n points pulse',151,spaceAbove=0)
 
 tpola=field('t polarisation (µs)',500)
@@ -68,5 +68,5 @@ norm.setState(False)
 buttons=[channels,norm,StartStop,trace,save,it]
 
 ## Create the graphical interface and launch the program ##
-GUI=Graphical_interface(fields,gra,buttons,title='Rabi',theme='dark')
+GUI=Graphical_interface(fields,gra,buttons,title='T1',theme='dark')
 GUI.run()

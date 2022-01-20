@@ -50,11 +50,11 @@ mw=microwave('mw_ludo')
 ai=AIChan()
 ## Setup the Graphical interface ##
 
-uwFreq=field('mw freq (MHz)',2880)
-uwPower=field('mw power (dBm)',5,spaceAbove=0)
-tpulse=field('t pulse pi (ns)',500,spaceAbove=0)
+uwFreq=field('mw freq (MHz)',2791)
+uwPower=field('mw power (dBm)',15,spaceAbove=0)
+tpulse=field('t pulse pi (ns)',510,spaceAbove=0)
 
-tscan=field('t scan (ms)',5,spaceAbove=0)
+tscan=field('t scan (ms)',15)
 nPoints=field('n points pulse',151,spaceAbove=0)
 
 tpola=field('t polarisation (µs)',500)
@@ -71,11 +71,13 @@ channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,debug=True)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
+expfit=fitButton(line=l1,fit='expZero',name='exp fit')
+stretchfit=fitButton(line=l1,fit='stretchZero',name='stretch fit')
 it=iterationWidget(l1)
 norm=gra.normalize()
 norm.setState(False)
-buttons=[channels,norm,StartStop,trace,save,it]
+buttons=[channels,norm,StartStop,trace,save,expfit,stretchfit,it]
 
 ## Create the graphical interface and launch the program ##
-GUI=Graphical_interface(fields,gra,buttons,title='Rabi',theme='dark')
+GUI=Graphical_interface(fields,gra,buttons,title='T1 soustraction',theme='dark')
 GUI.run()
