@@ -52,7 +52,7 @@ def setup():
 def update(x):
 	if ai.done() :
 		y=ai.read()
-		pb.restart()
+		pb.start()
 		if fullView.state():
 			gra.updateLine(l1,x,y) 
 		else :
@@ -90,5 +90,5 @@ norm.setState(False)
 buttons=[channels,norm,StartStop,trace,save,it]
 
 ## Create the graphical interface and launch the program ##
-GUI=Graphical_interface(fields,gra,buttons,title='Rabi',theme='dark')
+GUI=Graphical_interface(fields,gra,buttons,title='Polarisation',theme='dark')
 GUI.run()

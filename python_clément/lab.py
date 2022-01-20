@@ -972,10 +972,10 @@ class pulseBlasterInterpreter(device):
 
 	def lastInst(self,ch1=0,ch2=0,ch3=0,ch4=0) :
 		if self.typ=='continuous' :
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, BRANCH, Start \n'%(ch1,ch2,ch3,ch4)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, BRANCH, Start \n'%(ch1,ch2,ch3,ch4)
 		elif self.typ=='finite' :
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, WAIT \n'%(ch1,ch2,ch3,ch4)
-			self.instStr+='\t : 0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, BRANCH, Start \n'%(ch1,ch2,ch3,ch4)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, WAIT \n'%(ch1,ch2,ch3,ch4)
+			self.instStr+='\t  0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, BRANCH, Start \n'%(ch1,ch2,ch3,ch4)
 
 	def load(self):
 		with open(self.instFile,'w') as f:
