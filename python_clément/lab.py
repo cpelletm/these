@@ -965,6 +965,8 @@ class pulseBlasterInterpreter(device):
 		self.instStr+='\t  0b0000 0000 0000 0000 0000 %s, %f %s, END_LOOP \n'%(in2,dt/2,unit)
 
 
+	def addCustom(self,inst):
+		self.instStr+=inst
 
 
 	def contInst(self,ch1=0,ch2=0,ch3=0,ch4=0):
@@ -1210,6 +1212,8 @@ class AIChan(NIChan):
 		if nAvg=='auto' :
 			fmax=self.getMaxFreq()
 			self.nAvg=(fmax/val(freq)).__trunc__() 
+			if self.nAvg==0 :
+				raise ValueError('The acquisition rate requested is too fast : requested f=%e ; max f=%e'%(val(freq),fmax))
 			# if self.nAvg > 10 :
 			# 	self.nAvg=10
 			freq=freq*self.nAvg

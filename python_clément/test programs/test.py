@@ -14,6 +14,7 @@ import traceback
 import statistics
 sys.path.append("C:\\Users\\Tom\\Documents\\GitHub\\these\\python_clément")
 sys.path.append('D:\\These Clément\\these\\python_clément')
+sys.path.append("D:\\these\\python_clément")
 from lab import *
 def voltmetre():
 	with nidaqmx.Task() as task :
@@ -1643,7 +1644,21 @@ def test_pfi_lect():
 	#Affaire à suivre : vérifier que PFI0 fonctionne (jai vérifié sur du AI et ca marche), et faire en sorte que ça puisse trig le laser. Allez bisous et bonne semaine)
 
 
+def test_pb_2():
+	pb=pulseBlasterInterpreter()
+	pb.addLine(ch1=1,dt=500,unit='ms')
+	pb.addLine(ch1=0,dt=500,unit='ms')
+	pb.addCustom('\t  0b0000 0000 0000 0000 0000 0000, 1 s, WAIT\n')
+	pb.addLine(ch1=1,dt=500,unit='ms')
+	pb.addLine(ch1=0,dt=500,unit='ms')
+	pb.load()
+	pb.start()
+	time.sleep(5)
+	pb.start()
+	time.sleep(1)
 
+
+test_pb_2()
 
 
 

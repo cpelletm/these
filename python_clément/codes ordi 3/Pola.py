@@ -53,7 +53,10 @@ def update(x):
 	if ai.done() :
 		y=ai.read()
 		pb.restart()
-		gra.updateLine(l1,x,y) 
+		if fullView.state():
+			gra.updateLine(l1,x,y) 
+		else :
+			gra.updateLine(l1,x[1:],y[1:]) 
 
 
 ## Create the communication (I/O) instances ##
@@ -68,7 +71,7 @@ fullView.setState(True)
 tdark=field('t dark (µs)',500)
 tpola=field('t polarisation (µs)',500,spaceAbove=0)
 tread=field('t read (µs)',500,spaceAbove=0)
-nPoints=field('n points pulse',151)
+nPoints=field('n points pulse',101)
 fields=[fullView,tdark,tread,tpola,nPoints]
 
 gra=graphics(theme='black')
