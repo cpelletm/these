@@ -16,9 +16,10 @@ def setup():
 	dtAcqui=1/freq
 	tlist=np.linspace(val(tmin),val(tmax),val(nPoints))
 	#ch1=laser, ch2= ??, ch3= mw, ch4=PL
+	keepLasOn=laserOn.state()
 	pb.addLine(ch1=1,dt=tpola+tread,unit='us')
 	for t in tlist :
-		pb.addLine(ch1=1,ch3=1,dt=t,unit='ns')
+		pb.addLine(ch1=keepLasOn,ch3=1,dt=t,unit='ns')
 		pb.addPulses(ch1=1,ch4=2,dt=dtAcqui,unit='s',nLoop=nAvg)
 		pb.addLine(ch1=1,dt=tpola,unit='us')
 
@@ -44,6 +45,9 @@ pb=pulseBlasterInterpreter()
 mw=microwave('mw_ludo')
 ai=AIChan()
 ## Setup the Graphical interface ##
+
+laserOn=checkBox('Keep laser ON')
+laserOn.setState(True)
 
 uwFreq=field('mw freq (MHz)',2880)
 uwPower=field('mw power (dBm)',5,spaceAbove=0)
