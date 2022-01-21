@@ -1658,7 +1658,7 @@ def test_pb_2():
 	time.sleep(1)
 
 
-test_pb_2()
+print('%i'%True)
 
 
 

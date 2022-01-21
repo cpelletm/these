@@ -904,7 +904,7 @@ class pulseBlaster(device):
 			self.setupContinuous(ch1=line[0],ch2=line[1],ch3=line[2],ch4=line[3])
 
 class pulseBlasterInterpreter(device):
-	def __init__(self,instructionFileName='PB_instructions.txt',clockFrequency='auto'): #timeout in ms
+	def __init__(self,instructionFileName='PB_instructions.txt',clockFrequency='auto',chanStayOn=['ch1','ch3']): #timeout in ms
 		super().__init__()
 		self.instFile=instructionFileName
 		if clockFrequency=='auto' :
@@ -915,6 +915,7 @@ class pulseBlasterInterpreter(device):
 		else :
 			self.clockFrequency=clockFrequency
 		self.setType()
+		self.chanStayOn=chanStayOn
 
 
 	def setType(self,typ='finite'):
@@ -967,7 +968,7 @@ class pulseBlasterInterpreter(device):
 
 
 	def contInst(self,ch1=0,ch2=0,ch3=0,ch4=0):
-		self.instStr+='cont : 0b0000 0000 0000 0000 0000 %i%i%i%i, 1 ms, BRANCH, cont \n'%(ch1,ch2,ch3,ch4)
+		self.instStr='cont : 0b0000 0000 0000 0000 0000 %i%i%i%i, 1 ms, BRANCH, cont \n'%(ch1,ch2,ch3,ch4)
 
 
 	def lastInst(self,ch1=0,ch2=0,ch3=0,ch4=0) :
@@ -976,6 +977,7 @@ class pulseBlasterInterpreter(device):
 		elif self.typ=='finite' :
 			self.instStr+='\t  0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, WAIT \n'%(ch1,ch2,ch3,ch4)
 			self.instStr+='\t  0b0000 0000 0000 0000 0000 %i%i%i%i, 20 ns, BRANCH, Start \n'%(ch1,ch2,ch3,ch4)
+
 
 	def load(self):
 		with open(self.instFile,'w') as f:
@@ -999,7 +1001,13 @@ class pulseBlasterInterpreter(device):
 		self.start()
 
 	def close(self):
-		self.stop()
+		chans=[0,0,0,0]
+		for ch in self.chanStayOn :
+			i=int(ch[-1])
+			chans[i-1]=1
+		self.contInst(*chans)
+		self.load()
+		self.start()
 
 class PiezoCube3axes(device):
 	def __init__(self,deviceName='CubePI-P611'):
