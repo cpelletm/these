@@ -43,8 +43,8 @@ def setup():
 def update(x):
 	if ai.done() :
 		PL=ai.read()
-		y1=[PL[2*k]for k in range(val(nPoints))]
-		y2=[PL[2*k+1]for k in range(val(nPoints))]
+		y1=np.array([PL[2*k]for k in range(val(nPoints))])
+		y2=np.array([PL[2*k+1]for k in range(val(nPoints))])
 		y3=y1-y2
 		pb.start()
 		gra.updateLine(l1,x,y1) 
