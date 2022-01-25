@@ -68,6 +68,7 @@ ai=AIChan()
 
 fullView=checkBox('Full View')
 fullView.setState(True)
+DarkChoice=dropDownMenu('Dark Choice')
 tdark=field('t dark (µs)',500)
 tpola=field('t polarisation (µs)',500,spaceAbove=0)
 tread=field('t read (µs)',500,spaceAbove=0)
