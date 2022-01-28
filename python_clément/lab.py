@@ -167,6 +167,13 @@ class field():
 		self.lect.setFixedSize(QSize(100,20))
 		box.addStretch(self.spaceBelow)
 
+class timeFieldForPb(field):
+	def __init__(self,name,initial_value='noValue',initial_unit='us',action=False,spaceAbove=1,spaceBelow=0): 
+		super().__init__(name=name,initial_value=initial_value,action=action,spaceAbove=spaceAbove,spaceBelow=spaceBelow)
+		self.unitChoice=QComboBox('s','ms','us','ns')
+		#A finir quand je serai plus puni
+
+
 class button():
 	def __init__(self,name,action=False,spaceAbove=1,spaceBelow=0): 
 		self.button=QPushButton(name)
