@@ -49,6 +49,10 @@ elif macAdressOfCurrentPC=='e4:b9:7a:ea:ff:e5' : #Ordi 3 (du fond)
 	computerUsed='Ordi3'
 	defaultDataPath="D:/DATA/"
 	defaultTheme='dark'
+elif macAdressOfCurrentPC=='b4:45:06:47:da:24' : #Ordi portable de bureau du labo
+	computerUsed='OrdiBureau'
+	defaultDataPath="../data/"
+	defaultTheme='light'
 else :
 	print('current mac adress : ',gma())
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
@@ -2507,7 +2511,7 @@ def test_laser():
 	do.setupContinuous(False)
 
 if __name__ == "__main__":
-	pass
-	# test_pg()
+	
+	test_pg()
 
 

@@ -1,0 +1,71 @@
+\documentclass[a4paper]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+
+
+\title{Bilan manips 2021}
+
+\begin{document}
+\maketitle
+\section{Adamas}
+\begin{itemize}
+\item \textbf{01/07} Scan 100 (sans modulation), ESR 0B et quelques T1 (pas fous) sur 2 adamas. Toujours en mode compteur de photons donc signaux pas oufs.
+\item \textbf{01/25} La suite sur 8 adamas de plus (scan 100, ESR 0B (quand j'y pense) et quelques T1 pas terribles)
+\item \textbf{03/18-25} Essais de magnetometrie 0B avec des FND 100 nm et adamas 1um
+\item \textbf{04/28} Zigouigouis sur des adamas 1 um
+\item \textbf{05/06} Scan 100 et desax sur un 15um , il y a un léger zigouigoui sur le desax
+\item \textbf{05/10} Scan 111 (x2) et 100(x2) sur 4 adamas. Pas de T1 ou d'ESR 0B, mais scans détaillés (quelques scans 2f aussi)
+\item \textbf{05/31} Scan 100 sur un 15um long (mais pas d'échelle)
+\item \textbf{07/20} Mesures sur 6 15um, Scan 100 sur 1,3,6, mesure ESR 0B que sur 1. Scan 111 et calibration sur 6 aussi
+\item \textbf{08/31 $\to$ 09/10} (Je pense que c'est sur un adamas). Mesure du contraste de C13 et DQ en fonction de la puissance. Les meilleurs résultats sont le 09/10
+\item \textbf{09/13-15} Série de T1, probablement sur adamas, probablement sans soustraction, donc pas oufs.
+\item \textbf{09/27} Mesure sensitivité magnétométrie Vs angle pour un adamas avec beaucoup de DQ, et un avec peu de DQ. Il y a aussi des ESR 0B et des T1
+\item \textbf{10/06-15} Tests avec laser rouge résonnant, pas hyper concluant meme si on voit une différence sur les DQ
+\item \textbf{10/15} Beaucoup de mesures sur le adamas du 9/27 avec bcp de DQ : T1 sur 1,2,3 et 4 classes et sur les C13!, ESR dans toutes les configurations possibles, Série de T1 selon 100. Il y a même une mesure de la polarisation des spins nucl selon la 111. 
+\item \textbf{10/19} Série T1 selon la 111, petit soucis en champ faible mais assez propre quand meme. Mesure du contraste de la micro-onde au passage
+\item \textbf{11/10} Scans avec des ensembles de adamas 1um et FND 100 nm. Pas de mesures de magnétométrie (ça devait pas être fameux)
+\end{itemize}
+\section{CVD Alex}
+\begin{itemize}
+\item \textbf{03/11} Scan 100 sur le rose
+\item \textbf{04/01} Scan 100 rose long
+\item \textbf{04/09} Scan 100 rose en fonction de la puissance laser
+\item \textbf{06/02} Scan 100 et ESR 1 raie sur le rose, le 250 ppm N2O et le substrat
+\item \textbf{06/14} ESR pour mesures de T2* sur tous les échantillons irradiés d'Alex (data envoyées à Alex)
+\item \textbf{06/18} Mesure largeur croisement 2 raies sur 250 ppm N2O (pour mesurer la largeur des fluctuateurs). Pas de structure fine.
+\item \textbf{06/23} Scans 100 calibrés sur les 3 100 ppm (non recuits à 1200).
+\item \textbf{10/20} Mesures sur les échantillons recuit à 1200 + 800 + rose : Scans 100 (mesure VH- et War1), mais aussi croisement de raies (pour mesurer les SQ) et ESR pour T2
+\item \textbf{10/27} Scans 100 sur les substrats recuits et pas recuits : un pic de War1 pousse avec le recuit dans le substrat.
+\item \textbf{11/02} ESR pour T2*, tests avec la tranche polie en particulier
+\item \textbf{11/15} Scans 100 sur la tranche polie pour voir si les War1 migraient depuis le CVD. C'est pas le cas. Premiers tests sur la face arrière aussi, notamment un test de l'élargissement de l'ESR 0B avec la puissance uW.
+\item \textbf{11/17} Mise en place du piezo et premières maps (scan 100 et ESR 0B) sur la face arrière
+\item \textbf{11/18} Suite, ESR plus précis (0B et non 0B) et DQ 2f. Pb de faux départ avec la micro-onde.
+\item \textbf{11/22} Tentative de map SQ, mais accident d'aimant permanent pendant la nuit.
+\item \textbf{11/23} Scans 100 sur un nouvel emplacement (de la face arrière, toujours) + quelques observations sur des scans sur le rose.
+\item \textbf{11/24} Map ESR 0B sur l'emplacement de la veille + observation que les DQ et les C13 ne réagissent pas pareil à un changement de puissance laser
+\item \textbf{11/29} Test de la puissance laser sur les C13/DQ sur le rose (C13 pas visibles), test influence de l'angle d'une lambda/2 sur différentes classes de NV à l'ESR, et surtout premières mesures sur la dernière zone de la face arrière (pas sur que ce soit le meme qu'avant : la c'est un recuit 800, avant je crois que c'était des recuit 1200) : Map scan 100, Map ESR 0B, quelques T1, quelques scan 1x4, quelques ESR 1x4
+\item \textbf{12/01} Meme sample mais cette fois ci mesure uniquement sur une ligne : DQ, SQ, T1 0B et T1 1x4, ESR 0B, ESR 1x4, ESR P1
+\item \textbf{12/07} Spectres et Temps de polarisation des spins, toujours sur la meme zone.
+\item \textbf{12/08} Test des effets de la puissance laser sur le ratio NV-/NV0 : bouger le z du piezo et changer la puissance laser (mesure de spectres et de Tpola)
+\item \textbf{12/09} ESR P1 et DQ en fonction de z
+\item \textbf{12/10} Mesure ESR en fonction de la puissance uw, sur un spot High DQ et un spot low DQ. Le spot low DQ a l'air d'avoir une puissance uw inferieure (pas de Rabi malheureusement)
+\end{itemize}
+
+\section{Sumitumo/Ludo}
+\begin{itemize}
+\item \textbf{03/03} Quelques scans 111 sur \textbf{Sumi 2} pour tester la photodiode
+\item \textbf{03/15} Scan 100 et 1x1x1x1 de \textbf{Ludo} (pas oufs)
+\item \textbf{07/13} Scans 100 du \textbf{Sumi 4} pas terribles
+\end{itemize}
+
+\section{Bonus}
+\begin{itemize}
+\item \textbf{04/22} Première observation de Einsein-de Haas sur des diamants
+\item \textbf{05/25-27} Tentative de cooling par relaxation croisée. Quelques plots de CR en lévitation ok, mais le ringdown n'a pas marché
+\item \textbf{10/25} Mesure de la puissance micro-onde en fonction de la fréquence, en testant l'effet de l'ampli et du clapet anti-retour
+
+\end{itemize}
+\end{document}
