@@ -1,5 +1,6 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 def total():
@@ -23,7 +24,7 @@ def total():
 	plt.legend()
 	plt.show()
 
-total()
+# total()
 
 def single():
 	fname='V=0.716194 V'
@@ -34,4 +35,4 @@ def single():
 	print(popt[2])
 	plt.show()
 
-# single()
+single()
