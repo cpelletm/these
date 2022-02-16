@@ -10,19 +10,32 @@
 
 \begin{document}
 \centering
-\begin{tabular}{ccc}
+\begin{tabular}{cccc}
 
 \hline
-$\bar{\eta}$ table & $\bar{\eta}_\textrm{same}$ & $\bar{\eta}_\textrm{diff}$ \\
+$\bar{\eta}$ table & $\bar{\eta}_\textrm{same}$ & $\bar{\eta}_\textrm{diff}^\textrm{close}$ & $\bar{\eta}_\textrm{diff}^\textrm{far}$ \\
 \hline
-$\ket{\pm 1}$ basis & 0.3849 & 0.6507 \\
-$\ket{+/-}$ basis & 0.8242 & 0.7884 \\
+$\ket{\pm 1}$ basis & $\frac{2}{3\sqrt{3}}=$ 0.3849 & 0.6507 & 0.8328 \\
+$\ket{+/-}$ basis (no correlations) & 0.7110  & 0.6828 & 0.6828 \\
+$\ket{+/-}$ basis (full correlations) & $\frac{4}{3\sqrt{3}}=$0.7698  & ? & ? \\
 \hline
 \end{tabular}
-\begin{align*}
-&\bar{\eta}_{100}=1/4*\bar{\eta}_\textrm{same}+3/4*\bar{\eta}_\textrm{diff} \\
-&\bar{\eta}^2_{100}(\ket{\pm 1})=0.3414 \\
-&\bar{\eta}^2_{100}(\ket{+/-})=0.6357
-\end{align*}
+
+\bigskip
+
+Degeneracy formulae :
+\begin{itemize}
+\medskip
+\item no degeneracies : $\bar{\eta}=\frac{1}{4}\bar{\eta}_\textrm{same}$
+\medskip
+\item 1x2x1 / \{1,1,0\} planes : $\bar{\eta}=\frac{1}{4}\bar{\eta}_\textrm{same} + \frac{1}{4}\bar{\eta}_\textrm{diff}^\textrm{far}$
+\medskip
+\item 2x2 / \{1,0,0\} planes : $\bar{\eta}=\frac{1}{4}\bar{\eta}_\textrm{same} + \frac{1}{4}\bar{\eta}_\textrm{diff}^\textrm{close}$
+\medskip
+\item 3x1 / $\langle 1,1,1 \rangle$ directions : $\bar{\eta}=\frac{1}{4}\bar{\eta}_\textrm{same} + \frac{2}{4}\bar{\eta}_\textrm{diff}^\textrm{far}$
+\medskip
+\item 4x0 / $\langle 1,0,0 \rangle$ directions : $\bar{\eta}=\frac{1}{4}\bar{\eta}_\textrm{same} + \frac{2}{4}\bar{\eta}_\textrm{diff}^\textrm{close} + \frac{1}{4}\bar{\eta}_\textrm{diff}^\textrm{far}$
+\end{itemize}
+
 
 \end{document}

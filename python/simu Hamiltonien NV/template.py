@@ -115,6 +115,10 @@ def print_vector(v,bname) :
 		table+=[line]
 	print(tabulate(table))
 
+M=Sx.dot(Sx)-Sy.dot(Sy)
+N=Sx.dot(Sy)+Sy.dot(Sx)
+print_matrix(N,bname=bnamez)
+
 def convolution(M1,M2):
 	l1=len(M1[:,0])
 	l2=len(M2[:,0])
@@ -1756,5 +1760,5 @@ def Operateurs_champs_nul():
 	Szprime=Udag.dot(Sz.dot(U))
 	print_matrix(Syprime,bname=bnamez)
 
-Operateurs_champs_nul()
+# Operateurs_champs_nul()
 
