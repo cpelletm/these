@@ -601,6 +601,8 @@ def find_B_cartesian(peaks,Bmax=1000,startingB=False,transis='all'): #B in gauss
 	sol=minimize(err_func,x0=x0,args=peaks,bounds=[(-Bmax,Bmax),(-Bmax,Bmax),(-Bmax,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
 	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
 
+
+
 def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 	n=len(peaks)
 	if not (isinstance(widths,list) or isinstance(widths,np.ndarray)):

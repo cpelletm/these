@@ -1,6 +1,6 @@
 from lab import *
 
-
+physicalChannels=['ai13','ai11','ai9']
 nSide=30
 xs=np.linspace(0,10,nSide)
 ys=np.linspace(0,10,nSide)
@@ -36,18 +36,25 @@ def acquiEnd(i):
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
+	ai.setChannels(channel1.text(),channel2.text())
 	n=val(nPoints)
 	xmin=val(vmin)
 	xmax=val(vmax)
 	xmed=xmin+xmax/2
 	nstart=n//2
 	nend=nstart+n
-	voltageSignal=np.concatenate((np.linspace(xmed,xmin,nstart),np.linspace(xmin,xmax,n),np.linspace(xmax,xmed,nstart)))
+	if fieldSlope.text()=='Decreasing' :
+		voltageSignal=np.concatenate((np.linspace(xmed,xmin,nstart),np.linspace(xmin,xmax,n),np.linspace(xmax,xmed,nstart)))
+	elif fieldSlope.text()=='Increasing' :
+		voltageSignal=np.concatenate((np.linspace(xmed,xmax,nstart),np.linspace(xmax,xmin,n),np.linspace(xmin,xmed,nstart)))
 	nTot=len(voltageSignal)
 	ao.setupTimed(SampleFrequency=fsweep,ValuesList=voltageSignal)
 	ai.setupTimed(SampleFrequency=fsweep,SamplesPerChan=nTot,nAvg='auto')
 	ao.triggedOn(ai)
-	x=voltageSignal[nstart:nend]
+	if abscissChoice.text()=='Voltage (V)' :
+		x=voltageSignal[nstart:nend]
+	elif abscissChoice.text()=='Time (s)' :
+		x=np.linspace(0,n/fsweep,n)
 	return(nstart,nend,x)
 
 
@@ -62,19 +69,23 @@ def update(nstart,nend,x):
 
 
 ## Create the communication (I/O) instances ##
-ai=AIChan('ai11','ai13')
+ai=AIChan()
 ao=AOChan('ao0')
 cube=PiezoCube3axes()
 
 ## Setup the Graphical interface ##
-
+channel1=dropDownMenu('Channel for Fig.1 :',*physicalChannels,spaceAbove=0)
+channel1.setIndex('ai11')
+channel2=dropDownMenu('Channel for Fig.2 :',*physicalChannels,spaceAbove=0)
+channel2.setIndex('ai13')
 laser=pulsedLaserWidget()
 vmin=field('V min (V)',-5,spaceAbove=3)
 vmax=field('V max (V)',5,spaceAbove=0)
+fieldSlope=dropDownMenu('Field Slope','Increasing','Decreasing',spaceAbove=0)
 nPoints=field('n points',501,spaceAbove=3)
 fsweep=field('sweep frequency (Hz)',200,spaceAbove=0)
-
-fields=[laser,vmin,vmax,nPoints,fsweep]
+abscissChoice=dropDownMenu('Absciss','Voltage (V)','Time (s)',spaceAbove=0)
+fields=[channel1,channel2,laser,vmin,vmax,fieldSlope,nPoints,fsweep,abscissChoice]
 
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')

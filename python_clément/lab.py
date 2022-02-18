@@ -692,17 +692,18 @@ class microwave(device):
 		#Frequecy given in MHz
 			freq_list=np.linspace(fmin,fmax,n_points)
 			instruction_f='SOUR:LIST:FREQ'
-			for f in freq_list :
-				if f==max(freq_list) :
-					instruction_f+=' %f MHz'%f
-				else :
-					instruction_f+=' %f MHz,'%f
+			for i in range(n_points-1) :
+				f=freq_list[i]
+				instruction_f+=' %f MHz,'%f
+			instruction_f+=' %f MHz'%freq_list[-1]
+
+
+
 			instruction_pow='SOUR:LIST:POW'
-			for f in freq_list :
-				if f==max(freq_list) :
-					instruction_pow+=' %f dBm'%level
-				else :
-					instruction_pow+=' %f dBm,'%level
+			for i in range(n_points-1) :
+				instruction_pow+=' %f dBm,'%level
+			instruction_pow+=' %f dBm'%level
+
 			return instruction_f,instruction_pow
 
 	def setupESR(self,F_min=2800,F_max=2950,Power=-10,N_points=201,mod=None,AM_Depth=100,FM_Dev=1E6):
