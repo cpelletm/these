@@ -1,6 +1,6 @@
 from lab import *
 
-physicalChannels=['ai11','ai13']
+physicalChannels=['ai11','ai13','ai9']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 

@@ -1,0 +1,5 @@
+Je suis sur un ensemble de adamas 1 um (probablement), et je veux regarder les resonnances de la micro-onde (avec une antenne courte si jamais ça joue). 
+Les resonnances ne dépendent pas du champ mag, donc c'est pas les NV qui jouent. 
+
+Le clapet anti-retour me fait perdre 10+ dbm de puissance, et il réduit pas du tout l'amplitude des oscillations, par contre il réduit la période. 
+Je pense que les oscillations sont un FSR Delta nu=c/(2L) avec L la longeur de cables. Quand je rajoute le clapet, les aller-retour dans le cable se font entre l'antenne et le clapet, donc L diminue et Delta nu augmente.
