@@ -117,7 +117,43 @@ def gp_diff_fullC(theta_r,phi_r,theta_E=pi/2,phi_E=0):
 	integrande=1/(4*pi)*sqrt(g**2+h**2)*sin(theta_r)#/(2*pi)/(2*pi)
 	return(integrande)
 
+def dq_diff_mag(theta,phi,anglex1=0,anglex2=0):
+	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
+	x1,y1,z1=cartesian1(anglex1)
+	x2,y2,z2=cartesian2(anglex2)
+	g=1/2*(3*x1.dot(r)*x2.dot(r)-x1.dot(x2)-3*y1.dot(r)*y2.dot(r)+y1.dot(y2))
+	h=1/2*(3*x1.dot(r)*y2.dot(r)-x1.dot(y2)+3*y1.dot(r)*x2.dot(r)-y1.dot(x2))
+	integrande=1/(4*pi)*sqrt(g**2+h**2)*sin(theta)#/(2*pi)/(2*pi)
+	return(integrande)
 
+def xy_diff_noC(theta,phi,anglex1=0,anglex2=0):
+	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
+	x1,y1,z1=cartesian1(anglex1)
+	x2,y2,z2=cartesian2(anglex2)
+	g=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
+	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)/(2*pi)
+	return(integrande)
+
+def xy_diff_fullC(theta_r,phi_r,theta_E=0,phi_E=0):
+	r=np.array([x(theta_r,phi_r),y(theta_r,phi_r),z(theta_r,phi_r)])
+	E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)])
+
+	z1=classesRot[classNV1-1][2]
+	x1=E-(E.dot(z1))*z1
+	x1=x1/np.linalg.norm(x1)
+	y1=np.cross(z1,x1)
+
+	z2=classesRot[classNV2-1][2]
+	x2=E-(E.dot(z2))*z2
+	x2=x2/np.linalg.norm(x2)
+	y2=np.cross(z2,x2)
+	# x2=-x2 #Anticorrelation
+	# y2=-y2
+
+
+	g=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
+	integrande=1/(4*pi)*abs(g)*sin(theta_r)*1/(4*pi)*sin(theta_E)
+	return(integrande)
 
 def my2Dint(f,xrange,yrange,nx,ny):
 	xs=np.linspace(xrange[0],xrange[1],nx+1)
@@ -213,15 +249,31 @@ def my4Dint(f,wrange,xrange,yrange,zrange,n):
 					h+=pref*f(w,x,y,z)*ds
 	return h
 
+#flip flop
+eta0=(2/(3*sqrt(3))/4)**2
+# eta121=(2/(3*sqrt(3))/4+0.8328/4)**2
+# eta22=(2/(3*sqrt(3))/4+0.6507/4)**2
+# eta31=(2/(3*sqrt(3))/4+2*0.8328/4)**2
+# eta40mag=(2/(3*sqrt(3))/4+0.8328/4+2*0.6507/4)**2
+# eta40EnoC=(0.7110/4+3*0.6828/4)**2
+# eta40EfullC=(0.7698/4+3*0.6951/4)**2
+# print(eta40EfullC,eta40EfullC/eta0)
+#DQ
+eta40mag=(1/4+2*0.8328/4+0.6507/4)**2
+eta40EnoC=(0.7110/4+3*0.6828/4)**2
+eta40EfullC=(0.6366/4+3*0.6705/4)**2
 
-# classNV1=1
-# classNV2=1
+x=eta40EfullC
+print(x,x/eta0)
 
-# eta=my2Dint(xx_diff_fullC,[0,pi],[0,2*pi],300,300) # nx=100 : precision ~1e-4 300 : precision ~1e-7
+classNV1=1
+classNV2=8
+
+# eta=my2Dint(dq_diff_E,[0,pi],[0,2*pi],300,300) # nx=100 : precision ~1e-4 300 : precision ~1e-7
 # # eta=nquad(xx_diff_noC,ranges=[[0,pi],[0,2*pi]])
 # print(eta,4/3/sqrt(3))
 
-# eta=my3Dint(xx_diff_noC,[0,pi],[0,2*pi],[0,2*pi],100)/(2*pi) # nx=100 : precision ~1e-4 300 : precision ~1e-7
+# eta=my3Dint(dq_diff_E,[0,pi],[0,2*pi],[0,2*pi],100)/(2*pi) # nx=100 : precision ~1e-4 300 : precision ~1e-7
 # print(eta)
 #eta_xx_18=0.7697816068506358 #n=200
 #eta_xx_11=0.7698153937622911
@@ -229,11 +281,11 @@ def my4Dint(f,wrange,xrange,yrange,zrange,n):
 #eta_yy_18=0.7697745137506845 #n=200
 
 
-for i in range(1,9):
-	classNV1=1
-	classNV2=i
-	eta=my4Dint(xx_diff_fullC,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100) # nx=100 : precision ~1e-4 300 : precision ~1e-7
-	print('NV1-NV%i:'%i,eta)
+# for i in range(1,9):
+# 	classNV1=1
+# 	classNV2=i
+# 	eta=my4Dint(xy_diff_fullC,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100) # nx=100 : precision ~1e-4 300 : precision ~1e-7
+# 	print('NV1-NV%i:'%i,eta)
 
 # classNV1=1
 # classNV2=2
