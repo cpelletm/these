@@ -7,7 +7,10 @@ import scipy.optimize
 from scipy.integrate import quad, dblquad, nquad
 from scipy.optimize import root_scalar
 from tabulate import tabulate
-
+import sys
+sys.path.append('D:\\These Clément\\these\\python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
+from analyse import print_map
 
 # theta=2*arccos(sqrt(1/3))
 # theta=2*arcsin(sqrt(2/3))
@@ -115,9 +118,6 @@ def print_vector(v,bname) :
 		table+=[line]
 	print(tabulate(table))
 
-M=Sx.dot(Sx)-Sy.dot(Sy)
-N=Sx.dot(Sy)+Sy.dot(Sx)
-print_matrix(N,bname=bnamez)
 
 def convolution(M1,M2):
 	l1=len(M1[:,0])
@@ -1199,7 +1199,7 @@ def superpose_dir(ax):
 
 
 
-def Hamiltonian_NV_propre_base(B,E=3,D=2870,affiche=False) :
+def Hamiltonian_NV_propre_base(B,E=5,D=2870,affiche=False) :
 	#Unité naturelle : MHz,Gauss
 	B=np.array(B)
 	gamma=2.8
@@ -1207,6 +1207,83 @@ def Hamiltonian_NV_propre_base(B,E=3,D=2870,affiche=False) :
 	if affiche :
 		print(tabulate(sqrt(H.real**2+H.imag**2)))
 	return H
+
+
+def closenessToState(B,E,numvec,target):
+	H=Hamiltonian_NV_propre_base(B,E)
+	egva,egve=egvect(H)
+	# egve=[x for _, x in sorted(zip(egva, egve))]
+	return abs(egve[numvec].dot(target))**2
+
+
+
+def mapStatesEvsM():
+	namp=100
+	ntheta=100
+	E=5
+	carte=np.zeros((namp,ntheta))
+	amps=np.linspace(0,50,namp)
+	thetas=np.linspace(0,180,ntheta)
+	for i in range(namp):
+		amp=amps[i]
+		for j in range(ntheta):
+			theta=thetas[j]
+			B=[amp*sin(pi*theta/180),0,abs(amp*cos(pi*theta/180))]#Sans le abs ca t'inverse le -1 et le +1, c'est relou
+			cm=closenessToState(B,E,2,[1,0,0])
+			ce=closenessToState(B,E,2,[1/sqrt(2),0,1/sqrt(2)])
+
+			# cm=closenessToState(B,E,1,[0,0,1])
+			# ce=closenessToState(B,E,1,[1/sqrt(2),0,-1/sqrt(2)])
+			carte[i,j]=cm-ce
+
+	print_map(carte,xmin=0,xmax=amps[-1],ymin=0,ymax=thetas[-1])
+
+
+def tippingPointEvsM(E):
+	ntheta=500
+	thetas=np.linspace(0,pi,ntheta)
+	def whoWins(amp): #amplitude du champ mag
+		l=np.zeros(ntheta)
+		for i in range(ntheta) :
+			theta=thetas[i]
+			B=[amp*sin(theta),0,abs(amp*cos(theta))]#Sans le abs ca t'inverse le -1 et le +1, c'est relou
+			cm=closenessToState(B,E,2,[1,0,0])
+			ce=closenessToState(B,E,2,[1/sqrt(2),0,1/sqrt(2)])
+			l[i]=(cm-ce)*sin(theta)/2
+		s=simpleIntegrale(l,pas=thetas[1]-thetas[0])
+		return(s)
+	def simpleIntegrale(l,pas):
+		s=(l[0]+l[-1])/2
+		for i in range(1,len(l)-1):
+			s+=l[i]
+		s=s*pas
+		return(s)
+
+	def dichotomy(Bmax=100,precision=1e-4):
+		Bmin=0
+		assert whoWins(Bmin)*whoWins(Bmax) < 0
+		while Bmax-Bmin > precision :
+			Btest=(Bmax+Bmin)/2
+			if whoWins(Bmin)*whoWins(Btest) < 0:
+				Bmax=Btest
+			else :
+				Bmin=Btest
+		return (Bmax+Bmin)/2
+
+	return dichotomy()
+
+
+
+Es=np.linspace(1,10,50)
+tippingBs=[]
+for E in Es:
+	tippingBs+=[tippingPointEvsM(E)]
+
+
+plt.plot(Es,tippingBs)
+plt.show()
+	
+
 
 def spin_NV_propre_base(B,gamma_las=1E-3,gamma_phonon=2E-4): #Attention : gamma en MHz
 	H=H=Qobj(Hamiltonian_NV_propre_base(B))
