@@ -275,6 +275,18 @@ def stretch_arb_exp_fit_zero(x,y,amp=None,tau=None,alpha=0.5,fixed=False):
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,*popt))
 
+
+def stretch_with_baseline(x,y,tau_BL=5e-3,alpha_BL=1,alpha_dip=0.5,amp=None,tau=None):
+	if not amp :
+		amp=max(y)-min(y)
+	if not tau :
+		tau=x[int(len(x)/10)]-x[0]
+	def f(x,amp,tau) :
+		return amp*np.exp(-(x/tau_BL)**alpha_BL)*np.exp(-(x/tau)**alpha_dip)
+	p0=[amp,tau]
+	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
+	return(popt,f(x,*popt))
+
 def third_stretch(x,y,amp=None,tau=None) :
 	if not amp :
 		amp=max(y)-min(y)
@@ -514,7 +526,7 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
 		Bz=self.cs[c].dot(B.cartesian) #Attention, ici Bz est dans la base du NV (Bz')
-		Bx=np.sqrt(abs(B.amp**2-Bz**2))#le amp est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
+		Bx=np.sqrt(abs(B.amp**2-Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
 		self.H=self.D*self.Sz2+self.gamma_e*(Bz*self.Sz+Bx*self.Sx) #Rajoute des fioritures si tu veux
 	def transitions(self):
 		egva,egve=np.linalg.eigh(self.H)
