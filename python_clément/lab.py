@@ -99,6 +99,8 @@ class label():
 			self.label.setFont(QFont( "Consolas", 40, QFont.Bold))
 	def setText(self,text):
 		self.label.setText(text)
+	def setEnabled(self,b):
+		self.label.setEnabled(b)
 	def addToBox(self,box):
 		box.addStretch(self.spaceAbove)
 		box.addWidget(self.label)
@@ -1081,6 +1083,51 @@ class powerMeterUSB(device):
 	def close(self):
 		try :
 			self.tlPM.close()
+		except :
+			pass
+
+class platinePI(device):
+	def __init__(self,CONTROLLERNAME = 'C-863.11', SerialNumber='0165500259', STAGES = ['M-111.1VG']):
+		#Controller = le boitier gris que tu branches en USB, Stages= la (ou les) platines que tu branches dessus (les servo-moteurs en vrai)
+		#Le Serial Number est différent pour chaque controller, il faut aller le chercher dans le logiciel PiMikromove, Quand tu connectes un controller dans USB daisy chain tu devrais voir "PI C-863 Mercury SN 'serial number'"
+		super().__init__()
+		self.CONTROLLERNAME=CONTROLLERNAME
+		self.SerialNumber=SerialNumber
+		self.STAGES=STAGES
+		self.toBeClosed=False
+
+	def connect(self):
+		#Nécéssite d'installer PIPython et future (pip install ...)
+		from pipython import GCSDevice, pitools
+		REFMODES = ['FNL', 'FRF'] #Pas trop sur de ce que ça fait
+		self.pidevice=GCSDevice(self.CONTROLLERNAME)
+		self.pidevice.ConnectUSB(serialnum=self.SerialNumber)
+		# print('connected: {}'.format(self.pidevice.qIDN().strip()))
+		pitools.startup(self.pidevice, stages=self.STAGES, refmodes=REFMODES)
+		self.rangemin = self.pidevice.qTMN()
+		self.rangemax = self.pidevice.qTMX()
+		self.setVelocity()
+
+	def getPos(self):
+		curpos = self.pidevice.qPOS()
+		return(curpos)
+
+	def setVelocity(self,velocity=0.3):
+		#velocity in mm/s (max=0.65)
+		velocity=val(velocity)
+		self.pidevice.VEL(axes=1,values=velocity) #axes=1 parceque je n'ai qu'un moteur branché sur le controller
+
+	def setPos(self,pos=2,wait=True):
+		#pos in mm, from self.rangemin to self.rangemax
+		pos=val(pos)
+		self.pidevice.MOV(axes=1,values=pos)
+		if wait :
+			while not self.pidevice.qONT(axes=1)[1] :
+	 			pass
+
+	def close(self):
+		try :
+			self.pidevice.close()
 		except :
 			pass
 
@@ -2173,6 +2220,8 @@ class hiddenPrints:
 		sys.stdout = self._original_stdout
 
 
+
+
 def failSafe(func,*args,debug=True):
 	try :
 		res=func(*args)
@@ -2410,7 +2459,21 @@ def read_list_from_file(fname,dtype='str'):
 					l+=[True]
 	return(l)
 
+def save_data(*columns,fname='auto',dirname='auto'):
+	import csv
+	from pathlib import Path
+	if dirname=='auto' :
+		dirname=defaultDataPath+'/AutoSave/'
+	Path(dirname).mkdir(parents=True, exist_ok=True)
+	if fname=='auto':
+		now = datetime.now()
+		fname=now.strftime("%Y-%m-%d %H-%M-%S")
+	fname=dirname+fname+'.csv'
 
+	with open(fname,'w',newline='') as csvfile :
+		spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+		for c in columns :
+			spamwriter.writerow(c)
 
 def test_pg():
 	def setup():
@@ -2512,7 +2575,8 @@ def test_laser():
 	do.setupContinuous(False)
 
 if __name__ == "__main__":
+	pass
 	
-	test_pg()
+	# test_pg()
 
 

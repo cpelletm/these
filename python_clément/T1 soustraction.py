@@ -6,8 +6,8 @@ physicalChannels=['ai13','ai11','ai9']
 
 # Voltages=np.linspace(-2,2,130)
 
-nLine=30
-ys=np.linspace(0,10,nLine)
+nLine=101
+positions=np.linspace(0,15,nLine)
 
 def acquiStart(i):
 	# v=Voltages[i]
@@ -17,16 +17,22 @@ def acquiStart(i):
 	# cs=find_ESR_peaks(x,y)
 	# print(min(cs)) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
 	# frequW.setValue(min(cs))
+	pos=positions[i]
+	platine.setPos(pos,wait=True)
+	x,y=ESRInLine(Fmin=2580,Fmax=2750,Power=5,NPoints=1001,NRuns=3,Fsweep=200,AmpMod=True)
+	save_data(x,y,dirname='D:\\DATA\\20220222\\Adamas 15 um\\Largeur fluctuator T1\\Série ESR 2\\',fname="pos=%f"%pos)
+	f=x[list(y).index(max(y))]
+	frequW.setValue(f)
 
-	yV=ys[i]
-	cube.move(yV,ax='y')
+
+	
 
 
 def acquiEnd(i):
 	# fname=StartStop.defaultFolder+'V=%f'%(Voltages[i])+' V'
 
-	yV=ys[i]
-	fname=StartStop.defaultFolder+'x=0,y=%f'%(yV)
+	pos=positions[i]
+	fname='D:\\DATA\\20220222\\Adamas 15 um\\Largeur fluctuator T1\\Série T1 2\\'+"pos=%f"%pos
 
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
@@ -90,6 +96,8 @@ ao=AOChan('ao0')
 do=DOChan('p06','p07','p02')
 mw=microwave('mw_ludo')
 cube=PiezoCube3axes()
+platine=platinePI()
+platine.connect()
 
 ## Setup the Graphical interface ##
 # laser=continuousLaserWidget(power=2E-4,spaceAbove=0)
@@ -114,7 +122,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=30,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=100,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)
