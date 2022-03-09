@@ -1325,6 +1325,8 @@ class AIChan(NIChan):
 			return(self.readPulsed(nRead=nRead,waitForAcqui=waitForAcqui,timeout=timeout))
 		elif self.mode=='withPB' :
 			return(self.readPulsed(nRead=nRead,timeout=timeout))
+		else :
+			raise ValueError('Reading mode not understood : self.mode='+self.mode.__repr__())
 
 
 
@@ -2268,6 +2270,7 @@ def resetLines():
 		m.reset()
 
 def average(y,nAvg=1,nRepeat=1): #see def of nAvg and nRepeat in NIChan
+
 	if len(y)%nRepeat!=0 :
 		raise ValueError('nRepeat does not divide the size of the array')
 	nSeg=len(y)//nRepeat

@@ -19,7 +19,7 @@ def acquiStart(i):
 	# frequW.setValue(min(cs))
 	pos=positions[i]
 	platine.setPos(pos,wait=True)
-	x,y=ESRInLine(Fmin=2580,Fmax=2750,Power=5,NPoints=1001,NRuns=3,Fsweep=200,AmpMod=True)
+	x,y=ESRInLine(Fmin=2660,Fmax=2780,Power=5,NPoints=1001,NRuns=3,Fsweep=200,AmpMod=True)
 	save_data(x,y,dirname='D:\\DATA\\20220222\\Adamas 15 um\\Largeur fluctuator T1\\Série ESR 2\\',fname="pos=%f"%pos)
 	f=x[list(y).index(max(y))]
 	frequW.setValue(f)
