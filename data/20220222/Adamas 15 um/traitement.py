@@ -33,11 +33,81 @@ T1 avec un alpha=0.82 fixe :
 
 
 #Baseline : T1=1.21753193e-03 ; alpha=8.29849679e-01 
-fname='T1 0B court'
+# fname='T1 0B court'
+# x,y=extract_data(fname,ycol=5)
+# plt.plot(x,y)
+# # popt,yfit=stretch_with_baseline(x,y,tau_BL=1.21753193e-03,alpha_BL=8.29849679e-01)
+# popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
+# plt.plot(x,yfit)
+# print(popt)
+# plt.show()
+
+fname='T1 champ transverse très faible classe 4 (DQ)'
 x,y=extract_data(fname,ycol=5)
-plt.plot(x,y)
-# popt,yfit=stretch_with_baseline(x,y,tau_BL=1.21753193e-03,alpha_BL=8.29849679e-01)
-popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.82,fixed=True)
-plt.plot(x,yfit)
-print(popt)
+y=y/max(y)
+plt.plot(x,y,label='petit champ transverse',marker='o',markerfacecolor="None",ms=8,mew=2)
+fname='T1 moyen B transverse'
+x,y=extract_data(fname,ycol=5)
+y=y/max(y)
+plt.plot(x,y,label='moyen champ transverse',marker='o',markerfacecolor="None",ms=8,mew=2)
+fname='T1 transverse gros champ'
+x,y=extract_data(fname,ycol=5)
+y=y/max(y)
+plt.plot(x,y,label='gros champ transverse',marker='o',markerfacecolor="None",ms=8,mew=2)
+fname='T1 1 classe pour le champ transverse moyen'
+x,y=extract_data(fname,ycol=5)
+y=y/max(y)
+plt.plot(x,y,label='Baseline',marker='o',markerfacecolor="None",ms=8,mew=2)
+fname='T1 1x3'
+x,y=extract_data(fname,ycol=5)
+y=y/max(y)
+plt.plot(x,y,label='Baseline 2',marker='o',markerfacecolor="None",ms=8,mew=2)
+plt.legend()
 plt.show()
+
+
+def fig121_Vs_22():
+	plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori
+
+
+	ax=plt.gca()
+	ax.tick_params(labelsize=20)
+	ax.set_xlabel(r'Dark time (s)',fontsize=20,fontweight='bold')
+	ax.set_ylabel(r'Relative Contrast' ,fontsize=20,fontweight='bold')
+
+
+	fname='T1 2x2 gauche (2)'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'o',markerfacecolor="None",color='tab:blue',ms=8,mew=2)
+	fname='T1 2x2 droite (2)'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'s',markerfacecolor="None",color='tab:blue',ms=8,mew=2)
+	fname='T1 2x2'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'^',markerfacecolor="None",color='tab:blue',ms=8,mew=2)
+	fname='T1 2x2 autre raie'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'*',markerfacecolor="None",color='tab:blue',ms=8,mew=2)
+
+
+	fname='T1 121 nuit'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'o',color='tab:orange',ms=8,mew=2)
+	fname='T1 1x2x1'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'s',color='tab:orange',ms=8,mew=2)
+	fname='T1 121 (3)'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'^',color='tab:orange',ms=8,mew=2)
+	fname='T1 121 (4)'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	plt.plot(x,y,'*',color='tab:orange',ms=8,mew=2)
+	plt.show()
