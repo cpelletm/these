@@ -1,4 +1,5 @@
 from math import *
+import numpy as np
 
 kb=1.38E-23
 Na=6.02e23

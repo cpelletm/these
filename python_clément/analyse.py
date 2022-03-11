@@ -132,6 +132,7 @@ def parabola_fit(x,y):
 	return(popt,f(x,*popt))
 
 def fit_ordre_4(x,y) :
+	x,y=np.array(x),np.array(y)
 	A=np.vstack([x**4,x**3,x**2,x,np.ones(len(x))]).T
 	a,b,c,d,e = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([a,b,c,d,e],a*x**4+b*x**3+c*x**2+d*x+e)
@@ -157,9 +158,10 @@ def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0) :
 		return amp*np.exp(-(x-x0)**2/(2*sigma**2))+ss
 	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
+	return(popt,f(x,*popt))
 
 def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
+	#sigma=HWHM
 	if not ss :
 		ss=y[0]
 	if not amp :
@@ -172,10 +174,10 @@ def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
 	if not sigma :
 		sigma=x[int(len(x)/5)]-x[0]
 	def f(x,amp,x0,sigma,ss) :
-		return ss+amp*1/(1+((x-x0)/(2*sigma))**2)
+		return ss+amp*1/(1+((x-x0)/(sigma))**2)
 	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1],popt[2],popt[3]))
+	return(popt,f(x,*popt))
 
 def cos_fit(x,y,amp=None,omega=None,phi=0,ss=None):
 	if not amp :
@@ -187,6 +189,16 @@ def cos_fit(x,y,amp=None,omega=None,phi=0,ss=None):
 	def f(x,amp,omega,phi,ss):
 		return amp*np.cos(omega*x+phi)+ss
 	p0=[amp,omega,phi,ss]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,*popt))
+
+def invert_fit(x,y,amp=None):
+	if not amp:
+		n=closest_elem(x,1)
+		amp=y[n]
+	def f(x,amp):
+		return amp/x
+	p0=[amp]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
 
@@ -691,6 +703,15 @@ def hist_sigma(x,y):
 	mu=hist_mean(x,y)
 	return np.sqrt(np.average((x-mu)**2,weights=y))
 
+def closest_elem(l,target):
+	basis=abs(target-l[0])
+	n=0
+	for i in range(len(l)):
+		if abs(target-l[i]) < basis:
+			n=i
+			basis=abs(target-l[i])
+	return n
+
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
 	data=[]
@@ -720,7 +741,7 @@ def print_map(array,xmin=0,xmax=1,ymin=0,ymax=1):
 
 #~~~~~~ Présentation ~~~~~~
 
-def ecris_gros():
+def ecris_gros(x,y):
 	plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori
 
 
@@ -728,13 +749,51 @@ def ecris_gros():
 	ax.tick_params(labelsize=20)
 	ax.set_xlabel(r'B $\parallel$[100] (G)',fontsize=20,fontweight='bold')
 	ax.set_ylabel(r'Photoluminescence' ,fontsize=20,fontweight='bold')
-	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2)
+	color = next(ax._get_lines.prop_cycler)['color']
+	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
 
+def extract_glob(SubFolderName='.',FirstValIndex=0): #FirstValIndex=premier caractère numérique
+	fnames=glob.glob(SubFolderName+'/*.csv')
+	fval=[float(fnames[i][FirstValIndex:-4]) for i in range(len(fnames))] 
+	fnames=[s for _,s in sorted(zip(fval,fnames))]
+	fval=sorted(fval)
+	return(fnames,fval)
+
+def exemple_animation():
+	import matplotlib.animation as animation
+	fnames,fval=extract_glob('Série ESR 2',16)
+	fig = plt.figure() # initialise la figure
+	line, = plt.plot([], []) 
+	x,y=extract_data(fnames[0])
+	plt.xlim(min(x), max(x))
+	plt.ylim(min(y),max(y))
+
+	def animate(i): 
+		f=fnames[i]
+		x,y=extract_data(f)
+		line.set_data(x, y)
+		return line,
+	 
+	ani = animation.FuncAnimation(fig, animate, frames=len(fnames), blit=True, interval=50, repeat=False)
+
+	plt.show()
+
+
+#~~~~~~~~ Outils ~~~~~~~~~~
 def ask_name():
 	qapp = QApplication(sys.argv)
 	fname,filters=QFileDialog.getOpenFileName()	
 	return fname
 
+def save_data(*columns,fname='default',dirname='./'):
+	import csv
+	from pathlib import Path
+	fname=dirname+fname+'.csv'
+
+	with open(fname,'w',newline='') as csvfile :
+		spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+		for c in columns :
+			spamwriter.writerow(c)
 # x,y=extract_data('ESR 100 2V')
 # x=x*1000
 # cs=[2765,3020]
