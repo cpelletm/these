@@ -1,6 +1,6 @@
 from lab import *
 
-physicalChannels=['ai11','ai13','ai9']
+physicalChannels=['ai11','ai13','ai9','ctr0']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 
@@ -30,8 +30,12 @@ def setup():
 	f=val(fsweep)
 
 	mw.setupESR(F_min=fmin,F_max=fmax,Power=level,N_points=n,mod=mod,AM_Depth=AMDepth,FM_Dev=FMDev)
-	ai.setChannels(channels.text())
-	ai.setupTimed(SampleFrequency=f,SamplesPerChan=n,nAvg='auto')
+	if channels.text()[0:2]=='ai':
+		ai.setChannels(channels.text())
+		ai.setupTimed(SampleFrequency=f,SamplesPerChan=n,nAvg='auto')
+	elif channels.text()[0:2]=='ctr':
+		ci.setChannels(channels.text())
+		#Et le reste fonctionne pas pour l'instant. Si t'as le temps à un moment...
 
 	doSequence=[True,False]*n
 	do.setupTimed(SampleFrequency=2*f,ValuesList=doSequence)

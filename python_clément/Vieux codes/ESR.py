@@ -10,7 +10,7 @@ import nidaqmx.system
 import nidaqmx.constants
 
 
-import visa
+import pyvisa as visa
 import numpy as np
 
 
@@ -380,22 +380,22 @@ class MyToolbar(NavigationToolbar): #Modification of the toolbar to save data wi
 										 start, "Images (*.png)")
 
 		data=[]
-        lmax=0
-        for ax in self.canvas.figure.get_axes() :
-            for line in ax.get_lines() :
-                if len(line._x)>lmax :
-                    lmax=len(line._x)
+		lmax=0
+		for ax in self.canvas.figure.get_axes() :
+			for line in ax.get_lines() :
+				if len(line._x)>lmax :
+					lmax=len(line._x)
 
-        for ax in self.canvas.figure.get_axes() :
-            for line in ax.get_lines() :
-                x=list(line._x)
-                if len(x) < lmax :
-                    x+=[-1]*(lmax-len(x))
-                y=list(line._y)
-                if len(y) < lmax :
-                    y+=[-1]*(lmax-len(y))
-                data+=[x]
-                data+=[y]
+		for ax in self.canvas.figure.get_axes() :
+			for line in ax.get_lines() :
+				x=list(line._x)
+				if len(x) < lmax :
+					x+=[-1]*(lmax-len(x))
+				y=list(line._y)
+				if len(y) < lmax :
+					y+=[-1]*(lmax-len(y))
+				data+=[x]
+				data+=[y]
 
 		fdataname=fname[:-4]+".txt"
 		with open(fdataname,'w') as f: #Needs an update if the lines have differents sizes

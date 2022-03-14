@@ -19,14 +19,74 @@ eta 0B sans DQ : 51-55 eta0
 
 
 """
+def full_animation()
+
+	fig,axes=plt.subplots(2)
+	fig.set_size_inches([10,8])
+	[ax1,ax2]=axes
+	ax1.set_ylim([0,3])
+	ax2.set_ylim([-0.2,1.2])
+	ax1.set_xlabel('Frequency (MHz)',fontweight='bold')
+	ax1.set_ylabel('ODMR contrast',fontweight='bold')
+	ax2.set_xlabel('Dark time (ms)',fontweight='bold')
+	ax2.set_ylabel('T1 contrast',fontweight='bold')
+
+	nFrameMin=20
+	nFrameMax=80
 
 
+	fnames,fval=extract_glob('Série ESR 2',16)
+	fnames.remove(fnames[43])
+	fval.remove(fval[43])
+	fnames=fnames[nFrameMin:nFrameMax]
 
-# fnames,fval=extract_glob('Série ESR 2',16)
 
-# fnames.remove(fnames[43])
-# fval.remove(fval[43])
+	x,y=extract_data(fnames[0])
+	l1=ax1.plot(x,y)[0]
 
+	xESR=x
+	yESRs=[]
+	for i in range(len(fnames)):
+		x,y=extract_data(fnames[i])
+		yESRs+=[y]
+
+	fnames,fval=extract_glob('Série T1 2',15)
+	fnames.remove(fnames[43])
+	fval.remove(fval[43])
+	fnames=fnames[nFrameMin:nFrameMax]
+
+
+	x,y=extract_data(fnames[0],ycol=5)
+	nT1max=100
+	x=x[:nT1max]*1e3
+	y=y[:nT1max]/max(y[:nT1max])
+	l2=ax2.plot(x,y,'o',markerfacecolor='None')[0]
+	popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
+	l3=ax2.plot(x,yfit,lw=2,label='tau=%.3f'%(popt[1]))[0]
+	xT1=x
+	yT1s=[]
+	yfits=[]
+	taus=[]
+	for i in range(len(fnames)):
+		x,y=extract_data(fnames[i],ycol=5)
+		y=y[:nT1max]/max(y[:nT1max])
+		yT1s+=[y]
+		popt,yfit=stretch_arb_exp_fit_zero(xT1,y,alpha=0.8,fixed=True)
+		yfits+=[yfit]
+		taus+=[popt[1]]
+
+	def animate(i): 
+		l1.set_data(xESR, yESRs[i])
+		l2.set_data(xT1, yT1s[i])
+		l3.set_data(xT1, yfits[i])
+		return l1,l2,l3
+	 
+	ani = animation.FuncAnimation(fig, animate, frames=len(fnames), blit=True, interval=100, repeat=True)
+	ani.save('Anim.html')
+
+
+	# plt.legend()
+	plt.show()
 
 def plot_esr_centre(ax):
 	fnames,fval=extract_glob('Série ESR 2',16)
@@ -110,10 +170,10 @@ def anim_ESR():
 
 	plt.show()
 
-fnames,fval=extract_glob('Série T1 2',15)
+# fnames,fval=extract_glob('Série T1 2',15)
 
-fnames.remove(fnames[43])
-fval.remove(fval[43])
+# fnames.remove(fnames[43])
+# fval.remove(fval[43])
 
 def anim_T1():
 	x,y=extract_data(fnames[0],ycol=5)
@@ -154,19 +214,20 @@ def plot_T1(ax):
 	ax.plot(x,yfit,lw=2,label='1/T1 fit FWHM=%4.3f MHz'%(2*popt[2]),color=color)
 
 
-fig, ax1 = plt.subplots()
-plot_esr_centre(ax=ax1)
-ax1.tick_params(labelsize=20)
-ax1.set_xlabel(r'$\Delta \nu$ (MHz)',fontsize=20)
-ax1.set_ylabel(r'ODMR relative contrast' ,fontsize=20)
+def plot_largeur_fluct_et_ESR():
+	fig, ax1 = plt.subplots()
+	plot_esr_centre(ax=ax1)
+	ax1.tick_params(labelsize=20)
+	ax1.set_xlabel(r'$\Delta \nu$ (MHz)',fontsize=20)
+	ax1.set_ylabel(r'ODMR relative contrast' ,fontsize=20)
 
 
-ax2 = ax1.twinx()
-plot_T1(ax2)
-ax2.tick_params(labelsize=20)
-ax2.set_ylabel(r'1/$T_1$ (s$^{-1}$)' ,fontsize=20)
+	ax2 = ax1.twinx()
+	plot_T1(ax2)
+	ax2.tick_params(labelsize=20)
+	ax2.set_ylabel(r'1/$T_1$ (s$^{-1}$)' ,fontsize=20)
 
 
-ax1.legend(loc='center left')
-ax2.legend(loc='center right')
-plt.show()
+	ax1.legend(loc='center left')
+	ax2.legend(loc='center right')
+	plt.show()
