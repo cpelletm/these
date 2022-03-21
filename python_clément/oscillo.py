@@ -3,6 +3,8 @@ from lab import *
 physicalChannels=['ai13','ai11','ai9','ai11/ai13']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
+
+
 def setup(): 
 	if channels.text() == 'ai11/ai13' :
 		ai.setChannels('ai13','ai11')

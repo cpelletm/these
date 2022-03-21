@@ -345,7 +345,9 @@ def fit_B_dipole(x,y,B0=2000,x0=10) : #x : distance en mm, y : champ mag en G
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def ESR_n_pics(x,y,cs,width=False,ss=None,amp=None,typ='gauss') : #typ="gauss" ou "lor"
+def ESR_n_pics(x,y,cs='auto',width=False,ss=None,amp=None,typ='gauss') : #typ="gauss" ou "lor"
+	if cs=='auto':
+		cs=find_ESR_peaks(x,y)
 	if not ss :
 		ss=y[0]
 	if not amp :
@@ -523,23 +525,25 @@ def find_B_100(freq,transi='-',B_max=100) :
 class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 	D=2870 #Mhz
 	gamma_e=2.8 #Mhz/gauss
+	
 
 	Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
 	Sy=np.array([[0,-1j,0],[1j,0,-1j],[0,1j,0]])*1/np.sqrt(2)
 	Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])*1/np.sqrt(2)
 	Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
+	H_E_transverse=np.array([[0,0,1],[0,0,0],[1,0,0]])
 
 	c1=np.array([-1,1.,-1])/np.sqrt(3)
 	c2=np.array([1,1,1])/np.sqrt(3)
 	c3=np.array([-1,-1,1])/np.sqrt(3)
 	c4=np.array([1,-1,-1])/np.sqrt(3)
 	cs=[c1,c2,c3,c4]
-	def __init__(self,B,c=1): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz]
+	def __init__(self,B,c=1,E=4): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
 		Bz=self.cs[c].dot(B.cartesian) #Attention, ici Bz est dans la base du NV (Bz')
 		Bx=np.sqrt(abs(B.amp**2-Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
-		self.H=self.D*self.Sz2+self.gamma_e*(Bz*self.Sz+Bx*self.Sx) #Rajoute des fioritures si tu veux
+		self.H=self.D*self.Sz2+self.gamma_e*(Bz*self.Sz+Bx*self.Sx)+E*self.H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
 	def transitions(self):
 		egva,egve=np.linalg.eigh(self.H)
 		egva=np.sort(egva)
@@ -644,7 +648,9 @@ def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 			y+=amp*1/(1+((x-c)/width)**2)
 	return y
 
-def find_nearest_ESR(x,y,peaks,Bmax=1000,typ='gauss',returnType='default',transis='all',fittingProtocol='spherical'): #peaks : centers of resonances in MHz
+def find_nearest_ESR(x,y,peaks='auto',Bmax=1000,typ='gauss',returnType='default',transis='all',fittingProtocol='cartesian'): #peaks : centers of resonances in MHz
+	if peaks=='auto':
+		peaks=find_ESR_peaks(x,y)
 	popt,yfit= ESR_n_pics(x,y,peaks)
 	n=len(peaks)
 	ss=popt[0]

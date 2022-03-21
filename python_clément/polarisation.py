@@ -2,41 +2,17 @@ from lab import *
 
 physicalChannels=['ai13','ai11','ai9']
 
-nSide=30
-zs=np.linspace(-5,5,nSide)
-ys=np.linspace(0,10,nSide)
+nSerie=100
 
-# laser_freqs=np.linspace(2E6,2E7,10)
-
-# nLine=30
-# ys=np.linspace(0,10,nLine)
+chanGreen='p07'
+chanRed='p02' #'p03' typiquement utilisé par l'AOM; 'p02' par le switch
+chanLect='p06'
+invertedGate=False
 
 def acquiStart(i):
-	iz=i%nSide
-	iy=i//nSide
-	zV=zs[iz]
-	yV=ys[iy]
-	cube.move(zV,ax='z')	
-	cube.move(yV,ax='y')
-
-	# laser.laserFreq.setValue(laser_freqs[i])
-	# laser.lasOnOff()
-
-	# yV=ys[i]
-	# cube.move(yV,ax='y')
+	pass
 
 def acquiEnd(i):
-	iz=i%nSide
-	iy=i//nSide
-	zV=zs[iz]
-	yV=ys[iy]
-	fname=StartStop.defaultFolder+'z=%f,y=%f'%(zV,yV)
-
-	# laser.laser.stop()
-	# fname='fLas=%f'%laser_freqs[i]
-
-	# yV=ys[i]
-	# fname=StartStop.defaultFolder+'x=0,y=%f'%(yV)
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
 	else :
@@ -60,57 +36,57 @@ def setup():
 		x=x[1:]
 
 	ai.setChannels(channels.text()) 
-	nAvg=ai.setupPulsed(signal=lect,freq=freq,nAvg=nAvgWidg)
+	nAvg=ai.setupPulsed(signal=lect,freq=freq,nAvg='auto')
 
 
 	redLaserGate=[]
 	greenLaserGate=[]
 	if waitMenu.text()=='green' :
-		greenLaserGate+=[True]*nWait
+		greenLaserGate+=[not invertedGate]*nWait
 		redLaserGate+=[False]*nWait
 	elif waitMenu.text()=='red' :
-		greenLaserGate+=[False]*nWait
+		greenLaserGate+=[invertedGate]*nWait
 		redLaserGate+=[True]*nWait
 	elif waitMenu.text()=='both' :
-		greenLaserGate+=[True]*nWait
+		greenLaserGate+=[not invertedGate]*nWait
 		redLaserGate+=[True]*nWait
 	elif waitMenu.text()=='none' :
-		greenLaserGate+=[False]*nWait
+		greenLaserGate+=[invertedGate]*nWait
 		redLaserGate+=[False]*nWait
 
 	if readMenu.text()=='green' :
-		greenLaserGate+=[True]*nRead
+		greenLaserGate+=[not invertedGate]*nRead
 		redLaserGate+=[False]*nRead
 	elif readMenu.text()=='red' :
-		greenLaserGate+=[False]*nRead
+		greenLaserGate+=[invertedGate]*nRead
 		redLaserGate+=[True]*nRead
 	elif readMenu.text()=='both' :
-		greenLaserGate+=[True]*nRead
+		greenLaserGate+=[not invertedGate]*nRead
 		redLaserGate+=[True]*nRead
 	elif readMenu.text()=='none' :
-		greenLaserGate+=[False]*nRead
+		greenLaserGate+=[invertedGate]*nRead
 		redLaserGate+=[False]*nRead
 
 	if polaMenu.text()=='green' :
-		greenLaserGate+=[True]*nPola
+		greenLaserGate+=[not invertedGate]*nPola
 		redLaserGate+=[False]*nPola
 	elif polaMenu.text()=='red' :
-		greenLaserGate+=[False]*nPola
+		greenLaserGate+=[invertedGate]*nPola
 		redLaserGate+=[True]*nPola
 	elif polaMenu.text()=='both' :
-		greenLaserGate+=[True]*nPola
+		greenLaserGate+=[not invertedGate]*nPola
 		redLaserGate+=[True]*nPola
 	elif polaMenu.text()=='none' :
-		greenLaserGate+=[False]*nPola
+		greenLaserGate+=[invertedGate]*nPola
 		redLaserGate+=[False]*nPola
 
 
 
-	lect+=[False]*10
-	greenLaserGate+=[False]*10
-	redLaserGate+=[False]*10
+	# lect+=[False]*10
+	# greenLaserGate+=[invertedGate]*10
+	# redLaserGate+=[False]*10
 
-	do.setChannels('p06','p07','p03')
+	do.setChannels(chanLect,chanGreen,chanRed)
 	do.setupPulsed(ValuesList=[lect,greenLaserGate,redLaserGate],freq=freq,nAvg=nAvg,nRepeat=nRep)
 	do.start()
 	return x
@@ -125,7 +101,7 @@ def update(x):
 	
 
 def extraStop() :
-	do.setupContinuous([[False],[True],[AOM.state()]])
+	do.setupContinuous([[False],[not invertedGate],[AOM.state()]])
 
 def avgWidgAction() :
 	if avgWidg.state():
@@ -133,18 +109,31 @@ def avgWidgAction() :
 	else :
 		l1.typ='instant'
 
+def uwOnOff():
+	s=uwCB.state()
+	if s:
+		mw.setupContinuous(Frequency=uwfreq,Power=uwlvl)
+	else :
+		mw.close()
+
+
+
 ## Create the communication (I/O) instances ##
 ai=AIChan()
 do=DOChan()
 cube=PiezoCube3axes()
+mw=microwave('mw_ludo')
+mw.toBeClosed=False
 
 ## Setup the Graphical interface ##
 # laser=continuousLaserWidget(power=2E-4,spaceAbove=0)
-laser=pulsedLaserWidget(gate=True)
-AOM=AOMWidget()
-fullView=checkBox('Full View')
+laser=pulsedLaserWidget(gate=True,invertedGate=invertedGate)
+AOM=AOMWidget(chan=chanRed)
+fullView=checkBox('Full View',spaceAbove=0)
 fullView.setState(True)
-NRead=field('n read',200)
+uwCB=checkBox('Microwave On/Off',action=uwOnOff)
+uwfreq=field('Frequency (MHz)',2880,spaceAbove=0)
+uwlvl=field('Power (dBm)',15,spaceAbove=0)
 waitMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tWait=field('dark time (s)',10e-3)
 readMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
@@ -152,18 +141,18 @@ readMenu.setIndex('both')
 tRead=field('read time (s)',20e-3)
 polaMenu=dropDownMenu('pulse menu','none','green','red','both',spaceAbove=0)
 tPola=field('pola time(s)',10e-3)
-nRep=field('n repeat',1)
-nAvgWidg=field('n avg','auto')
-fields=[laser,AOM,fullView,NRead,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,nRep,nAvgWidg]
+NRead=field('n read',200)
+nRep=field('n repeat',1,spaceAbove=0)
+fields=[laser,AOM,fullView,uwCB,uwfreq,uwlvl,tWait,waitMenu,tRead,readMenu,tPola,polaMenu,NRead,nRep]
 
 gra=graphics(refreshRate=0.1)
 l1=gra.addLine(typ='instant',style='m',fast=True)
 
 avgWidg=checkBox('instant/avg',action=avgWidgAction) #Uncheck = instant, check = avg
-avgWidg.setState(False)
+avgWidg.setState(True)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 StartStop=startStopButton(setup=setup,update=update,serie=True,lineIter=l1,debug=True,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nSerie,iterPerAcqui=200,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
 expfit=fitButton(line=l1,fit='exp',name='exp fit')

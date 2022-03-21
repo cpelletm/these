@@ -4,35 +4,44 @@ from analyse import find_ESR_peaks
 
 physicalChannels=['ai13','ai11','ai9']
 
-# Voltages=np.linspace(-2,2,130)
-
 nLine=101
-positions=np.linspace(0,15,nLine)
+Voltages=np.linspace(0.8,3,nLine)
+
+
+# positions=np.linspace(0,12,nLine)
+
+def acquiSetup():
+	BaseFolder=str(QFileDialog.getExistingDirectory(GUI, "Choose Directory",defaultDataPath))
+	global T1Folder,ESRFolder
+	ESRFolder=BaseFolder+'\\ESR\\'	
+	T1Folder=BaseFolder+'\\T1\\'
 
 def acquiStart(i):
-	# v=Voltages[i]
-	# ao.setupContinuous(v)
-	# x,y=ESRInLine(Fmin=2400,Fmax=3200,Power=10,NPoints=1001,NRuns=3,Fsweep=400,AmpMod=True)
-	# gra.updateLine(l4,x,y)
-	# cs=find_ESR_peaks(x,y)
-	# print(min(cs)) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
-	# frequW.setValue(min(cs))
-	pos=positions[i]
-	platine.setPos(pos,wait=True)
-	x,y=ESRInLine(Fmin=2660,Fmax=2780,Power=5,NPoints=1001,NRuns=3,Fsweep=200,AmpMod=True)
-	save_data(x,y,dirname='D:\\DATA\\20220222\\Adamas 15 um\\Largeur fluctuator T1\\Série ESR 2\\',fname="pos=%f"%pos)
-	f=x[list(y).index(max(y))]
-	frequW.setValue(f)
+	
+	v=Voltages[i]
+	ao.setupContinuous(v)
+	x,y=ESRInLine(Fmin=2550,Fmax=3200,Power=5,NPoints=1001,NRuns=3,Fsweep=100,AmpMod=True)
+	save_data(x,y,dirname=ESRFolder,fname="V=%f"%v)
+	cs=find_ESR_peaks(x,y,threshold=0.35)
+	frequW.setValue(cs[2])
+	print(cs[2]) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
+
+	# pos=positions[i]
+	# platine.setPos(pos,wait=True)
+	# x,y=ESRInLine(Fmin=2800,Fmax=2900,Power=0,NPoints=1001,NRuns=3,Fsweep=200,AmpMod=True)
+	# save_data(x,y,dirname='D:\\DATA\\20220317\\Sumi 2\\Série ESR\\',fname="pos=%f"%pos)
+	# f=x[list(y).index(max(y))]
+	# frequW.setValue(f)
 
 
 	
 
 
 def acquiEnd(i):
-	# fname=StartStop.defaultFolder+'V=%f'%(Voltages[i])+' V'
+	fname=T1Folder+'V=%f'%(Voltages[i])+' V'
 
-	pos=positions[i]
-	fname='D:\\DATA\\20220222\\Adamas 15 um\\Largeur fluctuator T1\\Série T1 2\\'+"pos=%f"%pos
+	# pos=positions[i]
+	# fname='D:\\DATA\\20220317\\Sumi 2\\Série T1\\'+"pos=%f"%pos
 
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
@@ -70,7 +79,7 @@ def setup():
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
 def update(x,nRead,nT1):
 	if do.done():
-		data=ai.read()
+		data=ai.read(waitForAcqui=True)
 		y1=[]
 		y2=[]
 		for i in range(nT1):
@@ -97,17 +106,17 @@ do=DOChan('p06','p07','p02')
 mw=microwave('mw_ludo')
 cube=PiezoCube3axes()
 platine=platinePI()
-platine.connect()
+# platine.connect()
 
 ## Setup the Graphical interface ##
 # laser=continuousLaserWidget(power=2E-4,spaceAbove=0)
 laser=pulsedLaserWidget(gate=True,spaceAbove=0)
 frequW=field('uW frequency (MHz)',2866)
-poweruW=field('uW power (dBm)',10,spaceAbove=0)
+poweruW=field('uW power (dBm)',15,spaceAbove=0)
 nT1=field('n points',200)
-tT1=field('max time (s)',2e-3,spaceAbove=0)
-tRead=field('read time (s)',2e-4,spaceAbove=0)
-tPola=field('polarisation time (s)',1e-3,spaceAbove=0)
+tT1=field('max time (s)',4e-3,spaceAbove=0)
+tRead=field('read time (s)',1e-3,spaceAbove=0)
+tPola=field('polarisation time (s)',0,spaceAbove=0)
 nRep=field('n repeat',1)
 fields=[laser,frequW,poweruW,nT1,tT1,tRead,tPola,nRep]
 
@@ -122,7 +131,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=100,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=200,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)

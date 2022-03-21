@@ -1657,8 +1657,7 @@ def test_pb_2():
 	pb.start()
 	time.sleep(1)
 
-
-print('%i'%True)
+print(not False)
 
 
 

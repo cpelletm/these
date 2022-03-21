@@ -202,8 +202,11 @@ class checkBox():
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
 		self.setState(initialState)
-		if callable(action) :
-			self.setAction(action)		
+		if action :			
+			if callable(action) :
+				self.setAction(action)	
+			else :
+				raise ValueError('action must be callable')
 	def setAction(self,action):		
 			self.cb.stateChanged.connect(action)
 	def setState(self,state):
@@ -425,14 +428,16 @@ class startStopButton():
 		self.stopButton.button.setEnabled(False)
 		# self.timer=QTimer()
 
-	def setupSerie(self,nAcqui,iterPerAcqui,iterToCheck='default',acquiStart=False,acquiEnd=False): 
+	def setupSerie(self,nAcqui,iterPerAcqui,iterToCheck='default',acquiSetup=False,acquiStart=False,acquiEnd=False): 
 	#nAcqui=number of acquisition for the serie ; iterPerAcqui= number of iteration for one acqui
 	#iterToCheck = function which is called and compared to  iterPerAcqui to check when the deed is done (typically some line.getIteration)
 		
+
 		self.nAcqui=nAcqui
 		self.serieLabel.setText('Acquisition 0/%i'%(self.nAcqui))
 		self.acquiStart=acquiStart
 		self.acquiEnd=acquiEnd
+		self.acquiSetup=acquiSetup
 		if isinstance(iterPerAcqui, (list, tuple, np.ndarray)) :			
 			self.iterPerAcqui=iterPerAcqui	
 		else :
@@ -451,6 +456,7 @@ class startStopButton():
 		self.startButton.button.setEnabled(False)
 		self.stopButton.button.setEnabled(True)
 
+
 		#~~Setup defaultFolder
 		i=1
 		folderName=defaultDataPath+datetime.now().strftime("%Y%m%d")+'/Serie 1/'
@@ -459,6 +465,10 @@ class startStopButton():
 			folderName=defaultDataPath+datetime.now().strftime("%Y%m%d")+'/Serie %i/'%i
 		self.defaultFolder=folderName
 		#~~Fin de setup default Folder
+
+		if self.acquiSetup :
+			self.acquiSetup()#Actions en plus à n'effectuer qu'une fois au départ
+
 
 		self.iAcqui=0 #Counter of the current acquisition
 		self.maxIter=np.infty #j'utilise un autre système de compteur finalement,ça devrait éviter les embrouilles
@@ -567,7 +577,7 @@ class startStopButton():
 class fitButton():
 	def __init__(self,line,fit='lin',name='fit',menu=False,spaceAbove=1,spaceBelow=0): 
 
-		self.fitLibrary=['lin','exp','stretch','arb stretch','ESR']
+		self.fitLibrary=['lin','exp','stretch','arb stretch','ESR','ESR and B']
 
 		if menu :
 			self.menu=dropDownMenu('Chose fit','--No fit chosen--',*self.fitLibrary,action=self.itemChosenMenu,spaceAbove=spaceAbove,spaceBelow=0)
@@ -1504,14 +1514,17 @@ class COChan(NIChan):
 			cname='Dev1/'+pc
 			self.task.co_channels.add_co_pulse_chan_freq(cname,freq=freq)
 		self.taskOpened=True
-	def setupContinuous(self,Freq,gate=False,gateChan='/Dev1/PFI9'): #Starts immediately
+	def setupContinuous(self,Freq,gate=False,gateChan='/Dev1/PFI9',invertedGate=False): #Starts immediately
 		freq=val(Freq)
 		self.createTask(freq)		
 		self.task.timing.cfg_implicit_timing(sample_mode=nidaqmx.constants.AcquisitionType.CONTINUOUS,samps_per_chan=10)
 		if gate :
 			self.task.triggers.pause_trigger.trig_type=nidaqmx.constants.TriggerType.DIGITAL_LEVEL
 			self.task.triggers.pause_trigger.dig_lvl_src=gateChan
-			self.task.triggers.pause_trigger.dig_lvl_when=nidaqmx.constants.Level.LOW
+			if invertedGate :
+				self.task.triggers.pause_trigger.dig_lvl_when=nidaqmx.constants.Level.HIGH
+			else :
+				self.task.triggers.pause_trigger.dig_lvl_when=nidaqmx.constants.Level.LOW
 		self.start()
 
 class CIChan(NIChan):
@@ -2088,10 +2101,10 @@ class iterationWidget():
 		box.addStretch(self.spaceBelow)
 
 class pulsedLaserWidget():
-	def __init__(self,spaceAbove=1,spaceBelow=0,chan='ctr0',freq=20E6,ignoreWarning=False,gate=False,gateChan='/Dev1/PFI9'):
+	def __init__(self,spaceAbove=1,spaceBelow=0,chan='ctr0',freq=20E6,ignoreWarning=False,gate=False,gateChan='/Dev1/PFI9',invertedGate=False):
 		self.laserCb=checkBox('Laser On',action=self.lasOnOff,spaceAbove=spaceAbove)
 		self.laserFreq=field('Laser frequency',freq,spaceAbove=0)
-		self.laser=pulsedLaserControl(channel=chan,ignoreWarning=ignoreWarning,gate=gate,gateChan=gateChan)
+		self.laser=pulsedLaserControl(channel=chan,ignoreWarning=ignoreWarning,gate=gate,gateChan=gateChan,invertedGate=invertedGate)
 	def lasOnOff(self):
 		if self.laserCb.state() :
 			self.laser.start(self.laserFreq)
@@ -2102,7 +2115,7 @@ class pulsedLaserWidget():
 		self.laserFreq.addToBox(box)
 
 class pulsedLaserControl():
-	def __init__(self,channel='ctr0',gate=False,gateChan='/Dev1/PFI9',ignoreWarning=False):
+	def __init__(self,channel='ctr0',gate=False,gateChan='/Dev1/PFI9',ignoreWarning=False,invertedGate=False):
 		self.co=COChan(channel)
 		self.state='Off'
 		self.freq=0
@@ -2110,12 +2123,13 @@ class pulsedLaserControl():
 		self.ignoreWarning=ignoreWarning
 		self.gate=gate
 		self.gateChan=gateChan
+		self.invertedGate=invertedGate
 	def start(self,freq):
 		freq=val(freq)
 		if self.state=='Off':
 			self.freq=freq
 			try :
-				self.co.setupContinuous(self.freq,gate=self.gate,gateChan=self.gateChan)	
+				self.co.setupContinuous(self.freq,gate=self.gate,gateChan=self.gateChan,invertedGate=self.invertedGate)	
 			except :
 				if not self.ignoreWarning :
 					warningGUI('Could not start pulsed laser \n Probably used in another program')
