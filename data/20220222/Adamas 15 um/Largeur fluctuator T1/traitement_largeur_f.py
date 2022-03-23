@@ -19,7 +19,7 @@ eta 0B sans DQ : 51-55 eta0
 
 
 """
-def full_animation()
+def full_animation():
 
 	fig,axes=plt.subplots(2)
 	fig.set_size_inches([10,8])
@@ -87,6 +87,8 @@ def full_animation()
 
 	# plt.legend()
 	plt.show()
+
+full_animation()
 
 def plot_esr_centre(ax):
 	fnames,fval=extract_glob('Série ESR 2',16)

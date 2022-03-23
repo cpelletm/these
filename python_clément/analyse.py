@@ -6,7 +6,8 @@ from scipy.optimize import curve_fit,root_scalar,minimize
 from scipy.signal import find_peaks
 from scipy import fftpack
 from PyQt5.QtWidgets import QApplication,QFileDialog
-
+from numpy import sqrt,pi,cos,sin
+from numpy.linalg import norm
 
 
 
@@ -537,17 +538,27 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 	c2=np.array([1,1,1])/np.sqrt(3)
 	c3=np.array([-1,-1,1])/np.sqrt(3)
 	c4=np.array([1,-1,-1])/np.sqrt(3)
-	cs=[c1,c2,c3,c4]
+	c5=np.array([0,0,1]) #La base propre de Sz 
+	cs=[c1,c2,c3,c4,c5]
 	def __init__(self,B,c=1,E=4): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
-		Bz=self.cs[c].dot(B.cartesian) #Attention, ici Bz est dans la base du NV (Bz')
+		Bz=self.cs[c-1].dot(B.cartesian) #Attention, ici Bz est dans la base du NV (Bz')
 		Bx=np.sqrt(abs(B.amp**2-Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
 		self.H=self.D*self.Sz2+self.gamma_e*(Bz*self.Sz+Bx*self.Sx)+E*self.H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
 	def transitions(self):
 		egva,egve=np.linalg.eigh(self.H)
 		egva=np.sort(egva)
 		return [egva[1]-egva[0],egva[2]-egva[0]]
+	def egval(self):
+		egva,egve=np.linalg.eigh(self.H)
+		egva=np.sort(egva)
+		return(egva)
+	def egvect(self):
+		egva,egve=np.linalg.eigh(self.H)
+		egve=egve.T
+		egve=[v for _,v in sorted(zip(egva,egve))]
+		return(egve)
 
 class magneticField():
 	def __init__(self,x='spherical',y='spherical',z='spherical',theta='cartesian',phi='cartesian',amp='cartesian'): #Give either x,y,z or theta,phi,amp (polar/azimutal from the z axis)
@@ -758,9 +769,9 @@ def ecris_gros(x,y):
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
 
-def extract_glob(SubFolderName='.',FirstValIndex=0): #FirstValIndex=premier caractère numérique
+def extract_glob(SubFolderName='.',FirstValIndex=0, LastValIndex=-4): #FirstValIndex=premier caractère numérique
 	fnames=glob.glob(SubFolderName+'/*.csv')
-	fval=[float(fnames[i][FirstValIndex:-4]) for i in range(len(fnames))] 
+	fval=[float(fnames[i][FirstValIndex:LastValIndex]) for i in range(len(fnames))] 
 	fnames=[s for _,s in sorted(zip(fval,fnames))]
 	fval=sorted(fval)
 	return(fnames,fval)

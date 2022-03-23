@@ -1,17 +1,25 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-fname="T1 100 3V pulse début read"
-x,y=extract_data(fname,xcol=0,ycol=5)
-popt,yfit=exp_fit(x,y)
-plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,label='T1')
-plt.plot(x,yfit)
-plt.legend()
-plt.show()
+# fname="T1 100 3V pulse début read"
+# x,y=extract_data(fname,xcol=0,ycol=5)
+# popt,yfit=exp_fit(x,y)
+# plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,label='T1')
+# plt.plot(x,yfit)
+# plt.legend()
+# plt.show()
 
+
+
+fname='ESR plus ou moins 2V'
+x,y=extract_data(fname)
+plt.plot(x,y,'-o',markerfacecolor='None')
+plt.xlabel('Frequency (MHz)',fontsize=15)
+plt.ylabel('Signal (A.U)',fontsize=15)
+plt.show()
 
 
 # fname="ESR 1x1x1x1"
@@ -73,7 +81,7 @@ plt.show()
 # ax2.set_ylabel(r'Measured magnetic field ($\mu$T)' ,fontsize=20)
 # plt.show()
 
-# fname='scan 100'
+# fname='scan 100 20 deg from 100'
 # fig,ax=plt.subplots(2,figsize=(9,12),dpi=80)
 # ax1=ax[0]
 # ax2=ax[1]
