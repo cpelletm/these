@@ -160,6 +160,31 @@ def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
 
+def gauss_derivative_fit(x,y,amp=None,x0=None,sigma=None,ss=0):
+	#Je gère pas le cas ou x n'est pas dans l'ordre croissant
+	if not ss :
+		ss=y[0]
+	if not amp :
+		abs_amp=max(max(y)-ss,ss-min(y))
+		m=find_elem(min(y),y)
+		M=find_elem(max(y),y)
+		if m<M :
+			amp=abs_amp
+		if m>M :
+			amp=-abs_amp
+	if not x0 :
+		x0=x[int(len(x)/2)]
+	if not sigma :
+		sigma=x[int(len(x)/5)]-x[0]
+	def f(x,amp,x0,sigma,ss) : #HWHM=1.18*sigma (sqrt(2*ln(2)))
+		return amp*(x-x0)/sigma*np.exp(-(x-x0)**2/(2*sigma**2))+ss
+	p0=[amp,x0,sigma,ss]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,*popt))
+
+
+
+
 def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
 	#sigma=HWHM
 	if not ss :
@@ -800,6 +825,11 @@ def save_data(*columns,fname='default',dirname='./'):
 		spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 		for c in columns :
 			spamwriter.writerow(c)
+
+def find_elem(elem,liste):
+	l=list(liste)
+	i=l.index(elem)
+	return i
 # x,y=extract_data('ESR 100 2V')
 # x=x*1000
 # cs=[2765,3020]

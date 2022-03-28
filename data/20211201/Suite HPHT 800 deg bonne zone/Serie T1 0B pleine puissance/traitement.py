@@ -28,7 +28,7 @@ for i in range(n) :
 	x,y=extract_data('x=0,y=%.6f'%(xs[i]),xcol=4,ycol=5)
 	popt,yfit=stretch_arb_exp_fit_zero(x,y)
 	data+=[popt[1]]
-	print(popt[1])
+	print(popt)
 
 plt.plot(xs,data)
 

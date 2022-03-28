@@ -4,27 +4,27 @@ from analyse import find_ESR_peaks
 
 physicalChannels=['ai13','ai11','ai9']
 
-nLine=101
-Voltages=np.linspace(0.8,3,nLine)
-
+nLine=211
+vs=np.linspace(0.8,5,nLine)
+freqs=2879.6100403000905-10.350382035600058*vs+8.72563530864743*vs**2-0.5448652051415266*vs**3+0.008459469208990177*vs**4
 
 # positions=np.linspace(0,12,nLine)
 
 def acquiSetup():
 	BaseFolder=str(QFileDialog.getExistingDirectory(GUI, "Choose Directory",defaultDataPath))
-	global T1Folder,ESRFolder
-	ESRFolder=BaseFolder+'\\ESR\\'	
+	global T1Folder#,ESRFolder
+	# ESRFolder=BaseFolder+'\\ESR\\'	
 	T1Folder=BaseFolder+'\\T1\\'
 
 def acquiStart(i):
 	
-	v=Voltages[i]
+	v=vs[i]
 	ao.setupContinuous(v)
-	x,y=ESRInLine(Fmin=2550,Fmax=3200,Power=5,NPoints=1001,NRuns=3,Fsweep=100,AmpMod=True)
-	save_data(x,y,dirname=ESRFolder,fname="V=%f"%v)
-	cs=find_ESR_peaks(x,y,threshold=0.35)
-	frequW.setValue(cs[2])
-	print(cs[2]) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
+	# x,y=ESRInLine(Fmin=2550,Fmax=3200,Power=5,NPoints=1001,NRuns=3,Fsweep=100,AmpMod=True)
+	# save_data(x,y,dirname=ESRFolder,fname="V=%f"%v)
+	# cs=find_ESR_peaks(x,y,threshold=0.35)
+	frequW.setValue(freqs[i])
+	print(freqs[i]) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
 
 	# pos=positions[i]
 	# platine.setPos(pos,wait=True)
@@ -38,7 +38,7 @@ def acquiStart(i):
 
 
 def acquiEnd(i):
-	fname=T1Folder+'V=%f'%(Voltages[i])+' V'
+	fname=T1Folder+'V=%f'%(vs[i])
 
 	# pos=positions[i]
 	# fname='D:\\DATA\\20220317\\Sumi 2\\Série T1\\'+"pos=%f"%pos
@@ -131,7 +131,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=200,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=150,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)

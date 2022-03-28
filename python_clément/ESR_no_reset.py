@@ -4,36 +4,39 @@ physicalChannels=['ai11','ai13']
 
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 
-nSide=30
-zs=np.linspace(-5,5,nSide)
-ys=np.linspace(0,10,nSide)
+# nSide=30
+# zs=np.linspace(-5,5,nSide)
+# ys=np.linspace(0,10,nSide)
 
-# nLine=30
-# ys=np.linspace(0,10,nLine)
+nLine=201
+Voltages=np.linspace(0.8,5,nLine)
 
+def acquiSetup():
+	BaseFolder=str(QFileDialog.getExistingDirectory(GUI, "Choose Directory",defaultDataPath))
+	global ESRFolder
+	ESRFolder=BaseFolder+'\\ESR\\'	
 
 
 def acquiStart(i):
-	iz=i%nSide
-	iy=i//nSide
-	zV=zs[iz]
-	yV=ys[iy]
-	cube.move(zV,ax='z')	
-	cube.move(yV,ax='y')
-
-	# yV=ys[i]
+	v=Voltages[i]
+	ao.setupContinuous(v)
+	# iz=i%nSide
+	# iy=i//nSide
+	# zV=zs[iz]
+	# yV=ys[iy]
+	# cube.move(zV,ax='z')	
 	# cube.move(yV,ax='y')
 
 
-def acquiEnd(i):
-	iz=i%nSide
-	iy=i//nSide
-	zV=zs[iz]
-	yV=ys[iy]
-	fname=StartStop.defaultFolder+'z=%f,y=%f'%(zV,yV)
 
-	# yV=ys[i]
-	# fname=StartStop.defaultFolder+'x=0,y=%f'%(yV)
+def acquiEnd(i):
+	# iz=i%nSide
+	# iy=i//nSide
+	# zV=zs[iz]
+	# yV=ys[iy]
+	# fname=StartStop.defaultFolder+'z=%f,y=%f'%(zV,yV)
+
+	fname=ESRFolder+'V=%f'%(Voltages[i])
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
 	else :
@@ -130,7 +133,7 @@ gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
 
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,showMaxIter=True)
-StartStop.setupSerie(nAcqui=nSide**2,iterPerAcqui=10,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=2,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
 save=saveButton(gra,autoSave=False)
 trace=keepTraceButton(l1)
 it=iterationWidget(l1)
@@ -170,5 +173,5 @@ def ESRInLine(Fmin,Fmax,Power,NPoints,NRuns,Fsweep=300,AmpMod=True):
 
 ## Create the graphical interface and launch the program ##
 if __name__ == "__main__":
-	GUI=Graphical_interface(fields,gra,buttons,title='ESR')
+	GUI=Graphical_interface(fields,gra,buttons,title='ESR no-rst')
 	GUI.run()
