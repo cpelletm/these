@@ -24,4 +24,4 @@ def pola_NV(T):
 
 # pola_NV(0.065)
 
-
+print(acos(1/3)*180/pi)

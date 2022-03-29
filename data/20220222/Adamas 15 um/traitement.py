@@ -29,6 +29,11 @@ T1 avec un alpha=0.82 fixe :
 
 """
 
+# x,y=extract_data('ESR champ transverse très faible')
+# plt.plot(x,y,'o-',markerfacecolor='None')
+# plt.xticks(fontsize=15)
+# plt.yticks(fontsize=15)
+# plt.show()
 
 
 
@@ -42,29 +47,36 @@ T1 avec un alpha=0.82 fixe :
 # print(popt)
 # plt.show()
 
-fname='T1 champ transverse très faible classe 4 (DQ)'
-x,y=extract_data(fname,ycol=5)
-y=y/max(y)
-plt.plot(x,y,label='petit champ transverse',marker='o',markerfacecolor="None",ms=8,mew=2)
-fname='T1 moyen B transverse'
-x,y=extract_data(fname,ycol=5)
-y=y/max(y)
-plt.plot(x,y,label='moyen champ transverse',marker='o',markerfacecolor="None",ms=8,mew=2)
-fname='T1 transverse gros champ'
-x,y=extract_data(fname,ycol=5)
-y=y/max(y)
-plt.plot(x,y,label='gros champ transverse',marker='o',markerfacecolor="None",ms=8,mew=2)
-fname='T1 1 classe pour le champ transverse moyen'
-x,y=extract_data(fname,ycol=5)
-y=y/max(y)
-plt.plot(x,y,label='Baseline',marker='o',markerfacecolor="None",ms=8,mew=2)
-fname='T1 1x3'
-x,y=extract_data(fname,ycol=5)
-y=y/max(y)
-plt.plot(x,y,label='Baseline 2',marker='o',markerfacecolor="None",ms=8,mew=2)
-plt.legend()
-plt.show()
+def plot_champs_transverses():
+	fname='T1 champ transverse très faible classe 4 (DQ)'
+	x,y=extract_data(fname,ycol=5)
+	x=x*1000
+	y=y/max(y)
+	plt.plot(x,y,'-o',label='weak transverse field',markerfacecolor="None")
+	# fname='T1 moyen B transverse'
+	# x,y=extract_data(fname,ycol=5)
+	# y=y/max(y)
+	# plt.plot(x,y,label='moyen champ transverse',marker='o',markerfacecolor="None",ms=8,mew=2)
+	fname='T1 transverse gros champ'
+	x,y=extract_data(fname,ycol=5)
+	x=x*1000
+	y=y/max(y)
+	plt.plot(x,y,'-o',label='strong transverse field',markerfacecolor="None")
+	fname='T1 1 classe pour le champ transverse moyen'
+	x,y=extract_data(fname,ycol=5)
+	x=x*1000
+	y=y/max(y)
+	plt.plot(x,y,'-o',label='non-transverse field',markerfacecolor="None")
+	# fname='T1 1x3'
+	# x,y=extract_data(fname,ycol=5)
+	# y=y/max(y)
+	# plt.plot(x,y,label='Baseline 2',marker='o',markerfacecolor="None",ms=8,mew=2)
+	plt.xticks(fontsize=15)
+	plt.yticks(fontsize=15)
+	plt.legend()
+	plt.show()
 
+plot_champs_transverses()
 
 def fig121_Vs_22():
 	plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori
