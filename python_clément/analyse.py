@@ -336,18 +336,16 @@ def third_stretch(x,y,amp=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_et_phonons(x,y,amp=None,tau=None,ss=None,T1ph=5E-3) :
+def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3) :
 	if not amp :
 		amp=max(y)-min(y)
-	if not ss :
-		ss=y[-1]
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,amp,ss,tau) :
-		return amp*np.exp(-x/((T1ph*np.sqrt(x*tau))/(T1ph+np.sqrt(x*tau))))+ss
-	p0=[amp,ss,tau]
-	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
-	return(popt,f(x,popt[0],popt[1],popt[2]))
+	def f(x,amp,tau) :
+		return amp*np.exp(-x/((T1ph*np.sqrt(x*tau))/(T1ph+np.sqrt(x*tau))))
+	p0=[amp,tau]
+	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
+	return(popt,f(x,*popt))
 
 def Rabi_fit(x,y,amp=None,omega=None,tau=None,ss=None):
 	if not amp :
@@ -753,6 +751,16 @@ def closest_elem(l,target):
 			n=i
 			basis=abs(target-l[i])
 	return n
+
+def estim_error(y,yfit):
+	#C'est pas si simple, si tu prends juste l'erreur relative de chaque point tu donnes beaucoup plus de poids aux valeurs proches de 0. Le je fais un truc un peu sale mais qui donne autant de poids (absolu) à chaque point
+	n=len(y)
+	assert n==len(yfit)
+	y=np.array(y)
+	yfit=np.array(yfit)
+	vAvg=sum(abs(yfit))/n #le abs est crade mais au cas ou tu aies des valeurs positives et négatives
+	errors_rel=(y-yfit)**2/vAvg**2
+	return(sum(errors_rel)/n)
 
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):

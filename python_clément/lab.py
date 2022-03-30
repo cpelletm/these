@@ -428,7 +428,7 @@ class startStopButton():
 		self.stopButton.button.setEnabled(False)
 		# self.timer=QTimer()
 
-	def setupSerie(self,nAcqui,iterPerAcqui,iterToCheck='default',acquiSetup=False,acquiStart=False,acquiEnd=False): 
+	def setupSerie(self,nAcqui,iterPerAcqui,startingIter=0,iterToCheck='default',acquiSetup=False,acquiStart=False,acquiEnd=False): 
 	#nAcqui=number of acquisition for the serie ; iterPerAcqui= number of iteration for one acqui
 	#iterToCheck = function which is called and compared to  iterPerAcqui to check when the deed is done (typically some line.getIteration)
 		
@@ -449,6 +449,7 @@ class startStopButton():
 				raise(ValueError('You need to setup a line in startStopButton(lineIter=) to begin a serie'))
 		else :
 			self.iterToCheck=iterToCheck
+		self.startingIter=startingIter
 
 	def startSerie(self):
 
@@ -470,7 +471,7 @@ class startStopButton():
 			self.acquiSetup()#Actions en plus à n'effectuer qu'une fois au départ
 
 
-		self.iAcqui=0 #Counter of the current acquisition
+		self.iAcqui=self.startingIter #Counter of the current acquisition
 		self.maxIter=np.infty #j'utilise un autre système de compteur finalement,ça devrait éviter les embrouilles
 		self.nextAcqui()
 		self.timer=QTimer()

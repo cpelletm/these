@@ -1,47 +1,41 @@
 from lab import *
 from ESR import ESRInLine
-from analyse import find_ESR_peaks
+from analyse import find_ESR_peaks,find_elem
 
 physicalChannels=['ai13','ai11','ai9']
 
-nLine=211
-vs=np.linspace(0.8,5,nLine)
-freqs=2879.6100403000905-10.350382035600058*vs+8.72563530864743*vs**2-0.5448652051415266*vs**3+0.008459469208990177*vs**4
+nLine=201
+# vs=np.linspace(0.8,5,nLine)
+# freqs=2879.6100403000905-10.350382035600058*vs+8.72563530864743*vs**2-0.5448652051415266*vs**3+0.008459469208990177*vs**4
 
-# positions=np.linspace(0,12,nLine)
+positions=np.linspace(0,12,nLine)
 
 def acquiSetup():
 	BaseFolder=str(QFileDialog.getExistingDirectory(GUI, "Choose Directory",defaultDataPath))
-	global T1Folder#,ESRFolder
-	# ESRFolder=BaseFolder+'\\ESR\\'	
+	global T1Folder,ESRFolder
+	ESRFolder=BaseFolder+'\\ESR\\'	
 	T1Folder=BaseFolder+'\\T1\\'
+	platine.connect()
 
 def acquiStart(i):
 	
-	v=vs[i]
-	ao.setupContinuous(v)
-	# x,y=ESRInLine(Fmin=2550,Fmax=3200,Power=5,NPoints=1001,NRuns=3,Fsweep=100,AmpMod=True)
-	# save_data(x,y,dirname=ESRFolder,fname="V=%f"%v)
-	# cs=find_ESR_peaks(x,y,threshold=0.35)
-	frequW.setValue(freqs[i])
-	print(freqs[i]) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
+	# v=vs[i]
+	# ao.setupContinuous(v)
+	pos=positions[i]
+	platine.setPos(pos,wait=True)
 
-	# pos=positions[i]
-	# platine.setPos(pos,wait=True)
-	# x,y=ESRInLine(Fmin=2800,Fmax=2900,Power=0,NPoints=1001,NRuns=3,Fsweep=200,AmpMod=True)
-	# save_data(x,y,dirname='D:\\DATA\\20220317\\Sumi 2\\Série ESR\\',fname="pos=%f"%pos)
-	# f=x[list(y).index(max(y))]
-	# frequW.setValue(f)
-
-
-	
+	x,y=ESRInLine(Fmin=2730,Fmax=2815,Power=-5,NPoints=501,NRuns=3,Fsweep=100,AmpMod=True)
+	save_data(x,y,dirname=ESRFolder,fname="x=%f"%pos)
+	i=find_elem(max(y),y)
+	freq=x[i]
+	frequW.setValue(freq)
+	# print(freq) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
 
 
 def acquiEnd(i):
-	fname=T1Folder+'V=%f'%(vs[i])
+	# fname=T1Folder+'V=%f'%(vs[i])
+	fname=T1Folder+'x=%f'%(positions[i])
 
-	# pos=positions[i]
-	# fname='D:\\DATA\\20220317\\Sumi 2\\Série T1\\'+"pos=%f"%pos
 
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
@@ -106,7 +100,7 @@ do=DOChan('p06','p07','p02')
 mw=microwave('mw_ludo')
 cube=PiezoCube3axes()
 platine=platinePI()
-# platine.connect()
+
 
 ## Setup the Graphical interface ##
 # laser=continuousLaserWidget(power=2E-4,spaceAbove=0)
@@ -131,7 +125,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=150,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=50,startingIter=16,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)
