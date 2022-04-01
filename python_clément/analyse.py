@@ -336,15 +336,21 @@ def third_stretch(x,y,amp=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3) :
+def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3,fixed=True) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,amp,tau) :
-		return amp*np.exp(-x/((T1ph*np.sqrt(x*tau))/(T1ph+np.sqrt(x*tau))))
-	p0=[amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
+	if fixed :
+		def f(x,amp,tau) :
+			return amp*np.exp(-x/T1ph-sqrt(x/tau))
+		p0=[amp,tau]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
+	else :
+		def f(x,amp,tau,T1ph) :
+			return amp*np.exp(-x/T1ph-sqrt(x/tau))
+		p0=[amp,tau,T1ph]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,*popt))
 
 def Rabi_fit(x,y,amp=None,omega=None,tau=None,ss=None):

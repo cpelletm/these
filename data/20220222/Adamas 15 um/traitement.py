@@ -76,8 +76,6 @@ def plot_champs_transverses():
 	plt.legend()
 	plt.show()
 
-plot_champs_transverses()
-
 def fig121_Vs_22():
 	plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori
 
@@ -123,3 +121,27 @@ def fig121_Vs_22():
 	y=y/max(y)
 	plt.plot(x,y,'*',color='tab:orange',ms=8,mew=2)
 	plt.show()
+
+
+#Bon après pas mal de test, c'est bien de la merde les fits avec stretch et phonon, le T1 stretch il danse vraiment la salsa et les valeurs c'est assez nimp
+#C'est peut etre a cause du coté micro, il faudrait vraiment que je fasse plus de test sur les gros adamas pour en être sur. Et limite broyer des diamants aussi
+T1ph=1/1800
+
+fname='T1 1 classe pour le champ transverse moyen'
+
+# fname='T1 2x2 autre raie'
+# fname='T1 2x2'
+# fname='T1 2x2 droite (2)'
+# fname='T1 2x2 gauche (2)'
+# fname='T1 121 nuit'
+fname='T1 121 (3)'
+# fname='T1 121 (4)'
+# fname='T1 1x2x1'
+# fname='T1 0B court'
+x,y=extract_data(fname,ycol=5)
+plt.plot(x,y)
+# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=False)
+popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
+plt.plot(x,yfit)
+print(1/popt[1])#,popt[2])
+plt.show()
