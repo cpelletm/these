@@ -15,6 +15,7 @@ import statistics
 sys.path.append("C:\\Users\\Tom\\Documents\\GitHub\\these\\python_clément")
 sys.path.append('D:\\These Clément\\these\\python_clément')
 sys.path.append("D:\\these\\python_clément")
+sys.path.append('/home/pellet-mary/these/python_clément')
 from lab import *
 def voltmetre():
 	with nidaqmx.Task() as task :
@@ -1658,7 +1659,6 @@ def test_pb_2():
 	time.sleep(1)
 
 	
-
 
 
 

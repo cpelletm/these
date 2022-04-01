@@ -125,6 +125,8 @@ def fig121_Vs_22():
 
 #Bon après pas mal de test, c'est bien de la merde les fits avec stretch et phonon, le T1 stretch il danse vraiment la salsa et les valeurs c'est assez nimp
 #C'est peut etre a cause du coté micro, il faudrait vraiment que je fasse plus de test sur les gros adamas pour en être sur. Et limite broyer des diamants aussi
+
+#En attendant si tu veux des valeurs, mieux vaut prendre des stretch arb. alpha=0.8 fonctionne bien
 T1ph=1/1800
 
 fname='T1 1 classe pour le champ transverse moyen'
@@ -134,7 +136,7 @@ fname='T1 1 classe pour le champ transverse moyen'
 # fname='T1 2x2 droite (2)'
 # fname='T1 2x2 gauche (2)'
 # fname='T1 121 nuit'
-fname='T1 121 (3)'
+# fname='T1 121 (3)'
 # fname='T1 121 (4)'
 # fname='T1 1x2x1'
 # fname='T1 0B court'

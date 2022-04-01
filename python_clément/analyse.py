@@ -207,6 +207,22 @@ def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
 
+def lor_fit_fixed(x,y,amp=None,x0=0,sigma=1,ss=None):
+	#x0 and sigma fixed
+	if not ss :
+		ss=y[-1]
+	if not amp :
+		if max(y)-ss > ss-min(y) :
+			amp=max(y)-ss
+		else :
+			amp=min(y)-ss
+	def f(x,amp,ss) :
+		return ss+amp*1/(1+((x-x0)/(sigma))**2)
+	p0=[amp,ss]
+	popt, pcov = curve_fit(f, x, y, p0)
+	return(popt,f(x,*popt))
+
+
 def cos_fit(x,y,amp=None,omega=None,phi=0,ss=None):
 	if not amp :
 		amp=max(y)-min(y)
@@ -860,9 +876,18 @@ def save_data(*columns,fname='default',dirname='./'):
 			spamwriter.writerow(c)
 
 def find_elem(elem,liste):
-	l=list(liste)
-	i=l.index(elem)
-	return i
+	if elem in liste :
+		l=list(liste)
+		i=l.index(elem)
+		return i
+	else :
+		dif=np.inf
+		for i in range(len(liste)):
+			if abs(liste[i]-elem) < dif :
+				dif=abs(liste[i]-elem)
+				index=i
+		return index
+
 # x,y=extract_data('ESR 100 2V')
 # x=x*1000
 # cs=[2765,3020]
