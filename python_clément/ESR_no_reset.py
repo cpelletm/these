@@ -8,18 +8,25 @@ physicalChannels=['ai11','ai13']
 # zs=np.linspace(-5,5,nSide)
 # ys=np.linspace(0,10,nSide)
 
-nLine=201
-Voltages=np.linspace(0.8,5,nLine)
+nLine=101
+# Voltages=np.linspace(0.8,5,nLine)
+positions=np.linspace(4,8,nLine)
 
 def acquiSetup():
 	BaseFolder=str(QFileDialog.getExistingDirectory(GUI, "Choose Directory",defaultDataPath))
-	global ESRFolder
+	global T1Folder,ESRFolder
 	ESRFolder=BaseFolder+'\\ESR\\'	
+	T1Folder=BaseFolder+'\\T1\\'
+	platine.connect()
 
 
 def acquiStart(i):
-	v=Voltages[i]
-	ao.setupContinuous(v)
+	# v=Voltages[i]
+	# ao.setupContinuous(v)
+
+	pos=positions[i]
+	platine.setPos(pos,wait=True)
+
 	# iz=i%nSide
 	# iy=i//nSide
 	# zV=zs[iz]
@@ -36,7 +43,7 @@ def acquiEnd(i):
 	# yV=ys[iy]
 	# fname=StartStop.defaultFolder+'z=%f,y=%f'%(zV,yV)
 
-	fname=ESRFolder+'V=%f'%(Voltages[i])
+	fname=ESRFolder+'V=%f'%(positions[i])
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
 	else :
@@ -99,6 +106,7 @@ do=DOChan('p01')
 ao=AOChan('ao0')
 mw=microwave('mw_ludo')
 cube=PiezoCube3axes()
+platine=platinePI()
 
 ## Setup the Graphical interface ##
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)

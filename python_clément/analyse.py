@@ -101,6 +101,8 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 
 #~~~~ Fits ~~~~
 def lin_fit(x,y) :
+	x=np.array(x)
+	y=np.array(y)
 	A=np.vstack([x,np.ones(len(x))]).T
 	a,b = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([a,b],a*x+b)
@@ -482,11 +484,12 @@ def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x',precise=False):
 	if precise :
 		popt,yfit=ESR_n_pics(x,y,cs,width=width)
 		cs=popt[1]
-		for k in range(len(cs)):
-			i=0
-			while x[i]<cs[k] :
-				i+=1
-			ns[k]=i
+		if returnUnit=='n' :
+			for k in range(len(cs)):
+				i=0
+				while x[i]<cs[k] :
+					i+=1
+				ns[k]=i
 
 	if returnUnit=='x' :
 		return(np.array(cs))
@@ -808,8 +811,13 @@ def ecris_gros(x,y):
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
 
-def extract_glob(SubFolderName='.',FirstValIndex=0, LastValIndex=-4): #FirstValIndex=premier caractère numérique
+def extract_glob(SubFolderName='.',FirstValIndex='default', LastValIndex=-4): #FirstValIndex=premier caractère numérique
 	fnames=glob.glob(SubFolderName+'/*.csv')
+	if FirstValIndex=='default':
+		try :
+			FirstValIndex=fnames[0].index('=')+1
+		except :
+			raise(ValueError('Could not find a = sign in the file names'))
 	fval=[float(fnames[i][FirstValIndex:LastValIndex]) for i in range(len(fnames))] 
 	fnames=[s for _,s in sorted(zip(fval,fnames))]
 	fval=sorted(fval)
