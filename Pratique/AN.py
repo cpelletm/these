@@ -4,6 +4,7 @@ import numpy as np
 kb=1.38E-23
 Na=6.02e23
 hbar=1.05e-34
+h=2*pi*hbar
 
 density_diam=3.5 #g/cm3
 m_carbon=12.01/Na #g
@@ -24,4 +25,4 @@ def pola_NV(T):
 
 # pola_NV(0.065)
 
-print(acos(1/3)*180/pi)
+print('%e'%(kb*T/h))
