@@ -4,35 +4,44 @@ from analyse import find_ESR_peaks,find_elem
 
 physicalChannels=['ai13','ai11','ai9']
 
-nLine=121
-# vs=np.linspace(0.8,5,nLine)
-positions=np.linspace(4,8,nLine)
+nLine=200
+vs=np.linspace(-0.5,0.5,nLine)
+# positions=np.linspace(4,8,nLine)
 
 def acquiSetup():
 	BaseFolder=str(QFileDialog.getExistingDirectory(GUI, "Choose Directory",defaultDataPath))
 	global T1Folder,ESRFolder
 	ESRFolder=BaseFolder+'\\ESR\\'	
 	T1Folder=BaseFolder+'\\T1\\'
-	platine.connect()
+	# platine.connect()
 
 def acquiStart(i):
 	
-	# v=vs[i]
-	# ao.setupContinuous(v)
-	pos=positions[i]
-	platine.setPos(pos,wait=True)
+	v=vs[i]
+	ao.setupContinuous(v)
+	# pos=positions[i]
+	# platine.setPos(pos,wait=True)
 
-	x,y=ESRInLine(Fmin=2680,Fmax=2850,Power=0,NPoints=501,NRuns=3,Fsweep=100,AmpMod=True)
-	save_data(x,y,dirname=ESRFolder,fname="x=%f"%pos)
-	i=find_elem(max(y),y)
-	freq=x[i]
+	x,y=ESRInLine(Fmin=2800,Fmax=3000,Power=0,NPoints=501,NRuns=3,Fsweep=100,AmpMod=True)
+	save_data(x,y,dirname=ESRFolder,fname="V=%f"%v)
+	if i%2 :
+		k=find_elem(max(y[:212]),y)
+	else :
+		k=find_elem(max(y[212:]),y)
+	freq=x[k]
 	frequW.setValue(freq)
 	# print(freq) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
 
 
 def acquiEnd(i):
-	# fname=T1Folder+'V=%f'%(vs[i])
-	fname=T1Folder+'x=%f'%(positions[i])
+	if i%2 :
+		transi='m'
+	else :
+		transi='p'
+
+	fname=T1Folder+'transi '+transi+' V=%f'%(vs[i])
+	# fname=T1Folder+'x=%f'%(positions[i])
+
 
 
 	if i==0 :
@@ -105,8 +114,8 @@ platine=platinePI()
 laser=pulsedLaserWidget(gate=True,spaceAbove=0)
 frequW=field('uW frequency (MHz)',2866)
 poweruW=field('uW power (dBm)',15,spaceAbove=0)
-nT1=field('n points',200)
-tT1=field('max time (s)',4e-3,spaceAbove=0)
+nT1=field('n points',301)
+tT1=field('max time (s)',10e-3,spaceAbove=0)
 tRead=field('read time (s)',1e-3,spaceAbove=0)
 tPola=field('polarisation time (s)',0,spaceAbove=0)
 nRep=field('n repeat',1)
@@ -123,7 +132,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=75,startingIter=0,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=50,startingIter=0,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)

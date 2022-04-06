@@ -1,6 +1,6 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/pellet-mary/these/python_clément')
+sys.path.append('/home/zouzou/these/python_clément')
 from analyse import *
 
 
@@ -66,7 +66,6 @@ y=1/taus[nbeg:]
 ax1.plot(x,y,'x',label='1/T1')
 popt,yfit=lor_fit(x,y)
 plt.plot(x,yfit,label='Lor fit HWHM=%.3f MHz'%popt[2])
-print(popt)
 ax2=ax1.twinx()
 
 
