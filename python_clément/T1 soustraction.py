@@ -4,10 +4,9 @@ from analyse import find_ESR_peaks,find_elem
 
 physicalChannels=['ai13','ai11','ai9']
 
-nLine=200
+nLine=101
 vs=np.linspace(-3,3,nLine)
-popt=[0.05644764315049736, -0.4407952784898157, 1.278636939136618, 74.54149920305248, 2856.6070294813494]
-freqs=sum((vs**i)*popt[-i-1] for i in range(len(popt)))
+freqs=np.linspace(2850,2890)
 # positions=np.linspace(4,8,nLine)
 
 def acquiSetup():
@@ -19,8 +18,8 @@ def acquiSetup():
 
 def acquiStart(i):
 	
-	v=vs[i]
-	ao.setupContinuous(v)
+	# v=vs[i]
+	# ao.setupContinuous(v)
 	# pos=positions[i]
 	# platine.setPos(pos,wait=True)
 
@@ -43,7 +42,9 @@ def acquiEnd(i):
 	else :
 		transi='p'
 
-	fname=T1Folder+'transi '+transi+' V=%f'%(vs[i])
+
+	fname=T1Folder+'f=%f'%(freqs[i])
+	# fname=T1Folder+' V=%f'%(vs[i])
 	# fname=T1Folder+'x=%f'%(positions[i])
 
 
@@ -136,7 +137,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=75,startingIter=0,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=100,startingIter=0,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)
