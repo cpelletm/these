@@ -1,89 +1,75 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-# fnames,fval=extract_glob('ESR')
-# n=67
-# fval=fval[:n]
-# transis=np.zeros((n,2))
-# for i in range(n):
-# 	fname=fnames[i]
-# 	x,y=extract_data(fname)
-# 	cs=find_ESR_peaks(x,y,threshold=0.5)
-# 	if len(cs)==2 :
-# 		cs=find_ESR_peaks(x,y,threshold=0.5,precise=True)
-# 		transis[i,:]=cs
-# 	else :
-# 		transis[i,:]=[np.nan,np.nan]
-
-# # plt.plot(transis,'x')
-
-# nbeg=25
-
-# nmin=38
-# nmax=51
-
-# absc=fval[nbeg:nmin]+fval[nmax:]
-# transi1=list(transis[nbeg:nmin,0])+list(transis[nmax:,1])
-# transi2=list(transis[nbeg:nmin,1])+list(transis[nmax:,0])
-# plt.plot(absc,transi1,'x')
-# plt.plot(absc,transi2,'x')
-
-# x=np.array(fval)
-# popt,yfit=lin_fit(absc,transi1)
-# print(popt)
-# E1=popt[0]*x+popt[1]
-# plt.plot(x,E1)
-
-# popt,yfit=lin_fit(absc,transi2)
-# print(popt)
-# E2=popt[0]*x+popt[1]
-# plt.plot(x,E2)
-
-
-
-fnames,fval=extract_glob('T1')
+fnames,fval=extract_glob('ESR')
 fval.remove(fval[194])
 fnames.remove(fnames[194])
 fval.remove(fval[178])
 fnames.remove(fnames[178])
 n=len(fval)
-taus=np.zeros(n)
+ms=np.zeros(n)
+Ms=np.zeros(n)
 
-# fname=fnames[0]
-# x,y=extract_data(fname,ycol=5)
-# T1ph=0.003626
-# # T1ph=0.00277119
-# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=False)
-# print(popt)
-# plt.plot(x,y,'x')
-# plt.plot(x,yfit)
-# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=True)
-# plt.plot(x,yfit)
-
-nmax=150
 
 for i in range(n):
 	fname=fnames[i]
-	x,y=extract_data(fname,ycol=5)
-	x=x[:nmax]
-	y=y[:nmax]
-	T1ph=0.00277119
-	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
-	taus[i]=popt[1]
+	x,y=extract_data(fname)
+	k=find_elem(2870,x)
+	m=find_elem(max(y[:k]),y)
+	M=find_elem(max(y[k:]),y)
+	ms[i]=m
+	Ms[i]=M
 
-plt.plot(fval,1/taus)
 
-x,y=extract_data('T1 3 V bien aligné',ycol=5)
-x=x[:nmax]
-y=y[:nmax]
-T1ph=0.00277119
-popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
-y=[1/popt[1]]*len(fval)
+plt.plot(ms)
+plt.plot(Ms)
+plt.show()
 
-plt.plot(fval,y,'--')
+
+
+# fnames,fval=extract_glob('T1')
+# fval.remove(fval[194])
+# fnames.remove(fnames[194])
+# fval.remove(fval[178])
+# fnames.remove(fnames[178])
+# n=len(fval)
+# taus=np.zeros(n)
+
+# # fname=fnames[0]
+# # x,y=extract_data(fname,ycol=5)
+# # T1ph=0.003626
+# # # T1ph=0.00277119
+# # popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=False)
+# # print(popt)
+# # plt.plot(x,y,'x')
+# # plt.plot(x,yfit)
+# # popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=True)
+# # plt.plot(x,yfit)
+
+# nmax=150
+
+# for i in range(n):
+# 	fname=fnames[i]
+# 	x,y=extract_data(fname,ycol=5)
+# 	x=x[:nmax]
+# 	y=y[:nmax]
+# 	T1ph=0.00277119
+# 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+# 	taus[i]=popt[1]
+
+# plt.plot(fval,1/taus)
+
+# x,y=extract_data('T1 3 V bien aligné',ycol=5)
+# x=x[:nmax]
+# y=y[:nmax]
+# T1ph=0.00277119
+# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+# y=[1/popt[1]]*len(fval)
+
+# plt.plot(fval,y,'--')
 
 # x=np.array(fval[:n])
 # E1=2627.343809489154+24.662438765970307*x

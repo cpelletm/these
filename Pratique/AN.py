@@ -13,6 +13,7 @@ m_carbon=12.01/Na #g
 P=1e5
 T=300
 eV=1.6E-19
+# print('%e'%(kb*T/h))
 # Theta_NV=acos(-1/3)
 # print(Theta_NV*180/pi)
 
@@ -25,4 +26,4 @@ def pola_NV(T):
 
 # pola_NV(0.065)
 
-print('%e'%(kb*T/h))
+
