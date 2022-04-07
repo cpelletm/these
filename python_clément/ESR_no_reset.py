@@ -9,23 +9,22 @@ physicalChannels=['ai11','ai13']
 # ys=np.linspace(0,10,nSide)
 
 nLine=101
-# Voltages=np.linspace(0.8,5,nLine)
-positions=np.linspace(4,8,nLine)
+Voltages=np.linspace(-3,3,nLine)
+# positions=np.linspace(4,8,nLine)
 
 def acquiSetup():
 	BaseFolder=str(QFileDialog.getExistingDirectory(GUI, "Choose Directory",defaultDataPath))
-	global T1Folder,ESRFolder
+	global ESRFolder
 	ESRFolder=BaseFolder+'\\ESR\\'	
-	T1Folder=BaseFolder+'\\T1\\'
-	platine.connect()
+	# platine.connect()
 
 
 def acquiStart(i):
-	# v=Voltages[i]
-	# ao.setupContinuous(v)
+	v=Voltages[i]
+	ao.setupContinuous(v)
 
-	pos=positions[i]
-	platine.setPos(pos,wait=True)
+	# pos=positions[i]
+	# platine.setPos(pos,wait=True)
 
 	# iz=i%nSide
 	# iy=i//nSide
@@ -43,7 +42,7 @@ def acquiEnd(i):
 	# yV=ys[iy]
 	# fname=StartStop.defaultFolder+'z=%f,y=%f'%(zV,yV)
 
-	fname=ESRFolder+'V=%f'%(positions[i])
+	fname=ESRFolder+'V=%f'%(Voltages[i])
 	if i==0 :
 		save.save(fname=fname,saveFigure=True)
 	else :

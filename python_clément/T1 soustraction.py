@@ -5,7 +5,9 @@ from analyse import find_ESR_peaks,find_elem
 physicalChannels=['ai13','ai11','ai9']
 
 nLine=200
-vs=np.linspace(-0.5,0.5,nLine)
+vs=np.linspace(-3,3,nLine)
+popt=[0.05644764315049736, -0.4407952784898157, 1.278636939136618, 74.54149920305248, 2856.6070294813494]
+freqs=sum((vs**i)*popt[-i-1] for i in range(len(popt)))
 # positions=np.linspace(4,8,nLine)
 
 def acquiSetup():
@@ -22,13 +24,15 @@ def acquiStart(i):
 	# pos=positions[i]
 	# platine.setPos(pos,wait=True)
 
-	x,y=ESRInLine(Fmin=2800,Fmax=3000,Power=0,NPoints=501,NRuns=3,Fsweep=100,AmpMod=True)
-	save_data(x,y,dirname=ESRFolder,fname="V=%f"%v)
-	if i%2 :
-		k=find_elem(max(y[:212]),y)
-	else :
-		k=find_elem(max(y[212:]),y)
-	freq=x[k]
+	# x,y=ESRInLine(Fmin=2800,Fmax=3000,Power=0,NPoints=501,NRuns=3,Fsweep=100,AmpMod=True)
+	# save_data(x,y,dirname=ESRFolder,fname="V=%f"%v)
+	# if i%2 :
+	# 	k=find_elem(max(y[:212]),y)
+	# else :
+	# 	k=find_elem(max(y[212:]),y)
+	# freq=x[k]
+
+	freq=freqs[i]
 	frequW.setValue(freq)
 	# print(freq) #ca fait planter en background mais ça assure qu'il fasse pas trop de conneries
 
@@ -114,7 +118,7 @@ platine=platinePI()
 laser=pulsedLaserWidget(gate=True,spaceAbove=0)
 frequW=field('uW frequency (MHz)',2866)
 poweruW=field('uW power (dBm)',15,spaceAbove=0)
-nT1=field('n points',301)
+nT1=field('n points',201)
 tT1=field('max time (s)',10e-3,spaceAbove=0)
 tRead=field('read time (s)',1e-3,spaceAbove=0)
 tPola=field('polarisation time (s)',0,spaceAbove=0)
@@ -132,7 +136,7 @@ l3=gra.addLine(typ='average',style='m',fast=True,ax=ax2)
 channels=dropDownMenu('Channel to read :',*physicalChannels,spaceAbove=0)
 zeromoinsunCB=checkBox('ms=-1(check)\nms=0(uncheck)')
 StartStop=startStopButton(setup=setup,update=update,debug=True,serie=True,lineIter=l1,extraStop=extraStop)
-StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=50,startingIter=0,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
+StartStop.setupSerie(nAcqui=nLine,iterPerAcqui=75,startingIter=0,acquiSetup=acquiSetup,acquiStart=acquiStart,acquiEnd=acquiEnd)
 expfit=fitButton(line=l3,fit='expZero',name='exp fit')
 stretchfit=fitButton(line=l3,fit='stretchZero',name='stretch fit')
 save=saveButton(gra,autoSave=False)
