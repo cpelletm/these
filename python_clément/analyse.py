@@ -477,14 +477,14 @@ def ESR_fixed_amp_and_width(x,y,cs,amp=False,width=False,ss=False,typ='gauss'):
 	params=[ss,centers,width,amp]
 	return(params,f(x,*popt))
 
-def find_ESR_peaks(x,y,width=False,threshold=0.1,returnUnit='x',precise=False):
+def find_ESR_peaks(x,y,width=False,threshold=0.2,returnUnit='x',precise=False):
 	'''
 	width in unit of x  
 	thrsehold = min peak height in proportion of max peak height 
 	returnUnit='x' : return the x position of the peaks ; ='n' return the index of the peaks
 	'''
 	if not width :
-		distance=int(10/(x[1]-x[0])) #assumes that x is in MHz, and takes an ESR width of 10 MHz
+		distance=int(6/(x[1]-x[0])) #assumes that x is in MHz, and takes an ESR width of 6 MHz
 	else :
 		distance=int(width/(x[1]-x[0]))
 
@@ -520,12 +520,12 @@ def find_B_111(freq,transi='-') : #freq en MHz
 	elif transi =='+' :
 		return(freq-D)/gamma
 
-def find_B_100(freq,transi='-',B_max=100) :
+def find_B_100(freq,transi='-',B_max=100,E=4,D=2870) :
 	Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
 	Sx=1/np.sqrt(2)*np.array([[0,1,0],[1,0,1],[0,1,0]])
 	Sy=1/(np.sqrt(2)*1j)*np.array([[0,1,0],[-1,0,1],[0,-1,0]])
 
-	def Hamiltonian_0(B,classe=1,E=3,D=2870) :
+	def Hamiltonian_0(B,classe=1) :
 		#Unité naturelle : MHz,Gauss
 		B=np.array(B)
 		gamma=2.8
@@ -556,7 +556,7 @@ def find_B_100(freq,transi='-',B_max=100) :
 
 	def f(amp):
 		B=[amp,0,0]
-		H=Hamiltonian_0(B,classe=1,E=3,D=2870)
+		H=Hamiltonian_0(B,classe=1)
 		val,vec=egvect(H)
 		if transi=='-' :
 			transi_NV=val[1]-val[0]
@@ -609,8 +609,10 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 		return(egve)
 
 class magneticField():
-	def __init__(self,x='spherical',y='spherical',z='spherical',theta='cartesian',phi='cartesian',amp='cartesian'): #Give either x,y,z or theta,phi,amp (polar/azimutal from the z axis)
-		if x=='spherical':
+	def __init__(self,x='spherical',y='spherical',z='spherical',theta='cartesian',phi='cartesian',amp='cartesian',**HamiltonianArgs): #Give either x,y,z or theta,phi,amp (polar/azimutal from the z axis)
+		if x=='spherical' and theta=='cartesian' :
+			raise(ValueError('Wrong input for B'))
+		elif x=='spherical':
 			self.x=amp*np.cos(theta)*np.sin(phi)
 			self.y=amp*np.sin(theta)*np.sin(phi)
 			self.z=amp*np.cos(phi)
@@ -628,25 +630,37 @@ class magneticField():
 			raise(ValueError('You must either give (x,y,z) or (theta,phi,amp )'))
 		self.cartesian=np.array([self.x,self.y,self.z])
 		self.sphericalDeg=np.array([self.theta*180/np.pi,self.phi*180/np.pi])
+		self.HamiltonianArgs=HamiltonianArgs
 	def transitions4Classes(self):
 		transis=[]
 		for i in range(4):
-			t=NVHamiltonian(self,c=i).transitions()
+			t=NVHamiltonian(self,c=i,**self.HamiltonianArgs).transitions()
 			transis+=[t[0],t[1]]
 		return np.sort(transis)
 	def transitions4ClassesPlus(self):
 		transis=[]
 		for i in range(4):
-			t=NVHamiltonian(self,c=i).transitions()
+			t=NVHamiltonian(self,c=i,**self.HamiltonianArgs).transitions()
 			transis+=[t[1]]
 		return np.sort(transis)
 	def transitions4ClassesMoins(self):
 		transis=[]
 		for i in range(4):
-			t=NVHamiltonian(self,c=i).transitions()
+			t=NVHamiltonian(self,c=i,**self.HamiltonianArgs).transitions()
 			transis+=[t[0]]
 		return np.sort(transis)
-
+	def angleFrom100(self):
+		scalar=max(abs(self.x),abs(self.y),abs(self.z))/self.amp
+		angle=np.arccos(scalar)
+		return angle*180/np.pi
+	def angleFrom111(self):
+		scalar=0
+		for c in NVHamiltonian.cs[:4] :
+			if abs(c.dot(self.cartesian)) > scalar :
+				scalar=abs(c.dot(self.cartesian))
+		scalar=scalar/self.amp
+		angle=np.arccos(scalar)
+		return angle*180/np.pi
 	def __repr__(self):
 		return('Bx=%f; By=%f, Bz= %f'%(self.x,self.y,self.z))
 
@@ -654,39 +668,92 @@ class electricField():
 	def __init__(*params,base='NV'):
 		pass
 
-def find_B_cartesian(peaks,Bmax=1000,startingB=False,transis='all'): #B in gauss ; Ca m'a la'ir de moins bien marcher que l'autre
+def find_B_cartesian(peaks,Bmax=1000,startingB=False,transis='all'): #Obsolète
 	peaks=np.sort(peaks)
 	if len(peaks)==8 :
-		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+		def err_func(B,peaks): #B is given in the form [x,y,z]
 			B=magneticField(x=B[0],y=B[1],z=B[2])
 			simuPeaks=B.transitions4Classes()
 			err=np.linalg.norm(peaks-simuPeaks)
 			return err
 	elif len(peaks)==2:
-		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
+		def err_func(B,peaks): #B is given in the form [x,y,z]
 			B=magneticField(x=B[0],y=B[1],z=B[2])
 			simuPeaks=B.transitions4Classes()
 			completePeaks=np.sort([peaks[0]]*4+[peaks[1]]*4)
 			err=np.linalg.norm(completePeaks-simuPeaks)
 			return err
 	elif len(peaks)==4 and transis=='-': 
-		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
-			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+		def err_func(B,peaks): #B is given in the form [x,y,z]
+			B=magneticField(x=B[0],y=B[1],z=B[2])
 			simuPeaks=B.transitions4ClassesMoins()
 			err=np.linalg.norm(peaks-simuPeaks)
 			return err
 	elif len(peaks)==4 and transis=='+': 
-		def err_func(B,peaks): #B is given in the form [amp,theta,phi]
-			B=magneticField(amp=B[0],theta=B[1],phi=B[2])
+		def err_func(B,peaks): #B is given in the form [x,y,z]
+			B=magneticField(x=B[0],y=B[1],z=B[2])
 			simuPeaks=B.transitions4ClassesPlus()
 			err=np.linalg.norm(peaks-simuPeaks)
 			return err
 	if startingB :
-		x0=[startingB.amp,startingB.theta,startingB.phi]
+		x0=[startingB.x,startingB.y,startingB.z]
 	else :
 		x0=[100,0,0]
-	sol=minimize(err_func,x0=x0,args=peaks,bounds=[(-Bmax,Bmax),(-Bmax,Bmax),(-Bmax,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
-	return magneticField(amp=sol.x[0],theta=sol.x[1],phi=sol.x[2])
+	sol=minimize(err_func,x0=x0,args=peaks,bounds=[(-1,Bmax),(-1,Bmax),(-1,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
+	return magneticField(x=sol.x[0],y=sol.x[1],z=sol.x[2])
+
+def find_B_cartesian_mesh(peaks,precise=True,transi='all',Blims='auto',n=20,**HamiltonianArgs): #Transi + a l'air de déconner, à vérifier plus tard...
+
+	if Blims=='auto':
+		Bmax=(max(peaks)-min(peaks))*sqrt(3)/(2*2.8) #delta nu/(2*gamma)*sqrt(3) C'est calculé pour que le pire cas de figure soit une 100, pas sur de ce que ca vaut pour les gros champs (après Gslac en particulier)
+		Blims=[[-1,Bmax],[-1,Bmax],[-1,Bmax]]
+
+	peaks=np.sort(peaks)
+	Bxs=np.linspace(Blims[0][0],Blims[0][1],n)
+	Bys=np.linspace(Blims[1][0],Blims[1][1],n)
+	Bzs=np.linspace(Blims[2][0],Blims[2][1],n)
+
+	opt=np.inf
+	transis=np.zeros(len(peaks))
+
+	if transi=='all':
+		def errfunc(B):
+			B=magneticField(x=B[0],y=B[1],z=B[2],**HamiltonianArgs)
+			simuPeaks=B.transitions4Classes()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	elif transi=='-' :
+		def errfunc(B):
+			B=magneticField(x=B[0],y=B[1],z=B[2],**HamiltonianArgs)
+			simuPeaks=B.transitions4ClassesMoins()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	elif transi=='+' :
+		def errfunc(B):
+			B=magneticField(x=B[0],y=B[1],z=B[2],**HamiltonianArgs)
+			simuPeaks=B.transitions4ClassesPlus()
+			err=np.linalg.norm(peaks-simuPeaks)
+			return err
+	else :
+		raise(ValueError('Did not understand "transi"'))
+
+	for Bx in Bxs :
+		for By in Bys :
+			for Bz in Bzs :
+				B=[Bx,By,Bz]
+				diff=errfunc(B)
+				if diff < opt :
+					opt=diff
+					bestB=B
+	bestB=magneticField(x=bestB[0],y=bestB[1],z=bestB[2])
+	if not precise :		
+		return(bestB)
+	else :
+		steps=np.array([Bxs[1]-Bxs[0],Bys[1]-Bys[0],Bzs[1]-Bzs[0]])
+		x0=[bestB.x,bestB.y,bestB.z]
+		bounds=[(x0[i]-steps[i],x0[i]+steps[i]) for i in range(3)]
+		sol=minimize(errfunc,x0=x0,bounds=bounds)
+		return(magneticField(x=sol.x[0],y=sol.x[1],z=sol.x[2]))
 
 
 
@@ -707,9 +774,13 @@ def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 			y+=amp*1/(1+((x-c)/width)**2)
 	return y
 
-def find_nearest_ESR(x,y,peaks='auto',Bmax=1000,typ='gauss',returnType='default',transis='all',fittingProtocol='cartesian'): #peaks : centers of resonances in MHz
+def find_nearest_ESR(x,y,peaks='auto',Bmax=500,typ='gauss',returnType='default',transis='all',fittingProtocol='cartesian'): #peaks : centers of resonances in MHz
 	if peaks=='auto':
 		peaks=find_ESR_peaks(x,y)
+		if len(peaks)==8 :
+			peaks=find_ESR_peaks(x,y,precise=True)
+		else :
+			raise ValueError('"auto" does not support spectrum without 8 peaks yet')
 	popt,yfit= ESR_n_pics(x,y,peaks)
 	n=len(peaks)
 	ss=popt[0]
@@ -815,6 +886,10 @@ def print_map(array,xmin=0,xmax=1,ymin=0,ymax=1):
 	plt.show()
 
 #~~~~~~ Présentation ~~~~~~
+
+def color(i):
+	colors=plt.rcParams['axes.prop_cycle'].by_key()['color']
+	return(colors[i])
 
 def ecris_gros(x,y):
 	plt.figure(num=1,figsize=(9,6),dpi=80) #à écrire au début a priori

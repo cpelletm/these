@@ -1,9 +1,9 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
-x,y=extract_data('T1 0B (profil tres bizarre avant soustraction)',ycol=5)
+x,y=extract_data('T1 1 classe 111',ycol=5)
 plt.plot(x,y,'x')
 # popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=False)
 # print(estim_error(y,yfit))

@@ -1,10 +1,15 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
+plt.figure(num=1,figsize=(3,2),dpi=80)
+
 # fnames,fval=extract_glob('ESR')
+# x,y=extract_data(fnames[20])
+# plt.plot(x,y,'o',markerfacecolor='none')
+
 # n=67
 # fval=fval[:n]
 # transis=np.zeros((n,2))
@@ -18,7 +23,7 @@ from analyse import *
 # 	else :
 # 		transis[i,:]=[np.nan,np.nan]
 
-# # plt.plot(transis,'x')
+# plt.plot(transis,'x')
 
 # nbeg=25
 
@@ -61,23 +66,29 @@ E2=2961.07596941526-36.62612342543252*x
 
 
 ax1=plt.gca()
+
+
+
+
+
 x=(E1-E2)[nbeg:]
 y=1/taus[nbeg:]
-ax1.plot(x,y,'x',label='1/T1')
+ax1.plot(x,y,'o',markerfacecolor='none',label='1/T1')
 popt,yfit=lor_fit(x,y)
 plt.plot(x,yfit,label='Lor fit HWHM=%.3f MHz'%popt[2])
+
 ax2=ax1.twinx()
-
-
-
-
 x,y=extract_data('ESR 1 classe pas loin 111')
 y=y/max(y)
 x=x-2740
 x=x*sqrt(2)
-ax2.plot(x,y,color='orange',label=r'ESR line$\times \sqrt{2}$')
+ax2.plot(x,y,'--',color=color(2),label=r'ESR line$\times \sqrt{2}$',mew=0.5)
 
-ax1.legend(loc=2)
-ax2.legend()
+
+
+
+
+# ax1.legend(loc=2)
+# ax2.legend()
 plt.show()
 

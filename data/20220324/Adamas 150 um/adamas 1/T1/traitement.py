@@ -1,7 +1,9 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
+
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
 
 #les x et y sont inversés pour cette série
 fnames=glob.glob('*.csv')
@@ -43,9 +45,16 @@ nmax=180 #Je sais pas ce qu'il se passe entre 180 et 200. Par ailleurs c'est san
 deltaF=deltaF[:nmax]
 taus=taus[:nmax]
 
-plt.plot(deltaF,1/taus,'x')
+x=deltaF
+y=1/taus
+plt.plot(x,y,'o',markerfacecolor='none')
+popt,yfit=lor_fit_fixed(x,y,x0=0,sigma=8)
+print(popt)
+plt.plot(x,yfit)
 
-
-gammaref=40
+gammaref=32.7
 plt.plot(deltaF,[gammaref]*nmax,'--')
+ax=plt.gca()
+ylims=ax.get_ylim()
+ax.set_ylim([0,ylims[1]])
 plt.show()
