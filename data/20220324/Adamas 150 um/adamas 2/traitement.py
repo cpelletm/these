@@ -30,11 +30,9 @@ y=1/taus[nmin:]
 
 
 plt.plot(x,y)
-popt,yfit=lor_fit(x,y,x0=0.00001,amp=1600,ss=50,sigma=6) #Ok je fais full merde
-print(popt)
-
-
-plt.plot(x,yfit)
+# popt,yfit=lor_fit(x,y,x0=0.00001,amp=1600,ss=50,sigma=6) #Ok je fais full merde
+# print(popt)
+# plt.plot(x,yfit)
 
 fnames,fval=extract_glob('T1 100 align 3/T1')
 fval.remove(fval[194])
@@ -56,11 +54,13 @@ for i in range(n):
 
 x=-Bs[:nmax]
 y=1/taus[:nmax]
+# y=y-y[-1]
+# y=y/max(y)
 plt.plot(x,y)
 
-popt,yfit=lor_fit(x,y,x0=0.00001)
-print(popt)
-plt.plot(x,yfit)
+# popt,yfit=lor_fit(x,y,x0=0.00001)
+# print(popt)
+# plt.plot(x,yfit)
 
 plt.show()
 
