@@ -331,7 +331,6 @@ def stretch_arb_exp_fit_zero(x,y,amp=None,tau=None,alpha=0.5,fixed=False):
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,*popt))
 
-
 def stretch_with_baseline(x,y,tau_BL=5e-3,alpha_BL=1,alpha_dip=0.5,amp=None,tau=None):
 	if not amp :
 		amp=max(y)-min(y)
@@ -857,6 +856,11 @@ def estim_error(y,yfit):
 	vAvg=sum(abs(yfit))/n #le abs est crade mais au cas ou tu aies des valeurs positives et négatives
 	errors_rel=(y-yfit)**2/vAvg**2
 	return(sum(errors_rel)/n)
+
+def lissage(t,n):
+	newt=np.array([sum(t[i:i+n])/n for i in range(len(t)-n)])
+	return newt
+
 
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):

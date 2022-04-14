@@ -32,7 +32,7 @@ qapp = QApplication(sys.argv)
 macAdressOfCurrentPC=gma()
 if macAdressOfCurrentPC=='64:00:6a:5f:1e:5b' : #Ordi 2 (le mien)
 	computerUsed='Ordi2'
-	defaultDataPath="D:/DATA/"
+	defaultDataPath="D:\\These Clément\\these\\data"
 	defaultTheme='light'
 
 elif macAdressOfCurrentPC=='d8:9e:f3:23:bb:26' : #Ordi 1 (de l'entrée)

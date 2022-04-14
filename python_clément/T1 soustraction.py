@@ -4,9 +4,9 @@ from analyse import find_ESR_peaks,find_elem
 
 physicalChannels=['ai13','ai11','ai9']
 
-nLine=101
+nLine=51
 vs=np.linspace(-3,3,nLine)
-freqs=np.linspace(2850,2890)
+freqs=np.linspace(2770,2800,nLine)
 # positions=np.linspace(4,8,nLine)
 
 def acquiSetup():
