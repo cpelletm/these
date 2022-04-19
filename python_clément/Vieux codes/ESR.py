@@ -29,7 +29,7 @@ class Photon_Counter(QMainWindow):
 		super().__init__()
 		
 
-		self.sampling_rate=1E3 #Ne pas monter au dessus de 1E3
+		self.sampling_rate=1E2 #Ne pas monter au dessus de 1E3
 		self.n_points=151
 		self.f_min=2.8
 		self.f_max=2.95 #GHz      
