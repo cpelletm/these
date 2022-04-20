@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.1.25)  19 APR 2022 19:33
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.1.25)  20 APR 2022 17:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -330,33 +330,31 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+
+LaTeX Warning: Command \~ invalid in math mode on input line 44.
+
+Missing character: There is no ̃ in font cmmi10!
 File: Figures/fig dense vs pas dense.pdf Graphic file (type pdf)
 <use Figures/fig dense vs pas dense.pdf>
 File: Figures/fig T1.pdf Graphic file (type pdf)
 <use Figures/fig T1.pdf>
-File: Figures/fig 100 vs 1x1x1x1.pdf Graphic file (type pdf)
-<use Figures/fig 100 vs 1x1x1x1.pdf>
 File: Figures/fig largeur fluct.pdf Graphic file (type pdf)
 <use Figures/fig largeur fluct.pdf>
+File: Figures/fig 100 vs 1x1x1x1.pdf Graphic file (type pdf)
+<use Figures/fig 100 vs 1x1x1x1.pdf>
 File: Figures/fig transverse field simu.pdf Graphic file (type pdf)
 <use Figures/fig transverse field simu.pdf>
 File: Figures/fig transverse field.pdf Graphic file (type pdf)
 <use Figures/fig transverse field.pdf>
-
 No file "Low field CR".bbl.
-[1] [2] [3] (./Low field CR.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
-
- ) 
+[1] [2] [3] [4] (./Low field CR.aux) ) 
 Here is how much of TeX's memory you used:
- 5857 strings out of 479819
- 85410 string characters out of 5895846
- 365046 words of memory out of 5000000
- 22910 multiletter control sequences out of 15000+600000
+ 5858 strings out of 479819
+ 85418 string characters out of 5895846
+ 383046 words of memory out of 5000000
+ 22911 multiletter control sequences out of 15000+600000
  541806 words of font info for 67 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 43i,6n,42p,738b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,64p,888b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Low field CR.pdf (3 pages).
+Output written on Low field CR.pdf (4 pages).

@@ -33,20 +33,35 @@ In this letter/article, we characterize the depolarization of the spins observed
 
 The $T_1$ depolarization dynamics of single or sparse NV centers at room temperature is dominated by a two-phonon Raman process, which depends on the crystal lattice temperature but does not (?) depend on the external magnetic field. However, it has been observed that dense NV centers ensemble have an additional spin lifetime contribution which depends greatly on the magnetic field and not on the temperature. This effect has been attributed to cross-relaxation between the NV centers through dipole-dipole coupling. Some inhomogeneity between the NV centers is further needed in order to explain the depolarization of the spin ensemble.
 
-The main signature of the spin depolarization in low field is the characteristic dip in photoluminescence (PL) observed only for high density ($\gtrsim 1$ ppm) of NV centers, as shown on fig [X]. The decrease in the spins' lifetime in zero field makes the optical polarization scheme of the NV centers less effective and therefore reduce the population of the bright $\ket{0}$ spin state. The reason for the decrease in PL at higher magnetic field values is the mixing of the bright spin state $\ket{0}$ to the darker state $\ket{-1}$ induced by the transverse magnetic field. This effect does not modify (on first approximation) the spins' lifetime, and is common to both dense and sparse samples.
+The main signature of the spin depolarization in low field is the characteristic dip in photoluminescence (PL) observed only for high density ($\gtrsim 1$ ppm) of NV centers, as shown on fig \ref{PL_NV_density}. The decrease in the spins' lifetime in zero field makes the optical polarization scheme of the NV centers less effective and therefore reduce the population of the bright $\ket{0}$ spin state. The reason for the decrease in PL at higher magnetic field values is the mixing of the bright spin state $\ket{0}$ to the darker state $\ket{-1}$ induced by the transverse magnetic field. This effect does not modify (on first approximation) the spins' lifetime, and is common to both dense and sparse samples.
+
+The spin lifetime protocol used here is described in Fig. \ref{T1} and is based on previous similar experiments. It consists in a classical pump-probe measurement where the spins are first polarized in the $\ket{0}$ state by a green laser, and read-out optically after a variable dark time $\tau$. Using only this sequence can result in artifacts in the final $T_1$ signal due to charge state transfer in the dark, particularly for dense ensemble. It is therefore convenient to repeat the sequence with an additional $\pi$ pulse right before the spin read-out to project the remaining $\ket{0}$ polarization into a darker $\ket{+1}$ or $\ket{-1}$ state. By subtracting the result of the two sequences, we select only the spin-dependent part of the signal, with the added benefit of being able to select a specific class of NV centers. 
+
+The ensemble spin lifetime is then fitted with a formula which include both an exponential lifetime $T_1^{\exp}$ and a stretch exponential lifetime $T_1^s$ :
+\begin{equation}
+S(\tau)=A \exp (-\frac{\tau}{T_1^{\exp}} -\sqrt{\frac{\tau}{T_1^s}}),
+\end{equation}
+We assume that the exponential part of the lifetime is defined by the phonons, and the stretch part by the coupling between NVs, as detailed below. In order to get comparable fitting parameters between each measurement, we decided to fix the value of the exponential lifetime in the fitting process, leaving only the stretch lifetime as a free parameter. For Fig.\ref{T1}, \ref{largeur_fluct}, \ref{100_VS_1x4} and \ref{exp_B_transverse}, the chosen exponential lifetime was $T_1^{\exp}=3.62\~ms$.
+
 
 The additional spin depolarization observed 
 
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig dense vs pas dense}
-\caption{Todo}
+\caption{Photoluminescence from NV centers as a function of an external magnetic field randomly oriented for two samples : (a) a CVD sample containing $\approx$ 4 ppb NV$^-$ centers, (b) an HPHT sample containing $\approx$ 3 ppm NV$^-$ centers}
 \label{PL_NV_density}
 \end{figure}
 
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig T1}
-\caption{Todo}
+\caption{Spin $T_1$ measurement protocol. (a) Sequence used to measure the spin lifetime : the laser is turned off for a time $\tau$ twice and the spin state is read at the end of the dark time by measuring the initial photoluminescence when the laser is turned back on. A microwave resonant with one of the spin transition is used in one of the sequence to project the $\ket{0}$ spin sate in either $\ket{+1}$ or $\ket{-1}$. The sequence result is the subtraction $S_1-S_2$. (b) Measurement of an ensemble spin lifetime, fitted with an expression $A \exp (-\frac{\tau}{T_1^{\exp}} -\sqrt{\frac{\tau}{T_1^s}})$}
 \label{T1}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.45\textwidth]{Figures/fig largeur fluct}
+\caption{Tuning resonant coupling through magnetic field orientation. (a) Sketch of the four possible orientations ("classes") in a single crystal diamond lattice. (b) ODMR spectrum showing four $\ket{0} \to \ket{-1}$ resonances corresponding to the four spin classes. The detuning $\Delta \nu$ between the classes $\beta$ and $\gamma$ was controlled by changing the orientation of the external magnetic field.(c) Stretch part of the lifetime decay for the spins resonant with $\nu_\gamma$ as a function of the detuning $\Delta \nu$ (blue circles), fitted by a Lorentzian with half width at half maximum 8.04 MHz . Green dashed line correspond to the ODMR width of a single class stretched by a factor $\sqrt 2$, approximating the overlap of the two classes (see SI).}
+\label{largeur_fluct}
 \end{figure}
 
 \begin{figure*}
@@ -56,11 +71,7 @@ The additional spin depolarization observed
 \end{figure*}
 
 
-\begin{figure}
-\includegraphics[width=0.45\textwidth]{Figures/fig largeur fluct}
-\caption{Modification of the stretch lifetime for two near-resonant classes. (a) ODMR spectrum with amplitude modulation of the microwave for the $\ket{0} \to \ket{-1}$ transition of two separate NV classes. The frequency detuning between the two transitions is denoted $\Delta \nu$. (b) Stretch part of the lifetime decay for one of the two classes as function of the frequency detuning (blue circles), fitted by a Lorentzian with half width at half maximum 8.04 MHz . Green dashed line correspond to the ODMR width of a single class stretched by a factor $\sqrt 2$, approximating the overlap of the two classes (see SI).}
-\label{largeur_fluct}
-\end{figure}
+
 
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig transverse field simu}

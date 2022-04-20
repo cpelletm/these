@@ -4,7 +4,7 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-plt.figure(num=1,figsize=(3,2),dpi=80)
+plt.figure(num=1,figsize=(5,3),dpi=80)
 plt.xticks(fontsize=11)
 plt.yticks(fontsize=12)
 

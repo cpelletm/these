@@ -27,10 +27,33 @@ def plot_ESR():
 plt.figure(num=1,figsize=(3,2),dpi=80)
 plt.xticks(fontsize=11)
 plt.yticks(fontsize=12)
-x,y=extract_data('scan EM weekend',ycol=3)
+# x,y=extract_data('scan EM weekend',ycol=3)
+# y=y/max(y)
+# x=x-x[259]
+# x=x*35
+x,y=extract_data("scan PL à l'ancienne")
+x2=list(x)
+y2=list(y)
+for i in range(len(y)):
+	e=y[i]
+	if e <0 :
+		x2.remove(x[i])
+		y2.remove(y[i])
+
+x=np.array(x2)
+y=np.array(y2)
+
+def find_B_EM():
+	x,y=extract_data("ESR EM 3V pour le 2e scan PL")
+	plt.plot(x,y)
+	peaks=[2723,2723,2758,2758,3044,3050,3071,3075]
+	B=find_B_cartesian_mesh(peaks)
+	print(B,B.amp/3)
+	# B=76.9 G @ 3V
+x=x-x[104]
+x=x*30
+x=-x
 y=y/max(y)
-x=x-x[259]
-x=x*35
 plt.plot(x,y)
 plt.show()
 
