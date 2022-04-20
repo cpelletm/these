@@ -5,10 +5,15 @@ from analyse import *
 
 
 plt.figure(num=1,figsize=(3,2),dpi=80)
+plt.xticks(fontsize=11)
+plt.yticks(fontsize=12)
+
+
+
 
 # fnames,fval=extract_glob('ESR')
 # x,y=extract_data(fnames[20])
-# plt.plot(x,y,'o',markerfacecolor='none')
+# plt.plot(x,y)
 
 # n=67
 # fval=fval[:n]
@@ -75,16 +80,16 @@ x=(E1-E2)[nbeg:]
 y=1/taus[nbeg:]
 ax1.plot(x,y,'o',markerfacecolor='none',label='1/T1')
 popt,yfit=lor_fit(x,y)
-plt.plot(x,yfit,label='Lor fit HWHM=%.3f MHz'%popt[2])
+plt.plot(x,yfit,lw=2,label='Lor fit HWHM=%.3f MHz'%popt[2])
 
 ax2=ax1.twinx()
 x,y=extract_data('ESR 1 classe pas loin 111')
 y=y/max(y)
 x=x-2740
 x=x*sqrt(2)
-ax2.plot(x,y,'--',color=color(2),label=r'ESR line$\times \sqrt{2}$',mew=0.5)
+ax2.plot(x,y,'--',color=color(2),label=r'ESR line$\times \sqrt{2}$',mew=0.5,ms=3)
 
-
+ax2.tick_params(labelsize=12)
 
 
 

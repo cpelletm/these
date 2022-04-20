@@ -40,7 +40,23 @@
  \item Dépendance polarization time/distance objectif (micro/bulk)
  \item Le T1 soustraction dépend de la distance de l'objectif : dépend aussi de la puissance du laser ? Juste pour le T1 dipole ou aussi le T1 phonon ?
  \item Mesurer des largeurs fluctateurs avec le T1 sur plein d'échantillons (de Ludo au rose) (et vérifier que PL=T1 si possible, mais ça rajoute des contraintes pour rien...).
- \item T1 soustraction en fonction de la longueur d'onde de la micro-onde (à faible puissance du coup) en champ nul. Potentiellement en 121 a moitié splitté aussi.
+ \item Scan de pseudo-T1 (juste 2 points : S1 au début, S2 au milieu et (S1-S2)/S1 ) en fonction de la fréquence. Je viens de réfléchir et c'est pas si malin
+
+ \item faire une courbe sensibilité (magnetometry) en fonction de l'amplitude du champ mag modulé, selon la 100 et selon une 1x1x1x1
+ \item Mettre en place le protocole de magnetometrie par feedback (avec pyrpl probablement) puis faire une carte, a terme sur des 1/10 um sur un circuit imprimé.
+ \item La dépendance PL en fonction du champ transverse est pas la meme pour des échantillons denses et pas dense ? Vérfier que c'est pas une blague de l'APD-compteur-de-photon mesurée en tension. Peut-etre aussi une blague de filtrage spatial avec la fibre.
+ \item les différentes phases pour le T1 dipolaire, l'ESR et le champ transverse.
+ \end{itemize}
+ 
+ \section{Done}
+ \begin{itemize}
+  \item le 12C et 15N en champ transverse n'a qu'une bosse (normal) et la bosse du + et beaucoup plus petite que la bosse du -, et ca c'est pas normal. Ca vient vraiment du champ transverse vu que ça dépend beaucoup de l'angle et peu de l'amplitude du champ mag (donc des fréquences : pas un pb de micro-onde)
+  
+  $\to$ C'est un problème de polarisation de la micro-onde : en champ transverse (E ou B d'ailleurs) les transitions sont senseibles à une polarisation longitudinale de la micro-onde : Sx pour $\ket{0} \to \ket{+}$ et Sy pour $\ket{0} \to \ket{-}$ par exemple, alors qu'en champ mag longitudinal, elles sont sensibles à la polarisation circulaire. Comme ma micro-onde est polarisée linéairement mais pas circulairement, je vois une différence qu'en champ transverse.
+  
+   \item T1 soustraction en fonction de la longueur d'onde de la micro-onde (à faible puissance du coup) en champ nul. Potentiellement en 121 a moitié splitté aussi.
+   
+   $\to$ +/- done, j'ai surtout l'impression que ça suit le contraste ODMR. Faudrait que je vérifie qu'il y ait pas des bugs dans mon programme, surtout sur la procédure de fit (T1 plus faibles pour un signal moins bon).
  \end{itemize}
   \end{document}	
   

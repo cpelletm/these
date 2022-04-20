@@ -23,12 +23,14 @@ for i in range(n):
 
 x=fval
 y=1/taus
-# y=y-min(y)
-# y=y/max(y)
+y=y-min(y)
+y=y/max(y)
 plt.plot(x,y)
 
 
-
+x,y=extract_data('ESR série 3')
+y=y/max(y)
+plt.plot(x,y)
 
 
 plt.show()

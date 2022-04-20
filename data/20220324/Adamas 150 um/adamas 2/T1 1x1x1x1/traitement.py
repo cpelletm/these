@@ -4,6 +4,13 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
+plt.figure(num=1,figsize=(3,2),dpi=80)
+x,y=extract_data('ESR/V=-2.040000')
+y=y/max(y)
+plt.plot(x,y)
+plt.xticks(fontsize=11)
+plt.yticks(fontsize=12)
+
 fnames,fval=extract_glob('ESR')
 n=len(fval)
 
@@ -56,26 +63,26 @@ n=len(fval)
 
 
 
-fnames,fval=extract_glob('T1')
-n=len(fval)
-taus=np.zeros(n)
+# fnames,fval=extract_glob('T1')
+# n=len(fval)
+# taus=np.zeros(n)
 
-Bs=[np.array([78.55,31.8,16.86])*(x-0.17)/2.8 for x in fval]
+# Bs=[np.array([78.55,31.8,16.86])*(x-0.17)/2.8 for x in fval]
 
-Bamps=[norm(B)*np.sign(B[0]) for B in Bs]
+# Bamps=[norm(B)*np.sign(B[0]) for B in Bs]
 
-for i in range(n):
-	fname=fnames[i]
-	x,y=extract_data(fname,ycol=5)
-	T1ph=T1ph=0.003626
-	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
-	taus[i]=popt[1]
+# for i in range(n):
+# 	fname=fnames[i]
+# 	x,y=extract_data(fname,ycol=5)
+# 	T1ph=T1ph=0.003626
+# 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+# 	taus[i]=popt[1]
 
-nmin=106
-x=Bamps[nmin:]
-y=1/taus[nmin:]
+# nmin=106
+# x=Bamps[nmin:]
+# y=1/taus[nmin:]
 
-plt.plot(x,y)
+# plt.plot(x,y)
 
 
 plt.show()
