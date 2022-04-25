@@ -35,7 +35,7 @@ def plot_T1_fit():
 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	plt.plot(x,yfit,lw=2)
 
-plot_T1_fit()
+# plot_T1_fit()
 
 def plot_PL_1x1x1x1():
 	x,y=extract_data('T1 1x1x1x1/scan 1x1x1x1',ycol=3)
@@ -88,7 +88,7 @@ def plot_T1_1x1x1() :
 	# plt.plot(x,yfit)
 
 
-# plot_T1_1x1x1()
+plot_T1_1x1x1()
 
 def plot_T1_100() :
 	fnames,fval=extract_glob('T1 100 align 3/T1')

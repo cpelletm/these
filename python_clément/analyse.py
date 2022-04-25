@@ -889,6 +889,12 @@ def print_map(array,xmin=0,xmax=1,ymin=0,ymax=1):
 	cb=fig.colorbar(c,ax=ax)
 	plt.show()
 
+def print_map_2(array,x_axis,y_axis):
+	fig,ax=plt.subplots()
+	c=ax.pcolormesh(x_axis, y_axis, array.T)
+	cb=fig.colorbar(c,ax=ax)
+	plt.show()
+
 #~~~~~~ Présentation ~~~~~~
 
 def color(i):
