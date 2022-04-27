@@ -54,41 +54,41 @@ from analyse import *
 # ax.set_ylabel(r'Transition frequencies (MHz)' ,fontsize=20)
 # plt.show()
 
-fname='sensi joli gaussiennes'
-scale=1
-fig,ax=plt.subplots(2,figsize=(3*scale,4*scale),dpi=80)
-ax1=ax[1]
-ax2=ax[0]
-dB=1e-2*3.5e-3
-x1,y1=extract_data(fname,xcol=0,ycol=1)
-x2,y2=extract_data(fname,xcol=2,ycol=3)
-x3,y3=extract_data(fname,xcol=4,ycol=5)
-m1=hist_mean(x1,y1)
-m2=hist_mean(x2,y2)
-ratio=dB/abs(m2-m1)
-x1=x1*ratio*1e6
-x2=x2*ratio*1e6
-y3=y3*ratio*1e6
-sigma=hist_sigma(x1,y1)
-print(sigma*1e-6*np.sqrt(0.003))
-ax1.plot(x1,y1,'o',markerfacecolor="None",mew=0.7*scale,ms=4*scale,color=color(0))
-popt,yfit=gauss_fit(x1,y1)
-print(popt)
-plt.plot(x1,yfit,color=color(1),lw=1.5*scale)
-ax1.plot(x2,y2,'o',markerfacecolor="None",mew=0.7*scale,ms=4*scale,color=color(0))
-popt,yfit=gauss_fit(x2,y2)
-print(popt)
-plt.plot(x2,yfit,color=color(1),lw=1.5*scale)
-ax2.plot(x3,y3,lw=0.7*scale)
-ax1.tick_params(labelsize=12)
-ax1.set_ylabel(r'Histogram (counts)',fontsize=20)
-ax1.set_xlabel(r'Measured magnetic field ($\mu$T)' ,fontsize=20)
-ax2.tick_params(labelsize=12)
-ax2.set_xlabel(r'time (s)',fontsize=20)
-ax2.set_ylabel(r'Measured magnetic field ($\mu$T)' ,fontsize=20)
-plt.show()
+# fname='sensi joli gaussiennes'
+# scale=1
+# fig,ax=plt.subplots(2,figsize=(3*scale,4*scale),dpi=80)
+# ax1=ax[1]
+# ax2=ax[0]
+# dB=1e-2*3.5e-3
+# x1,y1=extract_data(fname,xcol=0,ycol=1)
+# x2,y2=extract_data(fname,xcol=2,ycol=3)
+# x3,y3=extract_data(fname,xcol=4,ycol=5)
+# m1=hist_mean(x1,y1)
+# m2=hist_mean(x2,y2)
+# ratio=dB/abs(m2-m1)
+# x1=x1*ratio*1e6
+# x2=x2*ratio*1e6
+# y3=y3*ratio*1e6
+# sigma=hist_sigma(x1,y1)
+# print(sigma*1e-6*np.sqrt(0.003))
+# ax1.plot(x1,y1,'o',markerfacecolor="None",mew=0.7*scale,ms=4*scale,color=color(0))
+# popt,yfit=gauss_fit(x1,y1)
+# print(popt)
+# plt.plot(x1,yfit,color=color(1),lw=1.5*scale)
+# ax1.plot(x2,y2,'o',markerfacecolor="None",mew=0.7*scale,ms=4*scale,color=color(0))
+# popt,yfit=gauss_fit(x2,y2)
+# print(popt)
+# plt.plot(x2,yfit,color=color(1),lw=1.5*scale)
+# ax2.plot(x3,y3,lw=0.7*scale)
+# ax1.tick_params(labelsize=12)
+# ax1.set_ylabel(r'Histogram (counts)',fontsize=20)
+# ax1.set_xlabel(r'Measured magnetic field ($\mu$T)' ,fontsize=20)
+# ax2.tick_params(labelsize=12)
+# ax2.set_xlabel(r'time (s)',fontsize=20)
+# ax2.set_ylabel(r'Measured magnetic field ($\mu$T)' ,fontsize=20)
+# plt.show()
 
-# fname='scan 100'# 20 deg from 100'
+# fname='scan 100 20 deg from 100'
 # scale=1
 # fig,ax=plt.subplots(2,figsize=(3*scale,4*scale),dpi=80)
 # ax1=ax[0]
@@ -98,14 +98,14 @@ plt.show()
 # x2,y2=extract_data(fname,xcol=0,ycol=1)
 # y1=y1/max(y1)
 # ratio=3.5*1e-3
-# x1=x1*ratio*1e3
-# x2=x2*ratio*1e3
+# x1=x1*ratio*1e4-8
+# x2=x2*ratio*1e4-8
 # ax1.plot(x1,y1,'-',markerfacecolor="None",lw=1.5*scale)
 # ax2.plot(x2,y2,'-',markerfacecolor="None",lw=1.5*scale)
 # ax1.tick_params(labelsize=12)
 # ax1.set_ylabel(r'Photoluminescence (AU)',fontsize=20)
 # ax2.tick_params(labelsize=12)
-# ax2.set_xlabel(r'magnetic field (mT)',fontsize=20)
+# ax2.set_xlabel(r'magnetic field (G)',fontsize=20)
 # ax2.set_ylabel(r'Demodulated PL (AU)' ,fontsize=20)
 # plt.show()
 
@@ -118,3 +118,20 @@ plt.show()
 # plt.ylim([0,120])
 # plt.plot(angles,sensis,'o',markerfacecolor="None")
 # plt.show()
+
+
+fname='scan 100 20 deg from 100'
+x,y=extract_data(fname,ycol=3)
+x=x*35-8
+# plt.plot(x,y/max(y))
+x2,y2=derivative(x,y)
+plt.plot(x2,y2)
+# x,y=extract_data(fname,ycol=1)
+# x=x*35-8
+# plt.plot(x,-y/max(y))
+fname='scan 100'
+x,y=extract_data(fname,ycol=3)
+x=x*35-8
+x2,y2=derivative(x,y)
+plt.plot(x2,y2)
+plt.show()

@@ -861,6 +861,13 @@ def lissage(t,n):
 	newt=np.array([sum(t[i:i+n])/n for i in range(len(t)-n)])
 	return newt
 
+def derivative(x,y):
+	dx=x[1]-x[0]
+	n=len(y)
+	assert n==len(x)
+	y2=np.array([(y[i+1]-y[i])/dx for i in range(n-1)])
+	x2=np.array([(x[i+1]+x[i])/2 for i in range(n-1)])
+	return(x2,y2)
 
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
