@@ -1,5 +1,4 @@
 \documentclass[preprintnumbers,amsmath,amssymb,superscriptaddress,twocolumn,showpacs]{revtex4-2}
-%\documentclass[preprintnumbers,amsmath,amssymb]{revtex4}
 \usepackage{graphicx}% Include figure files
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
@@ -7,7 +6,7 @@
 \usepackage{physics}
 \usepackage[caption=false]{subfig}
 
-\bibliographystyle{plain}
+
 
 %\newcommand{|}{Y$_2$SiO$_5$}
 \def\sgn{\mathop{\rm sgn}}
@@ -48,7 +47,7 @@ The main signature of the spin depolarization in low field is the characteristic
 
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig T1}
-\caption{Spin $T_1$ measurement protocol. (a) Sequence used to measure the spin lifetime : the laser is turned off for a time $\tau$ twice and the spin state is read at the end of the dark time by measuring the initial photoluminescence when the laser is turned back on. A microwave resonant with one of the spin transition is used in one of the sequence to project the $\ket{0}$ spin sate in either $\ket{+1}$ or $\ket{-1}$. The sequence result is the subtraction $S_1-S_2$. (b) Measurement of an ensemble spin lifetime, fitted with an expression $A \exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$}
+\caption{Spin $T_1$ measurement protocol. (a) Sequence used to measure the spin lifetime : the laser is turned off for a time $\tau$ twice and the spin state is read at the end of the dark time by measuring the initial photoluminescence when the laser is turned back on. A microwave resonant with one of the spin transition is used in one of the sequence to project the $\ket{0}$ spin sate in either $\ket{+1}$ or $\ket{-1}$. The sequence result is the subtraction $S_1-S_2$. (b) Measurement of a dense ensemble spin lifetime in zero field and non-zero field, fitted with an expression $A \exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$}
 \label{T1}
 \end{figure}
 
@@ -118,9 +117,9 @@ In order to evaluate the relative contribution of these two factors, we investig
 
 Fig. \ref{exp_B_transverse} shows the dipole-dipole spin relaxation $T_1^{\rm dd}$ for a class of NV whose axis is orthogonal to the applied magnetic field. By monitoring the frequencies of the transitions $\ket{g} \leftrightarrow \ket{d}$ and $\ket{g} \leftrightarrow \ket{e}$, we can deduce the detuning $\Delta \nu$ between the two-spin states $\ket{0,+}$ and $\ket{-,0}$. Plotting then $1/T_1^{\rm dd}$ as a function of $\Delta \nu$, we can notice two things. 
 
-First the decrease of $1/T_1^{\rm dd}$ as $\Delta \nu$ increases corresponds to the loss of effectiveness of the double flip processes. The shape of the curve matches decently well with the tail of a Lorentzian centered in $\Delta \nu=0$ with a width of 8 MHz, confirming that the double-flip process interaction range is likely determined by the fluctuators noise spectrum just like the flip-flop processes. 
+First the decrease of $1/T_1^{\rm dd}$ as $\Delta \nu$ increases which corresponds to the loss in effectiveness of the double flip processes. The shape of the curve matches decently well with the tail of a Lorentzian centered in $\Delta \nu=0$ with a width of 8 MHz, confirming that the double-flip process interaction range is likely determined by the fluctuators noise spectrum just like the flip-flop processes. 
 
-Second is the plateau reached for $B \gtrapprox 30\ \rm MHz$. The final $1/T_1^{\rm dd}$ value is about twice as high as that for a spin well aligned with the magnetic field, showing the increased depolarization due to the change of basis.
+Second is the plateau reached for $\Delta \nu \gtrapprox 30\ \rm MHz$. The final $1/T_1^{\rm dd}$ value is about twice as high as that for a spin well aligned with the magnetic field, showing the increased depolarization due to the change of basis.
 
 This experiment shows that, for the sample studied here, the depolarization due to the double-flip processes dominates the one due to the change of basis in zero magnetic field.
 
@@ -138,7 +137,7 @@ In order to measure the sensitivity of the measurement, we alternate a small DC 
 
 We can then try to measure the relative importance of the three causes of spin depolarization on the field sensitivity. In order to do so, we measure the sensitivity while changing the angle of the field. When $\vec B$ is aligned with the [100] crystalline axis, only the double flips and the change of basis are present, whereas in every other orientation the three effects are at play.
 
-The results are shown in Fig. \ref{magneto} (d). We can see a slight increase of $\sim$ 10\% in the sensitivity as we leave the [100] region, but overall the sensitivity is relatively flat, which means that the double-flips and change of basis effects are the dominant factors in the sensitivity of this protocol. %This is in agreement with the measurements in Fig. \ref{100_VS_1x4} : even though the contrast is much better in the not-[100] case, the slope in term of contrast percentage/magnetic field is comparable in both cases (en faite pas complètement, y'a pas loin d'un facteur 2 sur les dérivées numériques)
+The results are shown in Fig. \ref{magneto} (d). We can see a slight increase of $\sim$ 10\% in the sensitivity as we leave the [100] region, but overall the sensitivity remains relatively flat, which means that the double-flips and change of basis effects are the dominant factors in the sensitivity of this protocol. %This is in agreement with the measurements in Fig. \ref{100_VS_1x4} : even though the contrast is much better in the not-[100] case, the slope in term of contrast percentage/magnetic field is comparable in both cases (en faite pas complètement, y'a pas loin d'un facteur 2 sur les dérivées numériques)
 It should be noted though that this observation is sample dependent, and that other samples, including from the same batch, have shown a higher orientation dependence, corresponding to a lower contribution from the double flips and change of basis.
 
 \section*{Conclusion}

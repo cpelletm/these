@@ -847,15 +847,18 @@ def closest_elem(l,target):
 			basis=abs(target-l[i])
 	return n
 
-def estim_error(y,yfit):
+def estim_error(y,yfit,rel=True):
 	#C'est pas si simple, si tu prends juste l'erreur relative de chaque point tu donnes beaucoup plus de poids aux valeurs proches de 0. Le je fais un truc un peu sale mais qui donne autant de poids (absolu) à chaque point
 	n=len(y)
 	assert n==len(yfit)
 	y=np.array(y)
 	yfit=np.array(yfit)
 	vAvg=sum(abs(yfit))/n #le abs est crade mais au cas ou tu aies des valeurs positives et négatives
-	errors_rel=(y-yfit)**2/vAvg**2
-	return(sum(errors_rel)/n)
+	if rel :
+		errors=(y-yfit)**2/vAvg**2
+	else :
+		errors=(y-yfit)**2
+	return(sum(errors)/n)
 
 def lissage(t,n):
 	newt=np.array([sum(t[i:i+n])/n for i in range(len(t)-n)])
@@ -868,6 +871,22 @@ def derivative(x,y):
 	y2=np.array([(y[i+1]-y[i])/dx for i in range(n-1)])
 	x2=np.array([(x[i+1]+x[i])/2 for i in range(n-1)])
 	return(x2,y2)
+
+def find_local_min(x,y,x0):
+	i=find_elem(x,x0)
+	while y[i+1]<y[i]:
+		i+=1
+	while y[i-1]<y[i]:
+		i-=1
+	return i
+
+def find_local_max(x,y,x0):
+	i=find_elem(x,x0)
+	while y[i+1]>y[i]:
+		i+=1
+	while y[i-1]>y[i]:
+		i-=1
+	return i
 
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
@@ -919,18 +938,6 @@ def ecris_gros(x,y):
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
 
-def extract_glob(SubFolderName='.',FirstValIndex='default', LastValIndex=-4): #FirstValIndex=premier caractère numérique
-	fnames=glob.glob(SubFolderName+'/*.csv')
-	if FirstValIndex=='default':
-		try :
-			FirstValIndex=fnames[0].index('=')+1
-		except :
-			raise(ValueError('Could not find a = sign in the file names'))
-	fval=[float(fnames[i][FirstValIndex:LastValIndex]) for i in range(len(fnames))] 
-	fnames=[s for _,s in sorted(zip(fval,fnames))]
-	fval=sorted(fval)
-	return(fnames,fval)
-
 def exemple_animation():
 	import matplotlib.animation as animation
 	fnames,fval=extract_glob('Série ESR 2',16)
@@ -952,6 +959,19 @@ def exemple_animation():
 
 
 #~~~~~~~~ Outils ~~~~~~~~~~
+def extract_glob(SubFolderName='.',FirstValIndex='default', LastValIndex=-4): #FirstValIndex=premier caractère numérique
+	fnames=glob.glob(SubFolderName+'/*.csv')
+	if FirstValIndex=='default':
+		try :
+			FirstValIndex=fnames[0].index('=')+1
+		except :
+			raise(ValueError('Could not find a = sign in the file names'))
+	fval=[float(fnames[i][FirstValIndex:LastValIndex]) for i in range(len(fnames))] 
+	fnames=[s for _,s in sorted(zip(fval,fnames))]
+	fval=sorted(fval)
+	return(fnames,fval)
+
+
 def ask_name():
 	qapp = QApplication(sys.argv)
 	fname,filters=QFileDialog.getOpenFileName()	
@@ -968,6 +988,12 @@ def save_data(*columns,fname='default',dirname='./'):
 			spamwriter.writerow(c)
 
 def find_elem(elem,liste):
+	try :
+		elem[0] #du sale, mais je me trompe souvent entre elem et liste. Ca devrait fonctionner
+		elem,liste=liste,elem
+	except:
+		pass
+
 	if elem in liste :
 		l=list(liste)
 		i=l.index(elem)

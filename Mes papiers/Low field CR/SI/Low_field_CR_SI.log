@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.1.25)  29 APR 2022 12:18
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.1.25)  27 APR 2022 14:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Low_field_CR.tex
-(./Low_field_CR.tex
+**Low_field_CR_SI.tex
+(./Low_field_CR_SI.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14>
 (/usr/share/texlive/texmf-dist/tex/latex/revtex/revtex4-2.cls
@@ -81,13 +81,10 @@ Class revtex4-2 Info: RevTeX society APS selected on input line 37.
 Class revtex4-2 Warning: No journal specified, using default pra.
 
 Class revtex4-2 Info: APS journal PRA selected on input line 7584.
-
-Class revtex4-2 Warning: No type size specified, using default 10.
-
-(/usr/share/texlive/texmf-dist/tex/latex/revtex/aps10pt4-2.rtx
-File: aps10pt4-2 2019/01/18/14:29:48 4.2c (https://journals.aps.org/revtex/ for
+(/usr/share/texlive/texmf-dist/tex/latex/revtex/aps12pt4-2.rtx
+File: aps12pt4-2 2019/01/18/14:29:48 4.2c (https://journals.aps.org/revtex/ for
  documentation)
-Class revtex4-2 Info: RevTeX pointsize 10pt selected on input line 36.
+Class revtex4-2 Info: RevTeX pointsize 12pt selected on input line 36.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2019/09/14 v1.00 Text only upper/lower case changing (DPC)
@@ -286,110 +283,90 @@ dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
 \sf@bottom=\skip61
 )
 Class revtex4-2 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 18.
-Class revtex4-2 Info: cite was not loaded (OK!) on input line 18.
-Class revtex4-2 Info: mcite was not loaded (OK!) on input line 18.
-Class revtex4-2 Info: multicol was not loaded (OK!) on input line 18.
+lass! (Proceeding with fingers crossed.) on input line 16.
+Class revtex4-2 Info: cite was not loaded (OK!) on input line 16.
+Class revtex4-2 Info: mcite was not loaded (OK!) on input line 16.
+Class revtex4-2 Info: multicol was not loaded (OK!) on input line 16.
 
-(./Low_field_CR.aux)
-\openout1 = `Low_field_CR.aux'.
+(./Low_field_CR_SI.aux)
+\openout1 = `Low_field_CR_SI.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-8.
+6.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-\openout3 = `Low_field_CRNotes.bib'.
+\openout3 = `Low_field_CR_SINotes.bib'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
 
+Underfull \hbox (badness 10000) in paragraph at lines 18--21
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-File: Figures/fig dense vs pas dense.pdf Graphic file (type pdf)
-<use Figures/fig dense vs pas dense.pdf>
-File: Figures/fig T1.pdf Graphic file (type pdf)
-<use Figures/fig T1.pdf>
+(./Low_field_CR_SI.toc
+Overfull \hbox (11.572pt too wide) detected at line 8
+ \TU/lmr/m/n/12 A.
+ []
+
+
+Overfull \hbox (11.08pt too wide) detected at line 9
+ \TU/lmr/m/n/12 B.
+ []
+
+
+Overfull \hbox (11.572pt too wide) detected at line 11
+ \TU/lmr/m/n/12 A.
+ []
+
+
+Overfull \hbox (11.08pt too wide) detected at line 12
+ \TU/lmr/m/n/12 B.
+ []
+
+)
+\tf@toc=\write4
+\openout4 = `Low_field_CR_SI.toc'.
+
  [1]
-File: Figures/fig largeur fluct.pdf Graphic file (type pdf)
-<use Figures/fig largeur fluct.pdf>
-File: Figures/fig 100 vs 1x1x1x1.pdf Graphic file (type pdf)
-<use Figures/fig 100 vs 1x1x1x1.pdf>
-
-Underfull \hbox (badness 2277) in paragraph at lines 97--100
-\TU/lmr/m/n/10 is much greater than the dipole-dipole interaction
- []
-
-[2]
-Underfull \hbox (badness 5403) in paragraph at lines 101--102
-[]\TU/lmr/m/n/10 Second is the near-resonance condition of the
- []
-
-
-Underfull \hbox (badness 4181) in paragraph at lines 101--102
-\TU/lmr/m/n/10 double-flip processes such as $[] []$ or
- []
-
-File: Figures/fig transverse field simu.pdf Graphic file (type pdf)
-<use Figures/fig transverse field simu.pdf>
-File: Figures/fig transverse field.pdf Graphic file (type pdf)
-<use Figures/fig transverse field.pdf>
-File: Figures/fig_magneto.pdf Graphic file (type pdf)
-<use Figures/fig_magneto.pdf>
-
-Underfull \hbox (badness 2088) in paragraph at lines 132--133
-\TU/lmr/m/n/10 performed with NV ensembles, using either cross-
- []
-
-[3]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 133.
-
-[4] (./Low_field_CR.bbl
-Underfull \hbox (badness 1708) in paragraph at lines 21--27
- \TU/lmr/m/n/9 brin, Francisco Machado, Prabudhya Bhattacharyya,
- []
-
-
-Underfull \hbox (badness 2744) in paragraph at lines 36--43
- \TU/lmr/m/n/9 Zhang, Kazuo Nakamura, Hitoshi Sumiya, Takeshi
- []
-
-) [5] (./Low_field_CR.aux) ) 
+No file Low_field_CR_SI.bbl.
+[2] (./Low_field_CR_SI.aux) ) 
 Here is how much of TeX's memory you used:
- 5915 strings out of 479819
- 86347 string characters out of 5895846
- 365475 words of memory out of 5000000
- 22963 multiletter control sequences out of 15000+600000
- 541814 words of font info for 68 fonts, out of 8000000 for 9000
+ 5842 strings out of 479819
+ 84427 string characters out of 5895846
+ 346493 words of memory out of 5000000
+ 22906 multiletter control sequences out of 15000+600000
+ 542285 words of font info for 68 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 43i,10n,58p,1062b,366s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,6n,42p,355b,167s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Low_field_CR.pdf (5 pages).
+Output written on Low_field_CR_SI.pdf (2 pages).

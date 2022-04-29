@@ -4,6 +4,8 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
 
 #les x et y sont inversés pour cette série
 fnames=glob.glob('*.csv')
@@ -47,13 +49,13 @@ taus=taus[:nmax]
 
 x=deltaF
 y=1/taus
-plt.plot(x,y,'o',markerfacecolor='none')
+plt.plot(x,y,'o',markerfacecolor='none',ms=5,mew=0.7)
 popt,yfit=lor_fit_fixed(x,y,x0=0,sigma=8)
 print(popt)
-plt.plot(x,yfit)
+plt.plot(x,yfit,lw=2)
 
 gammaref=32.7
-plt.plot(deltaF,[gammaref]*nmax,'--')
+plt.plot(deltaF,[gammaref]*nmax,'--',lw=2)
 ax=plt.gca()
 ylims=ax.get_ylim()
 ax.set_ylim([0,ylims[1]])
