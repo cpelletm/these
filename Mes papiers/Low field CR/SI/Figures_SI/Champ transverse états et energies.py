@@ -62,7 +62,7 @@ def plot_NRJ():
 	ax2.tick_params(labelsize=12)
 	plt.show()
 
-plot_NRJ()
+# plot_NRJ()
 
 # H=NVHamiltonian(B=[120,0,0],c=5)
 # E=H.egval()

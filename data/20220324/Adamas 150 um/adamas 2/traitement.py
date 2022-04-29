@@ -4,7 +4,7 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-scale=1
+scale=2
 plt.figure(num=1,figsize=(3*scale,2*scale),dpi=80)
 plt.xticks(fontsize=10+1.5*scale)
 plt.yticks(fontsize=10+1.5*scale)
@@ -43,11 +43,16 @@ def plot_T1__fit_main_text():
 	plt.plot(x,yfit,lw=2,color=color(1))
 	plt.legend()
 
-plot_T1__fit_main_text()
+# plot_T1__fit_main_text()
+
+#~~~~RQ : normaliser les fits des T1 n'a pas de sense tant que je ne connais pas la vraie valeur en t=0
+#En plus y'a des p-e des blagues de tdv de l'état metastable pour les temps très courts, à voir si ça se soutrait correctement
+#Y'a aussi le fait que je suis obligé d'attendre plus longtemps que le pulse uW, sinon ça fausse le truc (genre tu peux avoir du spin lockin ou chais pas)
 
 def plot_T1_fit(i=104):
 	fnames,fval=extract_glob('T1 1x1x1x1/T1')
 	x,y=extract_data(fnames[i],ycol=5)
+	# x=x-x[0]
 	y=y/max(y)
 	x=x*1e3
 	
@@ -57,13 +62,14 @@ def plot_T1_fit(i=104):
 	# plt.plot(x,yfit)
 	T1ph=0.003626*1e3
 	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=8,color=color(0),label='Experimental data')
-	popt,yfit=stretch_exp_fit_zero(x,y)
+	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
 	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
-	popt,yfit=exp_fit_zero(x,y)
+	popt,yfit=exp_fit_zero(x,y,norm=False)
 	plt.plot(x,yfit,'-.',lw=2,color=color(2),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} )$')
 	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	# plt.plot(x,yfit,lw=2,color=color(1),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
 	plt.legend(fontsize=13)
+
 # plot_T1_fit(i=104)
 
 def plot_T1_fit_avg():
@@ -76,9 +82,9 @@ def plot_T1_fit_avg():
 	y=y/max(y)
 	T1ph=0.003626*1e3
 	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=8,color=color(0),label='Experimental data')
-	popt,yfit=stretch_exp_fit_zero(x,y)
+	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
 	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
-	popt,yfit=exp_fit_zero(x,y)
+	popt,yfit=exp_fit_zero(x,y,norm=False)
 	plt.plot(x,yfit,'-.',lw=2,color=color(2),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} )$')
 	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	# plt.plot(x,yfit,lw=2,color=color(1),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
