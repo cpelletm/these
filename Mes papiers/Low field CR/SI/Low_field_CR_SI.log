@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.1.25)  29 APR 2022 18:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  6 MAY 2022 18:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -25,18 +25,18 @@ Class revtex4-2 Info: Repairing broken LaTeX eqnarray on input line 365.
 Class revtex4-2 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfoot
 note on input line 440.
 Class revtex4-2 Info: Repairing broken LateX \@sect on input line 762.
-\intertabularlinepenalty=\count163
-\@tbpen=\count164
+\intertabularlinepenalty=\count167
+\@tbpen=\count168
 \@arstrutbox@hline=\box45
 Class revtex4-2 Info: Repairing broken LaTeX \@xbitor on input line 1793.
 Class revtex4-2 Info: Making \typeout \long on input line 2053.
 ltxfront[2019/01/18/14:29:48 4.2c frontmatter package (AO,DPC,MD)]
-\c@affil=\count165
-\c@collab=\count166
+\c@affil=\count169
+\c@collab=\count170
 \absbox=\box46
 ltxgrid[2019/01/18/14:29:48 4.2c page grid package (portions licensed from W. E
 . Baxter web at superscript.com)]
-\c@linecount=\count167
+\c@linecount=\count171
 \output@latex=\toks14
 \box@size@1=\box47
 \box@size@2=\box48
@@ -47,24 +47,24 @@ ltxgrid[2019/01/18/14:29:48 4.2c page grid package (portions licensed from W. E
 \column@recovered=\box52
 \pagesofar=\box53
 \footsofar=\box54
-\pagegrid@col=\count168
+\pagegrid@col=\count172
 
 Class revtex4-2 Warning: Failed to recognize \@vspace, \@vspacer, \@no@pgbk, \@
 newline, and \\; no patches applied. Please get a more up-to-date class, .
 
-\c@part=\count169
-\c@section=\count170
-\c@subsection=\count171
-\c@subsubsection=\count172
-\c@paragraph=\count173
-\c@subparagraph=\count174
+\c@part=\count173
+\c@section=\count174
+\c@subsection=\count175
+\c@subsubsection=\count176
+\c@paragraph=\count177
+\c@subparagraph=\count178
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
-\c@figure=\count175
+\c@figure=\count179
 \fbox@1=\box55
-\c@table=\count176
+\c@table=\count180
 \fbox@2=\box56
-\c@video=\count177
+\c@video=\count181
 \fbox@4=\box57
 \@bibdataout=\write3
 \widetext@top=\box58
@@ -123,13 +123,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count178
+\inf@bad=\count182
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count179
-\leftroot@=\count180
+\uproot@=\count183
+\leftroot@=\count184
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count181
-\DOTSCASE@=\count182
+\classnum@=\count185
+\DOTSCASE@=\count186
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
@@ -138,15 +138,15 @@ LaTeX Info: Redefining \cdots on input line 610.
 \big@size=\dimen136
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count183
-\c@MaxMatrixCols=\count184
+\macc@depth=\count187
+\c@MaxMatrixCols=\count188
 \dotsspace@=\muskip16
-\c@parentequation=\count185
-\dspbrk@lvl=\count186
+\c@parentequation=\count189
+\dspbrk@lvl=\count190
 \tag@help=\toks18
-\row@=\count187
-\column@=\count188
-\maxfields@=\count189
+\row@=\count191
+\column@=\count192
+\maxfields@=\count193
 \andhelp@=\toks19
 \eqnshift@=\dimen137
 \alignsep@=\dimen138
@@ -170,7 +170,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip53
 \bibsep=\skip54
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count190
+\c@NAT@ctr=\count194
 )
 Class revtex4-2 Info: Repairing natbib's \BibitemShut on input line 7588.
 
@@ -197,10 +197,10 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: xetex.def on input line 105.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen143
 \Gin@req@width=\dimen144
@@ -233,18 +233,16 @@ Package: physics
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2020-02-14 L3 programming layer (loader) 
 
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xdvipdfmx.def
-File: l3backend-xdvipdfmx.def 2020-02-03 L3 backend support: xdvipdfmx
-\g__graphics_track_int=\count191
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count195
 \l__pdf_internal_box=\box64
-\g__pdf_backend_object_int=\count192
-\g__pdf_backend_annotation_int=\count193
 ))
 Package: xparse 2020-02-14 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count194
-\g__xparse_grabber_int=\count195
-\l__xparse_m_args_int=\count196
-\l__xparse_v_nesting_int=\count197
+\l__xparse_current_arg_int=\count196
+\g__xparse_grabber_int=\count197
+\l__xparse_m_args_int=\count198
+\l__xparse_v_nesting_int=\count199
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
@@ -268,17 +266,17 @@ lushing \let \footnote \@footnotemark@gobble \@make@capt@title {#1}{#2}\par \en
 dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
  }}\endgroup \vskip \belowcaptionskip  on input line 1082.
 )
-\c@KVtest=\count198
+\c@KVtest=\count266
 \sf@farskip=\skip57
 \sf@captopadj=\dimen154
 \sf@capskip=\skip58
 \sf@nearskip=\skip59
-\c@subfigure=\count199
-\c@subfigure@save=\count266
-\c@lofdepth=\count267
-\c@subtable=\count268
-\c@subtable@save=\count269
-\c@lotdepth=\count270
+\c@subfigure=\count267
+\c@subfigure@save=\count268
+\c@lofdepth=\count269
+\c@subtable=\count270
+\c@subtable@save=\count271
+\c@lotdepth=\count272
 \sf@top=\skip60
 \sf@bottom=\skip61
 )
@@ -300,18 +298,34 @@ LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-6.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count273
+\scratchdimen=\dimen155
+\scratchbox=\box65
+\nofMPsegments=\count274
+\nofMParguments=\count275
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count276
+\MPscratchDim=\dimen156
+\MPnumerator=\count277
+\makeMPintoPDFobject=\count278
+\everyMPtoPDFconversion=\toks25
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -337,25 +351,86 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `Low_field_CR_SI.toc'.
 
-File: Figures_SI/Fig_T1_0B.pdf Graphic file (type pdf)
-<use Figures_SI/Fig_T1_0B.pdf>
-File: Figures_SI/Fig_T1_1x1x1x1.pdf Graphic file (type pdf)
-<use Figures_SI/Fig_T1_1x1x1x1.pdf>
+<Figures_SI/fig_ESR.pdf, id=1, 646.5216pt x 240.22734pt>
+File: Figures_SI/fig_ESR.pdf Graphic file (type pdf)
+<use Figures_SI/fig_ESR.pdf>
+Package pdftex.def Info: Figures_SI/fig_ESR.pdf  used on input line 32.
+(pdftex.def)             Requested size: 421.19714pt x 156.50514pt.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[2 <./Figures_SI/fig_ESR.pdf>]
+<Figures_SI/map_etats_propres.png, id=36, 252.19218pt x 165.99516pt>
+File: Figures_SI/map_etats_propres.png Graphic file (type png)
+<use Figures_SI/map_etats_propres.png>
+Package pdftex.def Info: Figures_SI/map_etats_propres.png  used on input line 5
+2.
+(pdftex.def)             Requested size: 327.59857pt x 215.63158pt.
+<Figures_SI/shema_exp.pdf, id=38, 515.59361pt x 358.40292pt>
+File: Figures_SI/shema_exp.pdf Graphic file (type pdf)
+<use Figures_SI/shema_exp.pdf>
+Package pdftex.def Info: Figures_SI/shema_exp.pdf  used on input line 62.
+(pdftex.def)             Requested size: 327.59857pt x 227.73097pt.
+ [3 <./Figures_SI/map_etats_propres.png>]
+[4 <./Figures_SI/shema_exp.pdf>]
+<Figures_SI/Fig_T1_combined.pdf, id=82, 564.62616pt x 821.63518pt>
+File: Figures_SI/Fig_T1_combined.pdf Graphic file (type pdf)
+<use Figures_SI/Fig_T1_combined.pdf>
+Package pdftex.def Info: Figures_SI/Fig_T1_combined.pdf  used on input line 88.
+
+(pdftex.def)             Requested size: 374.40143pt x 544.85101pt.
+<Figures_SI/fig_alphas.pdf, id=83, 421.16327pt x 270.67984pt>
 File: Figures_SI/fig_alphas.pdf Graphic file (type pdf)
 <use Figures_SI/fig_alphas.pdf>
- [1]
+Package pdftex.def Info: Figures_SI/fig_alphas.pdf  used on input line 93.
+(pdftex.def)             Requested size: 210.59857pt x 135.35197pt.
+<Figures_SI/largeur_fluct_SI.pdf, id=84, 542.38904pt x 531.76376pt>
+File: Figures_SI/largeur_fluct_SI.pdf Graphic file (type pdf)
+<use Figures_SI/largeur_fluct_SI.pdf>
+Package pdftex.def Info: Figures_SI/largeur_fluct_SI.pdf  used on input line 99
+.
+(pdftex.def)             Requested size: 327.59857pt x 321.18658pt.
+ [5] [6 <./Figures_SI/Fig_T1_combined.pdf>]
+<Figures_SI/overlap.pdf, id=124, 435.72276pt x 300.23645pt>
+File: Figures_SI/overlap.pdf Graphic file (type pdf)
+<use Figures_SI/overlap.pdf>
+Package pdftex.def Info: Figures_SI/overlap.pdf  used on input line 114.
+(pdftex.def)             Requested size: 327.59857pt x 225.73111pt.
+
+[7 <./Figures_SI/fig_alphas.pdf>] [8 <./Figures_SI/largeur_fluct_SI.pdf>]
+<Figures_SI/fig_Pola.pdf, id=177, 827.35681pt x 297.31349pt>
 File: Figures_SI/fig_Pola.pdf Graphic file (type pdf)
 <use Figures_SI/fig_Pola.pdf>
- [2] [3]
-No file Low_field_CR_SI.bbl.
-[4] [5] (./Low_field_CR_SI.aux) ) 
-Here is how much of TeX's memory you used:
- 5878 strings out of 479819
- 85252 string characters out of 5895846
- 347493 words of memory out of 5000000
- 22936 multiletter control sequences out of 15000+600000
- 542285 words of font info for 68 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 43i,6n,58p,355b,355s stack positions out of 5000i,500n,10000p,200000b,80000s
+Package pdftex.def Info: Figures_SI/fig_Pola.pdf  used on input line 145.
+(pdftex.def)             Requested size: 421.19714pt x 151.3602pt.
 
-Output written on Low_field_CR_SI.pdf (5 pages).
+[9 <./Figures_SI/overlap.pdf>] (./Low_field_CR_SI.bbl [10 <./Figures_SI/fig_Pol
+a.pdf>]) [11] (./Low_field_CR_SI.aux) ) 
+Here is how much of TeX's memory you used:
+ 6250 strings out of 481239
+ 89931 string characters out of 5920377
+ 347102 words of memory out of 5000000
+ 21445 multiletter control sequences out of 15000+600000
+ 544109 words of font info for 66 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 43i,11n,58p,805b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-sup
+er/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on Low_field_CR_SI.pdf (11 pages, 733295 bytes).
+PDF statistics:
+ 310 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -51,6 +51,7 @@ E2=popt[0]*x+popt[1]
 
 
 fnames,fval=extract_glob('T1')
+print(fnames)
 n=len(fnames)
 taus=np.zeros(n)
 for i in range(n):

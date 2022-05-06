@@ -79,7 +79,8 @@ def plot_map_etats():
 		for j in range(n):
 			B=Bs[i]
 			theta=thetas[j]*pi/180
-			H=NVHamiltonian(B=[B*sin(theta),0,B*cos(theta)],c=5)
+			phi=90*pi/180
+			H=NVHamiltonian(B=[B*sin(theta)*cos(phi),B*sin(phi),B*cos(theta)],c=5)
 			E=H.egval()
 			V=H.egvect()
 			if theta < pi/2 :
@@ -93,3 +94,10 @@ def plot_map_etats():
 			data[i,j]=t
 
 	print_map_2(data,Bs,thetas)
+
+# plot_map_etats()
+
+B=[0,10,0]
+H=NVHamiltonian(B=B,c=5,E=4)
+V=H.egvect()
+print(V)

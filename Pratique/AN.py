@@ -1,5 +1,6 @@
-from math import *
 import numpy as np
+from numpy import cos, sin, tan, pi, arccos, arcsin, sqrt, exp
+import matplotlib.pyplot as plt
 
 kb=1.38E-23
 Na=6.02e23
@@ -14,7 +15,7 @@ P=1e5
 T=300
 eV=1.6E-19
 # print('%e'%(kb*T/h))
-# Theta_NV=acos(-1/3)
+# Theta_NV=arccos(-1/3)
 # print(Theta_NV*180/pi)
 
 
@@ -37,5 +38,5 @@ def couplage_NV():
 
 # couplage_NV()
 
-print(1.5*sqrt(0.003))
+
 

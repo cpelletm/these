@@ -903,6 +903,14 @@ def find_local_max(x,y,x0):
 		i-=1
 	return i
 
+def integration(x,y):
+	dx=x[1]-x[0]
+	s=(y[0]+y[-1])/2
+	for i in range(1,len(y)-1):
+		s+=y[i]
+	s=s*dx
+	return(s)
+
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
 	data=[]

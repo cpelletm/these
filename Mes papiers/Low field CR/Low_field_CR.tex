@@ -69,7 +69,7 @@ In order to get comparable fitting parameters between each measurement, we decid
 \label{largeur_fluct}
 \end{figure}
 
-Fig. \ref{largeur_fluct} illustrates how we can use the NV center geometry to tune the resonant dipolar-coupling between the spins. Because of the diamond symmetry, we can distinguish 4 groups ("classes") of identical NV centers, based on the four possible orientation of the NV axis in the crystal. These four classes have \textit{a priori} different spin resonance frequency based on the projection of the magnetic field on their respective NV axis. By tuning the angle of the magnetic field, we can therefore control the frequency detuning between the different classes, and as a result we can control the number of resonant NV centers by bringing in and out of resonance several classes.
+Fig. \ref{largeur_fluct} illustrates how we can use the NV center geometry to tune the resonant dipolar-coupling between the spins. Because of the diamond symmetry, we can distinguish 4 groups ("classes") of NV centers, based on the four possible orientation of the NV axis in the crystal. These four classes have \textit{a priori} different spin resonance frequency based on the projection of the magnetic field on their respective NV axis. By tuning the angle of the magnetic field, we can therefore control the frequency detuning between the different classes, and as a result we can control the number of resonant NV centers by bringing in and out of resonance several classes.
 
 Fig. \ref{largeur_fluct} (c) in particular shows the dipole-induced lifetime $T_1^{\rm dd}$ for a given class as a function of the energy detuning with another class. One can notice that the width of the $T_1^{\rm dd}$ bell shape is significantly larger than that of the frequency overlap between the two classes, modeled here by an ODMR line stretched by a factor $\sqrt{2}$ (see SI). This extra width can not be attributed to the dipole-dipole coupling strength : for a 3 ppm concentration of NV$^-$ centers, the average coupling strength between neighboring NV centers should be $\sim 27\ \rm kHz$, two order of magnitude below the observed width. We can also see that $T_1^{\rm dd}$ follows a Lorentzian shape despite the ODMR lines being non-Lorentzian. These two observations corroborate the idea developed in \cite{choi_depolarization_2017} that the interaction width is dominated by the noise spectrum of the lifetime-limited fluctuators.
 
@@ -86,7 +86,7 @@ We attribute the remaining depolarization to two phenomena : the change of basis
 
 The decrease of spin lifetime and the associated drop in PL for $B\approx 20\ \rm G$ is due to cross-relaxations between NV $^-$ centers with a $^{13}$C as first a neighbor, and those without \cite{pellet2021optical}.
 
-The dipole-dipole interaction Hamiltonian between two spins ${\vec S}_1$ and ${\vec S}_2$reads :
+The dipole-dipole interaction Hamiltonian between two spins ${\vec S}_1$ and ${\vec S}_2$ reads :
 \begin{equation}
 \mathcal{H}^{\rm dd}= -\frac{J_0}{r^3}\left(3\left({\vec S}_1 \cdot \vec u \right)\left({\vec S}_2 \cdot \vec u \right) - {\vec S}_1 \cdot {\vec S}_2  \right),
 \end{equation}
@@ -106,7 +106,7 @@ Second is the near-resonance condition of the double-flip processes such as $\me
 \label{calculs_B_transverse}
 \end{figure}
 
-In order to evaluate the relative contribution of these two factors, we investigate the spin relaxation in the case of pure transverse magnetic field. Calling $\{ \ket{g}, \ket{d}, \ket{e} \}$ the three eigenstates of the spin Hamiltonian in the presence of purely transverse magnetic field, Fig. \ref{calculs_B_transverse} shows that for small enough magnetic field, the $\{ \ket{g}, \ket{d}, \ket{e} \}$ basis is almost equal to the $\{ \ket{0},\ket{+},\ket{-} \} $ basis : for $B=120\ \rm G$, $\braket{0}{g}\approx 0.99$, $\braket{-1}{d}=1$ and $\braket{+1}{e}\approx 0.99$. However the energy difference between $\ket{d}$ and $\ket{e}$ reaches $\approx 45\ \rm G$ which is high enough to cancel out the double-flip processes and allows us to isolate the change of basis hypothesis from the double-flip one.
+In order to evaluate the relative contribution of these two factors, we investigate the spin relaxation in the case of pure transverse magnetic field. Calling $\{ \ket{g}, \ket{d}, \ket{e} \}$ the three eigenstates of the spin Hamiltonian in the presence of purely transverse magnetic field, Fig. \ref{calculs_B_transverse} shows that for small enough magnetic field, the $\{ \ket{g}, \ket{d}, \ket{e} \}$ basis is almost equal to the $\{ \ket{0},\ket{+},\ket{-} \} $ basis : for $B=120\ \rm G$, $\braket{0}{g}\approx 0.99$, $\braket{-}{d}=1$ and $\braket{+}{e}\approx 0.99$. However the energy difference between $\ket{d}$ and $\ket{e}$ reaches $\approx 45\ \rm G$ which is high enough to cancel out the double-flip processes and allows us to isolate the change of basis hypothesis from the double-flip one.
 %As shown in Fig. SOON, (and in SI), the $\{ \ket{0},\ket{+},\ket{-} \} $ basis correspond to the spin Hamiltonian eigenstates in two situations : either in zero magnetic field when the electric field dominates, or when the magnetic field is purely transverse, as long as it remains small before the zero-field splitting. %(rq : est-ce que je dois mettre le hamiltonien de spin dans le main text du coup ?).
 
 \begin{figure}

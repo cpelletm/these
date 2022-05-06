@@ -5,7 +5,7 @@ from analyse import *
 
 # Pour la figure en fonction du décalage en fréquence, voir le traitement.py dans T1/
 
-scale=1
+scale=1.5
 plt.figure(num=1,figsize=(3*scale,2*scale),dpi=80)
 plt.xticks(fontsize=10+1.5*scale)
 plt.yticks(fontsize=10+1.5*scale)
@@ -68,7 +68,7 @@ def plot_ESR_freqs():
 	plt.plot(Bs[:nmax],fms[:nmax],lw=2)
 	plt.plot(Bs[:nmax],fps[:nmax],lw=2)
 
-plot_ESR_freqs()
+# plot_ESR_freqs()
 
 
 def plot_T1_raw():
@@ -100,5 +100,19 @@ def fit_T1_1classe():
 	print(popt,1/popt[1])
 
 
+def plot_ESR_0B():
+	x,y=extract_data('ESR 0B -20 et -30 dB',ycol=5)
+	plt.plot(x,y)
+
+def plot_ESR_1x4():
+	x,y=extract_data('ESR/V=5.000000 V')
+	nmin=300
+	nmax=450
+	plt.plot(x[nmin:nmax],y[nmin:nmax])
+	# popt,yfit=gauss_fit(x[nmin:nmax],y[nmin:nmax])
+	# plt.plot(x[nmin:nmax],yfit)
+	# plt.plot(y)
+
+plot_ESR_1x4()
 
 plt.show()

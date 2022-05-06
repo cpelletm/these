@@ -78,22 +78,29 @@ ax1=plt.gca()
 
 x=(E1-E2)[nbeg:]
 y=1/taus[nbeg:]
-ax1.plot(x,y,'o',markerfacecolor='none',label='1/T1')
+ax1.plot(x,y,'o',markerfacecolor='none',label=r'Experiment')
 popt,yfit=lor_fit(x,y)
-plt.plot(x,yfit,lw=2,label='Lor fit HWHM=%.3f MHz'%popt[2])
+plt.plot(x,yfit,lw=2,label='Lorentzian fit'%popt[2])
 
 ax2=ax1.twinx()
 x,y=extract_data('ESR 1 classe pas loin 111')
 y=y/max(y)
+c=hist_mean(x,y)
 x=x-2740
+ax2.plot(x,y,'--',color=color(2),label=r'ESR line',mew=0.5,ms=3)
 x=x*sqrt(2)
-ax2.plot(x,y,'--',color=color(2),label=r'ESR line$\times \sqrt{2}$',mew=0.5,ms=3)
+ax2.plot(x,y,'--',color=color(3),label=r'ESR line$\times \sqrt{2}$',mew=0.5,ms=3)
+x=x*sqrt(2)
+n=len(x)
+x=x[n//5:n-n//5]
+y=y[n//5:n-n//5]
+ax2.plot(x,y,'--',color=color(4),label=r'ESR line$\times 2$',mew=0.5,ms=3)
 
 ax2.tick_params(labelsize=12)
 
 
 
-# ax1.legend(loc=2)
-# ax2.legend()
+ax1.legend(loc=2)
+ax2.legend()
 plt.show()
 
