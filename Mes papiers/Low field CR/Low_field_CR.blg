@@ -4,44 +4,44 @@ The top-level auxiliary file: Low_field_CR.aux
 The style file: plain.bst
 Database file #1: Low_field_CRNotes.bib
 Database file #2: CR.bib
-You've used 5 entries,
+You've used 7 entries,
             2118 wiz_defined-function locations,
-            538 strings with 5605 characters,
-and the built_in function-call counts, 2730 in all, are:
-= -- 229
-> -- 245
+            554 strings with 6081 characters,
+and the built_in function-call counts, 3587 in all, are:
+= -- 313
+> -- 296
 < -- 0
-+ -- 97
-- -- 92
-* -- 277
-:= -- 497
-add.period$ -- 18
-call.type$ -- 5
-change.case$ -- 60
++ -- 117
+- -- 110
+* -- 355
+:= -- 641
+add.period$ -- 24
+call.type$ -- 7
+change.case$ -- 75
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 55
-empty$ -- 132
-format.name$ -- 92
-if$ -- 509
+cite$ -- 7
+duplicate$ -- 77
+empty$ -- 190
+format.name$ -- 110
+if$ -- 678
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 5
-newline$ -- 31
-num.names$ -- 10
-pop$ -- 47
+int.to.str$ -- 7
+missing$ -- 7
+newline$ -- 41
+num.names$ -- 14
+pop$ -- 58
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 68
 quote$ -- 0
-skip$ -- 36
+skip$ -- 50
 stack$ -- 0
-substring$ -- 118
-swap$ -- 5
+substring$ -- 190
+swap$ -- 7
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 28
 warning$ -- 0
-while$ -- 15
-width$ -- 6
-write$ -- 63
+while$ -- 23
+width$ -- 8
+write$ -- 85

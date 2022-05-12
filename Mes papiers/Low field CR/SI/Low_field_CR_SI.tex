@@ -33,24 +33,25 @@
 \caption{ODMR measurement (a) in zero magnetic field, (b) in non-zero magnetic field when zooming on a single class transition}
 \label{ESR_single_spin}
 \end{figure}
-With zero external magnetic field, there are three possible sources of splitting of the $\{\ket{+1},\ket{-1}\}$ manifold : local electric field, crystal strain and local magnetic field.Of these three causes, only the electric field can explain the shape of the ODMR line that we observe in zero external magnetic field (Fig. \ref{ESR_single_spin}a) \cite{mittiga2018imaging}.
+With zero external magnetic field, there are three possible sources of splitting of the $\{\ket{+1},\ket{-1}\}$ manifold : local electric field, crystal strain and local magnetic field. Of these three causes, only the electric field can explain the shape of the ODMR line that we observe in zero external magnetic field (Fig. \ref{ESR_single_spin}a) \cite{mittiga2018imaging}.
 
-Indeed, a random local magnetic field would produce a single broadened line, and the crystal strain would produce a shifting of the zero field splitting (ZFS) comparable its splitting, which would also blur the two transitions into a single line. On the other hand, due to the large difference between the longitudinal and transverse electric field susceptibilities ($d_\parallel = 0.35\ \rm Hz\, cm/V$ and $d_\perp = 17\ \rm Hz\, cm/V$ \cite{van1990electric}), random local electric field will, on average, cause a splitting much stronger than its ZFS shifting and result in a two peak spectrum.
+Indeed, random local magnetic field would produce a single broadened line, and crystal strain would produce a shifting of the zero field splitting (ZFS) comparable its splitting, which would also blur the two transitions into a single line. On the other hand, due to the large difference between the longitudinal and transverse electric field susceptibilities ($d_\parallel = 0.35\ \rm Hz\, cm/V$ and $d_\perp = 17\ \rm Hz\, cm/V$ \cite{van1990electric}), random local electric field will, on average, cause a splitting much stronger than its ZFS shifting and result in a two peak spectrum.
 
-We will therefore neglect the contribution of the strain, local magnetic field and longitudinal electric field,  as well as the hyper-fine structure of the NV center because of the large inhomogeneous broadening of the transitions (Fig. \ref{ESR_single_spin}b) and we will consider the following spin Hamiltonian for the NV$^-$ ground state :
+In our low magnetic field dipole-dipole coupling model, we will therefore neglect the contribution of the strain, local magnetic field and longitudinal electric field.  We also don't take into account the hyper-fine structure of the NV center due of the large inhomogeneous broadening of the transitions (Fig. \ref{ESR_single_spin}b).
+We will then consider the following spin Hamiltonian for the NV$^-$ ground state : 
 \begin{equation}
 \mathcal{H}_s=D S_z^2 + \gamma_e \vec{B}_{\rm ext} \cdot \vec{S}+ d_\perp \left[ E_x(S_y^2-S_x^2) + E_y(S_xS_y+S_yS_x) \right]
 \end{equation}
 Where $D=2.87\ \rm GHz$ is the zero field splitting and $\gamma_e=2.8\ \rm MHz/G$ the gyromagnetic ratio of the electron.
 
-In the absence of an external magnetic field, the symmetry in the ($xy$) plane allows us to chose the $x$ direction along the electric field, therefore the eigenstates of $\mathcal{H}_s$ become $\{ \ket{0},\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}},\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}} \} $.
+In the absence of an external magnetic field, the symmetry in the ($xy$) plane allows us to chose the $x$ direction along the electric field. The eigenstates of $\mathcal{H}_s$ then become $\{ \ket{0},\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}},\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}} \} $.
 
 In the presence of non-zero magnetic field, let us call the Hamiltonian eigenstates $\{ \ket{g},\ket{d}, \ket{e} \} $. Fig. \ref{map etats propres} shows how close the $\ket{e}$ state is to the $\ket{+1}$ and $\ket{+}$ states as a function of the external magnetic field. Looking at the closeness of $\ket{d}$ to $\ket{-1}$ and $\ket{-}$ would show similar results, while $\ket{g}$ is pretty much equals to $\ket{0}$ for $B<100\ \rm G$.
 
 This tells us that in most cases, the $\{ \ket{0},\ket{+},\ket{-} \}$ basis is only the good Hamiltonian basis for magnetic field smaller than a few Gauss, except in the case of pure transverse magnetic field where the $\{ \ket{0},\ket{+},\ket{-} \}$ basis remains a good basis even for sizable magnetic fields.
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{Figures_SI/map_etats_propres}
-\caption{Closeness of the Hamiltonian most excited state $\ket{e}$ with the states $\ket{+1}$ and $\ket{+}$ as a function of the magnetic field amplitude and angle $\theta$ with respect to the NV axis.}
+\caption{Numerical simulations of the closeness of the Hamiltonian most excited state $\ket{e}$ with the states $\ket{+1}$ and $\ket{+}$, as a function of the magnetic field amplitude and angle $\theta$ with respect to the NV axis.}
 \label{map etats propres}
 \end{figure}
 
@@ -78,10 +79,10 @@ A lock-in amplifier is used either to modulate the microwave amplitude for ODMR 
 \subsection{$T_1$ fitting Protocol}
 The $T_1$ profile that we observe with our samples is neither purely exponential, nor purely stretched exponential, which is to be expected when the dipole-dipole spin decay is comparable to the phonon decay.
 
-Fig. \ref{T1_fits} shows the result of a lifetime measurement, measured with the subtraction protocol described in the main text, for zero and non-zero magnetic field. The result is fitted with exponential and stretched-exponential (with a stretch factor $\beta=0.5$) functions. We can see that for the shorter lifetime (0B), the measurement follows more closely the stretched-exponential profile, while the longer lifetime is closer to the exponential one (except at very short times).
+Fig. \ref{T1_fits} shows the result of a lifetime measurement, measured with the subtraction protocol described in the main text, for zero and non-zero magnetic field. The result is fitted with exponential and stretched-exponential (with a stretch factor $\beta=0.5$) functions. We can see that for the shorter lifetime (zero field), the measurement follows more closely the stretched-exponential profile, while the longer lifetime is closer to the exponential one (except at very short times).
 
 In order to directly compare the results from different magnetic fields, we therefore decided to fit each $T_1$ measurement with both a stretched and exponential decay : $S(\tau)=A \exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$.
-In order to add consistency to the measurement of $T_1^{\rm dd}$, we decided to fix $T_1^{\rm ph}$ for each sample, leaving $T_1^{\rm dd}$ as the only free parameter in the fitting procedure. The value chosen for samples [REF] and [REF] was $T_1^{\rm ph}=3.62\ \rm ms$. Fig. 1 of the main text shows the result of fitting the same two measurement with this formula.
+To add consistency to the measurement of $T_1^{\rm dd}$, we decided to fix $T_1^{\rm ph}$ for each sample, leaving $T_1^{\rm dd}$ and the signal amplitude as the only free parameters in the fitting procedure. The value chosen for samples [REF] and [REF] was $T_1^{\rm ph}=3.62\ \rm ms$. Fig. 1 of the main text shows the result of fitting the same two measurement with this formula.
 
 An other possibility would be to use an arbitrary stretched factor in the fitting function : $S(\tau)=A \exp (-(\frac{\tau}{T_1^{\rm ph}})^\beta )$. Fig. \ref{alphas} shows the optimal $\beta$ parameter as a function of the external magnetic field, which confirms that the $T_1$ profile gets closer to a pure stretched-exponential in zero magnetic field.
 \begin{figure}
@@ -108,7 +109,7 @@ In order to verify this claim, we have to measure the spectral overlap between t
 
 Fig. \ref{largeur_fluct} shows the results of such an experiment where we measured the stretched part of the NV's decay rate, which is very well fitted by a Lorentzian of width $\sigma=8.04 MHz$, and compare it to an ODMR line of a single class of NV centers, stretched by a factor of $\sqrt{2}$ and 2 to simulate the spectral overlap of the two classes (discussed bellow). One should notice that, not only is $1/T_1^{\rm dd}$ significantly larger than the ODMR profile, it also doesn't have the same shape. 
 
-We should not that this broadening can not be explained by the dipole-dipole interaction strength : for a sample with 3 ppm of NV centers, the average dipole-dipole interaction strength between two nearest NV centers $J_0/r^3 \sim 27\ \rm kHz$ which is several order of magnitude lower than the broadening we observe. 
+We should note that this broadening can not be explained by the dipole-dipole interaction strength : for a sample with 3 ppm of NV centers, the average dipole-dipole interaction strength between two nearest NV centers $J_0/r^3 \sim 27\ \rm kHz$ which is several order of magnitude lower than the broadening we observe. 
 
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{Figures_SI/overlap}
@@ -141,6 +142,11 @@ The ODMR lines that we measure are neither Lorentzian nor Gaussian (although the
 
 \section{Les détails qui tuent}
 \subsection{Effect of laser polarization}
+Previous studies \cite{anishchik2015low, filimonenko2020weak} reported the presence of a photoluminescence dip in zero magnetic field which was heavily dependent on the laser polarization angle with respect to the diamond axes and the magnetic field. 
+
+We did not observe a strong dependence on the laser polarization with the samples used in this study. Fig.\ref{Pola} shows the photoluminescence from one of our sample as a function of the magnetic field, either directly or with a modulation of the magnetic field, for 6 randomly chosen polarization angle and saw no major difference. 
+
+In particular, we did not observe the apparition of an anti-line inside the main dip, unlike what was observed in the two previously cited work. We expect that the main reason behind the different behaviors is that we seem to observe far grater spin depolarization in zero-field, which we attribute to dipole-dipole coupling, and that this effect could hide smaller effects such as the one related to the laser polarization.
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{Figures_SI/fig_Pola}
 \caption{Effect of the polarization of the incident laser. (a) Photoluminescence as a function of randomly oriented magnetic field amplitude for various polarization angle. (b) Demodulated PL in the same conditions}
@@ -148,7 +154,27 @@ The ODMR lines that we measure are neither Lorentzian nor Gaussian (although the
 \end{figure}
 \subsection{Alignment of B}
 La faudrait p-e montrer ce qu'il se passe pour un décalage de quelques degrés. A voir si j'ai déja les plots
-\section{Fluctuator et tout}
+\section{Extension of the fluctuator model to low magnetic fields}
+\subsection{Summary of the NV-fluctuator model}
+As mentioned in the main text, we base our analysis on the NV-fluctuator model developed in \cite{choi_depolarization_2017} whose main hypothesis and conclusions we will summarize here :
+
+The NV$^-$ centers in the crystal are divided between two categories : "normal" NV centers (simply called NV) which, in the absence of dipole-dipole coupling would have a phonon-limited $T_1$ ($T_1^{NV} \sim\ \rm ms$), and fluctuators who are NV centers with an additional, fast, depolarization mechanism, such that their lifetime $T_1^f < 100\ \rm ns$. Having such a short lifetime, the fluctuators are pretty much unpolarized by the green laser, making them invisible in standard optical NV measurement protocol ($T_1$, ODMR, etc.). 
+
+Assuming a homogeneous distribution of the fluctuators in the bulk of the crystal, the authors conclude that the fluctuators create an additionnal decay channel for the NV population, through dipole-dipole interaction, characterized by a decay rate $\gamma$ which follows the probability distribution :
+\begin{equation}
+\rho(\gamma)=\frac{e^{-1/(4\gamma T)}}{\sqrt{4\pi \gamma^3 T}}
+\end{equation}
+Where the timescale $T$ is defined as
+\begin{equation}
+\frac{1}{T}=\left(\frac{4\pi n_fJ_0\bar \eta}{3}\right)^2 \frac{\pi}{\gamma_f}
+\end{equation}
+Where $n_f$ is the fluctuator density in the crystal in nm$^{-3}$, $J_0=52\ \rm{MHz}\cdot\rm{nm}^3$ is the characteristic dipole-dipole strength between two spins, $\gamma_f$ is the fluctuator intrinsic decay rate and $\bar \eta$ is a dimension-less number which characterizes the average dipole-dipole interaction between the NV centers and the fluctuators (resonance conditions, relative orientations etc. Further details are given below).
+
+The polarization dynamics of the averaged ensemble of NV centers then follows :
+\begin{equation}
+P(t)=\int_0^\infty \rho(\gamma)e^{-\gamma t}d\gamma= e^{-\sqrt{t/T}}
+\end{equation}
+\subsection{Dipole-Dipole Hamiltonian between two NV$^-$ centers}
 \subsection{121 VS 22}
 \subsection{100 vs 0B}
 
