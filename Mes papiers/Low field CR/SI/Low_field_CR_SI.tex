@@ -35,11 +35,12 @@
 \end{figure}
 With zero external magnetic field, there are three possible sources of splitting of the $\{\ket{+1},\ket{-1}\}$ manifold : local electric field, crystal strain and local magnetic field. Of these three causes, only the electric field can explain the shape of the ODMR line that we observe in zero external magnetic field (Fig. \ref{ESR_single_spin}a) \cite{mittiga2018imaging}.
 
-Indeed, random local magnetic field would produce a single broadened line, and crystal strain would produce a shifting of the zero field splitting (ZFS) comparable its splitting, which would also blur the two transitions into a single line. On the other hand, due to the large difference between the longitudinal and transverse electric field susceptibilities ($d_\parallel = 0.35\ \rm Hz\, cm/V$ and $d_\perp = 17\ \rm Hz\, cm/V$ \cite{van1990electric}), random local electric field will, on average, cause a splitting much stronger than its ZFS shifting and result in a two peak spectrum.
+Indeed, random local magnetic field would produce a single broadened line while crystal strain would produce a shifting of the zero field splitting (ZFS) of the same order as the splitting of the levels, which would also blur the two transitions into a single line. On the other hand, due to the large difference between the longitudinal and transverse electric field susceptibilities ($d_\parallel = 0.35\ \rm Hz\, cm/V$ and $d_\perp = 17\ \rm Hz\, cm/V$ \cite{van1990electric}), random local electric field will, on average, cause a splitting much stronger than its ZFS shifting and result in a two peak spectrum.
 
-In our low magnetic field dipole-dipole coupling model, we will therefore neglect the contribution of the strain, local magnetic field and longitudinal electric field.  We also don't take into account the hyper-fine structure of the NV center due of the large inhomogeneous broadening of the transitions (Fig. \ref{ESR_single_spin}b).
+In our low magnetic field dipole-dipole coupling model, we will therefore neglect the contribution of the strain, local magnetic field and longitudinal electric field.  We also don't take into account the hyper-fine structure of the NV center due to the large inhomogeneous broadening of the transitions (Fig. \ref{ESR_single_spin}b).
 We will then consider the following spin Hamiltonian for the NV$^-$ ground state : 
 \begin{equation}
+\label{NV Hamiltonian}
 \mathcal{H}_s=D S_z^2 + \gamma_e \vec{B}_{\rm ext} \cdot \vec{S}+ d_\perp \left[ E_x(S_y^2-S_x^2) + E_y(S_xS_y+S_yS_x) \right]
 \end{equation}
 Where $D=2.87\ \rm GHz$ is the zero field splitting and $\gamma_e=2.8\ \rm MHz/G$ the gyromagnetic ratio of the electron.
@@ -140,7 +141,6 @@ S(\Delta \nu)&\propto \int \frac{1}{1+ \frac{(\nu-\nu_1)^2}{\sigma^2}}\cdot \fra
 The ODMR lines that we measure are neither Lorentzian nor Gaussian (although they tend to be closer to Gaussians), and can even be asymmetric. Nevertheless, the overlap between two classes can most likely be approximated by a single class ODMR profile stretched by a factor between $\sqrt{2}$ and 2.
 
 
-\section{Les détails qui tuent}
 \subsection{Effect of laser polarization}
 Previous studies \cite{anishchik2015low, filimonenko2020weak} reported the presence of a photoluminescence dip in zero magnetic field which was heavily dependent on the laser polarization angle with respect to the diamond axes and the magnetic field. 
 
@@ -158,7 +158,7 @@ La faudrait p-e montrer ce qu'il se passe pour un décalage de quelques degrés.
 \subsection{Summary of the NV-fluctuator model}
 As mentioned in the main text, we base our analysis on the NV-fluctuator model developed in \cite{choi_depolarization_2017} whose main hypothesis and conclusions we will summarize here :
 
-The NV$^-$ centers in the crystal are divided between two categories : "normal" NV centers (simply called NV) which, in the absence of dipole-dipole coupling would have a phonon-limited $T_1$ ($T_1^{NV} \sim\ \rm ms$), and fluctuators who are NV centers with an additional, fast, depolarization mechanism, such that their lifetime $T_1^f < 100\ \rm ns$. Having such a short lifetime, the fluctuators are pretty much unpolarized by the green laser, making them invisible in standard optical NV measurement protocol ($T_1$, ODMR, etc.). 
+The NV$^-$ centers in the crystal are divided between two categories : "normal" NV centers (simply called NV) which, in the absence of dipole-dipole coupling would have a phonon-limited $T_1$ ($T_1^{NV}\sim \rm ms$), and fluctuators who are NV centers with an additional, fast, depolarization mechanism, such that their lifetime $T_1^f < 100\ \rm ns$. Having such a short lifetime, the fluctuators are almost unpolarized by the green laser, making them invisible in standard optical NV measurement protocol ($T_1$, ODMR, etc.). 
 
 Assuming a homogeneous distribution of the fluctuators in the bulk of the crystal, the authors conclude that the fluctuators create an additionnal decay channel for the NV population, through dipole-dipole interaction, characterized by a decay rate $\gamma$ which follows the probability distribution :
 \begin{equation}
@@ -172,9 +172,36 @@ Where $n_f$ is the fluctuator density in the crystal in nm$^{-3}$, $J_0=52\ \rm{
 
 The polarization dynamics of the averaged ensemble of NV centers then follows :
 \begin{equation}
-P(t)=\int_0^\infty \rho(\gamma)e^{-\gamma t}d\gamma= e^{-\sqrt{t/T}}
+P(t)=\int_0^\infty \rho(\gamma)\, e^{-\gamma t}d\gamma= e^{-\sqrt{t/T}}
 \end{equation}
+Which corresponds to the stretched-exponential part of the lifetime measurement.
 \subsection{Dipole-Dipole Hamiltonian between two NV$^-$ centers}
+We consider a system composed of an NV center interacting dipolarly with a fluctuator.
+\begin{equation}
+\mathcal{H}_{\rm tot}=\mathcal{H}_{1}+\mathcal{H}_2+\mathcal{H}_{\rm dd}
+\end{equation}
+Where $\mathcal{H}_{1}$ and $\mathcal{H}_{2}$ are the single particle Hamiltonian of the NV and fluctuator, described by the equation (\ref{NV Hamiltonian}), and $\mathcal{H}_{\rm dd}$ is the dipole-dipole interaction Hamiltonian between the two spins. 
+
+We will consider the spin operators $\vec{S}_1$ and
+$\vec{S}_2$ in the NV own basis : the $z$ orientation of the $S_z$ operator is chosen along the NV axis of each spin. In the presence of a longitudinal magnetic field, the sense of $\hat{z}$ will be chosen such that $\vec{B}\cdot \hat{z} >0$, and the $\hat{x}$ direction is chosen along the transverse magnetic or electric field, whichever dominates the single spin Hamiltonian. These choices mean that their will be two distinct Cartesian basis $\{\hat{x}_1,\hat{y}_1,\hat{z}_1\}$ and $\{\hat{x}_2,\hat{y}_2,\hat{z}_2\}$ describing the two spins.
+
+The dipole-dipole Hamiltonian can then be decomposed as :
+\begin{align}
+\frac{\mathcal{H}_{\rm dd}}{J_0/r^3}&= 3\left({\vec S}_1 \cdot \hat{u} \right)\left({\vec S}_2 \cdot \hat{u} \right) - {\vec S}_1 \cdot {\vec S}_2  \\
+&=\left[3(\hat{u}\cdot\hat{x}_1)(\hat{u}\cdot\hat{x}_2) -\hat{x}_1\cdot\hat{x}_2\right] S_x^1S_x^2 \\
+&+\left[3(\hat{u}\cdot\hat{y}_1)(\hat{u}\cdot\hat{y}_2) -\hat{y}_1\cdot\hat{y}_2\right] S_y^1S_y^2 \\
+&+\left[3(\hat{u}\cdot\hat{x}_1)(\hat{u}\cdot\hat{y}_2) -\hat{x}_1\cdot\hat{y}_2\right] S_x^1S_y^2 \\
+&+\left[3(\hat{u}\cdot\hat{y}_1)(\hat{u}\cdot\hat{x}_2) -\hat{y}_1\cdot\hat{x}_2\right] S_y^1S_x^2 \\
+&+\left[3(\hat{u}\cdot\hat{z}_1)(\hat{u}\cdot\hat{z}_2) -\hat{z}_1\cdot\hat{z}_2\right] S_z^1S_z^2 \\
+&+\mathcal{H}_{\rm other}
+\end{align}
+Where $\mathcal{H}_{\rm other}$ contains terms of the form $S_{x/y}^iS_z^j$ which couple states far from resonance and will be neglected here.
+
+\subsection{Flip-flops in the magnetic basis $\{ \ket{0},\ket{+1},\ket{-1} \} $}
+We will first consider the case, treated in \cite{choi_depolarization_2017}, where the longitudinal magnetic field is strong enough that the single spin Hamiltonian eigenstates of both spins are close to $\{ \ket{0},\ket{+1},\ket{-1} \} $ (since we are interested in near-resonant spins, this means that both spins see roughly the same longitudinal and transverse magnetic field).
+
+In this scenario, only flip-flop terms (that is $\mel{\pm 1,0}{\mathcal{H}_{\rm dd}}{0,\pm 1}$) can couple two resonant two-spins states. Following the notation in \cite{choi_depolarization_2017}, we introduce the dimensionless factor $\eta$ defined as :
+
 \subsection{121 VS 22}
 \subsection{100 vs 0B}
 
