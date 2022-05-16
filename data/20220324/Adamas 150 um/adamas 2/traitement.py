@@ -4,7 +4,7 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-scale=2
+scale=1.5
 plt.figure(num=1,figsize=(3*scale,2*scale),dpi=80)
 plt.xticks(fontsize=10+1.5*scale)
 plt.yticks(fontsize=10+1.5*scale)
@@ -61,16 +61,30 @@ def plot_T1_fit(i=104):
 	# popt,yfit=stretch_exp_fit_zero(x,y)
 	# plt.plot(x,yfit)
 	T1ph=0.003626*1e3
-	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=8,color=color(0),label='Experimental data')
+	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=5,color=color(0),label='Experimental data')
 	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
 	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
-	popt,yfit=exp_fit_zero(x,y,norm=False)
-	plt.plot(x,yfit,'-.',lw=2,color=color(2),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} )$')
+	# popt,yfit=exp_fit_zero(x,y,norm=False)
+	# plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} )$')
 	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	# plt.plot(x,yfit,lw=2,color=color(1),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
 	plt.legend(fontsize=13)
 
 # plot_T1_fit(i=104)
+
+def plot_T1_fit_100():
+	fname='T1 0B'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	x=x*1e3
+	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=5,color=color(0),label='Experimental data')
+	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
+	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
+	plt.legend(fontsize=13)
+
+# plot_T1_fit_100()
+
+
 
 def plot_T1_fit_avg():
 	fnames,fval=extract_glob('T1 1x1x1x1/T1')
