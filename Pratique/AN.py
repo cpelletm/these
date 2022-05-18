@@ -38,5 +38,5 @@ def couplage_NV():
 
 # couplage_NV()
 
-
+print(1240/637)
 
