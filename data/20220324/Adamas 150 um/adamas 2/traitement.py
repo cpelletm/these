@@ -4,22 +4,28 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-scale=1.5
-plt.figure(num=1,figsize=(3*scale,2*scale),dpi=80)
-plt.xticks(fontsize=10+1.5*scale)
-plt.yticks(fontsize=10+1.5*scale)
+plt.figure(num=1,figsize=(4,3),dpi=80)
+ax=plt.gca()
+ax.tick_params(labelsize=13)
 
 
 
 def plot_ESR_1x1x1x1():
 	x,y=extract_data('T1 1x1x1x1/ESR 3V')
-	n=len(x)//2
+	n=len(x)#//2
 	x=x[:n]
 	y=y[:n]
 	y=y/max(y)
 	plt.plot(x,y)
 
 
+def plot_ESR_100():
+	x,y=extract_data('T1 100 align 3/ESR/V=-2.000000')
+	y=y/max(y)
+	plt.plot(x,y)
+
+
+# plot_ESR_100()
 
 def plot_T1__fit_main_text():
 	fnames,fval=extract_glob('T1 1x1x1x1/T1')
@@ -203,7 +209,7 @@ def plot_T1_1x1x1() :
 	# plt.plot(x,yfit)
 
 
-# plot_T1_1x1x1()
+plot_T1_1x1x1()
 
 def plot_T1_100() :
 	fnames,fval=extract_glob('T1 100 align 3/T1')

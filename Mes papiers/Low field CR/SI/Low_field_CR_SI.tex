@@ -28,6 +28,7 @@
 \tableofcontents
 
 \section{NV$^-$ ground state Hamiltonian in low magnetic field}
+\label{sec Hamiltonian}
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{Figures_SI/fig_ESR}
 \caption{ODMR measurement (a) in zero magnetic field, (b) in non-zero magnetic field when zooming on a single class transition}
@@ -52,7 +53,7 @@ In the presence of non-zero magnetic field, let us call the Hamiltonian eigensta
 This tells us that in most cases, the $\{ \ket{0},\ket{+},\ket{-} \}$ basis is only the good Hamiltonian basis for magnetic field smaller than a few Gauss, except in the case of pure transverse magnetic field where the $\{ \ket{0},\ket{+},\ket{-} \}$ basis remains a good basis even for sizable magnetic fields.
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{Figures_SI/map_etats_propres}
-\caption{Numerical simulations of the closeness of the Hamiltonian most excited state $\ket{e}$ with the states $\ket{+1}$ and $\ket{+}$, as a function of the magnetic field amplitude and angle $\theta$ with respect to the NV axis.}
+\caption{Numerical simulations of the closeness of the Hamiltonian most excited state $\ket{e}$ with the states $\ket{+1}$ and $\ket{+}$, as a function of the magnetic field amplitude and angle $\theta$ with respect to the NV axis. A value of $d_\perp E_\perp = 4\ \rm MHz$ was chosen}
 \label{map etats propres}
 \end{figure}
 
@@ -167,6 +168,7 @@ Assuming a homogeneous distribution of the fluctuators in the bulk of the crysta
 Where the timescale $T$ is defined as
 \begin{equation}
 \frac{1}{T}=\left(\frac{4\pi n_fJ_0\bar \eta}{3}\right)^2 \frac{\pi}{\gamma_f}
+\label{eq 1/T}
 \end{equation}
 Where $n_f$ is the fluctuator density in the crystal in nm$^{-3}$, $J_0=52\ \rm{MHz}\cdot\rm{nm}^3$ is the characteristic dipole-dipole strength between two spins, $\gamma_f$ is the fluctuator intrinsic decay rate and $\bar \eta$ is a dimension-less number which characterizes the average dipole-dipole interaction between the NV centers and the fluctuators (resonance conditions, relative orientations etc. Further details are given below).
 
@@ -183,11 +185,11 @@ We consider a system composed of an NV center interacting dipolarly with a fluct
 Where $\mathcal{H}_{1}$ and $\mathcal{H}_{2}$ are the single particle Hamiltonian of the NV and fluctuator, described by the equation (\ref{NV Hamiltonian}), and $\mathcal{H}_{\rm dd}$ is the dipole-dipole interaction Hamiltonian between the two spins. 
 
 We will consider the spin operators $\vec{S}_1$ and
-$\vec{S}_2$ in the NV own basis : the $z$ orientation of the $S_z$ operator is chosen along the NV axis of each spin. In the presence of a longitudinal magnetic field, the sense of $\hat{z}$ will be chosen such that $\vec{B}\cdot \hat{z} >0$, and the $\hat{x}$ direction is chosen along the transverse magnetic or electric field, whichever dominates the single spin Hamiltonian. These choices mean that their will be two distinct Cartesian basis $\{\hat{x}_1,\hat{y}_1,\hat{z}_1\}$ and $\{\hat{x}_2,\hat{y}_2,\hat{z}_2\}$ describing the two spins.
+$\vec{S}_2$ in the NV own basis : the $z$ orientation of the $S_z$ operator is chosen along the NV axis of each spin. In the presence of a longitudinal magnetic field, the sense of $\hat{z}$ will be chosen such that $\vec{B}\cdot \hat{z} >0$, and the $\hat{x}$ direction is chosen along the transverse magnetic or electric field, whichever dominates the single spin Hamiltonian. These choices mean that there will be two distinct Cartesian basis $\{\hat{x}_1,\hat{y}_1,\hat{z}_1\}$ and $\{\hat{x}_2,\hat{y}_2,\hat{z}_2\}$ describing the two spins.
 
 The dipole-dipole Hamiltonian can then be decomposed as :
 \begin{align}
-\frac{\mathcal{H}_{\rm dd}}{J_0/r^3}&= 3\left({\vec S}_1 \cdot \hat{u} \right)\left({\vec S}_2 \cdot \hat{u} \right) - {\vec S}_1 \cdot {\vec S}_2  \\
+-\frac{\mathcal{H}_{\rm dd}}{J_0/r^3}&= 3\left({\vec S}_1 \cdot \hat{u} \right)\left({\vec S}_2 \cdot \hat{u} \right) - {\vec S}_1 \cdot {\vec S}_2  \\
 &=\left[3(\hat{u}\cdot\hat{x}_1)(\hat{u}\cdot\hat{x}_2) -\hat{x}_1\cdot\hat{x}_2\right] S_x^1S_x^2 \\
 &+\left[3(\hat{u}\cdot\hat{y}_1)(\hat{u}\cdot\hat{y}_2) -\hat{y}_1\cdot\hat{y}_2\right] S_y^1S_y^2 \\
 &+\left[3(\hat{u}\cdot\hat{x}_1)(\hat{u}\cdot\hat{y}_2) -\hat{x}_1\cdot\hat{y}_2\right] S_x^1S_y^2 \\
@@ -195,15 +197,69 @@ The dipole-dipole Hamiltonian can then be decomposed as :
 &+\left[3(\hat{u}\cdot\hat{z}_1)(\hat{u}\cdot\hat{z}_2) -\hat{z}_1\cdot\hat{z}_2\right] S_z^1S_z^2 \\
 &+\mathcal{H}_{\rm other}
 \end{align}
-Where $\mathcal{H}_{\rm other}$ contains terms of the form $S_{x/y}^iS_z^j$ which couple states far from resonance and will be neglected here.
+Where $J_0=\frac{\mu_0 \gamma_e^2 \hbar^2}{4 \pi} = (2 \pi) 52\ \rm MHz \cdot \rm{nm}^3$, $\vec r= r\vec u$ is the distance between the two spins and  $\mathcal{H}_{\rm other}$ contains terms of the form $S_{x/y}^iS_z^j$ which couple states far from resonance and will be neglected here.
 
 \subsection{Flip-flops in the magnetic basis $\{ \ket{0},\ket{+1},\ket{-1} \} $}
 We will first consider the case, treated in \cite{choi_depolarization_2017}, where the longitudinal magnetic field is strong enough that the single spin Hamiltonian eigenstates of both spins are close to $\{ \ket{0},\ket{+1},\ket{-1} \} $ (since we are interested in near-resonant spins, this means that both spins see roughly the same longitudinal and transverse magnetic field).
 
 In this scenario, only flip-flop terms (that is $\mel{\pm 1,0}{\mathcal{H}_{\rm dd}}{0,\pm 1}$) can couple two resonant two-spins states. Following the notation in \cite{choi_depolarization_2017}, we introduce the dimensionless factor $\eta$ defined as : 
+\begin{equation}
+\eta^2=\frac{1}{3} \abs{\mel{\pm 1,0}{\frac{\mathcal{H}_{\rm dd}}{J_0/r^3}}{0,\pm 1}}^2  \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2}
+\end{equation}
+Where $\gamma_f$ is the fluctuator lifetime, $\omega_f$ the fluctuator angular frequency and $\omega_{NV}$ the NV angular frequency. %This numerical factor characterizes both the dipole-dipole strength between the NV and the fluctuator through the matrix element and the resonance condition through the Lorentzian function.
 
-\subsection{121 VS 22}
-\subsection{100 vs 0B}
+This numerical factor is linked to the previously mentioned $\bar \eta$ by averaging over every possible orientation and angular position of the fluctuators. Assuming that the fluctuators are evenly distributed among all four classes (NV axis orientation) and decomposing the $\vec r$ vector in the spherical basis ($r, \theta, \phi$), we can write $\bar \eta$ as :
+
+\begin{equation}
+\label{eq. eta bar}
+\bar \eta =\frac{1}{4} \sum_{i=1}^4 \int_\theta \int_\phi  \int_{\omega_f} \int_{\omega_{NV}}   \abs{\eta(\vec u,i,\omega_{NV},\omega_f)}\, d\Omega\, \rho(\omega_{NV}) d\omega_{NV}\, \rho^i(\omega_f) d\omega_f 
+\end{equation}
+
+Where $d\Omega=\sin \theta d\theta d\phi$, $\rho(\omega_{NV})$ is the distribution of angular frequencies of the probed NV centers, and  $\rho^i(\omega_f)$ is the distribution of angular frequencies  for the fluctuators of class $i$.
+
+While the distributions $\rho(\omega_{NV})$ and $\rho^i(\omega_f)$ can be approximated using the data presented in Fig. \ref{largeur_fluct}, we will assume that these distributions are independent of the external magnetic field, and since we are interested in comparing the same sample for various values of the magnetic field, we will simplify eq.(\ref{eq. eta bar}) by postulating that $\frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2} =1$ if the NV center's and the fluctuator's classes are resonant (or if they are from the same class), and $\frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2 +4\gamma_f^2}=0$ otherwise.
+
+\begin{figure}
+\includegraphics[width=0.7\textwidth]{Figures_SI/121 VS 22}
+\caption{(a) Geometrical representation of two NV classes and the two possible planes where the magnetic field has the same projection on both classes. The positive $\hat z_i$ direction is chosen so that $\vec{B}\cdot \hat{z}_i >0$. (b) $T_1$ measurement on a two-class resonance following the protocol described in main text. 8 different magnetic field were used on the same sample : 4 times in a \{100\} plane (blue unfilled symbols) and 4 times in a \{110\} plane (orange filled symbols). Inset : zoom-in on the 0.3-0.8 ms region.}
+\label{121 VS 22 fig}
+\end{figure}
+
+With these hypothesis, we found that there were 3 possible scenarios where the NV and fluctuator were resonant:
+\begin{itemize}
+\item The NV and fluctuator are resonant and from the same class (the angle $\widehat{z_1 z_2}=0$) : this is always true, regardless of the magnetic field. We can analytically compute $\bar \eta$ in this case and find : $$ \bar {\eta}_{same}=\frac{1}{4}  \int_\theta \int_\phi \abs{\eta(\vec u,\widehat{z_1 z_2}=0,\omega_{NV}=\omega_f)}\, d\Omega= \frac{1}{4} \cdot \sqrt{\frac{1}{3}} \cdot \frac{2}{3 \sqrt{3}} \approx 5.55\cdot10^{-2}$$
+\item The NV and fluctuator are resonant and the angle $\widehat{z_1 z_2}=\rm{arccos}(\frac{1}{3})\approx 70.5^\circ$. This happens when the magnetic field lies in the \{100\} crystalline planes family. In this case we can numerically compute $\bar \eta_{\rm close} \approx \frac{1}{4} \cdot \sqrt{\frac{1}{3}} \cdot 0.6507 \approx 9.39\cdot10^{-2}$
+\item The NV and fluctuator are resonant and the angle $\widehat{z_1 z_2}=\rm{arccos}(-\frac{1}{3})\approx 109.5^\circ$. This happens when the magnetic field lies in the \{110\} or \{$1\bar{1}0$\} crystalline planes family. In this case we can numerically compute $\bar \eta_{\rm far} \approx \frac{1}{4} \cdot \sqrt{\frac{1}{3}} \cdot 0.8328 \approx 1.20\cdot10^{-1}$. This last case was not taken into account by \cite{choi_depolarization_2017}.
+\end{itemize}
+
+
+
+Fig. \ref{121 VS 22 fig}(a) shows a graphical representation of the difference between the two last scenarios : due to the $\vec{B}\cdot \hat{z} >0$ condition, the same two classes of NV centers can have a $\widehat{z_1 z_2}$ angle equal to $70.5^\circ$ or $109.5^\circ$ depending on the external magnetic field. 
+
+These predictions can be tested experimentally. Fig. \ref{121 VS 22 fig}(b) shows the subtracted $T_1$ signal measured on the same sample [REF] for 8 different values of the magnetic field, each time on a two-class resonance : in 4 cases the magnetic field was in a \{100\} plane, and in the 4 other cases it was in a \{110\} plane. We can see that the measured lifetime is always smaller on the \{110\} case, which corresponds the the greater $\bar \eta$ factor computed previously.
+
+\begin{figure}
+\includegraphics[width=0.7\textwidth]{Figures_SI/Various ESR}
+\caption{ODMR spectra for different orientations of the magnetic field. Red numbers represent the number of degenerated classes for each line of the spectrum}
+\label{Various ODMR}
+\end{figure}
+
+Here is a list of the computed values of $\bar \eta^2$, which according to eq.(\ref{eq 1/T}) is proportional to the dipole induced decay rate, for various magnetic field orientation. An ODMR spectrum for each of these situations is present in Fig. \ref{Various ODMR}.
+\begin{itemize}
+\item Random orientation / no class degeneracy : for all four classes, $\bar \eta = \bar {\eta}_{same}$ and $\bar \eta^2=3.08 \cdot 10^{-3} \equiv \bar \eta_0^2$
+\item $\vec{B} \in$ \{110\} : For the two non resonant classes : $\bar \eta = \bar {\eta}_{same}$ and $\bar \eta^2= \bar \eta_0^2$.  For the two resonant classes : $\bar \eta = \bar {\eta}_{same} + \bar {\eta}_{far}$ and $\bar \eta^2\approx\, 10.0 \bar \eta_0^2$
+\item $\vec{B} \in$ \{100\} : For each pair of two-classes resonance: $\bar \eta = \bar {\eta}_{same}+\bar {\eta}_{close}$ and $\bar \eta^2\approx 7.24\, \bar \eta_0^2$. 
+\item $\vec{B} \parallel \langle 111 \rangle$ : For the non-resonant class (parallel to $\vec B$) : $\bar \eta = \bar {\eta}_{same}$ and $\bar \eta^2= \bar \eta_0^2$. For the triply resonant classes: $\bar \eta = \bar {\eta}_{same}+2\bar {\eta}_{far}$ and $\bar \eta^2\approx 28.4\, \bar \eta_0^2$. 
+\item $\vec{B} \parallel \langle 100 \rangle$ : For the quadruple resonance : $\bar \eta = \bar {\eta}_{same}+2\bar {\eta}_{far}$ and $\bar \eta^2\approx 42.8\, \bar \eta_0^2$.
+\end{itemize}
+
+The measured increase in the decay rate is generally smaller than the predicted one : we measured an increase by a factor $\sim 4$ for a two class degeneracy instead of the predicted $10.0$, and an increase by a factor $\sim 16$ for a two class degeneracy instead of the predicted $42.8$. \cite{choi_depolarization_2017} measured an increase by a factor $\sim 4$ on a two-class degeneracy instead of the predicted $7.24$ or $10.0$.
+
+\subsection{Flip-flops in the non-magnetic basis $\{ \ket{0},\ket{+},\ket{-} \} $}
+
+As described in sec. \ref{sec Hamiltonian}, when the single spin Hamiltonian of the NV center is dominated by the electric field or the transverse magnetic field (as long as $\gamma_e B_\perp \ll D$), the eigen basis of the NV Hamiltonian is close to $\{\ket{0},\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}},\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}} \} $. We therefore have to rewrite the dipole-dipole Hamiltonian using this new basis for both spins in order to perform similar calculations as the ones done in the previous section.
+
+In this new basis, the spin operators are written :
 
 \bibliographystyle{plain}
 \bibliography{CR_SI}{}

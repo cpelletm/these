@@ -38,5 +38,8 @@ def couplage_NV():
 
 # couplage_NV()
 
-print(1240/637)
+print((1/4*sqrt(1/3)*2/(3*sqrt(3)))**2)
+
+
+print(sqrt(0.0030864197530864196))
 
