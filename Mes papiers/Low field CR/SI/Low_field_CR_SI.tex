@@ -17,7 +17,7 @@
 \vspace{0.2in}
 {\Large \hspace{1.6in}\textsc{Supplementary Material} }\\
 \
-\title{Low field depolarization of electronic spins through dipole-dipole coupling}
+\title{Low field depolarization of NV$^-$ centers through dipole-dipole coupling}
 
 \author{C. Pellet-Mary$^1$, M. Perdriat$^1$, G. H\'etet$^1$} 
 
@@ -98,12 +98,12 @@ An other possibility would be to use an arbitrary stretched factor in the fittin
 \label{alphas}
 \end{figure}
 \subsection{Spectral range of the dipole-dipole cross-relaxations}
+\label{fluctuator width}
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{Figures_SI/largeur_fluct_SI}
 \caption{Dipole-dipole depolarization for two near-resonant classes. (a) Sketch of the four possible orientations ("classes") in a single crystal diamond lattice. (b) ODMR spectrum showing four $\ket{0} \to \ket{-1}$ resonances corresponding to the four spin classes. The detuning $\Delta \nu$ between the classes b and c was controlled by changing the orientation of the external magnetic field.(c) Stretch part of the lifetime decay for the spins resonant with $\nu_c$ as a function of the detuning $\Delta \nu$ (blue circles), fitted by a Lorentzian with half width at half maximum 8.04 MHz. Single class ESR line stretched by a factor of 1,$\sqrt{2}$ and 2 are added for comparison}
 \label{largeur_fluct}
 \end{figure}
-In the absence of other 
 
 An experimental signature of the fluctuator hypothesis developed in \cite{choi_depolarization_2017} is to measure the depolarization rate for two near-resonant classes : if there are indeed very fast decaying NV centers (fluctuators with lifetime $T_1^f < 100 ns$), then the spectral width of the fluctuator would be increased beyond $1/T_2^*$ (which we assume to be homogeneous among all spins in the crystal), which means that they would be able to exchange spin quanta (flip-flop) with non-resonant NV detuned by $\Delta \nu$ such that $2\pi/T_1^f > \Delta \nu > 2\pi/T_2^*$
 
@@ -236,7 +236,7 @@ With these hypothesis, we found that there were 3 possible scenarios where the N
 
 Fig. \ref{121 VS 22 fig}(a) shows a graphical representation of the difference between the two last scenarios : due to the $\vec{B}\cdot \hat{z} >0$ condition, the same two classes of NV centers can have a $\widehat{z_1 z_2}$ angle equal to $70.5^\circ$ or $109.5^\circ$ depending on the external magnetic field. 
 
-These predictions can be tested experimentally. Fig. \ref{121 VS 22 fig}(b) shows the subtracted $T_1$ signal measured on the same sample [REF] for 8 different values of the magnetic field, each time on a two-class resonance : in 4 cases the magnetic field was in a \{100\} plane, and in the 4 other cases it was in a \{110\} plane. We can see that the measured lifetime is always smaller on the \{110\} case, which corresponds the the greater $\bar \eta$ factor computed previously.
+These computed values can be tested experimentally. Fig. \ref{121 VS 22 fig}(b) shows the subtracted $T_1$ signal measured on the same sample [REF] for 8 different values of the magnetic field, each time on a two-class resonance : in 4 cases the magnetic field was in a \{100\} plane, and in the 4 other cases it was in a \{110\} plane. We can see that the measured lifetime is always smaller on the \{110\} case, which corresponds the the greater $\bar \eta$ factor computed previously.
 
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{Figures_SI/Various ESR}
@@ -246,21 +246,96 @@ These predictions can be tested experimentally. Fig. \ref{121 VS 22 fig}(b) show
 
 Here is a list of the computed values of $\bar \eta^2$, which according to eq.(\ref{eq 1/T}) is proportional to the dipole induced decay rate, for various magnetic field orientation. An ODMR spectrum for each of these situations is present in Fig. \ref{Various ODMR}.
 \begin{itemize}
-\item Random orientation / no class degeneracy : for all four classes, $\bar \eta = \bar {\eta}_{same}$ and $\bar \eta^2=3.08 \cdot 10^{-3} \equiv \bar \eta_0^2$
-\item $\vec{B} \in$ \{110\} : For the two non resonant classes : $\bar \eta = \bar {\eta}_{same}$ and $\bar \eta^2= \bar \eta_0^2$.  For the two resonant classes : $\bar \eta = \bar {\eta}_{same} + \bar {\eta}_{far}$ and $\bar \eta^2\approx\, 10.0 \bar \eta_0^2$
-\item $\vec{B} \in$ \{100\} : For each pair of two-classes resonance: $\bar \eta = \bar {\eta}_{same}+\bar {\eta}_{close}$ and $\bar \eta^2\approx 7.24\, \bar \eta_0^2$. 
-\item $\vec{B} \parallel \langle 111 \rangle$ : For the non-resonant class (parallel to $\vec B$) : $\bar \eta = \bar {\eta}_{same}$ and $\bar \eta^2= \bar \eta_0^2$. For the triply resonant classes: $\bar \eta = \bar {\eta}_{same}+2\bar {\eta}_{far}$ and $\bar \eta^2\approx 28.4\, \bar \eta_0^2$. 
-\item $\vec{B} \parallel \langle 100 \rangle$ : For the quadruple resonance : $\bar \eta = \bar {\eta}_{same}+2\bar {\eta}_{far}$ and $\bar \eta^2\approx 42.8\, \bar \eta_0^2$.
+\item Random orientation / no class degeneracy : for all four classes, $\bar \eta = \bar {\eta}_{\rm same}$ and $\bar \eta^2=3.08 \cdot 10^{-3} \equiv \bar \eta_0^2$
+\item $\vec{B} \in$ \{110\} : For the two non resonant classes : $\bar \eta = \bar {\eta}_{\rm same}$ and $\bar \eta^2= \bar \eta_0^2$.  For the two resonant classes : $\bar \eta = \bar {\eta}_{\rm same} + \bar {\eta}_{\rm far}$ and $\bar \eta^2\approx\, 10.0 \bar \eta_0^2$
+\item $\vec{B} \in$ \{100\} : For each pair of two-classes resonance: $\bar \eta = \bar {\eta}_{\rm same}+\bar {\eta}_{\rm close}$ and $\bar \eta^2\approx 7.24\, \bar \eta_0^2$. 
+\item $\vec{B} \parallel \langle 111 \rangle$ : For the non-resonant class (parallel to $\vec B$) : $\bar \eta = \bar {\rm \eta}_{same}$ and $\bar \eta^2= \bar \eta_0^2$. For the triply resonant classes: $\bar \eta = \bar {\eta}_{\rm same}+2\bar {\eta}_{\rm far}$ and $\bar \eta^2\approx 28.4\, \bar \eta_0^2$. 
+\item $\vec{B} \parallel \langle 100 \rangle$ : For the quadruple resonance : $\bar \eta = \bar {\eta}_{\rm same}+2\bar {\eta}_{\rm close} + \bar {\eta}_{\rm far}$  and $\bar \eta^2\approx 42.8\, \bar \eta_0^2$.
 \end{itemize}
 
-The measured increase in the decay rate is generally smaller than the predicted one : we measured an increase by a factor $\sim 4$ for a two class degeneracy instead of the predicted $10.0$, and an increase by a factor $\sim 16$ for a two class degeneracy instead of the predicted $42.8$. \cite{choi_depolarization_2017} measured an increase by a factor $\sim 4$ on a two-class degeneracy instead of the predicted $7.24$ or $10.0$.
+The measured increase in the decay rate is generally smaller than the predicted one : we measured an increase by a factor $\sim 4$ for a two-class degeneracy instead of the predicted $10.0$, and an increase by a factor $\sim 16$ for a four-class degeneracy instead of the predicted $42.8$. \cite{choi_depolarization_2017} measured an increase by a factor $\sim 4$ on a two-class degeneracy instead of the predicted $7.24$ or $10.0$.
 
 \subsection{Flip-flops in the non-magnetic basis $\{ \ket{0},\ket{+},\ket{-} \} $}
 
-As described in sec. \ref{sec Hamiltonian}, when the single spin Hamiltonian of the NV center is dominated by the electric field or the transverse magnetic field (as long as $\gamma_e B_\perp \ll D$), the eigen basis of the NV Hamiltonian is close to $\{\ket{0},\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}},\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}} \} $. We therefore have to rewrite the dipole-dipole Hamiltonian using this new basis for both spins in order to perform similar calculations as the ones done in the previous section.
+As described in sec. \ref{sec Hamiltonian}, when the single spin Hamiltonian of the NV center is dominated by the electric field or the transverse magnetic field (as long as $\gamma_e B_\perp \ll D$), the eigenbasis of the NV Hamiltonian is close to $\{\ket{0},\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}},\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}} \} $. We therefore have to rewrite the dipole-dipole Hamiltonian using this new basis for both spins in order to perform similar calculations as the ones done in the previous section.
+
+Since the flip-flop processes are now of the form $\ket{0,\pm}\bra{\pm,0}$, we redefine the $\eta$ factor as :
+\begin{equation}
+\eta^2=\frac{1}{3} \abs{\mel{\pm ,0}{\frac{\mathcal{H}_{\rm dd}}{J_0/r^3}}{0,\pm }}^2  \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2}
+\end{equation}
 
 In this new basis, the spin operators are written :
 
+\begin{equation}
+  S_x = \begin{pmatrix}
+  0&1&0 \\
+  1&0&0 \\
+  0&0&0
+  \end{pmatrix}
+  \begin{matrix}
+  \bra{-} \\
+  \bra{0} \\
+  \bra{+}
+  \end{matrix}  
+  , \quad 
+ S_y = \begin{pmatrix}
+  0&0&0 \\
+  0&0&1 \\
+  0&1&0
+  \end{pmatrix}
+  \begin{matrix}
+  \bra{-} \\
+  \bra{0} \\
+  \bra{+}
+  \end{matrix}  
+ , \quad 
+  S_z = \begin{pmatrix}
+  0&0&1 \\
+  0&0&0\\
+  1&0&0
+  \end{pmatrix}
+  \begin{matrix}
+  \bra{-} \\
+  \bra{0} \\
+  \bra{+}
+  \end{matrix}
+  \end{equation}
+
+The symmetry in the $(xy)$ plane is broken by the presence of the transverse electric or magnetic field. The $x_i$ direction is defined as the direction of the transverse electric or magnetic field which dominates the single spin Hamiltonian of the particle $i$.
+
+We will consider two cases :
+\begin{itemize}
+\item The $x$ direction is defined by an external field (transverse magnetic field or strong external electric field) projected on the $(xy)$ plane of each classes. In particular this means that two spins from the same class have the same $(\hat x, \hat y, \hat z)$ basis.
+\item The $x$ direction is defined by the local electric field generated by the charges in the crystal. We will assume that there are no correlations in the electric field between the NV and fluctuator, and will sample a random angle $\psi \in [0,2\pi]$ between the axes $\hat{x}_1$ and $\hat{x}_2$.
+\end{itemize}
+
+\begin{table}
+\begin{tabular}{cccc}
+\hline
+$\bar{\eta}$ table & $\widehat{z_1 z_2}=0$ & $\widehat{z_1 z_2}=70.5^\circ$ & $\widehat{z_1 z_2}=109.5^\circ$ \\
+\hline
+$\ket{\pm 1}$ basis & $\frac{2}{3\sqrt{3}}=$ 0.3849 & 0.6507 & 0.8328 \\
+$\ket{+/-}$ basis $\hat{x}_1\neq \hat{x}_2$ & 0.7110  & 0.6828 & 0.6828 \\
+$\ket{+/-}$ basis $\hat{x}_1= \hat{x}_2$ & $\frac{4}{3\sqrt{3}}=$0.7698  & 0.6951 & 0.6951 \\
+\hline
+\end{tabular}
+\caption{Computation of $\frac{\bar{\eta}}{ \frac{1}{4} \cdot \sqrt{\frac{1}{3}}}$ for the different eignebasis of the single spin Hamiltonian, and for the different angles between the $z$ axis of the two spins.}
+\label{table eta}
+\end{table}
+
+For this two cases, which we will call $\hat{x}_1=\hat{x}_2$ and $\hat{x}_1\neq \hat{x}_2$, we can compute the $\bar \eta$ factor for the three scenarios discussed previously : $\widehat{z_1 z_2}=0$ (same class), $\widehat{z_1 z_2}=70.5^\circ$ and $\widehat{z_1 z_2}=109.5^\circ$. The results, as well as those in the $\ket{\pm 1}$ basis are presented in Table \ref{table eta}.
+
+There are two particular situations where these values can be experimentally tested :
+
+The first one is described in Fig. [REF] of the main text : in the presence of pure transverse magnetic field (for a single class, non-resonant with the three other classes), the decay rate of the class decreases with the magnetic field amplitude, due to the double-flip processes (described below), and then reaches a plateau with a decay rate value $\sim 2$ times bigger than in the longitudinal magnetic field case. This increase is in agreement with the fact that $\bar{\eta}_{\rm same}$ is 2 times bigger in the non-magnetic $\ket{+/-}$ basis than in the magnetic $\ket{\pm 1}$ basis. The measured increase is again smaller than the predicted factor of 4 given by eq. (\ref{eq 1/T}).
+
+The second one is the difference between the $\vec{B} \parallel \langle 100 \rangle$ case and the $\vec{B}=0$ case. When a magnetic field is applied in the [100] direction, all four classes are resonant and the spin Hamiltonian basis is $\{ \ket{0},\ket{+1},\ket{-1} \} $. The $\bar \eta$ factor in this case has been calculated in the previous section : $\bar \eta^2\approx 42.8\, \bar \eta_0^2$. When no external magnetic field is applied, all four classes are also resonant but the spin Hamiltonian basis is  $\{ \ket{0},\ket{+},\ket{-} \} $ (see Sec. \ref{NV Hamiltonian}) and double-flip processes are near-resonant. The decay rate due purely to flip-flop in the $\ket{+/-}$ basis is proportional to $\bar \eta^2 = (\bar{\eta}_{\rm same}^{+/-} + 3\bar{\eta}_{\rm diff}^{+/-})^2 \approx 51.4\, \bar \eta_0^2$. Fig. [REF] of the main text shows that we indeed observe a shorter lifetime when $\vec B=0$, in agreement with the higher value of $\bar \eta^2$, but this decrease could also come from the double-flip processes which are absent when $\vec B \neq 0$.
+
+\subsection{Double-flip processes}
+
+Double-flip processes, that is processes where the two spins flip in the same direction, compared to flip-flop where the two spins flip in opposite directions, are related to matrix elements  such as $\mel{+1,0}{\frac{\mathcal{H}_{\rm dd}}{J_0/r^3}}{0,-1}$ in the $\ket{\pm 1}$ basis or $\mel{+,0}{\frac{\mathcal{H}_{\rm dd}}{J_0/r^3}}{0,-}$ in the $\ket{\pm}$ basis. These matrix elements couple two-spin states that are never fully resonant, however with low-to zero magnetic, the residual splitting due to local electric and magnetic field ($\sim 6\ \rm MHz$ with our samples) is small enough compared to the fluctuators linewidth  measured in sec. \ref{fluctuator width} to be $\sim 8\ \rm MHz$, so that double-flip processes may still occur.
+
+Fig. [REF] of the main text shows that for lower transverse field values, the spin decay rate is increased significantly. We attribute this increase to double-flip processes. We can see that the decay rate increase ($\sim$ 5 times the baseline value) is significantly higher than the increase due solely to the $\ket{+/-}$ basis ($\sim$ 2 times the baseline value). This lead us to believe that the double-flip process are the main reason behind the decrease in spin lifetime for $\vec B=0$ observed in Fig. [REF] of the main text. This would probably mean that double-flip processes are the dominant factor in the sensitivity of the magnetometry protocol presented in the main text.
 \bibliographystyle{plain}
 \bibliography{CR_SI}{}
 \end{document}
