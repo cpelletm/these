@@ -17,9 +17,9 @@
 
 \begin{document}
 
-\title{Low magnetic field depolarization of NV$^-$ centers via dipole-dipole interaction}
+\title{Low magnetic field depolarization of NV$^-$ centers through dipole-dipole interaction}
 
-\author{C. Pellet-Mary$^1$, P. Huillery$^?$,  M. Perdriat$^1$, G. H\'etet} 
+\author{C. Pellet-Mary$^1$, M. Perdriat$^1$, P. Huillery$^?$,  G. H\'etet} 
 
 \affiliation{Laboratoire De Physique de l'\'Ecole Normale Sup\'erieure, \'Ecole Normale Sup\'erieure, PSL Research University, CNRS, Sorbonne Universit\'e, Universit\'e Paris Cit\'e , 24 rue Lhomond, 75231 Paris Cedex 05, France.}
 
@@ -28,12 +28,8 @@ C'est trop bien
 \end{abstract}
 
 \maketitle
-Blabla sur les NV, les ensembles etc.
 
-
-%réécrire le début et foutre la partie sur la PL avant le T1. Peut-etre dans le blabla sur les ensembles justement
-
-%We have identified three mechanisms for the low field depolarization, two of which have not been reported before.
+Intro
 
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig dense vs pas dense}
@@ -45,23 +41,23 @@ Blabla sur les NV, les ensembles etc.
 %
 %The main signature of the spin depolarization in low field is the characteristic dip in photoluminescence (PL) observed only for high density ($\gtrsim 1$ ppm) of NV centers, as shown on fig \ref{PL_NV_density}. The decrease in the spins' lifetime in zero field makes the optical polarization scheme of the NV centers less effective and therefore reduce the population of the bright $\ket{0}$ spin state. %The reason for the decrease in PL at higher magnetic field values is the mixing of the bright spin state $\ket{0}$ to the darker state $\ket{-1}$ induced by the transverse magnetic field. This effect does not modify (on first approximation) the spins' lifetime, and is common to both dense and sparse samples.
 
-Fig. \ref{B_transverse} shows the change in photoluminescence (PL) with respect to an external magnetic field for two samples with a low and high concentration of NV$^-$ centers. Both samples show a decrease in PL as the magnetic field amplitude increases, due to eigenstate mixing by the transverse part of the magnetic field \citep{epstein2005anisotropic,lai2009influence}. We notice however a stark difference in the low magnetic field region where only the high-density sample observe a drop in PL. In this article we propose to explore the reasons behind this zero-field line present only for dense NV$^-$ ensemble.
+Fig. \ref{PL_NV_density} shows the change in photoluminescence (PL) with respect to an external magnetic field for two samples with a low and high concentration of NV$^-$ centers. Both samples show a decrease in PL as the magnetic field amplitude increases, due to eigenstate mixing caused by the transverse part of the magnetic field \citep{epstein2005anisotropic,lai2009influence}. We notice however a stark difference in the low magnetic field region where only the high-density sample observe a drop in PL. In this article we propose to explore the reasons behind this zero-field line present only for dense NV$^-$ ensemble.
 
-Faire la jonction avec le T1
+Unlike the decrease in PL for higher magnetic field values, the drop in PL at low magnetic field is associated with a decrease of the NV's spin lifetime $T_1$. Indeed, since the $\ket{m_s=0}$ spin state is brighter than the $\ket{m_s=\pm 1}$ states, and since the optical pumping in the $\ket{m_s=0}$ state is in competition with the relaxation in a thermal distribution of the states, decreasing the spins lifetime results in a decrease of the NV PL \citep{finco2021imaging}. To understand the behavior of the PL in zero-field, we therefore need to study the dynamics of the spin in the low magnetic field region.
 
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig T1}
-\caption{Spin $T_1$ measurement protocol. (a) Sequence used to measure the spin lifetime : the laser is turned off for a time $\tau$ twice and the spin state is read at the end of the dark time by measuring the initial photoluminescence when the laser is turned back on. A microwave resonant with one of the spin transition is used in one of the sequence to project the $\ket{0}$ spin sate in either $\ket{+1}$ or $\ket{-1}$. The sequence result is the subtraction $S_1-S_2$. (b) Measurement of a dense ensemble spin lifetime in zero field and non-zero field, fitted with an expression $A \exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$}
+\caption{Spin $T_1$ measurement protocol. (a) Sequence used to measure the spin lifetime : the laser is turned off for a time $\tau$ twice and the spin state is read at the end of the dark time by measuring the initial photoluminescence when the laser is turned back on. A microwave $\pi$-pulse resonant with one of the spin transition is placed before the second reading. The  $T_1$ sequence result is the subtraction $S_1-S_2$. (b) Measurement of $S_1-S_2$ for a high density of NV centers in zero magnetic field field and non-zero magnetic field. The fit (orange plain line) is detailed in the main text}
 \label{T1}
 \end{figure}
 
-The $T_1$ depolarization dynamics of single or dilute NV centers at room temperature is dominated by a two-phonon Raman process, which depends on the crystal lattice temperature but does not (?) depend on the external magnetic field. However, it has been observed that dense NV centers ensemble have an additional spin decay channel which depends greatly on the magnetic field and not on the temperature. This effect has been attributed to cross-relaxation between the NV centers through dipole-dipole coupling. Some inhomogeneity between the NV centers is further needed in order to explain the depolarization of the spin ensemble. We will denote $T_1^{\rm ph}$ the characteristic time associated with the phonon relaxation process and $T_1^{\rm dd}$ the characteristic time associated with the dipole-dipole relaxation process.
+The $T_1$ depolarization dynamics of single or dilute NV centers at room temperature is dominated by a two-phonon Raman process \citep{redman1991spin,jarmola_temperature-_2012,norambuena2018spin}, which depends on the crystal lattice temperature but does not depend on the external magnetic field. However, it has been observed that dense NV centers ensemble have an additional spin decay channel \citep{jarmola_temperature-_2012,jarmola_longitudinal_2015,mrozek_longitudinal_2015, choi_depolarization_2017, akhmedzhanov_microwave-free_2017, akhmedzhanov_magnetometry_2019, pellet2021magnetic, mrozek2021characterization}, which depends greatly on the magnetic field and not on the temperature . This effect has been attributed to cross-relaxation between the NV centers through dipole-dipole coupling \citep{mrozek_longitudinal_2015, choi_depolarization_2017}. Some inhomogeneity between the NV centers is further needed in order to explain the depolarization of the spin ensemble. We will denote $T_1^{\rm ph}$ the characteristic time associated with the phonon relaxation process and $T_1^{\rm dd}$ the characteristic time associated with the dipole-dipole relaxation process.
 
-The spin lifetime protocol used here is described in Fig. \ref{T1} and is based on previous similar experiments. It consists in a pump-probe measurement where the spins are first polarized in the $\ket{0}$ state by a green laser, and read-out optically after a variable dark time $\tau$. Using only this sequence can result in artifacts in the signal, mostly due to charge state transfer in the dark \citep{giri_coupled_2018}. It is therefore convenient to repeat the sequence with an additional $\pi$ pulse right before the spin read-out to project the remaining $\ket{0}$ polarization into a darker $\ket{+1}$ or $\ket{-1}$ state. By subtracting the result of the two sequences, we select only the spin-dependent part of the signal, with the added benefit of being able to select a specific class of NV centers. 
+The spin lifetime protocol used here is described in Fig. \ref{T1} and is based on previous similar experiments \citep{jarmola_temperature-_2012, mrozek_longitudinal_2015, choi_depolarization_2017}. It consists in a pump-probe measurement where the spins are first polarized in the $\ket{0}$ state by a green laser, and read-out optically after a variable dark time $\tau$. Using only this sequence can result in artifacts in the signal, mostly due to charge state transfer in the dark \citep{giri_coupled_2018, giri_selective_2019}. It is therefore convenient to repeat the sequence with an additional $\pi$ pulse right before the spin read-out to project the remaining $\ket{0}$ polarization into a darker $\ket{+1}$ or $\ket{-1}$ state. By subtracting the result of the two sequences, we select only the spin-dependent part of the signal, with the added benefit of being able to select a specific class of NV centers. 
 
 \begin{figure*}
 \includegraphics[width=.95\textwidth]{Figures/fig 100 vs 1x1x1x1}
-\caption{Dependency of the magnetic field angle for the zero field depolarization. (a) ODMR spectrum in zero field. (b) ODMR spectrum for a magnetic field $\approx$ 60 G. The field is aligned (b2) or misaligned (b1, $\approx 24^\circ$ of misalignment) with the crystalline [100] direction. (c) Normalized photoluminescence of the NV$^-$ ensemble as a function of the magnetic field amplitude for the same field orientations as fig (b). (d) Stretch part of the lifetime decay as a function of the magnetic field amplitude for the same field orientations as fig (b).}
+\caption{Dependency on the magnetic field angle for the zero field depolarization. (a) ODMR spectrum in zero field. (bi) ODMR spectrum for a magnetic field $\approx$ 60 G, misaligned by $\sim  24^\circ$ with the [100] axis. (bii) Normalized photoluminescence of the NV$^-$ ensemble as a function of the magnetic field amplitude. (biii) Stretch part of the spin decay $1/T_1^{\rm dd}$ as a function of the magnetic field amplitude. (ci), (cii) and (ciii) : same measurement with a magnetic field aligned with the [100] axis}
 \label{100_VS_1x4}
 \end{figure*}
 
@@ -97,7 +93,7 @@ In order to distinguish these two contributions, we decided to simulate the effe
 
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig transverse field V2}
-\caption{(a) Simulated energies for the spin Hamiltonian in the presence of pure transverse magnetic field $B_\perp$. The three spin levels are denoted $\ket{g}$, $\ket{d}$ and $\ket{e}$. (b) Blue dashed curve : frequency detuning $\Delta \nu$ between the $\ket{g}$, $\ket{d}$ states. Red plain curve : Matching factor $\abs{\bra{e}\ket{+}}^2$ between the states $\bra{e}$ and $\bra{+}$.}
+\caption{(a) Simulated energies for the spin Hamiltonian in the presence of pure transverse magnetic field $B_\perp$. The three spin levels are denoted $\ket{g}$, $\ket{d}$ and $\ket{e}$. (b) Blue dashed curve : frequency detuning $\Delta \nu$ between the $\ket{g}$, $\ket{d}$ states. Red plain curve : Matching factor $\abs{\bra{e}\ket{+}}^2$ between the states $\bra{e}$ and $\bra{+}$. (c) Measurement of the stretched exponential decay rate $1/T_1^{\rm dd}$ for a single class as a function of the measured detuning $\Delta \nu$ between the two transitions $\ket{g} \to \ket {d}$ and  $\ket{g} \to \ket {e}$ for purely transverse magnetic field. The green dashed line correspond to the decay rate for the same class when the magnetic field is longitudinal}
 \label{B_transverse}
 \end{figure}
 
@@ -152,7 +148,7 @@ Similarly, we can compute the predicted decay rate in the $\vec B \parallel \lef
 \section*{Magnetometry}
 \begin{figure}
 \includegraphics[width=0.45\textwidth]{Figures/fig_magneto}
-\caption{Low field magnetometry protocol. (a) Demodulated photoluminescence as a function of an externally applied magnetic field with an additional oscillatory magnetic field. (b) Measured magnetic field when alternating a small external magnetic field offset. (c) Histogram of the measurement in Fig. (b) fitted with gaussians of standard deviation $\sigma=1.5\ \mu \rm T$}. (d) Measured sensitivity as function of the angle between the external magnetic field and the [100] crystalline axis.
+\caption{Low field magnetometry protocol. (a) Demodulated photoluminescence as a function of an externally applied magnetic field with an additional oscillatory magnetic field. (b) Measured magnetic field when alternating a small external magnetic field offset. (c) Histogram of the measurement in Fig. (b) fitted with gaussians of standard deviation $\sigma=1.5\ \mu \rm T$. (d) Measured sensitivity as function of the angle between the external magnetic field and the [100] crystalline axis.}
 \label{magneto}
 \end{figure}
 %
@@ -168,7 +164,7 @@ The results are shown in Fig. \ref{magneto} (d). We can see a slight increase of
 It should be noted though that this observation is sample dependent, and that other samples, including from the same batch, have shown a higher orientation dependence, corresponding to a lower contribution from the electric field and double-flip processes.
 
 \section*{Conclusion}
-In this work we have identified three mechanisms causing the extra spin depolarization observed in zero field for dense ensemble of NV$^-$ centers, all related to an increase in the dipole-dipole cross-relaxations between the spins : the lift of degeneracy between the four classes caused by the magnetic field, the domination of the local electric field which causes a change in the Hamiltonian eigenstates, and the double-flip process allowed by the proximity in energy of the spin $\ket{\pm}$ states. We identified the lift in degeneracy as the main cause in the zero-field depolarization, followed by the double-flip process and then the electric field. With have demonstrated a potential use of this depolarization as a DC microwave-less and orientation-free magnetometer with sensitivity below $100\ \rm{nm}/\sqrt{\rm Hz}$ for a single $10\ \mu \rm m$ crystal.We have observed that in some cases the double-flips and change of basis depolarization play a more important role than the lift of degeneracy in the magnetometry sensitivity.
+In this work we have identified three mechanisms causing the extra spin depolarization observed in zero field for dense ensemble of NV$^-$ centers, all related to an increase in the dipole-dipole cross-relaxations between the spins : the lift of degeneracy between the four classes caused by the magnetic field, the domination of the local electric field which causes a change in the Hamiltonian eigenstates, and the double-flip process allowed by the proximity in energy of the spin $\ket{\pm}$ states. We identified the lift in degeneracy as the main cause in the zero-field depolarization, followed by the double-flip processes and then the electric field. We have demonstrated a potential use of this depolarization as a DC microwave-less and orientation-free magnetometer with sensitivity below $100\ \rm{nm}/\sqrt{\rm Hz}$ for a single $10\ \mu \rm m$ crystal.We have observed that in some cases the double-flips and electric field play a more important role than the lift of degeneracy in the magnetometry sensitivity.
 \section*{acknowledgements}
 
 \bibliographystyle{plain}
