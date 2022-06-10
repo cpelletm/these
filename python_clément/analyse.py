@@ -11,7 +11,7 @@ from numpy.linalg import norm
 
 
 
-def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='auto'):
+def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='auto',decimalPoint='.'):
 	import csv
 	if len(filename)<=4 or filename[-4]!='.' :
 		if glob.glob(filename+'.txt') :
@@ -30,6 +30,12 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 		with open(filename,'r',encoding = "ISO-8859-1") as f:
 			for line in f :
 				line=line.split()
+				if decimalPoint!='.' :
+					line2=[]
+					for elem in line :
+						elem=elem.replace(decimalPoint,'.')
+						line2+=[elem]
+					line=line2
 				try :
 					if exclude_neg : #c'est extrèmement gitan ça monsieur
 						if float(line[xcol])!=-1 :

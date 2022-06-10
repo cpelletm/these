@@ -1660,6 +1660,8 @@ def test_pb_2():
 
 
 
-a=[0,1,2,3]
-print(a[1:3])
+a='123,abc'
+a=a.replace(',','.')
+print(a)
+print ('.' in a)
 

@@ -5,10 +5,10 @@ from analyse import *
 
 # Pour la figure en fonction du décalage en fréquence, voir le traitement.py dans T1/
 
-scale=1.5
-plt.figure(num=1,figsize=(3*scale,2*scale),dpi=80)
-plt.xticks(fontsize=10+1.5*scale)
-plt.yticks(fontsize=10+1.5*scale)
+
+plt.figure(num=1,figsize=(2,4/3),dpi=80)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
 
 def find_B():
 	fnames,fval=extract_glob('ESR',LastValIndex=-5)
@@ -44,6 +44,7 @@ def find_B():
 	plt.plot(fval,fms)
 	plt.plot(fval,fps)
 
+# find_B()
 
 def plot_ESR_freqs():
 	fnames,fval=extract_glob('ESR',LastValIndex=-5)
@@ -87,18 +88,21 @@ def plot_T1_raw():
 # plot_T1_raw()
 
 def fit_T1_1classe():
-	x,y=extract_data('T1 1 classe 111',ycol=5)
+	x,y=extract_data('T1 1 classe condition série',ycol=5)
+	x=x*1e3
+	y=y/max(y)
 	plt.plot(x,y,'x')
 	# popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=False)
 	# print(estim_error(y,yfit))
 	# for T1ph in np.linspace(1e-3,5e-3,100):
 	# 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	# 	print('T1ph=%f,error=%f'%(T1ph,estim_error(y,yfit)))
-	T1ph=0.003626
+	T1ph=0.003626*1e3
 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
-	plt.plot(x,yfit)
-	print(popt,1/popt[1])
+	plt.plot(x,yfit,lw=2)
+	print(popt,1/popt[1]*1e3)
 
+fit_T1_1classe()
 
 def plot_ESR_0B():
 	x,y=extract_data('ESR 0B -20 et -30 dB',ycol=5)
@@ -113,6 +117,6 @@ def plot_ESR_1x4():
 	# plt.plot(x[nmin:nmax],yfit)
 	# plt.plot(y)
 
-plot_ESR_1x4()
+# plot_ESR_1x4()
 
 plt.show()
