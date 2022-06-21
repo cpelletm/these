@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  10 JUN 2022 18:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  16 JUN 2022 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -291,7 +291,7 @@ Class revtex4-2 Info: multicol was not loaded (OK!) on input line 18.
 
 (./Low_field_CR.aux
 
-LaTeX Warning: Label `PL_NV_density' multiply defined.
+LaTeX Warning: Label `T1' multiply defined.
 
 )
 \openout1 = `Low_field_CR.aux'.
@@ -349,60 +349,45 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Figures/shema_summary.pdf, id=1, 914.98361pt x 753.42018pt>
+<Figures/shema_summary.pdf, id=1, 1111.3821pt x 721.52661pt>
 File: Figures/shema_summary.pdf Graphic file (type pdf)
 <use Figures/shema_summary.pdf>
-Package pdftex.def Info: Figures/shema_summary.pdf  used on input line 33.
-(pdftex.def)             Requested size: 229.49844pt x 188.97537pt.
-<Figures/fig dense vs pas dense.pdf, id=2, 471.18576pt x 171.33478pt>
-File: Figures/fig dense vs pas dense.pdf Graphic file (type pdf)
-<use Figures/fig dense vs pas dense.pdf>
-Package pdftex.def Info: Figures/fig dense vs pas dense.pdf  used on input line
- 41.
-(pdftex.def)             Requested size: 229.49844pt x 83.4528pt.
-<Figures/fig T1.pdf, id=3, 647.20322pt x 236.70323pt>
-File: Figures/fig T1.pdf Graphic file (type pdf)
-<use Figures/fig T1.pdf>
-Package pdftex.def Info: Figures/fig T1.pdf  used on input line 55.
-(pdftex.def)             Requested size: 229.49844pt x 83.93451pt.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/shema_summary
-.pdf> <./Figures/fig dense vs pas dense.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fig dense vs pas dense.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
-> <./Figures/fig T1.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fig T1.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
->]
-<Figures/fig 100 vs 1x1x1x1.pdf, id=100, 1108.98349pt x 357.19933pt>
-File: Figures/fig 100 vs 1x1x1x1.pdf Graphic file (type pdf)
-<use Figures/fig 100 vs 1x1x1x1.pdf>
-Package pdftex.def Info: Figures/fig 100 vs 1x1x1x1.pdf  used on input line 65.
+Package pdftex.def Info: Figures/shema_summary.pdf  used on input line 60.
+(pdftex.def)             Requested size: 229.49844pt x 148.99284pt.
+<Figures/fig_T1.pdf, id=2, 647.20291pt x 483.5164pt>
+File: Figures/fig_T1.pdf Graphic file (type pdf)
+<use Figures/fig_T1.pdf>
+Package pdftex.def Info: Figures/fig_T1.pdf  used on input line 66.
+(pdftex.def)             Requested size: 229.49844pt x 171.45401pt.
+<Figures/fig_100_vs_1x1x1x1.pdf, id=3, 1108.98311pt x 357.19933pt>
+File: Figures/fig_100_vs_1x1x1x1.pdf Graphic file (type pdf)
+<use Figures/fig_100_vs_1x1x1x1.pdf>
+Package pdftex.def Info: Figures/fig_100_vs_1x1x1x1.pdf  used on input line 73.
 
 (pdftex.def)             Requested size: 484.49844pt x 156.0563pt.
-<Figures/fig transverse field V2.pdf, id=101, 541.2527pt x 496.61438pt>
-File: Figures/fig transverse field V2.pdf Graphic file (type pdf)
-<use Figures/fig transverse field V2.pdf>
-Package pdftex.def Info: Figures/fig transverse field V2.pdf  used on input lin
-e 101.
-(pdftex.def)             Requested size: 229.49844pt x 210.56955pt.
- [2]
-<Figures/fig_magneto.pdf, id=106, 450.7709pt x 338.71759pt>
-File: Figures/fig_magneto.pdf Graphic file (type pdf)
-<use Figures/fig_magneto.pdf>
-Package pdftex.def Info: Figures/fig_magneto.pdf  used on input line 156.
-(pdftex.def)             Requested size: 229.49844pt x 172.44908pt.
- [3 <./Figures/fig 100 vs 1x1x1x1.pdf> <./Figures/fig transverse field V2.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fig transverse field V2.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
->]
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/shema_summary
+.pdf>]
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 164.
+ on input line 81.
 
-(./Low_field_CR.bbl [4 <./Figures/fig_magneto.pdf>]
+[2 <./Figures/fig_T1.pdf>] [3 <./Figures/fig_100_vs_1x1x1x1.pdf>]
+<Figures/fig_transverse_field_V2.pdf, id=91, 541.2527pt x 496.61438pt>
+File: Figures/fig_transverse_field_V2.pdf Graphic file (type pdf)
+<use Figures/fig_transverse_field_V2.pdf>
+Package pdftex.def Info: Figures/fig_transverse_field_V2.pdf  used on input lin
+e 137.
+(pdftex.def)             Requested size: 229.49844pt x 210.56955pt.
+<Figures/fig_magneto.pdf, id=92, 450.7709pt x 338.71759pt>
+File: Figures/fig_magneto.pdf Graphic file (type pdf)
+<use Figures/fig_magneto.pdf>
+Package pdftex.def Info: Figures/fig_magneto.pdf  used on input line 181.
+(pdftex.def)             Requested size: 229.49844pt x 172.44908pt.
+ [4 <./Figures/fig_transverse_field_V2.pdf> <./Figures/fig_magneto.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fig_magneto.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>] (./Low_field_CR.bbl
 Underfull \hbox (badness 1048) in paragraph at lines 29--34
  \OT1/cmr/m/n/9 a-sub-ra-ma-nian, Thomas Wolf, Friede-mann Rein-hard,
  []
@@ -412,48 +397,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--40
  []\OT1/cmr/m/n/9 RJ Ep-stein, FM Men-doza, YK Kato, and
  []
 
-
-Underfull \hbox (badness 3375) in paragraph at lines 55--61
- []\OT1/cmr/m/n/9 Aurore Finco, An-gela Haykal, Rana Tanos, Flo-
- []
-
-
+[5]
 Underfull \hbox (badness 1675) in paragraph at lines 158--165
  \OT1/cmr/m/n/9 Zhang, Kazuo Naka-mura, Hi-toshi Sumiya, Takeshi
  []
 
-) [5] (./Low_field_CR.aux)
+) [6] (./Low_field_CR.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6297 strings out of 481239
- 91110 string characters out of 5920377
- 379456 words of memory out of 5000000
- 21486 multiletter control sequences out of 15000+600000
- 547019 words of font info for 78 fonts, out of 8000000 for 9000
+ 6264 strings out of 481239
+ 90507 string characters out of 5920377
+ 355331 words of memory out of 5000000
+ 21462 multiletter control sequences out of 15000+600000
+ 542692 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,7n,67p,1233b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on Low_field_CR.pdf (5 pages, 612572 bytes).
+ 43i,7n,67p,1168b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/dejavu/DejaVuSans.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on Low_field_CR.pdf (6 pages, 1059140 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
+ 227 PDF objects out of 1000 (max. 8388607)
+ 159 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

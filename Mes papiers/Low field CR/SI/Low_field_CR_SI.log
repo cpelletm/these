@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  7 JUN 2022 16:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  16 JUN 2022 11:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -281,28 +281,28 @@ dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
 \sf@bottom=\skip61
 )
 Class revtex4-2 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 16.
-Class revtex4-2 Info: cite was not loaded (OK!) on input line 16.
-Class revtex4-2 Info: mcite was not loaded (OK!) on input line 16.
-Class revtex4-2 Info: multicol was not loaded (OK!) on input line 16.
+lass! (Proceeding with fingers crossed.) on input line 15.
+Class revtex4-2 Info: cite was not loaded (OK!) on input line 15.
+Class revtex4-2 Info: mcite was not loaded (OK!) on input line 15.
+Class revtex4-2 Info: multicol was not loaded (OK!) on input line 15.
 
 (./Low_field_CR_SI.aux)
 \openout1 = `Low_field_CR_SI.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -332,16 +332,16 @@ Package caption Info: End \AtBeginDocument code.
 \openout3 = `Low_field_CR_SINotes.bib'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--21
+Underfull \hbox (badness 10000) in paragraph at lines 17--20
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -355,108 +355,127 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <Figures_SI/fig_ESR.pdf, id=15, 646.5216pt x 240.22734pt>
 File: Figures_SI/fig_ESR.pdf Graphic file (type pdf)
 <use Figures_SI/fig_ESR.pdf>
-Package pdftex.def Info: Figures_SI/fig_ESR.pdf  used on input line 33.
+Package pdftex.def Info: Figures_SI/fig_ESR.pdf  used on input line 32.
 (pdftex.def)             Requested size: 421.19714pt x 156.50514pt.
 
 [2 <./Figures_SI/fig_ESR.pdf>]
-<Figures_SI/map_etats_propres.png, id=36, 252.19218pt x 165.99516pt>
+<Figures_SI/map_etats_propres.png, id=37, 252.19218pt x 165.99516pt>
 File: Figures_SI/map_etats_propres.png Graphic file (type png)
 <use Figures_SI/map_etats_propres.png>
 Package pdftex.def Info: Figures_SI/map_etats_propres.png  used on input line 5
-5.
+4.
 (pdftex.def)             Requested size: 327.59857pt x 215.63158pt.
-<Figures_SI/shema_exp.pdf, id=38, 515.59361pt x 358.40292pt>
+<Figures_SI/shema_exp.pdf, id=39, 515.59361pt x 358.40292pt>
 File: Figures_SI/shema_exp.pdf Graphic file (type pdf)
 <use Figures_SI/shema_exp.pdf>
-Package pdftex.def Info: Figures_SI/shema_exp.pdf  used on input line 65.
+Package pdftex.def Info: Figures_SI/shema_exp.pdf  used on input line 64.
 (pdftex.def)             Requested size: 327.59857pt x 227.73097pt.
  [3 <./Figures_SI/map_etats_propres.png>]
 [4 <./Figures_SI/shema_exp.pdf>]
-<Figures_SI/Fig_T1_combined.pdf, id=82, 564.62616pt x 821.63518pt>
+Overfull \hbox (11.87596pt too wide) in paragraph at lines 88--90
+\OML/cmm/m/it/12 T[]$ \OT1/cmr/m/n/12 mea-sure-ment us-ing both a stretched and
+ ex-po-nen-tial de-cay : $\OML/cmm/m/it/12 S\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^
+^\\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 A [][][]$\OT1/cmr/m/n/12 .
+ []
+
+<Figures_SI/Fig_T1_combined.pdf, id=83, 564.62616pt x 821.63518pt>
 File: Figures_SI/Fig_T1_combined.pdf Graphic file (type pdf)
 <use Figures_SI/Fig_T1_combined.pdf>
-Package pdftex.def Info: Figures_SI/Fig_T1_combined.pdf  used on input line 91.
+Package pdftex.def Info: Figures_SI/Fig_T1_combined.pdf  used on input line 93.
 
 (pdftex.def)             Requested size: 374.40143pt x 544.85101pt.
-<Figures_SI/fig_alphas.pdf, id=83, 421.16327pt x 270.67984pt>
+<Figures_SI/fig_alphas.pdf, id=84, 421.16327pt x 270.67984pt>
 File: Figures_SI/fig_alphas.pdf Graphic file (type pdf)
 <use Figures_SI/fig_alphas.pdf>
-Package pdftex.def Info: Figures_SI/fig_alphas.pdf  used on input line 96.
+Package pdftex.def Info: Figures_SI/fig_alphas.pdf  used on input line 98.
 (pdftex.def)             Requested size: 210.59857pt x 135.35197pt.
-<Figures_SI/largeur_fluct_SI.pdf, id=84, 542.38904pt x 531.76376pt>
+<Figures_SI/largeur_fluct_SI.pdf, id=85, 542.38904pt x 531.76376pt>
 File: Figures_SI/largeur_fluct_SI.pdf Graphic file (type pdf)
 <use Figures_SI/largeur_fluct_SI.pdf>
 Package pdftex.def Info: Figures_SI/largeur_fluct_SI.pdf  used on input line 10
-3.
+5.
 (pdftex.def)             Requested size: 327.59857pt x 321.18658pt.
- [5] [6 <./Figures_SI/Fig_T1_combined.pdf>]
-<Figures_SI/overlap.pdf, id=124, 435.72276pt x 300.23645pt>
+[5] [6 <./Figures_SI/Fig_T1_combined.pdf>]
+<Figures_SI/overlap.pdf, id=125, 435.72276pt x 300.23645pt>
 File: Figures_SI/overlap.pdf Graphic file (type pdf)
 <use Figures_SI/overlap.pdf>
-Package pdftex.def Info: Figures_SI/overlap.pdf  used on input line 117.
+Package pdftex.def Info: Figures_SI/overlap.pdf  used on input line 119.
 (pdftex.def)             Requested size: 327.59857pt x 225.73111pt.
-
-[7 <./Figures_SI/fig_alphas.pdf>] [8 <./Figures_SI/largeur_fluct_SI.pdf>]
-[9 <./Figures_SI/overlap.pdf>]
-<Figures_SI/fig_Pola.pdf, id=203, 827.35681pt x 297.31349pt>
+ [7 <./Figures_SI/fig_alphas.pdf>]
+[8 <./Figures_SI/largeur_fluct_SI.pdf>] [9 <./Figures_SI/overlap.pdf>]
+<Figures_SI/fig_Pola.pdf, id=204, 827.35681pt x 297.31349pt>
 File: Figures_SI/fig_Pola.pdf Graphic file (type pdf)
 <use Figures_SI/fig_Pola.pdf>
-Package pdftex.def Info: Figures_SI/fig_Pola.pdf  used on input line 152.
+Package pdftex.def Info: Figures_SI/fig_Pola.pdf  used on input line 154.
 (pdftex.def)             Requested size: 421.19714pt x 151.3602pt.
- [10 <./Figures_SI/fig_Pola.pdf>] [11] [12]
-<Figures_SI/121 VS 22.pdf, id=265, 1143.75548pt x 1428.47911pt>
-File: Figures_SI/121 VS 22.pdf Graphic file (type pdf)
-<use Figures_SI/121 VS 22.pdf>
-Package pdftex.def Info: Figures_SI/121 VS 22.pdf  used on input line 223.
+ [10 <./Figures_SI/fig_Pola.pdf>] [11] [12] [13]
+<Figures_SI/121_VS_22.pdf, id=270, 1143.75548pt x 1428.47911pt>
+File: Figures_SI/121_VS_22.pdf Graphic file (type pdf)
+<use Figures_SI/121_VS_22.pdf>
+Package pdftex.def Info: Figures_SI/121_VS_22.pdf  used on input line 238.
 (pdftex.def)             Requested size: 327.59857pt x 409.14789pt.
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
-24.
+39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 224.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 239.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 231.
- [13] [14 <./Figures_SI/121 VS 22.pdf>]
-<Figures_SI/Various ESR.pdf, id=305, 637.21535pt x 822.07486pt>
-File: Figures_SI/Various ESR.pdf Graphic file (type pdf)
-<use Figures_SI/Various ESR.pdf>
-Package pdftex.def Info: Figures_SI/Various ESR.pdf  used on input line 242.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 246.
+ [14]
+
+LaTeX Warning: Reference `121 VS 22 fig' on page 15 undefined on input line 252
+.
+
+[15 <./Figures_SI/121_VS_22.pdf>]
+
+LaTeX Warning: Reference `121 VS 22 fig' on page 16 undefined on input line 254
+.
+
+<Figures_SI/Various_ESR.pdf, id=309, 637.21535pt x 822.07486pt>
+File: Figures_SI/Various_ESR.pdf Graphic file (type pdf)
+<use Figures_SI/Various_ESR.pdf>
+Package pdftex.def Info: Figures_SI/Various_ESR.pdf  used on input line 257.
 (pdftex.def)             Requested size: 327.59857pt x 422.65201pt.
- [15] [16 <./Figures_SI/Various ESR.pdf>] [17]
-(./Low_field_CR_SI.bbl [18]) [19] (./Low_field_CR_SI.aux) ) 
+[16 <./Figures_SI/Various_ESR.pdf>] [17] [18] (./Low_field_CR_SI.bbl [19])
+[20] (./Low_field_CR_SI.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6319 strings out of 481239
- 91221 string characters out of 5920377
+ 6321 strings out of 481239
+ 91238 string characters out of 5920377
  354266 words of memory out of 5000000
- 21506 multiletter control sequences out of 15000+600000
+ 21508 multiletter control sequences out of 15000+600000
  548864 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,11n,58p,1102b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fo
-nts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cme
-xtra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Low_field_CR_SI.pdf (19 pages, 1045932 bytes).
+ 43i,11n,58p,1098b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-supe
+r/sfrm1200.pfb>
+Output written on Low_field_CR_SI.pdf (20 pages, 1056806 bytes).
 PDF statistics:
- 405 PDF objects out of 1000 (max. 8388607)
- 282 compressed objects within 3 object streams
+ 412 PDF objects out of 1000 (max. 8388607)
+ 287 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
