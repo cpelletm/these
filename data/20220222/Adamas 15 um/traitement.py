@@ -47,6 +47,18 @@ T1 avec un alpha=0.82 fixe :
 # print(popt)
 # plt.show()
 
+def random_plot():
+	plt.figure(num=1,figsize=(4,3),dpi=80) #à écrire au début a priori
+	ax=plt.gca()
+	ax.tick_params(labelsize=13)
+	fname='ESR 2x2'
+	x,y=extract_data(fname)
+	y=y/max(y)
+	plt.plot(x,y)
+	plt.show()
+
+
+random_plot()
 def plot_champs_transverses():
 	fname='T1 champ transverse très faible classe 4 (DQ)'
 	x,y=extract_data(fname,ycol=5)
@@ -123,27 +135,28 @@ def fig121_Vs_22():
 	plt.show()
 
 
-#Bon après pas mal de test, c'est bien de la merde les fits avec stretch et phonon, le T1 stretch il danse vraiment la salsa et les valeurs c'est assez nimp
-#C'est peut etre a cause du coté micro, il faudrait vraiment que je fasse plus de test sur les gros adamas pour en être sur. Et limite broyer des diamants aussi
+def test_fits_t1_phonon():
+	#Bon après pas mal de test, c'est bien de la merde les fits avec stretch et phonon, le T1 stretch il danse vraiment la salsa et les valeurs c'est assez nimp
+	#C'est peut etre a cause du coté micro, il faudrait vraiment que je fasse plus de test sur les gros adamas pour en être sur. Et limite broyer des diamants aussi
 
-#En attendant si tu veux des valeurs, mieux vaut prendre des stretch arb. alpha=0.8 fonctionne bien
-T1ph=1/1800
+	#En attendant si tu veux des valeurs, mieux vaut prendre des stretch arb. alpha=0.8 fonctionne bien
+	T1ph=1/1800
 
-fname='T1 1 classe pour le champ transverse moyen'
+	fname='T1 1 classe pour le champ transverse moyen'
 
-# fname='T1 2x2 autre raie'
-# fname='T1 2x2'
-# fname='T1 2x2 droite (2)'
-# fname='T1 2x2 gauche (2)'
-# fname='T1 121 nuit'
-# fname='T1 121 (3)'
-# fname='T1 121 (4)'
-# fname='T1 1x2x1'
-# fname='T1 0B court'
-x,y=extract_data(fname,ycol=5)
-plt.plot(x,y)
-# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=False)
-popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
-plt.plot(x,yfit)
-print(1/popt[1])#,popt[2])
-plt.show()
+	# fname='T1 2x2 autre raie'
+	# fname='T1 2x2'
+	# fname='T1 2x2 droite (2)'
+	# fname='T1 2x2 gauche (2)'
+	# fname='T1 121 nuit'
+	# fname='T1 121 (3)'
+	# fname='T1 121 (4)'
+	# fname='T1 1x2x1'
+	# fname='T1 0B court'
+	x,y=extract_data(fname,ycol=5)
+	plt.plot(x,y)
+	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=False)
+	popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
+	plt.plot(x,yfit)
+	print(1/popt[1])#,popt[2])
+	plt.show()

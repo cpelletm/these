@@ -4,38 +4,159 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-
-plt.figure(num=1,figsize=(3,2),dpi=80)
-plt.xticks(fontsize=11)
-plt.yticks(fontsize=12)
+plt.figure(num=1,figsize=(4,3),dpi=80)
+ax=plt.gca()
+ax.tick_params(labelsize=13)
 
 
 
 def plot_ESR_1x1x1x1():
 	x,y=extract_data('T1 1x1x1x1/ESR 3V')
-	n=len(x)//2
+	n=len(x)#//2
 	x=x[:n]
 	y=y[:n]
 	y=y/max(y)
 	plt.plot(x,y)
 
 
-def plot_T1_fit():
+def plot_ESR_100():
+	x,y=extract_data('T1 100 align 3/ESR/V=-2.000000')
+	y=y/max(y)
+	plt.plot(x,y)
+
+
+# plot_ESR_100()
+
+def plot_T1__fit_main_text():
 	fnames,fval=extract_glob('T1 1x1x1x1/T1')
-	i=100
+	i=104
 	x,y=extract_data(fnames[i],ycol=5)
-	y=y*100
+	y=y/max(y)
 	x=x*1e3
-	plt.plot(x,y,'o',markerfacecolor='None',mew=0.8,ms=5)
+	T1ph=0.003626*1e3
+	plt.plot(x,y,'o',markerfacecolor='None',mew=0.7,ms=5,color=color(0),label=r'$B=0$')
+	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	plt.plot(x,yfit,lw=2,color=color(1))
+
+	x,y=extract_data(fnames[15],ycol=5)
+	x=x*1e3
+	for i in range(16,45):
+		x2,y2=extract_data(fnames[i],ycol=5)
+		y+=y2
+	y=y/max(y)
+	plt.plot(x,y,'x',markerfacecolor='None',mew=0.7,ms=4,color=color(2),label=r'$B\neq 0$')
+	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	plt.plot(x,yfit,lw=2,color=color(1))
+	plt.legend()
+
+# plot_T1__fit_main_text()
+
+#~~~~RQ : normaliser les fits des T1 n'a pas de sense tant que je ne connais pas la vraie valeur en t=0
+#En plus y'a des p-e des blagues de tdv de l'état metastable pour les temps très courts, à voir si ça se soutrait correctement
+#Y'a aussi le fait que je suis obligé d'attendre plus longtemps que le pulse uW, sinon ça fausse le truc (genre tu peux avoir du spin lockin ou chais pas)
+
+def plot_T1_fit(i=104):
+	fnames,fval=extract_glob('T1 1x1x1x1/T1')
+	x,y=extract_data(fnames[i],ycol=5)
+	# x=x-x[0]
+	y=y/max(y)
+	x=x*1e3
+	
 	# popt,yfit=exp_fit_zero(x,y)
 	# plt.plot(x,yfit)
 	# popt,yfit=stretch_exp_fit_zero(x,y)
 	# plt.plot(x,yfit)
 	T1ph=0.003626*1e3
-	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
-	plt.plot(x,yfit,lw=2)
+	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=5,color=color(0),label='Experimental data')
+	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
+	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
+	# popt,yfit=exp_fit_zero(x,y,norm=False)
+	# plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} )$')
+	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	# plt.plot(x,yfit,lw=2,color=color(1),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
+	plt.legend(fontsize=13)
 
-# plot_T1_fit()
+# plot_T1_fit(i=104)
+
+def plot_T1_fit_100():
+	fname='T1 0B'
+	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	x=x*1e3
+	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=5,color=color(0),label='Experimental data')
+	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
+	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
+	plt.legend(fontsize=13)
+
+# plot_T1_fit_100()
+
+
+
+def plot_T1_fit_avg():
+	fnames,fval=extract_glob('T1 1x1x1x1/T1')
+	x,y=extract_data(fnames[15],ycol=5)
+	x=x*1e3
+	for i in range(16,45):
+		x2,y2=extract_data(fnames[i],ycol=5)
+		y+=y2
+	y=y/max(y)
+	T1ph=0.003626*1e3
+	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=8,color=color(0),label='Experimental data')
+	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
+	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
+	popt,yfit=exp_fit_zero(x,y,norm=False)
+	plt.plot(x,yfit,'-.',lw=2,color=color(2),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} )$')
+	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	# plt.plot(x,yfit,lw=2,color=color(1),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} -\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
+	plt.legend(fontsize=13)
+
+# plot_T1_fit_avg()
+
+def divers_T1():
+	# fnames,fval=extract_glob('T1 100 align 3/T1')
+	# fval.remove(fval[194])
+	# fnames.remove(fnames[194])
+	# fval.remove(fval[178])
+	# fnames.remove(fnames[178])
+	fnames,fval=extract_glob('T1 1x1x1x1/T1')
+	n=len(fnames)
+	# errors=[]
+	# for i in range(n):
+	# 	x,y=extract_data(fnames[i],ycol=5)
+	# 	y=y/max(y)
+	# 	T1ph=0.003626*1e3
+	# 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	# 	errors+=[1/estim_error(y,yfit,rel=False)]
+	# plt.plot(errors)
+	# taus=[]
+	# for i in range(n):
+	# 	x,y=extract_data(fnames[i],ycol=5)
+	# 	y=y/max(y)
+	# 	T1ph=0.003626*1e3
+	# 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	# 	taus+=[1/popt[1]]
+	# plt.plot(taus)
+	alphas=[]
+	taus=[]
+	for i in range(n):
+		x,y=extract_data(fnames[i],ycol=5)
+		y=y/max(y)
+		popt,yfit=stretch_arb_exp_fit_zero(x,y)
+		alphas+=[popt[2]]
+		T1ph=0.003626*1e3
+		popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+		taus+=[popt[1]]
+	taus=np.array(taus)
+	taus=taus/max(taus)
+	Bs=[np.array([78.55,31.8,16.86])*(x-0.17)/2.8 for x in fval]
+	Bamps=np.array([norm(B)*np.sign(B[0]) for B in Bs])
+	plt.plot(Bamps,alphas,'o',markerfacecolor='None')
+	# plt.plot(taus)
+
+
+# divers_T1()
+
+
 
 def plot_PL_1x1x1x1():
 	x,y=extract_data('T1 1x1x1x1/scan 1x1x1x1',ycol=3)

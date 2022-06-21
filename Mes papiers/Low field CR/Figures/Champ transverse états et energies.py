@@ -47,6 +47,8 @@ def plot_NRJ():
 	# ax.xaxis.tick_top()
 	# ax.tick_params(labeltop=False)  # don't put tick labels at the top
 	# ax2.xaxis.tick_bottom()
+	# ax2.tick_params(labelsize=12)
+	# ax.tick_params(labelsize=12)
 
 	# plt.xlabel('Magnetic Field (G)',fontsize=15)
 
@@ -60,15 +62,16 @@ def plot_NRJ():
 	ax2.plot(Bs,DeltaVect,lw=2,color='r')
 	ax2.set_ylim(0.9,1.005)
 	ax2.tick_params(labelsize=12)
+	ax1.tick_params(labelsize=12)
 	plt.show()
 
-# plot_NRJ()
+plot_NRJ()
 
-H=NVHamiltonian(B=[120,0,0],c=5)
-E=H.egval()
-V=H.egvect()
-print(V[0].dot([0,1,0]))
-print(E[2]-E[1])
+# H=NVHamiltonian(B=[120,0,0],c=5)
+# E=H.egval()
+# V=H.egvect()
+# print(V[0].dot([0,1,0]))
+# print(E[2]-E[1])
 
 def plot_map_etats():
 	n=100

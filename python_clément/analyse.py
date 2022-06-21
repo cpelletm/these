@@ -11,7 +11,7 @@ from numpy.linalg import norm
 
 
 
-def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='auto'):
+def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='auto',decimalPoint='.'):
 	import csv
 	if len(filename)<=4 or filename[-4]!='.' :
 		if glob.glob(filename+'.txt') :
@@ -30,6 +30,12 @@ def extract_data(filename,xcol=0,ycol=1,exclude_neg=True,data='line',delimiter='
 		with open(filename,'r',encoding = "ISO-8859-1") as f:
 			for line in f :
 				line=line.split()
+				if decimalPoint!='.' :
+					line2=[]
+					for elem in line :
+						elem=elem.replace(decimalPoint,'.')
+						line2+=[elem]
+					line=line2
 				try :
 					if exclude_neg : #c'est extrèmement gitan ça monsieur
 						if float(line[xcol])!=-1 :
@@ -259,16 +265,24 @@ def exp_fit(x,y,amp=None,ss=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
-def exp_fit_zero(x,y,amp=None,tau=None) :
+def exp_fit_zero(x,y,amp=None,tau=None,norm=False) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,amp,tau) :
-		return amp*np.exp(-x/tau)
-	p0=[amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1]))
+	if norm :
+		amp=1
+		def f(x,tau):
+			return amp*np.exp(-x/tau)
+		p0=[tau]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([0],[np.inf]))
+	else :
+		def f(x,amp,tau) :
+			return amp*np.exp(-x/tau)
+		p0=[amp,tau]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
+	return(popt,f(x,*popt))
+
 
 def stretch_exp_fit(x,y,amp=None,ss=None,tau=None) :
 	if not amp :
@@ -283,16 +297,23 @@ def stretch_exp_fit(x,y,amp=None,ss=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,popt[0],popt[1],popt[2]))
 
-def stretch_exp_fit_zero(x,y,amp=None,tau=None) :
+def stretch_exp_fit_zero(x,y,amp=None,tau=None,norm=False) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not tau :
 		tau=x[int(len(x)/10)]-x[0]
-	def f(x,amp,tau) :
-		return amp*np.exp(-np.sqrt(x/tau))
-	p0=[amp,tau]
-	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
-	return(popt,f(x,popt[0],popt[1]))
+	if norm :
+		amp=1
+		def f(x,tau):
+			return amp*np.exp(-np.sqrt(x/tau))
+		p0=[tau]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([0],[np.inf]))
+	else :
+		def f(x,amp,tau) :
+			return amp*np.exp(-np.sqrt(x/tau))
+		p0=[amp,tau]
+		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
+	return(popt,f(x,*popt))
 
 def stretch_arb_exp_fit(x,y,amp=None,ss=None,tau=None,alpha=0.5,fixed=False):
 	if not amp :
@@ -848,15 +869,18 @@ def closest_elem(l,target):
 			basis=abs(target-l[i])
 	return n
 
-def estim_error(y,yfit):
+def estim_error(y,yfit,rel=True):
 	#C'est pas si simple, si tu prends juste l'erreur relative de chaque point tu donnes beaucoup plus de poids aux valeurs proches de 0. Le je fais un truc un peu sale mais qui donne autant de poids (absolu) à chaque point
 	n=len(y)
 	assert n==len(yfit)
 	y=np.array(y)
 	yfit=np.array(yfit)
 	vAvg=sum(abs(yfit))/n #le abs est crade mais au cas ou tu aies des valeurs positives et négatives
-	errors_rel=(y-yfit)**2/vAvg**2
-	return(sum(errors_rel)/n)
+	if rel :
+		errors=(y-yfit)**2/vAvg**2
+	else :
+		errors=(y-yfit)**2
+	return(sum(errors)/n)
 
 def lissage(t,n):
 	newt=np.array([sum(t[i:i+n])/n for i in range(len(t)-n)])
@@ -869,6 +893,30 @@ def derivative(x,y):
 	y2=np.array([(y[i+1]-y[i])/dx for i in range(n-1)])
 	x2=np.array([(x[i+1]+x[i])/2 for i in range(n-1)])
 	return(x2,y2)
+
+def find_local_min(x,y,x0):
+	i=find_elem(x,x0)
+	while y[i+1]<y[i]:
+		i+=1
+	while y[i-1]<y[i]:
+		i-=1
+	return i
+
+def find_local_max(x,y,x0):
+	i=find_elem(x,x0)
+	while y[i+1]>y[i]:
+		i+=1
+	while y[i-1]>y[i]:
+		i-=1
+	return i
+
+def integration(x,y):
+	dx=x[1]-x[0]
+	s=(y[0]+y[-1])/2
+	for i in range(1,len(y)-1):
+		s+=y[i]
+	s=s*dx
+	return(s)
 
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
@@ -920,18 +968,6 @@ def ecris_gros(x,y):
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
 
-def extract_glob(SubFolderName='.',FirstValIndex='default', LastValIndex=-4): #FirstValIndex=premier caractère numérique
-	fnames=glob.glob(SubFolderName+'/*.csv')
-	if FirstValIndex=='default':
-		try :
-			FirstValIndex=fnames[0].index('=')+1
-		except :
-			raise(ValueError('Could not find a = sign in the file names'))
-	fval=[float(fnames[i][FirstValIndex:LastValIndex]) for i in range(len(fnames))] 
-	fnames=[s for _,s in sorted(zip(fval,fnames))]
-	fval=sorted(fval)
-	return(fnames,fval)
-
 def exemple_animation():
 	import matplotlib.animation as animation
 	fnames,fval=extract_glob('Série ESR 2',16)
@@ -953,6 +989,19 @@ def exemple_animation():
 
 
 #~~~~~~~~ Outils ~~~~~~~~~~
+def extract_glob(SubFolderName='.',FirstValIndex='default', LastValIndex=-4): #FirstValIndex=premier caractère numérique
+	fnames=glob.glob(SubFolderName+'/*.csv')
+	if FirstValIndex=='default':
+		try :
+			FirstValIndex=fnames[0].index('=')+1
+		except :
+			raise(ValueError('Could not find a = sign in the file names'))
+	fval=[float(fnames[i][FirstValIndex:LastValIndex]) for i in range(len(fnames))] 
+	fnames=[s for _,s in sorted(zip(fval,fnames))]
+	fval=sorted(fval)
+	return(fnames,fval)
+
+
 def ask_name():
 	qapp = QApplication(sys.argv)
 	fname,filters=QFileDialog.getOpenFileName()	
@@ -969,6 +1018,12 @@ def save_data(*columns,fname='default',dirname='./'):
 			spamwriter.writerow(c)
 
 def find_elem(elem,liste):
+	try :
+		elem[0] #du sale, mais je me trompe souvent entre elem et liste. Ca devrait fonctionner
+		elem,liste=liste,elem
+	except:
+		pass
+
 	if elem in liste :
 		l=list(liste)
 		i=l.index(elem)
