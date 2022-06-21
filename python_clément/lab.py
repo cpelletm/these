@@ -696,6 +696,7 @@ class microwave(device):
 		if ressourceName=='mw1' :
 			ressourceName= 'USB0::0x0AAD::0x0054::182239::INSTR'
 		self.PG = visa.ResourceManager().open_resource( ressourceName )
+		self.PG.read_termination = '\n'
 		self.PG.write_termination = '\n'
 		self.PG.timeout=timeout
 		# self.PG.clear()  # Clear instrument io buffers and status. Fait planter la microonde de l'entrée
@@ -1141,6 +1142,27 @@ class platinePI(device):
 			self.pidevice.close()
 		except :
 			pass
+
+class powerMeterMicroWave(device):
+	def __init__(self):
+		super().__init__()
+		ressourceName='USB0::0x0957::0x2C18::MY48200157::INSTR'
+		self.PG = visa.ResourceManager().open_resource( ressourceName )
+		self.PG.write_termination = '\n'
+		self.PG.timeout=3000
+		# self.PG.write('*RST')
+
+	def idn(self):
+		msg=self.PG.query('*IDN?')
+		print(msg)
+	def meas(self):
+		self.PG.write('ABOR')
+		self.PG.write('*WAI')
+		msg=self.PG.query('MEAS?')
+		print(msg)
+
+	def close(self):
+		pass
 
 
 class NIChan():

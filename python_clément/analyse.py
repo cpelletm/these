@@ -112,6 +112,7 @@ def quad_fit(x,y) :
 	a,b,c = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([a,b,c],a*x**2+b*x+c)
 
+
 def parabola_fit(x,y):
 	if y[0]-min(y) > max(y)-y[0] :
 		typ='upside'
@@ -184,8 +185,6 @@ def gauss_derivative_fit(x,y,amp=None,x0=None,sigma=None,ss=0):
 	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
-
-
 
 
 def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
@@ -369,6 +368,8 @@ def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3,fixed=True) :
 		p0=[amp,tau,T1ph]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
 	return(popt,f(x,*popt))
+
+
 
 def Rabi_fit(x,y,amp=None,omega=None,tau=None,ss=None):
 	if not amp :
