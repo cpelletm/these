@@ -58,7 +58,20 @@ This tells us that in most cases, the $\{ \ket{0},\ket{+},\ket{-} \}$ basis is o
 
 
 \section{Samples}
-A faire à la fin pour être sur des figures du main text.
+%Note pour moi : j'ai inversé adamas 1 et 2 parraport aux noms des dossiers dans 20220324
+Here are the various samples used in this study :
+\begin{itemize}
+\item \textbf{HPHT-150-1} : A 150 $\mu$m HPHT 1b diamond irradiated and annealed to reach a concentration [NV$^-$] $\approx 3\ \rm ppm$. Bought as is from Adamas Nanotechnology (MDNV150umHi). This sample is used in Fig. 2 (b), 2(d) and 3 of the main text, as well as Fig. \ref{ESR_single_spin}, \ref{T1_fits} and \ref{alphas} of the SI.
+\item \textbf{HPHT-150-2} : Another sample from the same batch as HPHT-150-1. This sample is used in Fig. 4 of the main text and Fig. \ref{largeur_fluct} (c) of the SI.
+\item \textbf{HPHT-150-3} : Another sample from the same batch as HPHT-150-1. This sample is used in Fig. \ref{Pola} of the SI.
+\item \textbf{HPHT-15-1}  : A 15 $\mu$m diamond with similar properties as the last ones, also bought from Adamas Nanotechnology (MDNV15umHi). This sample is used in Fig. 5 of the main text.
+\item \textbf{HPHT-15-2}  : Another sample from the same batch as HPHT-15-1. This sample is used in Fig. \ref{121 VS 22 fig} and \ref{Various ODMR} of the SI.
+\item \textbf{CVD-PPM} : A CVD bulk diamond described in \citep{TALLAIRE2020421}. It has been irradiated and annealed and contains [NV$^-$] $\approx 4\ \rm ppm$. This sample is used in Fig. \ref{Alignment} of the SI.
+\item \textbf{CVD-PPB} : Another CVD bulk diamond. This one has not been irradiated or annealed and therefore contains [NV$^-$] $\approx 50\ \rm ppb$. This sample is used in Fig. 2(a) of the main text.
+
+
+\end{itemize}
+
 \section{Experimental Setup}
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{Figures_SI/shema_exp}
@@ -143,6 +156,14 @@ S(\Delta \nu)&\propto \int \frac{1}{1+ \frac{(\nu-\nu_1)^2}{\sigma^2}}\cdot \fra
 
 The ODMR lines that we measure are neither Lorentzian nor Gaussian (although they tend to be closer to Gaussians), and can even be asymmetric. Nevertheless, the overlap between two classes can most likely be approximated by a single class ODMR profile stretched by a factor between $\sqrt{2}$ and 2.
 
+\subsection{Lift of the degeneracy between the four classes}
+
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{Figures_SI/Fig_splitting}
+\caption{(a) : Simulation of the 8 possible transition frequencies (four $\ket{0} \to \ket{-1}$ and four $\ket{0} \to \ket{+1}$) as a function of the magnetic field amplitude for the orientation of the magnetic field shown in Fig. 3(b) of the main text. (b) Difference in frequency between each pair of closest classes as a function of the magnetic field amplitude. The dotted line y=8.04 MHz correspond to the estimation of the dipole-dipole interaction range.}
+\label{splitting}
+\end{figure}
+We give here an estimate of the magnetic field required to lift the degeneracy of the four classes in the case of Fig. 3(b) of the main text. Fig. \ref{splitting} shows the simulated energies for the 4 $\ket{0} \to \ket{-1}$ and the 4 $\ket{0} \to \ket{+1}$ as a function of the magnetic field, and the difference in energy between the closest pairs of transitions. We can see that the energy detuning between the classes $\Delta \nu$ crosses the value of the dipole-dipole interaction range (8.04 MHz, measured on sample HPHT-150-2 but likely to be similar on sample HPHT-150-1) for magnetic field values $\norm{B} = 12 \sim 15\ \rm G$, which are close to the half-width of the zero-field feature in Fig. 3(b)(ii) and (iii) of the main text.
 
 \subsection{Effect of laser polarization}
 Previous studies \cite{anishchik2015low, filimonenko2020weak} reported the presence of a photoluminescence dip in zero magnetic field which was heavily dependent on the laser polarization angle with respect to the diamond axes and the magnetic field. 
@@ -152,11 +173,21 @@ We did not observe a strong dependence on the laser polarization with the sample
 In particular, we did not observe the apparition of an anti-line inside the main dip, unlike what was observed in the two previously cited work. We expect that the main reason behind the different behaviors is that we seem to observe far grater spin depolarization in zero-field, which we attribute to dipole-dipole coupling, and that this effect could hide smaller effects such as the one related to the laser polarization.
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{Figures_SI/fig_Pola}
-\caption{Effect of the polarization of the incident laser. (a) Photoluminescence as a function of randomly oriented magnetic field amplitude for various polarization angle. (b) Demodulated PL in the same conditions}
+\caption{Effect of the polarization of the incident laser. (a) Photoluminescence of sample HPHT-150-3 as a function of randomly oriented magnetic field amplitude for various polarization angle. (b) Demodulated PL in the same conditions}
 \label{Pola}
 \end{figure}
-\subsection{Alignment of B}
-La faudrait p-e montrer ce qu'il se passe pour un décalage de quelques degrés. A voir si j'ai déja les plots
+\subsection{Alignment of the magnetic field along [100] axis}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{Figures_SI/alignement}
+\caption{PL of sample CVD-PPM as a function of the external magnetic field amplitude for different field misalignment with the [100] axis}
+\label{Alignment}
+\end{figure}
+We claim that the decrease in PL at low magnetic field in Fig. 3 (c)(ii) of the main text is due to to the local electric field and the double flip processes. One other possibility would be a misalignment of the magnetic field with respect to the [100] axis, where the four classes would only be truly resonant with zero external magnetic field.
+
+Fig. \ref{Alignment} shows the change in PL with respect to the external magnetic field amplitude for various misalignment of the magnetic field direction compared to the [100] diamond crystalline axis for sample [REF]. We can see that the central drop in PL is not critically affected by the misalignment of the magnetic field, and we are therefore confident that the drop in PL we observe when $B\parallel [100]$ is not an effect of misalignment.
+
+The initial alignment of the magnetic field was controlled by applying a field of $\sim 50\ \rm G$ and monitoring the overlap of the four classes with ODMR spectra (maximizing the PL drop is also an effective method). We estimate the initial alignment precision to be $\pm 1^\circ$. The misalignment was then added by rotating the electromagnet along an arbitrary axis. The slight asymmetry between the positive and negative value of the magnetic field could come from the earth magnetic field or from hysteresis in the magnetic core of our electromagnet.
 \section{Extension of the fluctuator model to low magnetic fields}
 
 \subsection{Results}
@@ -237,7 +268,7 @@ While the distributions $\rho(\omega_{NV})$ and $\rho^i(\omega_f)$ can be approx
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{Figures_SI/121_VS_22}
 \caption{(a) Geometrical representation of two NV classes and the two possible planes where the magnetic field has the same projection on both classes. The positive $\hat z_i$ direction is chosen so that $\bm{B}\cdot \hat{z}_i >0$. (b) $T_1$ measurement on a two-class resonance following the protocol described in main text. 8 different magnetic field were used on the same sample : 4 times in a \{100\} plane (blue unfilled symbols) and 4 times in a \{110\} plane (orange filled symbols). Inset : zoom-in on the 0.3-0.8 ms region.}
-\label{ VS 22 fig}
+\label{121 VS 22 fig}
 \end{figure}
 
 With these hypothesis, we found that there were 3 possible scenarios where the NV and fluctuator were resonant:
@@ -334,7 +365,7 @@ $\ket{+/-}$ basis $\hat{x}_1\neq \hat{x}_2$ & 0.7110  & 0.6828 & 0.6828 \\
 $\ket{+/-}$ basis $\hat{x}_1= \hat{x}_2$ & $\frac{4}{3\sqrt{3}}=$0.7698  & 0.6951 & 0.6951 \\
 \hline
 \end{tabular}
-\caption{Computation of $\frac{\bar{\eta}}{ \frac{1}{4} \cdot \sqrt{\frac{1}{3}}}$ for the different eignebasis of the single spin Hamiltonian, and for the different angles between the $z$ axis of the two spins.}
+\caption{Computation of $\frac{\bar{\eta}}{ \frac{1}{4} \cdot \sqrt{\frac{1}{3}}}$ for the different eigenbasis of the single spin Hamiltonian, and for the different angles between the $z$ axis of the two spins.}
 \label{table eta}
 \end{table}
 

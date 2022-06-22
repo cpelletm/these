@@ -85,7 +85,7 @@ def plot_T1_raw():
 	nmax=180
 	plt.plot(Bs[:nmax],taus[:nmax],'o',markerfacecolor='none',ms=3,mew=0.7)
 
-# plot_T1_raw()
+plot_T1_raw()
 
 def fit_T1_1classe():
 	x,y=extract_data('T1 1 classe condition série',ycol=5)
@@ -102,7 +102,7 @@ def fit_T1_1classe():
 	plt.plot(x,yfit,lw=2)
 	print(popt,1/popt[1]*1e3)
 
-fit_T1_1classe()
+# fit_T1_1classe()
 
 def plot_ESR_0B():
 	x,y=extract_data('ESR 0B -20 et -30 dB',ycol=5)

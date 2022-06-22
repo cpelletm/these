@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  16 JUN 2022 11:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  22 JUN 2022 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -289,11 +289,7 @@ Class revtex4-2 Info: cite was not loaded (OK!) on input line 18.
 Class revtex4-2 Info: mcite was not loaded (OK!) on input line 18.
 Class revtex4-2 Info: multicol was not loaded (OK!) on input line 18.
 
-(./Low_field_CR.aux
-
-LaTeX Warning: Label `T1' multiply defined.
-
-)
+(./Low_field_CR.aux)
 \openout1 = `Low_field_CR.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -310,7 +306,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count273
 \scratchdimen=\dimen155
@@ -362,14 +359,14 @@ Package pdftex.def Info: Figures/fig_T1.pdf  used on input line 66.
 <Figures/fig_100_vs_1x1x1x1.pdf, id=3, 1108.98311pt x 357.19933pt>
 File: Figures/fig_100_vs_1x1x1x1.pdf Graphic file (type pdf)
 <use Figures/fig_100_vs_1x1x1x1.pdf>
-Package pdftex.def Info: Figures/fig_100_vs_1x1x1x1.pdf  used on input line 73.
+Package pdftex.def Info: Figures/fig_100_vs_1x1x1x1.pdf  used on input line 72.
 
 (pdftex.def)             Requested size: 484.49844pt x 156.0563pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/shema_summary
 .pdf>]
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 81.
+ on input line 80.
 
 [2 <./Figures/fig_T1.pdf>] [3 <./Figures/fig_100_vs_1x1x1x1.pdf>]
 <Figures/fig_transverse_field_V2.pdf, id=91, 541.2527pt x 496.61438pt>
@@ -388,51 +385,47 @@ Package pdftex.def Info: Figures/fig_magneto.pdf  used on input line 181.
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fig_magneto.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
 >] (./Low_field_CR.bbl
-Underfull \hbox (badness 1048) in paragraph at lines 29--34
+Underfull \hbox (badness 1048) in paragraph at lines 35--40
  \OT1/cmr/m/n/9 a-sub-ra-ma-nian, Thomas Wolf, Friede-mann Rein-hard,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--40
+Underfull \hbox (badness 10000) in paragraph at lines 50--54
  []\OT1/cmr/m/n/9 RJ Ep-stein, FM Men-doza, YK Kato, and
  []
 
 [5]
-Underfull \hbox (badness 1675) in paragraph at lines 158--165
+Underfull \hbox (badness 1675) in paragraph at lines 187--194
  \OT1/cmr/m/n/9 Zhang, Kazuo Naka-mura, Hi-toshi Sumiya, Takeshi
  []
 
-) [6] (./Low_field_CR.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+) [6] (./Low_field_CR.aux) ) 
 Here is how much of TeX's memory you used:
- 6264 strings out of 481239
- 90507 string characters out of 5920377
- 355331 words of memory out of 5000000
- 21462 multiletter control sequences out of 15000+600000
+ 6280 strings out of 481239
+ 90934 string characters out of 5920377
+ 359386 words of memory out of 5000000
+ 21478 multiletter control sequences out of 15000+600000
  542692 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,7n,67p,1168b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/dejavu/DejaVuSans.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on Low_field_CR.pdf (6 pages, 1059140 bytes).
+ 43i,7n,67p,1205b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/d
+ejavu/DejaVuSans.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on Low_field_CR.pdf (6 pages, 1060333 bytes).
 PDF statistics:
  227 PDF objects out of 1000 (max. 8388607)
  159 compressed objects within 2 object streams

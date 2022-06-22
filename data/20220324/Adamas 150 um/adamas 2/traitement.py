@@ -11,13 +11,52 @@ ax.tick_params(labelsize=13)
 
 
 def plot_ESR_1x1x1x1():
-	x,y=extract_data('T1 1x1x1x1/ESR 3V')
+	fnames,fval=extract_glob('T1 1x1x1x1/ESR')
+	# x,y=extract_data('T1 1x1x1x1/ESR 3V')
+	x,y=extract_data(fnames[-1])
 	n=len(x)#//2
 	x=x[:n]
 	y=y[:n]
 	y=y/max(y)
 	plt.plot(x,y)
 
+# plot_ESR_1x1x1x1()
+
+def plot_spread_1x1x1x1():
+	fnames,fval=extract_glob('T1 1x1x1x1/ESR')
+	n=len(fnames)
+	# x,y=extract_data(fnames[-1])
+	# peaks=find_ESR_peaks(x,y,precise=True)
+	# B=find_B_cartesian_mesh(peaks)
+	# print(peaks,B,B.transitions4Classes())
+	B_3_V=[78.55,31.80,16.86]
+	Bamp_3_V=norm(B_3_V)
+	Bamps=np.linspace(0,Bamp_3_V,n//2)
+	Bxs=np.linspace(0,B_3_V[0],n//2)
+	Bys=np.linspace(0,B_3_V[1],n//2)
+	Bzs=np.linspace(0,B_3_V[2],n//2)
+	transis=np.zeros((n//2,8))
+	for i in range(n//2):
+		B=magneticField(x=Bxs[i],y=Bys[i],z=Bzs[i])
+		transis[i,:]=B.transitions4Classes()
+
+	# for i in range(8):
+	# 	plt.plot(Bamps,transis[:,i])
+
+	for i in range(3):
+		plt.plot(Bamps,transis[:,i+1]-transis[:,i])
+
+	for i in range(4,7):
+		plt.plot(Bamps,transis[:,i+1]-transis[:,i])
+
+	plt.plot(Bamps,[8.04]*len(Bamps),'--')
+
+
+
+
+
+
+plot_spread_1x1x1x1()
 
 def plot_ESR_100():
 	x,y=extract_data('T1 100 align 3/ESR/V=-2.000000')
@@ -36,6 +75,7 @@ def plot_T1__fit_main_text():
 	T1ph=0.003626*1e3
 	plt.plot(x,y,'o',markerfacecolor='None',mew=0.7,ms=5,color=color(0),label=r'$B=0$')
 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	print(popt)
 	plt.plot(x,yfit,lw=2,color=color(1))
 
 	x,y=extract_data(fnames[15],ycol=5)
@@ -46,6 +86,7 @@ def plot_T1__fit_main_text():
 	y=y/max(y)
 	plt.plot(x,y,'x',markerfacecolor='None',mew=0.7,ms=4,color=color(2),label=r'$B\neq 0$')
 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	print(popt)
 	plt.plot(x,yfit,lw=2,color=color(1))
 	plt.legend()
 
@@ -209,7 +250,7 @@ def plot_T1_1x1x1() :
 	# plt.plot(x,yfit)
 
 
-plot_T1_1x1x1()
+# plot_T1_1x1x1()
 
 def plot_T1_100() :
 	fnames,fval=extract_glob('T1 100 align 3/T1')
@@ -234,12 +275,13 @@ def plot_T1_100() :
 	y=1/taus[:nmax]
 	# y=y-y[-1]
 	# y=y/max(y)
-	# plt.plot(x,y)
+	plt.plot(x,y)
 
 	# popt,yfit=lor_fit(x,y,x0=0.00001)
 	# print(popt)
 	# plt.plot(x,yfit)
 
+# plot_T1_100()
 
 def plot_PL_100():
 	x,y=extract_data('T1 100 align 3/scan EM',ycol=3)
@@ -254,6 +296,8 @@ def plot_PL_100():
 	y=y/max(y)
 
 	plt.plot(x,y)
+
+
 
 plt.show()
 
