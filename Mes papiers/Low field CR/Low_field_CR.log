@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  22 JUN 2022 15:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  23 JUN 2022 17:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -385,26 +385,31 @@ Package pdftex.def Info: Figures/fig_magneto.pdf  used on input line 181.
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fig_magneto.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
 >] (./Low_field_CR.bbl
-Underfull \hbox (badness 1048) in paragraph at lines 35--40
+Underfull \hbox (badness 1281) in paragraph at lines 35--42
+ \OT1/cmr/m/n/9 von Key-ser-lingk, Nor-man Y. Yao, Eu-gene Dem-ler,
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 44--49
  \OT1/cmr/m/n/9 a-sub-ra-ma-nian, Thomas Wolf, Friede-mann Rein-hard,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--54
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
  []\OT1/cmr/m/n/9 RJ Ep-stein, FM Men-doza, YK Kato, and
  []
 
 [5]
-Underfull \hbox (badness 1675) in paragraph at lines 187--194
+Underfull \hbox (badness 1675) in paragraph at lines 196--203
  \OT1/cmr/m/n/9 Zhang, Kazuo Naka-mura, Hi-toshi Sumiya, Takeshi
  []
 
 ) [6] (./Low_field_CR.aux) ) 
 Here is how much of TeX's memory you used:
- 6280 strings out of 481239
- 90934 string characters out of 5920377
- 359386 words of memory out of 5000000
- 21478 multiletter control sequences out of 15000+600000
+ 6284 strings out of 481239
+ 91031 string characters out of 5920377
+ 364402 words of memory out of 5000000
+ 21482 multiletter control sequences out of 15000+600000
  542692 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,7n,67p,1205b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -425,10 +430,10 @@ fonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on Low_field_CR.pdf (6 pages, 1060333 bytes).
+Output written on Low_field_CR.pdf (6 pages, 1054343 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 159 compressed objects within 2 object streams
+ 230 PDF objects out of 1000 (max. 8388607)
+ 161 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

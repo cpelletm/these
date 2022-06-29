@@ -51,12 +51,7 @@ def plot_spread_1x1x1x1():
 
 	plt.plot(Bamps,[8.04]*len(Bamps),'--')
 
-
-
-
-
-
-plot_spread_1x1x1x1()
+# plot_spread_1x1x1x1()
 
 def plot_ESR_100():
 	x,y=extract_data('T1 100 align 3/ESR/V=-2.000000')

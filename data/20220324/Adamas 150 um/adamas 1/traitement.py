@@ -6,7 +6,7 @@ from analyse import *
 # Pour la figure en fonction du décalage en fréquence, voir le traitement.py dans T1/
 
 
-plt.figure(num=1,figsize=(2,4/3),dpi=80)
+plt.figure(num=1,figsize=(6,3),dpi=80)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 

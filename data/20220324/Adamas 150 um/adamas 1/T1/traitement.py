@@ -89,13 +89,20 @@ def test_aller():
 
 x=Bs
 y=1/taus
-plt.plot(x,y,'o',markerfacecolor='none',ms=5,mew=0.7)
+plt.plot(x,y,'o',markerfacecolor='none',ms=5,mew=0.7,label=r'B $\perp$ [111]')
+plt.plot(x,[57]*nmax,'--',lw=2,color=color(3),label=r'Plateau B $\perp$ [111]')
+
 
 # popt,yfit=lor_fit_fixed(x,y,x0=0,sigma=8)
 # print(popt)
 # plt.plot(x,yfit,lw=2)
 
 gammaref=25.5
+plt.plot(x,[gammaref]*nmax,'--',lw=2,color=color(2),label=r'B $\parallel$ [111]')
+
+
+
+####Plot des barres d'erreurs
 bsup=[gammaref+5]*nmax
 binf=[gammaref-5]*nmax
 ax.fill_between(x,binf,bsup,alpha=0.3,color='red')
@@ -105,4 +112,5 @@ plt.plot(x,binf,'-',lw=1,color='black')
 # plt.plot(x,[gammaref]*nmax,'-',lw=2,color=color(3))
 ylims=ax.get_ylim()
 ax.set_ylim([0,ylims[1]])
+plt.legend()
 plt.show()
