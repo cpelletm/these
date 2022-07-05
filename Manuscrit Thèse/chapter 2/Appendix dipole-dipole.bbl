@@ -1,0 +1,147 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{jackson1999classical}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bc51fc62aec5c2fb2968eb631d48cf2a}{%
+           family={Jackson},
+           familyi={J\bibinitperiod},
+           given={John\bibnamedelima David},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association of Physics Teachers}%
+      }
+      \strng{namehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{fullhash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{bibnamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authorbibnamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authornamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authorfullhash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Classical electrodynamics}
+      \field{year}{1999}
+    \endentry
+    \entry{doherty2012theory}{article}{}
+      \name{author}{7}{}{%
+        {{hash=427049b8632d3b62410bc3755f6a229a}{%
+           family={Doherty},
+           familyi={D\bibinitperiod},
+           given={MW},
+           giveni={M\bibinitperiod}}}%
+        {{hash=afa988a6f595101eb56b43586c9cbec0}{%
+           family={Dolde},
+           familyi={D\bibinitperiod},
+           given={F},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a60fffde33952d7d21e09b031b829d32}{%
+           family={Fedder},
+           familyi={F\bibinitperiod},
+           given={H},
+           giveni={H\bibinitperiod}}}%
+        {{hash=176f8a3c6b3820fedfad65dcbb8fb5c5}{%
+           family={Jelezko},
+           familyi={J\bibinitperiod},
+           given={Fedor},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a3a4bc90ce7f9a04b50cd8c57d459a2c}{%
+           family={Wrachtrup},
+           familyi={W\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=58a27d0dd1fc8bd13fdfad027427a0d6}{%
+           family={Manson},
+           familyi={M\bibinitperiod},
+           given={NB},
+           giveni={N\bibinitperiod}}}%
+        {{hash=3f2afb6d35ac9cb47f0f0baca1c4216c}{%
+           family={Hollenberg},
+           familyi={H\bibinitperiod},
+           given={LCL},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{fullhash}{77e0e6b33c4cf5c31c6f8a140562f29f}
+      \strng{bibnamehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{authorbibnamehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{authornamehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{authorfullhash}{77e0e6b33c4cf5c31c6f8a140562f29f}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{number}{20}
+      \field{title}{Theory of the ground-state spin of the NV- center in diamond}
+      \field{volume}{85}
+      \field{year}{2012}
+      \field{pages}{205203}
+      \range{pages}{1}
+    \endentry
+    \entry{smeltzer201113c}{article}{}
+      \name{author}{3}{}{%
+        {{hash=63f64e0779cf9f3a1fc86342ccbbc3d8}{%
+           family={Smeltzer},
+           familyi={S\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=bb7b91156f3241a205fa598aa9346a30}{%
+           family={Childress},
+           familyi={C\bibinitperiod},
+           given={Lilian},
+           giveni={L\bibinitperiod}}}%
+        {{hash=de77ce5fe1ed747f73784b4e44f26add}{%
+           family={Gali},
+           familyi={G\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{fullhash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{bibnamehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{authorbibnamehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{authornamehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{authorfullhash}{02939b4dd431e7f97ffde0216140e15f}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New Journal of Physics}
+      \field{number}{2}
+      \field{title}{13C hyperfine interactions in the nitrogen-vacancy centre in diamond}
+      \field{volume}{13}
+      \field{year}{2011}
+      \field{pages}{025021}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

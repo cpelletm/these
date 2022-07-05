@@ -41,5 +41,5 @@ def couplage_NV():
 
 
 
-print(139+39+109+245+99+299)
+print(1.8*sqrt(80e-3/4800))
 
