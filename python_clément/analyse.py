@@ -652,6 +652,7 @@ class magneticField():
 		self.cartesian=np.array([self.x,self.y,self.z])
 		self.sphericalDeg=np.array([self.theta*180/np.pi,self.phi*180/np.pi])
 		self.HamiltonianArgs=HamiltonianArgs
+		self.norm=sqrt(self.x**2+self.y**2+self.z**2)
 	def transitions4Classes(self):
 		transis=[]
 		for i in range(4):
@@ -967,6 +968,12 @@ def ecris_gros(x,y):
 	ax.set_ylabel(r'Photoluminescence' ,fontsize=20,fontweight='bold')
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
+
+
+def petite_figure():
+	plt.figure(num=1,figsize=(3,2),dpi=80)
+	plt.xticks(fontsize=12)
+	plt.yticks(fontsize=12)
 
 def exemple_animation():
 	import matplotlib.animation as animation

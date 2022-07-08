@@ -44,7 +44,7 @@ def find_B():
 	plt.plot(fval,fms)
 	plt.plot(fval,fps)
 
-# find_B()
+find_B()
 
 def plot_ESR_freqs():
 	fnames,fval=extract_glob('ESR',LastValIndex=-5)
@@ -85,7 +85,7 @@ def plot_T1_raw():
 	nmax=180
 	plt.plot(Bs[:nmax],taus[:nmax],'o',markerfacecolor='none',ms=3,mew=0.7)
 
-plot_T1_raw()
+# plot_T1_raw()
 
 def fit_T1_1classe():
 	x,y=extract_data('T1 1 classe condition série',ycol=5)

@@ -120,18 +120,28 @@ from analyse import *
 # plt.show()
 
 
-fname='scan 100 20 deg from 100'
-x,y=extract_data(fname,ycol=3)
-x=x*35-8
-# plt.plot(x,y/max(y))
-x2,y2=derivative(x,y)
-plt.plot(x2,y2)
-# x,y=extract_data(fname,ycol=1)
+# fname='scan 100 20 deg from 100'
+# x,y=extract_data(fname,ycol=3)
 # x=x*35-8
-# plt.plot(x,-y/max(y))
-fname='scan 100'
-x,y=extract_data(fname,ycol=3)
-x=x*35-8
-x2,y2=derivative(x,y)
-plt.plot(x2,y2)
+# # plt.plot(x,y/max(y))
+# x2,y2=derivative(x,y)
+# plt.plot(x2,y2)
+# # x,y=extract_data(fname,ycol=1)
+# # x=x*35-8
+# # plt.plot(x,-y/max(y))
+# fname='scan 100'
+# x,y=extract_data(fname,ycol=3)
+# x=x*35-8
+# x2,y2=derivative(x,y)
+# plt.plot(x2,y2)
+# plt.show()
+
+fname='sensi joli gaussiennes'
+x,y=extract_data(fname)
+print(sum(y))
+x,y=extract_data(fname,xcol=2,ycol=3)
+print(sum(y))
+x,y=extract_data(fname,xcol=4,ycol=5)
+print(len(x))
+plt.plot(x,y)
 plt.show()

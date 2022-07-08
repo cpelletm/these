@@ -39,7 +39,7 @@ def couplage_NV():
 # couplage_NV()
 
 
+a="We study dipolar interaction processes in dense ensembles of negatively charged nitrogen vacancy (NV$^-$) centers under small magnetic fields. Employing magnetic field scans close to zero-field along specific crystalline direction while recording the NV$^-$ spin relaxation rate, we could identify regimes where flip-flop, double-flip processes as well as mixing induced by local electric field play a role in the NV-NV cross-relaxation .Our results are relevant for understanding decoherence in many-body spin systems as well as for high sensitivity magneto- and electro-metry with long-lived interacting solid-state spins. As a proof of principle, we present an orientation and microwave-free magnetometer based on cross-relaxation, and operating with a sensitivity below $100$ nT/$\sqrt{\rm Hz}$.√based on cross-relaxation, and operating with a sensitivity below 100 nT/ Hz."
 
-
-print(1.8*sqrt(80e-3/4800))
+print(82*(15**(3/2)))
 

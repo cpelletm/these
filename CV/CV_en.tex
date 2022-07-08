@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.3 (29/10/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[scale=0.75]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Clément} % Your first name
+\familyname{Pellet-Mary} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{}
+\email{clement.pellet-mary@phys.ens.fr}
+
+%\photo[70pt][0.4pt]{photo} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+%\clearpage
+
+%\recipient{HR Department}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+%\date{\today} % Letter date
+%\opening{Madame, Monsieur} % Opening greeting
+%\closing{Sincerely yours,} % Closing phrase
+%\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+
+%\makelettertitle % Print letter title
+
+%\lipsum[1-2] % Dummy text
+%\lipsum[4] % Dummy text
+
+%\makeletterclosing % Print letter signature
+
+%\newpage
+
+%----------------------------------------------------------------------------------------
+%	CURRICULUM VITAE
+%----------------------------------------------------------------------------------------
+
+\makecvtitle % Print the CV title
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{2015--2017}{License}{ENS Cachan}{PHYTEM (general physics)}{}{}  % Arguments not required can be left empty
+\cventry{2017--2018}{Agregation (teaching diploma)}{ENS Cachan}{}{}{11th national rank}
+\cventry{2018-2019}{Master} {ENS}{Paris}{ICFP (quantum physics)}{}{}
+\cventry{2019-2022}{PhD}{LPENS}{ENS Paris}{Advisor Gabriel Hétet}{Dipolar interaction with dense ensemble of NV centers}{}
+
+%\section{Doctorat}
+
+%\cvitem{Title}{\emph{Money Is The Root Of All Evil -- Or Is It?}}
+%\cvitem{Supervisors}{Professor James Smith \& Associate Professor Jane Smith}
+%\cvitem{Description}{This thesis explored the idea that money has been the cause of untold anguish and suffering in the world. I found that it has, in fact, not.}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Lab internship}
+\cventry{2016}{License 3 internship}{\textit{Frédéric Grosshans}}{LAC}{Orsay}{5 week internship on relativistic cryptography}
+\cventry{2017}{Master 1 internship}{\textit{Sara Bonella}}{CECAM}{Lausanne}{16 week internship in quantum chemistry on the use of semi-classical approach to solve complex quantum dynamics}
+\cventry{2019}{Master 2 internship}{\textit{Gabriel Hétet}}{LPENS}{Paris}{12 week internship on quantum optics experiments with ensemble of crystalline defects}
+
+\section{Teaching}
+\cventry{2019-2021}{Calculus 201 (tutorials)}{License 2}{Sorbonne Université}{}{}{}
+\cventry{2019-2020}{Electromagnetism (practicals)}{License 2}{Sorbonne Université}{}{}{}
+\cventry{2020-2021}{Lagrangian mechanics (tutorials)}{License 2}{Sorbonne Université}{}{}{}
+
+\section{Publications}
+\subsection{First author}
+\cventry{2021}{Physical Review B 104.10 (2021)
+}{}{}{}{Magnetic torque enhanced by tunable dipolar interactions}
+\cventry{2021}{Physical Review B 103.10 (2021)
+}{}{}{}{Optical detection of paramagnetic defects in diamond grown by chemical vapor deposition}
+\subsection{Other}
+\cventry{2019}{ACS Photonics 2019, 6, 10}{}{}{}{Sub-GHz Linewidth Ensembles of SiV Centers in a Diamond Nanopyramid Revealed by Charge State Conversion}
+\cventry{2020}{Carbon 170 (2020)}{}{}{}{High NV density in a pink CVD diamond grown with N2O addition}
+\cventry{2021}{Micromachines 12.6 (2021)}{}{}{}{Spin-mechanics with nitrogen-vacancy centers and trapped particles}
+\cventry{2022}{ Physical Review Letters 128.11 (2022)}{}{}{}{Angle locking of a levitating diamond using spin diamagnetism}
+\cventry{2022}{Diamond and Related Materials 123 (2022)}{}{}{}{Improving NV centre density during diamond growth by CVD process using N2O gas}
+
+\section{Languages and computer languages}
+\cvitem{French}{Native}
+\cvitem{English}{"Proficient" (C2 Cambridge advanced exam)}
+\cvitem{Pyhton}{Working basis}
+\cvitem{C/C++}{Understanding}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
