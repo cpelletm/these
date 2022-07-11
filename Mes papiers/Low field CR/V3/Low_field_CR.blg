@@ -2,7 +2,6 @@ This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Low_field_CR.aux
 The style file: apsrev4-2.bst
-I found no \bibdata command---while reading file Low_field_CR.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -12,49 +11,8 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Warning--I didn't find a database entry for "DOHERTY20131"
-Warning--I didn't find a database entry for "Acosta"
-Warning--I didn't find a database entry for "TALLAIRE2020421"
-Warning--I didn't find a database entry for "edmonds2021characterisation"
-Warning--I didn't find a database entry for "chatzidrosos2021fiberized"
-Warning--I didn't find a database entry for "kucsko2018critical"
-Warning--I didn't find a database entry for "ChoiNat"
-Warning--I didn't find a database entry for "ZuYao"
-Warning--I didn't find a database entry for "choi_observation_2017"
-Warning--I didn't find a database entry for "zhou2020quantum"
-Warning--I didn't find a database entry for "akhmedzhanov_microwave-free_2017"
-Warning--I didn't find a database entry for "akhmedzhanov_magnetometry_2019"
-Warning--I didn't find a database entry for "Wolf"
-Warning--I didn't find a database entry for "Sturner"
-Warning--I didn't find a database entry for "jarmola_longitudinal_2015"
-Warning--I didn't find a database entry for "mrozek_longitudinal_2015"
-Warning--I didn't find a database entry for "epstein2005anisotropic"
-Warning--I didn't find a database entry for "lai2009influence"
-Warning--I didn't find a database entry for "SI_low_filed_CR"
-Warning--I didn't find a database entry for "anishchik2015low"
-Warning--I didn't find a database entry for "filimonenko2020weak"
-Warning--I didn't find a database entry for "van1990electric"
-Warning--I didn't find a database entry for "jarmola_temperature-_2012"
-Warning--I didn't find a database entry for "redman1991spin"
-Warning--I didn't find a database entry for "norambuena2018spin"
-Warning--I didn't find a database entry for "choi2017depolarization"
-Warning--I didn't find a database entry for "pellet2021magnetic"
-Warning--I didn't find a database entry for "mrozek2021characterization"
-Warning--I didn't find a database entry for "giri_coupled_2018"
-Warning--I didn't find a database entry for "giri_selective_2019"
-Warning--I didn't find a database entry for "pellet2021optical"
-Warning--I didn't find a database entry for "mittiga2018imaging"
-Warning--I didn't find a database entry for "dolde2011electric"
-Warning--I didn't find a database entry for "qiu2022nanoscale"
-Warning--I didn't find a database entry for "Wickenbrock"
-Warning--I didn't find a database entry for "zheng2017level"
-Warning--I didn't find a database entry for "zheng_microwave-free_2020"
-Warning--I didn't find a database entry for "filimonenko2018weak"
-Warning--I didn't find a database entry for "filimonenko2022manifestation"
-Warning--I didn't find a database entry for "Vetter_LFM"
-Warning--I didn't find a database entry for "WangRB"
-Warning--I didn't find a database entry for "REVTEX42Control"
-Warning--I didn't find a database entry for "apsrev42Control"
+Database file #1: Low_field_CRNotes.bib
+Database file #2: CR.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
@@ -65,45 +23,46 @@ Control: production of article title (-1) disabled
 Control: page (0) single
 Control: year (1) truncated
 Control: production of eprint (0) enabled
-You've used 0 entries,
+Warning--empty year in SI_low_filed_CR
+You've used 42 entries,
             6079 wiz_defined-function locations,
-            1685 strings with 15835 characters,
-and the built_in function-call counts, 313 in all, are:
-= -- 0
-> -- 3
-< -- 5
-+ -- 2
-- -- 0
-* -- 65
-:= -- 29
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 19
-empty$ -- 1
-format.name$ -- 0
-if$ -- 26
-int.to.chr$ -- 1
-int.to.str$ -- 8
-missing$ -- 0
-newline$ -- 52
-num.names$ -- 0
-pop$ -- 6
+            1938 strings with 27724 characters,
+and the built_in function-call counts, 65083 in all, are:
+= -- 3577
+> -- 2606
+< -- 423
++ -- 779
+- -- 688
+* -- 11320
+:= -- 5456
+add.period$ -- 42
+call.type$ -- 42
+change.case$ -- 181
+chr.to.int$ -- 39
+cite$ -- 45
+duplicate$ -- 5643
+empty$ -- 4409
+format.name$ -- 1501
+if$ -- 13445
+int.to.chr$ -- 4
+int.to.str$ -- 50
+missing$ -- 844
+newline$ -- 178
+num.names$ -- 123
+pop$ -- 2112
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 209
 quote$ -- 0
-skip$ -- 8
+skip$ -- 2438
 stack$ -- 0
-substring$ -- 0
-swap$ -- 27
-text.length$ -- 0
+substring$ -- 1203
+swap$ -- 6055
+text.length$ -- 338
 text.prefix$ -- 0
 top$ -- 8
-type$ -- 0
-warning$ -- 0
-while$ -- 0
+type$ -- 806
+warning$ -- 1
+while$ -- 123
 width$ -- 0
-write$ -- 52
-(There was 1 error message)
+write$ -- 394
+(There was 1 warning)

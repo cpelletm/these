@@ -51,7 +51,7 @@ We will then consider the following spin Hamiltonian for the NV$^-$ ground state
 \end{equation}
 Where $D=2.87\ \rm GHz$ is the zero field splitting and $\gamma_e=2.8\ \rm MHz/G$ the gyromagnetic ratio of the electron.
 
-In the absence of an external magnetic field, the symmetry of the hamitlonian in the ($xy$) plane allows us to pick the $x$ direction along the electric field. The eigenstates of $\mathcal{H}_s$ then become $\{ \ket{0},\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}},\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}} \} $.
+In the absence of an external magnetic field, the symmetry of the Hamiltonian in the ($xy$) plane allows us to pick the $x$ direction along the electric field. The eigenstates of $\mathcal{H}_s$ then become $\{ \ket{0},\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}},\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}} \} $.
 
 In the presence of a magnetic field at an angle $\theta$ with respect to the NV axis, we denote the Hamiltonian eigenstates $\{ \ket{g},\ket{d}, \ket{e} \} $ in ascending order of energy. Fig. \ref{map etats propres} shows how close the $\ket{e}$ state is to the $\ket{+1}$ and $\ket{+}$ states as a function of the external magnetic field and angle $\theta$. A similar analysis for the  $\ket{d}$, $\ket{-1}$ and $\ket{-}$ states show similar results, while $\ket{g}$ is pretty much equal to $\ket{0}$ for $B<100\ \rm G$.
 
@@ -194,6 +194,21 @@ We claim that the decrease in PL at low magnetic field in Fig. 3 (c)(ii) of the 
 Fig. \ref{Alignment} shows the change in PL with respect to the external magnetic field amplitude for various misalignments of the magnetic field direction compared to the [100] diamond crystalline axis of the sample CVD-PPM. We can see that the central drop in PL is not critically affected by the misalignment of the magnetic field, and we are therefore confident that the drop in PL we observe when $B\parallel [100]$ is not an effect of misalignment.
 
 The initial alignment of the magnetic field was controlled by applying a field of $\sim 50\ \rm G$ and monitoring the overlap of the four classes with ODMR spectra (maximizing the PL drop is also an effective method). We estimate the initial alignment precision to be $\pm 1^\circ$. The misalignment was then added by rotating the electromagnet along an arbitrary axis. The slight asymmetry between the positive and negative value of the magnetic field could come from the earth magnetic field or from hysteresis in the magnetic core of our electromagnet.
+
+\subsection{Emulation of the electric field with transverse magnetic field}
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{Figures_SI/fig_transverse_field}
+\caption{(a) Simulated energy level of the three eigenstates $\ket{g},\ket{d}$ and $\ket{e}$ for an NV center under purely transverse magnetic field. The spin Hamiltonian is given in eq. \ref{NV Hamiltonian} and a value of $d_\perp E_\perp = 4\ \rm MHz$ was chosen (b) Blue dashed curve : frequency splitting between the $\ket{d}$ and $\ket{e}$ states as a function of the transverse magnetic field, red plain line : matching factor $\abs{\bra{e}\ket{+}}^2$ between the $\ket{e}$ and $\ket{+}$ states}
+\label{theory_transverse_field}
+\end{figure}
+In the main text we use the property that, under purely transverse magnetic field, the eigenstates of the single spin Hamiltonian are close to the $\{ \ket{0},\ket{+},\ket{-} \}$ basis, described in the main text and in sec. \ref{sec Hamiltonian} of these supplementary. We will discuss here the validity of this claim.
+
+We will call the true eigenstates of the single spin Hamiltonian under purely transverse magnetic field $\{ \ket{g},\ket{d},\ket{e} \}$ in ascending order of energy. The $\ket{d}$ state is strictly equal to the $\ket{-}$ state. The $\ket{g}$ and $\ket{e}$ states can be written as a mixture of the $\ket{0}$ and $\ket{+}$ states, and their exact expression depends on the field value. As $B_{\perp}$ approaches 0 however, $\ket{g}$ and $\ket{e}$ tend toward $\ket{0}$ and $\ket{+}$ respectively.
+
+Fig. \ref{theory_transverse_field} (a) shows a simulation of the energy levels of the three eigenstates $\ket{g}$, $\ket{d}$ and $\ket{e}$ as a function of the transverse magnetic field amplitude. Of importance for the results in main text is the splitting $\Delta \nu$ between the $\ket{e}$ and $\ket{d}$ states, which is equal to the difference in the transition frequencies $\ket{g} \to \ket{d}$ and $\ket{g} \to \ket{e}$ (reported experimentally as $\nu_+$ and $\nu_-$ in main text). 
+
+This value $\Delta \nu$ is reported on Fig. \ref{theory_transverse_field} (b) along with a matching factor $\abs{\bra{e}\ket{+}}^2$. This factor is always equal to $\abs{\bra{g}\ket{0}}^2$ since $\bra{d}\ket{-}=1$. We can see that indeed, for $B_{\perp}<150\ \rm G$, $\abs{\bra{e}\ket{+}}^2>0.98$. Crucially, for $B_{\perp}=150\ \rm G$, the splitting $\Delta \nu$ is equal to $\approx 70\ \rm MHz$, almost an order of magnitude greater than the dipole-dipole interaction range computed on sec. \ref{fluctuator width}. This means that we can effectively quench the double-flips by splitting the $\ket{e}$ and $\ket{d}$ states, while still maintaining eigenstates almost equal to $\ket{0}$, $\ket{+}$ and $\ket{-}$.
+
 \section{Extension of the fluctuator model to low magnetic fields}
 
 \subsection{Results}
