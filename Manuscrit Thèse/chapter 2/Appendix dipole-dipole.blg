@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.14 (beta)
 [0] Config.pm:307> INFO - Logfile is 'Appendix dipole-dipole.blg'
-[34] biber:322> INFO - === mar. juil. 12, 2022, 18:50:28
+[34] biber:322> INFO - === lun. juil. 18, 2022, 15:33:24
 [41] Biber.pm:415> INFO - Reading 'Appendix dipole-dipole.bcf'
-[73] Biber.pm:943> INFO - Found 3 citekeys in bib section 0
-[80] Biber.pm:4256> INFO - Processing section 0
-[80] Utils.pm:75> INFO - Globbing data source 'Bib_ch2.bib'
-[80] Utils.pm:91> INFO - Globbed data source 'Bib_ch2.bib' to Bib_ch2.bib
-[85] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch2.bib' for section 0
-[86] bibtex.pm:1653> INFO - LaTeX decoding ...
-[88] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch2.bib'
-[110] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[110] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[110] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[110] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[112] bbl.pm:652> INFO - Writing 'Appendix dipole-dipole.bbl' with encoding 'UTF-8'
-[113] bbl.pm:755> INFO - Output to Appendix dipole-dipole.bbl
+[72] Biber.pm:943> INFO - Found 3 citekeys in bib section 0
+[79] Biber.pm:4256> INFO - Processing section 0
+[79] Utils.pm:75> INFO - Globbing data source 'Bib_ch2.bib'
+[79] Utils.pm:91> INFO - Globbed data source 'Bib_ch2.bib' to Bib_ch2.bib
+[84] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch2.bib' for section 0
+[84] bibtex.pm:1653> INFO - LaTeX decoding ...
+[86] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch2.bib'
+[108] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[108] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[108] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[108] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[109] bbl.pm:652> INFO - Writing 'Appendix dipole-dipole.bbl' with encoding 'UTF-8'
+[110] bbl.pm:755> INFO - Output to Appendix dipole-dipole.bbl

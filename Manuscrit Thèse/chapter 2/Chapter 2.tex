@@ -1,0 +1,109 @@
+\documentclass[a4paper]{report}
+\usepackage[]{amsmath}
+\usepackage[]{physics} % \bra, \ket etc
+\usepackage{graphicx} %Pour les figures je crois
+\usepackage{hyperref}
+\usepackage[
+    backend=biber, 
+    natbib=true,
+    style=numeric,
+    sorting=none, %Pour faire apparaitre les refs dans l'ordre
+    hyperref=true
+]{biblatex} %Imports biblatex package
+\addbibresource{Bib_ch2.bib} %Import the bibliography file
+
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usepackage{xcolor} % Pour avoir des couleurs dans les équations
+
+\title{Appendix A : Dipole-dipole interaction between two spins in solid}
+\begin{document}
+\chapter{Detection of dark spins via cross-relaxations}
+In this chapter, we will see how...
+\section{Flip-Flops, double flips and cross-relaxation}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/Shema_CR}
+\caption{Illustration of cross-relaxations between an NV center and an unpolarized spin. Red dots represent the population in each states, and the arrows the various population transfer mechanisms}
+\label{CR_shema}
+\end{figure}
+
+The dominant form of interaction between two distant spins is the magnetic dipole-dipole interaction. For two spins with with vector spin Hamiltonian $\hat{\mathbf{S}}_1$ and $\hat{\mathbf{S}}_2$, separated by a distance $\mathbf{r}=r\mathbf{u}$, the dipole-dipole interaction Hamiltonian reads (see Appendix A) :
+\begin{equation}
+\mathcal{H}_{dd}=\frac{J_0}{r^3}\left[ \hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2 - 3 (\hat{\mathbf{S}}_1\cdot\mathbf{u})(\hat{\mathbf{S}}_2\cdot\mathbf{u})\right],
+\end{equation}
+where $J_0= \frac{\mu_0\gamma_1\gamma_2 \hbar^2}{4\pi}$. For two electronic spins with $g-$factors close to 2 (which is the case for the NV center and most spin defect in diamond), the numerical value of $J_0$ is $(2\pi)\,52\ \rm{MHz}\cdot\rm{nm}^3$.
+
+Flip-flop, in the context of dipole-dipole interaction, is the mechanism which exchanges a quantum of spin between two spins. For an initial state of two spins $\ket{m_s^1=i;m_s^2=j}$, a flip-flop process will result in a final state $\ket{i+1;j-1}$ or $\ket{i-1;j+1}$. The effective rate of this process depends on the matrix element $\mel{i;j}{\mathcal{H}_{dd}}{i\pm 1;j \mp 1}$, as well as the resonance condition between the initial and final state. We should note that for two identical spins, the flip-flop process $\ket{i;i\pm 1}\bra{i\pm 1,i}$ is always resonant.
+
+Another mechanism authorized by the dipole-dipole Hamiltonian is the double-flip, either up or down, which couple the states $\ket{i;j}$ and $\ket{i-1;j-1}$ or $\ket{i+1;j+1}$. For a single spin species in a strong magnetic field, the lift of the various spin levels by the Zeeman effect means that no double-flip process can be resonant. However with weak magnetic field or when two different spin species are present, double flip process can be as important as flip-flops since the matrix elements $\mel{i;j}{\mathcal{H}_{dd}}{i\pm 1;j \pm 1}$ are typically of the same order of magnitude as the flip-flop ones.
+
+Cross-relaxation (CR) is the transfer of polarization from one spin to another (or more generally from one family of spins to another family). This process con occur either through flip-flops, or through double flips, as long as the resonance condition between the two spins is met. 
+
+Fig. \ref{CR_shema} illustrates CR between a polarized NV center and an unpolarized second spin. When the two considered spin transitions become resonant, in this case by tuning a magnetic field, polarization from the NV center will be transferred to the second spin, meaning in this case that the NV center will end up less polarized and the second spin more polarized. 
+
+The reason why CR tend to depolarize the NV center simply comes from a rate equation : since the initial NV population is higher in the $\ket{0}$ state than in the $\ket{-1}$ state, the flip-flop (or double flip) process that makes the NV center go to $\ket{-1}$ (symbolized by the two red arrows in Fig. \ref{CR_shema}) is more likely than the reverse flip-flop. If we only focus on the NV center, cross-relaxation is simply another thermalization process due to the coupling of the NV center to its environment.
+
+\section{Dark spins in diamond}
+
+We refer by dark spins to spin defects which do not interact with light, which in the case of diamond defects consist of every known spin defect bar the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}.
+
+By far the most common spin defects in NV-rich diamond, outside of NV centers, are the substitutional nitrogen center known as the P1 center, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^13$C $1/2$ nuclear spin which is present at 1.1\% in natural abundance carbon, the remaining carbon atoms being almost exclusively the spinless $^12$C isotope. 
+
+\section{NV center relaxometry}
+
+\subsection{Principle of NV center Relaxometry}
+Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with other spins \citep{van1989cross,holliday1989optical,armstrong2010nv, hall2016detection,wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
+
+One of the main advantage of relaxometry compared to methods based on the spin coherence time $T_2$ or $T_2^*$ is that for NV center, $T_1$ is typically $10^2 \sim 10^3$ times longer than the spin echo time $T_2$, and even more so for the inhomogeneous coherence time $T_2^*$. This means that for a comparable change in $T_1$ and $T_2$, measurement based on $T_1$ will be much more sensitive. In the case of resonant detection of spins, the cross-relaxation protocol offers a theoretical gain by a factor of $\sqrt{\frac{T_2}{T_1}}$ \citep{hall2016detection} in its signal to noise ratio (SNR) compared to the DEER protocol based on $T_2$, as will be discussed below.
+
+\subsection{PL and single$-\tau$ relaxometry protocols}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/relaxo_pulsed_continuous}
+\caption{Representation of the two relaxometry protocol. Left : representation of the three level system of the NV center with the polarization rate $\Gamma_{\rm las}$ and spin decay rates $\Gamma_1=1/T_1$ and the perturbation $\delta \Gamma$. Right: simulation of a $T_1$ measurement for $1/\Gamma_1=3\ \rm ms$ and $1/(\Gamma_1+\delta \Gamma)=2\ \rm ms$. $\delta \rm S$ represents the maximum difference in signal between the two curves for a dark time $\tau$.}
+\label{T1 vs PL}
+\end{figure}
+
+There are two ways to measure a change in the spin $T_1$, as represented on Fig. \ref{T1 vs PL}. The first and most basic method simply consist in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, which itself results from an equilibrium between the polarization rate $\Gamma_{\rm las}$ and the spin decay rate $\Gamma_1=1/T_1$. A change in $\Gamma_1$ will therefore conduct to a new equilibrium with a different PL. For a small enough change $\delta \Gamma << \Gamma_1$, we can consider that we remain in the linear regime, hence why $\frac{\delta \rm PL}{\rm PL} \propto \frac{\delta \Gamma}{\Gamma_1}$.
+
+The second method is a pulsed sequence referred as single$-\tau$ measurement, used for example in \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. It simply consist in a $T_1$ measurement sequence (as seen in chapter 1) where you polarize the spins in the $\ket{0} state$ with a first laser pulse and read out the spin state with a second laser pulse after a dark time $\tau$. In this case however, instead of scanning the time $\tau$, you fix its value to maximize the sensitivity in a change of $T_1$ (typically $\tau \approx T_1$). Again, assuming you are in the linear regime, you observe a change in signal proportional to the change in $\Gamma_1$ : $\frac{\delta \rm S}{\rm S} \propto \frac{\delta \Gamma}{\Gamma_1}$.
+
+It is argued in \citep{finco2021imaging} that both methods result in similar signal to noise ratio: in the first case you need to adjust $\Gamma_{\rm las} \sim \Gamma_1$ to maximize the PL contrast, meaning that the laser power used is very far from the saturation limit (typically $\Gamma_1 \approx 10^3\ \rm s^{-1}$ and $\Gamma_{\rm sat} = 5\cdot10^6\ \rm s^{-1}$\citep{dreau2011avoiding}), while the second method needs to wait a time $\tau \sim T_1$ between each measurement, which result in a similar PL count and shot noise limit in both case.
+
+On a technical level, the PL-based method is easier to implement since it does not require the use of a pulsed laser, and uses an overall smaller laser power, however it is more sensitive to drifts and changes in the optical setup. Most of the relaxometry measurement in this manuscript were performed using a PL-based detection.
+
+\subsection{Comparison with DEER protocol}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{Figures/DEER}
+\caption{Pulse sequence of the DEER protocol}
+\label{DEER}
+\end{figure}
+
+Outside of cross-relaxations, another protocol exists to address dark spin resonance with NV centers, based on a modification of the NV $T_2$ time \citep{serbyn2014interferometric}. This protocol called double electron-electron resonance (DEER) is depicted on Fig. \ref{DEER}. The pulse sequence consist in a spin-echo sequence on the NV center, as described in chapter 1, with a simultaneous $\pi-$pulse on the probed dark spins during the rephasing pulse on the NV centers. This additional pulse means that the static (or slowly variable) contribution of the probed spins to the $T_2^*$ of the NV center wont be rephased. The newly measured $T_2$ time should therefore be slightly shorter:
+
+\begin{equation}
+\frac{1}{T_2^{\rm DEER}}=\frac{1}{T_2^{\rm echo}} + \delta \Gamma,
+\end{equation}
+
+where $\delta \Gamma$ is the contribution of the dark spin to the $T_2^*$ of the NV center through NV-dark spin dipole-dipole interaction.
+
+By scanning the frequency of the second microwave (RF2) and monitoring the $T_2$ time of the NV centers, one can therefore find dark spin resonance without having to bring them to resonance with NV centers, which can be useful when the dark spin resonance is very far detuned from the NV one.
+
+While both cross-relaxation and DEER measure the dipole-dipole coupling of dark spins to an NV center, they don't actually measure the same component of the dipole-dipole Hamiltonian: CR measure the off-diagonal terms responsible for flip-flops and double flips, which are the prefactor of the $S_{\overset{x}{y}} S_{\overset{x}{y}}$ terms. On the other hand, $T_2$ measurement are sensitive to the change in the Larmor frequency of the NV center, meaning the diagonal terms of the dipole-dipole Hamiltonian, which are the prefactor of the $S_z S_z$ term. Nevertheless, these prefactors are on average of the same order of magnitude, so that the $\delta \Gamma$ term is typically the same for DEER and CR.
+
+This means that the signal of the CR protocol is typically greater by a factor $\frac{\delta \Gamma \cdot T_1}{\delta \Gamma \cdot T_2}=\frac{T_1}{T_2}$ compared to the DEER signal, while the time it takes to perform a CR single$-\tau$ sequence is greater by a factor $\frac{T_1}{T_2}$ compared to the DEER sequence, since in both cases the optimal waiting time $\tau$ is of the order the measured value ($T_1$ or $T_2$). Because the SNR scales as the inverse square root of the measuring time, this gives an increase in SNR by a factor $\sqrt{\frac{T_1}{T_2}}$ in favor of the CR protocol compared to the DEER one.
+
+
+
+
+
+
+
+\printbibliography
+\end{document}
