@@ -47,21 +47,49 @@ Fig. \ref{CR_shema} illustrates CR between a polarized NV center and an unpolari
 
 The reason why CR tend to depolarize the NV center simply comes from a rate equation : since the initial NV population is higher in the $\ket{0}$ state than in the $\ket{-1}$ state, the flip-flop (or double flip) process that makes the NV center go to $\ket{-1}$ (symbolized by the two red arrows in Fig. \ref{CR_shema}) is more likely than the reverse flip-flop. If we only focus on the NV center, cross-relaxation is simply another thermalization process due to the coupling of the NV center to its environment.
 
+If we make the assumption that the spin bath coupled to the NV centers is Markovian, meaning that the dynamics of the bath is not affected by its coupling to the NV centers, we can then compute the modification in the NV relaxation rate $\Gamma_1=\frac{1}{T_1}$ due to its coupling to Spin 2 \citep{hall2016detection}:
+\begin{equation}
+\delta \Gamma_1=\frac{\Omega^2}{\Gamma_2^*} \frac{(\Gamma_2^*)^2}{(\delta \nu)^2+(\Gamma_2^*)^2},
+\label{delta gamma 1}
+\end{equation}
+where $\Omega=\frac{\mel{i;j}{\mathcal{H}_{\rm dd}}{j;i}}{\hbar}$ is the matrix element of the dipole-dipole Hamiltonian that couples the initial and final states, $\Gamma_2^*=\frac{1}{T_2^*(\rm NV)}+\frac{1}{T_2^*(\rm Spin 2)}$ is the joint dephasing rate of the NV center and the second spin, and $\delta \nu$ is the detuning between the central frequencies of the NV center and spin 2.
 \section{Dark spins in diamond}
 
 We refer by dark spins to spin defects which do not interact with light, which in the case of diamond defects consist of every known spin defect bar the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}.
 
-By far the most common spin defects in NV-rich diamond, outside of NV centers, are the substitutional nitrogen center known as the P1 center, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^13$C $1/2$ nuclear spin which is present at 1.1\% in natural abundance carbon, the remaining carbon atoms being almost exclusively the spinless $^12$C isotope. 
+\subsection{P1 centers and $^{13}$C}
+By far the most common spin defects in NV-rich diamond, outside of NV centers, are the substitutional nitrogen centers N$^0_S$ known as the P1 centers, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^13$C $1/2$ nuclear spin which is present at 1.1\% in natural abundance carbon, the remaining carbon atoms being almost exclusively the spinless $^12$C isotope. 
+
+In NV-rich diamonds, these two impurities are the main causes of the inhomogeneous dephasing rate $\Gamma_2^*=1/T_2^*$ of the NV centers ensemble \citep{barry2020sensitivity}. The dephasing comes from the distribution of dipole-dipole coupling from each NV centers to its neighboring spin defects, which varies in space and time. 
+
+The dephasing rate caused by a given impurity is directly proportional to the diagonal dipole-dipole matrix elements \citep{bauch2020decoherence}: 
+\begin{equation}
+\Gamma_2^*(P1) \propto \Omega_{\rm NV-P1}=\frac{1}{\hbar}\sqrt{\sum_j \abs{\mel{NV=i;P1=j}{\mathcal{H}_{\rm dd}}{NV=i;P1=j}}^2}.
+\label{Gamma2 P1}
+\end{equation}
+Since the dipole-dipole coupling rate scales as $1/r^3$, and the distance $r$ between each spin scales as the inverse cubic root of the concentration,  it is expected that the dephasing rate associated with a particular impurity scales linearly with the concentration of the impurity. In the case of P1 centers, this was verified experimentally by \citep{bauch2020decoherence} who found a value of $\Gamma_2^*(\rm P1)= (2 \pi) 16\ \rm kHz/ppm$. 
+
+$^{13}$C is much more abundant than P1 center ($\sim$ 10 000 ppm at natural abundance) but being a nuclear spin, it has a gyromagnetic ratio $\approx 2.8\, 10^3$ times smaller than that of the P1. This results in a contribution to $\Gamma_2^* \sim 10^3$ times smaller per impurity. It was found experimentally that the broadening caused by $^13$C is $\Gamma_2^*(^{13}C) \approx 16\ \rm Hz/ppm$ \citep{van1997dependences, barry2020sensitivity}. For natural abundance diamond, this means that $\Gamma_2^*(^{13}C) \approx 160\ \rm kHz$.
+
+\subsection{Other spin defects, VH$^-$, War1}
+
+Other spin defects are also commonly found in diamond containing NV centers, such as charged vacancy or vacancy clusters \citep{hounsome2006origin}, other nitrogen related defects \citep{newton2007epr}, transition metals \citep{isoya1990fourier}, and especially for CVD grown diamond, hydrogen related defects \citep{hartland2014study}, since the CVD plasma contains up to 95 \% hydrogen.
+
+Of particular interest in this chapter are two defects: the VH$^-$ defect \citep{glover2003hydrogen, glover2004hydrogen} and the War1 defect \citep{cruddace2007magnetic}. 
+
+The VH$^-$ defect, prior to our observations, had only been observed \textit{via} electron paramagnetic resonance (EPR) in CVD grown diamond. It is formed by a vacancy with a hydrogen atom bonded to one of the four dangling carbon bond, with an extra electron trapped in the vacancy. This defect has a similar electronic structure to the NV$^-$ which results in an electronic spin-1 with a similar zero field splitting parameter (see Table [REF]). Although the presence of hydrogen in this defect was confirmed by isotopic study, it has been debated whether this defect was VH$^-$ or V$_2$H$^-$ due to a conflict with \textit{ab initio} calculations \citep{shaw2005importance}. The defect is therefore sometimes referred as V$_n$H$^-$. In this manuscript I will employ the original name VH$^-$.
+
+The War1 defect, named after the University of Warwick where it was first observed in a CVD diamond \citep{cruddace2007magnetic}, is another spin-1 defect whose chemical structure remains unknown. No hyperfine structure could be discerned in the relatively broad EPR line, and the use of deuterium instead of $^1$H did not change the shape of the line.
 
 \section{NV center relaxometry}
 
 \subsection{Principle of NV center Relaxometry}
-Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with other spins \citep{van1989cross,holliday1989optical,armstrong2010nv, hall2016detection,wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
+Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with dark spins \citep{van1989cross,holliday1989optical,armstrong2010nv, hall2016detection,wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
 
-One of the main advantage of relaxometry compared to methods based on the spin coherence time $T_2$ or $T_2^*$ is that for NV center, $T_1$ is typically $10^2 \sim 10^3$ times longer than the spin echo time $T_2$, and even more so for the inhomogeneous coherence time $T_2^*$. This means that for a comparable change in $T_1$ and $T_2$, measurement based on $T_1$ will be much more sensitive. In the case of resonant detection of spins, the cross-relaxation protocol offers a theoretical gain by a factor of $\sqrt{\frac{T_2}{T_1}}$ \citep{hall2016detection} in its signal to noise ratio (SNR) compared to the DEER protocol based on $T_2$, as will be discussed below.
+There can be several advantages to use relaxometry protocols, which measures a change in the NV $T_1$, over the more common magnetometry protocols that rely on a change in the NV $T_2$ or $T_2^*$: the first and most obvious one is that relaxometry does not need to use an external microwave field. This however comes at the cost of a greater precision needed on the external magnetic field. Relaxometry also allows AC-magnetic field sensing in the GHz regime, where traditional microwave-based AC-megnetometry is limited to tens of MHz \citep{wang2022picotesla, alsid2022solid}. Finally, relaxometry measurement can be more sensitive than the T2-based one in some instances \citep{steinert2013magnetic}, which comes from the fact that changes in NV $T_1$ times are easier to detect than changes in $T_2$ or $T_2^*$ since $T_1$ is much longer than $T_2$ or $T_2^*$.
 
 \subsection{PL and single$-\tau$ relaxometry protocols}
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/relaxo_pulsed_continuous}
 \caption{Representation of the two relaxometry protocol. Left : representation of the three level system of the NV center with the polarization rate $\Gamma_{\rm las}$ and spin decay rates $\Gamma_1=1/T_1$ and the perturbation $\delta \Gamma$. Right: simulation of a $T_1$ measurement for $1/\Gamma_1=3\ \rm ms$ and $1/(\Gamma_1+\delta \Gamma)=2\ \rm ms$. $\delta \rm S$ represents the maximum difference in signal between the two curves for a dark time $\tau$.}
@@ -70,7 +98,7 @@ One of the main advantage of relaxometry compared to methods based on the spin c
 
 There are two ways to measure a change in the spin $T_1$, as represented on Fig. \ref{T1 vs PL}. The first and most basic method simply consist in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, which itself results from an equilibrium between the polarization rate $\Gamma_{\rm las}$ and the spin decay rate $\Gamma_1=1/T_1$. A change in $\Gamma_1$ will therefore conduct to a new equilibrium with a different PL. For a small enough change $\delta \Gamma << \Gamma_1$, we can consider that we remain in the linear regime, hence why $\frac{\delta \rm PL}{\rm PL} \propto \frac{\delta \Gamma}{\Gamma_1}$.
 
-The second method is a pulsed sequence referred as single$-\tau$ measurement, used for example in \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. It simply consist in a $T_1$ measurement sequence (as seen in chapter 1) where you polarize the spins in the $\ket{0} state$ with a first laser pulse and read out the spin state with a second laser pulse after a dark time $\tau$. In this case however, instead of scanning the time $\tau$, you fix its value to maximize the sensitivity in a change of $T_1$ (typically $\tau \approx T_1$). Again, assuming you are in the linear regime, you observe a change in signal proportional to the change in $\Gamma_1$ : $\frac{\delta \rm S}{\rm S} \propto \frac{\delta \Gamma}{\Gamma_1}$.
+The second method is a pulsed sequence referred as single$-\tau$ measurement, used for example in \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. It simply consists in a $T_1$ measurement sequence (as seen in chapter 1) where you first polarize the spins in the $\ket{0}$ state with a laser pulse and read out the spin state with a second laser pulse after a dark time $\tau$. In this case however, instead of scanning the time $\tau$, you fix its value to maximize the sensitivity in a change of $T_1$ (typically $\tau \approx T_1$). Again, assuming you are in the linear regime, you observe a change in signal proportional to the change in $\Gamma_1$ : $\frac{\delta \rm S}{\rm S} \propto \frac{\delta \Gamma}{\Gamma_1}$.
 
 It is argued in \citep{finco2021imaging} that both methods result in similar signal to noise ratio: in the first case you need to adjust $\Gamma_{\rm las} \sim \Gamma_1$ to maximize the PL contrast, meaning that the laser power used is very far from the saturation limit (typically $\Gamma_1 \approx 10^3\ \rm s^{-1}$ and $\Gamma_{\rm sat} = 5\cdot10^6\ \rm s^{-1}$\citep{dreau2011avoiding}), while the second method needs to wait a time $\tau \sim T_1$ between each measurement, which result in a similar PL count and shot noise limit in both case.
 
@@ -78,7 +106,7 @@ On a technical level, the PL-based method is easier to implement since it does n
 
 \subsection{Comparison with DEER protocol}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{Figures/DEER}
 \caption{Pulse sequence of the DEER protocol}
@@ -95,14 +123,18 @@ where $\delta \Gamma$ is the contribution of the dark spin to the $T_2^*$ of the
 
 By scanning the frequency of the second microwave (RF2) and monitoring the $T_2$ time of the NV centers, one can therefore find dark spin resonance without having to bring them to resonance with NV centers, which can be useful when the dark spin resonance is very far detuned from the NV one.
 
-While both cross-relaxation and DEER measure the dipole-dipole coupling of dark spins to an NV center, they don't actually measure the same component of the dipole-dipole Hamiltonian: CR measure the off-diagonal terms responsible for flip-flops and double flips, which are the prefactor of the $S_{\overset{x}{y}} S_{\overset{x}{y}}$ terms. On the other hand, $T_2$ measurement are sensitive to the change in the Larmor frequency of the NV center, meaning the diagonal terms of the dipole-dipole Hamiltonian, which are the prefactor of the $S_z S_z$ term. Nevertheless, these prefactors are on average of the same order of magnitude, so that the $\delta \Gamma$ term is typically the same for DEER and CR.
+While both cross-relaxation and DEER measure the dipole-dipole coupling of dark spins to an NV center, there are several differences between the two protocols :
 
-This means that the signal of the CR protocol is typically greater by a factor $\frac{\delta \Gamma \cdot T_1}{\delta \Gamma \cdot T_2}=\frac{T_1}{T_2}$ compared to the DEER signal, while the time it takes to perform a CR single$-\tau$ sequence is greater by a factor $\frac{T_1}{T_2}$ compared to the DEER sequence, since in both cases the optimal waiting time $\tau$ is of the order the measured value ($T_1$ or $T_2$). Because the SNR scales as the inverse square root of the measuring time, this gives an increase in SNR by a factor $\sqrt{\frac{T_1}{T_2}}$ in favor of the CR protocol compared to the DEER one.
+Frist, the two protocols do not measure the same elements of the dipole-dipole Hamiltonian: CR measures the off-diagonal elements $\Omega_{\rm CR}=\mel{i,j}{\mathcal{H}_{\rm dd}}{j,i}/\hbar$ which are responsible for the flip-flops or double flips, while DEER measures the diagonal elements $\Omega_{\rm DEER}=\mel{i,j}{\mathcal{H}_{\rm dd}}{i,j}/\hbar$ which are responsible for the pure dephasing. These terms however are on average of the same amplitude, and when averaging over an ensemble we can consider $\Omega_{\rm CR} \sim \Omega_{\rm DEER}$
+
+Second and more importantly, the scaling is not the same in both cases : CR measures a change in the NV decay rate $\Gamma_1=1/T_1$ which is proportional to $\Omega_{\rm CR}^2$, as given by eq. \ref{delta gamma 1}, while DEER measures a change in $\Gamma_2=1/T_2$ which is proportional to $\Omega_{\rm DEER}$, as given by eq. \ref{Gamma2 P1}. This means that the signal of CR scales quadratically with the impurity concentration, while the DEER signal scales linearly with it. CR is therefore more suited to probe concentrated impurities, when the average distance between the NV and the probed spin is small.
+
+\section{Choice of the $\mathbf{B}$ scan orientation}
+
+Since relaxometry does not rely on a microwave field, the only parameter left to tune is the external magnetic field, which is often scanned with an electromagnet. Due to the strong NV anisotropy however, the direction along which $\mathbf{B}$ is scanned plays a crucial role in the ability to detect dark spins.
 
 
-
-
-
+\section{Attribution of the VH$^-$ and War1 lines}
 
 
 \printbibliography

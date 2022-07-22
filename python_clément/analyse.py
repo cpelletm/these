@@ -593,7 +593,6 @@ def find_B_100(freq,transi='-',B_max=100,E=4,D=2870) :
 
 
 class NVHamiltonian(): #x,y and z axis are taken as (100) axis
-	D=2870 #Mhz
 	gamma_e=2.8 #Mhz/gauss
 	
 
@@ -609,7 +608,8 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 	c4=np.array([1,-1,-1])/np.sqrt(3)
 	c5=np.array([0,0,1]) #La base propre de Sz 
 	cs=[c1,c2,c3,c4,c5]
-	def __init__(self,B,c=1,E=4): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
+	def __init__(self,B,c=1,E=4,D=2870): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
+		self.D=D
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
 		Bz=self.cs[c-1].dot(B.cartesian) #Attention, ici Bz est dans la base du NV (Bz')

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  19 JUL 2022 19:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  22 JUL 2022 18:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -885,7 +885,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-<Figures/Shema_CR.pdf, id=35, 848.74898pt x 321.33702pt>
+<Figures/Shema_CR.pdf, id=51, 848.74898pt x 321.33702pt>
 File: Figures/Shema_CR.pdf Graphic file (type pdf)
 <use Figures/Shema_CR.pdf>
 Package pdftex.def Info: Figures/Shema_CR.pdf  used on input line 29.
@@ -905,82 +905,148 @@ Overfull \hbox (18.3791pt too wide) in paragraph at lines 42--43
 $ or $[]$.
  []
 
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 60.
+
 [2]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 63.
+(hyperref)                removing `math shift' on input line 74.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\tau' on input line 63.
+(hyperref)                removing `superscript' on input line 74.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 63.
+(hyperref)                removing `math shift' on input line 74.
 
-<Figures/relaxo_pulsed_continuous.pdf, id=98, 734.44781pt x 370.14458pt>
+[3]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 91.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\tau' on input line 91.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 91.
+
+<Figures/relaxo_pulsed_continuous.pdf, id=146, 734.44781pt x 370.14458pt>
 File: Figures/relaxo_pulsed_continuous.pdf Graphic file (type pdf)
 <use Figures/relaxo_pulsed_continuous.pdf>
 Package pdftex.def Info: Figures/relaxo_pulsed_continuous.pdf  used on input li
-ne 66.
+ne 94.
 (pdftex.def)             Requested size: 310.4979pt x 156.48193pt.
-[3 <./Figures/relaxo_pulsed_continuous.pdf>]
-<Figures/DEER.pdf, id=131, 252.44475pt x 148.50441pt>
+[4 <./Figures/relaxo_pulsed_continuous.pdf>]
+<Figures/DEER.pdf, id=184, 252.44475pt x 148.50441pt>
 File: Figures/DEER.pdf Graphic file (type pdf)
 <use Figures/DEER.pdf>
-Package pdftex.def Info: Figures/DEER.pdf  used on input line 83.
+Package pdftex.def Info: Figures/DEER.pdf  used on input line 111.
 (pdftex.def)             Requested size: 172.5pt x 101.4779pt.
- [4 <./Figures/DEER.pdf>] [5]
-Overfull \hbox (9.74588pt too wide) in paragraph at lines 109--109
+ [5 <./Figures/DEER.pdf>]
+Overfull \hbox (14.38017pt too wide) in paragraph at lines 128--129
+\OT1/cmr/m/n/10 dipole Hamil-to-nian: CR mea-sures the off-diagonal el-e-ments 
+$
+[] = [] [] \OML/cmm/m/it/10 =[]$
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 137.
+
+[6]
+Overfull \hbox (19.44955pt too wide) in paragraph at lines 141--141
+\OT1/cmr/m/n/10 vacancy-hydrogen com-plex''. In: \OT1/cmr/m/it/10 Phys-i-cal re
+-view let-ters \OT1/cmr/m/n/10 90.18 (2003), p. 185507. 
+ []
+
+[7
+
+]
+Overfull \hbox (9.74588pt too wide) in paragraph at lines 141--141
 \OT1/cmr/m/n/10 tron|electron and electron-nuclear spin in-ter-ac-tion in di-a-
 mond''. In: \OT1/cmr/m/it/10 Physics
  []
 
-[6
 
-]
-Overfull \hbox (0.81284pt too wide) in paragraph at lines 109--109
+Overfull \hbox (5.59053pt too wide) in paragraph at lines 141--141
+[]\OT1/cmr/m/n/10 Scott T Al-sid et al. ``A Solid-State Mi-crowave Mag-ne-tome-
+ter with Picotesla-
+ []
+
+
+Overfull \hbox (0.81284pt too wide) in paragraph at lines 141--141
 []\OT1/cmr/m/n/10 Matthew Pel-lic-cione et al. ``Two-dimensional nanoscale imag
 -ing of gadolin-
  []
 
-[7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 109.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
+[8] [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
  (./Chapter 2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 109.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 109.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `"Chapter 2".out' has not changed.
-(rerunfilecheck)             Checksum: 5A44EBD9158C304ACFCA9C63C12B0C0D;563.
+(rerunfilecheck)             Checksum: 9E481AA731DDEA13F712F0560A77410B;879.
 Package logreq Info: Writing requests to '"Chapter 2".run.xml'.
 \openout1 = `"Chapter 2.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
  ) 
 Here is how much of TeX's memory you used:
- 24606 strings out of 481239
- 468862 string characters out of 5920377
- 1104960 words of memory out of 5000000
- 39461 multiletter control sequences out of 15000+600000
- 540220 words of font info for 51 fonts, out of 8000000 for 9000
+ 24664 strings out of 481239
+ 470762 string characters out of 5920377
+ 1106935 words of memory out of 5000000
+ 39498 multiletter control sequences out of 15000+600000
+ 541059 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,7n,75p,974b,1297s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,10n,75p,974b,1291s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "Chapter 2.pdf" (7 pages, 246047 bytes).
+st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on "Chapter 2.pdf" (9 pages, 278378 bytes).
 PDF statistics:
- 214 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 84 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 285 PDF objects out of 1000 (max. 8388607)
+ 246 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
 
