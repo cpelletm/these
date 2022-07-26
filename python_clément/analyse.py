@@ -593,14 +593,9 @@ def find_B_100(freq,transi='-',B_max=100,E=4,D=2870) :
 
 
 class NVHamiltonian(): #x,y and z axis are taken as (100) axis
-	gamma_e=2.8 #Mhz/gauss
+	
 	
 
-	Sz=np.array([[1,0,0],[0,0,0],[0,0,-1]])
-	Sy=np.array([[0,-1j,0],[1j,0,-1j],[0,1j,0]])*1/np.sqrt(2)
-	Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])*1/np.sqrt(2)
-	Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
-	H_E_transverse=np.array([[0,0,1],[0,0,0],[1,0,0]])
 
 	c1=np.array([-1,1.,-1])/np.sqrt(3)
 	c2=np.array([1,1,1])/np.sqrt(3)
@@ -608,13 +603,26 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 	c4=np.array([1,-1,-1])/np.sqrt(3)
 	c5=np.array([0,0,1]) #La base propre de Sz 
 	cs=[c1,c2,c3,c4,c5]
-	def __init__(self,B,c=1,E=4,D=2870): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
-		self.D=D
+	def __init__(self,B,c=1,E=4,D=2870,gamma_e=2.8,order='traditionnal'): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
+		#order='traditionnal' or 'ascending' : basis is (-1,0,+1) or (0,-1,+1)
+		if order=='traditionnal' :
+			Sz=np.array([[-1,0,0],[0,0,0],[0,0,1]])
+			Sy=np.array([[0,1j,0],[-1j,0,1j],[0,-1j,0]])*1/np.sqrt(2)
+			Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])*1/np.sqrt(2)
+			Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
+			H_E_transverse=np.array([[0,0,1],[0,0,0],[1,0,0]])
+		if order=='ascending' :
+			Sz=np.array([[0,0,0],[0,-1,0],[0,0,1]])
+			Sy=np.array([[0,-1j,1j],[1j,0,0],[-1j,0,0]])*1/np.sqrt(2)
+			Sx=np.array([[0,1,1],[1,0,0],[1,0,0]])*1/np.sqrt(2)
+			Sz2=np.array([[0,0,0],[0,1,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
+			H_E_transverse=np.array([[0,0,0],[0,0,1],[0,1,0]])
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
-		Bz=self.cs[c-1].dot(B.cartesian) #Attention, ici Bz est dans la base du NV (Bz')
+		Bz=abs(self.cs[c-1].dot(B.cartesian)) #Attention, ici Bz est dans la base du NV (Bz')
+		#Attention bis : je considère que z' est toujours aligné (dans le meme hémisphère) que B
 		Bx=np.sqrt(abs(B.amp**2-Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
-		self.H=self.D*self.Sz2+self.gamma_e*(Bz*self.Sz+Bx*self.Sx)+E*self.H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
+		self.H=D*Sz2+gamma_e*(Bz*Sz+Bx*Sx)+E*H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
 	def transitions(self):
 		egva,egve=np.linalg.eigh(self.H)
 		egva=np.sort(egva)
@@ -994,6 +1002,42 @@ def exemple_animation():
 
 	plt.show()
 
+def print_matrix(M,bname='default') :
+	from tabulate import tabulate
+	if bname=='default':
+		bname=['%i'%i for i in range(len(M[0,:]))]
+	
+	if M.dtype.name=='float64' :
+		headers=['']+['|'+name+'>' for name in bname]
+		table=[]
+		for i in range(len(bname)) :
+			line=[]
+			line+=['<'+bname[i]+'|']
+			values=list(M[i,:])
+			line+=values
+			table+=[line]
+		print(tabulate(table,headers))
+
+	elif M.dtype.name=='complex128' :
+		print('Real Part :')
+		headers=['']+['|'+name+'>' for name in bname]
+		table=[]
+		for i in range(len(bname)) :
+			line=[]
+			line+=['<'+bname[i]+'|']
+			line+=[v.real for v in M[i,:]]
+			table+=[line]
+		print(tabulate(table,headers),'\n')
+
+		print('Imaginary Part :')
+		headers=['']+['|'+name+'>' for name in bname]
+		table=[]
+		for i in range(len(bname)) :
+			line=[]
+			line+=['<'+bname[i]+'|']
+			line+=[v.imag for v in M[i,:]]
+			table+=[line]
+		print(tabulate(table,headers))
 
 #~~~~~~~~ Outils ~~~~~~~~~~
 def extract_glob(SubFolderName='.',FirstValIndex='default', LastValIndex=-4): #FirstValIndex=premier caractère numérique
