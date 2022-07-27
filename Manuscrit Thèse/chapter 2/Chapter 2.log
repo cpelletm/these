@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  25 JUL 2022 18:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  27 JUL 2022 21:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -932,6 +932,10 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 [3]
 
+LaTeX Warning: Citation 'hall2016detection ' on page 4 undefined on input line 
+87.
+
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 91.
 
@@ -950,7 +954,7 @@ Package pdftex.def Info: Figures/relaxo_pulsed_continuous.pdf  used on input li
 ne 94.
 (pdftex.def)             Requested size: 310.4979pt x 156.48193pt.
 [4 <./Figures/relaxo_pulsed_continuous.pdf>]
-<Figures/DEER.pdf, id=184, 252.44475pt x 148.50441pt>
+<Figures/DEER.pdf, id=185, 252.44475pt x 148.50441pt>
 File: Figures/DEER.pdf Graphic file (type pdf)
 <use Figures/DEER.pdf>
 Package pdftex.def Info: Figures/DEER.pdf  used on input line 111.
@@ -970,65 +974,80 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 132.
 
+<Figures/121_vs_22_NV.pdf, id=202, 909.47635pt x 513.96527pt>
+File: Figures/121_vs_22_NV.pdf Graphic file (type pdf)
+<use Figures/121_vs_22_NV.pdf>
+Package pdftex.def Info: Figures/121_vs_22_NV.pdf  used on input line 136.
+(pdftex.def)             Requested size: 310.4979pt x 175.46738pt.
+[6 <./Figures/121_vs_22_NV.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 137.
+(hyperref)                removing `math shift' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 137.
+(hyperref)                removing `superscript' on input line 147.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 137.
+(hyperref)                removing `math shift' on input line 147.
 
-[6]
-Overfull \hbox (19.44955pt too wide) in paragraph at lines 141--141
+[7]
+Overfull \hbox (19.44955pt too wide) in paragraph at lines 151--151
 \OT1/cmr/m/n/10 vacancy-hydrogen com-plex''. In: \OT1/cmr/m/it/10 Phys-i-cal re
 -view let-ters \OT1/cmr/m/n/10 90.18 (2003), p. 185507. 
  []
 
-[7
+[8
 
 ]
-Overfull \hbox (9.74588pt too wide) in paragraph at lines 141--141
+Overfull \hbox (9.74588pt too wide) in paragraph at lines 151--151
 \OT1/cmr/m/n/10 tron|electron and electron-nuclear spin in-ter-ac-tion in di-a-
 mond''. In: \OT1/cmr/m/it/10 Physics
  []
 
 
-Overfull \hbox (5.59053pt too wide) in paragraph at lines 141--141
+Overfull \hbox (5.59053pt too wide) in paragraph at lines 151--151
 []\OT1/cmr/m/n/10 Scott T Al-sid et al. ``A Solid-State Mi-crowave Mag-ne-tome-
 ter with Picotesla-
  []
 
 
-Overfull \hbox (0.81284pt too wide) in paragraph at lines 141--141
+Overfull \hbox (0.81284pt too wide) in paragraph at lines 151--151
 []\OT1/cmr/m/n/10 Matthew Pel-lic-cione et al. ``Two-dimensional nanoscale imag
 -ing of gadolin-
  []
 
-[8] [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
+[9] [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 151.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 151.
  (./Chapter 2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 151.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 151.
 Package rerunfilecheck Info: File `"Chapter 2".out' has not changed.
 (rerunfilecheck)             Checksum: 9E481AA731DDEA13F712F0560A77410B;879.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                "Chapter 2"
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to '"Chapter 2".run.xml'.
 \openout1 = `"Chapter 2.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 151.
  ) 
 Here is how much of TeX's memory you used:
- 24664 strings out of 481239
- 470762 string characters out of 5920377
- 1106935 words of memory out of 5000000
- 39498 multiletter control sequences out of 15000+600000
+ 24677 strings out of 481239
+ 471137 string characters out of 5920377
+ 1107085 words of memory out of 5000000
+ 39507 multiletter control sequences out of 15000+600000
  541059 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,10n,75p,974b,1291s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,10n,75p,974b,1293s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -1043,10 +1062,10 @@ amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "Chapter 2.pdf" (9 pages, 278376 bytes).
+Output written on "Chapter 2.pdf" (10 pages, 339202 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 322 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

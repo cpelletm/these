@@ -84,7 +84,7 @@ The War1 defect, named after the University of Warwick where it was first observ
 \section{NV center relaxometry}
 
 \subsection{Principle of NV center Relaxometry}
-Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with dark spins \citep{van1989cross,holliday1989optical,armstrong2010nv, hall2016detection,wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
+Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with dark spins \citep{van1989cross,holliday1989optical,armstrong2010nv, epstein2005anisotropic,  hall2016detection ,wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
 
 There can be several advantages to use relaxometry protocols, which measures a change in the NV $T_1$, over the more common magnetometry protocols that rely on a change in the NV $T_2$ or $T_2^*$: the first and most obvious one is that relaxometry does not need to use an external microwave field. This however comes at the cost of a greater precision needed on the external magnetic field. Relaxometry also allows AC-magnetic field sensing in the GHz regime, where traditional microwave-based AC-megnetometry is limited to tens of MHz \citep{wang2022picotesla, alsid2022solid}. Finally, relaxometry measurement can be more sensitive than the T2-based one in some instances \citep{steinert2013magnetic}, which comes from the fact that changes in NV $T_1$ times are easier to detect than changes in $T_2$ or $T_2^*$ since $T_1$ is much longer than $T_2$ or $T_2^*$.
 
@@ -131,7 +131,23 @@ Second and more importantly, the scaling is not the same in both cases : CR meas
 
 \section{Choice of the $\mathbf{B}$ scan orientation}
 
+
+
 Since relaxometry does not rely on a microwave field, the only parameter left to tune is the external magnetic field, which is often scanned with an electromagnet. Due to the strong NV anisotropy however, the direction along which $\mathbf{B}$ is scanned plays a crucial role in the ability to detect dark spins.
+
+\subsection{The [100] and [111] magnetic field orientations}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/121_vs_22_NV}
+\caption{Label}
+\label{121 vs 22 NV}
+\end{figure}
+
+Fig. \ref{121 vs 22 NV} shows the two main choices of scanning orientation : either $\mathbf{B} \parallel [100]$ or 
+$\mathbf{B} \parallel [111]$ where [100] and [111] refer to the diamond crystalline axes as defined in chapter 1. When $\mathbf{B} \parallel [100]$, all four classes (the different possible NV orientations represented at the top of the figure) are equivalent, whereas for $\mathbf{B} \parallel [111]$, one class is perfectly aligned with the magnetic field while the three others are equivalently unaligned. 
+
+These changes in the field orientation result in massive changes in the NV behavior, manly due to the transverse magnetic field. The first 
 
 
 \section{Attribution of the VH$^-$ and War1 lines}

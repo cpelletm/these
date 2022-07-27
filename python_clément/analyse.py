@@ -602,7 +602,8 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 	c3=np.array([-1,-1,1])/np.sqrt(3)
 	c4=np.array([1,-1,-1])/np.sqrt(3)
 	c5=np.array([0,0,1]) #La base propre de Sz 
-	cs=[c1,c2,c3,c4,c5]
+	c6=np.array([2*sqrt(2)/3,0,-1/3]) #Une des trois autres classes pour B//[111]
+	cs=[c1,c2,c3,c4,c5,c6]
 	def __init__(self,B,c=1,E=4,D=2870,gamma_e=2.8,order='traditionnal'): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
 		#order='traditionnal' or 'ascending' : basis is (-1,0,+1) or (0,-1,+1)
 		if order=='traditionnal' :

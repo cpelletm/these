@@ -1,14 +1,14 @@
 [0] Config.pm:304> INFO - This is Biber 2.14 (beta)
 [0] Config.pm:307> INFO - Logfile is 'Chapter 2.blg'
-[34] biber:322> INFO - === lun. juil. 25, 2022, 18:51:06
+[34] biber:322> INFO - === mer. juil. 27, 2022, 21:51:59
 [41] Biber.pm:415> INFO - Reading 'Chapter 2.bcf'
-[74] Biber.pm:943> INFO - Found 32 citekeys in bib section 0
-[81] Biber.pm:4256> INFO - Processing section 0
-[81] Utils.pm:75> INFO - Globbing data source 'Bib_ch2.bib'
-[82] Utils.pm:91> INFO - Globbed data source 'Bib_ch2.bib' to Bib_ch2.bib
-[86] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch2.bib' for section 0
-[87] bibtex.pm:1653> INFO - LaTeX decoding ...
-[109] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch2.bib'
+[73] Biber.pm:943> INFO - Found 33 citekeys in bib section 0
+[80] Biber.pm:4256> INFO - Processing section 0
+[80] Utils.pm:75> INFO - Globbing data source 'Bib_ch2.bib'
+[80] Utils.pm:91> INFO - Globbed data source 'Bib_ch2.bib' to Bib_ch2.bib
+[85] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch2.bib' for section 0
+[86] bibtex.pm:1653> INFO - LaTeX decoding ...
+[107] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch2.bib'
 [287] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
 [287] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
 [287] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
