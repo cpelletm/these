@@ -53,7 +53,7 @@ If we make the assumption that the spin bath coupled to the NV centers is Markov
 \label{delta gamma 1}
 \end{equation}
 where $\Omega=\frac{\mel{i;j}{\mathcal{H}_{\rm dd}}{j;i}}{\hbar}$ is the matrix element of the dipole-dipole Hamiltonian that couples the initial and final states, $\Gamma_2^*=\frac{1}{T_2^*(\rm NV)}+\frac{1}{T_2^*(\rm Spin 2)}$ is the joint dephasing rate of the NV center and the second spin, and $\delta \nu$ is the detuning between the central frequencies of the NV center and spin 2.
-\section{Dark spins in diamond}
+\section{The dark spins in diamond}
 
 We refer by dark spins to spin defects which do not interact with light, which in the case of diamond defects consist of every known spin defect bar the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}.
 
@@ -129,9 +129,7 @@ Frist, the two protocols do not measure the same elements of the dipole-dipole H
 
 Second and more importantly, the scaling is not the same in both cases : CR measures a change in the NV decay rate $\Gamma_1=1/T_1$ which is proportional to $\Omega_{\rm CR}^2$, as given by eq. \ref{delta gamma 1}, while DEER measures a change in $\Gamma_2=1/T_2$ which is proportional to $\Omega_{\rm DEER}$, as given by eq. \ref{Gamma2 P1}. This means that the signal of CR scales quadratically with the impurity concentration, while the DEER signal scales linearly with it. CR is therefore more suited to probe concentrated impurities, when the average distance between the NV and the probed spin is small.
 
-\section{Choice of the $\mathbf{B}$ scan orientation}
-
-
+\section{Choice of the magnetic field orientation}
 
 Since relaxometry does not rely on a microwave field, the only parameter left to tune is the external magnetic field, which is often scanned with an electromagnet. Due to the strong NV anisotropy however, the direction along which $\mathbf{B}$ is scanned plays a crucial role in the ability to detect dark spins.
 
@@ -147,7 +145,54 @@ Since relaxometry does not rely on a microwave field, the only parameter left to
 Fig. \ref{121 vs 22 NV} shows the two main choices of scanning orientation : either $\mathbf{B} \parallel [100]$ or 
 $\mathbf{B} \parallel [111]$ where [100] and [111] refer to the diamond crystalline axes as defined in chapter 1. When $\mathbf{B} \parallel [100]$, all four classes (the different possible NV orientations represented at the top of the figure) are equivalent, whereas for $\mathbf{B} \parallel [111]$, one class is perfectly aligned with the magnetic field while the three others are equivalently unaligned. 
 
-These changes in the field orientation result in massive changes in the NV behavior, manly due to the transverse magnetic field. The first 
+These changes in the field orientation result in massive changes in the NV behavior, manly due to the transverse magnetic field: Fig. \ref{121 vs 22 NV}-a) shows the transition frequency between the $\ket{0}$ and $\ket{\pm 1}$ states of the ground state spin Hamiltonian (REF chapter 1) - or to be more precise the transitions between the ground state of the spin Hamiltonian and the two excited states - for any of the four classes of NV centers when $\mathbf{B} \parallel [100]$. Notably, there is no transitions frequencies below 2500 MHz. 
+
+On the other hand, Fig. \ref{121 vs 22 NV}-b) shows the transition frequencies when $\mathbf{B} \parallel [111]$, for both the class aligned and the three class misaligned. The three classes behave similarly than the four classes in the $[100]$ case, but the one class aligned with the magnetic field can get its $\ket{0}\to\ket{-1}$ transition arbitrarily small, as long as the magnetic field is perfectly aligned with the NV axis.
+
+\subsection{CR condition between NV$^-$ and P1}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/121_vs_22_P1}
+\caption{Label}
+\label{121 vs 22 P1}
+\end{figure}
+
+P1 centers, the most abundant electronic spin in the diamonds commonly used, have a $1/2$ electronic spin. They do have a small magnetic field anisotropy coming from the hyper-fine coupling to the nitrogen nucleus ($\sim 100\ \rm MHz$), but this dependency on the field orientation is small compared to the NV center's zero field splitting $D=2870\ \rm MHz$. We can therefore, to the first order, neglect the hyper-fine coupling and consider P1 centers as ideal, isotropic, spin $1/2$.
+
+Fig. \ref{121 vs 22 P1} shows the transition frequencies for the NV center and such a spin $1/2$, as a function of a magnetic field parallel to [100] or [111]. When $\mathbf{B} \parallel [100]$, there will never be a co-resonance between the NV and P1 transitions, meaning that no NV-P1 cross-relaxation can be observed when B is scanned in this direction. When $\mathbf{B} \parallel [111]$ however, the P1 $\ket{-1/2} \to \ket{+1/2}$ transition matches in energy the $\ket{0}\to\ket{-1}$ NV transition for B=512 G. This means that when B reaches $\approx 512\ \rm G$, some of the polarization of the NV centers will be transferred to the P1 centers, which will result in a drop in the NV PL. 
+
+\subsection{CR condition between NV$^-$ and VH$^-$}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/121_vs_22_VH}
+\caption{Label}
+\label{121 vs 22 VH}
+\end{figure}
+
+VH$^-$, a much less abundant electronic spin than P1 center, has an electronic spin 1, with a spin Hamiltoninan very similar to that of the NV center. In particular it has the same symmetries being also a $C_{3v}$ defect, with a slightly smaller ZFS at $D_{VH} \approx 2700\ \rm MHz$ compared to $D_{NV}=2870\ \rm MHz$. 
+
+Fig. \ref{121 vs 22 VH} shows the transition frequencies for the NV$^-$ and VH$^-$ ground state spin. Contrary to the P1 case, there is a co-resonance when $\mathbf{B} \parallel [100]$ for $B\approx 55\ \rm G$. When $\mathbf{B} \parallel [111]$, there are 6 co-resonance conditions between 30 and 130 G. A scan along the [111] in this case means that the peak signal is $\sim 6$ times weaker than in the [100] case, and spread over multiple features which might overlap between themselves or with other existing PL features.
+
+The War1 spin mentioned previously is also an electronic spin 1 with (pseudo)-$C_{3v}$ symmetry and $D_{War1} \approx 2470\ \rm MHz$. This result in a similar behavior than VH$^-$ when it comes to the CR condition with NV centers.
+
+\subsection{CR contrast and transverse magnetic field}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/contrast_OMDR_111_Vs_100}
+\caption{Label}
+\label{121 vs 22 contrast}
+\end{figure}
+
+In order to optically detect CR between an NV center and a dark spin, two conditions must be met: the NV center must be polarized in order to have a population transfer between the NV and the dark spin, and there must be a difference in brightness between the two NV levels involved in order to have an optical signal of the CR.
+
+These two conditions are in fact the same needed to observe an ODMR spectrum (REF chapter 1), and while the NV centers verifies both criteria in presence of a purely longitudinal magnetic field, this is not the case anymore in presence of a transverse magnetic field (REF chapter 1).
+
+Fig. \ref{121 vs 22 contrast} shows the simulated relative contrast of an ODMR spectrum, as computed from [PUTAIN DE CITATION DE MORT]
+
+\section{Dark spin spectroscopy with NV centers}
 
 
 \section{Attribution of the VH$^-$ and War1 lines}

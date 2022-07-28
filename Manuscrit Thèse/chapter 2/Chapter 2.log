@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  27 JUL 2022 21:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  28 JUL 2022 19:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -885,7 +885,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-<Figures/Shema_CR.pdf, id=51, 848.74898pt x 321.33702pt>
+<Figures/Shema_CR.pdf, id=71, 848.74898pt x 321.33702pt>
 File: Figures/Shema_CR.pdf Graphic file (type pdf)
 <use Figures/Shema_CR.pdf>
 Package pdftex.def Info: Figures/Shema_CR.pdf  used on input line 29.
@@ -947,14 +947,14 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 91.
 
-<Figures/relaxo_pulsed_continuous.pdf, id=146, 734.44781pt x 370.14458pt>
+<Figures/relaxo_pulsed_continuous.pdf, id=166, 734.44781pt x 370.14458pt>
 File: Figures/relaxo_pulsed_continuous.pdf Graphic file (type pdf)
 <use Figures/relaxo_pulsed_continuous.pdf>
 Package pdftex.def Info: Figures/relaxo_pulsed_continuous.pdf  used on input li
 ne 94.
 (pdftex.def)             Requested size: 310.4979pt x 156.48193pt.
 [4 <./Figures/relaxo_pulsed_continuous.pdf>]
-<Figures/DEER.pdf, id=185, 252.44475pt x 148.50441pt>
+<Figures/DEER.pdf, id=205, 252.44475pt x 148.50441pt>
 File: Figures/DEER.pdf Graphic file (type pdf)
 <use Figures/DEER.pdf>
 Package pdftex.def Info: Figures/DEER.pdf  used on input line 111.
@@ -966,66 +966,129 @@ $
 [] = [] [] \OML/cmm/m/it/10 =[]$
  []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 132.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 132.
-
-<Figures/121_vs_22_NV.pdf, id=202, 909.47635pt x 513.96527pt>
+<Figures/121_vs_22_NV.pdf, id=222, 909.47635pt x 513.96527pt>
 File: Figures/121_vs_22_NV.pdf Graphic file (type pdf)
 <use Figures/121_vs_22_NV.pdf>
-Package pdftex.def Info: Figures/121_vs_22_NV.pdf  used on input line 136.
+Package pdftex.def Info: Figures/121_vs_22_NV.pdf  used on input line 140.
 (pdftex.def)             Requested size: 310.4979pt x 175.46738pt.
-[6 <./Figures/121_vs_22_NV.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 147.
+(hyperref)                removing `math shift' on input line 152.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 147.
+(hyperref)                removing `superscript' on input line 152.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 147.
+(hyperref)                removing `math shift' on input line 152.
 
-[7]
-Overfull \hbox (19.44955pt too wide) in paragraph at lines 151--151
+<Figures/121_vs_22_P1.pdf, id=232, 871.60818pt x 309.44946pt>
+File: Figures/121_vs_22_P1.pdf Graphic file (type pdf)
+<use Figures/121_vs_22_P1.pdf>
+Package pdftex.def Info: Figures/121_vs_22_P1.pdf  used on input line 156.
+(pdftex.def)             Requested size: 310.4979pt x 110.23541pt.
+[7 <./Figures/121_vs_22_NV.pdf> <./Figures/121_vs_22_P1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/121_vs_22_P1.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 165.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 165.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 165.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 165.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 165.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 165.
+
+<Figures/121_vs_22_VH.pdf, id=306, 870.3203pt x 309.44946pt>
+File: Figures/121_vs_22_VH.pdf Graphic file (type pdf)
+<use Figures/121_vs_22_VH.pdf>
+Package pdftex.def Info: Figures/121_vs_22_VH.pdf  used on input line 169.
+(pdftex.def)             Requested size: 310.4979pt x 110.40068pt.
+
+Overfull \hbox (4.02832pt too wide) in paragraph at lines 178--179
+[]\OT1/cmr/m/n/10 The War1 spin men-tioned pre-vi-ously is also an elec-tronic 
+spin 1 with (pseudo)-
+ []
+
+<Figures/contrast_OMDR_111_Vs_100.pdf, id=308, 875.8128pt x 309.4495pt>
+File: Figures/contrast_OMDR_111_Vs_100.pdf Graphic file (type pdf)
+<use Figures/contrast_OMDR_111_Vs_100.pdf>
+Package pdftex.def Info: Figures/contrast_OMDR_111_Vs_100.pdf  used on input li
+ne 184.
+(pdftex.def)             Requested size: 310.4979pt x 109.7113pt.
+[8 <./Figures/121_vs_22_VH.pdf> <./Figures/contrast_OMDR_111_Vs_100.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/contrast_OMDR_111_Vs_100.pdf)
+: PDF inclusion: multiple pdfs with page group included in a single page
+>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 198.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 198.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 198.
+
+[9]
+Overfull \hbox (19.44955pt too wide) in paragraph at lines 202--202
 \OT1/cmr/m/n/10 vacancy-hydrogen com-plex''. In: \OT1/cmr/m/it/10 Phys-i-cal re
 -view let-ters \OT1/cmr/m/n/10 90.18 (2003), p. 185507. 
  []
 
-[8
+[10
 
 ]
-Overfull \hbox (9.74588pt too wide) in paragraph at lines 151--151
+Overfull \hbox (9.74588pt too wide) in paragraph at lines 202--202
 \OT1/cmr/m/n/10 tron|electron and electron-nuclear spin in-ter-ac-tion in di-a-
 mond''. In: \OT1/cmr/m/it/10 Physics
  []
 
 
-Overfull \hbox (5.59053pt too wide) in paragraph at lines 151--151
+Overfull \hbox (5.59053pt too wide) in paragraph at lines 202--202
 []\OT1/cmr/m/n/10 Scott T Al-sid et al. ``A Solid-State Mi-crowave Mag-ne-tome-
 ter with Picotesla-
  []
 
 
-Overfull \hbox (0.81284pt too wide) in paragraph at lines 151--151
+Overfull \hbox (0.81284pt too wide) in paragraph at lines 202--202
 []\OT1/cmr/m/n/10 Matthew Pel-lic-cione et al. ``Two-dimensional nanoscale imag
 -ing of gadolin-
  []
 
-[9] [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 151.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 151.
+[11] [12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
  (./Chapter 2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 151.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 151.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
 Package rerunfilecheck Info: File `"Chapter 2".out' has not changed.
-(rerunfilecheck)             Checksum: 9E481AA731DDEA13F712F0560A77410B;879.
+(rerunfilecheck)             Checksum: 5BF4F9DAEDEB7EB55EF64B156A5A6BF0;1343.
 
 
 LaTeX Warning: There were undefined references.
@@ -1038,13 +1101,13 @@ Package biblatex Warning: Please (re)run Biber on the file:
 Package logreq Info: Writing requests to '"Chapter 2".run.xml'.
 \openout1 = `"Chapter 2.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 151.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 202.
  ) 
 Here is how much of TeX's memory you used:
- 24677 strings out of 481239
- 471137 string characters out of 5920377
- 1107085 words of memory out of 5000000
- 39507 multiletter control sequences out of 15000+600000
+ 24716 strings out of 481239
+ 472088 string characters out of 5920377
+ 1107203 words of memory out of 5000000
+ 39533 multiletter control sequences out of 15000+600000
  541059 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,10n,75p,974b,1293s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1062,10 +1125,10 @@ amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "Chapter 2.pdf" (10 pages, 339202 bytes).
+Output written on "Chapter 2.pdf" (12 pages, 468907 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 272 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 474 PDF objects out of 1000 (max. 8388607)
+ 383 compressed objects within 4 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
 
