@@ -1,4 +1,4 @@
-\documentclass[a4paper]{report}
+\documentclass[a4paper,11pt]{report}
 \usepackage[]{amsmath}
 \usepackage[]{physics} % \bra, \ket etc
 \usepackage{graphicx} %Pour les figures je crois
@@ -12,6 +12,7 @@
 ]{biblatex} %Imports biblatex package
 \addbibresource{Bib_ch2.bib} %Import the bibliography file
 
+\usepackage{amssymb} %quelques symboles dont gtrsim /lesssim
 \usepackage{subcaption} % package pour faire des subfigures
 \usepackage{multirow} % package pour multirow/multicolumn
 \usepackage{booktabs} % package pour top/mid/bottom rule
@@ -23,7 +24,7 @@
 \chapter{Detection of dark spins via cross-relaxations}
 In this chapter, we will see how...
 \section{Flip-Flops, double flips and cross-relaxation}
-
+\label{Sec_CR}
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/Shema_CR}
@@ -84,7 +85,7 @@ The War1 defect, named after the University of Warwick where it was first observ
 \section{NV center relaxometry}
 
 \subsection{Principle of NV center Relaxometry}
-Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with dark spins \citep{van1989cross,holliday1989optical,armstrong2010nv, epstein2005anisotropic,  hall2016detection ,wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
+Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with dark spins \citep{van1989cross, holliday1989optical, epstein2005anisotropic, armstrong2010nv,   hall2016detection, wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
 
 There can be several advantages to use relaxometry protocols, which measures a change in the NV $T_1$, over the more common magnetometry protocols that rely on a change in the NV $T_2$ or $T_2^*$: the first and most obvious one is that relaxometry does not need to use an external microwave field. This however comes at the cost of a greater precision needed on the external magnetic field. Relaxometry also allows AC-magnetic field sensing in the GHz regime, where traditional microwave-based AC-megnetometry is limited to tens of MHz \citep{wang2022picotesla, alsid2022solid}. Finally, relaxometry measurement can be more sensitive than the T2-based one in some instances \citep{steinert2013magnetic}, which comes from the fact that changes in NV $T_1$ times are easier to detect than changes in $T_2$ or $T_2^*$ since $T_1$ is much longer than $T_2$ or $T_2^*$.
 
@@ -177,6 +178,36 @@ Fig. \ref{121 vs 22 VH} shows the transition frequencies for the NV$^-$ and VH$^
 
 The War1 spin mentioned previously is also an electronic spin 1 with (pseudo)-$C_{3v}$ symmetry and $D_{War1} \approx 2470\ \rm MHz$. This result in a similar behavior than VH$^-$ when it comes to the CR condition with NV centers.
 
+\subsection{CR condition between NV$^-$ and and $^{13}$C-NV$^-$}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/121_vs_22_13CNV}
+\caption{Label}
+\label{121 vs 22 13C-NV}
+\end{figure}
+
+I refer by $^{13}$C-NV$^-$ to a complex formed by an NV center where one of the three carbon atoms neighboring the vacancy is a $^{13}$C isotope, which is illustrated in Fig. \ref{121 vs 22 13C-NV}-a).
+
+The $^{13}$C-NV$^-$ complex still behaves as a "normal" NV center, except with shifted transition lines. In particular its electronic spin is still polarized in the $\ket{0}$ state and the $\ket{0}$ state is still brighter than the $\ket{\pm 1}$ states. This is confirmed by the presence of sideband in ODMR spectra around the main NV lines \citep{simanovskaia2013sidebands}.
+
+Since both NV$^-$ and $^{13}$C-NV$^-$ are \textit{a priori} equally polarized, then following the argument in \ref{Sec_CR} there should be no CR between the two spin families. The reason why those transitions are still in some case visible, as will be shown below, and why in fact any NV-NV co-resonance gives a visible CR signal will be the object of the next chapter.
+
+The transitions of the $^{13}$C-NV$^-$ complex are given by diagonalizing the full spin Hamiltonian:
+\begin{equation*}
+\mathcal{H}=\mathcal{H}_{NV}+\mathcal{H}_{^{13}C}+\mathcal{H}_{HF},
+\end{equation*}
+where $\mathcal{H}_{NV}$ is the NV$^-$ spin Hamiltonian,
+$\mathcal{H}_{^{13}C}$ is the $^{13}$C nuclear spin Hamiltonian for a $1/2$ spin : $\mathcal{H}_{^{13}C}=\gamma_{n} B I_z$ where $\gamma_{n}=$10.7 MHz/T is the $^{13}$C gyromagnetic ratio, and $\mathcal{H}_{HF}$ is the hyper-fine interaction Hamiltonian: $$\mathcal{H}_{HF}= \hat{\mathbf{S}}_{NV} \cdot \mathcal{A} \cdot \hat{\mathbf{I}}_C.$$
+
+When the $^{13}$C is the direct neighbor of the vacancy as represented in Fig. \ref{121 vs 22 13C-NV}-a) - this is also referred as a first-shell $^{13}$C - the hyper-fine tensor $\mathcal{A}$ can be written \citep{simanovskaia2013sidebands}:
+$$ \mathcal{A} = \begin{pmatrix}
+\mathcal{A}_{xx} & 0 & \mathcal{A}_{xz} \\ 0 & \mathcal{A}_{yy} & 0 \\ \mathcal{A}_{zx} & 0 & \mathcal{A}_{zz}
+\end{pmatrix},$$
+where $\mathcal{A}_{xx}=190$ MHz, $\mathcal{A}_{yy}=120$ MHz, $\mathcal{A}_{zz}=129$ MHz, and  $\mathcal{A}_{xz}=\mathcal{A}_{zx}=-25.0$ MHz. 
+
+Fig. \ref{121 vs 22 13C-NV}-b) and c) show the simulated transition frequencies for a $^{13}$C-NV$^-$ complex when B is scanned along the [100] or [111] axis, as well as the "normal" NV transitions and the co-resonance between those two. When $\mathbf{B} \parallel [100]$, there are 4 co-resonances between 18 and 25 G. When $\mathbf{B} \parallel [100]$ there are 18 of them between 10 and 60 G. This abundance of transitions for low (<100 G) magnetic field makes analyzing experimental data quickly intractable in the second case.
+
 \subsection{CR contrast and transverse magnetic field}
 
 \begin{figure}[h]
@@ -186,14 +217,43 @@ The War1 spin mentioned previously is also an electronic spin 1 with (pseudo)-$C
 \label{121 vs 22 contrast}
 \end{figure}
 
-In order to optically detect CR between an NV center and a dark spin, two conditions must be met: the NV center must be polarized in order to have a population transfer between the NV and the dark spin, and there must be a difference in brightness between the two NV levels involved in order to have an optical signal of the CR.
+In order to optically detect CR between an NV center and a dark spin, two conditions must be met: the NV center must be polarized in order to have a population transfer between the NV and the dark spin, and there must be a difference in brightness between the two NV levels involved in order to have an optical signature of the CR.
 
-These two conditions are in fact the same needed to observe an ODMR spectrum (REF chapter 1), and while the NV centers verifies both criteria in presence of a purely longitudinal magnetic field, this is not the case anymore in presence of a transverse magnetic field (REF chapter 1).
+These two conditions are in fact the same needed to observe an ODMR spectrum (REF chapter 1), and while the NV centers verifies both criteria in presence of a purely longitudinal magnetic field, this is not always the case anymore in presence of a transverse magnetic field (REF chapter 1).
 
-Fig. \ref{121 vs 22 contrast} shows the simulated relative contrast of an ODMR spectrum, as computed from [PUTAIN DE CITATION DE MORT]
+Fig. \ref{121 vs 22 contrast} shows the simulated relative contrast of an ODMR spectrum, as computed from \citep{tetienne2012magnetic}, for a magnetic field aligned along [100] or [111]. When the NV center is aligned with the magnetic field, the constrats remains equals to 1 regardless of the magnetic field because there is no transverse field. When the NV is not aligned however, either in the [111] or [100] case, the ODMR contrast quickly drops down for B$>100\ \rm G$.
+
+This tells us that we should not expect to observe a CR signal for B greater than a few hundreds G when B is scanned along the [100] axis. We could however observe CR for arbitrarily large magnetic field when scanned along the [111] axis, as long as the field is properly aligned with the NV axis.
 
 \section{Dark spin spectroscopy with NV centers}
 
+\subsection{Detection of P1 centers}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{Figures/NV_P1_libreAcces}
+\caption{Taken from \citep{armstrong2010nv}Label}
+\label{CR P1 exp}
+\end{figure}
+
+Previously to our work, several studies \citep{van1989cross, holliday1989optical, epstein2005anisotropic, armstrong2010nv,   hall2016detection, wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross} had been done on the detection of dark spins through CR with NV centers, and to our knowledge, all this studies where done on the detection of P1 centers. Following the discussion in the last section, these studies were therefore all done with $\mathbf{B} \parallel [111]$.
+
+An example of one of this study (\citep{armstrong2010nv}) is shown in Fig. \ref{CR P1 exp}. It shows the evolution of the NV PL with respect to a magnetic field scanned along the [111] crystalline axis. There are several information to gather from this graph:
+
+First, there is the slowly decaying PL envelope, which stabilizes to a plateau for $B\sim 1000\ \rm G$. This change in PL is caused by the transverse magnetic field acting on the three NV classes that are not aligned with the magnetic field. For $B \gtrsim 1000\ \rm G$, these three classes are fully depolarized which explains the plateau observed.
+
+Second, there are the three salient features denoted Ns-NV, NV-NV and NV-LAC. All these features come from cross-relaxations or level anti-crossing (LAC) from the NV class aligned with the magnetic field.
+
+The first feature (Ns-NV) for $B\approx 512 \ \rm G$ is the signature of the CR between NV and P1 centers. Its relatively complicated shape comes from the hyper-fine coupling between the P1 electronic spin and the $^14$N nucleus \citep{lazda2021cross}. Excited state level anti-crossing (ESLAC) also occurs in this region, but its optical signature, if it exists, is expected to be much weaker than the NV-P1 CR \citep{zheng2017level}.
+
+The second feature (NV-NV) for $B\approx 590 \ \rm G$ comes from the cross relaxation between NV centers aligned with the magnetic field and NV centers misaligned with the field (the co-resonance can be observed in Fig. \ref{121 vs 22 NV}-b)). This phenomenon will be further discussed in the next chapter.
+
+Finally the third feature (LAC) for $B\approx 1024 \ \rm G$ correspond to the level anti-crossing between the $\ket{0}$ and $\ket{-1}$ states of the NV center aligned with B. When the two levels get close enough in energy, the Hamiltonian off-diagonal terms (coming from strain local electric field or residual transverse magnetic field) will mix the $\ket{0}$ and $\ket{-1}$ states and prevent an efficient polarization by the green laser. This result in a sharp drop in the PL that can be exploited to perform microwave-less magnetometry with NV centers \citep{wickenbrock2016microwave, zheng2017level, zheng2020microwave}.
+
+\subsection{Detection of VH$^-$ and War1 defects}
+
+During my PhD, I have studied the 
+Our work \citep{pellet2021optical}
 
 \section{Attribution of the VH$^-$ and War1 lines}
 

@@ -812,50 +812,6 @@
       \field{pages}{7093}
       \range{pages}{1}
     \endentry
-    \entry{armstrong2010nv}{article}{}
-      \name{author}{4}{}{%
-        {{hash=ee819506688f37c62b326e2bf22e8eda}{%
-           family={Armstrong},
-           familyi={A\bibinitperiod},
-           given={Seiji},
-           giveni={S\bibinitperiod}}}%
-        {{hash=73893c82f842b9d5a89e2390cd8f9557}{%
-           family={Rogers},
-           familyi={R\bibinitperiod},
-           given={Lachlan\bibnamedelima J},
-           giveni={L\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-        {{hash=ca1f3f140545364cfd2b702aeab4377f}{%
-           family={McMurtrie},
-           familyi={M\bibinitperiod},
-           given={Roger\bibnamedelima L},
-           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-        {{hash=0f8daa834c31d79bcb117f4b351dae82}{%
-           family={Manson},
-           familyi={M\bibinitperiod},
-           given={Neil\bibnamedelima B},
-           giveni={N\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{9c2ff99f87378fd0664328148adf4d56}
-      \strng{fullhash}{ffd54a3dca2ff0d1d144aff2a4d66c9f}
-      \strng{bibnamehash}{9c2ff99f87378fd0664328148adf4d56}
-      \strng{authorbibnamehash}{9c2ff99f87378fd0664328148adf4d56}
-      \strng{authornamehash}{9c2ff99f87378fd0664328148adf4d56}
-      \strng{authorfullhash}{ffd54a3dca2ff0d1d144aff2a4d66c9f}
-      \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Physics Procedia}
-      \field{number}{4}
-      \field{title}{NV--NV electron--electron spin and NV--NS electron—electron and electron-nuclear spin interaction in diamond}
-      \field{volume}{3}
-      \field{year}{2010}
-      \field{pages}{1569\bibrangedash 1575}
-      \range{pages}{7}
-    \endentry
     \entry{epstein2005anisotropic}{article}{}
       \name{author}{4}{}{%
         {{hash=0c09a6bbcea75ad30413db9f5c33f7d6}{%
@@ -899,6 +855,50 @@
       \field{year}{2005}
       \field{pages}{94\bibrangedash 98}
       \range{pages}{5}
+    \endentry
+    \entry{armstrong2010nv}{article}{}
+      \name{author}{4}{}{%
+        {{hash=ee819506688f37c62b326e2bf22e8eda}{%
+           family={Armstrong},
+           familyi={A\bibinitperiod},
+           given={Seiji},
+           giveni={S\bibinitperiod}}}%
+        {{hash=73893c82f842b9d5a89e2390cd8f9557}{%
+           family={Rogers},
+           familyi={R\bibinitperiod},
+           given={Lachlan\bibnamedelima J},
+           giveni={L\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=ca1f3f140545364cfd2b702aeab4377f}{%
+           family={McMurtrie},
+           familyi={M\bibinitperiod},
+           given={Roger\bibnamedelima L},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=0f8daa834c31d79bcb117f4b351dae82}{%
+           family={Manson},
+           familyi={M\bibinitperiod},
+           given={Neil\bibnamedelima B},
+           giveni={N\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{fullhash}{ffd54a3dca2ff0d1d144aff2a4d66c9f}
+      \strng{bibnamehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{authorbibnamehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{authornamehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{authorfullhash}{ffd54a3dca2ff0d1d144aff2a4d66c9f}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics Procedia}
+      \field{number}{4}
+      \field{title}{NV--NV electron--electron spin and NV--NS electron—electron and electron-nuclear spin interaction in diamond}
+      \field{volume}{3}
+      \field{year}{2010}
+      \field{pages}{1569\bibrangedash 1575}
+      \range{pages}{7}
     \endentry
     \entry{wickenbrock2016microwave}{article}{}
       \name{author}{8}{}{%
@@ -1845,6 +1845,320 @@
       \field{volume}{113}
       \field{year}{2014}
       \field{pages}{147204}
+      \range{pages}{1}
+    \endentry
+    \entry{simanovskaia2013sidebands}{article}{}
+      \name{author}{6}{}{%
+        {{hash=b7e9acaa3a33c2012ba29a748d97f0ed}{%
+           family={Simanovskaia},
+           familyi={S\bibinitperiod},
+           given={Maria},
+           giveni={M\bibinitperiod}}}%
+        {{hash=29b4bbc4243a55e36fe38d9f85210005}{%
+           family={Jensen},
+           familyi={J\bibinitperiod},
+           given={Kasper},
+           giveni={K\bibinitperiod}}}%
+        {{hash=ebc73b36aeeffe5a2885fdb08d5394bd}{%
+           family={Jarmola},
+           familyi={J\bibinitperiod},
+           given={Andrey},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2077d619409755e1682ce16a2df276a7}{%
+           family={Aulenbacher},
+           familyi={A\bibinitperiod},
+           given={Kurt},
+           giveni={K\bibinitperiod}}}%
+        {{hash=007f9b2170dbb1ce8df026d22c05435d}{%
+           family={Manson},
+           familyi={M\bibinitperiod},
+           given={Neil},
+           giveni={N\bibinitperiod}}}%
+        {{hash=09d39b13ef6a6fe2493176d0412e39a0}{%
+           family={Budker},
+           familyi={B\bibinitperiod},
+           given={Dmitry},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{6b84773488c9fb91371d9373b981353f}
+      \strng{fullhash}{4f1ecd8bf38cc8a19e2f5ff0a73afbd8}
+      \strng{bibnamehash}{6b84773488c9fb91371d9373b981353f}
+      \strng{authorbibnamehash}{6b84773488c9fb91371d9373b981353f}
+      \strng{authornamehash}{6b84773488c9fb91371d9373b981353f}
+      \strng{authorfullhash}{4f1ecd8bf38cc8a19e2f5ff0a73afbd8}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{number}{22}
+      \field{title}{Sidebands in optically detected magnetic resonance signals of nitrogen vacancy centers in diamond}
+      \field{volume}{87}
+      \field{year}{2013}
+      \field{pages}{224106}
+      \range{pages}{1}
+    \endentry
+    \entry{tetienne2012magnetic}{article}{}
+      \name{author}{7}{}{%
+        {{hash=3723b5cc9d7e44f0eaf505a2e827bbd7}{%
+           family={Tetienne},
+           familyi={T\bibinitperiod},
+           given={JP},
+           giveni={J\bibinitperiod}}}%
+        {{hash=b852662e1b510be6b7dc52cb959af536}{%
+           family={Rondin},
+           familyi={R\bibinitperiod},
+           given={L},
+           giveni={L\bibinitperiod}}}%
+        {{hash=6477095429358d6f1d2000d52d1dc086}{%
+           family={Spinicelli},
+           familyi={S\bibinitperiod},
+           given={P},
+           giveni={P\bibinitperiod}}}%
+        {{hash=6ffc265b690eb20c3c651d85ab805ae8}{%
+           family={Chipaux},
+           familyi={C\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=51d5bc9e2afef4db06bebc91c36a60c2}{%
+           family={Debuisschert},
+           familyi={D\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod}}}%
+        {{hash=db6efdd1b0796dcc8cf1b6152ffe7ba6}{%
+           family={Roch},
+           familyi={R\bibinitperiod},
+           given={JF},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e92dbf1a3b3546a6aefbcebbdf3d8b86}{%
+           family={Jacques},
+           familyi={J\bibinitperiod},
+           given={V},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{f8862ae6e4a7321164b18f22a77f5e58}
+      \strng{fullhash}{9e4b07caf005c8467d4395e5ee23ad67}
+      \strng{bibnamehash}{f8862ae6e4a7321164b18f22a77f5e58}
+      \strng{authorbibnamehash}{f8862ae6e4a7321164b18f22a77f5e58}
+      \strng{authornamehash}{f8862ae6e4a7321164b18f22a77f5e58}
+      \strng{authorfullhash}{9e4b07caf005c8467d4395e5ee23ad67}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New Journal of Physics}
+      \field{number}{10}
+      \field{title}{Magnetic-field-dependent photodynamics of single NV defects in diamond: an application to qualitative all-optical magnetic imaging}
+      \field{volume}{14}
+      \field{year}{2012}
+      \field{pages}{103033}
+      \range{pages}{1}
+    \endentry
+    \entry{zheng2017level}{inproceedings}{}
+      \name{author}{10}{}{%
+        {{hash=f91a5b4234946a899cbe664081c0cee8}{%
+           family={Zheng},
+           familyi={Z\bibinitperiod},
+           given={Huijie},
+           giveni={H\bibinitperiod}}}%
+        {{hash=2879921bf4fddaee86a7f275ffe42d6b}{%
+           family={Chatzidrosos},
+           familyi={C\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod}}}%
+        {{hash=158f90c6818eb403a590dc6f75eeb0d1}{%
+           family={Wickenbrock},
+           familyi={W\bibinitperiod},
+           given={Arne},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6200f7fb9ed937a6bd2bb600fb5dd12e}{%
+           family={Bougas},
+           familyi={B\bibinitperiod},
+           given={Lykourgos},
+           giveni={L\bibinitperiod}}}%
+        {{hash=f8ae3dc0ea0f51866de4480967e2e249}{%
+           family={Lazda},
+           familyi={L\bibinitperiod},
+           given={Reinis},
+           giveni={R\bibinitperiod}}}%
+        {{hash=7ee417441a4c512eb06daf84c8828981}{%
+           family={Berzins},
+           familyi={B\bibinitperiod},
+           given={Andris},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a67c59c2eb68e7bf908bb13434502e0b}{%
+           family={Gahbauer},
+           familyi={G\bibinitperiod},
+           given={Florian\bibnamedelima Helmuth},
+           giveni={F\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=1c336d0eb430dceea3fd7ab2fa77dc02}{%
+           family={Auzinsh},
+           familyi={A\bibinitperiod},
+           given={Marcis},
+           giveni={M\bibinitperiod}}}%
+        {{hash=4911d49a17d7bf08a957885a66239f94}{%
+           family={Ferber},
+           familyi={F\bibinitperiod},
+           given={Ruvin},
+           giveni={R\bibinitperiod}}}%
+        {{hash=09d39b13ef6a6fe2493176d0412e39a0}{%
+           family={Budker},
+           familyi={B\bibinitperiod},
+           given={Dmitry},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {SPIE}%
+      }
+      \strng{namehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{fullhash}{a63a671529db71df7423c2b68238a75d}
+      \strng{bibnamehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{authorbibnamehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{authornamehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{authorfullhash}{a63a671529db71df7423c2b68238a75d}
+      \field{extraname}{1}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Slow Light, Fast Light, and Opto-Atomic Precision Metrology X}
+      \field{title}{Level anti-crossing magnetometry with color centers in diamond}
+      \field{volume}{10119}
+      \field{year}{2017}
+      \field{pages}{115\bibrangedash 122}
+      \range{pages}{8}
+    \endentry
+    \entry{zheng2020microwave}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=f91a5b4234946a899cbe664081c0cee8}{%
+           family={Zheng},
+           familyi={Z\bibinitperiod},
+           given={Huijie},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f2e2aa3f61b1b51a9e0c02e4d4404c78}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Zhiyin},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=2879921bf4fddaee86a7f275ffe42d6b}{%
+           family={Chatzidrosos},
+           familyi={C\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c9191dc69bc22ce41fc456ae9eb63db8}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Chen},
+           giveni={C\bibinitperiod}}}%
+        {{hash=473ae68dfba79e0b88163b32ea7eb70d}{%
+           family={Nakamura},
+           familyi={N\bibinitperiod},
+           given={Kazuo},
+           giveni={K\bibinitperiod}}}%
+        {{hash=bf2859933e1b0c4896731b2e0f045403}{%
+           family={Sumiya},
+           familyi={S\bibinitperiod},
+           given={Hitoshi},
+           giveni={H\bibinitperiod}}}%
+        {{hash=9ca7c4030dcd58a3b823624bcd9b3848}{%
+           family={Ohshima},
+           familyi={O\bibinitperiod},
+           given={Takeshi},
+           giveni={T\bibinitperiod}}}%
+        {{hash=e72a0e59f917bfcf16da87421615eef1}{%
+           family={Isoya},
+           familyi={I\bibinitperiod},
+           given={Junichi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=04cf2105319471a0387f61073f4b79d7}{%
+           family={Wrachtrup},
+           familyi={W\bibinitperiod},
+           given={J{ö}rg},
+           giveni={J\bibinitperiod}}}%
+        {{hash=158f90c6818eb403a590dc6f75eeb0d1}{%
+           family={Wickenbrock},
+           familyi={W\bibinitperiod},
+           given={Arne},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{fullhash}{2efc5469adc3d7a1cd20524e6ff1b701}
+      \strng{bibnamehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{authorbibnamehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{authornamehash}{750176f76ccc37c2f2c13af28858bc76}
+      \strng{authorfullhash}{2efc5469adc3d7a1cd20524e6ff1b701}
+      \field{extraname}{2}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Applied}
+      \field{number}{4}
+      \field{title}{Microwave-free vector magnetometry with nitrogen-vacancy centers along a single axis in diamond}
+      \field{volume}{13}
+      \field{year}{2020}
+      \field{pages}{044023}
+      \range{pages}{1}
+    \endentry
+    \entry{pellet2021optical}{article}{}
+      \name{author}{5}{}{%
+        {{hash=a28b88910740ef60a0f6beccc960b557}{%
+           family={Pellet-Mary},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Cl{é}ment},
+           giveni={C\bibinitperiod}}}%
+        {{hash=28dfed4180aa164f0e54b48fedc35117}{%
+           family={Huillery},
+           familyi={H\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=388a89cb026d01ecfed8a8878b747f18}{%
+           family={Perdriat},
+           familyi={P\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dbaa94ec1647c3ec6f589d5f36c3398c}{%
+           family={Tallaire},
+           familyi={T\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a4a4734a3cdd696f5a694483aaf81579}{%
+           family={H{é}tet},
+           familyi={H\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{f3eca3a12ba592facdedea9bb4652a6c}
+      \strng{fullhash}{49ea4e0886f2301fbdb29f377df96a56}
+      \strng{bibnamehash}{f3eca3a12ba592facdedea9bb4652a6c}
+      \strng{authorbibnamehash}{f3eca3a12ba592facdedea9bb4652a6c}
+      \strng{authornamehash}{f3eca3a12ba592facdedea9bb4652a6c}
+      \strng{authorfullhash}{49ea4e0886f2301fbdb29f377df96a56}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{number}{10}
+      \field{title}{Optical detection of paramagnetic defects in diamond grown by chemical vapor deposition}
+      \field{volume}{103}
+      \field{year}{2021}
+      \field{pages}{L100411}
       \range{pages}{1}
     \endentry
   \enddatalist

@@ -533,6 +533,8 @@ def find_ESR_peaks(x,y,width=False,threshold=0.2,returnUnit='x',precise=False):
 	if returnUnit=='n' :
 		return(ns)
 
+#~~~~~~ NV Physics ~~~~~~
+
 def find_B_111(freq,transi='-') : #freq en MHz
 	D=2870
 	gamma=2.8
@@ -590,13 +592,7 @@ def find_B_100(freq,transi='-',B_max=100,E=4,D=2870) :
 	RR=root_scalar(f,bracket=[0,B_max])
 	return RR.root
 
-
-
 class NVHamiltonian(): #x,y and z axis are taken as (100) axis
-	
-	
-
-
 	c1=np.array([-1,1.,-1])/np.sqrt(3)
 	c2=np.array([1,1,1])/np.sqrt(3)
 	c3=np.array([-1,-1,1])/np.sqrt(3)
@@ -607,23 +603,23 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 	def __init__(self,B,c=1,E=4,D=2870,gamma_e=2.8,order='traditionnal'): #If B is not a magneticField Instance it should be of the form [Bx,By,Bz] ; E en MHz (spltting de 2*E en champs nul)
 		#order='traditionnal' or 'ascending' : basis is (-1,0,+1) or (0,-1,+1)
 		if order=='traditionnal' :
-			Sz=np.array([[-1,0,0],[0,0,0],[0,0,1]])
-			Sy=np.array([[0,1j,0],[-1j,0,1j],[0,-1j,0]])*1/np.sqrt(2)
-			Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])*1/np.sqrt(2)
-			Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
-			H_E_transverse=np.array([[0,0,1],[0,0,0],[1,0,0]])
+			self.Sz=np.array([[-1,0,0],[0,0,0],[0,0,1]])
+			self.Sy=np.array([[0,1j,0],[-1j,0,1j],[0,-1j,0]])*1/np.sqrt(2)
+			self.Sx=np.array([[0,1,0],[1,0,1],[0,1,0]])*1/np.sqrt(2)
+			self.Sz2=np.array([[1,0,0],[0,0,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
+			self.H_E_transverse=np.array([[0,0,1],[0,0,0],[1,0,0]])
 		if order=='ascending' :
-			Sz=np.array([[0,0,0],[0,-1,0],[0,0,1]])
-			Sy=np.array([[0,-1j,1j],[1j,0,0],[-1j,0,0]])*1/np.sqrt(2)
-			Sx=np.array([[0,1,1],[1,0,0],[1,0,0]])*1/np.sqrt(2)
-			Sz2=np.array([[0,0,0],[0,1,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
-			H_E_transverse=np.array([[0,0,0],[0,0,1],[0,1,0]])
+			self.Sz=np.array([[0,0,0],[0,-1,0],[0,0,1]])
+			self.Sy=np.array([[0,-1j,1j],[1j,0,0],[-1j,0,0]])*1/np.sqrt(2)
+			self.Sx=np.array([[0,1,1],[1,0,0],[1,0,0]])*1/np.sqrt(2)
+			self.Sz2=np.array([[0,0,0],[0,1,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
+			self.H_E_transverse=np.array([[0,0,0],[0,0,1],[0,1,0]])
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
-		Bz=abs(self.cs[c-1].dot(B.cartesian)) #Attention, ici Bz est dans la base du NV (Bz')
+		self.Bz=abs(self.cs[c-1].dot(B.cartesian)) #Attention, ici Bz est dans la base du NV (Bz')
 		#Attention bis : je considère que z' est toujours aligné (dans le meme hémisphère) que B
-		Bx=np.sqrt(abs(B.amp**2-Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
-		self.H=D*Sz2+gamma_e*(Bz*Sz+Bx*Sx)+E*H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
+		self.Bx=np.sqrt(abs(B.amp**2-self.Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
+		self.H=D*self.Sz2+gamma_e*(self.Bz*self.Sz+self.Bx*self.Sx)+E*self.H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
 	def transitions(self):
 		egva,egve=np.linalg.eigh(self.H)
 		egva=np.sort(egva)
@@ -786,8 +782,6 @@ def find_B_cartesian_mesh(peaks,precise=True,transi='all',Blims='auto',n=20,**Ha
 		sol=minimize(errfunc,x0=x0,bounds=bounds)
 		return(magneticField(x=sol.x[0],y=sol.x[1],z=sol.x[2]))
 
-
-
 def simu_ESR(x,peaks,widths=8,amps=-0.1,ss=1,typ='gauss'):
 	n=len(peaks)
 	if not (isinstance(widths,list) or isinstance(widths,np.ndarray)):
@@ -855,6 +849,53 @@ def find_nearest_ESR(x,y,peaks='auto',Bmax=500,typ='gauss',returnType='default',
 		popt=[B.amp,angleFrom100(B),angleFrom111(B),sum(widths)/len(widths)]
 	return popt,yfit
 
+class NV_C13_Hamiltonian():
+
+	def __init__(self,B,c=1,E=4,D=2870,gamma_e=2.8):
+
+		NVHamClass=NVHamiltonian(B,c=c,E=E,D=D,gamma_e=gamma_e)
+		self.NVHam=convolution(NVHamClass.H,np.identity(2))
+
+		Ix=1/2*np.array([[0,1],[1,0]])
+		Iy=1/2*np.array([[0,0+1j],[0-1j,0]])
+		Iz=1/2*np.array([[1,0],[0,-1]])
+		gammaNucl=1.07*1e-3 #MHz/G
+		self.C13Ham=convolution(np.identity(3),Iz*gammaNucl*NVHamClass.Bz) #C'est peut être la norme de B plutot mais osef un peu vu que ce terme sert à rien
+
+		Axx=190.2
+		Ayy=120.3
+		Azz=129.1
+		Axz=-25
+		self.HFHam=Axx*convolution(NVHamClass.Sx,Ix)+Ayy*convolution(NVHamClass.Sy,Iy)+Azz*convolution(NVHamClass.Sz,Iz)+Axz*(convolution(NVHamClass.Sx,Iz)+convolution(NVHamClass.Sz,Ix))
+
+		self.H=self.NVHam+self.C13Ham+self.HFHam
+
+	def egval(self):
+		egva,egve=np.linalg.eigh(self.H)
+		egva=np.sort(egva)
+		return(egva)
+	def egvect(self):
+		egva,egve=np.linalg.eigh(self.H)
+		egve=egve.T
+		egve=[v for _,v in sorted(zip(egva,egve))]
+		return(egve)
+
+	def transitions(self):
+		egv=self.egval()
+		g1=egv[0]
+		g2=egv[1]
+		es=egv[2:]
+		transis=[]
+		for e in es:
+			transis+=[e-g1,e-g2]
+
+		return(np.sort(transis))
+
+
+
+
+
+	
 #~~~~~~ stats ~~~~~~
 def mean(y):
 	return np.average(y)
@@ -927,6 +968,22 @@ def integration(x,y):
 		s+=y[i]
 	s=s*dx
 	return(s)
+
+#~~~~~~ Algebre ~~~~~~
+
+def convolution(M1,M2):
+	l1=len(M1[:,0])
+	l2=len(M2[:,0])
+	l=l1*l2
+	M=np.zeros((l,l),dtype=complex)
+	for i1 in range(l1) :
+		for j1 in range(l1) :
+			for i2 in range(l2) :
+				for j2 in range(l2) :
+					i=i1*l2+i2
+					j=j1*l2+j2
+					M[i,j]=M1[i1,j1]*M2[i2,j2]
+	return(M)
 
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
@@ -1053,7 +1110,6 @@ def extract_glob(SubFolderName='.',FirstValIndex='default', LastValIndex=-4): #F
 	fval=sorted(fval)
 	return(fnames,fval)
 
-
 def ask_name():
 	qapp = QApplication(sys.argv)
 	fname,filters=QFileDialog.getOpenFileName()	
@@ -1088,11 +1144,4 @@ def find_elem(elem,liste):
 				index=i
 		return index
 
-# x,y=extract_data('ESR 100 2V')
-# x=x*1000
-# cs=[2765,3020]
-# plt.plot(x,y)
-# popt,yfit=find_nearest_ESR(x,y,cs)
-# print(popt)
-# plt.plot(x,yfit)
-# plt.show()
+
