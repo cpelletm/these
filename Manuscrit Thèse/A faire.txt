@@ -1,11 +1,12 @@
 Chapter 1 : protocole de T1, peut etre aussi Rabi, echo et Ramsay, voire plus. Y'a du rabi avec soustraction dans le arxiv de Barry&co 2022
 
-chapter 1 : Setup experimental, lock in & co.
+chapter 1 : Setup experimental, lock in & co. -> Plutot appendix, ou un petit chapitre. Appendix c'est pas mal, avec plusieurs setup avec/sans lock-in, lock-in B ou uW...
 
 chapter 1 : Champ transverse, modèle de PL (rate equation Vs 3 lvl master equation Vs 7 lvl), ODMR, contraste ODMR (single et ensemble)
 
 chapter 3 : Non equivalent NV-NV CR : 592G et "Magnetic field and angle-dependent photoluminescence of a fiber-coupled nitrogen vacancy rich diamond"
 
+Ouverture chapter 4 : comprendre la phase relative champ transverse/DQ (/home/pellet-mary/these/data/20211020/OBT 44B (rose)/scan 100 with phase )
 
 Détailler Relaxometry T1 Vs PL. Dsicuter les largeurs de raies, théorique et experimentale si possible -> En SI si j'ai le time
 
@@ -19,4 +20,5 @@ Check le fichier (les trucs sur le VH- et tout)
 Variance d'Allan/sensi en fonction du temps d'acquisition : cf PRX 2020 de lukin, Clevenson 2015 et Mitchell 2020
 Comparaison PL rose+4 sumis -> choper une estimation de la concentration des sumis (si possible) -> mesurer largeur fluct sur les 4 sumis + T1 0B et 1x1x1x1. (rappel : Hdd (donc 1/T1) scale linéairement avec la concentration)
 Sensi experimental sur le flanc d'ESR pour avoir une comparaison (sur un adamas 15 um ou sur le rose, à voir. Si possible sur la 100 pour être honnête)
+Choper un spectre de bruit APD/PD avec le laser vert sylo/pulsé
 

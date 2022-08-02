@@ -1,9 +1,12 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
-
+plt.figure(num=1,figsize=(6,4),dpi=80)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+ax=plt.gca()
 
 
 # fname='ESR 1 raie clean'
@@ -41,7 +44,7 @@ xmin=1060
 xmax=-1
 x=x[xmin:xmax]
 y=y[xmin:xmax]
-plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='substrat HPHT 1200°')
+plt.plot(x,y,'o',markerfacecolor="None",ms=6,mew=0.5,label='SBST-B (1200°)')
 
 popt=[50.66541125, -8.47312149999999]
 fname='scan substrat 50 ppm N2 (800)'
@@ -52,7 +55,16 @@ xmax=-1
 y=y+0.07
 x=x[xmin:xmax]
 y=y[xmin:xmax]
-plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='substrat HPHT 800 °')
+plt.plot(x,y,'o',markerfacecolor="None",ms=6,mew=0.5,label='SBST-B (800°)')
+
+xVH=56
+xC13=20
+xWar1=122
+
+ymin=-0.05
+ymax=0.125
+
+# plt.plot([xVH,xVH],[ymin,ymax],ls='--',color=color(3))
 
 # fname='scan 100 MNOB 5 (800)'
 # x,y=extract_data(fname)
@@ -62,9 +74,9 @@ plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='substrat HPHT 800 °'
 # # x=x[xmin:xmax]
 # # y=y[xmin:xmax]
 # plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='MNOB 05 (800°)')
-ax=plt.gca()
+
 # ax.tick_params(labelsize=20)
-ax.set_xlabel(r'B $\parallel$[100] (G)',fontsize=12)
-ax.set_ylabel(r'Demodulated PL' ,fontsize=12)
+# ax.set_xlabel(r'B $\parallel$[100] (G)',fontsize=12)
+# ax.set_ylabel(r'Demodulated PL' ,fontsize=12)
 ax.legend()
 plt.show()

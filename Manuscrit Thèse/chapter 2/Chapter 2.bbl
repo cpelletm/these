@@ -732,6 +732,75 @@
       \field{pages}{105502}
       \range{pages}{1}
     \endentry
+    \entry{mitchell2013x}{article}{}
+      \name{author}{9}{}{%
+        {{hash=42923a0b353432972dccd95f64ed67e7}{%
+           family={Mitchell},
+           familyi={M\bibinitperiod},
+           given={Deborah\bibnamedelima G},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=9b943ba5df071d6651e9ad92a187a2a6}{%
+           family={Tseitlin},
+           familyi={T\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=61bded4288602b50ffe593e07a0c2794}{%
+           family={Quine},
+           familyi={Q\bibinitperiod},
+           given={Richard\bibnamedelima W},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=28aedbed5242a223c4eff292a0ac668d}{%
+           family={Meyer},
+           familyi={M\bibinitperiod},
+           given={Virginia},
+           giveni={V\bibinitperiod}}}%
+        {{hash=2798873ca1a1e4cf4e95ccea2535c2b0}{%
+           family={Newton},
+           familyi={N\bibinitperiod},
+           given={Mark\bibnamedelima E},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=9d508b42aa776f3afdc013341cef7567}{%
+           family={Schnegg},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3e2d42be354c241fdb12604176fc626c}{%
+           family={George},
+           familyi={G\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=99e32a827cdbe64d503e78b7841b6367}{%
+           family={Eaton},
+           familyi={E\bibinitperiod},
+           given={Sandra\bibnamedelima S},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=73f225b158a38a3241328e625640e31d}{%
+           family={Eaton},
+           familyi={E\bibinitperiod},
+           given={Gareth\bibnamedelima R},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{297646c2fdc8772b054f5016b2c84591}
+      \strng{fullhash}{d30bad1b38dbbef43b8b6c1c42769630}
+      \strng{bibnamehash}{297646c2fdc8772b054f5016b2c84591}
+      \strng{authorbibnamehash}{297646c2fdc8772b054f5016b2c84591}
+      \strng{authornamehash}{297646c2fdc8772b054f5016b2c84591}
+      \strng{authorfullhash}{d30bad1b38dbbef43b8b6c1c42769630}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Molecular Physics}
+      \field{number}{18-19}
+      \field{title}{X-band rapid-scan EPR of samples with long electron spin relaxation times: a comparison of continuous wave, pulse and rapid-scan EPR}
+      \field{volume}{111}
+      \field{year}{2013}
+      \field{pages}{2664\bibrangedash 2673}
+      \range{pages}{10}
+    \endentry
     \entry{van1989cross}{article}{}
       \name{author}{2}{}{%
         {{hash=93056ce587f9719caae636c84bebcf89}{%
@@ -1420,8 +1489,8 @@
       \strng{authorbibnamehash}{c1ac2ce2dc9ee5d5909e4fba07b860ff}
       \strng{authornamehash}{c1ac2ce2dc9ee5d5909e4fba07b860ff}
       \strng{authorfullhash}{48aa852b6598083920e22db782376a7d}
-      \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature communications}
@@ -2159,6 +2228,269 @@
       \field{volume}{103}
       \field{year}{2021}
       \field{pages}{L100411}
+      \range{pages}{1}
+    \endentry
+    \entry{tallaire2020high}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=57dc05eeee2c31c6a1745c0dd7de2e19}{%
+           family={Tallaire},
+           familyi={T\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8ecf086e39224efb181725dd2bd6072b}{%
+           family={Brinza},
+           familyi={B\bibinitperiod},
+           given={Ovidiu},
+           giveni={O\bibinitperiod}}}%
+        {{hash=28dfed4180aa164f0e54b48fedc35117}{%
+           family={Huillery},
+           familyi={H\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e0fa8edc0ab4d3f326cc26f699d69069}{%
+           family={Delord},
+           familyi={D\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a28b88910740ef60a0f6beccc960b557}{%
+           family={Pellet-Mary},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Cl{é}ment},
+           giveni={C\bibinitperiod}}}%
+        {{hash=20588a6da4a927466b47d4cf59106a52}{%
+           family={Staacke},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f7a6fc1ab6e846248512662adb2b12f4}{%
+           family={Abel},
+           familyi={A\bibinitperiod},
+           given={Bernd},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f51fc2eb9829010127928a14530fb343}{%
+           family={Pezzagna},
+           familyi={P\bibinitperiod},
+           given={S{é}bastien},
+           giveni={S\bibinitperiod}}}%
+        {{hash=7dcf126ac136dc5c93e9b1acdf63b445}{%
+           family={Meijer},
+           familyi={M\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1f20c4f65345c081597391c2722632a8}{%
+           family={Touati},
+           familyi={T\bibinitperiod},
+           given={Nadia},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{fullhash}{9154a237cb20084d920687fd044096f1}
+      \strng{bibnamehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{authorbibnamehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{authornamehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{authorfullhash}{9154a237cb20084d920687fd044096f1}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Carbon}
+      \field{title}{High NV density in a pink CVD diamond grown with N2O addition}
+      \field{volume}{170}
+      \field{year}{2020}
+      \field{pages}{421\bibrangedash 429}
+      \range{pages}{9}
+    \endentry
+    \entry{choi2017depolarization}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=57a57425ca896b5ff04437ae9326358a}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Joonhee},
+           giveni={J\bibinitperiod}}}%
+        {{hash=aefff0f639ffce89deaac5b5a6e0d625}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Soonwon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e2d76903aa5edbfad4db8f641e8d9b9c}{%
+           family={Kucsko},
+           familyi={K\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=26627a96bd5c9e16c60b94d9c4a93b40}{%
+           family={Maurer},
+           familyi={M\bibinitperiod},
+           given={Peter\bibnamedelima C},
+           giveni={P\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=568f93fd49f6b56c212bf545801d2f2b}{%
+           family={Shields},
+           familyi={S\bibinitperiod},
+           given={Brendan\bibnamedelima J},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=bf2859933e1b0c4896731b2e0f045403}{%
+           family={Sumiya},
+           familyi={S\bibinitperiod},
+           given={Hitoshi},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ead6bf8f02a5582b2c748352737bc0e8}{%
+           family={Onoda},
+           familyi={O\bibinitperiod},
+           given={Shinobu},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e72a0e59f917bfcf16da87421615eef1}{%
+           family={Isoya},
+           familyi={I\bibinitperiod},
+           given={Junichi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=643c556d156225bdad6e50ef100dd939}{%
+           family={Demler},
+           familyi={D\bibinitperiod},
+           given={Eugene},
+           giveni={E\bibinitperiod}}}%
+        {{hash=176f8a3c6b3820fedfad65dcbb8fb5c5}{%
+           family={Jelezko},
+           familyi={J\bibinitperiod},
+           given={Fedor},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{fullhash}{430b891f1e3d1561a5bdb298bd6eb90c}
+      \strng{bibnamehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{authorbibnamehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{authornamehash}{90fff14552ce1652f51750f51944eef4}
+      \strng{authorfullhash}{430b891f1e3d1561a5bdb298bd6eb90c}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical review letters}
+      \field{number}{9}
+      \field{title}{Depolarization dynamics in a strongly interacting solid-state spin ensemble}
+      \field{volume}{118}
+      \field{year}{2017}
+      \field{pages}{093601}
+      \range{pages}{1}
+    \endentry
+    \entry{ngambou2022improving}{article}{}
+      \name{author}{8}{}{%
+        {{hash=52e6d9184a530a527ebd4e1882fe840c}{%
+           family={Ngambou},
+           familyi={N\bibinitperiod},
+           given={Midrel\bibnamedelimb Wilfried\bibnamedelima Ngandeu},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=a28b88910740ef60a0f6beccc960b557}{%
+           family={Pellet-Mary},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Cl{é}ment},
+           giveni={C\bibinitperiod}}}%
+        {{hash=8ecf086e39224efb181725dd2bd6072b}{%
+           family={Brinza},
+           familyi={B\bibinitperiod},
+           given={Ovidiu},
+           giveni={O\bibinitperiod}}}%
+        {{hash=e4127f4478917ecc10b6caedb30a7b29}{%
+           family={Antonino},
+           familyi={A\bibinitperiod},
+           given={Alessi},
+           giveni={A\bibinitperiod}}}%
+        {{hash=f425a4a7f5fb6705b4b95745fb779db4}{%
+           family={Hetet},
+           familyi={H\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+        {{hash=57dc05eeee2c31c6a1745c0dd7de2e19}{%
+           family={Tallaire},
+           familyi={T\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6d9648a13685634fd92b46ee25d5a091}{%
+           family={B{é}n{é}dic},
+           familyi={B\bibinitperiod},
+           given={Fabien},
+           giveni={F\bibinitperiod}}}%
+        {{hash=c6fc7a015a04fa9a513d2c1a4bc91601}{%
+           family={Achard},
+           familyi={A\bibinitperiod},
+           given={Jocelyn},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{fullhash}{ce7108d5caf86e9dc67ce006d5a4b3df}
+      \strng{bibnamehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{authorbibnamehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{authornamehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{authorfullhash}{ce7108d5caf86e9dc67ce006d5a4b3df}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Diamond and Related Materials}
+      \field{title}{Improving NV centre density during diamond growth by CVD process using N2O gas}
+      \field{volume}{123}
+      \field{year}{2022}
+      \field{pages}{108884}
+      \range{pages}{1}
+    \endentry
+    \entry{wunderlich2021magnetic}{article}{}
+      \name{author}{5}{}{%
+        {{hash=46063603287276403d1dbd02f8d379e8}{%
+           family={Wunderlich},
+           familyi={W\bibinitperiod},
+           given={Ralf},
+           giveni={R\bibinitperiod}}}%
+        {{hash=20588a6da4a927466b47d4cf59106a52}{%
+           family={Staacke},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=50d3684e331a8ed2a667fe1c5be64d7a}{%
+           family={Knolle},
+           familyi={K\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=f7a6fc1ab6e846248512662adb2b12f4}{%
+           family={Abel},
+           familyi={A\bibinitperiod},
+           given={Bernd},
+           giveni={B\bibinitperiod}}}%
+        {{hash=7dcf126ac136dc5c93e9b1acdf63b445}{%
+           family={Meijer},
+           familyi={M\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AIP Publishing LLC}%
+      }
+      \strng{namehash}{bb17854b2aef1c5d8a2656aac57bf1e0}
+      \strng{fullhash}{6f699f86bde551d6b96215ce31e5d315}
+      \strng{bibnamehash}{bb17854b2aef1c5d8a2656aac57bf1e0}
+      \strng{authorbibnamehash}{bb17854b2aef1c5d8a2656aac57bf1e0}
+      \strng{authornamehash}{bb17854b2aef1c5d8a2656aac57bf1e0}
+      \strng{authorfullhash}{6f699f86bde551d6b96215ce31e5d315}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Physics}
+      \field{number}{12}
+      \field{title}{Magnetic field and angle-dependent photoluminescence of a fiber-coupled nitrogen vacancy rich diamond}
+      \field{volume}{130}
+      \field{year}{2021}
+      \field{pages}{124901}
       \range{pages}{1}
     \endentry
   \enddatalist

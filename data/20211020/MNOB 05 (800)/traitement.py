@@ -1,9 +1,12 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
-
+plt.figure(num=1,figsize=(6,4),dpi=80)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+ax=plt.gca()
 
 
 # fname='ESR 1 raie clean'
@@ -37,7 +40,7 @@ from analyse import *
 fname='scan 100 phi=3'
 x,y=extract_data(fname)
 x=44.06668149999998*x-8.966174000000011
-xmin=300
+xmin=0
 xmax=470
 x=x[xmin:xmax]
 y=y[xmin:xmax]
@@ -53,8 +56,6 @@ plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='MNOB 05 (800°)')
 # x=x[xmin:xmax]
 # y=y[xmin:xmax]
 # plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1,label='MNOB 03 (1200°)')
-ax=plt.gca()
-ax.tick_params(labelsize=20)
 # ax.set_xlabel(r'B $\parallel$[100] (G)',fontsize=20)
 # ax.set_ylabel(r'Demodulated PL' ,fontsize=20)
 plt.show()

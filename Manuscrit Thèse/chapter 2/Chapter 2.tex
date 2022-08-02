@@ -19,18 +19,14 @@
 \usepackage{tcolorbox} % toujours plus de boites
 \usepackage{xcolor} % Pour avoir des couleurs dans les équations
 
-\title{Appendix A : Dipole-dipole interaction between two spins in solid}
+\title{}
 \begin{document}
 \chapter{Detection of dark spins via cross-relaxations}
-In this chapter, we will see how...
+In this chapter, we will see how the interplay between the spin and the optical properties of the NV centers can be transferred to other spins in the crystal by coupling them to NV centers. More specifically, I will discuss the first optical detection of two spin species, VH$^-$ and War1, in a CVD diamond by the mean of cross-relaxations with NV centers.
 \section{Flip-Flops, double flips and cross-relaxation}
 \label{Sec_CR}
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{Figures/Shema_CR}
-\caption{Illustration of cross-relaxations between an NV center and an unpolarized spin. Red dots represent the population in each states, and the arrows the various population transfer mechanisms}
-\label{CR_shema}
-\end{figure}
+
+\subsection{Resonant interaction : flip-flops and double flips}
 
 The dominant form of interaction between two distant spins is the magnetic dipole-dipole interaction. For two spins with with vector spin Hamiltonian $\hat{\mathbf{S}}_1$ and $\hat{\mathbf{S}}_2$, separated by a distance $\mathbf{r}=r\mathbf{u}$, the dipole-dipole interaction Hamiltonian reads (see Appendix A) :
 \begin{equation}
@@ -42,13 +38,22 @@ Flip-flop, in the context of dipole-dipole interaction, is the mechanism which e
 
 Another mechanism authorized by the dipole-dipole Hamiltonian is the double-flip, either up or down, which couple the states $\ket{i;j}$ and $\ket{i-1;j-1}$ or $\ket{i+1;j+1}$. For a single spin species in a strong magnetic field, the lift of the various spin levels by the Zeeman effect means that no double-flip process can be resonant. However with weak magnetic field or when two different spin species are present, double flip process can be as important as flip-flops since the matrix elements $\mel{i;j}{\mathcal{H}_{dd}}{i\pm 1;j \pm 1}$ are typically of the same order of magnitude as the flip-flop ones.
 
+\subsection{Cross-relaxations}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/Shema_CR}
+\caption{Illustration of cross-relaxations between an NV center and an unpolarized spin. Red dots represent the population in each states, and the arrows the various population transfer mechanisms}
+\label{CR_shema}
+\end{figure}
+
 Cross-relaxation (CR) is the transfer of polarization from one spin to another (or more generally from one family of spins to another family). This process con occur either through flip-flops, or through double flips, as long as the resonance condition between the two spins is met. 
 
 Fig. \ref{CR_shema} illustrates CR between a polarized NV center and an unpolarized second spin. When the two considered spin transitions become resonant, in this case by tuning a magnetic field, polarization from the NV center will be transferred to the second spin, meaning in this case that the NV center will end up less polarized and the second spin more polarized. 
 
 The reason why CR tend to depolarize the NV center simply comes from a rate equation : since the initial NV population is higher in the $\ket{0}$ state than in the $\ket{-1}$ state, the flip-flop (or double flip) process that makes the NV center go to $\ket{-1}$ (symbolized by the two red arrows in Fig. \ref{CR_shema}) is more likely than the reverse flip-flop. If we only focus on the NV center, cross-relaxation is simply another thermalization process due to the coupling of the NV center to its environment.
 
-If we make the assumption that the spin bath coupled to the NV centers is Markovian, meaning that the dynamics of the bath is not affected by its coupling to the NV centers, we can then compute the modification in the NV relaxation rate $\Gamma_1=\frac{1}{T_1}$ due to its coupling to Spin 2 \citep{hall2016detection}:
+For a single NV center coupled to spin 2, assuming that spin 2 is initially depolarized and that the coupling strength between the two spins is smaller than their respective dephasing time $T_2^*$, we can compute the modification in the NV relaxation rate $\Gamma_1=\frac{1}{T_1}$ caused by spin 2 as \citep{hall2016detection}:
 \begin{equation}
 \delta \Gamma_1=\frac{\Omega^2}{\Gamma_2^*} \frac{(\Gamma_2^*)^2}{(\delta \nu)^2+(\Gamma_2^*)^2},
 \label{delta gamma 1}
@@ -59,21 +64,21 @@ where $\Omega=\frac{\mel{i;j}{\mathcal{H}_{\rm dd}}{j;i}}{\hbar}$ is the matrix 
 We refer by dark spins to spin defects which do not interact with light, which in the case of diamond defects consist of every known spin defect bar the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}.
 
 \subsection{P1 centers and $^{13}$C}
-By far the most common spin defects in NV-rich diamond, outside of NV centers, are the substitutional nitrogen centers N$^0_S$ known as the P1 centers, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^13$C $1/2$ nuclear spin which is present at 1.1\% in natural abundance carbon, the remaining carbon atoms being almost exclusively the spinless $^12$C isotope. 
+By far the most common spin defects in NV-rich diamond, outside of NV centers, are the substitutional nitrogen centers N$^0_S$ known as the P1 centers, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^{13}$C $1/2$ nuclear spin which is present at 1.1\% in natural abundance carbon, the remaining carbon atoms being almost exclusively the spinless $^{12}$C isotope. 
 
 In NV-rich diamonds, these two impurities are the main causes of the inhomogeneous dephasing rate $\Gamma_2^*=1/T_2^*$ of the NV centers ensemble \citep{barry2020sensitivity}. The dephasing comes from the distribution of dipole-dipole coupling from each NV centers to its neighboring spin defects, which varies in space and time. 
 
 The dephasing rate caused by a given impurity is directly proportional to the diagonal dipole-dipole matrix elements \citep{bauch2020decoherence}: 
 \begin{equation}
-\Gamma_2^*(P1) \propto \Omega_{\rm NV-P1}=\frac{1}{\hbar}\sqrt{\sum_j \abs{\mel{NV=i;P1=j}{\mathcal{H}_{\rm dd}}{NV=i;P1=j}}^2}.
+\Gamma_2^*(\rm P1) \propto \Omega_{\rm NV-P1}=\frac{1}{\hbar}\sqrt{\sum_j \abs{\mel{NV=i;P1=j}{\mathcal{H}_{\rm dd}}{NV=i;P1=j}}^2}.
 \label{Gamma2 P1}
 \end{equation}
-Since the dipole-dipole coupling rate scales as $1/r^3$, and the distance $r$ between each spin scales as the inverse cubic root of the concentration,  it is expected that the dephasing rate associated with a particular impurity scales linearly with the concentration of the impurity. In the case of P1 centers, this was verified experimentally by \citep{bauch2020decoherence} who found a value of $\Gamma_2^*(\rm P1)= (2 \pi) 16\ \rm kHz/ppm$. 
+Since the dipole-dipole coupling rate scales as $1/r^3$, and the distance $r$ between each spin scales as the inverse cubic root of the concentration,  it is expected that the dephasing rate associated with a particular impurity scales linearly with the concentration of the impurity: $\Gamma_2^*(\rm P1) \propto [P1]$. In the case of P1 centers, this was verified experimentally by \citep{bauch2020decoherence} who found a value of $\Gamma_2^*(\rm P1)= (2 \pi) 16\ \rm kHz/ppm$. The typical concentrations of P1 center go from [REF] for high purity CVD diamond, up to 500 ppm for type 1B HPHT or natural diamonds.
 
-$^{13}$C is much more abundant than P1 center ($\sim$ 10 000 ppm at natural abundance) but being a nuclear spin, it has a gyromagnetic ratio $\approx 2.8\, 10^3$ times smaller than that of the P1. This results in a contribution to $\Gamma_2^* \sim 10^3$ times smaller per impurity. It was found experimentally that the broadening caused by $^13$C is $\Gamma_2^*(^{13}C) \approx 16\ \rm Hz/ppm$ \citep{van1997dependences, barry2020sensitivity}. For natural abundance diamond, this means that $\Gamma_2^*(^{13}C) \approx 160\ \rm kHz$.
+$^{13}$C is much more abundant than P1 center ($\sim$ 10 000 ppm at natural abundance) but being a nuclear spin, it has a gyromagnetic ratio $\approx 2.8\cdot 10^3$ times smaller than that of the P1. This results in a contribution to $\Gamma_2^* \sim 10^3$ times smaller per impurity. It was found experimentally that the broadening caused by $^{13}$C is $\Gamma_2^*(^{13}\rm C ) \approx (2 \pi) 16\ \rm Hz/ppm$ \citep{van1997dependences, barry2020sensitivity}. For natural abundance diamond, this means that $\Gamma_2^*(^{13}\rm C ) \approx (2 \pi) 160\ \rm kHz$.
 
 \subsection{Other spin defects, VH$^-$, War1}
-
+\label{other defects}
 Other spin defects are also commonly found in diamond containing NV centers, such as charged vacancy or vacancy clusters \citep{hounsome2006origin}, other nitrogen related defects \citep{newton2007epr}, transition metals \citep{isoya1990fourier}, and especially for CVD grown diamond, hydrogen related defects \citep{hartland2014study}, since the CVD plasma contains up to 95 \% hydrogen.
 
 Of particular interest in this chapter are two defects: the VH$^-$ defect \citep{glover2003hydrogen, glover2004hydrogen} and the War1 defect \citep{cruddace2007magnetic}. 
@@ -81,6 +86,13 @@ Of particular interest in this chapter are two defects: the VH$^-$ defect \citep
 The VH$^-$ defect, prior to our observations, had only been observed \textit{via} electron paramagnetic resonance (EPR) in CVD grown diamond. It is formed by a vacancy with a hydrogen atom bonded to one of the four dangling carbon bond, with an extra electron trapped in the vacancy. This defect has a similar electronic structure to the NV$^-$ which results in an electronic spin-1 with a similar zero field splitting parameter (see Table [REF]). Although the presence of hydrogen in this defect was confirmed by isotopic study, it has been debated whether this defect was VH$^-$ or V$_2$H$^-$ due to a conflict with \textit{ab initio} calculations \citep{shaw2005importance}. The defect is therefore sometimes referred as V$_n$H$^-$. In this manuscript I will employ the original name VH$^-$.
 
 The War1 defect, named after the University of Warwick where it was first observed in a CVD diamond \citep{cruddace2007magnetic}, is another spin-1 defect whose chemical structure remains unknown. No hyperfine structure could be discerned in the relatively broad EPR line, and the use of deuterium instead of $^1$H did not change the shape of the line.
+
+\subsection{EPR spectroscopy}
+Electron paramagnetic resonance (EPR), the electronic equivalent to NMR, is the the most common way to detect electronic spins in solids and liquids. The principle of its detection is the absorption or reflection of a microwave field resonant with a spin transition.
+
+EPR generally relies on the thermal polarization of the spins to observe an absorption. In order to increase the polarization, an important magnetic field is applied (typ. 0.35 T or 3500 G) and a microwave cavity (typ. 9500 MHz) is used to improve the coupling of the spins to the field.
+
+At room temperature, the thermal polarization of a transition at 9500 MHz is $\sim 0.002$. This low value, compared to $\sim 0.8$ for the NV centers, explains in part why EPR is way less sensitive than NV ODMR. The current noise floor for EPR is typically of $\sim 10^{11}$ spins for electronic spins in diamond \citep{mitchell2013x}.
 
 \section{NV center relaxometry}
 
@@ -97,9 +109,9 @@ There can be several advantages to use relaxometry protocols, which measures a c
 \label{T1 vs PL}
 \end{figure}
 
-There are two ways to measure a change in the spin $T_1$, as represented on Fig. \ref{T1 vs PL}. The first and most basic method simply consist in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, which itself results from an equilibrium between the polarization rate $\Gamma_{\rm las}$ and the spin decay rate $\Gamma_1=1/T_1$. A change in $\Gamma_1$ will therefore conduct to a new equilibrium with a different PL. For a small enough change $\delta \Gamma << \Gamma_1$, we can consider that we remain in the linear regime, hence why $\frac{\delta \rm PL}{\rm PL} \propto \frac{\delta \Gamma}{\Gamma_1}$.
+There are two ways to measure a change in the spin $T_1$, as represented on Fig. \ref{T1 vs PL}. The first and most basic method simply consist in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, which itself results from an equilibrium between the polarization rate $\Gamma_{\rm las}$ and the spin decay rate $\Gamma_1=1/T_1$. A change in $\Gamma_1$ will therefore conduct to a new equilibrium with a different PL. 
 
-The second method is a pulsed sequence referred as single$-\tau$ measurement, used for example in \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. It simply consists in a $T_1$ measurement sequence (as seen in chapter 1) where you first polarize the spins in the $\ket{0}$ state with a laser pulse and read out the spin state with a second laser pulse after a dark time $\tau$. In this case however, instead of scanning the time $\tau$, you fix its value to maximize the sensitivity in a change of $T_1$ (typically $\tau \approx T_1$). Again, assuming you are in the linear regime, you observe a change in signal proportional to the change in $\Gamma_1$ : $\frac{\delta \rm S}{\rm S} \propto \frac{\delta \Gamma}{\Gamma_1}$.
+The second method is a pulsed sequence referred as single$-\tau$ measurement, used for example in \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. It simply consists in a $T_1$ measurement sequence (as seen in chapter 1) where you first polarize the spins in the $\ket{0}$ state with a laser pulse and read out the spin state with a second laser pulse after a dark time $\tau$. In this case however, instead of scanning the time $\tau$, you fix its value to maximize the sensitivity in a change of $T_1$ (typically $\tau \approx T_1$). 
 
 It is argued in \citep{finco2021imaging} that both methods result in similar signal to noise ratio: in the first case you need to adjust $\Gamma_{\rm las} \sim \Gamma_1$ to maximize the PL contrast, meaning that the laser power used is very far from the saturation limit (typically $\Gamma_1 \approx 10^3\ \rm s^{-1}$ and $\Gamma_{\rm sat} = 5\cdot10^6\ \rm s^{-1}$\citep{dreau2011avoiding}), while the second method needs to wait a time $\tau \sim T_1$ between each measurement, which result in a similar PL count and shot noise limit in both case.
 
@@ -117,10 +129,10 @@ On a technical level, the PL-based method is easier to implement since it does n
 Outside of cross-relaxations, another protocol exists to address dark spin resonance with NV centers, based on a modification of the NV $T_2$ time \citep{serbyn2014interferometric}. This protocol called double electron-electron resonance (DEER) is depicted on Fig. \ref{DEER}. The pulse sequence consist in a spin-echo sequence on the NV center, as described in chapter 1, with a simultaneous $\pi-$pulse on the probed dark spins during the rephasing pulse on the NV centers. This additional pulse means that the static (or slowly variable) contribution of the probed spins to the $T_2^*$ of the NV center wont be rephased. The newly measured $T_2$ time should therefore be slightly shorter:
 
 \begin{equation}
-\frac{1}{T_2^{\rm DEER}}=\frac{1}{T_2^{\rm echo}} + \delta \Gamma,
+\frac{1}{T_2^{\rm DEER}}=\frac{1}{T_2^{\rm echo}} + \delta \Gamma_2^*,
 \end{equation}
 
-where $\delta \Gamma$ is the contribution of the dark spin to the $T_2^*$ of the NV center through NV-dark spin dipole-dipole interaction.
+where $\delta \Gamma_2^*$ is the contribution of the dark spin to the $T_2^*$ of the NV center.
 
 By scanning the frequency of the second microwave (RF2) and monitoring the $T_2$ time of the NV centers, one can therefore find dark spin resonance without having to bring them to resonance with NV centers, which can be useful when the dark spin resonance is very far detuned from the NV one.
 
@@ -135,11 +147,12 @@ Second and more importantly, the scaling is not the same in both cases : CR meas
 Since relaxometry does not rely on a microwave field, the only parameter left to tune is the external magnetic field, which is often scanned with an electromagnet. Due to the strong NV anisotropy however, the direction along which $\mathbf{B}$ is scanned plays a crucial role in the ability to detect dark spins.
 
 \subsection{The [100] and [111] magnetic field orientations}
+\label{sec simu}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/121_vs_22_NV}
-\caption{Label}
+\caption{Simulated transition frequencies of the $\ket{0} \to {-1}$ and $\ket{0} \to {+1}$ transitions for the 4 classes of NV centers as a function of the magnetic field. a) When the magnetic field is along the diamond [100] crystalline axis, b) along the [111] axis. A representation of the 4 classes of NV centers, labeled 1 to 4, and the orientation of the magnetic field in both cases is put on top}
 \label{121 vs 22 NV}
 \end{figure}
 
@@ -155,7 +168,7 @@ On the other hand, Fig. \ref{121 vs 22 NV}-b) shows the transition frequencies w
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/121_vs_22_P1}
-\caption{Label}
+\caption{Simulation of the transition frequencies of NV$^-$ centers and P1 centers (without the hyperfine interactions) for a magnetic field a) along the [100] axis and b) along the [111] axis}
 \label{121 vs 22 P1}
 \end{figure}
 
@@ -168,7 +181,7 @@ Fig. \ref{121 vs 22 P1} shows the transition frequencies for the NV center and s
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/121_vs_22_VH}
-\caption{Label}
+\caption{Simulation of the transition frequencies of NV$^-$ centers and VH$^-$ centers for a magnetic field a) along the [100] axis and b) along the [111] axis}
 \label{121 vs 22 VH}
 \end{figure}
 
@@ -183,11 +196,11 @@ The War1 spin mentioned previously is also an electronic spin 1 with (pseudo)-$C
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/121_vs_22_13CNV}
-\caption{Label}
+\caption{a) Representation of the $^{13}$C-NV complex (right) compared to a "normal" NV center (left) b) and c) simulation of the transition frequencies of NV$^-$ centers and $^{13}$C-NV$^-$ complex for a magnetic field b) along the [100] axis and c) along the [111] axis}
 \label{121 vs 22 13C-NV}
 \end{figure}
 
-I refer by $^{13}$C-NV$^-$ to a complex formed by an NV center where one of the three carbon atoms neighboring the vacancy is a $^{13}$C isotope, which is illustrated in Fig. \ref{121 vs 22 13C-NV}-a).
+I refer by $^{13}$C-NV$^-$ to a complex formed by an NV center where one of the three carbon atoms neighboring the vacancy is a $^{13}$C isotope. Such a complex is illustrated in Fig. \ref{121 vs 22 13C-NV}-a).
 
 The $^{13}$C-NV$^-$ complex still behaves as a "normal" NV center, except with shifted transition lines. In particular its electronic spin is still polarized in the $\ket{0}$ state and the $\ket{0}$ state is still brighter than the $\ket{\pm 1}$ states. This is confirmed by the presence of sideband in ODMR spectra around the main NV lines \citep{simanovskaia2013sidebands}.
 
@@ -206,14 +219,15 @@ $$ \mathcal{A} = \begin{pmatrix}
 \end{pmatrix},$$
 where $\mathcal{A}_{xx}=190$ MHz, $\mathcal{A}_{yy}=120$ MHz, $\mathcal{A}_{zz}=129$ MHz, and  $\mathcal{A}_{xz}=\mathcal{A}_{zx}=-25.0$ MHz. 
 
-Fig. \ref{121 vs 22 13C-NV}-b) and c) show the simulated transition frequencies for a $^{13}$C-NV$^-$ complex when B is scanned along the [100] or [111] axis, as well as the "normal" NV transitions and the co-resonance between those two. When $\mathbf{B} \parallel [100]$, there are 4 co-resonances between 18 and 25 G. When $\mathbf{B} \parallel [100]$ there are 18 of them between 10 and 60 G. This abundance of transitions for low (<100 G) magnetic field makes analyzing experimental data quickly intractable in the second case.
+Fig. \ref{121 vs 22 13C-NV}-b) and c) show the simulated transition frequencies for a $^{13}$C-NV$^-$ complex when B is scanned along the [100] or [111] axis, as well as the "normal" NV transitions and the co-resonance between those two. When $\mathbf{B} \parallel [100]$, there are 4 co-resonances between 18 and 25 G. When $\mathbf{B} \parallel [100]$ there are 18 of them between 10 and 60 G. This abundance of transitions for low ($<100\ \rm G$) magnetic field makes analyzing experimental data quickly intractable in the second case.
 
 \subsection{CR contrast and transverse magnetic field}
+\label{CR contrast}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/contrast_OMDR_111_Vs_100}
-\caption{Label}
+\caption{Simulated ODMR contrast on all four classes of NV centers with a magnetic field a) along the [100] axis and b) along the [111] axis}
 \label{121 vs 22 contrast}
 \end{figure}
 
@@ -232,7 +246,7 @@ This tells us that we should not expect to observe a CR signal for B greater tha
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{Figures/NV_P1_libreAcces}
-\caption{Taken from \citep{armstrong2010nv}Label}
+\caption{Change in the PL of an ensemble of NV centers as a magnetic field is scanned along the [111] crystalline axis. Taken from \citep{armstrong2010nv}}
 \label{CR P1 exp}
 \end{figure}
 
@@ -244,19 +258,179 @@ First, there is the slowly decaying PL envelope, which stabilizes to a plateau f
 
 Second, there are the three salient features denoted Ns-NV, NV-NV and NV-LAC. All these features come from cross-relaxations or level anti-crossing (LAC) from the NV class aligned with the magnetic field.
 
-The first feature (Ns-NV) for $B\approx 512 \ \rm G$ is the signature of the CR between NV and P1 centers. Its relatively complicated shape comes from the hyper-fine coupling between the P1 electronic spin and the $^14$N nucleus \citep{lazda2021cross}. Excited state level anti-crossing (ESLAC) also occurs in this region, but its optical signature, if it exists, is expected to be much weaker than the NV-P1 CR \citep{zheng2017level}.
+The first feature (Ns-NV) for $B\approx 512 \ \rm G$ is the signature of the CR between NV and P1 centers. Its relatively complicated shape comes from the hyper-fine coupling between the P1 electronic spin and the $^{14}$N nucleus \citep{lazda2021cross}. Excited state level anti-crossing (ESLAC) also occurs in this region, but its optical signature, if it exists, is expected to be much weaker than the NV-P1 CR \citep{zheng2017level}.
 
 The second feature (NV-NV) for $B\approx 590 \ \rm G$ comes from the cross relaxation between NV centers aligned with the magnetic field and NV centers misaligned with the field (the co-resonance can be observed in Fig. \ref{121 vs 22 NV}-b)). This phenomenon will be further discussed in the next chapter.
 
 Finally the third feature (LAC) for $B\approx 1024 \ \rm G$ correspond to the level anti-crossing between the $\ket{0}$ and $\ket{-1}$ states of the NV center aligned with B. When the two levels get close enough in energy, the Hamiltonian off-diagonal terms (coming from strain local electric field or residual transverse magnetic field) will mix the $\ket{0}$ and $\ket{-1}$ states and prevent an efficient polarization by the green laser. This result in a sharp drop in the PL that can be exploited to perform microwave-less magnetometry with NV centers \citep{wickenbrock2016microwave, zheng2017level, zheng2020microwave}.
 
-\subsection{Detection of VH$^-$ and War1 defects}
+\subsection{Detection of VH$^-$, War1 and $^{13}$C-NV$^-$}
 
-During my PhD, I have studied the 
-Our work \citep{pellet2021optical}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Figures/fig_VH_et_co}
+\caption{a) Change in PL (normalized) of the ensemble of NV centers in sample CVD-pink as a magnetic field is scanned along the [100] axis. The orange line is a fit to the slowly decreasing envelope b) Subtraction of the PL signal by the envelope fit as a function of the magnetic field. The green lines and red and purple regions correspond to the predicted CR regions, as detailed in main text}
+\label{CR VH exp}
+\end{figure}
 
-\section{Attribution of the VH$^-$ and War1 lines}
+Our work \citep{pellet2021optical} focuses on the optical detection of VH$^-$, War1 and $^{13}$C-NV$^-$ through NV CR. This study was the first to detect VH$^-$ and War1 defects optically and the first CR experiment on a CVD diamond. It was also the first,to our knowledge, to use a [100] aligned magnetic field.
 
+The diamond used for this study is the sample CVD-pink [REF appendix] whose fabrication was detailed in \citep{tallaire2020high}. It is a CVD diamond containing $[\rm NV ]\approx 4\ \rm ppm$ for $[\rm N ]\approx26\ \rm ppm$, and a natural abundance (1.1\%) of  $^{13}$C. Being a CVD diamond it is also likely to incorporate hydrogen defects, as discussed in \ref{other defects}.
+
+Fig. \ref{CR VH exp}-a) shows the change in PL with respect to a magnetic field scanned along the diamond [100] axis. Similarly to fig. \ref{CR P1 exp}, we can see a slowly decaying envelope of the PL due to the transverse magnetic field (we don't see the plateau here since the magnetic field sops at 150 G). We can also see three deviations to the smooth decreasing curve at $\sim$ 20 G, 55 G and 120 G.
+
+In order to better discern the three features, I have fitted the envelope by using a polynomial fit of order 4 on the smooth part of the data. I previously tried to use a fit based on the expected PL rate of the NV centers, by using the model in \citep{tetienne2012magnetic}, but the results were not satisfying enough.
+
+Fig. \ref{CR VH exp}-b) shows the subtraction of the PL data by the envelope fit. We can clearly see three dips in PL around the values 20 G, 56 G and 122 G. I then computed the expected value of the magnetic field for the expected CR line thanks to the simulations shown in sec. \ref{sec simu}. For the VH$^-$ and War1 lines, I took the ZFS $D$ values from \citep{cruddace2007magnetic} and included the error bars. For the $^{13}$C-NV$^-$ lines, the error bars given in \citep{simanovskaia2013sidebands} are much smaller and I only plotted the expected value. We can see that the dips in PL match relatively well the predicted CR lines of $^{13}$C-NV$^-$, VH$^-$ and War1 respectively.
+
+The experimental setup used to obtain this data is the standard confocal microscopy setup shown in appendix REF. The magnetic field here is generated with an electromagnet (EM), aligned along the [100] diamond axis with a precision $<1^\circ$. 
+
+The data shown here was acquired over 24 h. It should be noted however that a single-photon counting APD was used here, which considerably worsens the sensitivity of the measurement as discussed in [REF]. Using a photodiode and modulation of the magnetic field, I estimate that I could get similar signal to noise ratio within a few minutes.
+
+To calibrate the magnetic field, I added a microwave field at a  fixed frequency $\nu > 2870\ \rm MHz$, and measured the EM voltage at which the PL dropped due to the $\ket{+1}$ state of the NV centers becoming resonant with the microwave tone. I could then use the values in Fig. \ref{121 vs 22 NV} to find the corresponding magnetic field. I varied the frequency in the range  $[2870,3150]\ \rm MHz$ by step of 2 MHz to get a calibration of the magnetic field in the $[0,150]\ \rm G$ region. Considering the uncertainty in the field angle, the NV ZFS $D$ value and the width of the PL drop, I estimate the final precision of the calibration to be within $\pm 1\ \rm G$.
+
+\section{Attribution of the $^{13}$C-NV$^-$, VH$^-$ and War1 lines}
+
+\subsection{The VH$^-$ and War1 lines}
+\begin{table}[htbp]
+\centering
+\caption{\bf Zero-field splitting parameter $D$ for NV$^-$, VH$^-$ and War1}
+\begin{tabular}{ccc}
+\hline
+$D_z$ estimation (MHz) & Cruddace's work\citep{cruddace2007magnetic} & Our work \\
+\hline
+NV$^-$ & 2872(7) & * \\
+VH$^-$ & 2706(30) & 2694(5)  \\
+WAR1 & 2466(60) & 2470(10) \\
+\hline
+\end{tabular}
+  \label{table VH et War1}
+\end{table}
+
+The attribution of the PL dips at 56 and 122 G in Fig. \ref{CR VH exp} to CR between NV and respectively VH$^-$ and War1 comes from two main observations: the closeness in the ZFS values, and the CVD nature of the sample.
+
+Table \ref{table VH et War1} shows the value and precision of the $D$ factor when measured through EPR \citep{cruddace2007magnetic}, and when computed from the data in Fig. \ref{CR VH exp}. In order to get to the $D$ value of VH$^-$ and War1, we had to assume that the spin structure was that of a spin 1 similar to the NV center, with a g-factor close to 2. Both of this assumptions are confirmed by the EPR measurements. We do find that that both $D$ measurement concord within their respective error bars.
+
+The second reason comes from the nature of the sample used. We tried similar PL scans along the [100] axis on many samples with dense ensemble of NV centers. We found that the dip at 55 G was present on all $\sim 5$ CVD samples used, and none of the $\sim 20$ HPHT samples. The same is true of the 122 G line, except that it did appear on some HPHT samples, as will be discussed below. We know that the VH$^-$ defect is much more likely to appear in a CVD sample due to the large quantity of hydrogen used in the process, and while we don't know the chemical nature of the War1 defect, the only time it was observed through EPR was on a CVD diamond.
+
+Finally, the apparent larger linewidth of the War1 line compared to the VH$^-$ one is also corroborated by the EPR measurements.
+
+For all of this reasons we attribute the 55 and 122 G dip to CR with VH$^-$ and War1 respectively, with a slightly stronger confidence for the VH$^-$ since more is known about it.
+
+\subsection{The $^{13}$C-NV$^-$ lines}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.6\textwidth]{Figures/scan_100_Sumi4}
+\caption{Change in PL as a function of a magnetic field scanned along the [100] axis for sample SUMI-4}
+\label{scan sumi 4}
+\end{figure}
+
+The attribution of the $\sim 20\ \rm G$ dip to CR with $^{13}$C-NV$^-$ also come from two observations. First, the lines are present on every single sample with dense ensemble ($\gtrapprox 1$ ppm), regardless of the fabrication process. Fig. \ref{scan sumi 4} for example shows a PL scan along the [100] axis for sample Sumi-4, an HPHT sample with [NV]$\approx 5\ \rm ppm$ and natural abundance of $^{13}$C. I could unfortunately not try a sample isotopically enriched in $^{12}$C since those samples are generally reserved to low-nitrogen concentration ($< 10\ \rm ppm$), which does not yield enough NV centers to perform CR spectroscopy. 
+
+The second reason is the shape of the PL dip. The two other dips seem be formed of a single line and are reasonably well fitted with Gaussian curves. The 20 G dip however has a flat bottom which would indicate the presence of several overlapping lines, and Fig. \ref{121 vs 22 13C-NV} indeed predicts that there would be 4 CR lines between 18 and 25 G.
+
+For this two reasons, we attribute the 20 G line to CR between $^{13}$C-NV$^-$ and "normal" NV centers.
+
+\section{Quantitative estimates of the NV-Dark spins CR}
+
+We can extract some quantitative information about the dark spins by exploiting the CR spectrum shown in Fig. \ref{CR VH exp}.
+
+\subsection{Dark spin Hamiltonian parameters}
+
+First, as discussed in the last section, we can estimate the dark spin ZFS $D$ value with greater precision than EPR. While it would be in theory possible to measure other properties of the dark spins Hamiltonian - such as the $g$-factor - by changing the angle of the magnetic field, this would here quickly become intractable due to the increase in co-resonance conditions and the relative closeness of each of these transitions. DEER might prove more useful in this regard as only one class of NV centers at a time is probed.
+
+\subsection{Dark spin linewidth}
+
+The second quantitative estimate we can make is of the dark spin inhomogeneous broadening $T_2^*$: if we assume the change in PL to be proportional to the change in the NV lifetime $T_1$, which is true for small enough changes, then the linewidth of the PL dips in Fig. \ref{CR VH exp} is the convolution of the NV and dark spin spectrum. By deconvoluting the data with the NV spectrum, known for example from ODMR, we can then recover the dark spin spectral response as was done in \citep{hall2016detection}.
+
+\subsection{Dark spin concentration}
+
+Finally, the third tentative estimate we can make is that of the dark spins concentration. We can indeed calibrate the measurement by using the $^{13}$C-NV$^-$ line, of which we know the concentration in natural abundance diamond: [$^{13}$C-NV$^-$] $\approx$ 3.3 \% [NV]. We can then, knowing the NV concentration, try to estimate the concentration of the dark spins. There are several caveats though:
+
+\begin{itemize}
+\item Since the change in $T_1$ is proportional to the $T_2^*$ of the probed spins (eq. \ref{delta gamma 1}), we should compensate that by integrating over the entire feature, instead of simply looking at the maximum of the line.
+\item We have to take into account the loss of contrast of the NV centers as the transverse magnetic field grows, as explained in sec. \ref{CR contrast}.
+\item The $^{13}$C-NV$^-$ are not "dark spins", and its CR feature cannot be \textit{a priori} compared to the one from VH$^-$ and War1. We will see however in the next chapter that we can consider a fraction of the NV centers as dark spins, and that this fraction can be estimated. \citep{choi2017depolarization} found a ratio of $\sim 1/4$ dark NV centers for $\sim 3/4$ bright ones.
+\end{itemize}
+
+With all this considerations, we can give an estimate of the concentrations of VH$^-$ and War1 based on the data on Fig. \ref{121 vs 22 VH}-b): 
+
+I Find that the area under 0 for the VH$^-$ line is $\approx 1.4$ times bigger than that of the $^{13}$C-NV$^-$ line, from \ref{121 vs 22 contrast} I find that the expected CR contrast is $\approx 1.2$ times smaller at 55 G than at 20 G, and finally I chose the dark to bright NV ratio value from \citep{choi2017depolarization} at 0.25.
+
+With an estimated NV concentration [NV] $\approx\ \rm 4.6 ppm$, giving us a concentration $[^{13}\rm{C-NV}^-]\approx \ \rm 130 ppb$, I then find $[\rm VH^-] \approx 58\ \rm ppb$. Similarly, I find $[\rm VH^-] \approx 68\ \rm ppb$. Given the large uncertainty on some parameters, in particular the dark to bright spin ratio, these estimates are probably only precise within an order of magnitude.
+
+If we consider that the sampled volume in this experiment is $< 100 \mu \rm{m}^3$, the total number of dark spins detected here is then $< 10^6$. Even with very conservative estimates, the technique employed here is still more sensitive than EPR by several orders of magnitude.
+
+\section{Temperature dependence of VH$^-$ and War1}
+
+
+\subsection{Mofifications on CVD samples}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Figures/VH_CVD_chauffage}
+\caption{Demodulated PL on samples CVD-C and CVD-B as a function of a magnetic field along the [100] axis. An additional oscillating magnetic field along the same direction was used to perform the lock-in detection. The VH$^-$ and War1 lines are taken from \ref{CR VH exp}}
+\label{chauffage CVD}
+\end{figure}
+
+Given that the NV CR spectroscopy was both sensitive and relatively easy to setup, we decided in collaboration with the teams of Alexandre Tallaire at IRCP and Jocelyn Achard at LSPM to study the effect of annealing at high temperature on VH$^-$ and War1 \citep{ngambou2022improving}.
+
+Fig. \ref{chauffage CVD} shows the results of this experiment. This time, a modulation of the magnetic field was used and the PL coming from the photodiode was demodulated through a lock-in amplifier, which explains the derivative shape of the lines. The fact that the background is not perfectly flat still comes from the transverse magnetic field. The same lock-in parameter were used on both plots so that the amplitudes should in theory be comparable.
+
+Fig \ref{chauffage CVD}-a) shows the demodulated PL versus mganetic field amplitude along [100] on sample CVD-C, while \ref{chauffage CVD}-b) shows the same experiment on sample CVD-B. The fabrication and subsequent operations done on this two samples are detailed thoroughly in \citep{ngambou2022improving}, but the main difference between these two sample is that CVD-C was only annealed once after irradiation, for 2 hours at 800$^\circ$C, while CVD-B was annealed for for 2 hours at 800$^\circ$C and then for 1 hour at 1000$^\circ$C and 1200$^\circ$C.
+
+We can see that the VH$^-$ line in particular completely disappear on sample CVD-B, which we attribute to the additional annealing. This measurement also corroborate modifications in the infrared absorption spectrum, and an increase of the NV coherence time, associated with the annealing at higher temperature \citep{ngambou2022improving}.
+
+The War1 line on the other hand is still present after the high temperature annealings, albeit slightly smaller. This information can give us some insights on the chemistry of the War1 defect. %Et en vrai je crois que c'était deja vu dans la thèse de Cruddace
+
+\subsection{Modification on HPHT samples}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{Figures/VH_HPHT_chauffage}
+\caption{Demodulated PL on samples SBST-C and SBST-B as a function of a magnetic field along the [100] axis. The plot of SBST-C is offset for clarity}
+\label{chauffage HPHT}
+\end{figure}
+
+An unexpected side-study was done on HPHT samples. Indeed, the CVD samples used previously are grown by homoepithaxy on top of a diamond substrate. In this case, the substrate was a type 1B HPHT diamond, which was irradiated and annealed along the CVD layer. I Will name SBST-C and SBST-B the respective HPHT substrate of CVD-C and CVD-B.
+
+Fig. \ref{chauffage HPHT} shows demodulated PL scans with B $\parallel$ [100] on both samples. They both show a line at $B \approx 20\ \rm G$ corresponding to the $^{13}$C-NV$^-$ line, and none of them show a line at $B = 56\ \rm G$ corresponding to the VH$^-$ line. There is however a stark difference for the War1 line: SBST-C seems to show a weak line, while SBST-B shows a very clear line, with an amplitude more than 5 times greater than SBST-C. 
+
+We can also see that many weak lines on SBST-B seems to have disappeared in SBST-C, while an unidentified line at $B = 48\ \rm G$ seems to have grown similarly to the War1 line.
+
+I first suspected that some of the War1 defects had been migrating from the CVD layer to the HPHT substrate with the high-temperature annealing, but not only is it very unlikely with the annealing time (1 hour) and substrate thickness (several mm), I also could not find a dependence on the War1 concentration with the depth in the substrate, whereas a diffusion would have given a higher concentration near the CVD layer. The War1 defects seem to have been created by the annealing.
+
+These results suggest that, while some defects are removed by the high temperature annealing, such as the VH$^-$ and several unidentified defects in the HPHT substrate, some on the other hand seem to be created by the annealing process, such as the War1 or the one associated with the line at $B = 48\ \rm G$ in the HPHT substrate.
+
+\section{Conclusion and perspectives}
+
+To conclude this chapter, we have seen how NV centers can be used to detect dark spins via cross-relaxations. This detection can be way more sensitive than the usual EPR spectroscopy, and considerably cheaper to setup. It is however not as versatile and should be seen as a complimentary tool for diamonds with dense NV ensemble. 
+
+We have also seen the importance of the magnetic field direction, and the underused aspect of the [100] magnetic field scan, much less noisy for weak magnetic field.
+
+Finally we have seen an application of the CR to detect optically two dark spins in CVD diamond, and to find out the response of these defects to high temperature annealing.
+
+There still remains a lot of open questions and there are several experiments that could be build upon these results. I will list some of them here.
+
+\subsection{Unidentified CR lines}
+
+There are still a large number of lines in CR spectra that have not been identified. While not every line necessarily correspond to a new defect - for example \citep{wunderlich2021magnetic} recently found lines corresponding to co-resonance between the $\ket{0} \to \ket{-1}$ transition of an NV center and the $\ket{-1} \to \ket{+1}$ of another NV center - the more likely hypothesis for each of these unidentified lines is still the presence of a new defect.
+
+Such unidentified lines can be seen in Fig. \ref{chauffage CVD} and \ref{chauffage HPHT}. In particular we can see a line at 160 G in Fig. \ref{chauffage CVD}-a) and a line at 48 G in Fig. \ref{chauffage HPHT} that detach clearly from the background. 
+
+Further studies would be needed to find how common these lines are, and what could be there sources.
+
+\subsection{Measuring the spin dynamics of VH$^-$}
+
+We found that NV-VH$^-$ CR in CVD could produce a change in PL of $\sim 0.2 \%$. This kind of values are not too far from ODMR contrast with NV ensembles, which means that it would be reasonable to probe the dynamics ($T_1$, $T_2$) of the VH$^-$ spin. The main issue comes from the fact that in order to measure the VH$^-$ spin states, it needs to be resonant with the NV center. Therefore, resonant microwave pulses with VH$^-$ will also be resonant with the NV centers, which will create an unwanted optical signal.
+
+There are two solution to circumvent this problem: the first is to use a fast switching magnetic field in order to bring the VH$^-$ and NV centers in resonance when you want to polarize or readout the VH$^-$ state, and out of resonance when you want to coherently manipulate the VH$^-$. This means that the magnetic field needs to be switched faster than the spin dynamics you want to probe. This might be doable for the population dynamics $T_1$ but this is probably too slow to probe the $T_2$ time.
+
+The other solution consists in using the spin-1 nature of VH$^-$: when a NV$^-$-VH$^-$ CR occurs, only one of the transitions of VH$^-$ and NV$^-$ is brought to resonance. The other one ($\ket{0} \to \ket{-1}$ for the VH$^-$) is out of resonance. The idea would therefore be to keep the NV $\ket{0} \to \ket{-1}$ transition and VH $\ket{0} \to \ket{+1}$ transition resonant, and to coherently manipulate the VH $\ket{0} \to \ket{-1}$ transition. While the polarization on this transition, and the back-action it would produce on the NV centers, is not as strong as if you were manipulating the $\ket{0} \to \ket{+1}$ transition, it should still produce a measurable signal.
+
+\subsection{Isolating a single VH$^-$}
+
+I estimated the concentration of VH$^-$ in CVD-pink to be $\sim 60\ \rm ppb$. This concentration is too high by about two orders of magnitude to isolate a single emitter with a diffraction-limited microscope. We know however that we can reduce the VH$^-$ concentration arbitrarily by applying high temperature annealing. We could therefore reduce the VH$^-$ concentration to be in the $0.1 \sim 1\ \rm ppb$ range and isolate a single VH$^-$ center by scanning the sample with a fixed $B_{[100]}=56 \rm G$ while monitoring the NV PL or $T_1$. It is however unknown to me whether this detection scheme is sensitive enough to detect single dark spins.
 
 \printbibliography
 \end{document}

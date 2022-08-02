@@ -123,9 +123,9 @@ plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
 	
 
-# plot_ODMR_contrast(beta=0.5,Omega12=10,c=1)
-plot_ODMR_contrast(beta=0.5,Omega12=10,c=5,label=r'NV $\parallel$ [111]',ls='-')
-plot_ODMR_contrast(beta=0.5,Omega12=10,c=6,label=r'NV $\nparallel$ [111]',ls='--')
+plot_ODMR_contrast(beta=0.5,Omega12=10,c=1)
+# plot_ODMR_contrast(beta=0.5,Omega12=10,c=5,label=r'NV $\parallel$ [111]',ls='-')
+# plot_ODMR_contrast(beta=0.5,Omega12=10,c=6,label=r'NV $\nparallel$ [111]',ls='--')
 
 plt.legend()
 plt.show()

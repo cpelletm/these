@@ -1,9 +1,12 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
-
+plt.figure(num=1,figsize=(6,4),dpi=80)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+ax=plt.gca()
 
 
 # fname='ESR 1 raie clean'
@@ -43,8 +46,7 @@ x=x[xmin:xmax]
 y=y[xmin:xmax]
 plt.ylim((-0.015112794129843515, 0.0158428339153203))
 plt.plot(x,y,'o-',markerfacecolor="None",ms=8,mew=1)
-ax=plt.gca()
-ax.tick_params(labelsize=20)
+
 
 
 

@@ -7,6 +7,7 @@ from analyse import *
 
 def plot_NRJ_NV_VH_P1():
 	n=500
+	DVH=2526
 	Brange=np.linspace(0,200,n)
 	transi1=np.zeros(n)
 	transi2=np.zeros(n)
@@ -18,8 +19,8 @@ def plot_NRJ_NV_VH_P1():
 	transi8=np.zeros(n)
 
 	for i in range(n):
-		# B=magneticField(x=0,y=0,z=Brange[i])
-		B=magneticField(x=Brange[i]/sqrt(3),y=Brange[i]/sqrt(3),z=Brange[i]/sqrt(3))
+		B=magneticField(x=0,y=0,z=Brange[i])
+		# B=magneticField(x=Brange[i]/sqrt(3),y=Brange[i]/sqrt(3),z=Brange[i]/sqrt(3))
 		H=NVHamiltonian(B,c=2,E=3)
 		transis=H.transitions()
 		transi1[i]=transis[0]
@@ -34,13 +35,13 @@ def plot_NRJ_NV_VH_P1():
 
 		# transi5[i]=transiP1
 
-		H=NVHamiltonian(B,c=2,E=3,D=2694)
+		H=NVHamiltonian(B,c=2,E=3,D=DVH)
 		transis=H.transitions()
 		transi5[i]=transis[0]
 		transi6[i]=transis[1]
 
 
-		H=NVHamiltonian(B,c=1,E=3,D=2694)
+		H=NVHamiltonian(B,c=1,E=3,D=DVH)
 		transis=H.transitions()
 		transi7[i]=transis[0]
 		transi8[i]=transis[1]
@@ -51,20 +52,22 @@ def plot_NRJ_NV_VH_P1():
 
 	plt.plot(Brange,transi1,color=color(0),label=r'NV')
 	plt.plot(Brange,transi2,color=color(0))
-	plt.plot(Brange,transi3,color=color(0),label=r'NV $\nparallel$ B',ls='--')
-	plt.plot(Brange,transi4,color=color(0),ls='--')
+	# plt.plot(Brange,transi3,color=color(0),label=r'NV $\nparallel$ B',ls='--')
+	# plt.plot(Brange,transi4,color=color(0),ls='--')
 
 	# plt.plot(Brange,transi5,color=color(1),label=r'P1')
 
 	plt.plot(Brange,transi5,color=color(1),label=r'VH')
 	plt.plot(Brange,transi6,color=color(1))
-	plt.plot(Brange,transi7,color=color(1),label=r'VH $\nparallel$ B',ls='--')
-	plt.plot(Brange,transi8,color=color(1),ls='--')
+	# plt.plot(Brange,transi7,color=color(1),label=r'VH $\nparallel$ B',ls='--')
+	# plt.plot(Brange,transi8,color=color(1),ls='--')
 
 	plt.legend()
 	plt.show()
 
-def plot_NRJ_NV_VH_P1():
+plot_NRJ_NV_VH_P1()
+
+def plot_NRJ_NV_C13():
 	n=500
 	Brange=np.linspace(0,60,n)
 	transiNV1=np.zeros((n,2))
@@ -122,4 +125,4 @@ def plot_NRJ_NV_VH_P1():
 	plt.show()
 
 
-plot_NRJ_NV_VH_P1()
+# plot_NRJ_NV_C13()

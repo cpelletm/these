@@ -661,19 +661,19 @@ class magneticField():
 	def transitions4Classes(self):
 		transis=[]
 		for i in range(4):
-			t=NVHamiltonian(self,c=i,**self.HamiltonianArgs).transitions()
+			t=NVHamiltonian(self,c=i+1,**self.HamiltonianArgs).transitions()
 			transis+=[t[0],t[1]]
 		return np.sort(transis)
 	def transitions4ClassesPlus(self):
 		transis=[]
 		for i in range(4):
-			t=NVHamiltonian(self,c=i,**self.HamiltonianArgs).transitions()
+			t=NVHamiltonian(self,c=i+1,**self.HamiltonianArgs).transitions()
 			transis+=[t[1]]
 		return np.sort(transis)
 	def transitions4ClassesMoins(self):
 		transis=[]
 		for i in range(4):
-			t=NVHamiltonian(self,c=i,**self.HamiltonianArgs).transitions()
+			t=NVHamiltonian(self,c=i+1,**self.HamiltonianArgs).transitions()
 			transis+=[t[0]]
 		return np.sort(transis)
 	def angleFrom100(self):
@@ -1034,6 +1034,10 @@ def ecris_gros(x,y):
 	ax.set_ylabel(r'Photoluminescence' ,fontsize=20,fontweight='bold')
 	color = next(ax._get_lines.prop_cycler)['color']
 	plt.plot(x,y,'o',markerfacecolor="None",ms=8,mew=2,color=color)
+	err_sup=[1.05]*len(x)
+	err_inf=[0.95]*len(x)
+	ax.fill_between(x,binf,bsup,alpha=0.3,color='red')
+
 
 
 def petite_figure():

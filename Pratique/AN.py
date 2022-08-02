@@ -10,6 +10,7 @@ h=2*pi*hbar
 density_diam=3.5 #g/cm3
 m_carbon=12.01/Na #g
 # print(density_diam/m_carbon) #1.75e23 atomes/cm3
+#Autre odg : ppm=1e5/µm3
 
 P=1e5
 T=300

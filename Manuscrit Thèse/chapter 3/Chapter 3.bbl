@@ -1,0 +1,149 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{armstrong2010nv}{article}{}
+      \name{author}{4}{}{%
+        {{hash=ee819506688f37c62b326e2bf22e8eda}{%
+           family={Armstrong},
+           familyi={A\bibinitperiod},
+           given={Seiji},
+           giveni={S\bibinitperiod}}}%
+        {{hash=73893c82f842b9d5a89e2390cd8f9557}{%
+           family={Rogers},
+           familyi={R\bibinitperiod},
+           given={Lachlan\bibnamedelima J},
+           giveni={L\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=ca1f3f140545364cfd2b702aeab4377f}{%
+           family={McMurtrie},
+           familyi={M\bibinitperiod},
+           given={Roger\bibnamedelima L},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=0f8daa834c31d79bcb117f4b351dae82}{%
+           family={Manson},
+           familyi={M\bibinitperiod},
+           given={Neil\bibnamedelima B},
+           giveni={N\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{fullhash}{ffd54a3dca2ff0d1d144aff2a4d66c9f}
+      \strng{bibnamehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{authorbibnamehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{authornamehash}{9c2ff99f87378fd0664328148adf4d56}
+      \strng{authorfullhash}{ffd54a3dca2ff0d1d144aff2a4d66c9f}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics Procedia}
+      \field{number}{4}
+      \field{title}{NV--NV electron--electron spin and NV--NS electron—electron and electron-nuclear spin interaction in diamond}
+      \field{volume}{3}
+      \field{year}{2010}
+      \field{pages}{1569\bibrangedash 1575}
+      \range{pages}{7}
+    \endentry
+    \entry{holliday1989optical}{article}{}
+      \name{author}{4}{}{%
+        {{hash=1b8f4b23ca5f0ac18e7c0619c66374f3}{%
+           family={Holliday},
+           familyi={H\bibinitperiod},
+           given={K},
+           giveni={K\bibinitperiod}}}%
+        {{hash=58a27d0dd1fc8bd13fdfad027427a0d6}{%
+           family={Manson},
+           familyi={M\bibinitperiod},
+           given={NB},
+           giveni={N\bibinitperiod}}}%
+        {{hash=2c69c53a3cabb7b3ea2c248465ec1867}{%
+           family={Glasbeek},
+           familyi={G\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cd1c5becc21c4d1884c8f9c02fec4ff0}{%
+           family={Van\bibnamedelima Oort},
+           familyi={V\bibinitperiod\bibinitdelim O\bibinitperiod},
+           given={E},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{d78f71c2ed17a267cbc89d9d0f42823e}
+      \strng{fullhash}{5fc753c562560e114972ab2222a71491}
+      \strng{bibnamehash}{d78f71c2ed17a267cbc89d9d0f42823e}
+      \strng{authorbibnamehash}{d78f71c2ed17a267cbc89d9d0f42823e}
+      \strng{authornamehash}{d78f71c2ed17a267cbc89d9d0f42823e}
+      \strng{authorfullhash}{5fc753c562560e114972ab2222a71491}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics: Condensed Matter}
+      \field{number}{39}
+      \field{title}{Optical hole-bleaching by level anti-crossing and cross relaxation in the NV centre in diamond}
+      \field{volume}{1}
+      \field{year}{1989}
+      \field{pages}{7093}
+      \range{pages}{1}
+    \endentry
+    \entry{van1989cross}{article}{}
+      \name{author}{2}{}{%
+        {{hash=93056ce587f9719caae636c84bebcf89}{%
+           family={Oort},
+           familyi={O\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=4f80589aa6b2d9baf7239a2a0d746cbb}{%
+           family={Glasbeek},
+           familyi={G\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{c1b3f36cdf21d053056924782fc4fba8}
+      \strng{fullhash}{c1b3f36cdf21d053056924782fc4fba8}
+      \strng{bibnamehash}{c1b3f36cdf21d053056924782fc4fba8}
+      \strng{authorbibnamehash}{c1b3f36cdf21d053056924782fc4fba8}
+      \strng{authornamehash}{c1b3f36cdf21d053056924782fc4fba8}
+      \strng{authorfullhash}{c1b3f36cdf21d053056924782fc4fba8}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{number}{10}
+      \field{title}{Cross-relaxation dynamics of optically excited N-V centers in diamond}
+      \field{volume}{40}
+      \field{year}{1989}
+      \field{pages}{6509}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
