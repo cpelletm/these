@@ -136,12 +136,21 @@ from analyse import *
 # plt.plot(x2,y2)
 # plt.show()
 
-fname='sensi joli gaussiennes'
-x,y=extract_data(fname)
-print(sum(y))
-x,y=extract_data(fname,xcol=2,ycol=3)
-print(sum(y))
-x,y=extract_data(fname,xcol=4,ycol=5)
-print(len(x))
-plt.plot(x,y)
+# fname='sensi joli gaussiennes'
+# x,y=extract_data(fname)
+# print(sum(y))
+# x,y=extract_data(fname,xcol=2,ycol=3)
+# print(sum(y))
+# x,y=extract_data(fname,xcol=4,ycol=5)
+# print(len(x))
+# plt.plot(x,y)
+# plt.show()
+
+fname='T1 100 3V'
+x,y=extract_data(fname,ycol=5)
+plt.plot(x,y,'x')
+popt,yfit=exp_fit_zero(x,y)
+plt.plot(x,yfit)
+popt,yfit=stretch_exp_fit_zero(x,y)
+plt.plot(x,yfit)
 plt.show()

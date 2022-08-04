@@ -985,6 +985,28 @@ def convolution(M1,M2):
 					M[i,j]=M1[i1,j1]*M2[i2,j2]
 	return(M)
 
+def solve_rate_equation(*Ms):
+	#Ms=Matrice de passage avec le taux de passage de départ (colonne) vers ligne
+	#Exemple : gamma_las pour un NV dans la base (0,-1,+1)
+	gexample=1e-3
+	Mexample=gexample*np.array([
+	[0,1,1],
+	[0,0,0],
+	[0,0,0]])
+
+	M0=Ms[0]
+	n=len(M0[0,:])
+
+	M=sum(Ms)
+	for j in range(n):
+		M[j,j]=-sum(M[:,j])
+	M[n-1,:]=np.ones(n)
+
+	sol=np.array([0]*(n-1)+[1])
+	X=np.linalg.inv(M).dot(sol)
+
+	return(X)
+
 #~~~~~~ 2D plot ~~~~~~
 def extract_2d(fname):
 	data=[]
@@ -1038,12 +1060,12 @@ def ecris_gros(x,y):
 	err_inf=[0.95]*len(x)
 	ax.fill_between(x,binf,bsup,alpha=0.3,color='red')
 
-
-
 def petite_figure():
 	plt.figure(num=1,figsize=(3,2),dpi=80)
 	plt.xticks(fontsize=12)
 	plt.yticks(fontsize=12)
+	plt.locator_params(axis='x', nbins=5)
+
 
 def exemple_animation():
 	import matplotlib.animation as animation
