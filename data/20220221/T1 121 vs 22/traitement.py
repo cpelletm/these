@@ -18,7 +18,6 @@ print(popt)
 plt.plot(x,yfit,lw=3,label=r'exp($-t/\tau$)')
 popt,yfit=stretch_exp_fit_zero(x,y)
 print(popt)
-
 plt.plot(x,yfit,lw=3,label=r'exp($-\sqrt{t/\tau}$)',color=color(2))
 ax=plt.gca()
 # ax.set_xlabel(r'Dark time (ms)',fontsize=20)

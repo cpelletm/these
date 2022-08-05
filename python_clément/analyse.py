@@ -729,7 +729,7 @@ def find_B_cartesian(peaks,Bmax=1000,startingB=False,transis='all'): #Obsolète
 	sol=minimize(err_func,x0=x0,args=peaks,bounds=[(-1,Bmax),(-1,Bmax),(-1,Bmax)]) #c'est équivalent à un rectangle dans [0,54.74]x[0,45] deg
 	return magneticField(x=sol.x[0],y=sol.x[1],z=sol.x[2])
 
-def find_B_cartesian_mesh(peaks,precise=True,transi='all',Blims='auto',n=20,**HamiltonianArgs): #Transi + a l'air de déconner, à vérifier plus tard...
+def find_B_cartesian_mesh(peaks,precise=True,transis='all',Blims='auto',n=20,**HamiltonianArgs): #Transi + a l'air de déconner, à vérifier plus tard...
 
 	if Blims=='auto':
 		Bmax=(max(peaks)-min(peaks))*sqrt(3)/(2*2.8) #delta nu/(2*gamma)*sqrt(3) C'est calculé pour que le pire cas de figure soit une 100, pas sur de ce que ca vaut pour les gros champs (après Gslac en particulier)
@@ -741,21 +741,19 @@ def find_B_cartesian_mesh(peaks,precise=True,transi='all',Blims='auto',n=20,**Ha
 	Bzs=np.linspace(Blims[2][0],Blims[2][1],n)
 
 	opt=np.inf
-	transis=np.zeros(len(peaks))
-
-	if transi=='all':
+	if transis=='all':
 		def errfunc(B):
 			B=magneticField(x=B[0],y=B[1],z=B[2],**HamiltonianArgs)
 			simuPeaks=B.transitions4Classes()
 			err=np.linalg.norm(peaks-simuPeaks)
 			return err
-	elif transi=='-' :
+	elif transis=='-' :
 		def errfunc(B):
 			B=magneticField(x=B[0],y=B[1],z=B[2],**HamiltonianArgs)
 			simuPeaks=B.transitions4ClassesMoins()
 			err=np.linalg.norm(peaks-simuPeaks)
 			return err
-	elif transi=='+' :
+	elif transis=='+' :
 		def errfunc(B):
 			B=magneticField(x=B[0],y=B[1],z=B[2],**HamiltonianArgs)
 			simuPeaks=B.transitions4ClassesPlus()
@@ -815,7 +813,7 @@ def find_nearest_ESR(x,y,peaks='auto',Bmax=500,typ='gauss',returnType='default',
 	if fittingProtocol=='spherical' :
 		B=find_B_spherical(peaks,Bmax=Bmax,transis=transis)
 	elif fittingProtocol=='cartesian' :
-		B=find_B_cartesian(peaks,Bmax=Bmax,transis=transis)
+		B=find_B_cartesian_mesh(peaks,transis=transis)
 	if transis=='all' :
 		cs=B.transitions4Classes()
 	elif transis=='+':
@@ -968,6 +966,36 @@ def integration(x,y):
 		s+=y[i]
 	s=s*dx
 	return(s)
+
+def psd(x,y,plot=False): #Assume que x est en s.
+	import scipy.signal
+
+	df=1/(x[1]-x[0])
+	# f contains the frequency components
+	# S is the PSD
+	(f, S) = scipy.signal.periodogram(y, df, scaling='density')
+
+	if not plot :
+		return f,S
+
+	if plot:
+		plt.semilogy(f, S)
+
+		ymin,ymax=plt.ylim()
+		logS=np.log(S)
+		logAvg=mean(logS)
+		logSigma=sigma(logS)
+		logYmin=logAvg-5*logSigma
+		ymin=np.exp(logYmin)
+		plt.ylim([ymin,ymax])
+
+		plt.xlabel('frequency [Hz]')
+		plt.ylabel('PSD [V**2/Hz]')
+		plt.show()
+		return
+
+
+
 
 #~~~~~~ Algebre ~~~~~~
 

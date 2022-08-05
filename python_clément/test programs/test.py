@@ -17,6 +17,7 @@ sys.path.append('D:\\These Clément\\these\\python_clément')
 sys.path.append("D:\\these\\python_clément")
 sys.path.append('/home/pellet-mary/these/python_clément')
 from lab import *
+from analyse import *
 def voltmetre():
 	with nidaqmx.Task() as task :
 		task.ai_channels.add_ai_voltage_chan("Dev1/ai11") #05/02/2020 : ai0 et ai3 (au moins) déconnent : il y a l'air d'y avoir un probleme de masse
@@ -1658,10 +1659,34 @@ def test_pb_2():
 	pb.start()
 	time.sleep(1)
 
+def test_psd__numerique():
+	import scipy.signal
+
+	fs = 1000.0 # 1 kHz sampling frequency
+	F1 = 10 # First signal component at 10 Hz
+	F2 = 60 # Second signal component at 60 Hz
+	T = 10 # 10s signal length
+	N0 = -10 # Noise level (dB)
+
+	t = np.r_[0:T:(1/fs)] #syntaaxe du démon ça
+
+	signal = np.sin(2 * F1 * np.pi * t) + np.sin(2 * F2 * np.pi * t) 
+	signal += np.random.randn(len(signal)) * 10**(N0/20.0) 
+
+	psd(t,signal,plot=True)
+	# # f contains the frequency components
+	# # S is the PSD
+	# (f, S) = scipy.signal.periodogram(signal, fs, scaling='density')
 
 
-a='123,abc'
-a=a.replace(',','.')
-print(a)
-print ('.' in a)
+	# plt.semilogy(f, S)
+	# plt.ylim([1e-7, 1e2])
+	# plt.xlim([0,100])
+	# plt.xlabel('frequency [Hz]')
+	# plt.ylabel('PSD [V**2/Hz]')
+	# plt.show()
+
+
+
+test_psd__numerique()
 

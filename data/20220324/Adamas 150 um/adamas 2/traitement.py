@@ -4,9 +4,10 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-plt.figure(num=1,figsize=(4,3),dpi=80)
-ax=plt.gca()
-ax.tick_params(labelsize=13)
+plt.figure(num=1,figsize=(6,4),dpi=80)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.locator_params(axis='x', nbins=5)
 
 
 
@@ -67,9 +68,12 @@ def plot_T1__fit_main_text():
 	x,y=extract_data(fnames[i],ycol=5)
 	y=y/max(y)
 	x=x*1e3
-	T1ph=0.003626*1e3
-	plt.plot(x,y,'o',markerfacecolor='None',mew=0.7,ms=5,color=color(0),label=r'$B=0$')
-	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	# T1ph=0.003626*1e3
+	T1ph=6
+	plt.plot(x,y,'o',markerfacecolor='None',mew=1,ms=5,color=color(0),label=r'$B=0$')
+	# popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
+	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=True)
+	popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.5)
 	print(popt)
 	plt.plot(x,yfit,lw=2,color=color(1))
 
@@ -79,15 +83,17 @@ def plot_T1__fit_main_text():
 		x2,y2=extract_data(fnames[i],ycol=5)
 		y+=y2
 	y=y/max(y)
-	plt.plot(x,y,'x',markerfacecolor='None',mew=0.7,ms=4,color=color(2),label=r'$B\neq 0$')
-	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+	plt.plot(x,y,'x',markerfacecolor='None',mew=1,ms=5,color=color(2),label=r'$B\neq 0$')
+	# popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
+	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=True)
+	popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.9)
 	print(popt)
 	plt.plot(x,yfit,lw=2,color=color(1))
 	plt.legend()
 
 # plot_T1__fit_main_text()
 
-#~~~~RQ : normaliser les fits des T1 n'a pas de sense tant que je ne connais pas la vraie valeur en t=0
+#~~~~RQ : normaliser les fits des T1 n'a pas de sens tant que je ne connais pas la vraie valeur en t=0
 #En plus y'a des p-e des blagues de tdv de l'état metastable pour les temps très courts, à voir si ça se soutrait correctement
 #Y'a aussi le fait que je suis obligé d'attendre plus longtemps que le pulse uW, sinon ça fausse le truc (genre tu peux avoir du spin lockin ou chais pas)
 
@@ -114,7 +120,7 @@ def plot_T1_fit(i=104):
 
 # plot_T1_fit(i=104)
 
-def plot_T1_fit_100():
+def plot_T1_fit_0B():
 	fname='T1 0B'
 	x,y=extract_data(fname,ycol=5)
 	y=y/max(y)
@@ -122,9 +128,11 @@ def plot_T1_fit_100():
 	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=5,color=color(0),label='Experimental data')
 	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
 	plt.plot(x,yfit,'--',lw=2,color=color(1),label=r'$\exp (-\sqrt{\frac{\tau}{T_1^{\rm dd}}})$')
+	popt,yfit=exp_fit_zero(x,y,norm=False)
+	plt.plot(x,yfit,'--',lw=2,color=color(2),label=r'$\exp (-\frac{\tau}{T_1^{\rm ph}} )$')
 	plt.legend(fontsize=13)
 
-# plot_T1_fit_100()
+# plot_T1_fit_0B()
 
 
 
@@ -148,7 +156,7 @@ def plot_T1_fit_avg():
 
 # plot_T1_fit_avg()
 
-def divers_T1():
+def alphas_T1():
 	# fnames,fval=extract_glob('T1 100 align 3/T1')
 	# fval.remove(fval[194])
 	# fnames.remove(fnames[194])
@@ -190,7 +198,7 @@ def divers_T1():
 	# plt.plot(taus)
 
 
-# divers_T1()
+# alphas_T1()
 
 
 
@@ -276,7 +284,7 @@ def plot_T1_100() :
 	# print(popt)
 	# plt.plot(x,yfit)
 
-plot_T1_100()
+# plot_T1_100()
 
 def plot_PL_100():
 	x,y=extract_data('T1 100 align 3/scan EM',ycol=3)

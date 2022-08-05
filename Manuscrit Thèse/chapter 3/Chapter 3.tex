@@ -173,10 +173,54 @@ Fig. \ref{stretch_or_not_stretch} shows an example of that: in Fig. \ref{stretch
 On the other hand, Fig. \ref{stretch_or_not_stretch}-b) shows a $T_1$ measurement coming from sample CVD-pink for B$\neq$0. This time the profile is more exponential, and the value $T_1^{\rm exp}=4.1\ \rm ms$ is coherent with a phonon-limited lifetime. Even though CVD-pink shows some NV-NV CR feature, the spin dynamics in this sample is still dominated by the phonons, which explains the exponential profile.
 
 
-\subsection{Magnetic field dependent lifetime, double exponential fit}
+\subsection{Fitting $T_1$ profile in the general case}
 
-For a lot of samples, the 
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Figures/various_fit_formulae}[h]
+\label{various_fit_formulae}
+\caption{Different fitting procedure on two $T_1$ measurements done on sample ADM-150-1 for $B=0$ and $B\neq0$. \\ a) Exponential fit $S(\tau)=\exp (-\tau/T_1^{\rm ph})$. \\ b) Stretched exponential fit $S(\tau)=\exp (-\sqrt{\tau/T_1^{\rm dd}})$. \\ c) Bi-exponential fit $S(\tau)=\exp (-\tau/T_1^{\rm ph} -\sqrt{\tau/T_1^{\rm dd}})$. \\ d) Bi-exponential fit with fixed $T_1^{\rm ph}=5\ \rm ms$: $S(\tau)=\exp (-\tau/5 -\sqrt{\tau/T_1^{\rm dd}})$.}
+\end{figure}
 
+\begin{table}[htbp]
+\centering
+\caption{Fitting parameters on Fig. \ref{various_fit_formulae}}
+\begin{tabular}{c|cc|cc}
+\toprule
+Figure &  \multicolumn{2}{c}{$B=0$} & \multicolumn{2}{c}{$B\neq0$}\\
+\midrule
+{} &  $T_1^{\rm ph}$ (ms)& $T_1^{\rm dd}$ (ms)&  $T_1^{\rm ph}$ (ms)& $T_1^{\rm dd}$(ms)\\
+Fig. a) & 0.95 & * & 2.64 & * \\
+Fig. b) & * & 0.32 & * & 1.03  \\
+Fig. c) & 6.75 & 0.44 & 4.22 & 7.19 \\
+Fig. d) & \textbf{5} & 0.51 & \textbf{5} & 4.65 \\
+\bottomrule
+\end{tabular}
+
+Bold characters indicate parameters that were arbitrarily fixed.
+  \label{fitting table}
+\end{table}
+
+For many samples however, the $T_1$ profile is neither fully exponential nor fully stretched exponential, because the relaxation time associated with CR, which we will call $T_1^{\rm dd}$ is of the same order as the phonon limited lifetime $T_1^{\rm ph}$. Sometimes the same sample can go from mostly exponential to mostly stretched exponential depending on the number of NV-NV co-resonances, forcing us to include both aspects if we want a unique fitting formula.
+
+Fig. \ref{various_fit_formulae} shows four different fitting procedure on the two same measurements. The measurements here are two $T_1$ measurements done on the same sample ADM-150-1, following the protocol described in [REF], with and without an external magnetic field ($\sim 50 G$). The magnetic field was strong enough to split the four classes and only one class was probed in the second case.
+
+The fits used here are either purely exponential or purely stretched exponential, or a combination of both where the exponential lifetime $T_1^{\rm ph}$ was either left as a free parameter or fixed at a value $T_1^{\rm ph}=5\ \rm ms$. The values of thes different fitting parameters used is reported in Table \ref{fitting table}.
+
+We can see that neither the purely exponential or stretched exponential fits can be satisfying for both measurements: the $B=0$ curve is poorly fitted by the exponential fit and the $B \neq 0$ curve is purely fitted by the stretched exponential. The protocols that include both exponential and stretched lifetimes correctly fit both curves. In the case of Fig. \ref{various_fit_formulae}-d), we arbitrarily fixed $T_1^{\rm ph}=5\ \rm ms$ since this is the value we typically measure on samples with low NV density, and we expect that the phonon-limited exponential lifetime is not modified by the NV concentration.
+
+Since the protocol where $T_1^{\rm ph}$ was fixed and the one where it wasn't both correctly fit our data, we decided to use the protocol where $T_1^{\rm ph}$ was fixed because there is one less free parameter in the fitting function, and the values we obtain on $T_1^{\rm dd}$ can be directly compared. 
+
+We should note however that the values of $T_1^{\rm dd}$ we obtain are not absolute. Indeed, in the case of Fig. \ref{various_fit_formulae}, the value of $T_1^{\rm ph}$ can be somewhat arbitrarily fixed between 3 and 6 ms with satisfying fits, and the resulting values $T_1^{\rm dd}$ can vary by almost an order of magnitude in the case of $B\neq0$. While this technique of measuring $T_1^{\rm dd}$ is relatively sensitive and reproducible, it is not very accurate.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Figures/betas}[h]
+\label{betas}
+\caption{a) Same two measurements as Fig. \ref{various_fit_formulae} with the fitting formula $S(\tau)=\exp ((-\tau/T_1)^{\beta})$. The fitting parameters are $\beta=0.58$ and $T_1=0.46\ \rm ms$ for $B=0$, and $\beta=0.80$ and $T_1=2.15\ \rm ms$ for $B\neq0$. b) Optimal $\beta$ parameter found for each $T_1$ measurement on the same sample as a function of the external magnetic field.}
+\end{figure}
+
+Finally, another fitting procedure is shown in Fig. \ref{betas}. This time  
 
 \subsection{The fluctuators linewidth}
 \subsection{Parallel with P-doped Si}
@@ -198,6 +242,7 @@ En gros la carte, les 5 ESR en SI du PRL (lol) et le 121 Vs 22
 
 \section{Limitations of the fluctuator model}
 La modification des T1, tjr plus petite que prévue (faire un tableau), et les T1 non-exponentiels (je crois que y'a des cas sur Ludo, bon courage mdr)
+Parler aussi des alternatives au fluctuator model, ici ou dans la 2e section
 
 \printbibliography
 \end{document}

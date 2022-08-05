@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  4 AUG 2022 20:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  5 AUG 2022 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -997,16 +997,117 @@ See the caption package documentation for explanation.
 LaTeX Warning: Reference `stretch_or_not_stretch' on page 7 undefined on input 
 line 173.
 
-[7 <./Figures/Stretch_vs_pas_stretch.pdf>] [8] [9
+[7 <./Figures/Stretch_vs_pas_stretch.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 176.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 176.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 176.
+
+<Figures/various_fit_formulae.pdf, id=287, 844.31212pt x 596.51091pt>
+File: Figures/various_fit_formulae.pdf Graphic file (type pdf)
+<use Figures/various_fit_formulae.pdf>
+Package pdftex.def Info: Figures/various_fit_formulae.pdf  used on input line 1
+80.
+(pdftex.def)             Requested size: 360.0pt x 254.3466pt.
+
+Overfull \hbox (12.16669pt too wide) in paragraph at lines 180--182
+ [][]\OT1/cmr/m/n/10.95 [h] 
+ []
+
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 8 undefined on input li
+ne 187.
+
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 8 undefined on input li
+ne 187.
+
+[8 <./Figures/various_fit_formulae.pdf>]
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
+ne 206.
+
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
+ne 210.
+
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
+ne 214.
+
+<Figures/betas.pdf, id=369, 850.15848pt x 307.45277pt>
+File: Figures/betas.pdf Graphic file (type pdf)
+<use Figures/betas.pdf>
+Package pdftex.def Info: Figures/betas.pdf  used on input line 218.
+(pdftex.def)             Requested size: 360.0pt x 130.18953pt.
+
+Overfull \hbox (12.16669pt too wide) in paragraph at lines 218--220
+ [][]\OT1/cmr/m/n/10.95 [h] 
+ []
+
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
+ne 220.
+
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
+ne 220.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package caption Warning: \label without proper reference on input line 219.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `betas' on page 9 undefined on input line 223.
+
+[9] [10 <./Figures/betas.pdf>] [11] [12
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
  (./Chapter 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `"Chapter 3".out' has not changed.
-(rerunfilecheck)             Checksum: A59FC22085E3601BDA62451D57854578;1526.
+(rerunfilecheck)             Checksum: 2891301702854AA0D080DCD1FE418167;1507.
 
 
 LaTeX Warning: There were undefined references.
@@ -1014,31 +1115,32 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to '"Chapter 3".run.xml'.
 \openout1 = `"Chapter 3.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 203.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  ) 
 Here is how much of TeX's memory you used:
- 25104 strings out of 481239
- 473588 string characters out of 5920377
- 1105084 words of memory out of 5000000
- 39937 multiletter control sequences out of 15000+600000
- 540683 words of font info for 54 fonts, out of 8000000 for 9000
+ 25134 strings out of 481239
+ 474197 string characters out of 5920377
+ 1107378 words of memory out of 5000000
+ 39958 multiletter control sequences out of 15000+600000
+ 541930 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,7n,75p,974b,1431s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,10n,75p,974b,1431s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-i10.pfb>
-Output written on "Chapter 3.pdf" (9 pages, 425746 bytes).
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
+b>
+Output written on "Chapter 3.pdf" (12 pages, 723112 bytes).
 PDF statistics:
- 347 PDF objects out of 1000 (max. 8388607)
- 285 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 473 PDF objects out of 1000 (max. 8388607)
+ 372 compressed objects within 4 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 179 words of extra memory for PDF output out of 10000 (max. 10000000)
 

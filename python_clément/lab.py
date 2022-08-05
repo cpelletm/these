@@ -49,7 +49,13 @@ elif macAdressOfCurrentPC=='e4:b9:7a:ea:ff:e5' : #Ordi 3 (du fond)
 	computerUsed='Ordi3'
 	defaultDataPath="D:/DATA/"
 	defaultTheme='dark'
-elif macAdressOfCurrentPC=='b4:45:06:47:da:24' : #Ordi portable de bureau du labo
+
+elif macAdressOfCurrentPC=='b4:45:06:47:da:24' : #2e ordi perso
+	computerUsed='OrdiBureau'
+	defaultDataPath="../data/"
+	defaultTheme='light'
+
+elif macAdressOfCurrentPC=='1c:c1:0c:2b:bb:f5' : #Ordi portable du boulot
 	computerUsed='OrdiBureau'
 	defaultDataPath="../data/"
 	defaultTheme='light'
