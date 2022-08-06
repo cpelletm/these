@@ -1659,7 +1659,7 @@ def test_pb_2():
 	pb.start()
 	time.sleep(1)
 
-def test_psd__numerique():
+def test_psd_numerique():
 	import scipy.signal
 
 	fs = 1000.0 # 1 kHz sampling frequency
@@ -1686,7 +1686,58 @@ def test_psd__numerique():
 	# plt.ylabel('PSD [V**2/Hz]')
 	# plt.show()
 
+def wiener_deconvolution(signal, kernel, lambd):
+	from numpy.fft import fft, ifft, ifftshift
+	"lambd is the SNR"
+	kernel = np.hstack((kernel, np.zeros(len(signal) - len(kernel)))) # zero pad the kernel to same length
+	H = fft(kernel)
+	deconvolved = np.real(ifft(fft(signal)*np.conj(H)/(H*np.conj(H) + lambd**2)))
+	return deconvolved
+
+def periodise(t):
+	n=len(t)
+	r=np.array(list(t[n//2:])+list(t[:n//2]))
+	return r
+
+def exp(x,sigma):
+	y=np.exp(-(x**2)/(2*sigma**2))
+	return y
+
+def lor(x,sigma):
+	y=1/(1+(x/sigma)**2)
+	return y
+
+def test_convolution():
+	import scipy.signal
+	from numpy.fft import fft,ifft
+	
+
+	x=np.linspace(-30,30,256)
+	y1=lor(x,sigma=2)
+	y2=exp(x,sigma=1)
+	y3=scipy.signal.fftconvolve(y1,y2,mode='same')
+	plt.plot(x,y3/max(y3))
+	plt.plot(x,y1/max(y1))
+	# plt.plot(y2)
+	# plt.plot(x,y3/max(y3))
+
+	# y1=periodise(y1)
+	# y3=periodise(y3)
+	# # plt.plot(y3)
+	# y1tf=fft(y1)
+	# y3tf=fft(y3)
+	# y2=wiener_deconvolution(y3,y1,0.01)
+	# # y2=y2[:256]
+	# plt.plot(y2)
+	# y2=periodise(y2)
+	# plt.plot(y2)
+	# # plt.plot(y2)
+	# # y1back=np.real(ifft(y1tf))
+	# # plt.plot(x,y1back)
+	# # y2back=wiener_deconvolution(y3,y1,1)
+	# # plt.plot(x,y2back)
+
+	plt.show()
 
 
-test_psd__numerique()
-
+test_convolution()

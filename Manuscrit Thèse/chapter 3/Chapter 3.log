@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  5 AUG 2022 17:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  6 AUG 2022 17:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -908,11 +908,6 @@ Package pdftex.def Info: Figures/NV-NV_non_equivalent.pdf  used on input line 3
 4.
 (pdftex.def)             Requested size: 360.0pt x 244.23395pt.
 
-Overfull \hbox (12.16669pt too wide) in paragraph at lines 34--35
- [][]\OT1/cmr/m/n/10.95 [h] 
- []
-
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
@@ -935,10 +930,6 @@ File: Figures/NV-NV_equivalent.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/NV-NV_equivalent.pdf  used on input line 58.
 (pdftex.def)             Requested size: 360.0pt x 247.70305pt.
 
-Overfull \hbox (12.16669pt too wide) in paragraph at lines 58--59
- [][]\OT1/cmr/m/n/10.95 [h] 
- []
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -949,10 +940,6 @@ File: Figures/inhomogene_2_spins.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/inhomogene_2_spins.pdf  used on input line 80.
 
 (pdftex.def)             Requested size: 360.0pt x 142.0014pt.
-
-Overfull \hbox (12.16669pt too wide) in paragraph at lines 80--81
- [][]\OT1/cmr/m/n/10.95 [h] 
- []
 
 [4 <./Figures/inhomogene_2_spins.pdf>] [5]
 Overfull \hbox (26.97145pt too wide) in paragraph at lines 148--150
@@ -968,10 +955,6 @@ File: Figures/Stretch_vs_pas_stretch.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/Stretch_vs_pas_stretch.pdf  used on input line
  165.
 (pdftex.def)             Requested size: 360.0pt x 132.8573pt.
-
-Overfull \hbox (12.16669pt too wide) in paragraph at lines 165--167
- [][]\OT1/cmr/m/n/10.95 [h] 
- []
 
 
 Package caption Warning: \label without proper reference on input line 166.
@@ -1016,11 +999,6 @@ File: Figures/various_fit_formulae.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/various_fit_formulae.pdf  used on input line 1
 80.
 (pdftex.def)             Requested size: 360.0pt x 254.3466pt.
-
-Overfull \hbox (12.16669pt too wide) in paragraph at lines 180--182
- [][]\OT1/cmr/m/n/10.95 [h] 
- []
-
 
 Package caption Warning: \label without proper reference on input line 181.
 See the caption package documentation for explanation.
@@ -1068,11 +1046,6 @@ File: Figures/betas.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/betas.pdf  used on input line 218.
 (pdftex.def)             Requested size: 360.0pt x 130.18953pt.
 
-Overfull \hbox (12.16669pt too wide) in paragraph at lines 218--220
- [][]\OT1/cmr/m/n/10.95 [h] 
- []
-
-
 Package caption Warning: \label without proper reference on input line 181.
 See the caption package documentation for explanation.
 
@@ -1098,14 +1071,48 @@ See the caption package documentation for explanation.
 
 LaTeX Warning: Reference `betas' on page 9 undefined on input line 223.
 
-[9] [10 <./Figures/betas.pdf>] [11] [12
+
+Package caption Warning: \label without proper reference on input line 219.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `betas' on page 9 undefined on input line 223.
+
+[9]
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `various_fit_formulae' on page 10 undefined on input l
+ine 225.
+
+<Figures/fluctuator linewidth.pdf, id=381, 929.18921pt x 275.13318pt>
+File: Figures/fluctuator linewidth.pdf Graphic file (type pdf)
+<use Figures/fluctuator linewidth.pdf>
+Package pdftex.def Info: Figures/fluctuator linewidth.pdf  used on input line 2
+31.
+(pdftex.def)             Requested size: 360.0pt x 106.5962pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package caption Warning: \label without proper reference on input line 232.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fluct linewidth' on page 10 undefined on input line 2
+40.
+
+[10 <./Figures/betas.pdf>] [11 <./Figures/fluctuator linewidth.pdf>] [12
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
- (./Chapter 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 265.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 265.
+
+(./Chapter 3.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 265.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 265.
 Package rerunfilecheck Info: File `"Chapter 3".out' has not changed.
 (rerunfilecheck)             Checksum: 2891301702854AA0D080DCD1FE418167;1507.
 
@@ -1115,13 +1122,13 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to '"Chapter 3".run.xml'.
 \openout1 = `"Chapter 3.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 265.
  ) 
 Here is how much of TeX's memory you used:
- 25134 strings out of 481239
- 474197 string characters out of 5920377
- 1107378 words of memory out of 5000000
- 39958 multiletter control sequences out of 15000+600000
+ 25143 strings out of 481239
+ 474487 string characters out of 5920377
+ 1107471 words of memory out of 5000000
+ 39965 multiletter control sequences out of 15000+600000
  541930 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,10n,75p,974b,1431s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1137,10 +1144,10 @@ amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
 b>
-Output written on "Chapter 3.pdf" (12 pages, 723112 bytes).
+Output written on "Chapter 3.pdf" (12 pages, 813534 bytes).
 PDF statistics:
- 473 PDF objects out of 1000 (max. 8388607)
- 372 compressed objects within 4 object streams
- 53 named destinations out of 1000 (max. 500000)
- 179 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 519 PDF objects out of 1000 (max. 8388607)
+ 403 compressed objects within 5 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 184 words of extra memory for PDF output out of 10000 (max. 10000000)
 

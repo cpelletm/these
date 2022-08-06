@@ -84,21 +84,25 @@ def plot_and_fit_full_ESR():
 #~~~~Partie transitions théoriques ~~~~~
 B1=[38.13731417698277, 62.485689916286, 87.60516054475868]
 B2=[46.75349012735024, 25.425444067196413,  90.53037150987437]
-n=100
+fnames,fval=extract_glob('ESR')
+n=len(fnames)
 Bxs=np.linspace(B1[0],B2[0],n)
 Bys=np.linspace(B1[1],B2[1],n)
 Bzs=np.linspace(B1[2],B2[2],n)
 transis=np.zeros((n,4))
+Bscans=np.zeros(n)
 for i in range(n):
 	B=magneticField(x=Bxs[i], y=Bys[i],  z=Bzs[i])
 	transis[i,:]=B.transitions4ClassesMoins()
+	Bscans[i]=norm(B.cartesian-B1)
 
-x=np.linspace(4,8,n)
-plt.plot(x,transis[:,0],color=color(0),label='Predicted transition')
+# x=np.linspace(4,8,n)
+x=Bscans
+plt.plot(x,transis[:,0],color=color(0),label='Predicted transitions')
 for i in range(1,len(transis[0,:])):
 	plt.plot(x,transis[:,i],color=color(0))
 
-#~~~~~~Partie ODMR ~~~~~~
+# ~~~~~~Partie ODMR ~~~~~~
 fnames,fval=extract_glob('ESR')
 n=len(fnames)
 transis=np.zeros((n,2))
@@ -112,8 +116,8 @@ for i in range(n):
 	else :
 		transis[i,:]=[np.nan,np.nan]
 
-plt.plot(fval,transis[:,0],'o',markerfacecolor="None",ms=5,mew=0.7,color=color(1),label='ODMR measurement')
-plt.plot(fval,transis[:,1],'o',markerfacecolor="None",ms=5,mew=0.7,color=color(1))
+plt.plot(Bscans,transis[:,0],'o',markerfacecolor="None",ms=5,mew=0.7,color=color(1),label='ODMR measurements')
+plt.plot(Bscans,transis[:,1],'o',markerfacecolor="None",ms=5,mew=0.7,color=color(1))
 
 plt.legend()
 plt.show()
