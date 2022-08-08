@@ -1703,6 +1703,8 @@ def exp(x,sigma):
 	y=np.exp(-(x**2)/(2*sigma**2))
 	return y
 
+
+
 def lor(x,sigma):
 	y=1/(1+(x/sigma)**2)
 	return y
@@ -1740,4 +1742,8 @@ def test_convolution():
 	plt.show()
 
 
-test_convolution()
+# test_convolution()
+
+
+
+print(1/(2*np.pi*7.83*2))

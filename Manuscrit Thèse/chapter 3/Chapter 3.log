@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  6 AUG 2022 17:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  8 AUG 2022 17:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -901,30 +901,32 @@ Overfull \hbox (46.5345pt too wide) in paragraph at lines 29--29
 []\OT1/cmr/bx/n/14.4 Experimental ob-ser-va-tion of NV-NV cross-relaxation 
  []
 
-<Figures/NV-NV_non_equivalent.pdf, id=75, 692.40157pt x 469.7331pt>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<Figures/NV-NV_non_equivalent.pdf, id=79, 692.40157pt x 469.7331pt>
 File: Figures/NV-NV_non_equivalent.pdf Graphic file (type pdf)
 <use Figures/NV-NV_non_equivalent.pdf>
 Package pdftex.def Info: Figures/NV-NV_non_equivalent.pdf  used on input line 3
 4.
 (pdftex.def)             Requested size: 360.0pt x 244.23395pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+[1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Figures/NV-NV_equivalent.pdf, id=95, 872.6003pt x 600.41821pt>
+<Figures/NV-NV_equivalent.pdf, id=100, 872.6003pt x 600.41821pt>
 File: Figures/NV-NV_equivalent.pdf Graphic file (type pdf)
 <use Figures/NV-NV_equivalent.pdf>
 Package pdftex.def Info: Figures/NV-NV_equivalent.pdf  used on input line 58.
@@ -934,7 +936,7 @@ Package pdftex.def Info: Figures/NV-NV_equivalent.pdf  used on input line 58.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [2 <./Figures/NV-NV_non_equivalent.pdf>] [3 <./Figures/NV-NV_equivalent.pdf>]
-<Figures/inhomogene_2_spins.pdf, id=187, 795.06699pt x 313.61554pt>
+<Figures/inhomogene_2_spins.pdf, id=192, 795.06699pt x 313.61554pt>
 File: Figures/inhomogene_2_spins.pdf Graphic file (type pdf)
 <use Figures/inhomogene_2_spins.pdf>
 Package pdftex.def Info: Figures/inhomogene_2_spins.pdf  used on input line 80.
@@ -949,38 +951,13 @@ a-tor den-sity and $[]$ the av-er-aged value of $[]$: $[] = [] [](\OML/cmm/m/it
  []
 
 [6]
-<Figures/Stretch_vs_pas_stretch.pdf, id=244, 834.00119pt x 307.786pt>
+<Figures/Stretch_vs_pas_stretch.pdf, id=249, 834.00119pt x 307.786pt>
 File: Figures/Stretch_vs_pas_stretch.pdf Graphic file (type pdf)
 <use Figures/Stretch_vs_pas_stretch.pdf>
 Package pdftex.def Info: Figures/Stretch_vs_pas_stretch.pdf  used on input line
  165.
 (pdftex.def)             Requested size: 360.0pt x 132.8573pt.
-
-
-Package caption Warning: \label without proper reference on input line 166.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `stretch_or_not_stretch' on page 7 undefined on input 
-line 171.
-
-
-Package caption Warning: \label without proper reference on input line 166.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `stretch_or_not_stretch' on page 7 undefined on input 
-line 171.
-
-
-Package caption Warning: \label without proper reference on input line 166.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `stretch_or_not_stretch' on page 7 undefined on input 
-line 173.
-
-[7 <./Figures/Stretch_vs_pas_stretch.pdf>]
+ [7 <./Figures/Stretch_vs_pas_stretch.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 176.
@@ -993,161 +970,91 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 176.
 
-<Figures/various_fit_formulae.pdf, id=287, 844.31212pt x 596.51091pt>
+<Figures/various_fit_formulae.pdf, id=292, 844.31212pt x 596.51091pt>
 File: Figures/various_fit_formulae.pdf Graphic file (type pdf)
 <use Figures/various_fit_formulae.pdf>
 Package pdftex.def Info: Figures/various_fit_formulae.pdf  used on input line 1
 80.
 (pdftex.def)             Requested size: 360.0pt x 254.3466pt.
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 8 undefined on input li
-ne 187.
-
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 8 undefined on input li
-ne 187.
-
 [8 <./Figures/various_fit_formulae.pdf>]
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
-ne 206.
-
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
-ne 210.
-
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
-ne 214.
-
-<Figures/betas.pdf, id=369, 850.15848pt x 307.45277pt>
+<Figures/betas.pdf, id=374, 850.15848pt x 307.45277pt>
 File: Figures/betas.pdf Graphic file (type pdf)
 <use Figures/betas.pdf>
-Package pdftex.def Info: Figures/betas.pdf  used on input line 218.
+Package pdftex.def Info: Figures/betas.pdf  used on input line 220.
 (pdftex.def)             Requested size: 360.0pt x 130.18953pt.
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
-ne 220.
-
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 9 undefined on input li
-ne 220.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package caption Warning: \label without proper reference on input line 219.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `betas' on page 9 undefined on input line 223.
-
-
-Package caption Warning: \label without proper reference on input line 219.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `betas' on page 9 undefined on input line 223.
-
 [9]
-
-Package caption Warning: \label without proper reference on input line 181.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `various_fit_formulae' on page 10 undefined on input l
-ine 225.
-
-<Figures/fluctuator linewidth.pdf, id=381, 929.18921pt x 275.13318pt>
+<Figures/fluctuator linewidth.pdf, id=386, 929.18921pt x 275.13318pt>
 File: Figures/fluctuator linewidth.pdf Graphic file (type pdf)
 <use Figures/fluctuator linewidth.pdf>
 Package pdftex.def Info: Figures/fluctuator linewidth.pdf  used on input line 2
-31.
+33.
 (pdftex.def)             Requested size: 360.0pt x 106.5962pt.
+ [10 <./Figures/betas.pdf> <./Figures/fluctuator linewidth.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fluctuator linewidth.pdf): PD
+F inclusion: multiple pdfs with page group included in a single page
+>]
+<Figures/deconvolution.pdf, id=468, 410.69589pt x 270.67432pt>
+File: Figures/deconvolution.pdf Graphic file (type pdf)
+<use Figures/deconvolution.pdf>
+Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 254.
+(pdftex.def)             Requested size: 216.0022pt x 142.35808pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[11] [12 <./Figures/deconvolution.pdf>] [13]
+Overfull \hbox (2.98143pt too wide) in paragraph at lines 304--304
+[]\OT1/cmr/m/n/10.95 Wikipedia con-trib-u-tors. \OT1/cmr/m/it/10.95 Voigt pro-f
+ile\OT1/cmr/m/n/10.95 . [On-line; ac-cessed 08-August-2022].
+ []
 
-Package caption Warning: \label without proper reference on input line 232.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fluct linewidth' on page 10 undefined on input line 2
-40.
-
-[10 <./Figures/betas.pdf>] [11 <./Figures/fluctuator linewidth.pdf>] [12
+[14
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 265.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 265.
-
-(./Chapter 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 265.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 265.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 304.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 304.
+ (./Chapter 3.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 304.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 304.
 Package rerunfilecheck Info: File `"Chapter 3".out' has not changed.
-(rerunfilecheck)             Checksum: 2891301702854AA0D080DCD1FE418167;1507.
-
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: 46066A63AB56A8CE66C486BE915593F2;1612.
 Package logreq Info: Writing requests to '"Chapter 3".run.xml'.
 \openout1 = `"Chapter 3.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 265.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 304.
  ) 
 Here is how much of TeX's memory you used:
- 25143 strings out of 481239
- 474487 string characters out of 5920377
- 1107471 words of memory out of 5000000
- 39965 multiletter control sequences out of 15000+600000
- 541930 words of font info for 59 fonts, out of 8000000 for 9000
+ 25167 strings out of 481239
+ 474991 string characters out of 5920377
+ 1109247 words of memory out of 5000000
+ 39980 multiletter control sequences out of 15000+600000
+ 542399 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,10n,75p,974b,1431s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b>
-Output written on "Chapter 3.pdf" (12 pages, 813534 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on "Chapter 3.pdf" (14 pages, 903870 bytes).
 PDF statistics:
- 519 PDF objects out of 1000 (max. 8388607)
- 403 compressed objects within 5 object streams
- 54 named destinations out of 1000 (max. 500000)
- 184 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 461 compressed objects within 5 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 

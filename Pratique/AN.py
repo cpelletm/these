@@ -11,6 +11,7 @@ density_diam=3.5 #g/cm3
 m_carbon=12.01/Na #g
 # print(density_diam/m_carbon) #1.75e23 atomes/cm3
 #Autre odg : ppm=1e5/µm3
+#Autre odg : 5 ppm = 10.4 nm de distance moyenne
 
 P=1e5
 T=300
@@ -41,5 +42,6 @@ def couplage_NV():
 
 
 
-print(82*(15**(3/2)))
+print((1e-17/(1.75*5))**(1/3))
 
+print(52/(10.4**3))

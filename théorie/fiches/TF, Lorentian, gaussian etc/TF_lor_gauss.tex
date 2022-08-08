@@ -1,0 +1,65 @@
+\documentclass[a4paper]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage[]{braket} % \bra, \ket etc
+\usepackage{graphicx}
+
+
+\title{Cheat sheet for linewidths}
+
+\begin{document}
+\maketitle
+\section{Fourier transform of exponential decays}
+\subsection{Fourier transform convention for cyclical frequencies}
+Forward convention (going from $t$ to $f$):
+
+\begin{equation}
+H(f)=\int_{-\infty}^{+\infty} h(t) e^{-2i\pi ft} dt
+\end{equation}
+
+Reverse convention (going from $f$ to $t$):
+\begin{equation}
+h(t)=\int_{-\infty}^{+\infty} H(f) e^{+2i\pi ft} df
+\end{equation}
+
+\subsection{Fourier transform convention for angular frequencies}
+Forward convention (going from $t$ to $\omega$):
+
+\begin{equation}
+H(\omega)=\int_{-\infty}^{+\infty} h(t) e^{-i\omega t} dt
+\end{equation}
+
+Reverse convention (going from $f$ to $t$):
+\begin{equation}
+h(t)=\frac{1}{2 \pi}\int_{-\infty}^{+\infty} H(\omega) e^{+i\omega t} d\omega
+\end{equation}
+
+\subsection{Single exponential decay (Lorentzian)}
+
+We assume $h(t)\propto e^{-t/T_2}$ for $t>0$. To compute the Fourier transform we need to assume that $h(t)\propto e^{-|t|/T_2}$. 
+\begin{equation}
+H(f) \propto \frac{1}{1+(2\pi f T_2)^2}
+\end{equation}
+
+\subsection{Squared exponential decay (Gaussian)}
+We assume $h(t)\propto e^{-(t/T_2)^2}$
+
+\begin{equation}
+H(f) \propto e^{-(\pi f T_2)^2}
+\end{equation}
+
+\section{HWHM and $T_2$ in the $f$ basis}
+\subsection{Gaussian}
+For a Gaussian $e^{\frac{(x-\mu)^2}{2\sigma^2}}$, HWHM=$\sigma \sqrt{2 \ln 2} \approx 1.18\sigma$.
+\begin{equation}
+T_2=\frac{1}{\pi \sigma \sqrt{2}}=\frac{\sqrt{\ln 2}}{\pi \rm (HWHM)}
+\end{equation}
+
+\subsection{Lorentzian}
+For a Lorentzian $\frac{1}{1+(\frac{(x-\mu)^2}{\sigma})^2}$, HWHM=$\sigma$
+\begin{equation}
+T_2=\frac{1}{2\pi \rm (HWHM)}
+\end{equation}
+
+\end{document}

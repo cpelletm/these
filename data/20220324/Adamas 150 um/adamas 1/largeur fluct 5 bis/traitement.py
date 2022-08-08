@@ -140,7 +140,39 @@ def get_T1_dconvoloved(x,y,nmiddle=24,lambd=2):
 
 
 
-def plot_T1_fluct_lw():
+def plot_T1_fluct_lw_and_ODMR():
+	x,y=get_T1_croisement()
+
+	ax1=plt.gca()
+
+	ax1.plot(x,y,'o',markerfacecolor='none',label=r'Experiment')
+	popt,yfit=lor_fit(x,y)
+	print(popt)
+	ax1.plot(x,yfit,lw=2,color=color(1),label='Lorentzian fit'%popt[2])
+
+
+	ax2=ax1.twinx()
+	x,y=extract_data('ESR 1 classe pas loin 111')
+	y=y/max(y)
+	c=hist_mean(x,y)
+	x=x-2740
+	ax2.plot(x,y,'--',color=color(2),label=r'ESR line',mew=0.5,ms=3)
+	x=x*sqrt(2)
+	ax2.plot(x,y,'--',color=color(3),label=r'ESR line$\times \sqrt{2}$',mew=0.5,ms=3)
+	# x=x*sqrt(2)
+	# n=len(x)
+	# x=x[n//5:n-n//5]
+	# y=y[n//5:n-n//5]
+	# ax2.plot(x,y,'--',color=color(4),label=r'ESR line$\times 2$',mew=0.5,ms=3)
+	ax2.tick_params(labelsize=15)
+	ax2.legend()
+
+	ax1.legend(loc=2)
+	
+# plot_T1_fluct_lw_and_ODMR()
+
+
+def plot_T1_fluct_deconvo():
 	x,y=get_T1_croisement()
 
 	ax1=plt.gca()
@@ -165,26 +197,19 @@ def plot_T1_fluct_lw():
 	ax1.plot(x,yfit,lw=2,color=color(2))#,label='Lorentzian fit'%popt[2])
 	print(popt)
 
-	# ax2=ax1.twinx()
-	# x,y=extract_data('ESR 1 classe pas loin 111')
-	# y=y/max(y)
-	# c=hist_mean(x,y)
-	# x=x-2740
-	# ax2.plot(x,y,'--',color=color(2),label=r'ESR line',mew=0.5,ms=3)
-	# # x=x*sqrt(2)
-	# # ax2.plot(x,y,'--',color=color(3),label=r'ESR line$\times \sqrt{2}$',mew=0.5,ms=3)
-	# # x=x*sqrt(2)
-	# # n=len(x)
-	# # x=x[n//5:n-n//5]
-	# # y=y[n//5:n-n//5]
-	# # ax2.plot(x,y,'--',color=color(4),label=r'ESR line$\times 2$',mew=0.5,ms=3)
-	# ax2.tick_params(labelsize=15)
-	# ax2.legend()
-
 	ax1.legend(loc=2)
-	
-	
-plot_T1_fluct_lw()
+
+# plot_T1_fluct_deconvo()
+
+def widthVoigt(fL,fG=4.5*np.sqrt(2)): #3.68=2.6*sqrt(2)
+	fG=fG*(sqrt(2*np.log(2)))
+	f=((fG**5)+2.69269*(fG**4)*(fL)+2.42843*(fG**3)*(fL**2)+4.47163*(fG**2)*(fL**3)+0.07842*(fG)*(fL**4)+(fL**5))**(1/5)
+	return (f)
+
+
+print(dichotomy(f=widthVoigt,target=12.5,xmin=0,xmax=9,precision='auto')[0])
+
+
 
 
 plt.show()

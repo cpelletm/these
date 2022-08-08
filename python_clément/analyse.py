@@ -153,6 +153,7 @@ def fit_ordre_6(x,y) :
 	return([w,z,a,b,c,d,e],w*x**6+z*x**5+a*x**4+b*x**3+c*x**2+d*x+e)
 
 def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0) :
+	#HWHM = sigma*sqrt(2*np.log(2)) pour une gaussienne
 	if not ss :
 		ss=y[0]
 	if not amp :
@@ -1198,4 +1199,38 @@ def find_elem(elem,liste):
 				index=i
 		return index
 
+def dichotomy(f,target,xmin,xmax,precision='auto'):
+	import time
+	tmax=10 #s
+
+	assert (f(xmax)-target)*(f(xmin)-target) < 0
+
+	if f(xmax)-target > 0:
+		pass
+	else :
+		xmin,xmax=xmax,xmin #S'arrange pour que f(xmax)> target et f(xmin)< target
+
+	if precision=='auto':
+		precision=abs((f(xmax)-target))*1e-10
+
+
+	t=time.time()
+	ctr=0
+	delta=f(xmax)-f(xmin)
+	while delta > precision:
+		xmid=(xmin+xmax)/2
+		if f(xmid)>target:
+			xmax=xmid
+		else :
+			xmin=xmid
+
+		delta=f(xmax)-f(xmin)
+		ctr+=1
+		if time.time()-10>t:
+			raise ValueError('Took too long (iter=%i)'%ctr)
+
+	return(xmin,xmax)
+
+
+	
 
