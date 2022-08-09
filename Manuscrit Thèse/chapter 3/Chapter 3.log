@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  8 AUG 2022 17:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  9 AUG 2022 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,7 +916,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: Figures/NV-NV_non_equivalent.pdf Graphic file (type pdf)
 <use Figures/NV-NV_non_equivalent.pdf>
 Package pdftex.def Info: Figures/NV-NV_non_equivalent.pdf  used on input line 3
-4.
+5.
 (pdftex.def)             Requested size: 360.0pt x 244.23395pt.
 
 
@@ -929,7 +929,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Figures/NV-NV_equivalent.pdf, id=100, 872.6003pt x 600.41821pt>
 File: Figures/NV-NV_equivalent.pdf Graphic file (type pdf)
 <use Figures/NV-NV_equivalent.pdf>
-Package pdftex.def Info: Figures/NV-NV_equivalent.pdf  used on input line 58.
+Package pdftex.def Info: Figures/NV-NV_equivalent.pdf  used on input line 59.
 (pdftex.def)             Requested size: 360.0pt x 247.70305pt.
 
 
@@ -939,122 +939,167 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Figures/inhomogene_2_spins.pdf, id=192, 795.06699pt x 313.61554pt>
 File: Figures/inhomogene_2_spins.pdf Graphic file (type pdf)
 <use Figures/inhomogene_2_spins.pdf>
-Package pdftex.def Info: Figures/inhomogene_2_spins.pdf  used on input line 80.
+Package pdftex.def Info: Figures/inhomogene_2_spins.pdf  used on input line 81.
 
 (pdftex.def)             Requested size: 360.0pt x 142.0014pt.
 
 [4 <./Figures/inhomogene_2_spins.pdf>] [5]
-Overfull \hbox (26.97145pt too wide) in paragraph at lines 148--150
+Overfull \hbox (17.9605pt too wide) in paragraph at lines 150--152
 \OT1/cmr/m/n/10.95 with $\OML/cmm/m/it/10.95 n$ \OT1/cmr/m/n/10.95 the fluc-tu-
 a-tor den-sity and $[]$ the av-er-aged value of $[]$: $[] = [] [](\OML/cmm/m/it
 /10.95 ^^Q\OT1/cmr/m/n/10.95 )[]d\OML/cmm/m/it/10.95 ^^Q$\OT1/cmr/m/n/10.95 . 
  []
 
-[6]
-<Figures/Stretch_vs_pas_stretch.pdf, id=249, 834.00119pt x 307.786pt>
+[6] [7]
+<Figures/Stretch_vs_pas_stretch.pdf, id=285, 834.00119pt x 307.786pt>
 File: Figures/Stretch_vs_pas_stretch.pdf Graphic file (type pdf)
 <use Figures/Stretch_vs_pas_stretch.pdf>
 Package pdftex.def Info: Figures/Stretch_vs_pas_stretch.pdf  used on input line
- 165.
+ 177.
 (pdftex.def)             Requested size: 360.0pt x 132.8573pt.
- [7 <./Figures/Stretch_vs_pas_stretch.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 176.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 176.
+(hyperref)                removing `math shift' on input line 188.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 176.
+(hyperref)                removing `subscript' on input line 188.
 
-<Figures/various_fit_formulae.pdf, id=292, 844.31212pt x 596.51091pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 188.
+
+<Figures/various_fit_formulae.pdf, id=289, 844.31212pt x 596.51091pt>
 File: Figures/various_fit_formulae.pdf Graphic file (type pdf)
 <use Figures/various_fit_formulae.pdf>
 Package pdftex.def Info: Figures/various_fit_formulae.pdf  used on input line 1
-80.
+92.
 (pdftex.def)             Requested size: 360.0pt x 254.3466pt.
-[8 <./Figures/various_fit_formulae.pdf>]
-<Figures/betas.pdf, id=374, 850.15848pt x 307.45277pt>
+[8 <./Figures/Stretch_vs_pas_stretch.pdf>] [9 <./Figures/various_fit_formulae.p
+df>]
+<Figures/betas.pdf, id=409, 850.15848pt x 307.45277pt>
 File: Figures/betas.pdf Graphic file (type pdf)
 <use Figures/betas.pdf>
-Package pdftex.def Info: Figures/betas.pdf  used on input line 220.
+Package pdftex.def Info: Figures/betas.pdf  used on input line 232.
 (pdftex.def)             Requested size: 360.0pt x 130.18953pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9]
-<Figures/fluctuator linewidth.pdf, id=386, 929.18921pt x 275.13318pt>
+<Figures/fluctuator linewidth.pdf, id=415, 929.18921pt x 275.13318pt>
 File: Figures/fluctuator linewidth.pdf Graphic file (type pdf)
 <use Figures/fluctuator linewidth.pdf>
 Package pdftex.def Info: Figures/fluctuator linewidth.pdf  used on input line 2
-33.
+45.
 (pdftex.def)             Requested size: 360.0pt x 106.5962pt.
- [10 <./Figures/betas.pdf> <./Figures/fluctuator linewidth.pdf
+[10] [11 <./Figures/betas.pdf> <./Figures/fluctuator linewidth.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/fluctuator linewidth.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
 >]
-<Figures/deconvolution.pdf, id=468, 410.69589pt x 270.67432pt>
+<Figures/deconvolution.pdf, id=503, 410.69589pt x 270.67432pt>
 File: Figures/deconvolution.pdf Graphic file (type pdf)
 <use Figures/deconvolution.pdf>
-Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 254.
+Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 266.
 (pdftex.def)             Requested size: 216.0022pt x 142.35808pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11] [12 <./Figures/deconvolution.pdf>] [13]
-Overfull \hbox (2.98143pt too wide) in paragraph at lines 304--304
-[]\OT1/cmr/m/n/10.95 Wikipedia con-trib-u-tors. \OT1/cmr/m/it/10.95 Voigt pro-f
-ile\OT1/cmr/m/n/10.95 . [On-line; ac-cessed 08-August-2022].
+[12] [13 <./Figures/deconvolution.pdf>]
+<Figures/Resonance_geometries.pdf, id=547, 632.38585pt x 966.0116pt>
+File: Figures/Resonance_geometries.pdf Graphic file (type pdf)
+<use Figures/Resonance_geometries.pdf>
+Package pdftex.def Info: Figures/Resonance_geometries.pdf  used on input line 3
+01.
+(pdftex.def)             Requested size: 288.0011pt x 439.93394pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figures/carte.pdf, id=550, 555.91539pt x 334.81839pt>
+File: Figures/carte.pdf Graphic file (type pdf)
+<use Figures/carte.pdf>
+Package pdftex.def Info: Figures/carte.pdf  used on input line 319.
+(pdftex.def)             Requested size: 360.0pt x 216.82216pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 330.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 330.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 330.
+
+[14] [15] [16 <./Figures/Resonance_geometries.pdf>] [17 <./Figures/carte.pdf>]
+Overfull \hbox (5.40323pt too wide) in paragraph at lines 338--338
+[]\OT1/cmr/m/n/10.95 Mariusz Mr^^Sozek et al. ``Lon-gi-tu-di-nal spin re-lax-at
+ion in nitrogen-vacancy
  []
 
-[14
+[18
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 304.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 304.
+Overfull \hbox (0.6277pt too wide) in paragraph at lines 338--338
+\OT1/cmr/m/n/10.95 zwis-chen-moleku-laren []Ubergangs von Elek-tro-ne-nan-re-gu
+ngsen-ergie''. In:
+ []
+
+
+Overfull \hbox (3.1442pt too wide) in paragraph at lines 338--338
+\OT1/cmr/m/n/10.95 2022]. 2022. \OT1/cmr/m/sc/10.95 url\OT1/cmr/m/n/10.95 : []$
+\OT1/cmtt/m/n/10.95 https : / / en . wikipedia . org / wiki / Voigt _ profile #
+
+ []
+
+[19]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 338.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 338.
  (./Chapter 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 304.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 304.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 338.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 338.
 Package rerunfilecheck Info: File `"Chapter 3".out' has not changed.
-(rerunfilecheck)             Checksum: 46066A63AB56A8CE66C486BE915593F2;1612.
+(rerunfilecheck)             Checksum: 747E7A69BF5523780C4B5C169125A150;1619.
 Package logreq Info: Writing requests to '"Chapter 3".run.xml'.
 \openout1 = `"Chapter 3.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 304.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 338.
  ) 
 Here is how much of TeX's memory you used:
- 25167 strings out of 481239
- 474991 string characters out of 5920377
- 1109247 words of memory out of 5000000
- 39980 multiletter control sequences out of 15000+600000
- 542399 words of font info for 61 fonts, out of 8000000 for 9000
+ 25236 strings out of 481239
+ 477251 string characters out of 5920377
+ 1111813 words of memory out of 5000000
+ 40026 multiletter control sequences out of 15000+600000
+ 542740 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,10n,75p,974b,1431s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "Chapter 3.pdf" (14 pages, 903870 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type
+1/public/cm-super/sfrm1095.pfb>
+Output written on "Chapter 3.pdf" (19 pages, 1178296 bytes).
 PDF statistics:
- 593 PDF objects out of 1000 (max. 8388607)
- 461 compressed objects within 5 object streams
- 60 named destinations out of 1000 (max. 500000)
- 197 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 693 PDF objects out of 1000 (max. 8388607)
+ 543 compressed objects within 6 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 207 words of extra memory for PDF output out of 10000 (max. 10000000)
 

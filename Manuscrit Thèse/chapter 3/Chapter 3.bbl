@@ -368,8 +368,8 @@
       \strng{authorbibnamehash}{a2507720ecb25453fa4a4e107b020a54}
       \strng{authornamehash}{a2507720ecb25453fa4a4e107b020a54}
       \strng{authorfullhash}{83bae83e8bbe5d4be57407e90572cd75}
-      \field{sortinit}{7}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature communications}
@@ -379,6 +379,458 @@
       \field{year}{2016}
       \field{pages}{1\bibrangedash 9}
       \range{pages}{9}
+    \endentry
+    \entry{feher1959electron}{article}{}
+      \name{author}{2}{}{%
+        {{hash=cf012243e2abe4a8a1f1b7e3ca0b4a99}{%
+           family={Feher},
+           familyi={F\bibinitperiod},
+           given={G},
+           giveni={G\bibinitperiod}}}%
+        {{hash=6812ac38739c5d344b2ab58146a1861b}{%
+           family={Gere},
+           familyi={G\bibinitperiod},
+           given={EA},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{e0b174d44bd7750c538a513d2fa8405e}
+      \strng{fullhash}{e0b174d44bd7750c538a513d2fa8405e}
+      \strng{bibnamehash}{e0b174d44bd7750c538a513d2fa8405e}
+      \strng{authorbibnamehash}{e0b174d44bd7750c538a513d2fa8405e}
+      \strng{authornamehash}{e0b174d44bd7750c538a513d2fa8405e}
+      \strng{authorfullhash}{e0b174d44bd7750c538a513d2fa8405e}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{number}{5}
+      \field{title}{Electron spin resonance experiments on donors in silicon. II. Electron spin relaxation effects}
+      \field{volume}{114}
+      \field{year}{1959}
+      \field{pages}{1245}
+      \range{pages}{1}
+    \endentry
+    \entry{honig1960electron}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b25249ddf2866f075ec1ba7bfdb22a30}{%
+           family={Honig},
+           familyi={H\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c3684afd3377d5c40ee78b128e5909ac}{%
+           family={Stupp},
+           familyi={S\bibinitperiod},
+           given={E},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{8f44c37487b8f77bfa1959d4920ad40c}
+      \strng{fullhash}{8f44c37487b8f77bfa1959d4920ad40c}
+      \strng{bibnamehash}{8f44c37487b8f77bfa1959d4920ad40c}
+      \strng{authorbibnamehash}{8f44c37487b8f77bfa1959d4920ad40c}
+      \strng{authornamehash}{8f44c37487b8f77bfa1959d4920ad40c}
+      \strng{authorfullhash}{8f44c37487b8f77bfa1959d4920ad40c}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{number}{1}
+      \field{title}{Electron spin-lattice relaxation in phosphorus-doped silicon}
+      \field{volume}{117}
+      \field{year}{1960}
+      \field{pages}{69}
+      \range{pages}{1}
+    \endentry
+    \entry{sugihara1963spin}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e666abf64c5b1bee3b0ddaa51b3cc83f}{%
+           family={Sugihara},
+           familyi={S\bibinitperiod},
+           given={Ko},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The Physical Society of Japan}%
+      }
+      \strng{namehash}{e666abf64c5b1bee3b0ddaa51b3cc83f}
+      \strng{fullhash}{e666abf64c5b1bee3b0ddaa51b3cc83f}
+      \strng{bibnamehash}{e666abf64c5b1bee3b0ddaa51b3cc83f}
+      \strng{authorbibnamehash}{e666abf64c5b1bee3b0ddaa51b3cc83f}
+      \strng{authornamehash}{e666abf64c5b1bee3b0ddaa51b3cc83f}
+      \strng{authorfullhash}{e666abf64c5b1bee3b0ddaa51b3cc83f}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Physical Society of Japan}
+      \field{number}{7}
+      \field{title}{Spin-Lattice Relaxation of Shallow Donors in Heavily Doped Si}
+      \field{volume}{18}
+      \field{year}{1963}
+      \field{pages}{961\bibrangedash 969}
+      \range{pages}{9}
+    \endentry
+    \entry{yang1968concentration}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1338aaf8b46a07ead8f27b0d3cf761d0}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={G},
+           giveni={G\bibinitperiod}}}%
+        {{hash=b25249ddf2866f075ec1ba7bfdb22a30}{%
+           family={Honig},
+           familyi={H\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{54d3aa3c2c81a63556340ae9b4bdd0f0}
+      \strng{fullhash}{54d3aa3c2c81a63556340ae9b4bdd0f0}
+      \strng{bibnamehash}{54d3aa3c2c81a63556340ae9b4bdd0f0}
+      \strng{authorbibnamehash}{54d3aa3c2c81a63556340ae9b4bdd0f0}
+      \strng{authornamehash}{54d3aa3c2c81a63556340ae9b4bdd0f0}
+      \strng{authorfullhash}{54d3aa3c2c81a63556340ae9b4bdd0f0}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{number}{2}
+      \field{title}{Concentration-and Compensation-Dependent Spin-Lattice Relaxation in N-Type Silicon}
+      \field{volume}{168}
+      \field{year}{1968}
+      \field{pages}{271}
+      \range{pages}{1}
+    \endentry
+    \entry{vugmeister1978spin}{article}{}
+      \name{author}{1}{}{%
+        {{hash=955b40a19b784e5ca5e8129733b227bd}{%
+           family={Vugmeister},
+           familyi={V\bibinitperiod},
+           given={BE},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{955b40a19b784e5ca5e8129733b227bd}
+      \strng{fullhash}{955b40a19b784e5ca5e8129733b227bd}
+      \strng{bibnamehash}{955b40a19b784e5ca5e8129733b227bd}
+      \strng{authorbibnamehash}{955b40a19b784e5ca5e8129733b227bd}
+      \strng{authornamehash}{955b40a19b784e5ca5e8129733b227bd}
+      \strng{authorfullhash}{955b40a19b784e5ca5e8129733b227bd}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{physica status solidi (b)}
+      \field{number}{2}
+      \field{title}{Spin diffusion and spin--lattice relaxation in paramagnetic crystals}
+      \field{volume}{90}
+      \field{year}{1978}
+      \field{pages}{711\bibrangedash 718}
+      \range{pages}{8}
+    \endentry
+    \entry{berman2005spin}{article}{}
+      \name{author}{4}{}{%
+        {{hash=66d0c67e470cefc02853654aaf9437cd}{%
+           family={Berman},
+           familyi={B\bibinitperiod},
+           given={GP},
+           giveni={G\bibinitperiod}}}%
+        {{hash=219456e51e18fb3457970e8c2862863d}{%
+           family={Chernobrod},
+           familyi={C\bibinitperiod},
+           given={BM},
+           giveni={B\bibinitperiod}}}%
+        {{hash=8e8af9a4cf55c7a2ae33aac9b4aad99d}{%
+           family={Gorshkov},
+           familyi={G\bibinitperiod},
+           given={VN},
+           giveni={V\bibinitperiod}}}%
+        {{hash=04882dbf031595bdb422a12552cfe2b1}{%
+           family={Tsifrinovich},
+           familyi={T\bibinitperiod},
+           given={VI},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{e8e461880cfbcd3caaac8f7692e47f57}
+      \strng{fullhash}{3f65c94b3e2c24dad9bc8fa93921cf46}
+      \strng{bibnamehash}{e8e461880cfbcd3caaac8f7692e47f57}
+      \strng{authorbibnamehash}{e8e461880cfbcd3caaac8f7692e47f57}
+      \strng{authornamehash}{e8e461880cfbcd3caaac8f7692e47f57}
+      \strng{authorfullhash}{3f65c94b3e2c24dad9bc8fa93921cf46}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{number}{18}
+      \field{title}{Spin diffusion and relaxation in a nonuniform magnetic field}
+      \field{volume}{71}
+      \field{year}{2005}
+      \field{pages}{184409}
+      \range{pages}{1}
+    \endentry
+    \entry{bloembergen1949interaction}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1874d15c9b298f8aee2571bcb782fcf9}{%
+           family={Bloembergen},
+           familyi={B\bibinitperiod},
+           given={Nicolaas},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{1874d15c9b298f8aee2571bcb782fcf9}
+      \strng{fullhash}{1874d15c9b298f8aee2571bcb782fcf9}
+      \strng{bibnamehash}{1874d15c9b298f8aee2571bcb782fcf9}
+      \strng{authorbibnamehash}{1874d15c9b298f8aee2571bcb782fcf9}
+      \strng{authornamehash}{1874d15c9b298f8aee2571bcb782fcf9}
+      \strng{authorfullhash}{1874d15c9b298f8aee2571bcb782fcf9}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physica}
+      \field{number}{3-4}
+      \field{title}{On the interaction of nuclear spins in a crystalline lattice}
+      \field{volume}{15}
+      \field{year}{1949}
+      \field{pages}{386\bibrangedash 426}
+      \range{pages}{41}
+    \endentry
+    \entry{de1958relaxation}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d61147dd1bc4f25513812ef34802e638}{%
+           family={De\bibnamedelima Gennes},
+           familyi={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={PG},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{d61147dd1bc4f25513812ef34802e638}
+      \strng{fullhash}{d61147dd1bc4f25513812ef34802e638}
+      \strng{bibnamehash}{d61147dd1bc4f25513812ef34802e638}
+      \strng{authorbibnamehash}{d61147dd1bc4f25513812ef34802e638}
+      \strng{authornamehash}{d61147dd1bc4f25513812ef34802e638}
+      \strng{authorfullhash}{d61147dd1bc4f25513812ef34802e638}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics and Chemistry of Solids}
+      \field{number}{4}
+      \field{title}{Sur la relaxation nucleaire dans les cristaux ioniques}
+      \field{volume}{7}
+      \field{year}{1958}
+      \field{pages}{345\bibrangedash 350}
+      \range{pages}{6}
+    \endentry
+    \entry{blumberg1960nuclear}{article}{}
+      \name{author}{1}{}{%
+        {{hash=8731135de10577d4a9e77db051ed70c1}{%
+           family={Blumberg},
+           familyi={B\bibinitperiod},
+           given={WE},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{8731135de10577d4a9e77db051ed70c1}
+      \strng{fullhash}{8731135de10577d4a9e77db051ed70c1}
+      \strng{bibnamehash}{8731135de10577d4a9e77db051ed70c1}
+      \strng{authorbibnamehash}{8731135de10577d4a9e77db051ed70c1}
+      \strng{authornamehash}{8731135de10577d4a9e77db051ed70c1}
+      \strng{authorfullhash}{8731135de10577d4a9e77db051ed70c1}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review}
+      \field{number}{1}
+      \field{title}{Nuclear spin-lattice relaxation caused by paramagnetic impurities}
+      \field{volume}{119}
+      \field{year}{1960}
+      \field{pages}{79}
+      \range{pages}{1}
+    \endentry
+    \entry{forster1949experimentelle}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4a5601278cbf01dbf437a908b68aa1d6}{%
+           family={F{ö}rster},
+           familyi={F\bibinitperiod},
+           given={Theodor},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {De Gruyter}%
+      }
+      \strng{namehash}{4a5601278cbf01dbf437a908b68aa1d6}
+      \strng{fullhash}{4a5601278cbf01dbf437a908b68aa1d6}
+      \strng{bibnamehash}{4a5601278cbf01dbf437a908b68aa1d6}
+      \strng{authorbibnamehash}{4a5601278cbf01dbf437a908b68aa1d6}
+      \strng{authornamehash}{4a5601278cbf01dbf437a908b68aa1d6}
+      \strng{authorfullhash}{4a5601278cbf01dbf437a908b68aa1d6}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Zeitschrift f{ü}r naturforschung A}
+      \field{number}{5}
+      \field{title}{Experimentelle und theoretische Untersuchung des zwischenmolekularen {Ü}bergangs von Elektronenanregungsenergie}
+      \field{volume}{4}
+      \field{year}{1949}
+      \field{pages}{321\bibrangedash 327}
+      \range{pages}{7}
+    \endentry
+    \entry{eisenthal1964influence}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c233b40d3784776321eb89f300c4d281}{%
+           family={Eisenthal},
+           familyi={E\bibinitperiod},
+           given={KB},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b777993cf0b90056299877aa220ef544}{%
+           family={Siegel},
+           familyi={S\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Institute of Physics}%
+      }
+      \strng{namehash}{e59acbb304fae4b68cbccb209be392ca}
+      \strng{fullhash}{e59acbb304fae4b68cbccb209be392ca}
+      \strng{bibnamehash}{e59acbb304fae4b68cbccb209be392ca}
+      \strng{authorbibnamehash}{e59acbb304fae4b68cbccb209be392ca}
+      \strng{authornamehash}{e59acbb304fae4b68cbccb209be392ca}
+      \strng{authorfullhash}{e59acbb304fae4b68cbccb209be392ca}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Chemical Physics}
+      \field{number}{3}
+      \field{title}{Influence of resonance transfer on luminescence decay}
+      \field{volume}{41}
+      \field{year}{1964}
+      \field{pages}{652\bibrangedash 655}
+      \range{pages}{4}
+    \endentry
+    \entry{yokota1967effects}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8a7f4cc918030862e90d35e7eb88b671}{%
+           family={Yokota},
+           familyi={Y\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eb4494814653726f2bb7a3467549ec84}{%
+           family={Tanimoto},
+           familyi={T\bibinitperiod},
+           given={Osamu},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The Physical Society of Japan}%
+      }
+      \strng{namehash}{cf89cdb6d1e69da72c3af6e18a3c9bf8}
+      \strng{fullhash}{cf89cdb6d1e69da72c3af6e18a3c9bf8}
+      \strng{bibnamehash}{cf89cdb6d1e69da72c3af6e18a3c9bf8}
+      \strng{authorbibnamehash}{cf89cdb6d1e69da72c3af6e18a3c9bf8}
+      \strng{authornamehash}{cf89cdb6d1e69da72c3af6e18a3c9bf8}
+      \strng{authorfullhash}{cf89cdb6d1e69da72c3af6e18a3c9bf8}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the physical society of Japan}
+      \field{number}{3}
+      \field{title}{Effects of diffusion on energy transfer by resonance}
+      \field{volume}{22}
+      \field{year}{1967}
+      \field{pages}{779\bibrangedash 784}
+      \range{pages}{6}
+    \endentry
+    \entry{manson2018nv}{article}{}
+      \name{author}{8}{}{%
+        {{hash=0f8daa834c31d79bcb117f4b351dae82}{%
+           family={Manson},
+           familyi={M\bibinitperiod},
+           given={Neil\bibnamedelima B},
+           giveni={N\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=5c91a5e55c578f5198c8799d8b0e1d67}{%
+           family={Hedges},
+           familyi={H\bibinitperiod},
+           given={Morgan},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3cbae623512e072925efc7ea7a64f5ef}{%
+           family={Barson},
+           familyi={B\bibinitperiod},
+           given={Michael\bibnamedelima SJ},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=6749d512cf0704fa083839e7946dd2cd}{%
+           family={Ahlefeldt},
+           familyi={A\bibinitperiod},
+           given={Rose},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2805e20b921f0ac4848183e6094b23e6}{%
+           family={Doherty},
+           familyi={D\bibinitperiod},
+           given={Marcus\bibnamedelima W},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=8d1efc8df9966979d22b7510a25833b1}{%
+           family={Abe},
+           familyi={A\bibinitperiod},
+           given={Hiroshi},
+           giveni={H\bibinitperiod}}}%
+        {{hash=9ca7c4030dcd58a3b823624bcd9b3848}{%
+           family={Ohshima},
+           familyi={O\bibinitperiod},
+           given={Takeshi},
+           giveni={T\bibinitperiod}}}%
+        {{hash=6c05fe29a5bf47efdafbf9ff5a0d14e8}{%
+           family={Sellars},
+           familyi={S\bibinitperiod},
+           given={Matthew\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{a4c61ec8701e9488bc3ce94a3b9bebc4}
+      \strng{fullhash}{a29acac293d02da0b80acb599ac5a3e0}
+      \strng{bibnamehash}{a4c61ec8701e9488bc3ce94a3b9bebc4}
+      \strng{authorbibnamehash}{a4c61ec8701e9488bc3ce94a3b9bebc4}
+      \strng{authornamehash}{a4c61ec8701e9488bc3ce94a3b9bebc4}
+      \strng{authorfullhash}{a29acac293d02da0b80acb599ac5a3e0}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New Journal of Physics}
+      \field{number}{11}
+      \field{title}{NV---N+ pair centre in 1b diamond}
+      \field{volume}{20}
+      \field{year}{2018}
+      \field{pages}{113037}
+      \range{pages}{1}
     \endentry
     \entry{wiki:VoigtProfile}{misc}{}
       \name{author}{1}{}{%
@@ -392,8 +844,8 @@
       \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
       \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
       \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
-      \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{[Online; accessed 08-August-2022]}

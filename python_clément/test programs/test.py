@@ -1746,4 +1746,4 @@ def test_convolution():
 
 
 
-print(1/(2*np.pi*7.83*2))
+print(200/(2*2.8/np.sqrt(3)))

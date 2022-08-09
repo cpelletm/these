@@ -4,9 +4,9 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-plt.figure(num=1,figsize=(6,4),dpi=80)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
+plt.figure(num=1,figsize=(4,3),dpi=80)
+plt.xticks(fontsize=13)
+plt.yticks(fontsize=13)
 plt.locator_params(axis='x', nbins=5)
 
 
@@ -59,8 +59,17 @@ def plot_ESR_100():
 	y=y/max(y)
 	plt.plot(x,y)
 
-
 # plot_ESR_100()
+
+def plot_ESR_0B(i=108):
+	fnames,fval=extract_glob('T1 100 align 3/ESR')
+	x,y=extract_data(fnames[i]) #'T1 100 align 3/ESR/V=0.311558'
+	y=y/max(y)
+	plt.plot(x,y)
+	
+
+plot_ESR_0B(i=108)
+
 
 def plot_T1__fit_main_text():
 	fnames,fval=extract_glob('T1 1x1x1x1/T1')

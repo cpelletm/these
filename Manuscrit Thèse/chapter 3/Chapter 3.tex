@@ -29,6 +29,7 @@ In this chapter,...
 \section{Experimental observation of NV-NV cross-relaxation}
 Before we discuss the theoretical complications related to NV-NV cross-relaxations (CR), let us first show the unambiguous experimental proof of the presence of NV-NV CR with dense NV ensembles ([NV]$\gtrsim$ 1 ppm).
 \subsection{NV-NV CR between nonequivalent NV centers}
+\label{non_equi_valent_CR}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/NV-NV_non_equivalent}
@@ -98,6 +99,7 @@ We should note here that, while this simplifications seem a bit extreme, the flu
 
 We will consider the fluctuators act as a Markovian bath, meaning that the fluctuator density matrix will always read $\rho = \frac{1}{3} I$, regardless of its interaction with NV centers. With this assumption, we can compute the modification caused by the fluctuators on the rest of the NV lifetimes.
 
+Other possibilities for the dipole-dipole dependent relaxation rate were considered, such as spin diffusion to non-polarized NV centers (outside of the laser spot) or superradiance, but they were not considered to be viable explanations \citep{choi2017depolarization}
 %\begin{pmatrix}
 %0.33&0&0 \\
 %0&0.33&0 \\
@@ -131,31 +133,41 @@ We now need to compute the average depolarization caused by the ensemble of fluc
 
 We consider each fluctuator as in independant depolarization source, therefore the depolarization on a single NV center reads: 
 \begin{equation}
-\gamma_{\rm NV}=\sum_i \gamma_s(\mathbf{r}_i).
+\gamma=\sum_i \gamma_s(\mathbf{r}_i).
 \end{equation}
-We then want to compute the distribution $\rho(\gamma_{\rm NV})$ defined as:
+We then want to compute the distribution $\rho(\gamma)$ defined as:
 \begin{equation}
-\rho(\gamma_{\rm NV})=\int d\{r_i\} \rho(\{r_i\})\, \delta \left( \sum_i \gamma_s(\mathbf{r}_i) - \gamma_{\rm NV} \right).
+\rho(\gamma)=\int d\{r_i\} \rho(\{r_i\})\, \delta \left( \sum_i \gamma_s(\mathbf{r}_i) - \gamma \right).
 \end{equation}
 To do so, we need to determine the distribution of the fluctuators positions $\{r_i\}$. Assuming that they are homogeneously distributed in the bulk of the material, we find:
 \begin{equation}
-\rho(\gamma_{\rm NV})=\frac{e^{-1/(4\gamma_{\rm NV} T)}}{\sqrt{4\pi \gamma_{\rm NV}^3 T}},
+\rho(\gamma)=\frac{e^{-1/(4\gamma T)}}{\sqrt{4\pi \gamma^3 T}},
 \end{equation}
 where the time constant $T$ was introduced and is defined as:
 \begin{equation}
 \frac{1}{T}=\left(\frac{4\pi n_fJ_0\bar \eta}{3}\right)^2 \frac{\pi}{\gamma_f},
 \label{eq 1/T}
 \end{equation}
-with $n$ the fluctuator density and $\bar \eta$ the averaged value of $\abs{eta}$: $\bar \eta = \int \rm{Prob}(\eta) \abs{\eta} d\eta$.
+with $n$ the fluctuator density and $\bar \eta$ the averaged value of $\abs{\eta}$: $\bar \eta = \int \rm{Prob}(\eta) \abs{\eta} d\eta$.
 
 Finally, the polarization dynamics from the ensemble of NV centers can be computed:
 \begin{equation}
-P(t)=\int_0^\infty \rho(\gamma_{\rm NV})\, e^{-\gamma_{\rm NV} t}d\gamma= e^{-\sqrt{t/T}}.
+P(t)=\int_0^\infty \rho(\gamma)\, e^{-\gamma t}d\gamma= e^{-\sqrt{t/T}}.
 \end{equation}
 
 In conclusion, the fluctuators causes a depolarization on the NV ensembles with a timsecale $T$ given by \ref{eq 1/T}, and the dynamics of this depolarization is that of a stretched exponential, unlike the phonon-induced depolarization which is purely exponential. 
 
 It should be noted that the stretched exponential nature of the decay is not proper to the fluctuator model. \citep{hall2016detection} came to the same conclusion by analyzing the resonant coupling of NV centers with a P1 bath. The stretched exponential is a result from localized noise sources, randomly distributed in the bulk (3D).
+
+\subsection{Possible microscopic origin of the fluctuators}
+
+We should note first that a similar problem of spin ensemble relaxation rate increasing with the spin concentration was observed more than six decades ago with phosphorus doped silicon \citep{feher1959electron,honig1960electron}. It was proposed that the cause of the relaxation was the presence of fast relaxing centers coupled to the slow relaxing centers through spin diffusion \citep{honig1960electron, sugihara1963spin, yang1968concentration, vugmeister1978spin, berman2005spin}. 
+
+This conclusion is based on previous observations on the relaxation of nuclear spins \citep{bloembergen1949interaction, de1958relaxation, blumberg1960nuclear}, where some nuclear spins had a considerably reduced lifetime due to their proximity to paramagnetic ions, and the resonant energy transfer between molecules \citep{forster1949experimentelle, eisenthal1964influence, yokota1967effects}, where excited donor molecules are coupled through dipole-dipole interaction to non-excited acceptors, and where the stretched exponential dynamics of the donors was first observed \citep{forster1949experimentelle}.
+
+In the case of P-doped Si, the origin of the fast relaxing centers is thought to be closely packed P impurities, so that the electronic wavefunctions of (at least) two P centers overlap. In that case two phenomena occur: the possibility of electron tunneling, and the apparition of a contact interaction term in the dipole-dipole Hamiltonian (see appendix [REF]). Both of these phenomena could lead to fast spin relaxation, the tunneling because the spin hopping is accompanied by a spin reversal \citep{sugihara1963spin}, and the modulation of the contact interaction strength $J$ by the crystal phonons \citep{honig1960electron}. Technically, the non-contact dipole-dipole interaction is also modulated by the phonons, but the effect is too small to account for the fast depolarization.
+
+Similarly, \citep{choi2017depolarization} suggests that the origin of fluctuators in NV centers are closely packed NV centers or NV-impurity pairs which undergo rapid electron hopping and spin depolarization. To prove their point, they look at the charge dynamics in their sample and find that there is charge recombination in the dark with a corresponding tunneling rate $\sim 10\ \rm ns$. In contrast to P-doped Si, the NV centers are not the most abundant electronic defects in the crystal, this is why the NV$^--$N$^+$ pair in particular is thought to be a likely candidate for the fluctuators \citep{manson2018nv}.
 
 \section{Experimental investigation of the fluctuator model}
 We will now show experimental results related to the predictions of the fluctuator model.
@@ -247,12 +259,12 @@ Fig. \ref{fluct linewidth}-b) shows the dipole-dipole induced relaxation rate $T
 
 We can clearly see that the increase in $T_1^{\rm dd}$ is much broader than the ODMR line of the NV centers, whereas in a standard CR process, we expect the decay rate to be proportional to the spectral overlap of the two classes \citep{hall2016detection}. If we assume that both NV classes spectral response is a gaussian of same width $\sigma$, then the spectral overlap between the two classes is also a gaussian of width $\sqrt{2} \sigma$. Fig. \ref{fluct linewidth}-b) also shows the ODMR line scaled by a factor $\sqrt{2}$, which is still much narrower than the $1/T_1^{\rm dd}$ line.
 
-A potential explanation for the broadening of the $1/T_1^{\rm dd}$ line could be the interaction strength between the NV centers, but for [NV]$\sim$5 ppm, $\expval{\mathcal{H}_{\rm dd}} \sim 46\ \rm kHz$ which cannot explain the $\sim 4\ \rm MHz$ broadening that we observe.
+A potential explanation for the broadening of the $1/T_1^{\rm dd}$ line could be the interaction strength between the NV center and the fluctuator. However, for [NV] $\sim$ 5 ppm, the average dipole-dipole coupling strength between closest NV neighbor is $\expval{\mathcal{H}_{\rm dd}} \sim 46\ \rm kHz$, which cannot explain the $\sim 4\ \rm MHz$ broadening that we observe.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{Figures/deconvolution}
-\caption{Blue curve $1/T_1^{\rm dd}$ data presented in Fig. \ref{fluct linewidth}. Red curve: deconvolution of the blue curve the  by the ODMR line shown on the same figure. Green curve: deconvolution of the red curve the  by the ODMR line. All three curves are fitted with Lorentzian of respective half widths 8.78, 7.49 and 6.38}
+\caption{Blue curve $1/T_1^{\rm dd}$ data presented in Fig. \ref{fluct linewidth}. Red curve: deconvolution of the blue curve the  by the ODMR line shown on the same figure. Green curve: deconvolution of the red curve the  by the ODMR line. All three curves are fitted with Lorentzian of respective half widths 8.78, 7.49 and 6.38 MHz}
 \label{deconvolution}
 \end{figure}
 
@@ -260,7 +272,7 @@ The fluctuator model provides another explanation: the fluctuator spectral respo
 
 We can now extract the fluctuator lifetime from the data in Fig. \ref{fluct linewidth} by taking out the contribution of $T_2^*$ on both the NV and the fluctuator spectral response. 
 
-The first way to do this is to follow the instructions in \citep{hall2016detection} and deconvolve the $1/T_1^{\rm dd}$ data by the ODMR spectrum. The result of the deconvolution is shown in Fig. \ref{deconvolution}: the data is deconvolved once to get the spectral response of the fluctuator (red curve), and a second time to get only the lifetime contribution of the fluctuator (red curve). Fitting with Lorentzians, we find a final value $\Gamma_2 =\frac{\gamma_f}{2} = (2\pi) 6.38\ \rm MHz$ which corresponds to a fluctuator lifetime $T_1^f=\frac{1}{\gamma_f}=12.5\ \rm ns$.
+The first way to do this is to follow the instructions in \citep{hall2016detection} and deconvolve the $1/T_1^{\rm dd}$ data by the ODMR spectrum using a Wiener deconvolution algorithm. The result of the deconvolution is shown in Fig. \ref{deconvolution}: the data is deconvolved once to get the spectral response of the fluctuator (red curve), and a second time to get only the lifetime contribution of the fluctuator (green curve). Fitting with Lorentzians, we find a final value $\Gamma_2 =\frac{\gamma_f}{2} = (2\pi) 6.38\ \rm MHz$ which corresponds to a fluctuator lifetime $T_1^f=\frac{1}{\gamma_f}=12.5\ \rm ns$.
 
 Another, simpler alternative is to consider that the $1/T_1^{\rm dd}$ profile is a Voigt profile given by the convolution of two Gaussians of half width at half maximum (HWHM) $f_G=\sqrt{2 \ln (2)}\sigma$ and a Lorentzian of HWHM $f_L$:
 \begin{align*}
@@ -268,37 +280,59 @@ Another, simpler alternative is to consider that the $1/T_1^{\rm dd}$ profile is
 &\propto \mathcal{L}(f_L)*\mathcal{G}(\sqrt{2} f_G),
 \end{align*}
 where $\mathcal{G}(f_G)$ and $\mathcal{L}(f_L)$ denote Gaussian and Lorentzian functions of HWHM $f_G$ and $f_L$ respectively.
-Then We can use the formula of a pseudo-Voigt profile which gives an approximation of the Voigt profile's HWHM $f$ as a function of $f_G$ and $f_L$ \citep{wiki:VoigtProfile}:
+We can then use the formula of a pseudo-Voigt profile which gives an approximation of the Voigt profile's HWHM $f$ as a function of $f_G$ and $f_L$ \citep{wiki:VoigtProfile}:
 \begin{equation}
 f = [f_G^5 + 2.69269 f_G^4 f_L + 2.42843 f_G^3 f_L^2 + 4.47163 f_G^2 f_L^3 + 0.07842 f_G f_L^4 + f_L^5]^{1/5}.
 \end{equation}
 
 With $f=8.78\ \rm MHz$ and $\sqrt{2}f_G=4.33\ \rm MHz$, I find $f_L=6.54\ \rm MHz$ for a final lifetime value $T_1^f = 12.2\ \rm ns$, a value consistent with the one found with the deconvolution method.
 
-Doing similar calculations, \citep{choi2017depolarization} found $\gamma_f=1/T_1^f=3.3\ \rm MHz$, although given their experimental values - full width Half maximum (FWHM) of 25 MHz for the lifetime profile and 9.3 MHz for the ODMR line - I obtain using my method $\gamma_f= 15.7\ \rm MHz$ and $T_1^f=10.1\ \rm ns$. The main difference comes from the fact that they considered the spectral half-width of the fluctuators to be $2\gamma_f$ whereas I consider it to be $\gamma_f/2$.
+Doing similar calculations, \citep{choi2017depolarization} found $\gamma_f=1/T_1^f=3.3\ \rm MHz$, although given their experimental values - full width at half maximum (FWHM) of 25 MHz for the lifetime profile and 9.3 MHz for the ODMR line - I obtain using my method $\gamma_f= 15.7\ \rm MHz$ and $T_1^f=10.1\ \rm ns$. The main difference comes from the fact that they considered the spectral half-width of the fluctuators to be $2\gamma_f$ whereas I consider it to be $\gamma_f/2$.
 
-\section{Microscopic explanation of the fluctuators}
-\subsection{Parallel with P-doped Si}
-A similar 
-"Electron Spin-Lattice Relaxation in Phosphorus-Doped Silicon"
 
-"On the interaction of nuclear spins in a crystalline lattice"
+\section{Trouver un bon titre}
 
-"Concentration- and Compensation-Dependent Spin-Lattice Relaxation in n-Type Silicon"
-\subsection{Microscopic origin of the fluctuators}
-On va dire subsection plutot.
-Du coup ici discussion tunneling Vs Modulation of J Vs surface spins
+The main tool to probe NV-NV CR is to use the co-resonances between the NV classes. While it is not possible to completely shut down the CR, because the NV centers from the same class are always resonant with each other, we can tune the density of resonant NV centers (and supposedly resonant fluctuators) by a factor of 4 by playing with the inter-class co-resonances. We will discuss here the various ...
 
-Attention quand même, ce process dépend e la température si je dis pas de bêtises, c'est p-e pas ça chez nous. Nan ok, ça modifie gammaf mais pas le T1 directement. P-e que c'est mesurable ?
+\subsection{Geometric conditions for inter-class resonance}
 
-Attention bis : C'est l'exchange interaction (le terme en delta) qui est modifié, visiblement le couplage dipolaire est trop faible pour expliquer ça (papier de Pines et "Spin Resonance of Impurity Atoms in Silicon")
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Figures/Resonance_geometries}
+\caption{ODMR spectra on sample ADM-15-3 as a function of the magnetic field orientation. The field amplitude is $\sim 60\ \rm G$. Red numbers represent the number of resonant classes for each ODMR line. The cubes represent the diamond unit cell, and the red planes/arrow the possible orientations of the magnetic field}
+\label{ODMR_geometries}
+\end{figure}
 
-\section{Geometric conditions for NV-NV resonance}
-En gros la carte, les 5 ESR en SI du PRL (lol) et le 121 Vs 22
+There are four possibilities to obtain inter-class resonance (outside of the non-equivalent CR discussed in sec. \ref{non_equi_valent_CR}). These possibilities are:
+\begin{itemize}
+\item $\mathbf{B} \in \{110\}$. We refer by $\{110\}$ as any plane orthogonal to a $\langle 110 \rangle$ or equivalent direction. In this magnetic configuration, two classes are at resonance and the two other ones are spectrally isolated.
+\item $\mathbf{B} \in \{100\}$. In this magnetic configuration, the four classes form two pairs of co-resonance.
+\item $\mathbf{B} \parallel \langle 111 \rangle$. In this configuration discussed in the last chapter, one class is aligned with the magnetic field and is spectrally isolated while the three other form a resonant triplet.
+\item $\mathbf{B} \parallel \langle 100 \rangle$. In this configuration also discussed in the last chapter, the four classes are resonant.
+\end{itemize}
+We should add to this list the case $\mathbf{B}=0$ where all four classes are also resonant, and any other possibility (which I will call random $\mathbf{B}$) where all four classes are spectrally separated. 
+
+An ODMR spectrum and a representation of the magnetic field in the diamond unit cell for each of these six possibilities is shown in Fig. \ref{ODMR_geometries}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Figures/carte}
+\caption{PL contrast as a function of the magnetic field polar and azimuthal angle with respect to the [100] axis on sample CVD-pink. The field amplitude is $\abs{B} \sim 115 G$. The locus of the magnetic field in specific planes is noted by red dashed lines.}
+\label{Carte}
+\end{figure}
+
+This relation between NV-NV class resonances and the magnetic field being in specific crystalline planes or directions means that we can determine the crystal main axes simply by PL experiments.
+
+Fig. \ref{Carte} shows a map where we simply monitored the PL of sample CVD-pink while scanning the magnetic field angle around the [001] axis, thanks to a permanent magnet on a motorized goniometer. We have also reported the locus of $\mathbf{B}$ being in the planes [100], [010], [110] and [$1\bar 1 0$].
+
+We know that when $\mathbf{B}$ belongs to any of these four planes, there is a co-resonance between at least two NV classes. This co-resonance leads to an increase in NV-NV CR (or NV-fluctuator CR) and a faster depolarization of the spins involved, which ultimately leads to a drop in PL. We can indeed see in fig. \ref{Carte} that there is clear correlation between the loci of $\mathbf{B}$ and drops in PL. We can also see that the PL is at its lowest when $B\parallel [001]$, which corresponds to a four class degeneracy.
+
+\subsection{$T_1$ dependency on magnetic field}
 
 \section{Limitations of the fluctuator model}
 La modification des T1, tjr plus petite que prévue (faire un tableau), et les T1 non-exponentiels (je crois que y'a des cas sur Ludo, bon courage mdr)
 Parler aussi des alternatives au fluctuator model, ici ou dans la 2e section
+Bon du coup parler du fait que ça n'inclut pas la diffusion entre NV ni la saturation des fluctuateurs. A voir si ça mérite une full section ou une gross ouverture à la fin.
 
 \printbibliography
 \end{document}
