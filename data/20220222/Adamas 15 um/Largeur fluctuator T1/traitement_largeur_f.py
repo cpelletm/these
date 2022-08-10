@@ -88,7 +88,7 @@ def full_animation():
 	# plt.legend()
 	plt.show()
 
-full_animation()
+# full_animation()
 
 def plot_esr_centre(ax):
 	fnames,fval=extract_glob('Série ESR 2',16)
@@ -172,10 +172,10 @@ def anim_ESR():
 
 	plt.show()
 
-# fnames,fval=extract_glob('Série T1 2',15)
+fnames,fval=extract_glob('Série T1 2',15)
 
-# fnames.remove(fnames[43])
-# fval.remove(fval[43])
+fnames.remove(fnames[43])
+fval.remove(fval[43])
 
 def anim_T1():
 	x,y=extract_data(fnames[0],ycol=5)
@@ -200,6 +200,7 @@ def plot_T1(ax):
 	taus=[]
 	for i in range(len(fnames)):
 		x,y=extract_data(fnames[i],ycol=5)
+		# popt,yfit=stretch_et_phonons(x,y,T1ph=0.003,fixed=True)
 		popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
 		taus+=[popt[1]]
 
@@ -207,12 +208,12 @@ def plot_T1(ax):
 	y=1/y
 	# y=y-min(y)
 	# y=y/max(y)
-	color = next(ax1._get_lines.prop_cycler)['color']
+	color = next(ax._get_lines.prop_cycler)['color']
 	ax.plot(x,y,'o',markerfacecolor='None',ms=8,mew=2,label='1/T1',color=color)
 
 	popt,yfit=lor_fit(x,y)
 	print(popt)
-	color = next(ax1._get_lines.prop_cycler)['color']
+	color = next(ax._get_lines.prop_cycler)['color']
 	ax.plot(x,yfit,lw=2,label='1/T1 fit FWHM=%4.3f MHz'%(2*popt[2]),color=color)
 
 
@@ -233,3 +234,5 @@ def plot_largeur_fluct_et_ESR():
 	ax1.legend(loc='center left')
 	ax2.legend(loc='center right')
 	plt.show()
+
+plot_largeur_fluct_et_ESR()

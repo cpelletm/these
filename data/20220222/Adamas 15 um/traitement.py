@@ -58,7 +58,7 @@ def random_plot():
 	plt.show()
 
 
-random_plot()
+# random_plot()
 def plot_champs_transverses():
 	fname='T1 champ transverse très faible classe 4 (DQ)'
 	x,y=extract_data(fname,ycol=5)
@@ -135,28 +135,81 @@ def fig121_Vs_22():
 	plt.show()
 
 
-def test_fits_t1_phonon():
+def test_fits_t1_phonon(fname, valRef=None,fixed=True):
 	#Bon après pas mal de test, c'est bien de la merde les fits avec stretch et phonon, le T1 stretch il danse vraiment la salsa et les valeurs c'est assez nimp
 	#C'est peut etre a cause du coté micro, il faudrait vraiment que je fasse plus de test sur les gros adamas pour en être sur. Et limite broyer des diamants aussi
 
 	#En attendant si tu veux des valeurs, mieux vaut prendre des stretch arb. alpha=0.8 fonctionne bien
-	T1ph=1/1800
+	# T1ph=1/1800
+	T1ph=2.11
 
-	fname='T1 1 classe pour le champ transverse moyen'
 
-	# fname='T1 2x2 autre raie'
-	# fname='T1 2x2'
-	# fname='T1 2x2 droite (2)'
-	# fname='T1 2x2 gauche (2)'
-	# fname='T1 121 nuit'
-	# fname='T1 121 (3)'
-	# fname='T1 121 (4)'
-	# fname='T1 1x2x1'
-	# fname='T1 0B court'
+	
 	x,y=extract_data(fname,ycol=5)
+	y=y/max(y)
+	x=x*1000
 	plt.plot(x,y)
-	# popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=False)
-	popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
+	# popt,yfit=exp_fit(x,y)
+	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph,fixed=fixed)
+	# popt,yfit=stretch_arb_exp_fit_zero(x,y,alpha=0.8,fixed=True)
 	plt.plot(x,yfit)
-	print(1/popt[1])#,popt[2])
-	plt.show()
+	if valRef:
+		print(popt[1],valRef/popt[1])
+		return(popt[1],valRef/popt[1])
+	else :
+		try :
+			print(popt[1],popt[2])
+			return(popt[1],popt[2])
+		except :
+			print(popt[1])
+			return(popt[1])
+
+
+# fname='T1 C13 0B nuit'
+# fname='T1 1 classe pour le champ transverse moyen'
+
+# fname='T1 2x2 autre raie'
+# fname='T1 2x2'
+# fname='T1 2x2 droite (2)'
+# fname='T1 2x2 gauche (2)'
+
+# fname='T1 121 nuit'
+# fname='T1 121 (3)'
+# fname='T1 121 (4)'
+# fname='T1 1x2x1'
+
+# fname='T1 100 court'
+
+# fname='T1 100'
+# fname='T1 3x1 court'
+# fname='T13x1'
+# fname='Vrai T1 1x3'
+# fname='T1 0B long'
+
+# fname='T1 0B court'
+
+# test_fits_t1_phonon('T1 C13 0B nuit',fixed=False) #T1dd=5.34, T1ph=2.11
+
+# valRef=test_fits_t1_phonon(fname='T1 1 classe pour le champ transverse moyen')
+# test_fits_t1_phonon(fname='T1 2x2 autre raie',valRef=valRef)
+# test_fits_t1_phonon(fname='T1 121 nuit',valRef=valRef)
+# test_fits_t1_phonon(fname='Vrai T1 1x3',valRef=valRef)
+# test_fits_t1_phonon(fname='T1 100',valRef=valRef)
+# test_fits_t1_phonon(fname='T1 0B long',valRef=valRef)
+
+fname='T1 100 court'
+nmax=-1
+x,y=extract_data(fname,ycol=5)
+x=x*1e3
+y=y/max(y)
+plt.plot(x[:nmax],y[:nmax],'x',markerfacecolor="None",ms=7,mew=1,label='Experimental Data',color=color(0))
+popt,yfit=exp_fit_zero(x,y)
+print(popt)
+plt.plot(x[:nmax],yfit[:nmax],lw=3,label=r'exp($-t/\tau$)',color=color(1))
+popt,yfit=stretch_exp_fit_zero(x,y)
+print(popt)
+plt.plot(x[:nmax],yfit[:nmax],lw=3,label=r'exp($-\sqrt{t/\tau}$)',color=color(2))
+
+plt.legend()
+
+plt.show()
