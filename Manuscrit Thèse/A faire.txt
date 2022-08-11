@@ -22,7 +22,8 @@ Manips :
 
 Check le fichier (les trucs sur le VH- et tout)
 Variance d'Allan/sensi en fonction du temps d'acquisition : cf PRX 2020 de lukin, Clevenson 2015 et Mitchell 2020
-Comparaison PL rose+4 sumis -> choper une estimation de la concentration des sumis (si possible) -> mesurer largeur fluct sur les 4 sumis + T1 0B et 1x1x1x1. (rappel : Hdd (donc 1/T1) scale linéairement avec la concentration)
+Comparaison PL rose+4 sumis -> choper une estimation de la concentration des sumis (si possible) -> mesurer largeur fluct sur les 4 sumis + T1 0B et 1x1x1x1. (rappel : Hdd (donc 1/T1) scale linéairement avec la concentration. Mdr sacré rappel. Boloss)
 Sensi experimental sur le flanc d'ESR pour avoir une comparaison (sur un adamas 15 um ou sur le rose, à voir. Si possible sur la 100 pour être honnête)
 Choper un spectre de bruit APD/PD avec le laser vert sylo/pulsé
-T1 6 configurations de champs mag sur le rose (à moyenner longtemps, à refaire en septembre quand j'aurais le temps)
+T1 6 configurations de champs mag sur le rose (à moyenner longtemps, à refaire en septembre quand j'aurais le temps). Yep j'ai check les précédentes data et c'est de la merde.
+(long donc plus tard): Sur le rose, faire une mesure de gamma_f (donc croiser 2 classes et mesurer le T1), et une mesure (aussi du T1) du croisement avec les VH. Vérifier si les fluctuators sont lorentziens et les VH Gaussiens, ou si la mesure donne tjr une Lorentzienne. Faudra sans doute implanter une mesure ou tu regardes juste (PL(0)-PL(T1/2))/PL(0) sinon ça sera sans doute trop long. Encore que...

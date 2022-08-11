@@ -22,18 +22,16 @@
 \title{}
 \begin{document}
 \chapter{NV-NV cross-relaxations : the fluctuator model}
-In this chapter,...
-
-
+In this chapter we will look at the phenomenon of cross-relaxations between NV centers, both from an experimental and theoretical point of view. We will see how a model of fast and slow relaxing centers, the fluctuator model, can explain most of the experimental observations, and finally we will see some limitations of the model.
 
 \section{Experimental observation of NV-NV cross-relaxation}
-Before we discuss the theoretical complications related to NV-NV cross-relaxations (CR), let us first show the unambiguous experimental proof of the presence of NV-NV CR with dense NV ensembles ([NV]$\gtrsim$ 1 ppm).
+Before we discuss the theoretical implications of NV-NV cross-relaxations (CR), let us first show the unambiguous experimental proof of the presence of NV-NV CR in the samples with dense NV ensembles ([NV]$\gtrsim$ 1 ppm).
 \subsection{NV-NV CR between nonequivalent NV centers}
 \label{non_equi_valent_CR}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/NV-NV_non_equivalent}
-\caption{label. Taken from \citep{armstrong2010nv}}
+\caption{a) Representation of two non equivalent spins resonantly coupled. One spin is aligned with the magnetic field and therefore well polarized, while the second spin is not. b) Simulated frequencies for the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions when $\mathbf{B}\parallel [111]$ for the class aligned with B, and the 3 equivalent classes not aligned with B. c) Taken from \citep{armstrong2010nv}, PL change of an ensemble of NV centers as a magnetic field is scanned along the [111] axis.}
 \label{non equivalent NV-NV}
 \end{figure}
 NV-NV CR was first observed more than thirty years ago \citep{holliday1989optical, van1989cross}. The first observations were between non-equivalent NV centers, meaning that the two NV centers involved in the dipole-dipole coupling were not polarized equally.
@@ -65,7 +63,7 @@ More recently, experiments \citep{jarmola2012temperature, mrozek2015longitudinal
 
 I refer by equivalent NV centers to NV centers with the same spin Hamiltonian. This means either NV center from the same class, or NV centers from different classes with the same projection of the magnetic field along their axis. Equivalent NV centers are by nature resonant with each other, and therefore susceptible to CR.
 
-Fig. \ref{equivalent NV-NV} shows an experimental observation of equivalent NV-NV Cr. The key to observe NV-NV CR is to bring some NV centers in and out of resonance with other NV centers, which we can do with the different NV classes. To do so, we need to add an initial bias magnetic field in addition to the scanned magnetic field, as represented in Fig. \ref{equivalent NV-NV}-b). %When doing so, the magnetic field felt by the diamond won't have a fixed orientation during the scan, and when the magnetic field crosses certain crystalline planes (detailed below), its projection on two or more classes of NV centers will be the same.
+Fig. \ref{equivalent NV-NV} shows an experimental observation of equivalent NV-NV CR. The key to observe NV-NV CR is to bring some NV centers in and out of resonance with other NV centers, which we can do with the different NV classes. To do so, we need to add an initial bias magnetic field in addition to the scanned magnetic field, as represented in Fig. \ref{equivalent NV-NV}-b). %When doing so, the magnetic field felt by the diamond won't have a fixed orientation during the scan, and when the magnetic field crosses certain crystalline planes (detailed below), its projection on two or more classes of NV centers will be the same.
 
 Fig. \ref{equivalent NV-NV}-c) shows the transition frequencies of the $\ket{0}\to\ket{-1}$ transition for the 4 classes of NV centers on sample ADM-15-1, an HPHT micro-diamond with $[\rm NV]\sim 3\ \rm ppm$. There are three magnetic field values $B_{\rm scan} \sim$ 12, 42 and 77 G for which there is an inter-class resonance. Each of these resonances correspond to a "geometric" resonance where the $B$ field is in a symmetry plane between the two classes, meaning that the two resonant NV classes are indeed equivalent.
 
@@ -79,18 +77,18 @@ This observation, and similar ones done by many groups, seem to indicate that th
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/inhomogene_2_spins}
-\caption{label}
+\caption{a) Schematics of the model: we consider a four level system consisting of 2 levels of 2 NV centers resonantly coupled through the flip-flop rate $\Gamma_{\rm dd}$. These two NV centers are each pumped in their respective $\ket{0}$ state via the green laser with a rate $\Gamma_{\rm las}$, and have their own relaxation rate $\Gamma_1$ and $\Gamma_1^*$ respectively. b) Average population of the two NV centers in the $\ket{0}$ state in the steady state as a function of $\Gamma_{\rm dd}$ and $\Gamma_1^*$. The steady state was computed by solving a classical rate equation where I fixed $\Gamma_{\rm las}=1000\ \rm Hz$ and $\Gamma_1=300\ \rm Hz$.}
 \label{inhomogene}
 \end{figure}
 A likely explanation to the observed NV-NV CR is that the NV centers are not all equivalents.
 
 Indeed, if we assume that, for instance, the relaxation rate $\Gamma_1=1/T_1$ is not strictly the same for each NV centers, but instead follows a certain distribution $\rho(\Gamma_1)$, then CR between NV centers with different $\Gamma_1$ can explain the observations in Fig. \ref{equivalent NV-NV}.
 
-Fig. \ref{inhomogene} illustrates this case. We are assuming here a coupling between two NV centers with respective relaxation rate $\Gamma_1$ and $\Gamma_1^*$. Fig. \ref{equivalent NV-NV}-a) illustrates the model I chose for this system: $\Gamma_{\rm las}$ represent the optical pumping rate from the $\ket{+1}$ to the $\ket{0}$ state, and $\Gamma_{\rm dd}$ the flip-flop rate between the two spins. I consider here only the incoherent dynamics of the population which I model with various rates. I also only consider the $\ket{0}$ and $\ket{+1}$ states as the results would be the same for the $\ket{0}$ and $\ket{-1}$ states. 
+Fig. \ref{inhomogene} illustrates this case. Our model here consists of two NV centers resonantly coupled with two separate relaxation rates $\Gamma_1$ and $\Gamma_1^*$. To complete the model, we add the rate $\Gamma_{\rm las}$ which represent the optical pumping rate from the $\ket{+1}$ to the $\ket{0}$ state of each spin, and $\Gamma_{\rm dd}$ the flip-flop rate between the two spins. We only consider here the incoherent dynamics of the population, modeled with rates. We also only consider the $\ket{0}$ and $\ket{+1}$ states as the results would be the same for the $\ket{0}$ and $\ket{-1}$ states. 
 
-By finding the steady state of these rate equations, I can compute the final population in the $\ket{0}$ for both spins, which I will assume be proportional to the total PL. Fig. \ref{inhomogene}-b) shows this $\ket{0}$ population as a function of the flip-flop rate $\Gamma_{\rm dd}$ for various values of $\Gamma_1^*$.
+By finding the steady state of these rate equations, we can compute the final population in the $\ket{0}$ for both spins, which we will assume to be proportional to the total PL. Fig. \ref{inhomogene}-b) shows this $\ket{0}$ population as a function of the flip-flop rate $\Gamma_{\rm dd}$ for various values of $\Gamma_1^*$.
 
-We can see that when $\Gamma_1^*=\Gamma_1$, as expected, the PL is not modified by the coupling of the two spins regardless of the coupling strength. When $\Gamma_1^*>\Gamma_1$ however, not only is the starting PL slightly lower since NV$_2$ is less polarized, but the PL now decreases as we increase the coupling strength. This effect, which is the origin of the CR contrast, is stronger when the difference between $\Gamma_1$ and $\Gamma_1^*$ is higher.
+We can see that when $\Gamma_1^*=\Gamma_1$, as expected, the PL is not modified by the coupling of the two spins regardless of the coupling strength. When $\Gamma_1^*>\Gamma_1$ however, not only is the starting PL slightly lower since NV$_2$ is less polarized, but the PL now decreases as we increase the coupling strength. This effect, which is at the origin of the CR contrast, is stronger when the difference between $\Gamma_1$ and $\Gamma_1^*$ is important.
 
 \subsection{Presentation of the fluctuator model}
 Choi et al. in \citep{choi2017depolarization} take this approach a step further by separating the NV centers into two groups: "normal" NV centers with a phonon-limited lifetime outside of dipole-dipole interaction, and "fluctuators" which are NV centers with an intrinsic, extremely fast relaxation mechanism. We are assuming that the fluctuator relaxation rate, $\gamma_f$ is much greater than the optical pumping rate $\Gamma_{\rm las}$. The fluctuators are therefore unpolarized and effectively act as dark spins, similarly to what we discussed in the last chapter.
@@ -99,7 +97,7 @@ We should note here that, while this simplifications seem a bit extreme, the flu
 
 We will consider the fluctuators act as a Markovian bath, meaning that the fluctuator density matrix will always read $\rho = \frac{1}{3} I$, regardless of its interaction with NV centers. With this assumption, we can compute the modification caused by the fluctuators on the rest of the NV lifetimes.
 
-Other possibilities for the dipole-dipole dependent relaxation rate were considered, such as spin diffusion to non-polarized NV centers (outside of the laser spot) or superradiance, but they were not considered to be viable explanations \citep{choi2017depolarization}
+Other possibilities to explain the change in the relaxation rate were considered, such as spin diffusion to non-polarized NV centers (outside of the laser spot) or superradiance, but they were not considered to be viable explanations \citep{choi2017depolarization}.
 %\begin{pmatrix}
 %0.33&0&0 \\
 %0&0.33&0 \\
@@ -119,7 +117,7 @@ We then introduce the dimensionless number $\eta$ defined as:
 \begin{equation}
 \eta^2=\frac{1}{3} (\abs{g}^2+\abs{h}^2)  \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2},
 \end{equation}
-where $\gamma_f=1/T_1^f$ is the fluctuator decay rate. This number $\eta$ encapsulate both the geometry of the problem (trhough $g$ and $h$) and the resonance condition between the NV center and the fluctuator.
+where $\gamma_f=1/T_1^f$ is the fluctuator decay rate. This number $\eta$ encapsulates both the geometry of the problem (through $g$ and $h$) and the resonance condition between the NV center and the fluctuator.
 
 Finally, the additional depolarization rate induced by the fluctuator on the NV center reads:
 \begin{equation}
@@ -131,7 +129,7 @@ Compared to eq. [REF], we have replaced here $\Gamma_2^*$ by $\gamma_f$. This is
 
 We now need to compute the average depolarization caused by the ensemble of fluctuators on the ensemble of NV centers.
 
-We consider each fluctuator as in independant depolarization source, therefore the depolarization on a single NV center reads: 
+We consider each fluctuator as in independent depolarization source, therefore the depolarization on a single NV center reads: 
 \begin{equation}
 \gamma=\sum_i \gamma_s(\mathbf{r}_i).
 \end{equation}
@@ -291,7 +289,7 @@ Doing similar calculations, \citep{choi2017depolarization} found $\gamma_f=1/T_1
 
 \section{Resonance between several NV classes}
 
-The main tool to probe NV-NV CR is to use the co-resonances between the NV classes. While it is not possible to completely shut down the CR, because the NV centers from the same class are always resonant with each other, we can tune the density of resonant NV centers (and supposedly resonant fluctuators) by a factor of 4 by playing with the inter-class co-resonances. We will discuss here the various ...
+The main tool to probe NV-NV CR is to use the co-resonances between the NV classes. While it is not possible to completely shut down the CR, because the NV centers from the same class are always resonant with each other, we can tune the density of resonant NV centers (and supposedly resonant fluctuators) by a factor of 4 by playing with the inter-class co-resonances. We will discuss here the various scenarios where NV classes overlap, and the quantitative impact it has on the centers' spin $T_1$.
 
 \subsection{Geometric conditions for inter-class resonance}
 
@@ -326,7 +324,7 @@ Fig. \ref{Carte} shows a map where we simply monitored the PL of sample CVD-pink
 
 We know that when $\mathbf{B}$ belongs to any of these four planes, there is a co-resonance between at least two NV classes. This co-resonance leads to an increase in NV-NV CR (or NV-fluctuator CR) and a faster depolarization of the spins involved, which ultimately leads to a drop in PL. We can indeed see in fig. \ref{Carte} that there is clear correlation between the loci of $\mathbf{B}$ and drops in PL. We can also see that the PL is at its lowest when $B\parallel [001]$, which corresponds to a four class degeneracy.
 
-\subsection{$T_1$ dependency on magnetic field configuration}
+\subsection{Quantitative modification of $T_1$}
 
 \begin{table}[htbp]
 \centering
@@ -358,11 +356,15 @@ Table \ref{T1 champ mag} shows these predicted values, along with experimentally
 
 While the general order of $\Gamma_1^{\rm dd} (\mathbf{B})$ is the same for the theoretical and experimental values, the theoretical values overestimate can significantly the experimental values, by more than a factor of 3 for the higher degeneracy scenarios. 
 
-It should be noted that the experimental values were heavily influenced by the choice of the parameter $T_1^{\rm ph}$. Using for example $T_1^{\rm ph}=2.5\ \rm ms$ gave results closer to the theoretical ones. Nevertheless, the fluctuator model generally tends to overestimate the depolarization rates. \citep{choi2017depolarization} for instance found that a 2-class degeneracy (the author did not precise whether this was a $\mathbf{B} \in \{110\}$ or $\mathbf{B} \in \{100\}$ configuration) yielded a depolarization rate $\sim 4$ times higher than that of a single isolated class, a value comparable to the one we found in table \ref{T1 champ mag}. We can also see in Fig. \ref{fluct linewidth} that a $\mathbf{B} \in \{110\}$ configuration lead to a $\sim 2.5$ times increase in $\Gamma_1^{\rm dd}$, compared to the predicted factor of 10.
+It should be noted that the experimental values were heavily influenced by the choice of the parameter $T_1^{\rm ph}$. Using for example $T_1^{\rm ph}=2.5\ \rm ms$ gave results closer to the theoretical ones. Nevertheless, the fluctuator model generally tends to overestimate the depolarization rates.The authors of \citep{choi2017depolarization} for instance found that a 2-class degeneracy (the authors did not precise whether this was a $\mathbf{B} \in \{110\}$ or $\mathbf{B} \in \{100\}$ configuration) yielded a depolarization rate $\sim 4$ times higher than that of a single isolated class, a value comparable to the one we found in table \ref{T1 champ mag}, and two times smaller than the predicted one. We can also see in Fig. \ref{fluct linewidth} that a $\mathbf{B} \in \{110\}$ configuration lead to a $\sim 2.5$ times increase in $\Gamma_1^{\rm dd}$, 4 times smaller than the predicted factor of 10.
 
-This failure of the fluctuator model to accurately predict the changes in $T_1$ is one of the reasons that led us to believe that the model is incomplete.
+The failure of the fluctuator model to accurately predict the changes in $T_1$ is one of the reasons that led us to believe that the model is incomplete.
 
 \section{Conclusion and perspectives}
+
+In conclusion, we have seen in this chapter that dense NV ensemble present "anormal" CR between the NV centers, and we have shown how the fluctuator model developed by Choi et al. in \citep{choi2017depolarization} can explain this behavior. The fluctuator model not only explains the NV-NV CR, but also correctly predicts the stretched exponential lifetime profile. It also correctly predicts that the fluctuators have a broader spectral response than the NV centers. Nevertheless, the model does not describe perfectly every aspects of NV-NV relaxation, and still has some unknown such as the very nature of the fluctuators. 
+
+In what follows I will describe what I think would be interesting investigation points to further understand the NV-NV relaxation and the fluctuator model.
 
 \subsection{Limitations of the fluctuator model}
 \begin{figure}[h]
@@ -372,13 +374,25 @@ This failure of the fluctuator model to accurately predict the changes in $T_1$ 
 \label{anormal T1}
 \end{figure}
 
-I already mentioned that the discrepancy between the theoretical and experimental $T_1$  values were an issue of the current fluctuator model, although the discrepancy could come in part from the $T_1$ fitting procedure. Another, more glaring problem is the fact that some dipole-dipole mediated $T_1$ are not stretched exponential.
+I already mentioned that the discrepancy between the theoretical and experimental $T_1$  values were an issue of the current fluctuator model, although the difference could come in part from the $T_1$ fitting procedure. Another, more glaring problem is the fact that some $T_1$ profile are not stretched exponential.
 
-Fig. \ref{anormal T1} shows 
+Fig. \ref{anormal T1} shows $T_1$ measurement on sample ADM-15-4, either on a single isolated class ,where the dipole-dipole interactions are at their weakest, or on all four resonant classes at $\mathbf{B}=0$, where the interactions are at their strongest.
 
-La modification des T1, tjr plus petite que prévue (faire un tableau), et les T1 non-exponentiels (je crois que y'a des cas sur Ludo, bon courage mdr)
-Parler aussi des alternatives au fluctuator model, ici ou dans la 2e section
-Bon du coup parler du fait que ça n'inclut pas la diffusion entre NV ni la saturation des fluctuateurs. A voir si ça mérite une full section ou une gross ouverture à la fin.
+For the single isolated class, the $T_1$ profile seems to be closer to a stretch exponential, which is coherent with the fact that the lifetime $T_1 \sim 1\ \rm ms$ is already smaller than the expected phonon limited lifetime $T_1^{\rm ph} \sim 5\ \rm ms$. However when $\mathbf{B}=0$, although the lifetime gets $\sim$ 10 times shorter, the profile becomes clearly exponential. 
+
+The spin dynamics in this sample is still dominated by resonant dipole-dipole interactions: the more classes are brought to resonance, the shorter the spin $T_1$. But here, the profile gets closer to a pure exponential when $T_1$ decreases, which is in complete contradiction with the fluctuator model.
+
+This particular sample was a 15 $\mu$m micro-diamond, which could have a role in this observation since we know that spins near the surface have a reduced $T_1$ \citep{rosskopf2014investigation}, and micro-diamonds have proportionally more near surface spins. But other diamonds from the same batch, such as the one measured in Fig. \ref{stretch_or_not_stretch}, show clearly stretched exponential profile in the same conditions, and meanwhile some bulk diamonds show very short non-stretched exponential lifetimes, similar to the present sample.
+
+It seems therefore that the current fluctuator model does not correctly describe the spin dynamics of every NV-dense samples. Looking at what was previously done for P-doped SI \citep{vugmeister1978spin} or for resonant energy transfer between molecules \citep{yokota1967effects}, the fluctuator model could probably be improved by taking into account the finite lifetime of the fluctuators (i.e. the saturation of the NV-fluctuator CR), and the spin diffusion between NV centers (the fluctuator model only considers NV-fluctator interactions and not NV-NV interactions).
+
+\subsection{Investigation of the fluctuators nature}
+While the hypothesis of fluctuators being clusters of NV centers or NV-other spins is solidified by the precedents in P-doped Si \citep{honig1960electron} or F centers in KCl \citep{warren1964spin}, there are still many unknowns on the exact nature of the fluctuators. There are at least two aspects that I think should be investigated.
+
+The first one would be to study the fluctuator spectral profile on various samples showing NV-NV CR. In particular it would be interesting to know whether this profile is always Lorentzian, and what its linewidth is. In the sample I studied on Fig. \ref{fluct linewidth}, I found a value for $\gamma_f$ surprisingly similar to the one found in \citep{choi2017depolarization}, even tough my sample only had $[\rm NV] \sim 3 ppm$ compared to the $[\rm NV] \sim 45 ppm$ sample used in \citep{choi2017depolarization}. If $\gamma_f$ was found to be somewhat of a constant among all samples showing NV-NV CR, this would give us a lot of information on the potential nature of the fluctuators. Studying the temperature dependency of $\gamma_f$ could also give us information on whether the depolarization mechanism is due to tunneling or modulation of the $J-$coupling by the phonons.
+
+The other aspect would be to identify potential defects that could form fluctuators when paired with NV centers. The main candidate for this would be substitutional nitrogen (P1 or P1$^+$ centers) since they are the most abundant electronic spin species in the diamond we use. The ideal way to confirm this hypothesis would be to compare the spin $T_1$ for  different samples with the same [NV] concentration, but different [P1] concentration. If indeed P1 centers play a role in the presence of fluctuators, we would expect a shorter NV $T_1$ time in the sample with high P1 concentration.
+
 
 \printbibliography
 \end{document}
