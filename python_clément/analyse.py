@@ -634,10 +634,16 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 			self.H_E_transverse=np.array([[0,0,0],[0,0,1],[0,1,0]])
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
-		self.Bz=abs(self.cs[c-1].dot(B.cartesian)) #Attention, ici Bz est dans la base du NV (Bz')
-		#Attention bis : je considère que z' est toujours aligné (dans le meme hémisphère) que B
-		self.Bx=np.sqrt(abs(B.amp**2-self.Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
-		self.H=D*self.Sz2+gamma_e*(self.Bz*self.Sz+self.Bx*self.Sx)+E*self.H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
+		if c==5:
+			self.Bz=abs(B.z)
+			self.Bx=abs(B.x)
+			self.By=abs(B.y)
+		else :
+			self.Bz=abs(self.cs[c-1].dot(B.cartesian)) #Attention, ici Bz est dans la base du NV (Bz')
+			#Attention bis : je considère que z' est toujours aligné (dans le meme hémisphère) que B
+			self.Bx=np.sqrt(abs(B.amp**2-self.Bz**2))#le abs est la pour éviter les blagues d'arrondis. Je mets tout ce qui n'est pas sur z sur le x
+			self.By=0
+		self.H=D*self.Sz2+gamma_e*(self.Bz*self.Sz+self.Bx*self.Sx+self.By*self.Sy)+E*self.H_E_transverse #Rajoute des fioritures si tu veux. Un peu que je veux
 	def transitions(self):
 		egva,egve=np.linalg.eigh(self.H)
 		egva=np.sort(egva)
@@ -665,8 +671,12 @@ class magneticField():
 			self.amp=amp
 		elif theta=='cartesian' :
 			self.amp=np.sqrt(x**2+y**2+z**2)
-			self.theta=np.arccos(z/self.amp)
-			self.phi=np.arctan2(y,x)
+			if self.amp==0:
+				self.theta=0
+				self.phi=0
+			else :
+				self.theta=np.arccos(z/self.amp)
+				self.phi=np.arctan2(y,x)
 			self.x=x
 			self.y=y
 			self.z=z

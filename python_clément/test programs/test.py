@@ -1742,13 +1742,5 @@ def test_convolution():
 	plt.show()
 
 
-# test_convolution()
 
 
-
-print(1.71/0.521)
-print(1.71/0.588)
-print(1.71/0.252)
-print(1.71/0.205)
-print(1.71/0.161)
-print(1.71/2.11)

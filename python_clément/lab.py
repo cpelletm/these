@@ -64,7 +64,7 @@ else :
 	raise(ValueError('Your computer was not detected in the list, please add its mac adress at the beginning of lab.py'))
 
 class Graphical_interface(QMainWindow) :
-	def __init__(self,*itemLists,title='Unnamed',theme=defaultTheme,size='default'):
+	def __init__(self,*itemLists,title='Unnamed',theme=defaultTheme,size='default',keyPressed='default'):
 		super().__init__()
 		self.setWindowTitle(title)
 		main = QWidget()
@@ -88,6 +88,14 @@ class Graphical_interface(QMainWindow) :
 		self.show()		
 		if theme=='dark' :
 			qapp.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+		self.keyPressed=keyPressed
+	def keyPressEvent(self, e):
+		if self.keyPressed=='default':
+			return
+		else :
+			self.keyPressed(e)
+	def changeTitle(self,title):
+		self.setWindowTitle(title)
 	def run(self):
 		qapp.exec_()
 	def closeEvent(self, event): #Semble éviter les bugs. Un peu. Si tu veux rajouter des actions à faire en fermant c'est ici
@@ -226,7 +234,7 @@ class checkBox():
 		box.addStretch(self.spaceBelow)
 
 class dropDownMenu():
-	def __init__(self,name,*items,action=False,spaceAbove=1,spaceBelow=0):
+	def __init__(self,name,*items,action=False,actionType='currentIndexChanged',spaceAbove=1,spaceBelow=0):
 		self.label=QLabel(name)
 		self.cb=QComboBox()
 		self.dic={}
@@ -235,7 +243,12 @@ class dropDownMenu():
 		self.spaceAbove=spaceAbove
 		self.spaceBelow=spaceBelow
 		if action :
-			self.cb.currentIndexChanged.connect(action)
+			if actionType=='currentIndexChanged':
+				self.cb.currentIndexChanged.connect(action)
+			elif actionType=='activated' :
+				self.cb.activated.connect(action)
+			else :
+				raise ValueError('Action type not understood')
 	def index(self):
 		return self.cb.currentIndex()
 	def setIndex(self,index):
@@ -250,6 +263,7 @@ class dropDownMenu():
 		self.dic[item]=self.cb.count() #je le fait avant pour qu'il commence à 0
 		self.cb.addItem(item)
 	def removeItem(self,item):
+		#Attention : ca vire pas du dictionnaire. Faudrait faire ça plus propre
 		if isinstance(item,str) :
 			i=self.dic[item]
 		else :
@@ -259,6 +273,7 @@ class dropDownMenu():
 		# for item in self.dic.keys():
 		# 	self.removeItem(item)
 		self.cb.clear()
+		self.dic={}
 	def setEnabled(self,b):
 		self.label.setEnabled(b)
 		self.cb.setEnabled(b)

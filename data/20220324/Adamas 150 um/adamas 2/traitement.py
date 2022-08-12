@@ -68,7 +68,7 @@ def plot_ESR_0B(i=108):
 	plt.plot(x,y)
 	
 
-plot_ESR_0B(i=108)
+# plot_ESR_0B(i=108)
 
 
 def plot_T1__fit_main_text():
@@ -293,7 +293,7 @@ def plot_T1_100() :
 	# print(popt)
 	# plt.plot(x,yfit)
 
-# plot_T1_100()
+plot_T1_100()
 
 def plot_PL_100():
 	x,y=extract_data('T1 100 align 3/scan EM',ycol=3)
