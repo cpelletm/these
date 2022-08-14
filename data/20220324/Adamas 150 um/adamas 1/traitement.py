@@ -6,9 +6,10 @@ from analyse import *
 # Pour la figure en fonction du décalage en fréquence, voir le traitement.py dans T1/
 
 
-plt.figure(num=1,figsize=(6,3),dpi=80)
-plt.xticks(fontsize=12)
-plt.yticks(fontsize=12)
+plt.figure(num=1,figsize=(6,4),dpi=80)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.locator_params(axis='x', nbins=5)
 
 def find_B():
 	fnames,fval=extract_glob('ESR',LastValIndex=-5)
@@ -44,7 +45,7 @@ def find_B():
 	plt.plot(fval,fms)
 	plt.plot(fval,fps)
 
-find_B()
+# find_B()
 
 def plot_ESR_freqs():
 	fnames,fval=extract_glob('ESR',LastValIndex=-5)
@@ -105,8 +106,15 @@ def fit_T1_1classe():
 # fit_T1_1classe()
 
 def plot_ESR_0B():
+	# x,y=extract_data('ESR 0B -20 et -30 dB',ycol=1)
+	# y=y/max(y)
+	# plt.plot(x,y)
 	x,y=extract_data('ESR 0B -20 et -30 dB',ycol=5)
-	plt.plot(x,y)
+	y=y/max(y)
+	plt.plot(x,y,color=color(3))
+
+
+plot_ESR_0B()
 
 def plot_ESR_1x4():
 	x,y=extract_data('ESR/V=5.000000 V')

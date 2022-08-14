@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  12 AUG 2022 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  14 AUG 2022 21:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,78 +896,102 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
+<Figures/ESR_simus.pdf, id=55, 839.72148pt x 645.36978pt>
+File: Figures/ESR_simus.pdf Graphic file (type pdf)
+<use Figures/ESR_simus.pdf>
+Package pdftex.def Info: Figures/ESR_simus.pdf  used on input line 35.
+(pdftex.def)             Requested size: 360.0pt x 276.6764pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (5.96245pt too wide) in paragraph at lines 29--29
-[]\OT1/cmr/bx/n/14.4 Modification of NV-NV CR in the $\OMS/cmsy/m/n/14.4 f[] \O
-ML/cmm/m/it/14.4 ; [] ; []\OMS/cmsy/m/n/14.4 g$
- []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 29.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ket' on input line 29.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ket' on input line 29.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ket' on input line 29.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 29.
-
-
-LaTeX Warning: Empty bibliography on input line 34.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 35.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 35.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./Figures/ESR_simus.pd
+f>]
+Overfull \hbox (1.89496pt too wide) in paragraph at lines 68--69
+[]\OT1/cmr/m/n/10.95 Experimentally, al-most all our sam-ples show the char-ac-
+ter-is-tic two bumps
+ []
+
+[3] [4]
+<Figures/scan_1x1x1x1.pdf, id=136, 481.75352pt x 355.59846pt>
+File: Figures/scan_1x1x1x1.pdf Graphic file (type pdf)
+<use Figures/scan_1x1x1x1.pdf>
+Package pdftex.def Info: Figures/scan_1x1x1x1.pdf  used on input line 114.
+(pdftex.def)             Requested size: 323.9978pt x 239.15045pt.
+<Figures/scan_100.pdf, id=139, 500.09718pt x 355.59846pt>
+File: Figures/scan_100.pdf Graphic file (type pdf)
+<use Figures/scan_100.pdf>
+Package pdftex.def Info: Figures/scan_100.pdf  used on input line 128.
+(pdftex.def)             Requested size: 323.9978pt x 230.38205pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./Figures/scan_1x1x1x1.pdf>] [6 <./Figures/scan_100.pdf>] [7]
+Overfull \hbox (5.15979pt too wide) in paragraph at lines 168--168
+[]\OT1/cmr/m/n/10.95 Thomas Mit-tiga et al. ``Imag-ing the lo-cal charge en-vi-
+ron-ment of nitrogen-
+ []
+
+
+Overfull \hbox (23.77356pt too wide) in paragraph at lines 168--168
+\OT1/cmr/m/n/10.95 Scan-ning Quan-tum Sen-sor Mi-cro-scope''. In: \OT1/cmr/m/it
+/10.95 arXiv preprint arXiv:2205.03952
+ []
+
+[8
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 168.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 168.
  (./Chapter 4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 35.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 35.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 168.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 168.
 Package rerunfilecheck Info: File `"Chapter 4".out' has not changed.
-(rerunfilecheck)             Checksum: A1DEFDF4CCC41FB0E062380E96417786;442.
+(rerunfilecheck)             Checksum: 4A764330226E46F36937D59FDC732AFB;1129.
 Package logreq Info: Writing requests to '"Chapter 4".run.xml'.
 \openout1 = `"Chapter 4.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 35.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 168.
  ) 
 Here is how much of TeX's memory you used:
- 24775 strings out of 481239
- 466696 string characters out of 5920377
- 1098534 words of memory out of 5000000
- 39663 multiletter control sequences out of 15000+600000
- 536457 words of font info for 40 fonts, out of 8000000 for 9000
+ 25085 strings out of 481239
+ 472923 string characters out of 5920377
+ 1106847 words of memory out of 5000000
+ 39923 multiletter control sequences out of 15000+600000
+ 540683 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,5n,75p,974b,743s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Chapter 4.pdf" (1 page, 45510 bytes).
+ 59i,12n,75p,974b,1188s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on "Chapter 4.pdf" (8 pages, 395967 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 221 compressed objects within 3 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 124 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -631,7 +631,8 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 			self.Sy=np.array([[0,-1j,1j],[1j,0,0],[-1j,0,0]])*1/np.sqrt(2)
 			self.Sx=np.array([[0,1,1],[1,0,0],[1,0,0]])*1/np.sqrt(2)
 			self.Sz2=np.array([[0,0,0],[0,1,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
-			self.H_E_transverse=np.array([[0,0,0],[0,0,1],[0,1,0]])
+			self.H_E_transverse_real=np.array([[0,0,0],[0,0,1],[0,1,0]])
+			self.H_E_transverse_imag=np.array([[0,0,0],[0,0,1],[0,1,0]])
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
 		if c==5:
@@ -923,6 +924,11 @@ class NV_C13_Hamiltonian():
 
 	
 #~~~~~~ stats ~~~~~~
+def make_hist(y,bins=10,**kwargs):
+	hist,bins=np.histogram(y,bins=bins,**kwargs)
+	newBins=(bins[1:]+bins[:-1])/2
+	return(newBins,hist)
+
 def mean(y):
 	return np.average(y)
 
@@ -970,22 +976,6 @@ def derivative(x,y):
 	y2=np.array([(y[i+1]-y[i])/dx for i in range(n-1)])
 	x2=np.array([(x[i+1]+x[i])/2 for i in range(n-1)])
 	return(x2,y2)
-
-def find_local_min(x,y,x0):
-	i=find_elem(x,x0)
-	while y[i+1]<y[i]:
-		i+=1
-	while y[i-1]<y[i]:
-		i-=1
-	return i
-
-def find_local_max(x,y,x0):
-	i=find_elem(x,x0)
-	while y[i+1]>y[i]:
-		i+=1
-	while y[i-1]>y[i]:
-		i-=1
-	return i
 
 def integration(x,y):
 	dx=x[1]-x[0]
@@ -1225,6 +1215,27 @@ def find_elem(elem,liste):
 				dif=abs(liste[i]-elem)
 				index=i
 		return index
+
+def find_local_min(x,y,x0):
+	i=find_elem(x,x0)
+	while y[i+1]<y[i]:
+		i+=1
+	while y[i-1]<y[i]:
+		i-=1
+	return i
+
+def find_local_max(x,y,x0):
+	i=find_elem(x,x0)
+	while y[i+1]>y[i]:
+		i+=1
+	while y[i-1]>y[i]:
+		i-=1
+	return i
+
+def sort_y_by_x(x,y):
+	y=[s for _,s in sorted(zip(x,y))]
+	x=sorted(x)
+	return(x,y)
 
 def dichotomy(f,target,xmin,xmax,precision='auto'):
 	import time
