@@ -93,7 +93,7 @@ We can see that when $\Gamma_1^*=\Gamma_1$, as expected, the PL is not modified 
 \subsection{Presentation of the fluctuator model}
 Choi et al. in \citep{choi2017depolarization} take this approach a step further by separating the NV centers into two groups: "normal" NV centers with a phonon-limited lifetime outside of dipole-dipole interaction, and "fluctuators" which are NV centers with an intrinsic, extremely fast relaxation mechanism. We are assuming that the fluctuator relaxation rate, $\gamma_f$ is much greater than the optical pumping rate $\Gamma_{\rm las}$. The fluctuators are therefore unpolarized and effectively act as dark spins, similarly to what we discussed in the last chapter.
 
-We should note here that, while this simplifications seem a bit extreme, the fluctuator model is more than a toy model. There are actually good evidence of the presence of these dark NV centers in dense NV ensemble, as will be discussed below.
+We should note here that, while this simplifications seem a bit extreme, the fluctuator model is more than a toy model. There are good evidence of the presence of these dark NV centers in dense NV ensemble, as will be discussed below.
 
 We will consider the fluctuators act as a Markovian bath, meaning that the fluctuator density matrix will always read $\rho = \frac{1}{3} I$, regardless of its interaction with NV centers. With this assumption, we can compute the modification caused by the fluctuators on the rest of the NV lifetimes.
 
@@ -115,15 +115,18 @@ where the expression of $J_0, g, h$ and $q$ is given in appendix [REF]. $g, h$ a
 
 We then introduce the dimensionless number $\eta$ defined as:
 \begin{equation}
+\label{eq eta}
 \eta^2=\frac{1}{3} (\abs{g}^2+\abs{h}^2)  \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2},
 \end{equation}
-where $\gamma_f=1/T_1^f$ is the fluctuator decay rate. This number $\eta$ encapsulates both the geometry of the problem (through $g$ and $h$) and the resonance condition between the NV center and the fluctuator.
+where $\gamma_f$ is the fluctuator decay rate for each possible channel between $\ket{0}, \ket{-1}$ and $\ket{+1}$. This number $\eta$ encapsulates both the geometry of the problem (through $g$ and $h$) and the resonance condition between the NV center and the fluctuator.
+
+We can note that spectral response of a single fluctuator, for which we only consider the broadening caused by the decay rate $\gamma_f$, is a Lorentzian of half width $2\gamma_f$. This is different from the usual lifetime limited optical spectra which are Lorentzian of half width $1/2T_1=\Gamma_1/2$. The difference comes here from the fact that we consider thermalization going both ways (i.e. $\ket{e} \to \ket{g}$ and $\ket{g} \to \ket{e}$ instead of only $\ket{e} \to \ket{g}$) and that each state of the fluctuator can decay into two other states.
 
 Finally, the additional depolarization rate induced by the fluctuator on the NV center reads:
 \begin{equation}
 \gamma_s(\mathbf{r})=\left(\frac{J_0}{r^3}\right) \frac{\eta^2}{\gamma_f}.
 \end{equation}
-Compared to eq. [REF], we have replaced here $\Gamma_2^*$ by $\gamma_f$. This is because we assume that the pure dephasing, supposedly equal for the NV center and the flucutator, is smaller than the depolarization rate $\gamma_f$. We will further discuss this hypothesis later.
+Compared to eq. [REF], the dependency on the inhomogeneous broadening of the spins $1/T_2^*$ is hidden in the $\eta$ factor, and we have this additional broadening $\gamma_f$ coming from the fluctuators very short lifetime.
 
 \subsection{Ensemble of NV centers coupled to a bath of fluctuators}
 
@@ -146,7 +149,11 @@ where the time constant $T$ was introduced and is defined as:
 \frac{1}{T}=\left(\frac{4\pi n_fJ_0\bar \eta}{3}\right)^2 \frac{\pi}{\gamma_f},
 \label{eq 1/T}
 \end{equation}
-with $n$ the fluctuator density and $\bar \eta$ the averaged value of $\abs{\eta}$: $\bar \eta = \int \rm{Prob}(\eta) \abs{\eta} d\eta$.
+with $n$ the fluctuator density and $\bar \eta$ the averaged value of $\abs{\eta}$: 
+
+\begin{equation}
+\bar \eta = \int \rm{Prob}(\eta) \abs{\eta} d\eta.
+\end{equation}
 
 Finally, the polarization dynamics from the ensemble of NV centers can be computed:
 \begin{equation}
@@ -157,7 +164,59 @@ In conclusion, the fluctuators causes a depolarization on the NV ensembles with 
 
 It should be noted that the stretched exponential nature of the decay is not proper to the fluctuator model. \citep{hall2016detection} came to the same conclusion by analyzing the resonant coupling of NV centers with a P1 bath. The stretched exponential is a result from localized noise sources, randomly distributed in the bulk (3D).
 
-\subsection{Possible microscopic origin of the fluctuators}
+\subsection{Computation of $\bar \eta$}
+\label{sec computation eta}
+The parameter $\bar \eta$ in eq. \ref{eq 1/T} is of crucial importance since it encompass the dependence of $1/T$ in both the magnetic field and the inhomogeneous broadening $T_2^*$ of the NV centers and the fluctuators.
+
+We will start by separating the factor $\eta$ given in eq. \ref{eq eta} into a a geometric and a spectral part:
+\begin{align}
+\eta^2&=G^2(\psi_{NV},\psi_f,\theta,\phi) R^2(\omega_f,\omega_{NV}), \\
+G^2&=\abs{g}^2+\abs{h}^2,  \\ 
+R^2(\omega_f,\omega_{NV}) &=\frac{1}{3} \cdot \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2}.
+\end{align}
+
+$G$ is a function which depends purely on the various angles of the problem (angles of the relative position of the NV center and the fluctuator, angle of the NV and fluctuator $z$ axis), while $R$ represents the resonance condition between the NV and the fluctuator.
+
+We will now average this $\eta$ factor for an ensemble of fluctuators and NV centers:
+\begin{align*}
+\bar \eta &= \int \rm{Prob}(\eta) \abs{\eta} d\eta, \\
+&= \left(\int \rho(\psi_{NV},\psi_f,\theta,\phi) |G(\psi_{NV},\psi_f,\theta,\phi)| d\psi_{NV} d\psi_f d\theta d\phi \right) \\
+&\, \times \left( \int \rho(\omega_{NV}) \rho(\omega_{f}) |R(\omega_f,\omega_{NV})| d\omega_{NV} d\omega_{f} \right), \\
+&= \bar G \cdot \bar R,
+\end{align*}
+where we introduced $\bar G$ and $\bar R$, the averaging of $|G|$ and $|R|$.
+
+The computation of $\bar G$ will be further discussed in sec. \ref{sec quantitative T1} and in appendix [REF]. We will focus here on $\bar R$.
+
+To compute, we need to know the distributions $\rho(\omega_{NV})$ and $\rho(\omega_{f})$. We can experimentally measure $\rho(\omega_{NV})$ though ODMR, and we can reasonably expect $\rho(\omega_{f})$ to follow the same probability.
+
+We unfortunately cannot analytically solve $\bar R$ for standard distributions of $\rho(\omega_{f})$ and $\rho(\omega_{NV})$ (either Gaussians or Lorentzians). We can however solve $\overline{R^2}$, which is relatively close to $(\bar{R})^2$ as long as $2 \gamma_f >> 1/T_2^*$.
+
+For a Lorentzian profile of $\rho(\omega_{f})$ and $\rho(\omega_{NV})$:
+\begin{align*}
+\rho(\omega_{f})&=\frac{1}{\pi \Gamma_f} \frac{1}{1+ \left(\frac{\omega_f-\omega^0_f}{\Gamma_f}\right)^2} \\
+\rho(\omega_{NV})&=\frac{1}{\pi \Gamma_{NV}} \frac{1}{1+ \left(\frac{\omega_{NV}-\omega^0_{NV}}{\Gamma_{NV}}\right)^2},
+\end{align*}
+
+where $\Gamma_{f}=1/T_2^*(\rm fluctuator)$ and $\Gamma_{NV}=1/T_2^*(\rm NV)$. We then find that:
+
+\begin{align*}
+\bar{R^2}&=\frac{1}{3} \int \rho(\omega_{NV}) \rho(\omega_{f}) \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2} d\omega_{NV} d\omega_{f} \\
+&= \frac{1}{3}\cdot  \frac{2 \gamma_f}{2 \gamma_f + \Gamma_f + \Gamma_{NV}} \cdot \frac{1}{1+\left(\frac{\omega^0_{NV}-\omega^0_{f}}{2 \gamma_f + \Gamma_f + \Gamma_{NV}}\right)^2}.
+\end{align*}
+
+In the case where $\omega^0_{NV}=\omega^0_{f}$, meaning that either the considered NVs and fluctuators are from the same class, or from two classes perfectly resonant, by substituting $\bar {R ^2}$ for $(\bar{R})^2$ (which again is only approximately valid for $2 \gamma_f >> 1/T_2^*$) in eq. \ref{eq 1/T}, we find that:
+\begin{equation}
+\label{eq 1/T avec T2*}
+\frac{1}{T} \propto \frac{1}{\gamma_f + 1/T_2^*},
+\end{equation}
+where we have assumed that $T_2^*$ had the same value for the NV centers and the fluctuators.
+
+If $\rho(\omega_{f})$ and $\rho(\omega_{NV})$ follow Gaussian profiles instead, $\bar{R^2}$ is the integral of a Voigt profile, the convolution of a Lorentzian ans a Gaussian, which does not have a clear analytic solution.
+
+Eq. \ref{eq 1/T avec T2*} is subject to many approximations: the inhomogeneous distribution of the NV centers is generally not Lorentzian, we don't know whether the fluctuator inhomogeneous broadening is the same than the NV one, and $\bar {R ^2} \neq (\bar{R})^2$ in the general case. Nevertheless, eq. \ref{eq 1/T avec T2*} gives us a general idea of the evolution of $1/T$ with $T_2^*$.
+
+ \subsection{Possible microscopic origin of the fluctuators}
 
 We should note first that a similar problem of spin ensemble relaxation rate increasing with the spin concentration was observed more than six decades ago with phosphorus doped silicon \citep{feher1959electron,honig1960electron}. It was proposed that the cause of the relaxation was the presence of fast relaxing centers coupled to the slow relaxing centers through spin diffusion \citep{honig1960electron, sugihara1963spin, yang1968concentration, vugmeister1978spin, berman2005spin}. 
 
@@ -265,9 +324,24 @@ A potential explanation for the broadening of the $1/T_1^{\rm dd}$ line could be
 \label{deconvolution}
 \end{figure}
 
-The fluctuator model provides another explanation: the fluctuator spectral response is broaden by its very short lifetime. This also explains why the $1/T_1^{\rm dd}$ line is well matched by a Lorentzian, while the ODMR lines are closer to Gaussians in our sample. 
+The fluctuator model provides another explanation: the fluctuator spectral response is broaden by its very short lifetime. This also explains why the $1/T_1^{\rm dd}$ line is well matched by a Lorentzian, while the ODMR lines are closer to Gaussians in our sample. This means that we can extract the fluctuator lifetime from the data in Fig. \ref{fluct linewidth} by taking out the contribution of $T_2^*$ on both the NV and the fluctuator spectral response. 
 
-We can now extract the fluctuator lifetime from the data in Fig. \ref{fluct linewidth} by taking out the contribution of $T_2^*$ on both the NV and the fluctuator spectral response. 
+To do this we first assume that the dipole induced decay rate is proportional to the overlap of the spectral responses of the NV centers and fluctuators $S_{NV}$ and $S_f$. We will take $S_{NV}( \omega)$ and $S_{f}( \omega)$ as functions centered in $\omega=0$, and consider that the spectral responses are shifted by $\omega^0_f$ and $\omega^0_{NV}$ respectively, the central frequencies of each group. We then have:
+\begin{align*}
+\frac{1}{T_1^{\rm dd}} &\propto \int S_{NV} (\omega-\omega_{f}^0) S_f (\omega-\omega_{NV}^0) d\omega \\
+&= \int S_{NV} (\omega-\Delta \omega) S_f (\omega)
+ d\omega \\
+ &= (S_{NV}*S_{f})(\Delta \omega),
+\end{align*}
+
+where $\Delta \omega=\omega_{NV}^0-\omega_{f}^0$.
+
+Using the approximation $\bar {R ^2} \approx (\bar{R})^2$ detailed in sec. \ref{sec computation eta}, we can then decompose the fluctuator spectral response between the lifetime contribution and the inhomogeneous broadening:
+\begin{equation}
+S_{f}(\omega)=\left(S_f^*(\omega)\right)*\left(\frac{1}{1+\left(\frac{\omega}{2 \gamma_f}\right)^2} \right),
+\end{equation}
+
+where $S_f^*$... Ne pas oublier les overline pour les R2 !
 
 The first way to do this is to follow the instructions in \citep{hall2016detection} and deconvolve the $1/T_1^{\rm dd}$ data by the ODMR spectrum using a Wiener deconvolution algorithm. The result of the deconvolution is shown in Fig. \ref{deconvolution}: the data is deconvolved once to get the spectral response of the fluctuator (red curve), and a second time to get only the lifetime contribution of the fluctuator (green curve). Fitting with Lorentzians, we find a final value $\Gamma_2 =\frac{\gamma_f}{2} = (2\pi) 6.38\ \rm MHz$ which corresponds to a fluctuator lifetime $T_1^f=\frac{1}{\gamma_f}=12.5\ \rm ns$.
 
@@ -277,7 +351,7 @@ Another, simpler alternative is to consider that the $1/T_1^{\rm dd}$ profile is
 &\propto \mathcal{L}(f_L)*\mathcal{G}(\sqrt{2} f_G),
 \end{align*}
 where $\mathcal{G}(f_G)$ and $\mathcal{L}(f_L)$ denote Gaussian and Lorentzian functions of HWHM $f_G$ and $f_L$ respectively.
-We can then use the formula of a pseudo-Voigt profile which gives an approximation of the Voigt profile's HWHM $f$ as a function of $f_G$ and $f_L$ \citep{wiki:VoigtProfile}:
+We can then use the formula of a pseudo-Voigt profile which gives an approximation of the Voigt profile's HWHM $f$ as a function of $f_G$ and $f_L$ \citep{ida2000extended}:
 \begin{equation}
 f = [f_G^5 + 2.69269 f_G^4 f_L + 2.42843 f_G^3 f_L^2 + 4.47163 f_G^2 f_L^3 + 0.07842 f_G f_L^4 + f_L^5]^{1/5}.
 \end{equation}
@@ -325,7 +399,7 @@ Fig. \ref{Carte} shows a map where we simply monitored the PL of sample CVD-pink
 We know that when $\mathbf{B}$ belongs to any of these four planes, there is a co-resonance between at least two NV classes. This co-resonance leads to an increase in NV-NV CR (or NV-fluctuator CR) and a faster depolarization of the spins involved, which ultimately leads to a drop in PL. We can indeed see in fig. \ref{Carte} that there is clear correlation between the loci of $\mathbf{B}$ and drops in PL. We can also see that the PL is at its lowest when $B\parallel [001]$, which corresponds to a four class degeneracy.
 
 \subsection{Quantitative modification of $T_1$}
-
+\label{sec quantitative T1}
 \begin{table}[htbp]
 \centering
 \caption{Theoretical and experimental values of $\Gamma_1^{\rm dd}=1/T_1^{\rm dd}$ for various magnetic field configurations, expressed as a function of the value found for an isolated class. The experimental values were measured on sample ADM-15-3 using the protocol of Fig. \ref{various_fit_formulae}-d) with $T_1^{\rm ph}\equiv 5\ \rm ms$.}

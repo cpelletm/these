@@ -113,8 +113,7 @@ def plot_ESR_0B():
 	y=y/max(y)
 	plt.plot(x,y,color=color(3))
 
-
-plot_ESR_0B()
+# plot_ESR_0B()
 
 def plot_ESR_1x4():
 	x,y=extract_data('ESR/V=5.000000 V')
@@ -126,5 +125,18 @@ def plot_ESR_1x4():
 	# plt.plot(y)
 
 # plot_ESR_1x4()
+
+def plot_ESR_0B_Vs_1classe():
+	x,y=extract_data('ESR 0B -20 et -30 dB',ycol=5)
+	y=y/max(y)
+	x=x-0
+	plt.plot(x,y)
+	x,y=extract_data('ESR 1 classe pas loin 111')
+	y=y-min(y)
+	y=y/max(y)
+	x=x-2740+2865
+	plt.plot(x,y)
+
+plot_ESR_0B_Vs_1classe()
 
 plt.show()

@@ -6,7 +6,7 @@ from scipy.optimize import curve_fit,root_scalar,minimize
 from scipy.signal import find_peaks
 from scipy import fftpack
 from PyQt5.QtWidgets import QApplication,QFileDialog
-from numpy import sqrt,pi,cos,sin
+from numpy import sqrt,pi,cos,sin,exp
 from numpy.linalg import norm
 
 

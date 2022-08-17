@@ -1,22 +1,22 @@
 [0] Config.pm:304> INFO - This is Biber 2.14 (beta)
 [0] Config.pm:307> INFO - Logfile is 'Chapter 4.blg'
-[36] biber:322> INFO - === dim. août 14, 2022, 21:33:43
+[34] biber:322> INFO - === mar. août 16, 2022, 09:52:30
 [43] Biber.pm:415> INFO - Reading 'Chapter 4.bcf'
-[77] Biber.pm:943> INFO - Found 7 citekeys in bib section 0
-[84] Biber.pm:4256> INFO - Processing section 0
-[84] Utils.pm:75> INFO - Globbing data source 'Bib_ch4.bib'
-[84] Utils.pm:91> INFO - Globbed data source 'Bib_ch4.bib' to Bib_ch4.bib
-[89] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch4.bib' for section 0
-[91] bibtex.pm:1653> INFO - LaTeX decoding ...
-[139] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch4.bib'
-[141] Utils.pm:293> WARN - Duplicate entry key: 'holliday1989optical' in file 'Bib_ch4.bib', skipping ...
-[141] Utils.pm:293> WARN - Duplicate entry key: 'van1989cross' in file 'Bib_ch4.bib', skipping ...
-[141] Utils.pm:293> WARN - Duplicate entry key: 'choi2017depolarization' in file 'Bib_ch4.bib', skipping ...
-[142] Utils.pm:293> WARN - Duplicate entry key: 'doherty2012theory' in file 'Bib_ch4.bib', skipping ...
-[192] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[192] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[192] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[192] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[195] bbl.pm:652> INFO - Writing 'Chapter 4.bbl' with encoding 'UTF-8'
-[199] bbl.pm:755> INFO - Output to Chapter 4.bbl
-[199] Biber.pm:128> INFO - WARNINGS: 4
+[74] Biber.pm:943> INFO - Found 7 citekeys in bib section 0
+[81] Biber.pm:4256> INFO - Processing section 0
+[81] Utils.pm:75> INFO - Globbing data source 'Bib_ch4.bib'
+[81] Utils.pm:91> INFO - Globbed data source 'Bib_ch4.bib' to Bib_ch4.bib
+[86] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch4.bib' for section 0
+[88] bibtex.pm:1653> INFO - LaTeX decoding ...
+[134] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch4.bib'
+[135] Utils.pm:293> WARN - Duplicate entry key: 'holliday1989optical' in file 'Bib_ch4.bib', skipping ...
+[136] Utils.pm:293> WARN - Duplicate entry key: 'van1989cross' in file 'Bib_ch4.bib', skipping ...
+[136] Utils.pm:293> WARN - Duplicate entry key: 'choi2017depolarization' in file 'Bib_ch4.bib', skipping ...
+[136] Utils.pm:293> WARN - Duplicate entry key: 'doherty2012theory' in file 'Bib_ch4.bib', skipping ...
+[183] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[183] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[183] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[183] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[185] bbl.pm:652> INFO - Writing 'Chapter 4.bbl' with encoding 'UTF-8'
+[189] bbl.pm:755> INFO - Output to Chapter 4.bbl
+[189] Biber.pm:128> INFO - WARNINGS: 4
