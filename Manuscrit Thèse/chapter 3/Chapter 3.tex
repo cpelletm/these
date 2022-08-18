@@ -201,20 +201,20 @@ For a Lorentzian profile of $\rho(\omega_{f})$ and $\rho(\omega_{NV})$:
 where $\Gamma_{f}=1/T_2^*(\rm fluctuator)$ and $\Gamma_{NV}=1/T_2^*(\rm NV)$. We then find that:
 
 \begin{align*}
-\bar{R^2}&=\frac{1}{3} \int \rho(\omega_{NV}) \rho(\omega_{f}) \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2} d\omega_{NV} d\omega_{f} \\
+\overline{R^2}&=\frac{1}{3} \int \rho(\omega_{NV}) \rho(\omega_{f}) \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2} d\omega_{NV} d\omega_{f} \\
 &= \frac{1}{3}\cdot  \frac{2 \gamma_f}{2 \gamma_f + \Gamma_f + \Gamma_{NV}} \cdot \frac{1}{1+\left(\frac{\omega^0_{NV}-\omega^0_{f}}{2 \gamma_f + \Gamma_f + \Gamma_{NV}}\right)^2}.
 \end{align*}
 
-In the case where $\omega^0_{NV}=\omega^0_{f}$, meaning that either the considered NVs and fluctuators are from the same class, or from two classes perfectly resonant, by substituting $\bar {R ^2}$ for $(\bar{R})^2$ (which again is only approximately valid for $2 \gamma_f >> 1/T_2^*$) in eq. \ref{eq 1/T}, we find that:
+In the case where $\omega^0_{NV}=\omega^0_{f}$, meaning that either the considered NVs and fluctuators are from the same class, or from two classes perfectly resonant, by substituting $\overline{R ^2}$ for $(\bar{R})^2$ (which again is only approximately valid for $2 \gamma_f >> 1/T_2^*$) in eq. \ref{eq 1/T}, we find that:
 \begin{equation}
 \label{eq 1/T avec T2*}
 \frac{1}{T} \propto \frac{1}{\gamma_f + 1/T_2^*},
 \end{equation}
 where we have assumed that $T_2^*$ had the same value for the NV centers and the fluctuators.
 
-If $\rho(\omega_{f})$ and $\rho(\omega_{NV})$ follow Gaussian profiles instead, $\bar{R^2}$ is the integral of a Voigt profile, the convolution of a Lorentzian ans a Gaussian, which does not have a clear analytic solution.
+If $\rho(\omega_{f})$ and $\rho(\omega_{NV})$ follow Gaussian profiles instead, $\overline{R^2}$ is the integral of a Voigt profile, the convolution of a Lorentzian ans a Gaussian, which does not have a clear analytic solution.
 
-Eq. \ref{eq 1/T avec T2*} is subject to many approximations: the inhomogeneous distribution of the NV centers is generally not Lorentzian, we don't know whether the fluctuator inhomogeneous broadening is the same than the NV one, and $\bar {R ^2} \neq (\bar{R})^2$ in the general case. Nevertheless, eq. \ref{eq 1/T avec T2*} gives us a general idea of the evolution of $1/T$ with $T_2^*$.
+Eq. \ref{eq 1/T avec T2*} is subject to many approximations: the inhomogeneous distribution of the NV centers is generally not Lorentzian, we don't know whether the fluctuator inhomogeneous broadening is the same than the NV one, and $\overline{R^2} \neq (\bar{R})^2$ in the general case. Nevertheless, eq. \ref{eq 1/T avec T2*} gives us a general idea of the evolution of $1/T$ with $T_2^*$.
 
  \subsection{Possible microscopic origin of the fluctuators}
 
@@ -341,11 +341,11 @@ Using the approximation $\bar {R ^2} \approx (\bar{R})^2$ detailed in sec. \ref{
 S_{f}(\omega)=\left(S_f^*(\omega)\right)*\left(\frac{1}{1+\left(\frac{\omega}{2 \gamma_f}\right)^2} \right),
 \end{equation}
 
-where $S_f^*$... Ne pas oublier les overline pour les R2 !
+where $S_f^*$ is the spectral broadening caused by the inhomogeneous distribution of the fluctuators, which we will suppose to be equal to $S_{NV}$. With these assumptions, we are now ready to extract $\gamma_f$ from the data of Fig. \ref{fluct linewidth}.
 
-The first way to do this is to follow the instructions in \citep{hall2016detection} and deconvolve the $1/T_1^{\rm dd}$ data by the ODMR spectrum using a Wiener deconvolution algorithm. The result of the deconvolution is shown in Fig. \ref{deconvolution}: the data is deconvolved once to get the spectral response of the fluctuator (red curve), and a second time to get only the lifetime contribution of the fluctuator (green curve). Fitting with Lorentzians, we find a final value $\Gamma_2 =\frac{\gamma_f}{2} = (2\pi) 6.38\ \rm MHz$ which corresponds to a fluctuator lifetime $T_1^f=\frac{1}{\gamma_f}=12.5\ \rm ns$.
+The first way to do this, as was done for NV-P1 CR in \citep{hall2016detection}, is to deconvolve the $1/T_1^{\rm dd}$ data by the ODMR spectrum using a Wiener deconvolution algorithm. The result of the deconvolution is shown in Fig. \ref{deconvolution}: the data is deconvolved once to get the spectral response of the fluctuator (red curve), and a second time to get only the lifetime contribution of the fluctuator (green curve). Fitting with Lorentzians, we find a final value $\Gamma_2 =2\gamma_f= (2\pi) 6.38\ \rm MHz$ which corresponds to a fluctuator lifetime $T_1^f=\frac{1}{\gamma_f}=49.9\ \rm ns$.
 
-Another, simpler alternative is to consider that the $1/T_1^{\rm dd}$ profile is a Voigt profile given by the convolution of two Gaussians of half width at half maximum (HWHM) $f_G=\sqrt{2 \ln (2)}\sigma$ and a Lorentzian of HWHM $f_L$:
+Another, simpler alternative is to consider that the $1/T_1^{\rm dd}$ profile is a Voigt profile given by the convolution of two Gaussians of half width at half maximum (HWHM) $f_G=\frac{\sqrt{\ln (2)}}{\pi T_2^*}$ and a Lorentzian of HWHM $f_L=\frac{2 \gamma_f}{2 \pi}$:
 \begin{align*}
 \Gamma_1^{\rm dd}&\propto \mathcal{G}(f_G)*(\mathcal{L}(f_L)*\mathcal{G}(f_G)) \\
 &\propto \mathcal{L}(f_L)*\mathcal{G}(\sqrt{2} f_G),
@@ -356,9 +356,9 @@ We can then use the formula of a pseudo-Voigt profile which gives an approximati
 f = [f_G^5 + 2.69269 f_G^4 f_L + 2.42843 f_G^3 f_L^2 + 4.47163 f_G^2 f_L^3 + 0.07842 f_G f_L^4 + f_L^5]^{1/5}.
 \end{equation}
 
-With $f=8.78\ \rm MHz$ and $\sqrt{2}f_G=4.33\ \rm MHz$, I find $f_L=6.54\ \rm MHz$ for a final lifetime value $T_1^f = 12.2\ \rm ns$, a value consistent with the one found with the deconvolution method.
+With $f=8.78\ \rm MHz$ and $\sqrt{2}f_G=4.33\ \rm MHz$, we find $f_L=6.54\ \rm MHz$ for a final lifetime value $T_1^f = 48.7\ \rm ns$, a value consistent with the one found with the deconvolution method.
 
-Doing similar calculations, \citep{choi2017depolarization} found $\gamma_f=1/T_1^f=3.3\ \rm MHz$, although given their experimental values - full width at half maximum (FWHM) of 25 MHz for the lifetime profile and 9.3 MHz for the ODMR line - I obtain using my method $\gamma_f= 15.7\ \rm MHz$ and $T_1^f=10.1\ \rm ns$. The main difference comes from the fact that they considered the spectral half-width of the fluctuators to be $2\gamma_f$ whereas I consider it to be $\gamma_f/2$.
+Doing similar calculations, \citep{choi2017depolarization} found $\gamma_f=1/T_1^f=(2\pi) 3.3\ \rm MHz$ which gives them a fluctuator lifetime value $T_1^f = 48.2\ \rm ns$, a value surprisingly similar to the one we got.
 
 
 \section{Resonance between several NV classes}

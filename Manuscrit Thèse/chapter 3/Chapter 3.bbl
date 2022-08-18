@@ -832,6 +832,45 @@
       \field{pages}{113037}
       \range{pages}{1}
     \endentry
+    \entry{ida2000extended}{article}{}
+      \name{author}{3}{}{%
+        {{hash=83871e981a485482fe4b20803de62ba7}{%
+           family={Ida},
+           familyi={I\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod}}}%
+        {{hash=afd50fd2195e3d802524f36f87a3c048}{%
+           family={Ando},
+           familyi={A\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b18b220d68a5deb5241e712ec4d8df11}{%
+           family={Toraya},
+           familyi={T\bibinitperiod},
+           given={H},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {International Union of Crystallography}%
+      }
+      \strng{namehash}{daccccdad0a2b8b0f4fa058befbfb4de}
+      \strng{fullhash}{daccccdad0a2b8b0f4fa058befbfb4de}
+      \strng{bibnamehash}{daccccdad0a2b8b0f4fa058befbfb4de}
+      \strng{authorbibnamehash}{daccccdad0a2b8b0f4fa058befbfb4de}
+      \strng{authornamehash}{daccccdad0a2b8b0f4fa058befbfb4de}
+      \strng{authorfullhash}{daccccdad0a2b8b0f4fa058befbfb4de}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Crystallography}
+      \field{number}{6}
+      \field{title}{Extended pseudo-Voigt function for approximating the Voigt profile}
+      \field{volume}{33}
+      \field{year}{2000}
+      \field{pages}{1311\bibrangedash 1316}
+      \range{pages}{6}
+    \endentry
     \entry{rosskopf2014investigation}{article}{}
       \name{author}{9}{}{%
         {{hash=57d782b88e4c20f7dfb1af54693a0b8e}{%
@@ -941,7 +980,6 @@
       \range{pages}{-1}
     \endentry
   \enddatalist
-  \missing{ida2000extended}
 \endrefsection
 \endinput
 

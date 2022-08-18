@@ -1744,4 +1744,8 @@ def test_convolution():
 
 a=[0,1,2]
 
+<<<<<<< Updated upstream
 print(a[-4])
+=======
+print(1/(pi*6.6*1e6))
+>>>>>>> Stashed changes
