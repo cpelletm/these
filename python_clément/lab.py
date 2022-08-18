@@ -716,6 +716,8 @@ class microwave(device):
 			ressourceName='TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 		if ressourceName=='mw1' :
 			ressourceName= 'USB0::0x0AAD::0x0054::182239::INSTR'
+		if ressourceName=='mw3' :
+			ressourceName='USB0::0x0AAD::0x0054::110140::INSTR'
 		self.PG = visa.ResourceManager().open_resource( ressourceName )
 		self.PG.read_termination = '\n'
 		self.PG.write_termination = '\n'

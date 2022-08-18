@@ -122,7 +122,7 @@ def uwOnOff():
 ai=AIChan()
 do=DOChan()
 cube=PiezoCube3axes()
-mw=microwave('mw_ludo')
+mw=microwave('mw3')
 mw.toBeClosed=False
 
 ## Setup the Graphical interface ##

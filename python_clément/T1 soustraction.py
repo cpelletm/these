@@ -109,7 +109,7 @@ def extraStop() :
 ai=AIChan()
 ao=AOChan('ao0')
 do=DOChan('p06','p07','p02')
-mw=microwave('mw_ludo')
+mw=microwave('mw3')
 cube=PiezoCube3axes()
 platine=platinePI()
 

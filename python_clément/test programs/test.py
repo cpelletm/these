@@ -1742,5 +1742,6 @@ def test_convolution():
 	plt.show()
 
 
+a=[0,1,2]
 
-print(np.sqrt(2870*3)/2.8)
+print(a[-4])

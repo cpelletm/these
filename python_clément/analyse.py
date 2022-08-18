@@ -1013,7 +1013,12 @@ def psd(x,y,plot=False): #Assume que x est en s.
 		return
 
 
+#~~~~~~ Math ~~~~~~~~
 
+def lcm(a,b):
+	#existe de base dans python 3.9, mais pas dans les autre
+	import math
+	return abs(a*b) // math.gcd(a, b)
 
 #~~~~~~ Algebre ~~~~~~
 
@@ -1111,7 +1116,6 @@ def petite_figure():
 	plt.xticks(fontsize=12)
 	plt.yticks(fontsize=12)
 	plt.locator_params(axis='x', nbins=5)
-
 
 def exemple_animation():
 	import matplotlib.animation as animation
