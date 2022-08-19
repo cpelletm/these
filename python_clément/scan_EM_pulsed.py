@@ -37,12 +37,20 @@ def acquiEnd(i):
 ## setup() is executed once at the beginning of each loop (when start is pressed) ##
 def setup(): 
 	# fMaster=lcm(int(1/tWait),int(1/tLect)) #C'est rigolo mais je suis sur que c'est débile
-	fMaster=10/tWait
+	ai.setChannels(channel1.text())
+	fMaster=ai.getMaxFreq()
 	nWait=int(fMaster*tWait)
 	nLect=int(fMaster*tLect)
 	nCycle=nWait+nLect
-	nPoints=val(nPoints) 
+	nPoints=val(nPointsWidg) 
 	nTot=2*nPoints*nCycle #Attention : 2 fois plus de points pour faire le retour
+
+	
+	readSignal=([False]*nWait+[2]*nLect)*nPoints+[False]*nCycle*nPoints
+	ai.setupPulsed(freq=fMaster,signal=readSignal,nRepeat=1,nAvg=1)
+	gateLaser=([False]*nWait+[True]*nLect)*nPoints*2
+	do.setupPulsed(ValuesList=[readSignal,gateLaser],freq=fMaster,nAvg=1,nRepeat=1)
+
 
 	xmin=val(vmin)
 	xmax=val(vmax)
@@ -59,51 +67,50 @@ def setup():
 		for i in range(nPoints):
 			voltageSignal+=[Vvalues[-(i+1)]]*nCycle
 
-
-	ai.setChannels(channel1.text(),channel2.text())
-
-	
-	
-	nTot=len(voltageSignal)
-	ao.setupTimed(SampleFrequency=fsweep,ValuesList=voltageSignal)
-	ai.setupTimed(SampleFrequency=fsweep,SamplesPerChan=nTot,nAvg='auto')
-	ao.triggedOn(ai)
+	assert len(voltageSignal)==len(readSignal)
+	ao.setupTimed(SampleFrequency=fMaster,ValuesList=voltageSignal)
+	ao.triggedOn(do)
 	if abscissChoice.text()=='Voltage (V)' :
-		x=voltageSignal[nstart:nend]
+		x=Vvalues
 	elif abscissChoice.text()=='Time (s)' :
 		x=np.linspace(0,n/fsweep,n)
-	return(nstart,nend,x)
+	do.start()
+	return(nLect,nPoints,x)
 
 
 ## update() is executed for each iteration of the loop (until stop is pressed) ##
-def update(nstart,nend,x):
-	y=ai.readTimed(waitForAcqui=False)
-	if not ai.running :
-		y1=y[0][nstart:nend]
-		y2=y[1][nstart:nend]
-		gra.updateLine(l1,x,y1)
-		gra.updateLine(l2,x,y2)
+def update(nLect,nPoints,x):
+	if do.done():
+		data=ai.read(waitForAcqui=True)
+		assert len(data)==nLect*nPoints
+		y1=np.zeros(nPoints)
+		y2=np.zeros(nPoints)
+		for i in range(nPoints):
+			y1[i]=sum(data[i*nLect:int((i+0.5)*nLect)])/sum(data[int((i+0.5)*nLect):(i+1)*nLect])
+			y2[i]=sum(data[int((i+0.5)*nLect):(i+1)*nLect])/nLect
+		gra.updateLine(l1,x,y1,noRefresh=True)
+		gra.updateLine(l2,x,y2,noRefresh=False)
+		do.restart()
 
 
 ## Create the communication (I/O) instances ##
 ai=AIChan()
 ao=AOChan('ao0')
+do=DOChan('p06','p07')
 cube=PiezoCube3axes()
 
 ## Setup the Graphical interface ##
-channel1=dropDownMenu('Channel for Fig.1 :',*physicalChannels,spaceAbove=0)
-channel1.setIndex('ai11')
-channel2=dropDownMenu('Channel for Fig.2 :',*physicalChannels,spaceAbove=0)
-channel2.setIndex('ai13')
+channel1=dropDownMenu('Channel for ai :',*physicalChannels,spaceAbove=0)
+channel1.setIndex('ai13')
 laser=pulsedLaserWidget()
 vmin=field('V min (V)',-5,spaceAbove=3)
 vmax=field('V max (V)',5,spaceAbove=0)
 fieldSlope=dropDownMenu('Field Slope','Increasing','Decreasing',spaceAbove=0)
 tWait=field('t wait (s)',1e-3,spaceAbove=3)
-tLect=field('t lect (s)',1e-3,spaceAbove=0)
-nPoints=field('n points',501,spaceAbove=3)
+tLect=field('t lect (s)',2e-3,spaceAbove=0)
+nPointsWidg=field('n points',501,spaceAbove=3)
 abscissChoice=dropDownMenu('Absciss','Voltage (V)','Time (s)',spaceAbove=0)
-fields=[channel1,channel2,laser,vmin,vmax,fieldSlope,tWait,tLect,nPoints,abscissChoice]
+fields=[channel1,laser,vmin,vmax,fieldSlope,tWait,tLect,nPointsWidg,abscissChoice]
 
 gra=graphics()
 l1=gra.addLine(typ='average',style='lm')
@@ -120,5 +127,5 @@ norm.setState(False)
 buttons=[norm,StartStop,trace,save,it]
 
 ## Create the graphical interface and launch the program ##
-GUI=Graphical_interface(fields,gra,buttons,title='Scan EM')
+GUI=Graphical_interface(fields,gra,buttons,title='Scan EM Pulsed')
 GUI.run()
