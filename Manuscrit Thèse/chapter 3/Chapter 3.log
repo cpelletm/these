@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  18 AUG 2022 12:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  18 AUG 2022 21:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -986,57 +986,57 @@ Package pdftex.def Info: Figures/betas.pdf  used on input line 288.
 File: Figures/fluctuator linewidth.pdf Graphic file (type pdf)
 <use Figures/fluctuator linewidth.pdf>
 Package pdftex.def Info: Figures/fluctuator linewidth.pdf  used on input line 3
-01.
+02.
 (pdftex.def)             Requested size: 360.0pt x 106.5962pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13 <./Figures/betas.pdf>]
-<Figures/deconvolution.pdf, id=497, 410.69589pt x 270.67432pt>
+[13 <./Figures/betas.pdf>] [14 <./Figures/fluctuator linewidth.pdf>]
+<Figures/deconvolution.pdf, id=544, 410.69589pt x 270.67432pt>
 File: Figures/deconvolution.pdf Graphic file (type pdf)
 <use Figures/deconvolution.pdf>
-Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 322.
+Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 327.
 (pdftex.def)             Requested size: 216.0022pt x 142.35808pt.
- [14 <./Figures/fluctuator linewidth.pdf>] [15 <./Figures/deconvolution.pdf>]
-<Figures/Resonance_geometries.pdf, id=581, 632.38585pt x 966.0116pt>
+ [15 <./Figures/deconvolution.pdf>]
+<Figures/Resonance_geometries.pdf, id=583, 632.38585pt x 966.0116pt>
 File: Figures/Resonance_geometries.pdf Graphic file (type pdf)
 <use Figures/Resonance_geometries.pdf>
 Package pdftex.def Info: Figures/Resonance_geometries.pdf  used on input line 3
-72.
+77.
 (pdftex.def)             Requested size: 288.0011pt x 439.93394pt.
  [16] [17 <./Figures/Resonance_geometries.pdf>]
-<Figures/carte.pdf, id=623, 555.91539pt x 334.81839pt>
+<Figures/carte.pdf, id=625, 555.91539pt x 334.81839pt>
 File: Figures/carte.pdf Graphic file (type pdf)
 <use Figures/carte.pdf>
-Package pdftex.def Info: Figures/carte.pdf  used on input line 390.
+Package pdftex.def Info: Figures/carte.pdf  used on input line 395.
 (pdftex.def)             Requested size: 360.0pt x 216.82216pt.
 
 [18 <./Figures/carte.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 401.
+(hyperref)                removing `math shift' on input line 406.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 401.
+(hyperref)                removing `subscript' on input line 406.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 401.
+(hyperref)                removing `math shift' on input line 406.
 
 [19]
-<Figures/Anormal_T1.pdf, id=655, 824.4089pt x 311.74414pt>
+<Figures/Anormal_T1.pdf, id=657, 824.4089pt x 311.74414pt>
 File: Figures/Anormal_T1.pdf Graphic file (type pdf)
 <use Figures/Anormal_T1.pdf>
-Package pdftex.def Info: Figures/Anormal_T1.pdf  used on input line 446.
+Package pdftex.def Info: Figures/Anormal_T1.pdf  used on input line 451.
 (pdftex.def)             Requested size: 360.0pt x 136.13084pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [20] [21 <./Figures/Anormal_T1.pdf>] [22]
-Overfull \hbox (5.40323pt too wide) in paragraph at lines 472--472
+Overfull \hbox (5.40323pt too wide) in paragraph at lines 477--477
 []\OT1/cmr/m/n/10.95 Mariusz Mr^^Sozek et al. ``Lon-gi-tu-di-nal spin re-lax-at
 ion in nitrogen-vacancy
  []
@@ -1044,28 +1044,28 @@ ion in nitrogen-vacancy
 [23
 
 ]
-Overfull \hbox (0.6277pt too wide) in paragraph at lines 472--472
+Overfull \hbox (0.6277pt too wide) in paragraph at lines 477--477
 \OT1/cmr/m/n/10.95 zwis-chen-moleku-laren []Ubergangs von Elek-tro-ne-nan-re-gu
 ngsen-ergie''. In:
  []
 
 [24]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 472.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 472.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 477.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 477.
  (./Chapter 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 472.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 472.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 477.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 477.
 Package rerunfilecheck Info: File `"Chapter 3".out' has not changed.
 (rerunfilecheck)             Checksum: 099AA1251119501006832A2C4101A967;1878.
 Package logreq Info: Writing requests to '"Chapter 3".run.xml'.
 \openout1 = `"Chapter 3.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 472.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 477.
  ) 
 Here is how much of TeX's memory you used:
- 25264 strings out of 481239
- 477932 string characters out of 5920377
- 1113980 words of memory out of 5000000
+ 25266 strings out of 481239
+ 477954 string characters out of 5920377
+ 1113981 words of memory out of 5000000
  40037 multiletter control sequences out of 15000+600000
  542271 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1087,10 +1087,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
 onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm
 -super/sfrm1095.pfb>
-Output written on "Chapter 3.pdf" (24 pages, 1258119 bytes).
+Output written on "Chapter 3.pdf" (24 pages, 1261008 bytes).
 PDF statistics:
- 803 PDF objects out of 1000 (max. 8388607)
- 634 compressed objects within 7 object streams
- 98 named destinations out of 1000 (max. 500000)
+ 805 PDF objects out of 1000 (max. 8388607)
+ 636 compressed objects within 7 object streams
+ 100 named destinations out of 1000 (max. 500000)
  236 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -296,6 +296,7 @@ Even though this method also yields satisfying fits, it needs two free parameter
 
 \subsection{The fluctuators linewidth}
 
+\subsubsection{The fluctuators spectral response}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/fluctuator linewidth}
@@ -303,20 +304,24 @@ Even though this method also yields satisfying fits, it needs two free parameter
 \label{fluct linewidth}
 \end{figure}
 
-One of the main arguments in favor of the fluctuator model is the measurement of the fluctuators linewidth. In the model, we assumed that fluctuator's lifetime $T_1^f=1/\gamma_f$ was so short that the fluctuators linewidth was lifetime-limited, whereas the normal NV centers linewidth is limited by the inhomogeneous broadening $T_2^*>T_1^f$.
 
-We can experimentally verify this hypothesis: the fluctuator are effectively dark to ODMR measurement since they are not polarized, but we can measure their linewidth through CR the same way we would do for a dark spin, as detailed in the last chapter.
+
+One of the main arguments in favor of the fluctuator model is the measurement of the fluctuators spectral response. Indeed, as we will see, the fluctuator lifetime is so short that it significantly broadens the fluctuators spectral response compared to standard NV centers.
+
+The fluctuator are effectively dark to ODMR measurement since they are not polarized, but we can measure their linewidth through CR the same way we would do for a dark spin, as detailed in \citep{hall2016detection}.
 
 Fig. \ref{fluct linewidth} shows an experiment similar to the one presented in Fig. \ref{equivalent NV-NV}. A variable magnetic $B_{\rm scan}$ in addition to an offset magnetic field $B_{\rm DC} \sim 100\ \rm G$ are used in order to create a crossing between two classes of NV centers, but this time measuring the spin decay rate instead of the PL.
 
-Fig. \ref{fluct linewidth}-a) shows the simulated transitions of the four classes of NV centers as a function of the magnetic field. Because the $T_1$ measurement protocol described in [REF] requires a resonant microwave pulse with the NV probed, we specifically record ODMR spectra of their two central lines to get a precise measurement of the Larmor frequency. In the region where the two ODMR lines overlap we have to use a linear regression to get the Larmor frequency of each class.
+Fig. \ref{fluct linewidth}-a) shows the simulated transitions of the four classes of NV centers as a function of the magnetic field, and the experimentally measured central frequencies of the two classes of interest when the two lines can be clearly separated. Having a precise measurement of the detuning between the two classes $\Delta \nu$ is key in this experiment to get a precise value of the fluctuator linewidth.
+%Because the $T_1$ measurement protocol described in [REF] requires a resonant microwave pulse with the NV probed, we specifically record ODMR spectra of their two central lines to get a precise measurement of the Larmor frequency. In the region where the two ODMR lines overlap we have to use a linear regression to get the Larmor frequency of each class.
 
 Fig. \ref{fluct linewidth}-b) shows the dipole-dipole induced relaxation rate $\Gamma_1^{\rm dd}=T_1^{\rm dd}$ as a function of the detuning $\Delta \nu$ between the two central classes. For each magnetic field value, a $T_1$ profile was recorded and fitted following the procedure described in Fig. \ref{various_fit_formulae}-d) where we again fixed $T_1^{\rm ph}=5\ \rm ms$. We also show the ODMR spectrum of a single NV class for comparison.
 
 We can clearly see that the $\Gamma^{\rm dd}$ profile is much broader than the ODMR line of the NV centers, whereas in a standard CR process, we expect the decay rate to be proportional to the spectral overlap of the two classes \citep{hall2016detection}. If we assume that both NV classes spectral response is a gaussian of same width $\sigma$, then the spectral overlap between the two classes is also a gaussian of width $\sqrt{2} \sigma$. Fig. \ref{fluct linewidth}-b) also shows the ODMR line scaled by a factor $\sqrt{2}$, which is still much narrower than the $1/T_1^{\rm dd}$ line.
 
-A potential explanation for the broadening of the $1/T_1^{\rm dd}$ line could be the interaction strength between the NV center and the fluctuator. However, for [NV] $\sim$ 5 ppm, the average dipole-dipole coupling strength between closest NV neighbor is $\expval{\mathcal{H}_{\rm dd}} \sim 46\ \rm kHz$, which cannot explain the $\sim 4\ \rm MHz$ broadening that we observe.
+We attribute this broadening to the fluctuators lifetime. Another potential explanation for the broadening could be the interaction strength between the NV center and the fluctuator. However, for [NV] $\sim$ 5 ppm, the average dipole-dipole coupling strength between closest NV neighbor is $\expval{\mathcal{H}_{\rm dd}} \sim 46\ \rm kHz$, which cannot explain the $\sim 4\ \rm MHz$ broadening that we observe.
 
+\subsubsection{The fluctuators lifetime}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{Figures/deconvolution}
@@ -324,7 +329,7 @@ A potential explanation for the broadening of the $1/T_1^{\rm dd}$ line could be
 \label{deconvolution}
 \end{figure}
 
-The fluctuator model provides another explanation: the fluctuator spectral response is broaden by its very short lifetime. This also explains why the $1/T_1^{\rm dd}$ line is well matched by a Lorentzian, while the ODMR lines are closer to Gaussians in our sample. This means that we can extract the fluctuator lifetime from the data in Fig. \ref{fluct linewidth} by taking out the contribution of $T_2^*$ on both the NV and the fluctuator spectral response. 
+We now want to extract the fluctuators lifetime $T_1^f=1/\gamma_f$ to get further information on their potential nature. 
 
 To do this we first assume that the dipole induced decay rate is proportional to the overlap of the spectral responses of the NV centers and fluctuators $S_{NV}$ and $S_f$. We will take $S_{NV}( \omega)$ and $S_{f}( \omega)$ as functions centered in $\omega=0$, and consider that the spectral responses are shifted by $\omega^0_f$ and $\omega^0_{NV}$ respectively, the central frequencies of each group. We then have:
 \begin{align*}

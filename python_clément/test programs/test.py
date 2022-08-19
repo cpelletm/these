@@ -1742,10 +1742,4 @@ def test_convolution():
 	plt.show()
 
 
-a=[0,1,2]
-
-<<<<<<< Updated upstream
-print(a[-4])
-=======
-print(1/(pi*6.6*1e6))
->>>>>>> Stashed changes
+print(sqrt(2870*5)/2.8)

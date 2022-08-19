@@ -90,6 +90,7 @@ class Graphical_interface(QMainWindow) :
 			qapp.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 		self.keyPressed=keyPressed
 	def keyPressEvent(self, e):
+		#See example in Plot_data
 		if self.keyPressed=='default':
 			return
 		else :
@@ -599,7 +600,7 @@ class startStopButton():
 class fitButton():
 	def __init__(self,line,fit='lin',name='fit',menu=False,spaceAbove=1,spaceBelow=0): 
 
-		self.fitLibrary=['lin','exp','stretch','arb stretch','ESR','ESR and B']
+		self.fitLibrary=['lin','exp','stretch','arb stretch','ESR','ESR and B','lorentzian','gaussian']
 
 		if menu :
 			self.menu=dropDownMenu('Chose fit','--No fit chosen--',*self.fitLibrary,action=self.itemChosenMenu,spaceAbove=spaceAbove,spaceBelow=0)
@@ -670,6 +671,16 @@ class fitButton():
 			self.func=f
 			self.paramsToShow=[0,1,2,3]
 			self.labelNames=['B amp (G)','Angle from 100 (°)', 'Angle from 111 (°)', 'Width (Mhz)']
+		elif fit=='lorentzian' :
+			from analyse import lor_fit as f
+			self.func=f
+			self.paramsToShow=[1,2]
+			self.labelNames=['x0','sigma']
+		if fit=='gaussian' :
+			from analyse import gauss_fit as f
+			self.func=f
+			self.paramsToShow=[1,2]
+			self.labelNames=['x0','sigma']
 	def itemChosenMenu(self):
 		self.setFitFunction(fit=self.menu.text())
 		self.addFitButton.setEnabled(True)

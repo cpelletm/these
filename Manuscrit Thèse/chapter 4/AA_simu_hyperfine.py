@@ -16,6 +16,7 @@ for i in ['-1','0','1']:
 
 
 B=[0,0,0]
+
 HNV=NVHamiltonian(B,c=5,E=4j).H
 # print(HNV)
 egval,egvect=np.linalg.eigh(HNV)

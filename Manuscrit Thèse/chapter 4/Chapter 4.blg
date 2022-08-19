@@ -1,22 +1,22 @@
 [0] Config.pm:304> INFO - This is Biber 2.14 (beta)
 [0] Config.pm:307> INFO - Logfile is 'Chapter 4.blg'
-[35] biber:322> INFO - === jeu. août 18, 2022, 18:46:12
-[43] Biber.pm:415> INFO - Reading 'Chapter 4.bcf'
-[75] Biber.pm:943> INFO - Found 7 citekeys in bib section 0
+[35] biber:322> INFO - === ven. août 19, 2022, 19:55:04
+[42] Biber.pm:415> INFO - Reading 'Chapter 4.bcf'
+[74] Biber.pm:943> INFO - Found 9 citekeys in bib section 0
 [81] Biber.pm:4256> INFO - Processing section 0
-[82] Utils.pm:75> INFO - Globbing data source 'Bib_ch4.bib'
-[82] Utils.pm:91> INFO - Globbed data source 'Bib_ch4.bib' to Bib_ch4.bib
+[81] Utils.pm:75> INFO - Globbing data source 'Bib_ch4.bib'
+[81] Utils.pm:91> INFO - Globbed data source 'Bib_ch4.bib' to Bib_ch4.bib
 [86] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch4.bib' for section 0
-[88] bibtex.pm:1653> INFO - LaTeX decoding ...
+[87] bibtex.pm:1653> INFO - LaTeX decoding ...
 [135] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch4.bib'
-[136] Utils.pm:293> WARN - Duplicate entry key: 'holliday1989optical' in file 'Bib_ch4.bib', skipping ...
+[137] Utils.pm:293> WARN - Duplicate entry key: 'holliday1989optical' in file 'Bib_ch4.bib', skipping ...
 [137] Utils.pm:293> WARN - Duplicate entry key: 'van1989cross' in file 'Bib_ch4.bib', skipping ...
 [137] Utils.pm:293> WARN - Duplicate entry key: 'choi2017depolarization' in file 'Bib_ch4.bib', skipping ...
-[137] Utils.pm:293> WARN - Duplicate entry key: 'doherty2012theory' in file 'Bib_ch4.bib', skipping ...
-[187] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[187] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[187] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[187] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[190] bbl.pm:652> INFO - Writing 'Chapter 4.bbl' with encoding 'UTF-8'
-[195] bbl.pm:755> INFO - Output to Chapter 4.bbl
-[195] Biber.pm:128> INFO - WARNINGS: 4
+[138] Utils.pm:293> WARN - Duplicate entry key: 'doherty2012theory' in file 'Bib_ch4.bib', skipping ...
+[197] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[197] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[197] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[197] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[200] bbl.pm:652> INFO - Writing 'Chapter 4.bbl' with encoding 'UTF-8'
+[205] bbl.pm:755> INFO - Output to Chapter 4.bbl
+[205] Biber.pm:128> INFO - WARNINGS: 4
