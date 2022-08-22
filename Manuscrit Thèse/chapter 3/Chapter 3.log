@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  18 AUG 2022 21:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  22 AUG 2022 15:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -327,7 +327,7 @@ Package biblatex Info: ... file 'blx-dm.def' found.
 File: blx-dm.def 2019/12/01 v3.14 biblatex localization (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'numeric.dbx' not found.
+Package biblatex Info: ... file 'numeric-comp.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@afterword=\count316
@@ -445,6 +445,11 @@ File: blx-natbib.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
 Package biblatex Info: Delimiter 'nameyeardelim' in context '' already defined,
  overwriting.
 )
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
+
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/numeric-comp.bbx
+File: numeric-comp.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
 
@@ -457,12 +462,14 @@ Package biblatex Info: ... file 'standard.bbx' found.
 File: standard.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
 \c@bbx:relatedcount=\count393
 \c@bbx:relatedtotal=\count394
-))
-Package biblatex Info: Trying to load citation style 'numeric'...
-Package biblatex Info: ... file 'numeric.cbx' found.
+)))
+Package biblatex Info: Trying to load citation style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.cbx' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx
-File: numeric.cbx 2019/12/01 v3.14 biblatex citation style (PK/MW)
+(/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/numeric-comp.cbx
+File: numeric-comp.cbx 2019/12/01 v3.14 biblatex citation style (PK/MW)
+\c@cbx@tempcnta=\count395
+\c@cbx@tempcntb=\count396
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -510,17 +517,17 @@ Package caption3 Info: TeX engine: e-TeX on input line 61.
 \caption@hangindent=\dimen156
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count395
-\c@continuedfloat=\count396
+\c@caption@flags=\count397
+\c@continuedfloat=\count398
 Package caption Info: hyperref package is loaded.
 )
-\c@subfigure=\count397
-\c@subtable=\count398
+\c@subfigure=\count399
+\c@subtable=\count400
 )
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip75
-\multirow@cntb=\count399
+\multirow@cntb=\count401
 \multirow@dima=\skip76
 \bigstrutjot=\dimen157
 )
@@ -536,12 +543,12 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen165
 \cmidrulekern=\dimen166
 \defaultaddspace=\dimen167
-\@cmidla=\count400
-\@cmidlb=\count401
+\@cmidla=\count402
+\@cmidlb=\count403
 \@aboverulesep=\dimen168
 \@belowrulesep=\dimen169
-\@thisruleclass=\count402
-\@lastruleclass=\count403
+\@thisruleclass=\count404
+\@lastruleclass=\count405
 \@thisrulewidth=\dimen170
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
@@ -591,14 +598,14 @@ ex
 \pgf@yd=\dimen182
 \w@pgf@writea=\write4
 \r@pgf@reada=\read3
-\c@pgf@counta=\count404
-\c@pgf@countb=\count405
-\c@pgf@countc=\count406
-\c@pgf@countd=\count407
+\c@pgf@counta=\count406
+\c@pgf@countb=\count407
+\c@pgf@countc=\count408
+\c@pgf@countd=\count409
 \t@pgf@toka=\toks24
 \t@pgf@tokb=\toks25
 \t@pgf@tokc=\toks26
-\pgf@sys@id@count=\count408
+\pgf@sys@id@count=\count410
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
 )
@@ -614,8 +621,8 @@ File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfsyssoftpath@smallbuffer@items=\count409
-\pgfsyssoftpath@bigbuffer@items=\count410
+\pgfsyssoftpath@smallbuffer@items=\count411
+\pgfsyssoftpath@bigbuffer@items=\count412
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -645,7 +652,7 @@ Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen183
-\pgfmath@count=\count411
+\pgfmath@count=\count413
 \pgfmath@box=\box49
 \pgfmath@toks=\toks27
 \pgfmath@stack@operand=\toks28
@@ -669,7 +676,7 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count412
+\c@pgfmathroundto@lastzeros=\count414
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
@@ -708,7 +715,7 @@ File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfpic=\box50
 \pgf@hbox=\box51
 \pgf@layerbox@main=\box52
-\pgf@picture@serial@count=\count413
+\pgf@picture@serial@count=\count415
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -741,8 +748,8 @@ File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@max=\dimen263
-\pgf@sys@shading@range@num=\count414
-\pgf@shadingcount=\count415
+\pgf@sys@shading@range@num=\count416
+\pgf@shadingcount=\count417
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
@@ -798,9 +805,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box56
 \tcb@lowerbox=\box57
 \tcb@phantombox=\box58
-\c@tcbbreakpart=\count416
-\c@tcblayer=\count417
-\tcolorbox@number=\count418
+\c@tcbbreakpart=\count418
+\c@tcblayer=\count419
+\tcolorbox@number=\count420
 \tcb@temp=\box59
 \tcb@temp=\box60
 \tcb@temp=\box61
@@ -808,8 +815,8 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@out=\write5
 \tcb@record@out=\write6
 )
-\@quotelevel=\count419
-\@quotereset=\count420
+\@quotelevel=\count421
+\@quotereset=\count422
 
 (./Chapter 3.aux)
 \openout1 = `"Chapter 3.aux"'.
@@ -833,16 +840,16 @@ LaTeX Font Info:    ... okay on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count421
+\scratchcounter=\count423
 \scratchdimen=\dimen266
 \scratchbox=\box63
-\nofMPsegments=\count422
-\nofMParguments=\count423
+\nofMPsegments=\count424
+\nofMParguments=\count425
 \everyMPshowfont=\toks32
-\MPscratchCnt=\count424
+\MPscratchCnt=\count426
 \MPscratchDim=\dimen267
-\MPnumerator=\count425
-\makeMPintoPDFobject=\count426
+\MPnumerator=\count427
+\makeMPintoPDFobject=\count428
 \everyMPtoPDFconversion=\toks33
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -865,7 +872,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count427
+\c@section@level=\count429
 )
 LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
@@ -896,27 +903,22 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-
-Overfull \hbox (46.5345pt too wide) in paragraph at lines 27--27
-[]\OT1/cmr/bx/n/14.4 Experimental ob-ser-va-tion of NV-NV cross-relaxation 
- []
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Figures/NV-NV_non_equivalent.pdf, id=91, 692.40157pt x 469.7331pt>
+<Figures/NV-NV_non_equivalent.pdf, id=95, 692.40157pt x 469.7331pt>
 File: Figures/NV-NV_non_equivalent.pdf Graphic file (type pdf)
 <use Figures/NV-NV_non_equivalent.pdf>
 Package pdftex.def Info: Figures/NV-NV_non_equivalent.pdf  used on input line 3
-3.
+7.
 (pdftex.def)             Requested size: 360.0pt x 244.23395pt.
 
 
@@ -925,118 +927,126 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Figures/NV-NV_equivalent.pdf, id=112, 872.6003pt x 600.41821pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./Figures/NV-NV_non_eq
+uivalent.pdf>]
+<Figures/NV-NV_equivalent.pdf, id=155, 872.6003pt x 600.41821pt>
 File: Figures/NV-NV_equivalent.pdf Graphic file (type pdf)
 <use Figures/NV-NV_equivalent.pdf>
-Package pdftex.def Info: Figures/NV-NV_equivalent.pdf  used on input line 57.
+Package pdftex.def Info: Figures/NV-NV_equivalent.pdf  used on input line 61.
 (pdftex.def)             Requested size: 360.0pt x 247.70305pt.
- [2 <./Figures/NV-NV_non_equivalent.pdf>] [3 <./Figures/NV-NV_equivalent.pdf>]
-<Figures/inhomogene_2_spins.pdf, id=203, 795.06699pt x 313.61554pt>
+ [3 <./Figures/NV-NV_equivalent.pdf>]
+<Figures/inhomogene_2_spins.pdf, id=214, 795.06699pt x 313.61554pt>
 File: Figures/inhomogene_2_spins.pdf Graphic file (type pdf)
 <use Figures/inhomogene_2_spins.pdf>
-Package pdftex.def Info: Figures/inhomogene_2_spins.pdf  used on input line 79.
+Package pdftex.def Info: Figures/inhomogene_2_spins.pdf  used on input line 83.
 
 (pdftex.def)             Requested size: 360.0pt x 142.0014pt.
- [4 <./Figures/inhomogene_2_spins.pdf>] [5] [6]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4] [5 <./Figures/inhomogene_2_spins.pdf>] [6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 167.
+(hyperref)                removing `math shift' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 167.
+(hyperref)                removing `math shift' on input line 171.
 
 [7] [8] [9]
-<Figures/Stretch_vs_pas_stretch.pdf, id=320, 834.00119pt x 307.786pt>
+<Figures/Stretch_vs_pas_stretch.pdf, id=323, 834.00119pt x 307.786pt>
 File: Figures/Stretch_vs_pas_stretch.pdf Graphic file (type pdf)
 <use Figures/Stretch_vs_pas_stretch.pdf>
 Package pdftex.def Info: Figures/Stretch_vs_pas_stretch.pdf  used on input line
- 234.
+ 237.
 (pdftex.def)             Requested size: 360.0pt x 132.8573pt.
  [10 <./Figures/Stretch_vs_pas_stretch.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 245.
+(hyperref)                removing `math shift' on input line 248.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 245.
+(hyperref)                removing `subscript' on input line 248.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 245.
+(hyperref)                removing `math shift' on input line 248.
 
-<Figures/various_fit_formulae.pdf, id=362, 844.31212pt x 596.51091pt>
+<Figures/various_fit_formulae.pdf, id=366, 844.31212pt x 596.51091pt>
 File: Figures/various_fit_formulae.pdf Graphic file (type pdf)
 <use Figures/various_fit_formulae.pdf>
 Package pdftex.def Info: Figures/various_fit_formulae.pdf  used on input line 2
-49.
+52.
 (pdftex.def)             Requested size: 360.0pt x 254.3466pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [11] [12 <./Figures/various_fit_formulae.pdf>]
-<Figures/betas.pdf, id=448, 850.15848pt x 307.45277pt>
+<Figures/betas.pdf, id=452, 850.15848pt x 307.45277pt>
 File: Figures/betas.pdf Graphic file (type pdf)
 <use Figures/betas.pdf>
-Package pdftex.def Info: Figures/betas.pdf  used on input line 288.
+Package pdftex.def Info: Figures/betas.pdf  used on input line 291.
 (pdftex.def)             Requested size: 360.0pt x 130.18953pt.
-<Figures/fluctuator linewidth.pdf, id=454, 929.18921pt x 275.13318pt>
+<Figures/fluctuator linewidth.pdf, id=458, 929.18921pt x 275.13318pt>
 File: Figures/fluctuator linewidth.pdf Graphic file (type pdf)
 <use Figures/fluctuator linewidth.pdf>
 Package pdftex.def Info: Figures/fluctuator linewidth.pdf  used on input line 3
-02.
+05.
 (pdftex.def)             Requested size: 360.0pt x 106.5962pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13 <./Figures/betas.pdf>] [14 <./Figures/fluctuator linewidth.pdf>]
-<Figures/deconvolution.pdf, id=544, 410.69589pt x 270.67432pt>
+[13 <./Figures/betas.pdf>]
+<Figures/deconvolution.pdf, id=503, 410.69589pt x 270.67432pt>
 File: Figures/deconvolution.pdf Graphic file (type pdf)
 <use Figures/deconvolution.pdf>
-Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 327.
+Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 330.
 (pdftex.def)             Requested size: 216.0022pt x 142.35808pt.
- [15 <./Figures/deconvolution.pdf>]
-<Figures/Resonance_geometries.pdf, id=583, 632.38585pt x 966.0116pt>
+ [14 <./Figures/fluctuator linewidth.pdf>] [15 <./Figures/deconvolution.pdf>]
+<Figures/Resonance_geometries.pdf, id=587, 632.38585pt x 966.0116pt>
 File: Figures/Resonance_geometries.pdf Graphic file (type pdf)
 <use Figures/Resonance_geometries.pdf>
 Package pdftex.def Info: Figures/Resonance_geometries.pdf  used on input line 3
-77.
+80.
 (pdftex.def)             Requested size: 288.0011pt x 439.93394pt.
- [16] [17 <./Figures/Resonance_geometries.pdf>]
-<Figures/carte.pdf, id=625, 555.91539pt x 334.81839pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[16] [17 <./Figures/Resonance_geometries.pdf>]
+<Figures/carte.pdf, id=629, 555.91539pt x 334.81839pt>
 File: Figures/carte.pdf Graphic file (type pdf)
 <use Figures/carte.pdf>
-Package pdftex.def Info: Figures/carte.pdf  used on input line 395.
+Package pdftex.def Info: Figures/carte.pdf  used on input line 398.
 (pdftex.def)             Requested size: 360.0pt x 216.82216pt.
-
-[18 <./Figures/carte.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 406.
-
+ [18 <./Figures/carte.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 406.
+(hyperref)                removing `math shift' on input line 409.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 406.
+(hyperref)                removing `subscript' on input line 409.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 409.
 
 [19]
-<Figures/Anormal_T1.pdf, id=657, 824.4089pt x 311.74414pt>
+<Figures/Anormal_T1.pdf, id=661, 824.4089pt x 311.74414pt>
 File: Figures/Anormal_T1.pdf Graphic file (type pdf)
 <use Figures/Anormal_T1.pdf>
-Package pdftex.def Info: Figures/Anormal_T1.pdf  used on input line 451.
+Package pdftex.def Info: Figures/Anormal_T1.pdf  used on input line 454.
 (pdftex.def)             Requested size: 360.0pt x 136.13084pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [20] [21 <./Figures/Anormal_T1.pdf>] [22]
-Overfull \hbox (5.40323pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.40323pt too wide) in paragraph at lines 480--480
 []\OT1/cmr/m/n/10.95 Mariusz Mr^^Sozek et al. ``Lon-gi-tu-di-nal spin re-lax-at
 ion in nitrogen-vacancy
  []
@@ -1044,32 +1054,32 @@ ion in nitrogen-vacancy
 [23
 
 ]
-Overfull \hbox (0.6277pt too wide) in paragraph at lines 477--477
+Overfull \hbox (0.6277pt too wide) in paragraph at lines 480--480
 \OT1/cmr/m/n/10.95 zwis-chen-moleku-laren []Ubergangs von Elek-tro-ne-nan-re-gu
 ngsen-ergie''. In:
  []
 
-[24]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 477.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 477.
+[24] [25]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 480.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 480.
  (./Chapter 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 477.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 477.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 480.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 480.
 Package rerunfilecheck Info: File `"Chapter 3".out' has not changed.
-(rerunfilecheck)             Checksum: 099AA1251119501006832A2C4101A967;1878.
+(rerunfilecheck)             Checksum: CE1CB8B44B2ED9CBC692E031B0C9634E;1864.
 Package logreq Info: Writing requests to '"Chapter 3".run.xml'.
 \openout1 = `"Chapter 3.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 477.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 480.
  ) 
 Here is how much of TeX's memory you used:
- 25266 strings out of 481239
- 477954 string characters out of 5920377
- 1113981 words of memory out of 5000000
- 40037 multiletter control sequences out of 15000+600000
+ 25311 strings out of 481239
+ 479387 string characters out of 5920377
+ 1115661 words of memory out of 5000000
+ 40071 multiletter control sequences out of 15000+600000
  542271 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,11n,75p,991b,1431s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,11n,75p,974b,1433s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1087,10 +1097,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
 onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm
 -super/sfrm1095.pfb>
-Output written on "Chapter 3.pdf" (24 pages, 1261008 bytes).
+Output written on "Chapter 3.pdf" (25 pages, 1264093 bytes).
 PDF statistics:
- 805 PDF objects out of 1000 (max. 8388607)
- 636 compressed objects within 7 object streams
- 100 named destinations out of 1000 (max. 500000)
+ 821 PDF objects out of 1000 (max. 8388607)
+ 651 compressed objects within 7 object streams
+ 108 named destinations out of 1000 (max. 500000)
  236 words of extra memory for PDF output out of 10000 (max. 10000000)
 

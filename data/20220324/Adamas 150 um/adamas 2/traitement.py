@@ -4,7 +4,7 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-plt.figure(num=1,figsize=(4,3),dpi=80)
+plt.figure(num=1,figsize=(3,2),dpi=80)
 plt.xticks(fontsize=13)
 plt.yticks(fontsize=13)
 plt.locator_params(axis='x', nbins=5)
@@ -68,7 +68,7 @@ def plot_ESR_0B(i=108):
 	plt.plot(x,y)
 	
 
-plot_ESR_0B(i=108)
+# plot_ESR_0B(i=108)
 
 
 def plot_T1__fit_main_text():
@@ -244,7 +244,8 @@ def plot_T1_1x1x1() :
 	for i in range(n):
 		fname=fnames[i]
 		x,y=extract_data(fname,ycol=5)
-		T1ph=0.003626
+		# T1ph=0.003626
+		T1ph=5e-3
 		popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 		taus[i]=popt[1]
 
@@ -279,7 +280,8 @@ def plot_T1_100() :
 	for i in range(n):
 		fname=fnames[i]
 		x,y=extract_data(fname,ycol=5)
-		T1ph=0.003626
+		# T1ph=0.003626
+		T1ph=0.005
 		popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 		taus[i]=popt[1]
 
@@ -293,7 +295,7 @@ def plot_T1_100() :
 	# print(popt)
 	# plt.plot(x,yfit)
 
-# plot_T1_100()
+plot_T1_100()
 
 def plot_PL_100():
 	x,y=extract_data('T1 100 align 3/scan EM',ycol=3)

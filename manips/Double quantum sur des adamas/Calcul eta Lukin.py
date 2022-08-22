@@ -49,7 +49,7 @@ def cartesian2(anglex):
 	return(x2,y2,z2)
 
 
-
+#Legacy
 def xx_diff_noC(theta,phi,anglex1=0,anglex2=1):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
 	x1,y1,z1=cartesian1(anglex1)
@@ -57,7 +57,6 @@ def xx_diff_noC(theta,phi,anglex1=0,anglex2=1):
 	g=(3*x1.dot(r)*x2.dot(r)-x1.dot(x2))
 	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)#/(2*pi)
 	return(integrande)
-
 def xx_diff_fullC(theta_r,phi_r,theta_E=0,phi_E=0):
 	r=np.array([x(theta_r,phi_r),y(theta_r,phi_r),z(theta_r,phi_r)])
 	E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)])
@@ -78,7 +77,6 @@ def xx_diff_fullC(theta_r,phi_r,theta_E=0,phi_E=0):
 	g=(3*x1.dot(r)*x2.dot(r)-x1.dot(x2))
 	integrande=1/(4*pi)*abs(g)*sin(theta_r)*1/(4*pi)*sin(theta_E)
 	return(integrande)
-
 def yy_diff_noC(theta,phi,anglex1=0,anglex2=0):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
 	x1,y1,z1=cartesian1(anglex1)
@@ -86,17 +84,33 @@ def yy_diff_noC(theta,phi,anglex1=0,anglex2=0):
 	g=(3*y1.dot(r)*y2.dot(r)-y1.dot(y2))
 	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)#/(2*pi)
 	return(integrande)
-
-
-def gp_diff_noC(theta,phi,anglex1=0,anglex2=0):
+def xy_diff_noC(theta,phi,anglex1=0,anglex2=0):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
 	x1,y1,z1=cartesian1(anglex1)
 	x2,y2,z2=cartesian2(anglex2)
-	g=1/2*(3*x1.dot(r)*x2.dot(r)-x1.dot(x2)+3*y1.dot(r)*y2.dot(r)-y1.dot(y2))
-	h=1/2*(3*x1.dot(r)*y2.dot(r)-x1.dot(y2)-3*y1.dot(r)*x2.dot(r)+y1.dot(x2))
-	integrande=1/(4*pi)*sqrt(g**2+h**2)*sin(theta)#/(2*pi)/(2*pi)
+	g=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
+	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)/(2*pi)
 	return(integrande)
+def xy_diff_fullC(theta_r,phi_r,theta_E=0,phi_E=0):
+	r=np.array([x(theta_r,phi_r),y(theta_r,phi_r),z(theta_r,phi_r)])
+	E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)])
 
+	z1=classesRot[classNV1-1][2]
+	x1=E-(E.dot(z1))*z1
+	x1=x1/np.linalg.norm(x1)
+	y1=np.cross(z1,x1)
+
+	z2=classesRot[classNV2-1][2]
+	x2=E-(E.dot(z2))*z2
+	x2=x2/np.linalg.norm(x2)
+	y2=np.cross(z2,x2)
+	# x2=-x2 #Anticorrelation
+	# y2=-y2
+
+
+	g=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
+	integrande=1/(4*pi)*abs(g)*sin(theta_r)*1/(4*pi)*sin(theta_E)
+	return(integrande)
 def gp_diff_fullC(theta_r,phi_r,theta_E=pi/2,phi_E=0):
 	r=np.array([x(theta_r,phi_r),y(theta_r,phi_r),z(theta_r,phi_r)])
 	E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)])
@@ -117,7 +131,19 @@ def gp_diff_fullC(theta_r,phi_r,theta_E=pi/2,phi_E=0):
 	integrande=1/(4*pi)*sqrt(g**2+h**2)*sin(theta_r)#/(2*pi)/(2*pi)
 	return(integrande)
 
-def dq_diff_mag(theta,phi,anglex1=0,anglex2=0):
+
+#Actual
+
+def sq_mag(theta,phi,anglex1=0,anglex2=0):
+	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
+	x1,y1,z1=cartesian1(anglex1)
+	x2,y2,z2=cartesian2(anglex2)
+	g=1/2*(3*x1.dot(r)*x2.dot(r)-x1.dot(x2)+3*y1.dot(r)*y2.dot(r)-y1.dot(y2))
+	h=1/2*(3*x1.dot(r)*y2.dot(r)-x1.dot(y2)-3*y1.dot(r)*x2.dot(r)+y1.dot(x2))
+	integrande=1/(4*pi)*sqrt(g**2+h**2)*sin(theta)#/(2*pi)/(2*pi)
+	return(integrande)
+
+def pure_dq_mag(theta,phi,anglex1=0,anglex2=0):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
 	x1,y1,z1=cartesian1(anglex1)
 	x2,y2,z2=cartesian2(anglex2)
@@ -126,7 +152,26 @@ def dq_diff_mag(theta,phi,anglex1=0,anglex2=0):
 	integrande=1/(4*pi)*sqrt(g**2+h**2)*sin(theta)#/(2*pi)/(2*pi)
 	return(integrande)
 
-def xy_diff_noC(theta,phi,anglex1=0,anglex2=0):
+def full_dq_mag(theta,phi,anglex1=0,anglex2=0,dqratio=0.5):
+	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
+	x1,y1,z1=cartesian1(anglex1)
+	x2,y2,z2=cartesian2(anglex2)
+	gsq=1/2*(3*x1.dot(r)*x2.dot(r)-x1.dot(x2)+3*y1.dot(r)*y2.dot(r)-y1.dot(y2))
+	hsq=1/2*(3*x1.dot(r)*y2.dot(r)-x1.dot(y2)-3*y1.dot(r)*x2.dot(r)+y1.dot(x2))
+	gdq=1/2*(3*x1.dot(r)*x2.dot(r)-x1.dot(x2)-3*y1.dot(r)*y2.dot(r)+y1.dot(y2))
+	hdq=1/2*(3*x1.dot(r)*y2.dot(r)-x1.dot(y2)+3*y1.dot(r)*x2.dot(r)-y1.dot(x2))
+	integrande=1/(4*pi)*sqrt(gsq**2+gdq**2*dqratio+hsq**2+hdq**2*dqratio)*sin(theta)#/(2*pi)/(2*pi)
+	return(integrande)
+
+def sq_elec(theta,phi,anglex1=0,anglex2=0):
+	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
+	x1,y1,z1=cartesian1(anglex1)
+	x2,y2,z2=cartesian2(anglex2)
+	g=(3*x1.dot(r)*x2.dot(r)-x1.dot(x2))
+	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)#/(2*pi)
+	return(integrande)
+
+def pure_dq_elec(theta,phi,anglex1=0,anglex2=0):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
 	x1,y1,z1=cartesian1(anglex1)
 	x2,y2,z2=cartesian2(anglex2)
@@ -134,25 +179,13 @@ def xy_diff_noC(theta,phi,anglex1=0,anglex2=0):
 	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)/(2*pi)
 	return(integrande)
 
-def xy_diff_fullC(theta_r,phi_r,theta_E=0,phi_E=0):
-	r=np.array([x(theta_r,phi_r),y(theta_r,phi_r),z(theta_r,phi_r)])
-	E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)])
-
-	z1=classesRot[classNV1-1][2]
-	x1=E-(E.dot(z1))*z1
-	x1=x1/np.linalg.norm(x1)
-	y1=np.cross(z1,x1)
-
-	z2=classesRot[classNV2-1][2]
-	x2=E-(E.dot(z2))*z2
-	x2=x2/np.linalg.norm(x2)
-	y2=np.cross(z2,x2)
-	# x2=-x2 #Anticorrelation
-	# y2=-y2
-
-
-	g=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
-	integrande=1/(4*pi)*abs(g)*sin(theta_r)*1/(4*pi)*sin(theta_E)
+def full_dq_elec(theta,phi,anglex1=0,anglex2=0,dqratio=0.5):
+	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
+	x1,y1,z1=cartesian1(anglex1)
+	x2,y2,z2=cartesian2(anglex2)
+	gsq=(3*x1.dot(r)*x2.dot(r)-x1.dot(x2))
+	gdq=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
+	integrande=1/(4*pi)*np.sqrt(gsq**2+gdq**2*dqratio)*sin(theta)#/(2*pi)/(2*pi)
 	return(integrande)
 
 def my2Dint(f,xrange,yrange,nx,ny):
@@ -250,7 +283,7 @@ def my4Dint(f,wrange,xrange,yrange,zrange,n):
 	return h
 
 #flip flop
-eta0=(2/(3*sqrt(3))/4)**2
+# eta0=(2/(3*sqrt(3))/4)**2
 # eta121=(2/(3*sqrt(3))/4+0.8328/4)**2
 # eta22=(2/(3*sqrt(3))/4+0.6507/4)**2
 # eta31=(2/(3*sqrt(3))/4+2*0.8328/4)**2
@@ -259,41 +292,34 @@ eta0=(2/(3*sqrt(3))/4)**2
 # eta40EfullC=(0.7698/4+3*0.6951/4)**2
 # print(eta40EfullC,eta40EfullC/eta0)
 #DQ
-eta40mag=(1/4+2*0.8328/4+0.6507/4)**2
-eta40EnoC=(0.7110/4+3*0.6828/4)**2
-eta40EfullC=(0.6366/4+3*0.6705/4)**2
+# eta40mag=(1/4+2*0.8328/4+0.6507/4)**2
+# eta40EnoC=(0.7110/4+3*0.6828/4)**2
+# eta40EfullC=(0.6366/4+3*0.6705/4)**2
 
-x=eta40EfullC
-print(x,x/eta0)
+
 
 classNV1=1
-classNV2=8
+classNV2=2
+# eta=my2Dint(full_dq_mag,[0,pi],[0,2*pi],300,300) # nx=100 : precision ~1e-4 300 : precision ~1e-7
 
-# eta=my2Dint(dq_diff_E,[0,pi],[0,2*pi],300,300) # nx=100 : precision ~1e-4 300 : precision ~1e-7
-# # eta=nquad(xx_diff_noC,ranges=[[0,pi],[0,2*pi]])
-# print(eta,4/3/sqrt(3))
+eta=my3Dint(sq_elec,[0,pi],[0,2*pi],[0,2*pi],100)/(2*pi)
 
-# eta=my3Dint(dq_diff_E,[0,pi],[0,2*pi],[0,2*pi],100)/(2*pi) # nx=100 : precision ~1e-4 300 : precision ~1e-7
+# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100)/(2*pi)/(2*pi)
+
+print(eta)
+
+# classNV1=1
+# classNV2=5
+# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100)/(2*pi)/(2*pi)
 # print(eta)
-#eta_xx_18=0.7697816068506358 #n=200
-#eta_xx_11=0.7698153937622911
-#eta_yy_11=0.7696949517654613
-#eta_yy_18=0.7697745137506845 #n=200
-
-
-# for i in range(1,9):
-# 	classNV1=1
-# 	classNV2=i
-# 	eta=my4Dint(xy_diff_fullC,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100) # nx=100 : precision ~1e-4 300 : precision ~1e-7
-# 	print('NV1-NV%i:'%i,eta)
 
 # classNV1=1
 # classNV2=2
-# eta=my4Dint(xx_diff_fullC,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100) # nx=100 : precision ~1e-4 300 : precision ~1e-7
-# print('NV1-NV2:',eta)
+# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100)/(2*pi)/(2*pi)
+# print(eta)
 
-
-
+# eta2=(1/4*1.1405+3/4*1.1293)**2/(9.259e-3)
+# print(eta2)
 
 # opts={}
 # opts['epsrel']=1e-4
@@ -313,12 +339,5 @@ classNV2=8
 # eta=nquad(xx_diff_noC,ranges=[[0,pi],[0,2*pi],[0,2*pi]],opts=opts)
 # print('NV1-NV1:',eta)
 
-
-# print(4.467346794318131/(2*pi))
-# print(26.95422595711054/(4*pi**2))
-
-
-# print((1/8*0.3849+1/8+3/8*0.8328+3/8*0.6507)**2)
-# print((0.7110*1/4+0.6828*3/4)**2)
 
 

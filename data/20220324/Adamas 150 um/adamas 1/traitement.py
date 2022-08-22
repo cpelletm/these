@@ -98,12 +98,13 @@ def fit_T1_1classe():
 	# for T1ph in np.linspace(1e-3,5e-3,100):
 	# 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	# 	print('T1ph=%f,error=%f'%(T1ph,estim_error(y,yfit)))
-	T1ph=0.003626*1e3
+	# T1ph=0.003626*1e3
+	T1ph=5
 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	plt.plot(x,yfit,lw=2)
 	print(popt,1/popt[1]*1e3)
 
-# fit_T1_1classe()
+fit_T1_1classe()
 
 def plot_ESR_0B():
 	# x,y=extract_data('ESR 0B -20 et -30 dB',ycol=1)
@@ -137,6 +138,6 @@ def plot_ESR_0B_Vs_1classe():
 	x=x-2740+2865
 	plt.plot(x,y)
 
-plot_ESR_0B_Vs_1classe()
+# plot_ESR_0B_Vs_1classe()
 
 plt.show()

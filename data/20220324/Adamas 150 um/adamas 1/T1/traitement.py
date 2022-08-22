@@ -39,7 +39,8 @@ taus=np.zeros(n)
 for i in range(n):
 	fname=fnames[i]
 	x,y=extract_data(fname,ycol=5)
-	T1ph=0.003626
+	# T1ph=0.003626
+	T1ph=0.005
 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
 	taus[i]=popt[1]
 
@@ -90,27 +91,27 @@ def test_aller():
 x=Bs
 y=1/taus
 plt.plot(x,y,'o',markerfacecolor='none',ms=5,mew=0.7,label=r'B $\perp$ [111]')
-plt.plot(x,[57]*nmax,'--',lw=2,color=color(3),label=r'Plateau B $\perp$ [111]')
+plt.plot(x,[183]*nmax,'--',lw=2,color=color(3),label=r'Plateau B $\perp$ [111]')
 
 
 # popt,yfit=lor_fit_fixed(x,y,x0=0,sigma=8)
 # print(popt)
 # plt.plot(x,yfit,lw=2)
 
-gammaref=25.5
+gammaref=126.7
 plt.plot(x,[gammaref]*nmax,'--',lw=2,color=color(2),label=r'B $\parallel$ [111]')
 
 
 
 ####Plot des barres d'erreurs
-bsup=[gammaref+5]*nmax
-binf=[gammaref-5]*nmax
+bsup=[gammaref+10]*nmax
+binf=[gammaref-10]*nmax
 ax.fill_between(x,binf,bsup,alpha=0.3,color='red')
 plt.plot(x,bsup,'-',lw=1,color='black')
 plt.plot(x,binf,'-',lw=1,color='black')
 
 # plt.plot(x,[gammaref]*nmax,'-',lw=2,color=color(3))
 ylims=ax.get_ylim()
-ax.set_ylim([0,ylims[1]])
+ax.set_ylim([100,ylims[1]])
 plt.legend()
 plt.show()

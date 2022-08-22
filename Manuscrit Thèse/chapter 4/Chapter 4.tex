@@ -6,7 +6,7 @@
 \usepackage[
     backend=biber, 
     natbib=true,
-    style=numeric,
+    style=numeric-comp,
     sorting=none, %Pour faire apparaitre les refs dans l'ordre
     hyperref=true
 ]{biblatex} %Imports biblatex package
@@ -82,7 +82,7 @@ whose eigenvectors are $\ket{0}$ and$\ket{\pm}$ of eigenvalues 0 and $D\pm d_\pe
 where $\tan(\phi_E)=E_y/E_x$.
 
 \subsection{NV spin Hamiltonian under purely transverse magnetic field}
-
+\label{sec B transverse}
 %\begin{figure}[h]
 %\centering
 %\includegraphics[width=0.7\textwidth]{Figures/map_etats_propres}
@@ -103,7 +103,7 @@ For the case where $d_\perp E_\perp \sim \frac{(\gamma_e B_\perp)^2}{D}$ and $\p
 In conclusion, whenever the spin Hamiltonian is dominated by a transverse field, either electric or magnetic, we can consider that the eigenstates of the spin Hamiltonian or $\ket{0}, \ket{-}$ and $\ket{+}$, whereas when the Hamiltonian is dominated by the longitudinal magnetic field, its eigenstates are $\ket{0}, \ket{-1}$ and $\ket{+1}$.
 
 \subsection{Hyperfine coupling and inhomogeneous broadening}
-
+\label{sec modif T2*}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/Comparaison_ESR_T2*}
@@ -195,22 +195,54 @@ The averaging of these matrix elements, which is needed to compute the expected 
 
 We therefore need to make an assumption on the distribution of the transverse field in the sample. In zero external magnetic field where the dominant transverse field comes from randomly spaced charged impurities, we can expect the $x$ and $y$ axes to be randomly sampled in their respective $(xy)$ plane. However, since the NV-fluctuator CR is dominated by the closest neighbor of each spin (due to the $1/r^6$ scaling in eq. [REF]), there could still be local correlations in the transverse field felt by the NV and the fluctuator.
 
-We then computed the decay rates for the two extreme cases: first, we consider that the $x$ and $y$ axis of each spin is randomly sampled, which correspond to a correlation length of the transverse field $l_c=0$, and secondly we considered the case where the $x$ and $y$ axes of every spin was the same, which correspond to $l_c=\infty$.
+We then computed the decay rates for the two extreme cases: first, we consider that the $x$ and $y$ axis of each spin is randomly sampled, which correspond to a correlation length of the transverse field $l_c=0$, and secondly we considered the case where the $x$ and $y$ axes of every spin are the same, which correspond to $l_c=\infty$.
 
 We found for $\mathbf{B}=0$ that the expected decay rate was $\Gamma_1=51.4 \Gamma_0^{th}$ if $l_c=0$ and $\Gamma_1=55.0 \Gamma_0^{th}$ if $l_c=\infty$. $\Gamma_0^{th}$ has the same definition as in table [REF], it is the expected CR rate for an isolated class in the $\{ \ket{0}, \ket{\pm 1} \}$ basis.
 
 In both cases, this is a moderate ($\sim 20 \%$) increase compared to $\Gamma_1=42.8 \Gamma_0^{th}$ which we previously found for $\mathbf{B} \parallel [100]$, where all four classes are degenerate but the Hamiltonian eignebasis is $\{ \ket{0}, \ket{\pm 1} \}$. The change in the Hamiltonian eigenbasis for low field is therefore a possible candidate to explain the low field depolarization in Fig. \ref{scan 100}
 
 \subsubsection{Double flips}
-Allez, j'ai bien avancé aujourd'hui, à toi de jouer maintenant. Il erste les trucs chiants aussi si t'as du temps (légendes et replotter avec T1ph=5 ms.
 
+\begin{table}[htbp]
+\centering
+\caption{Simulated depolarization rate for flip-flops and double flips in zero magnetic field}
+ \label{table double flips}
+\begin{tabular}{c|cc}
+%\toprule
+{} & $l_c=0$ & $l_c=\infty$ \\
+\midrule
+$\bar{R}^2=1$ & $126.8 \Gamma_0^{\rm th}$ & $126.8 \Gamma_0^{\rm th}$ \\
+$\bar{R}^2=0.5$ & $NA \Gamma_0^{\rm th}$ & $NA \Gamma_0^{\rm th}$ \\
+$\bar{R}^2=0$ & $51.4 \Gamma_0^{\rm th}$ & $55 \Gamma_0^{\rm th}$ \\
+%\bottomrule
+\end{tabular}
+\end{table}
+
+Another effect which happens only at low magnetic field is the possibility of double flip between the NV center and the fluctuator, which is simultaneous flip of both spins in the same directions like for example going from $\ket{0,-1}$ to $\ket{+1,0}$. The processes $\ket{0, \pm 1}\bra{\mp 1,0}$ are resonant for $B=0$ and not anymore when the degeneracy between the $\ket{\pm 1}$ states is lifted by the magnetic field.
+
+We have seen however that for weak magnetic fields the eigenstates of each NV Hamiltonian are $\ket{\pm}$ and not $\ket{\pm 1}$, due to the transverse electric field. And the $\ket{+}$ and $\ket{-}$ states are not resonant in zero magnetic field. But we can see from Fig. \ref{simus ESR}-d) or \ref{ESR for T2*}-c) that the splitting $2 d_\perp E_\perp \approx 8\ \rm MHz$ is of the same order than the $1/T_1^{\rm dd}$ profile of linewidth $\Gamma \approx 8.8\ \rm MHz$ measured on Fig. [REF]. In zero external magnetic field, the $\ket{+}$ and $\ket{-}$ states are therefore close enough in energy that double flip can take place.
+
+To compute the depolarization induced by the double flips, we need to add another decay channel, on top of the flip-flop one, in the fluctuator model. We also need to take into account the fact that the $\ket{+}$ and $\ket{-}$ states are not fully resonant, which will modify the $\bar{R}$ factor defined in [REF]. Finally, the question about the correlation  length of the electric field also needs to be asked.
+
+The results are summed up in Table \ref{table double flips}. We again give the results for the two extreme cases regarding the correlations in the electric field, and we show three possible scenario regarding the pseudo-resonance of the $\ket{+}$ and $\ket{-}$ states, represented by the $\bar{R}^2$ factor: $\bar{R}^2=1$ means that the states are fully resonant ($\omega_+-\omega_- \ll \Gamma $), this would be the maximum possible decay rate involving the double flips. $\bar{R}^2=0.5$ represents the case where the splitting between the states is equal to the fluctuator linewidth ($\omega_+-\omega_- \approx \Gamma$). This is close to be true for the experimental values we have. Finally $\bar{R}^2=0$ correspond to the case where the states are too far detuned for the double flips ($\omega_+-\omega_- \gg \Gamma $). We come back to the results of the last section where only considered the flip-flops.
+
+The inclusion of double flips in zero field with $\bar{R}^2=0.5$ therefore increases the theoretical  decay rate in zero field by [REF] \% compared to the previous case. 
 \subsubsection{Change in $T_2^*$}
 
+The last aspect we considered was the change in $T_2^*$ (we include the change in the hyper-fine interaction in the $T_2^*$) for weak magnetic field, as discussed in sec. \ref{sec modif T2*}.
 
-A la fin faire un tableau avec les potentiels increase de $\Gamma_1$ pour les trois cas. Ca veut dire traiter correctement les DQ... (ou au moins à peu près).
+To quantify its impact in the depolarization rate, we employ eq. [REF], wherche use the values $2\gamma_f = 6.5\ \rm MHz$ and we take for $\Gamma_f=\Gamma_NV$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. 
+
+We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 6 \%$ for sample Sumi-2, and by $\sim 19 \%$ for sample CVD-pink. 
 \subsection{NV-NV CR under purely transverse magnetic field}
 
-Sa mère, faut que je replotte tous les T1 avec t1ph=5 ms.
+We now want to experimentally discriminate these different contributions and to see how close the actual decay rate is to the theoretical one. 
+
+One of the reason we want to discriminate these contributions is that they scale differently with the different variables of the sample ($T_2^*$, $\gamma_f$ , magnetic VS electric noise ...). Understanding which of these effect dominates the zero field dynamics might give us insight on which parameter to optimize if one wants to avoid the zero field depolarization, or on the contrary to increase it.
+
+The ideal way to isolate each contributions would be to apply an electric field strong enough to split the transition of the 4 classes, and to measure the decay rate of a single class dominated by the transverse electric field. Such an electric field would need to be of the order of $\sim 10^6\ \rm{V/cm}$, which is several order of magnitudes greater than the breakdown voltage of air and out of our experimental reach.
+
+Instead of an electric field, we will use a transverse magnetic field, which as described in sec. \ref{sec B transverse} leads to a spin Hamiltonian similar to the one where the transverse electric field dominates, or at least to similar eigenstates.
 
 \subsection{Other potential causes}
 Alignment : 100 et perp (utiliser la carte)
