@@ -24,10 +24,6 @@ def H_mag(B):
 	H_B=gamma_e*(Bz*Sz+Bx*Sx+By*Sy)
 	return H_B
 
-
-
-
-
 def H_elec(E):
 	dperp=17e-6 #MHz/(V/cm)
 	dpar=0.35e-6
@@ -99,7 +95,7 @@ def simu():
 
 	plt.show()
 
-simu()
+# simu()
 
 def transverse_field_fit_quadratique():
 	n=500
@@ -117,3 +113,24 @@ def transverse_field_fit_quadratique():
 	plt.plot(x,yfit)
 	print(popt,2.8**2/2870)
 	plt.show()
+
+n=400
+Ey=1e5
+Bxs=np.linspace(0,200,n)
+transis=np.zeros((n,3))
+for i in range(n):
+	H=H_base()+H_mag([Bxs[i],0,0])+H_elec([0,Ey,0])
+	egval,egvec=np.linalg.eigh(H)
+	transis[i,:]=egval
+
+plt.plot(Bxs,transis[:,2]-transis[:,1])
+# plt.plot(Bxs,transis[:,2])
+
+for i in range(n):
+	H=H_base()+H_mag([Bxs[i],0,0])+H_elec([-Ey,0,0])
+	egval,egvec=np.linalg.eigh(H)
+	transis[i,:]=egval
+
+plt.plot(Bxs,transis[:,2]-transis[:,1])
+# plt.plot(Bxs,transis[:,2])
+plt.show()

@@ -149,7 +149,7 @@ Finally, \ref{ESR for T2*}-c) shows the linewidth of both samples for zero exter
 
 Overall, we are mostly interested in the linewidth of the ODMR lines for various magnetic field conditions. While these linewidth are quite significantly changed for sample CVD-pink, the change is less pronounced on sample Sumi-2. Most HPHT samples we used are from type 1B diamond, and behave similarly to sample Sumi-2. Since almost all measurements in this chapter will be conducted on HPHT samples, we will consider the modification of $T_2^*$ as a minor effect.
 
-\section{Modification of NV-NV CR in the transverse field dominated regime}
+\section{NV-NV CR in the low magnetic field regime}
 In this part, we will study the cross-relaxation between NV centers whose spin Hamiltonian is dominated by a transverse field, either magnetic or electric. This is an important regime because it corresponds to the low magnetic field region where the electric field dominates, which is the region for which we want to implement our magnetometry protocol. We will also study here the double flip CR processes which we had neglected in the last chapter.
 
 \subsection{NV-NV CR under low magnetic field}
@@ -184,7 +184,7 @@ Nevertheless, the fact that there is a drop in zero field when $\mathbf{B} \para
 
 We will discuss here three possible reasons for the zero field depolarization observed in Fig. \ref{scan 100}. Once presented, we will try to hierarchized the contribution of each of these effects.
 
-\subsubsection{Change in eigenstates}
+\subsubsection{Eigenstates modification}
 The first explanation is the modification of the dipole-dipole interaction caused by the change of the NV Hamiltonian eigenbasis from $\{ \ket{0}, \ket{\pm 1} \}$ when $\mathbf{B} \neq 0$ to $\{ \ket{0}, \ket{\pm} \}$ when $\mathbf{B} = 0$.
 
 This modification arise from the new form of the dipole-dipole Hamiltonian in the $\{ \ket{0}, \ket{+}, \ket{-} \} \times \{ \ket{0}, \ket{+}, \ket{-} \}$ basis. We justify this change of basis, which only consider the single NV Hamiltonian instead of the full Hamiltonian of the two coupled NV centers, by the fact that we are in the weak coupling regime, where $\expval{\mathcal{H}_{dd}} \approx 50\ \rm kHz \ll \frac{1}{2\pi T_2^*} \approx 5\ \rm MHz$.
@@ -227,26 +227,39 @@ To compute the depolarization induced by the double flips, we need to add anothe
 The results are summed up in Table \ref{table double flips}. We again give the results for the two extreme cases regarding the correlations in the electric field, and we show three possible scenario regarding the pseudo-resonance of the $\ket{+}$ and $\ket{-}$ states, represented by the $\bar{R}^2$ factor: $\bar{R}^2=1$ means that the states are fully resonant ($\omega_+-\omega_- \ll \Gamma $), this would be the maximum possible decay rate involving the double flips. $\bar{R}^2=0.5$ represents the case where the splitting between the states is equal to the fluctuator linewidth ($\omega_+-\omega_- \approx \Gamma$). This is close to be true for the experimental values we have. Finally $\bar{R}^2=0$ correspond to the case where the states are too far detuned for the double flips ($\omega_+-\omega_- \gg \Gamma $). We come back to the results of the last section where only considered the flip-flops.
 
 The inclusion of double flips in zero field with $\bar{R}^2=0.5$ therefore increases the theoretical  decay rate in zero field by [REF] \% compared to the previous case. 
-\subsubsection{Change in $T_2^*$}
+\subsubsection{$T_2^*$ modification}
 
 The last aspect we considered was the change in $T_2^*$ (we include the change in the hyper-fine interaction in the $T_2^*$) for weak magnetic field, as discussed in sec. \ref{sec modif T2*}.
 
 To quantify its impact in the depolarization rate, we employ eq. [REF], wherche use the values $2\gamma_f = 6.5\ \rm MHz$ and we take for $\Gamma_f=\Gamma_NV$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. 
 
 We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 6 \%$ for sample Sumi-2, and by $\sim 19 \%$ for sample CVD-pink. 
-\subsection{NV-NV CR under purely transverse magnetic field}
+\subsection{Other potential causes}
+Alignment : 100 et perp (utiliser la carte)
+Pola laser
 
-We now want to experimentally discriminate these different contributions and to see how close the actual decay rate is to the theoretical one. 
+\section{NV-NV CR under purely transverse magnetic field}
+We now want to experimentally discriminate these different contributions and to see how close the actual decay rates are to the predicted ones. 
 
-One of the reason we want to discriminate these contributions is that they scale differently with the different variables of the sample ($T_2^*$, $\gamma_f$ , magnetic VS electric noise ...). Understanding which of these effect dominates the zero field dynamics might give us insight on which parameter to optimize if one wants to avoid the zero field depolarization, or on the contrary to increase it.
+One of the reason we want to separate these contributions is that they scale differently with the different variables of the sample ($T_2^*$, $\gamma_f$ , magnetic VS electric noise ...). Understanding which of these effect dominates the zero field dynamics might give us insight on which parameter to optimize if one wants to avoid the zero field depolarization, or on the contrary to increase it.
 
 The ideal way to isolate each contributions would be to apply an electric field strong enough to split the transition of the 4 classes, and to measure the decay rate of a single class dominated by the transverse electric field. Such an electric field would need to be of the order of $\sim 10^6\ \rm{V/cm}$, which is several order of magnitudes greater than the breakdown voltage of air and out of our experimental reach.
 
 Instead of an electric field, we will use a transverse magnetic field, which as described in sec. \ref{sec B transverse} leads to a spin Hamiltonian similar to the one where the transverse electric field dominates, or at least to similar eigenstates.
+\subsection{Principle of the experiment}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Figures/transis_transverse_field}
+\caption{Simulation of the eigenstates of the NV Hamiltonian for $d_\perp E_perp=4\ \rm MHz$ and a purely transverse magnetic field $B_\perp$. (a) Eigenvalues for the spin Hamiltonian as a function of $B_\perp$. The three states are labeled $\ket{1}$, $\ket{2}$ and $\ket{3}$ (b) Splitting between the $\ket{2}$ and $\ket{3}$ states (blue curve) and closeness factor $\abs{\bra{3}\ket{+}}^2$ between the $\ket{3}$ and $\ket{+}$ (red curve)}
+\label{eigenstates transverse field}
+\end{figure}
 
-\subsection{Other potential causes}
-Alignment : 100 et perp (utiliser la carte)
-Pola laser
+Fig. \ref{eigenstates transverse field} shows a simulation of the eigenstates and eigenenergies for a NV Hamiltonian subject to transverse electric field and magnetic field. For convenience we chose to take $E_\perp = E_x$ and $B_\perp = B_x$, taking other geometric configuration only alters slightly the results. We labeled the eigenstates of the Hamiltonian $\ket{1}$, $\ket{2}$ and $\ket{3}$ in ascending order of energy.
+
+Fig. \ref{eigenstates transverse field}-b) shows both the splitting $\Delta \nu$ between the $\ket{2}$ and $\ket{3}$ states, and how close the $\ket{3}$ state is to the $\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}}$ state via the factor $\abs{\bra{3}\ket{+}}^2$. We look at the $\ket{3}$ state since $\ket{2}=\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}}$ in this case.
+
+These two metrics, $\Delta \nu$ and $\abs{\bra{3}\ket{+}}^2$ are what we are interested in: we want to increase $\Delta \nu$ to the point where the double flips are completely quenched, but we want $\abs{\bra{3}\ket{+}}^2$ to remain close to 1 since we wanted to observe the modification caused by the eigenbasis $\{\ket{0},\ket{\pm}\}$. This way we can isolate the $T_1^{\rm dd}$ contribution coming from the change of eigenstates to the one coming from the double flips. Based on the plots in Fig.\ref{eigenstates transverse field}-b), the region with $B_\perp \in$ [100,200] G seems to satisfy both these criteria.
+
 
 \section{Low field magnetometry}
 
