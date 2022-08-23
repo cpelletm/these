@@ -1,8 +1,12 @@
+chapter 1 : dans la partie NV, bien parler de la structure hyperfine avec 14N
+
 Chapter 1 : protocole de T1, peut etre aussi Rabi, echo et Ramsay, voire plus. Y'a du rabi avec soustraction dans le arxiv de Barry&co 2022
 
 chapter 1 : Setup experimental, lock in & co. -> Plutot appendix, ou un petit chapitre. Appendix c'est pas mal, avec plusieurs setup avec/sans lock-in, lock-in B ou uW...
 
 Chapter 2 : Clarifier W16 Vs War1: ça m'a l'air louche cette histoire
+
+Chapter 2 : Faire les 
 
 chapter 1 : Champ transverse, modèle de PL (rate equation Vs 3 lvl master equation Vs 7 lvl), ODMR, contraste ODMR (single et ensemble)
 
@@ -21,6 +25,7 @@ Comparaison EPR : 10^10 spins / 1G linewidth (?) G. R. Eaton, S. S. Eaton, D. P.
 Manips : 
 
 Check le fichier (les trucs sur le VH- et tout)
+Prendre ESR memes conditions 0B, 1 classe et 100 et comparer les T2*. Si possible comparer avec le contraste DQ d'un scan 100
 Variance d'Allan/sensi en fonction du temps d'acquisition : cf PRX 2020 de lukin, Clevenson 2015 et Mitchell 2020
 Comparaison PL rose+4 sumis -> choper une estimation de la concentration des sumis (si possible) -> mesurer largeur fluct sur les 4 sumis + T1 0B et 1x1x1x1. (rappel : Hdd (donc 1/T1) scale linéairement avec la concentration. Mdr sacré rappel. Boloss)
 Sensi experimental sur le flanc d'ESR pour avoir une comparaison (sur un adamas 15 um ou sur le rose, à voir. Si possible sur la 100 pour être honnête)

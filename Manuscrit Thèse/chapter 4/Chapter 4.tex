@@ -260,6 +260,31 @@ Fig. \ref{eigenstates transverse field}-b) shows both the splitting $\Delta \nu$
 
 These two metrics, $\Delta \nu$ and $\abs{\bra{3}\ket{+}}^2$ are what we are interested in: we want to increase $\Delta \nu$ to the point where the double flips are completely quenched, but we want $\abs{\bra{3}\ket{+}}^2$ to remain close to 1 since we wanted to observe the modification caused by the eigenbasis $\{\ket{0},\ket{\pm}\}$. This way we can isolate the $T_1^{\rm dd}$ contribution coming from the change of eigenstates to the one coming from the double flips. Based on the plots in Fig.\ref{eigenstates transverse field}-b), the region with $B_\perp \in$ [100,200] G seems to satisfy both these criteria.
 
+\subsection{Experimental data}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{Figures/scan_T1_perp}
+\caption{Experimental data for the depolarization under purely transverse magnetic field on sample ADM-150-2. a) ODMR spectrum for $|\mathbf{B}|=20\ \rm G$. The transitions of the class orthogonal to the magnetic field are labeled $\nu_+$ and $\nu_-$. b) Dependency of $\nu_+$ and $\nu_-$ with the magnetic field, as measured through ODMR. c) Measurement of $T_1^{\rm dd}$ as a function of the transverse magnetic field. The corresponding energy splittings $\Delta \nu=\nu_+-\nu_-$ are written on top. We divided the plot between the A region where $1/T_1^{\rm dd}$ decreases, and the B region where it reaches a plateau with a value $1/T_1^{\rm dd}=185 \pm 5\ \rm s^{-1}$ indicated by a red line. We also indicate in green the value found for a purely longitudinal magnetic field $1/T_1^{\rm dd}=126 \pm 10\ \rm s^{-1}$}
+\label{champ tranverse exp}
+\end{figure}
+
+We perform here a $T_1^{\rm dd}$ measurement similar to the one presented in Fig. [REF], on the same sample and with the same fitting parameters, but this time probing a class orthogonal to the magnetic field.
+
+Fig. \ref{champ tranverse exp}-a) and b) show the evolution of the transition frequencies $\nu_+=\frac{E_{\ket{3}}-E_{\ket{1}}}{h}$ and $\nu_-=\frac{E_{\ket{2}}-E_{\ket{1}}}{h}$ where $\ket{1}$, $\ket{2}$ and $\ket{3}$ are the states described in Fig. \ref{eigenstates transverse field}. The magnetic field was scanned between 20 and 130 G by increment of $\sim 0.5\ \rm G$.
+
+Fig. \ref{champ tranverse exp}-c) shows the evolution of $1/T_1^{\rm dd}$ with the magnetic field. We have denoted two region: in region A, $1/T_1^{\rm dd}$ decreases with the magnetic field, from a value of $350\ \rm s^{-1}$ to a value of $185\ \rm s^{-1}$. In region B, the $1/T_1^{\rm dd}$ value is stable and does not decrease further when $B_\perp$, or $\Delta \nu$ are increased.
+
+We attribute the decrease in region A to the double flips: as the magnetic field and $\Delta \nu$ are increased, the double flips become less and less resonant to the point where they become completely quenched for $B_\perp \approx 90\ \rm G$ or $\Delta \nu \approx 30\ \rm MHz$. This value is coherent with the previously measured fluctuator linewidth. We can then estimate the part of the double flips in the low field (20 G here) depolarization rate and find that they amount for $\sim 50\%$ in this case.
+
+Another possibility to explain this drop could be that the class orthogonal to $\mathbf{B}$ still exerts flip-flops with the other classes at low magnetic field, as we can see that they are not very far detuned in Fig. \ref{champ tranverse exp}-a), but we have to consider that the detuning between the two states $\nu_+-\nu_-= 9\ \rm MHz$ is significantly lower, even at $B_\perp=20\ \rm G$, than the detuning with the closest class $\nu_\pm-\nu_{\rm other}= 22\ \rm MHz$; and also that there seem to be a small plateau for $1/T_1^{\rm dd}$ at the beginning of region A, which is consistent with the double flip hypothesis since  $\nu_+-\nu_-$ is almost flat in this region while $\nu_\pm-\nu_{\rm other}$ increases linearly with the magnetic field.
+
+We now turn to region B. Even tough the double flips are completely quenched, the effects of the eigenbasis modification and the $T_2^*$ reduction are still present, because we can see on Fig. \ref{eigenstates transverse field}-b) that the eigenstates of the spin Hamiltonian are still very close to $\{ \ket{0}, \ket{\pm} \}$ for these magnetic field values.
+
+Indeed, when we compare the plateau value $1/T_1^{\rm dd}=185 \pm 5\ \rm s^{-1}$ to the value $1/T_1^{\rm dd}=126 \pm 10\ \rm s^{-1}$ found with a longitudinal magnetic field, we notice an increase by $\sim 50\%$ of the depolarization rate. This is in agreement with the theory which predicts an increase of the decay rate in the $\ket{\pm}$ basis compared to the $\ket{\pm 1}$ basis, although the theoretical increase, when considering only the change of eigenbasis, is a factor of 4 (see appendix [REF]). We again find the the theory significantly overestimates the measured decay rates, although this discrepancy could still come from the fitting procedure.
+
+We unfortunately cannot experimentally discriminate the depolarization coming from the eigenbasis change or the $T_2^*$ while using the same sample, since both of this properties are tied to the Hamiltonian eigenstates. We do know however that the double flips seem to play a more important role in the low field depolarization, even in a regime where the eigenbasis change should play an important role (we expect $\Gamma_1^{\ket{\pm}}=4 \Gamma_1^{\ket{\pm}}$ for a single class, but only $\Gamma_1^{\ket{\pm}}\approx 1.2 \Gamma_1^{\ket{\pm}}$ when the 4 classes are resonant).
+
 
 \section{Low field magnetometry}
 
