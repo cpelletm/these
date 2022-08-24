@@ -117,7 +117,7 @@ A consequence of the change in the Hamiltonian eigenstates from the $\{ \ket{0},
 
 These different sensitivities affect both the inhomogeneous broadening, due to the local electric and magnetic noise, and the hyper-fine coupling to the various surrounding nuclei. These effects can drastically modify the ODMR lineshape in zero external magnetic field \citep{jamonneau2016competition} or purely transverse magnetic field \citep{qiu2021nuclear,qiu2022nanoscale}.
 
-We will only consider here the hyper-fine splitting caused by the $^14$N nuclei of the nitrogen atom forming the NV center. $^14$N represents 99.6 \% of natural abundance nitrogen atoms, and it has an $I=1$ nuclear spin. The full $3\times 3$ Hamiltonian of the NV center in these conditions can be written:
+We will only consider here the hyper-fine splitting caused by the $^{14}$N nuclei of the nitrogen atom forming the NV center. $^{14}$N represents 99.6 \% of natural abundance nitrogen atoms, and it has an $I=1$ nuclear spin. The full $3\times 3$ Hamiltonian of the NV center in these conditions can be written:
 \begin{equation}
 \mathcal{H}=\mathcal{H}_e + \mathcal{H}_n + \mathbf{S} \bar{\bar{A}} \mathbf{I},
 \end{equation}
@@ -150,9 +150,9 @@ Finally, \ref{ESR for T2*}-c) shows the linewidth of both samples for zero exter
 Overall, we are mostly interested in the linewidth of the ODMR lines for various magnetic field conditions. While these linewidth are quite significantly changed for sample CVD-pink, the change is less pronounced on sample Sumi-2. Most HPHT samples we used are from type 1B diamond, and behave similarly to sample Sumi-2. Since almost all measurements in this chapter will be conducted on HPHT samples, we will consider the modification of $T_2^*$ as a minor effect.
 
 \section{NV-NV CR in the low magnetic field regime}
-In this part, we will study the cross-relaxation between NV centers whose spin Hamiltonian is dominated by a transverse field, either magnetic or electric. This is an important regime because it corresponds to the low magnetic field region where the electric field dominates, which is the region for which we want to implement our magnetometry protocol. We will also study here the double flip CR processes which we had neglected in the last chapter.
+In this part, we will study the cross-relaxation between NV centers under low magnetic field, whose spin Hamiltonian is dominated by a transverse electric field. Understanding the various mechanisms operating in this regime will be important for the magnetometry protocol presented after.
 
-\subsection{NV-NV CR under low magnetic field}
+\subsection{Experimental observations}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/scan_1x1x1x1}
@@ -163,9 +163,11 @@ We will start by showing that NV-NV CR behaves differently in the low magnetic f
 
 The main issue with studying NV-NV CR in low to zero magnetic field is that there are many competing effects happening simultaneously, with few buttons to adjust to isolate each effects.
 
-Fig. \ref{scan 1x1x1x1}-c) and d) for example shows the evolution of the NV PL and stretched lifetime $T_1^{\rm dd}$, defined in the last chapter [REF], as the magnetic field is scanned from 0 to 60 G. The ODMR at the initial and final magnetic fields are shown in Fig. \ref{scan 1x1x1x1}-a) and b).
+Fig. \ref{scan 1x1x1x1}-c) and d) show the evolution of the NV PL and stretched lifetime $T_1^{\rm dd}$, defined in the last chapter [REF], as the magnetic field is scanned from 0 to 60 G. The ODMR at the initial and final magnetic fields are shown in Fig. \ref{scan 1x1x1x1}-a) and b).
 
-While it is clear that the spin lifetime, as well as the PL, increases when the magnetic field, there is no clear indication that this is because of the specificity of the low field region. Indeed, the most likely explanation in this case is that the four classes of NV centers get split apart as the magnetic field increases, which reduces the density of resonant fluctuators for each NV centers.
+While it is clear that the spin lifetime as well as the PL increases with the magnetic field, there is no clear indication that this is because of the specificity of the low field region. Indeed, the most likely explanation in this case is that the four classes of NV centers get split apart as the magnetic field increases, which reduces the density of resonant fluctuators for each NV centers. 
+
+We can note however that the PL is not an exact mirror of the spin dynamics: while the low field drop in PL is indeed associated with a reduced spin lifetime, the drop in PL at higher magnetic field comes from the states mixing induced by the transverse magnetic field, and is not associated with a modification of the spin dynamics (to the first order).
 
 \begin{figure}[h]
 \centering
@@ -178,7 +180,9 @@ Fig. \ref{scan 100} presents a way to circumvent this issue: by applying the mag
 
 We can notice that there still is a decrease of both the PL and $T_1^{\rm dd}$ in low field, although considerably smaller than the previous case: in Fig. \ref{scan 1x1x1x1}, $T_1^{\rm dd}$ was reduced by a factor of [REF] in zero field, whereas in Fig. \ref{scan 100}, it was only reduced by a factor of [REF]. The main reason for the PL and $T_1$ drop was indeed the co-resonance between the four classes.
 
-Nevertheless, the fact that there is a drop in zero field when $\mathbf{B} \parallel [100]$ cannot be explained by using only the inter-class resonances. There are some additional depolarization mechanisms which are proper to the zero field region. We should also note that, while the zero-field PL contrast is bigger in Fig. \ref{scan 1x1x1x1}-c) than in Fig. \ref{scan 100}-c), the slope, which is the limiting factor for sensing ability, is actually very similar in both cases with a value $\sim [REF]\ \rm G^{-1}$.
+Nevertheless, the fact that there is a drop in zero field when $\mathbf{B} \parallel [100]$ cannot be explained by considering only the inter-class resonances. There are some additional depolarization mechanisms which are proper to the zero field region. We should also note that, while the zero-field PL contrast is bigger in Fig. \ref{scan 1x1x1x1}-c) than in Fig. \ref{scan 100}-c), the PL slope, which is the limiting factor for sensing ability, is actually very similar in both cases with a value $\sim [REF]\ \rm G^{-1}$.
+
+We can also note a drop in PL and a corresponding increase of $1/T_1^{\rm dd}$ for $B \sim 20\ \rm G$ which corresponds to the NV$-^{13}$C-NV cross-relaxation discussed in [REF]
 
 \subsection{Potential causes for low field depolarization}
 
@@ -187,19 +191,17 @@ We will discuss here three possible reasons for the zero field depolarization ob
 \subsubsection{Eigenstates modification}
 The first explanation is the modification of the dipole-dipole interaction caused by the change of the NV Hamiltonian eigenbasis from $\{ \ket{0}, \ket{\pm 1} \}$ when $\mathbf{B} \neq 0$ to $\{ \ket{0}, \ket{\pm} \}$ when $\mathbf{B} = 0$.
 
-This modification arise from the new form of the dipole-dipole Hamiltonian in the $\{ \ket{0}, \ket{+}, \ket{-} \} \times \{ \ket{0}, \ket{+}, \ket{-} \}$ basis. We justify this change of basis, which only consider the single NV Hamiltonian instead of the full Hamiltonian of the two coupled NV centers, by the fact that we are in the weak coupling regime, where $\expval{\mathcal{H}_{dd}} \approx 50\ \rm kHz \ll \frac{1}{2\pi T_2^*} \approx 5\ \rm MHz$.
+This modification arise from the new form of the dipole-dipole Hamiltonian in the $\{ \ket{0}, \ket{+}, \ket{-} \} \times \{ \ket{0}, \ket{+}, \ket{-} \}$ basis. We justify this change of basis, where we only considered the single NV Hamiltonian instead of the full two-spins Hamiltonian, by the fact that we are in the weak coupling regime, where $\expval{\mathcal{H}_{dd}} \approx 50\ \rm kHz \ll \frac{1}{2\pi T_2^*} \approx 5\ \rm MHz$ meaning that we can treat the dipole-dipole interaction perturbatively. To compute the decay rate with these new eigenstates, we now need to consider the $\mel{0,\pm}{\mathcal{H}_{dd}}{\pm ,0}$ matrix elements instead of the $\mel{0,\pm 1}{\mathcal{H}_{dd}}{\pm 1,0}$ ones.
 
-To compute the decay rate in these case, similarly to what we did in sec. REF, we now need to consider the $\mel{0,\pm}{\mathcal{H}_{dd}}{\pm ,0}$ matrix elements instead of the $\mel{0,\pm 1}{\mathcal{H}_{dd}}{\pm 1,0}$ ones.
+The computation of the decay rates in the new eigenbasis involve the averaging of these matrix elements which is detailed in appendix [REF]. The computation in this case is complicated by the fact that the transverse field (either $\mathbf{E}$ or $\mathbf{B}$) responsible for the splitting of the $\ket{\pm}$ levels breaks the Hamiltonian symmetry in the $(xy)$ plane. This means that the dipole-dipole coupling between two spins will depend on their relative $x$ and $y$ axis, defined by the local transverse field, on top of the relative $z$ axis defined by the NV axis. 
 
-The averaging of these matrix elements, which is needed to compute the expected decay rates, is detailed in appendix [REF]. The computation in this case is complicated by the fact that the transverse field (either $\mathbf{E}$ or $\mathbf{B}$) responsible for the splitting of the $\ket{\pm}$ levels breaks the Hamiltonian symmetry in the $(xy)$ plane. This means that the dipole-dipole coupling between two spins will depend on their relative $x$ and $y$ axis, defined by the local transverse field, on top of the relative $z$ axis defined by the NV axis. 
+We therefore need to make an assumption on the distribution of the transverse field in the sample. In zero external magnetic field where the dominant transverse field comes from randomly spaced charged impurities, we can expect the $x$ and $y$ axes to be randomly sampled in their respective $(xy)$ plane. However, since the NV-fluctuator CR is dominated by the closest neighbor of each spin (due to the $1/r^6$ scaling in eq. [REF]), there could still be local correlations in the transverse field felt by the NV and its nearest fluctuator.
 
-We therefore need to make an assumption on the distribution of the transverse field in the sample. In zero external magnetic field where the dominant transverse field comes from randomly spaced charged impurities, we can expect the $x$ and $y$ axes to be randomly sampled in their respective $(xy)$ plane. However, since the NV-fluctuator CR is dominated by the closest neighbor of each spin (due to the $1/r^6$ scaling in eq. [REF]), there could still be local correlations in the transverse field felt by the NV and the fluctuator.
+We then computed the decay rates for the two extreme cases: first, we consider that the $x$ and $y$ axis of each spin is randomly sampled, which correspond to a correlation length of the transverse field $l_c=0$, and secondly we considered the case where the dominant transverse field as a fixed orientation in the whole sample corresponding to $l_c=\infty$.
 
-We then computed the decay rates for the two extreme cases: first, we consider that the $x$ and $y$ axis of each spin is randomly sampled, which correspond to a correlation length of the transverse field $l_c=0$, and secondly we considered the case where the $x$ and $y$ axes of every spin are the same, which correspond to $l_c=\infty$.
+We found for $\mathbf{B}=0$ that the expected decay rate was $\Gamma_1=51.4 \Gamma_0^{\rm th}$ if $l_c=0$ and $\Gamma_1=55.0 \Gamma_0^{\rm th}$ if $l_c=\infty$. $\Gamma_0^{\rm th}$ has the same definition as in table [REF], it is the expected decay rate for an isolated class in the $\{ \ket{0}, \ket{\pm 1} \}$ basis.
 
-We found for $\mathbf{B}=0$ that the expected decay rate was $\Gamma_1=51.4 \Gamma_0^{th}$ if $l_c=0$ and $\Gamma_1=55.0 \Gamma_0^{th}$ if $l_c=\infty$. $\Gamma_0^{th}$ has the same definition as in table [REF], it is the expected CR rate for an isolated class in the $\{ \ket{0}, \ket{\pm 1} \}$ basis.
-
-In both cases, this is a moderate ($\sim 20 \%$) increase compared to $\Gamma_1=42.8 \Gamma_0^{th}$ which we previously found for $\mathbf{B} \parallel [100]$, where all four classes are degenerate but the Hamiltonian eignebasis is $\{ \ket{0}, \ket{\pm 1} \}$. The change in the Hamiltonian eigenbasis for low field is therefore a possible candidate to explain the low field depolarization in Fig. \ref{scan 100}
+In both cases, this is a moderate ($\sim 20 \%$) increase compared to $\Gamma_1=42.8 \Gamma_0^{\rm th}$ which we previously found for $\mathbf{B} \parallel [100]$, where all four classes were degenerate but the Hamiltonian eignebasis was $\{ \ket{0}, \ket{\pm 1} \}$. The change in the Hamiltonian eigenbasis for low field is therefore a possible candidate to explain the low field depolarization in Fig. \ref{scan 100}
 
 \subsubsection{Double flips}
 
@@ -211,22 +213,23 @@ In both cases, this is a moderate ($\sim 20 \%$) increase compared to $\Gamma_1=
 %\toprule
 {} & $l_c=0$ & $l_c=\infty$ \\
 \midrule
-$\bar{R}^2=1$ & $126.8 \Gamma_0^{\rm th}$ & $126.8 \Gamma_0^{\rm th}$ \\
-$\bar{R}^2=0.5$ & $NA \Gamma_0^{\rm th}$ & $NA \Gamma_0^{\rm th}$ \\
-$\bar{R}^2=0$ & $51.4 \Gamma_0^{\rm th}$ & $55 \Gamma_0^{\rm th}$ \\
+$\bar{G}^2=1$ & $126.8 \Gamma_0^{\rm th}$ & $126.8 \Gamma_0^{\rm th}$ \\
+$\bar{G}^2=0.5$ & $NA \Gamma_0^{\rm th}$ & $NA \Gamma_0^{\rm th}$ \\
+$\bar{G}^2=0$ & $51.4 \Gamma_0^{\rm th}$ & $55 \Gamma_0^{\rm th}$ \\
 %\bottomrule
 \end{tabular}
 \end{table}
 
-Another effect which happens only at low magnetic field is the possibility of double flip between the NV center and the fluctuator, which is simultaneous flip of both spins in the same directions like for example going from $\ket{0,-1}$ to $\ket{+1,0}$. The processes $\ket{0, \pm 1}\bra{\mp 1,0}$ are resonant for $B=0$ and not anymore when the degeneracy between the $\ket{\pm 1}$ states is lifted by the magnetic field.
+Another effect which happens only at low magnetic field is the possibility of double flip between the NV center and the fluctuator, which is the simultaneous flip of both spins in the same directions, for example going from $\ket{0,-1}$ to $\ket{+1,0}$. The processes $\ket{0, \pm 1}\bra{\mp 1,0}$ are resonant for $B=0$ and not anymore when the degeneracy between the $\ket{\pm 1}$ states is lifted by the magnetic field.
 
-We have seen however that for weak magnetic fields the eigenstates of each NV Hamiltonian are $\ket{\pm}$ and not $\ket{\pm 1}$, due to the transverse electric field. And the $\ket{+}$ and $\ket{-}$ states are not resonant in zero magnetic field. But we can see from Fig. \ref{simus ESR}-d) or \ref{ESR for T2*}-c) that the splitting $2 d_\perp E_\perp \approx 8\ \rm MHz$ is of the same order than the $1/T_1^{\rm dd}$ profile of linewidth $\Gamma \approx 8.8\ \rm MHz$ measured on Fig. [REF]. In zero external magnetic field, the $\ket{+}$ and $\ket{-}$ states are therefore close enough in energy that double flip can take place.
+We have seen however that for weak magnetic fields the eigenstates of each NV Hamiltonian are $\ket{\pm}$ and not $\ket{\pm 1}$, due to the transverse electric field. And the $\ket{+}$ and $\ket{-}$ states are not resonant in zero magnetic field. But we can see from Fig. \ref{simus ESR}-d) or \ref{ESR for T2*}-c) that the splitting $2 d_\perp E_\perp \approx 8\ \rm MHz$ is of the same order than the $1/T_1^{\rm dd}$ profile of linewidth $\Gamma^{\rm dd} \approx 8.8\ \rm MHz$ measured on Fig. [REF]. In zero external magnetic field, the $\ket{+}$ and $\ket{-}$ states are therefore close enough in energy that double flip can take place.
 
-To compute the depolarization induced by the double flips, we need to add another decay channel, on top of the flip-flop one, in the fluctuator model. We also need to take into account the fact that the $\ket{+}$ and $\ket{-}$ states are not fully resonant, which will modify the $\bar{R}$ factor defined in [REF]. Finally, the question about the correlation  length of the electric field also needs to be asked.
+To compute the depolarization induced by the double flips, we need to add another decay channel in the fluctuator model, on top of the flip-flop one. We also need to take into account the fact that the $\ket{+}$ and $\ket{-}$ states are not fully resonant, which will modify the $\bar{G}$ factor defined in [REF]. Finally, the question about the correlation  length of the electric field also needs to be asked.
 
-The results are summed up in Table \ref{table double flips}. We again give the results for the two extreme cases regarding the correlations in the electric field, and we show three possible scenario regarding the pseudo-resonance of the $\ket{+}$ and $\ket{-}$ states, represented by the $\bar{R}^2$ factor: $\bar{R}^2=1$ means that the states are fully resonant ($\omega_+-\omega_- \ll \Gamma $), this would be the maximum possible decay rate involving the double flips. $\bar{R}^2=0.5$ represents the case where the splitting between the states is equal to the fluctuator linewidth ($\omega_+-\omega_- \approx \Gamma$). This is close to be true for the experimental values we have. Finally $\bar{R}^2=0$ correspond to the case where the states are too far detuned for the double flips ($\omega_+-\omega_- \gg \Gamma $). We come back to the results of the last section where only considered the flip-flops.
+The results are summed up in Table \ref{table double flips}. We again give the results for the two extreme cases regarding the correlations in the electric field, and we show three possible scenario regarding the pseudo-resonance of the $\ket{+}$ and $\ket{-}$ states, represented by the $\bar{G}^2$ factor: $\bar{G}^2=1$ means that the states are fully resonant ($\omega_+-\omega_- \ll \Gamma^{\rm dd} $), this would be the maximum possible decay rate involving the double flips. $\bar{G}^2=0.5$ represents the case where the splitting between the states is equal to the fluctuator linewidth ($\omega_+-\omega_- \approx \Gamma^{\rm dd}$). This is close to the the experimental values we have. Finally $\bar{G}^2=0$ correspond to the case where the states are too far detuned for the double flips ($\omega_+-\omega_- \gg \Gamma^{\rm dd} $). We come back to the results of the last section where only considered the flip-flops.
 
-The inclusion of double flips in zero field with $\bar{R}^2=0.5$ therefore increases the theoretical  decay rate in zero field by [REF] \% compared to the previous case. 
+We therefore predict that the double flips amounts for an increase of the decay rate by [REF] \% (taking $\bar{G}^2=0.5$) compared to the previous case.
+
 \subsubsection{$T_2^*$ modification}
 
 The last aspect we considered was the change in $T_2^*$ (we include the change in the hyper-fine interaction in the $T_2^*$) for weak magnetic field, as discussed in sec. \ref{sec modif T2*}.
@@ -234,9 +237,51 @@ The last aspect we considered was the change in $T_2^*$ (we include the change i
 To quantify its impact in the depolarization rate, we employ eq. [REF], wherche use the values $2\gamma_f = 6.5\ \rm MHz$ and we take for $\Gamma_f=\Gamma_NV$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. 
 
 We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 6 \%$ for sample Sumi-2, and by $\sim 19 \%$ for sample CVD-pink. 
+
+
+\subsubsection{Summary}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Figures/Shema_summary_theory}
+\caption{Visual summary of the different depolarization effects in low magnetic field and their predicted depolarization rate}
+\label{summary_theory}
+\end{figure}
+
+Fig. \ref{summary_theory} recapitulate the various mechanisms at play in the low field depolarization of NV ensemble. 
+
+We start from from the simplest case where every classes are sepctrally isolated and the only dipole-induced relaxation coms from the flip-flop between NV and fluctuators from the same class. We then consider the case where all four classes are resonant ($B\parallel [100]$) and finally the case B=0.
+
+The three extra depolarization mechanisms in zero field are then detailed, with the predicted increase of depolarization rate for each step. The predicted rates in zero field depend on several parameters, we chose the following ones to compute the different numerical values: $l_c=0$, $\bar{G}^2=0.5$, $2\gamma_f = 6.5\ \rm MHz$ and $2/T_2^*=5.9\ \rm MHz$ (corresponding to sample Sumi-2 if we assume a Lorentzian ODMR profile).
+
 \subsection{Other potential causes}
-Alignment : 100 et perp (utiliser la carte)
-Pola laser
+We have also considered two other causes that we have ultimately ruled out in this case.
+
+\subsubsection{Magnetic field alignment}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{Figures/alignement_rose}
+\caption{PL of sample CVD-pink as a function of the magnetic field for various misalignment of the field direction with the [100] axis}
+\label{alignement rose}
+\end{figure}
+
+The first is a potential misalignment of the magnetic field with the [100] axis, which would cause a splitting of the 4 classes as the magnetic field increases. This hypothesis is not consistent with the observations in Fig. \ref{scan 100}-d): we would expect a small  misalignment to cause a slow but steady decrease of $1/T_1^{\rm dd}$ as the magnetic field is increased. Instead we observe a sharp decrease followed by a pseudo-plateau.
+
+We still tried to estimate the sensitivity of the low field depolarization with the field orientation. Fig. \ref{alignement rose} shows PL scans on sample CVD-pink for various alignment of the magnetic field around the [100] axis. We estimate our alignments to be precise within $\pm 1^\circ$. We can see that the central feature is almost unaffected by the orientation within [$-3^\circ$:$+3^\circ$] which confirms that the low field depolarization does not come from a field misalignment.
+
+\subsubsection{Laser polarization}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{Figures/pola_laser}
+\caption{tata}
+\label{pola laser}
+\end{figure}
+
+Other studies \citep{anishchik2015low, filimonenko2020weak} previously saw a correlation between the zero magnetic field PL dip and the polarization angle of the laser with respect to the magnetic field. 
+
+Fig. \ref{pola laser} shows PL scans on sample ADM-150-3 for various polarization angle of the incident laser. We chose to apply the magnetic field in the laser polarization plane, in a direction that did not match any particular crystalline planes.
+
+We can see no clear differences between the different polarization angles used, whereas \citep{anishchik2015low} and \citep{filimonenko2020weak} saw an antiline growing inside the PL dip when $B \perp E_{\rm las}$. We think that the difference between our experiments come from the fact that we are using denser NV ensembles, and that any effects tied to the laser polarization are hidden by the stronger effects discussed previously.
+
 
 \section{NV-NV CR under purely transverse magnetic field}
 We now want to experimentally discriminate these different contributions and to see how close the actual decay rates are to the predicted ones. 
@@ -273,7 +318,7 @@ We perform here a $T_1^{\rm dd}$ measurement similar to the one presented in Fig
 
 Fig. \ref{champ tranverse exp}-a) and b) show the evolution of the transition frequencies $\nu_+=\frac{E_{\ket{3}}-E_{\ket{1}}}{h}$ and $\nu_-=\frac{E_{\ket{2}}-E_{\ket{1}}}{h}$ where $\ket{1}$, $\ket{2}$ and $\ket{3}$ are the states described in Fig. \ref{eigenstates transverse field}. The magnetic field was scanned between 20 and 130 G by increment of $\sim 0.5\ \rm G$.
 
-Fig. \ref{champ tranverse exp}-c) shows the evolution of $1/T_1^{\rm dd}$ with the magnetic field. We have denoted two region: in region A, $1/T_1^{\rm dd}$ decreases with the magnetic field, from a value of $350\ \rm s^{-1}$ to a value of $185\ \rm s^{-1}$. In region B, the $1/T_1^{\rm dd}$ value is stable and does not decrease further when $B_\perp$, or $\Delta \nu$ are increased.
+Fig. \ref{champ tranverse exp}-c) shows the evolution of $1/T_1^{\rm dd}$ with the magnetic field. We have denoted two region: in region A, $1/T_1^{\rm dd}$ decreases with the magnetic field, from a value of $350\ \rm s^{-1}$ to a value of $185\ \rm s^{-1}$. In region B, the value of $1/T_1^{\rm dd}$ is stable and does not decrease further when $B_\perp$ or $\Delta \nu=\nu_+=\nu_-$ are increased.
 
 We attribute the decrease in region A to the double flips: as the magnetic field and $\Delta \nu$ are increased, the double flips become less and less resonant to the point where they become completely quenched for $B_\perp \approx 90\ \rm G$ or $\Delta \nu \approx 30\ \rm MHz$. This value is coherent with the previously measured fluctuator linewidth. We can then estimate the part of the double flips in the low field (20 G here) depolarization rate and find that they amount for $\sim 50\%$ in this case.
 
@@ -281,21 +326,44 @@ Another possibility to explain this drop could be that the class orthogonal to $
 
 We now turn to region B. Even tough the double flips are completely quenched, the effects of the eigenbasis modification and the $T_2^*$ reduction are still present, because we can see on Fig. \ref{eigenstates transverse field}-b) that the eigenstates of the spin Hamiltonian are still very close to $\{ \ket{0}, \ket{\pm} \}$ for these magnetic field values.
 
-Indeed, when we compare the plateau value $1/T_1^{\rm dd}=185 \pm 5\ \rm s^{-1}$ to the value $1/T_1^{\rm dd}=126 \pm 10\ \rm s^{-1}$ found with a longitudinal magnetic field, we notice an increase by $\sim 50\%$ of the depolarization rate. This is in agreement with the theory which predicts an increase of the decay rate in the $\ket{\pm}$ basis compared to the $\ket{\pm 1}$ basis, although the theoretical increase, when considering only the change of eigenbasis, is a factor of 4 (see appendix [REF]). We again find the the theory significantly overestimates the measured decay rates, although this discrepancy could still come from the fitting procedure.
+To evaluate the contribution of the eigenbasis and $T_2^*$, we measure the same class of NV centers, but this time with a longitudinal magnetic field ($B_\parallel \sim 100 G$) to get a baseline value of $1/T_1^{\rm dd}$ in the $\ket{\pm 1}$ basis. We found a value of $1/T_1^{\rm dd}=126 \pm 10\ \rm s^{-1}$ in this case, reported on Fig. \ref{champ tranverse exp}-c) as a green line. 
 
-We unfortunately cannot experimentally discriminate the depolarization coming from the eigenbasis change or the $T_2^*$ while using the same sample, since both of this properties are tied to the Hamiltonian eigenstates. We do know however that the double flips seem to play a more important role in the low field depolarization, even in a regime where the eigenbasis change should play an important role (we expect $\Gamma_1^{\ket{\pm}}=4 \Gamma_1^{\ket{\pm}}$ for a single class, but only $\Gamma_1^{\ket{\pm}}\approx 1.2 \Gamma_1^{\ket{\pm}}$ when the 4 classes are resonant).
+We do find that the decay rate is higher in the $\ket{\pm}$ basis by $\sim 50\% $ which corroborates our predictions, as both the change of eigenbasis from $\ket{\pm 1}$ to $\ket{\pm}$ and the increase of $T_2^*$ in the $\ket{\pm}$ basis are predicted to increase the depolarization rate. The theoretical increase however overestimates once again the actual increase: for the change of eigenbasis alone we predicted an increase of the decay rate by a factor of 4 (see appendix [REF]), over 8 times more than the actual increase.
+
+We unfortunately cannot experimentally discriminate the depolarization coming from the eigenbasis change or the $T_2^*$ while using the same sample, since both of this properties are tied to the Hamiltonian eigenstates. But we do know that in this scenario, for a single isolated class, the contribution of both the change of eigenbasis and $T_2^*$ amounts for $\sim 3$ times less than the double flips. 
+
+Based on these observation, we expect that difference in NV polarization between the $\mathbf{B}=0$ region and $\mathbf{B} \neq 0$ region is caused by, in order of importance:
+\begin{enumerate}
+\item The lift of degeneracy between the four classes caused by the projection of the magnetic field on the different NV axis.
+\item The double flips between the nearly resonant $\ket{+}$ and $\ket{-}$ states at low magnetic field.
+\item The change of the Hamiltonian eigenbasis from $\{\ket{0}, \ket{\pm} \}$ in the electric field dominated region to $\{\ket{0}, \ket{\pm 1} \}$ in the magnetic field dominated region, and the incident change in $T_2^*$.
+\end{enumerate}
+
+\section{Introduction to ensemble NV magnetometry}
+Je vais en chier de ouf pour trouver des images.
+\subsection{AC and DC magnetometry}
+\subsection{Low field magnetometry}
+Dans le dernier papier de Jelezko y'a des vrais raisons de faire du low field
+\subsection{Microwave-free magnetometry}
+Bubu et les russes
+\subsubsection{Orientation-free magnetometry}
+Arcizet
 
 
-\section{Low field magnetometry}
+\section{Low field CR magnetometry}
 
-Ne pas oublier (ou alors en perspective, c'est bien aussi) : les deux adamas du 20210927 avec le petit et le gros DQ
+\subsection{Principle of the experiment}
 
+\subsection{Characterization of the experiment}
+sensi, dépendence sensi angle, variance d'allan
+\subsection{Comparison with other magnetometry protocol}
+Budker : mesurer vite deuf les pentes
 \section{Conclusion and perspectives}
-- Improvement to the sensitivity : Scale up, material optimization (15N !)
+- Improvement to the sensitivity : Scale up (les deux papiers sur le picoTesla mW, avec les deux systèmes), material optimization (15N !, [NV] concentration, )
 
-- Understand the impact of the various factors on the flip-flop CR and DQ CR: T2*, strain, local electric noise ...
+- Understand the impact of the various factors on the flip-flop CR and DQ CR: T2*, strain, local electric noise ... Mettre ici les deux adamas du 20210927 avec le petit et le gros DQ, et peut etre aussi les DQ et SQ qui s'inversent sur le substrat. Comprendre 
 
-- Application for uneven surfaces, polycrystalline heteroepithaxy, low/no microwave environment (dimaond anvil cells, bio sensing)
+- Application for uneven surfaces, polycrystalline heteroepithaxy, low/no microwave environment (dimaond anvil cells, bio sensing).
 
 \printbibliography
 \end{document}

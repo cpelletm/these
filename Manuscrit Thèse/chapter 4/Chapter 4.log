@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  23 AUG 2022 19:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  24 AUG 2022 19:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -903,7 +903,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-<Figures/ESR_simus.pdf, id=63, 839.72148pt x 645.36978pt>
+<Figures/ESR_simus.pdf, id=91, 839.72148pt x 645.36978pt>
 File: Figures/ESR_simus.pdf Graphic file (type pdf)
 <use Figures/ESR_simus.pdf>
 Package pdftex.def Info: Figures/ESR_simus.pdf  used on input line 35.
@@ -933,7 +933,7 @@ ter-is-tic two bumps
  []
 
 [3]
-<Figures/Comparaison_ESR_T2*.pdf, id=131, 879.68102pt x 623.29561pt>
+<Figures/Comparaison_ESR_T2*.pdf, id=159, 879.68102pt x 623.29561pt>
 File: Figures/Comparaison_ESR_T2*.pdf Graphic file (type pdf)
 <use Figures/Comparaison_ESR_T2*.pdf>
 Package pdftex.def Info: Figures/Comparaison_ESR_T2*.pdf  used on input line 10
@@ -944,66 +944,97 @@ Package pdftex.def Info: Figures/Comparaison_ESR_T2*.pdf  used on input line 10
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4] [5 <./Figures/Comparaison_ESR_T2*.pdf>] [6]
-<Figures/scan_1x1x1x1.pdf, id=206, 481.75352pt x 355.59846pt>
+<Figures/scan_1x1x1x1.pdf, id=234, 481.75352pt x 355.59846pt>
 File: Figures/scan_1x1x1x1.pdf Graphic file (type pdf)
 <use Figures/scan_1x1x1x1.pdf>
 Package pdftex.def Info: Figures/scan_1x1x1x1.pdf  used on input line 158.
 (pdftex.def)             Requested size: 323.9978pt x 239.15045pt.
  [7 <./Figures/scan_1x1x1x1.pdf>]
-<Figures/scan_100.pdf, id=235, 500.09718pt x 355.59846pt>
+<Figures/scan_100.pdf, id=263, 500.09718pt x 355.59846pt>
 File: Figures/scan_100.pdf Graphic file (type pdf)
 <use Figures/scan_100.pdf>
-Package pdftex.def Info: Figures/scan_100.pdf  used on input line 172.
+Package pdftex.def Info: Figures/scan_100.pdf  used on input line 174.
 (pdftex.def)             Requested size: 323.9978pt x 230.38205pt.
- [8 <./Figures/scan_100.pdf>] [9] [10] [11]
-<Figures/transis_transverse_field.pdf, id=292, 541.3889pt x 173.74205pt>
+ [8 <./Figures/scan_100.pdf>] [9] [10]
+<Figures/Shema_summary_theory.pdf, id=315, 941.58545pt x 739.7643pt>
+File: Figures/Shema_summary_theory.pdf Graphic file (type pdf)
+<use Figures/Shema_summary_theory.pdf>
+Package pdftex.def Info: Figures/Shema_summary_theory.pdf  used on input line 2
+45.
+(pdftex.def)             Requested size: 360.0pt x 282.8404pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11]
+<Figures/alignement_rose.pdf, id=324, 560.11089pt x 275.551pt>
+File: Figures/alignement_rose.pdf Graphic file (type pdf)
+<use Figures/alignement_rose.pdf>
+Package pdftex.def Info: Figures/alignement_rose.pdf  used on input line 262.
+(pdftex.def)             Requested size: 251.9989pt x 123.97157pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figures/pola_laser.pdf, id=327, 514.85477pt x 270.42155pt>
+File: Figures/pola_laser.pdf Graphic file (type pdf)
+<use Figures/pola_laser.pdf>
+Package pdftex.def Info: Figures/pola_laser.pdf  used on input line 274.
+(pdftex.def)             Requested size: 251.9989pt x 132.35916pt.
+[12 <./Figures/Shema_summary_theory.pdf>] [13 <./Figures/alignement_rose.pdf> <
+./Figures/pola_laser.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/pola_laser.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>]
+<Figures/transis_transverse_field.pdf, id=420, 541.3889pt x 173.74205pt>
 File: Figures/transis_transverse_field.pdf Graphic file (type pdf)
 <use Figures/transis_transverse_field.pdf>
 Package pdftex.def Info: Figures/transis_transverse_field.pdf  used on input li
-ne 252.
+ne 297.
 (pdftex.def)             Requested size: 360.0pt x 115.53171pt.
-<Figures/scan_T1_perp.pdf, id=296, 529.37495pt x 518.0294pt>
+ [14 <./Figures/transis_transverse_field.pdf>]
+<Figures/scan_T1_perp.pdf, id=453, 529.37495pt x 518.0294pt>
 File: Figures/scan_T1_perp.pdf Graphic file (type pdf)
 <use Figures/scan_T1_perp.pdf>
-Package pdftex.def Info: Figures/scan_T1_perp.pdf  used on input line 267.
+Package pdftex.def Info: Figures/scan_T1_perp.pdf  used on input line 312.
 (pdftex.def)             Requested size: 288.0011pt x 281.8422pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12 <./Figures/transis_transverse_field.pdf>] [13 <./Figures/scan_T1_perp.pdf>]
-[14] [15]
-Overfull \hbox (5.15979pt too wide) in paragraph at lines 301--301
+[15] [16 <./Figures/scan_T1_perp.pdf>] [17] [18]
+Overfull \hbox (10.6348pt too wide) in paragraph at lines 369--369
 []\OT1/cmr/m/n/10.95 Thomas Mit-tiga et al. ``Imag-ing the lo-cal charge en-vi-
 ron-ment of nitrogen-
  []
 
 
-Overfull \hbox (23.77356pt too wide) in paragraph at lines 301--301
+Overfull \hbox (29.24857pt too wide) in paragraph at lines 369--369
 \OT1/cmr/m/n/10.95 Scan-ning Quan-tum Sen-sor Mi-cro-scope''. In: \OT1/cmr/m/it
 /10.95 arXiv preprint arXiv:2205.03952
  []
 
-[16
+[19
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 301.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 301.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 369.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 369.
  (./Chapter 4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 301.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 301.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 369.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 369.
 Package rerunfilecheck Info: File `"Chapter 4".out' has not changed.
-(rerunfilecheck)             Checksum: 6BBD698EF4E063DB04928CE94B881EC1;1250.
+(rerunfilecheck)             Checksum: 7C871BDFF9888D6705872EB276D29335;1831.
 Package logreq Info: Writing requests to '"Chapter 4".run.xml'.
 \openout1 = `"Chapter 4.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 301.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 369.
  ) 
 Here is how much of TeX's memory you used:
- 25160 strings out of 481239
- 474801 string characters out of 5920377
- 1109769 words of memory out of 5000000
- 39973 multiletter control sequences out of 15000+600000
+ 25218 strings out of 481239
+ 476127 string characters out of 5920377
+ 1110256 words of memory out of 5000000
+ 40006 multiletter control sequences out of 15000+600000
  540683 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,14n,79p,1048b,1189s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1020,10 +1051,10 @@ cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "Chapter 4.pdf" (16 pages, 631795 bytes).
+Output written on "Chapter 4.pdf" (19 pages, 851697 bytes).
 PDF statistics:
- 444 PDF objects out of 1000 (max. 8388607)
- 354 compressed objects within 4 object streams
- 62 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 585 PDF objects out of 1000 (max. 8388607)
+ 466 compressed objects within 5 object streams
+ 84 named destinations out of 1000 (max. 500000)
+ 226 words of extra memory for PDF output out of 10000 (max. 10000000)
 

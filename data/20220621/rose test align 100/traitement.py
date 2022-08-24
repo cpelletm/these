@@ -3,7 +3,13 @@ sys.path.append('D:\\These Clément\\these\\python_clément')
 sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
+
+plt.figure(num=1,figsize=(6,4),dpi=80)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+
 angle_str=['-3','-2','-1','0','1','2','3']
+angle_str_legend=['-3','-2','-1','0','+1','+2','+3']
 angle_val=[-3,-2,-1,0,1,2,3]
 
 filenames=['align '+s+' deg' for s in angle_str]
@@ -20,7 +26,7 @@ for i in range(7):
 	y=y/max(y)
 	x=x[xmin:xmax]
 	y=y[xmin:xmax]
-	plt.plot(x,y,label=angle_str[i]+'°')
+	plt.plot(x,y,label=angle_str_legend[i]+'°')
 
 plt.legend()
 plt.xticks(fontsize=15)

@@ -1012,6 +1012,19 @@ def psd(x,y,plot=False): #Assume que x est en s.
 		plt.show()
 		return
 
+def lor(x,x0=0,sigma=1,norm=True):
+	y=sigma**2/((x-x0)**2+sigma**2)
+	if norm:
+		return y/(pi*sigma)
+	else :
+		return y
+
+def gauss(x,x0=0,sigma=1,norm=True):
+	y=exp(-(x-x0)**2/(2*sigma**2))
+	if norm:
+		return y/(sqrt(2*pi)*sigma)
+	else :
+		return y
 
 #~~~~~~ Math ~~~~~~~~
 
