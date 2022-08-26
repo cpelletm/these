@@ -1,6 +1,7 @@
 from numpy import cos,sin,sqrt,pi,arccos
 import numpy as np
 from scipy.integrate import quad, dblquad, nquad
+from numpy.linalg import norm
 
 
 
@@ -166,9 +167,11 @@ def full_dq_mag(theta,phi,anglex1=0,anglex2=0,dqratio=0.5):
 def sq_elec(theta,phi,anglex1=0,anglex2=0,corr=False):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
 	if corr :
+		theta_E=anglex1 #Attention faudra bien normaliser anglex1 juste sur [0,pi]
+		phi_E=anglex2
 		x1,y1,z1=cartesian1(0)
 		x2,y2,z2=cartesian2(0)
-		E=np.array([x(anglex1/2,anglex2),y(anglex1,anglex2),z(anglex1,anglex2)]) #Du coup anglex1 et anglex2 c'est theta E et phiE ici, 
+		E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)]) 
 		Eperp1=E.dot(x1)*x1+E.dot(y1)*y1
 		x1=Eperp1/norm(Eperp1)
 		y1=np.cross(z1,x1)
@@ -181,24 +184,61 @@ def sq_elec(theta,phi,anglex1=0,anglex2=0,corr=False):
 		x2,y2,z2=cartesian2(anglex2)
 
 	g=(3*x1.dot(r)*x2.dot(r)-x1.dot(x2))
-	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)#/(2*pi)
+	if corr :
+		integrande=1/(4*pi)*abs(g)*sin(theta)*sin(theta_E)
+	else :
+		integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)#/(2*pi)
 	return(integrande)
 
-def pure_dq_elec(theta,phi,anglex1=0,anglex2=0):
+def pure_dq_elec(theta,phi,anglex1=0,anglex2=0,corr=False):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
-	x1,y1,z1=cartesian1(anglex1)
-	x2,y2,z2=cartesian2(anglex2)
+	if corr :
+		theta_E=anglex1 #Attention faudra bien normaliser anglex1 juste sur [0,pi]
+		phi_E=anglex2
+		x1,y1,z1=cartesian1(0)
+		x2,y2,z2=cartesian2(0)
+		E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)]) 
+		Eperp1=E.dot(x1)*x1+E.dot(y1)*y1
+		x1=Eperp1/norm(Eperp1)
+		y1=np.cross(z1,x1)
+		Eperp2=E.dot(x2)*x2+E.dot(y2)*y2
+		x2=Eperp2/norm(Eperp2)
+		y2=np.cross(z2,x2)
+		#Attention : pb de sampling de E, faudrait normaliser avec sin(theta) et tout...
+	else :		
+		x1,y1,z1=cartesian1(anglex1)
+		x2,y2,z2=cartesian2(anglex2)
 	g=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
-	integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)/(2*pi)
+	if corr :
+		integrande=1/(4*pi)*abs(g)*sin(theta)*sin(theta_E)
+	else :
+		integrande=1/(4*pi)*abs(g)*sin(theta)#/(2*pi)/(2*pi)
 	return(integrande)
 
-def full_dq_elec(theta,phi,anglex1=0,anglex2=0,dqratio=0.5):
+def full_dq_elec(theta,phi,anglex1=0,anglex2=0,dqratio=0.5,corr=False):
 	r=[x(theta,phi),y(theta,phi),z(theta,phi)]
-	x1,y1,z1=cartesian1(anglex1)
-	x2,y2,z2=cartesian2(anglex2)
+	if corr :
+		theta_E=anglex1 #Attention faudra bien normaliser anglex1 juste sur [0,pi]
+		phi_E=anglex2
+		x1,y1,z1=cartesian1(0)
+		x2,y2,z2=cartesian2(0)
+		E=np.array([x(theta_E,phi_E),y(theta_E,phi_E),z(theta_E,phi_E)]) 
+		Eperp1=E.dot(x1)*x1+E.dot(y1)*y1
+		x1=Eperp1/norm(Eperp1)
+		y1=np.cross(z1,x1)
+		Eperp2=E.dot(x2)*x2+E.dot(y2)*y2
+		x2=Eperp2/norm(Eperp2)
+		y2=np.cross(z2,x2)
+		#Attention : pb de sampling de E, faudrait normaliser avec sin(theta) et tout...
+	else :		
+		x1,y1,z1=cartesian1(anglex1)
+		x2,y2,z2=cartesian2(anglex2)
 	gsq=(3*x1.dot(r)*x2.dot(r)-x1.dot(x2))
 	gdq=(3*x1.dot(r)*y2.dot(r)-x1.dot(y2))
-	integrande=1/(4*pi)*np.sqrt(gsq**2+gdq**2*dqratio)*sin(theta)#/(2*pi)/(2*pi)
+	if corr :
+		integrande=1/(4*pi)*np.sqrt(gsq**2+gdq**2*dqratio)*sin(theta)*sin(theta_E)
+	else :
+		integrande=1/(4*pi)*np.sqrt(gsq**2+gdq**2*dqratio)*sin(theta)#/(2*pi)/(2*pi)
 	return(integrande)
 
 def my2Dint(f,xrange,yrange,nx,ny,**kwarg):
@@ -311,15 +351,62 @@ def my4Dint(f,wrange,xrange,yrange,zrange,n,**kwarg):
 
 
 
-classNV1=1
-classNV2=2
+# classNV1=1
+# classNV2=2
 # eta=my2Dint(full_dq_mag,[0,pi],[0,2*pi],300,300) # nx=100 : precision ~1e-4 300 : precision ~1e-7
 
 # eta=my3Dint(sq_elec,[0,pi],[0,2*pi],[0,2*pi],100)/(2*pi)
 
-eta=my4Dint(sq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=True)/(2*pi)/(2*pi)
+# eta=my4Dint(sq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],corr=False,100)/(2*pi)/(2*pi)
 
-print(eta)
+
+
+classNV1=1
+classNV2=1
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
+print('Class 11, full dq, no corr, dq=0.5',eta)
+
+classNV1=1
+classNV2=2
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
+print('Class 12, full dq, no corr, dq=0.5',eta)
+
+classNV1=1
+classNV2=5
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
+print('Class 15, full dq, no corr, dq=0.5',eta)
+
+
+classNV1=1
+classNV2=1
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
+print('Class 11, full dq, no corr, dq=1',eta)
+
+classNV1=1
+classNV2=2
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
+print('Class 12, full dq, no corr, dq=1',eta)
+
+classNV1=1
+classNV2=5
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
+print('Class 15, full dq, no corr, dq=1',eta)
+
+
+classNV1=1
+classNV2=1
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100,corr=True,dqratio=1)/(4*pi)
+print('Class 11, full dq, full corr, dq=1',eta)
+
+classNV1=1
+classNV2=2
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100,corr=True,dqratio=1)/(4*pi)
+print('Class 12, full dq, full corr, dq=1',eta)
+
+classNV1=1
+classNV2=5
+eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100,corr=True,dqratio=1)/(4*pi)
+print('Class 15, full dq, full corr, dq=1',eta)
 
 # classNV1=1
 # classNV2=5

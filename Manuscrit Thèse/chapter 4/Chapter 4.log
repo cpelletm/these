@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  24 AUG 2022 19:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  26 AUG 2022 11:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1003,41 +1003,41 @@ Package pdftex.def Info: Figures/scan_T1_perp.pdf  used on input line 312.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15] [16 <./Figures/scan_T1_perp.pdf>] [17] [18]
-Overfull \hbox (10.6348pt too wide) in paragraph at lines 369--369
+[15] [16 <./Figures/scan_T1_perp.pdf>] [17] [18] [19]
+Overfull \hbox (10.6348pt too wide) in paragraph at lines 380--380
 []\OT1/cmr/m/n/10.95 Thomas Mit-tiga et al. ``Imag-ing the lo-cal charge en-vi-
 ron-ment of nitrogen-
  []
 
 
-Overfull \hbox (29.24857pt too wide) in paragraph at lines 369--369
+Overfull \hbox (29.24857pt too wide) in paragraph at lines 380--380
 \OT1/cmr/m/n/10.95 Scan-ning Quan-tum Sen-sor Mi-cro-scope''. In: \OT1/cmr/m/it
 /10.95 arXiv preprint arXiv:2205.03952
  []
 
-[19
+[20
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 369.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 369.
+] [21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 380.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 380.
  (./Chapter 4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 369.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 369.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 380.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 380.
 Package rerunfilecheck Info: File `"Chapter 4".out' has not changed.
-(rerunfilecheck)             Checksum: 7C871BDFF9888D6705872EB276D29335;1831.
+(rerunfilecheck)             Checksum: 405388B1961991E8C8B70BF6D1B5A9A4;1843.
 Package logreq Info: Writing requests to '"Chapter 4".run.xml'.
 \openout1 = `"Chapter 4.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 369.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 380.
  ) 
 Here is how much of TeX's memory you used:
- 25218 strings out of 481239
- 476127 string characters out of 5920377
- 1110256 words of memory out of 5000000
- 40006 multiletter control sequences out of 15000+600000
+ 25229 strings out of 481239
+ 476546 string characters out of 5920377
+ 1110470 words of memory out of 5000000
+ 40012 multiletter control sequences out of 15000+600000
  540683 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,14n,79p,1048b,1189s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,14n,79p,1048b,1293s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -1051,10 +1051,10 @@ cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "Chapter 4.pdf" (19 pages, 851697 bytes).
+Output written on "Chapter 4.pdf" (21 pages, 855413 bytes).
 PDF statistics:
- 585 PDF objects out of 1000 (max. 8388607)
- 466 compressed objects within 5 object streams
- 84 named destinations out of 1000 (max. 500000)
+ 600 PDF objects out of 1000 (max. 8388607)
+ 479 compressed objects within 5 object streams
+ 89 named destinations out of 1000 (max. 500000)
  226 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.1.25)  22 AUG 2022 10:38
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.1.25)  25 AUG 2022 11:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -682,7 +682,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 LaTeX Font Warning: Font shape `TU/FontAwesome(0)/m/sl' undefined
-(Font)              using `TU/FontAwesome(0)/m/n' instead on input line 127.
+(Font)              using `TU/FontAwesome(0)/m/n' instead on input line 124.
 
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `FontAwesome' (encoding: TU).
@@ -850,7 +850,7 @@ Package microtype Info: Character `\textgreater ' is missing
 [1
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 142.
 Package microtype Info: Character `A' is missing
 (microtype)             in font `\TU/FontAwesome(0)/m/sl/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1011,10 +1011,10 @@ Package microtype Info: Character `\textgreater ' is missing
 (microtype)             in font `\TU/FontAwesome(0)/m/sl/10'.
 (microtype)             Ignoring protrusion settings for this character.
  [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 142.
  (./CV_en.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 140.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 140.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 142.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 142.
 Package rerunfilecheck Info: File `CV_en.out' has not changed.
 (rerunfilecheck)             Checksum: 252D16EB5C55A742C13D039E2E1D5698;796.
 
@@ -1025,10 +1025,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  16928 strings out of 479819
  309035 string characters out of 5895846
- 761557 words of memory out of 5000000
+ 759557 words of memory out of 5000000
  33782 multiletter control sequences out of 15000+600000
  546853 words of font info for 54 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,13n,70p,771b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,70p,771b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on CV_en.pdf (2 pages).
