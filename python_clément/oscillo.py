@@ -10,7 +10,8 @@ def setup():
 		ai.setChannels('ai13','ai11')
 	else :
 		ai.setChannels(channels.text()) #define the physical pin on the Ni USB device where the tension should be read
-	ai.setupTimed(SampleFrequency=1000/val(dt),SamplesPerChan=2,nAvg=nAvg,SampleMode='finite') #define the timing at which the samples are recorded by the NI USB device : frequency of acquisition, 
+	nSamps=val(nRefresh)
+	ai.setupTimed(SampleFrequency=1000/val(dt),SamplesPerChan=nSamps,nAvg=nAvg,SampleMode='finite') #define the timing at which the samples are recorded by the NI USB device : frequency of acquisition, 
 	# number of samples to be read each time ai.readTimed() is called, number of samples to be average over and sampling mode : 'continuous' or 'finite' (please always use 'finite')
 	if len(l1.xData) != val(nPoints)  and channels.text() != 'ai11/ai13': #condition to avoid being stuck at 0 PL the first time the program is launched, optional
 		y0=ai.readTimed(waitForAcqui=True)[0]
@@ -31,7 +32,7 @@ def update():
 			gra.updateLine(l2,False,y)
 		else :
 			gra.updateLine(l1,False,y) #syntax : gra.updateline(lineToUpdate,xUpdate,yUpdate) ; send False to xUpdate if you do not want to update x ; for 'scroll' type lines only send the new values in yUpdate
-			PL.setText('%3.2E'%y[1]) #Modify the PL label with the last acquisition point
+			PL.setText('%3.2E'%y[-1]) #Modify the PL label with the last acquisition point
 
 def chanMenuAction():
 	global ax2,l2
@@ -51,9 +52,10 @@ AOM=AOMWidget(spaceAbove=0)
 # laser=continuousLaserWidget()
 nPoints=field('n points',151,spaceAbove=3)
 nAvg=field('Average over :','auto',spaceAbove=1)
+nRefresh=field('Refresh every n=',1,spaceAbove=0)
 dt=field('dt (ms)',30,spaceAbove=1,spaceBelow=3)
 PL=label('Off',style='BIG',spaceAbove=0)
-fields=[PL,laser,AOM,nPoints,nAvg,dt]
+fields=[PL,laser,AOM,nPoints,nAvg,nRefresh,dt]
 
 gra=graphics()
 l1=gra.addLine(typ='scroll',style='lm',fast=True)

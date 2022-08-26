@@ -68,7 +68,7 @@ def switchAction():
 ai=AIChan()
 do=DOChan('p01')
 ao=AOChan('ao0')
-mw=microwave('mw3')
+mw=microwave('mw_ludo')
 cube=PiezoCube3axes()
 
 ## Setup the Graphical interface ##
