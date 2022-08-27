@@ -106,7 +106,7 @@ In conclusion, whenever the spin Hamiltonian is dominated by a transverse field,
 \label{sec modif T2*}
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Figures/Comparaison_ESR_T2*}
+\includegraphics[width=\textwidth]{Figures/Comparaison_ESR_T2}
 \caption{tata. Changer les T1 avec T1ph=5ms}
 \label{ESR for T2*}
 \end{figure}
@@ -286,7 +286,7 @@ We can see no clear differences between the different polarization angles used, 
 \section{NV-NV CR under purely transverse magnetic field}
 We now want to experimentally discriminate these different contributions and to see how close the actual decay rates are to the predicted ones. 
 
-One of the reason we want to separate these contributions is that they scale differently with the different variables of the sample ($T_2^*$, $\gamma_f$ , magnetic VS electric noise ...). Understanding which of these effect dominates the zero field dynamics might give us insight on which parameter to optimize if one wants to avoid the zero field depolarization, or on the contrary to increase it.
+One of the reason we want to separate these contributions is that they scale differently with the different variables of the sample ($T_2^*$, $\gamma_f$ , magnetic and electric noise ...). Understanding which of these effect dominates the zero field dynamics might give us insight on which parameter to optimize if one wants to avoid the zero field depolarization, or on the contrary to increase it.
 
 The ideal way to isolate each contributions would be to apply an electric field strong enough to split the transition of the 4 classes, and to measure the decay rate of a single class dominated by the transverse electric field. Such an electric field would need to be of the order of $\sim 10^6\ \rm{V/cm}$, which is several order of magnitudes greater than the breakdown voltage of air and out of our experimental reach.
 
@@ -320,9 +320,13 @@ Fig. \ref{champ tranverse exp}-a) and b) show the evolution of the transition fr
 
 Fig. \ref{champ tranverse exp}-c) shows the evolution of $1/T_1^{\rm dd}$ with the magnetic field. We have denoted two region: in region A, $1/T_1^{\rm dd}$ decreases with the magnetic field, from a value of $350\ \rm s^{-1}$ to a value of $185\ \rm s^{-1}$. In region B, the value of $1/T_1^{\rm dd}$ is stable and does not decrease further when $B_\perp$ or $\Delta \nu=\nu_+=\nu_-$ are increased.
 
+\subsubsection{Region A}
+
 We attribute the decrease in region A to the double flips: as the magnetic field and $\Delta \nu$ are increased, the double flips become less and less resonant to the point where they become completely quenched for $B_\perp \approx 90\ \rm G$ or $\Delta \nu \approx 30\ \rm MHz$. This value is coherent with the previously measured fluctuator linewidth. We can then estimate the part of the double flips in the low field (20 G here) depolarization rate and find that they amount for $\sim 50\%$ in this case.
 
-Another possibility to explain this drop could be that the class orthogonal to $\mathbf{B}$ still exerts flip-flops with the other classes at low magnetic field, as we can see that they are not very far detuned in Fig. \ref{champ tranverse exp}-a), but we have to consider that the detuning between the two states $\nu_+-\nu_-= 9\ \rm MHz$ is significantly lower, even at $B_\perp=20\ \rm G$, than the detuning with the closest class $\nu_\pm-\nu_{\rm other}= 22\ \rm MHz$; and also that there seem to be a small plateau for $1/T_1^{\rm dd}$ at the beginning of region A, which is consistent with the double flip hypothesis since  $\nu_+-\nu_-$ is almost flat in this region while $\nu_\pm-\nu_{\rm other}$ increases linearly with the magnetic field.
+Another possibility to explain this drop could be that the class orthogonal to $\mathbf{B}$ still exerts flip-flops with the other classes at low magnetic field, as we can see that they are not very far detuned in Fig. \ref{champ tranverse exp}-a). However we have to consider that the detuning between the two states $\nu_+-\nu_-= 9\ \rm MHz$ is significantly lower, even at $B_\perp=20\ \rm G$, than the detuning with the closest class $\nu_\pm-\nu_{\rm other}= 22\ \rm MHz$; and also that there seem to be a small plateau for $1/T_1^{\rm dd}$ at the beginning of region A which is consistent with the double flip hypothesis since  $\nu_+-\nu_-$ is almost flat in this region while $\nu_\pm-\nu_{\rm other}$ increases linearly with the magnetic field.
+
+\subsubsection{Region B}
 
 We now turn to region B. Even tough the double flips are completely quenched, the effects of the eigenbasis modification and the $T_2^*$ reduction are still present, because we can see on Fig. \ref{eigenstates transverse field}-b) that the eigenstates of the spin Hamiltonian are still very close to $\{ \ket{0}, \ket{\pm} \}$ for these magnetic field values.
 
@@ -332,7 +336,9 @@ We do find that the decay rate is higher in the $\ket{\pm}$ basis by $\sim 50\% 
 
 We unfortunately cannot experimentally discriminate the depolarization coming from the eigenbasis change or the $T_2^*$ while using the same sample, since both of this properties are tied to the Hamiltonian eigenstates. But we do know that in this scenario, for a single isolated class, the contribution of both the change of eigenbasis and $T_2^*$ amounts for $\sim 3$ times less than the double flips. 
 
-Based on these observation, we expect that difference in NV polarization between the $\mathbf{B}=0$ region and $\mathbf{B} \neq 0$ region is caused by, in order of importance:
+\subsubsection{Conclusion of the experimental observation}
+
+Based on these depolarization measurements under transverse magnetic field, we expect that the depolarization at low magnetic fields behave similarly, and that the difference in NV polarization between the $\mathbf{B}=0$ region and $\mathbf{B} \neq 0$ region is caused by (in order of importance):
 \begin{enumerate}
 \item The lift of degeneracy between the four classes caused by the projection of the magnetic field on the different NV axis.
 \item The double flips between the nearly resonant $\ket{+}$ and $\ket{-}$ states at low magnetic field.
@@ -351,19 +357,63 @@ We will only focus here on NV ensemble magnetometry since we want to give elemen
 \subsection{AC and DC magnetometry}
 The most sensitive NV magnetometry protocols use the free precession of the spins to map a small change in the Zeeman energy into the phase of the spins, which is then converted in population. These protocols are generally distinguished between DC-broadband and AC-narrow band.
 
-For DC-broadband magnetometry, the general technique consist of a Ramsey interferometry experiment, presented in chapter 1, which is limited by the spin inhomogeneous coherence time $T_2^*$. The bandwidth of the protocol is limited by the repetition rate of the experiment, generally up to $\sim 100\ \rm kHz$. Although less sensitive in theory, continuous-wave (CW) ODMR and pulsed ODMR are also often employed for DC magnetometry. The state of the art in term of DC ensemble magnetometry is a sensitivity of $\sim 20 pT/ \sqrt{\rm Hz}$
-AC: pas oublier. J'ai oublié. Nan en vrai j'ai pas oublié, mais je le mettrai dans la partie sans uW
-\subsection{Low field magnetometry}
-Dans le dernier papier de Jelezko y'a des vrais raisons de faire du low field
-\subsection{Microwave-free magnetometry}
-Bubu et les russes 
-\subsubsection{Orientation-free magnetometry}
-Arcizet
+For DC-broadband magnetometry, the general technique consist of a Ramsey interferometry experiment, presented in chapter 1, which is limited by the spin inhomogeneous coherence time $T_2^* \lesssim 1\ \rm{\mu s}$ for NV ensembles. The bandwidth of the protocol is limited by the repetition rate of the experiment, generally up to $\sim 100\ \rm kHz$. Although less sensitive in theory, continuous-wave (CW) ODMR and pulsed ODMR are also often employed for DC magnetometry. The state of the art in term of DC ensemble magnetometry is a sensitivity of $\sim 20 pT/ \sqrt{\rm Hz}$ \citep{barry2016optical, chatzidrosos2017miniature}.
 
+For AC magnetometry, the basic protocol consist of a spin echo measurement, also presented in chapter 1, which extends the coherence time $T_2^*$ to $T_2 = 10 \sim 100 \rm{\mu s}$, which can be extended even further to $\sim \rm ms$ times with dynamical decoupling \citep{pham2012enhanced}. Due to the longer ``free" precession time, a larger phase can be imprinted on the spin for a similar magnetic field. The AC magnetic field however has to be in phase with the rephasing pulses, which limits the AC sensing to a relatively narrow band. The state of the art in term of AC sensing is $\sim 1\ \rm pT/\sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}.
+
+Recently, \citep{xie2021hybrid} have achieved new records in both DC ($\sim 200\ \rm fT/\sqrt{\rm Hz}$) and AC ($\sim 10\ \rm fT/\sqrt{\rm Hz}$) NV magnetometry by using flux concentrators which are ferromagnets concentrating the magnetic field in a small volume, similarly to an electromagnet.
+\subsection{Low field magnetometry}
+Magnetometry for low magnetic field ($\gamma B < d_\perp E_\perp$) is challenging since in this regime the NV eigenstates and eigenenergies do not depend on the magnetic field in the first order. This complication is often lifted  by simply using a bias magnetic field, typically from a permanent magnet. 
+
+Some systems however need to be kept under low to zero external magnetic fields, for example to study the J-coupling between spins \citep{sutter2012computational}, or the phase of skyrmions \citep{zazvorka2020skyrmion}. To study these systems with NV centers, we need to find new protocols for low field NV magnetometry.
+
+The main technique for low field magnetometry consist in using circularly polarized microwaves, which can only excite the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions, even when these states are not the Hamiltonian's eigenstates \citep{mrozek2015circularly, zheng2019zero, lenz2021magnetic, vetter2022zero}. The best sensitivity achieved with this technique was $250\ \rm pT/\sqrt{\rm Hz}$.
+
+Another technique consist in using the $^{13}C-$NV complex we discussed in sec. [REF] which because of the magnetic field offset caused by the $^{13}C$ nucleus are frist order sensitive to the magnetic field even in zero external magnetic field \citep{wang2022zero}. With natural abundance $^{13}C$ however, this means that only $\sim 3\%$ of the NV centers are used, and increasing the $^{13}C$ concentration can lower the coherence of the NV centers. This technique is more suited for a carefully chosen single NV center.
+
+\subsection{Microwave-free magnetometry}
+All the precedent magnetemetry protocols described relied on the use of a controllable magnetic field, to coherently manipulate the NV spin state and to measure the action of the magnetic field on the NV Larmor frequency.
+
+There are other protocols which correlate the magnetic field with the spin $T_1$ time (relaxometry). These protocols operate without microwave field and work for either DC or high frequency AC sensing.
+
+\subsubsection{microwave-less DC magnetometry}
+The DC microwave-free protocols rely on sharp feature in the PL for specific magnetic fields around certain cross-relaxations processes or level anti-crossing. Fig. [REF] in chapter 2 show such PL features, in particular the ground state level anti-crossing (GSLAC, simply labeled LAC on the figure), the sharpest of these features.
+
+The GSLAC occurs for a longitudinal magnetic field when $\gamma B_z = D$, which corresponds to $B=1024\ \rm G$. In these conditions, the normally bright $\ket{0}$ state and the dark $\ket{-1}$ state become resonant and any residual mixing between these two states (coming from the electric field, the strain or the residual transverse magnetic field) will cause a drop in the NV polarization, and in the PL \citep{broadway2016anticrossing}. 
+
+This protocol has been implemented, first only for longitudinal magnetic field measurement \citep{wickenbrock2016microwave} and then for 3D vector measurement \citep{zheng2020microwave} with a sensitivity $\sim 300\ \rm pT/\sqrt{\rm Hz}$.
+
+Another DC microwave-less protocol was proposed based on NV-NV CR \citep{akhmedzhanov2017microwave, akhmedzhanov2019magnetometry}. This technique reconstructs the external magnetic field by scanning an other magnetic field, similar to Fig. [REF] in chapter 3, and by measuring the position of the NV-NV CR lines. By scanning the magnetic field in different directions, one can then recover the initial 3D magnetic field. The author of this paper did not measure the sensitivity of this protocol, but they predict a shot noise limited sensitivity of $24.7\ \rm nT/\sqrt{\rm Hz}$.
+
+\subsubsection{microwave-less AC magnetometry}
+The AC microwave-less protocols rely on a direct excitation of the $\ket{0} \to \ket{-1}$ or $\ket{0} \to \ket{+1}$ transitions by the magnetic field probed. The detection bandwidth is adjusted with an external magnetic field to bring the NV transitions in resonance with the field probed, which has been implemented from $\sim 10\ \rm MHz$ to $27\ \rm GHz$ \citep{magaletti2022quantum}.
+
+Sensitivities as low as a few $pT/\sqrt{\rm Hz}$ have been recorded near 2.87 GHz \citep{wang2022picotesla, alsid2022solid}, although both protocols rely on a secondary controllable microwave field (either for an heterodyne detection or to add additional pulses).
+
+\subsection{Orientation-free magnetometry}
+Every protocol described so far requires a precise knowledge  of the transition frequency between the $\ket{0}$ and $\ket{\pm 1}$ states versus the magnetic field. This knowledge implies that the direction of each NV axis in a frame of reference is known, because of the strong anisotropy in the NV Hamiltonian. 
+
+For a single crystal, these axes can always be calibrated through ODMR. For a polycrystalline diamond, diamond powder or even a single diamond with an erratic motion however, the knowledge of these axes is not possible. New protocols need to be found if one wants to perform magnetometry with these materials.
+
+To our knowledge, the only orientation-free protocol for DC magnetometry is to use the change in PL caused by the transverse field, which is a property that depends only weakly on the field orientation, especially with an ensemble of NV centers with multiple axes. This protocol however has an extremely low sensitivity and only had marginal use so far\citep{rondin2012nanoscale, tetienne2012magnetic}.
+
+Orientation-free magnetometry can also be performed for noise sensing, provided that that the noise is sufficiently broadband to directly excite the NV transitions regardless of their Larmor frequencies. The noise can be probed either by measuring the spin $T_1$ time \citep{kolkowitz2015probing, andersen2019electron} (which does not require a knowledge of the larmor frequency), or via the PL \citep{finco2021imaging}.
 
 \section{Low field depolarization magnetometry}
+We will now present and characterize the low field depolarization magnetometry (LFDM) protocol which rely on the spontaneous depolarization of dense NV ensemble at low magnetic field. This protocol works for DC or slowly varying ($\lesssim 10\ \rm kHz$) magnetic field, is microwave-free, orientation-free, and operates at low magnetic field, although a small additional field is required.
+
+We will first describe its operation and then characterize it and compare it to the previously mentioned NV magnetometry protocols.
 
 \subsection{Principle of the experiment}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/setup_magneto}
+\caption{Principle of the LFDM protocol a) Experimental setup. The confocal microscopy setup is similar to the one described in [REF], the lock-in amplifier (LIA) is used here to add a modulation on the magnetic field, instead of the microwave. Both the PL and the LIA signal are monitored. b) example of LIA signal on sample ADM-15-4 when scanning the magnetic field $B_0$ between -150 and 150 G. c) PL signal corresponding to the LIA signal}
+\label{setup magneto}
+\end{figure}
+
+Fig. 
 
 \subsection{Characterization of the experiment}
 sensi, dépendence sensi angle, variance d'allan
@@ -374,7 +424,7 @@ Budker : mesurer vite deuf les pentes
 
 - Understand the impact of the various factors on the flip-flop CR and DQ CR: T2*, strain, local electric noise ... Mettre ici les deux adamas du 20210927 avec le petit et le gros DQ, et peut etre aussi les DQ et SQ qui s'inversent sur le substrat. Comprendre 
 
-- Application for uneven surfaces, polycrystalline heteroepithaxy, low/no microwave environment (dimaond anvil cells, bio sensing).
+- Application for uneven surfaces, polycrystalline heteroepithaxy, low/no microwave environment (dimaond anvil cells, bio sensing). Gradiometry Degen, Arcizet, MRFM
 
 \printbibliography
 \end{document}
