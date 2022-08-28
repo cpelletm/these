@@ -359,59 +359,14 @@ def my4Dint(f,wrange,xrange,yrange,zrange,n,**kwarg):
 
 # eta=my4Dint(sq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],corr=False,100)/(2*pi)/(2*pi)
 
-
-
-classNV1=1
-classNV2=1
-eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=0.5)/((2*pi)**2)
-print('Class 11, full dq, no corr, dq=0.5',eta)
-
-classNV1=1
-classNV2=2
-eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=0.5)/((2*pi)**2)
-print('Class 12, full dq, no corr, dq=0.5',eta)
-
-classNV1=1
-classNV2=5
-eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=0.5)/((2*pi)**2)
-print('Class 15, full dq, no corr, dq=0.5',eta)
-
-
 # classNV1=1
 # classNV2=1
-# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
-# print('Class 11, full dq, no corr, dq=1',eta)
-
-# classNV1=1
-# classNV2=2
-# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
-# print('Class 12, full dq, no corr, dq=1',eta)
-
-# classNV1=1
-# classNV2=5
-# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=1)/((2*pi)**2)
-# print('Class 15, full dq, no corr, dq=1',eta)
+# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,2*pi],[0,2*pi],100,corr=False,dqratio=0.5)/((2*pi)**2)
+# print('Class 11, full dq, no corr, dq=0.5',eta)
 
 
-# classNV1=1
-# classNV2=1
-# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100,corr=True,dqratio=1)/(4*pi)
-# print('Class 11, full dq, full corr, dq=1',eta)
-
-# classNV1=1
-# classNV2=2
-# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100,corr=True,dqratio=1)/(4*pi)
-# print('Class 12, full dq, full corr, dq=1',eta)
-
-# classNV1=1
-# classNV2=5
-# eta=my4Dint(full_dq_elec,[0,pi],[0,2*pi],[0,pi],[0,2*pi],100,corr=True,dqratio=1)/(4*pi)
-# print('Class 15, full dq, full corr, dq=1',eta)
-
-
-
-# eta2=(1/4*1.1405+3/4*1.1293)**2/(9.259e-3)
-# print(eta2)
+eta2=(1/4*0.8702+2/4*0.9373+1/4*1.0074)**2
+print(eta2,eta2/(9.259e-3))
 
 # opts={}
 # opts['epsrel']=1e-4
