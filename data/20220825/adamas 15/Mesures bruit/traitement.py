@@ -13,7 +13,7 @@ def plot_allan_dev(sensimag=True):
 	import allantools
 	plt.yscale('log')
 	plt.xscale('log')
-	plt.figure(num=1,figsize=(6,4),dpi=80)
+	plt.figure(num=1,figsize=(4.5,3),dpi=80)
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
 	# plt.locator_params(axis='x', nbins=5)
@@ -50,12 +50,13 @@ def plot_allan_dev(sensimag=True):
 	plt.legend()
 	plt.show()
 
-# plot_allan_dev()
+plot_allan_dev()
 
 def plot_data_raw():
-	plt.figure(num=1,figsize=(6,4),dpi=80)
+	plt.figure(num=1,figsize=(4.5,3),dpi=80)
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
+	plt.locator_params(axis='x', nbins=5)
 
 	t,data=extract_data('Mesure près V=0 plus')
 	conv0=0.06/3*35*1e-4*1e6
@@ -71,4 +72,4 @@ def plot_data_raw():
 	plt.show()
 
 
-plot_data_raw()
+# plot_data_raw()

@@ -393,7 +393,7 @@ Sensitivities as low as a few $pT/\sqrt{\rm Hz}$ have been recorded near 2.87 GH
 \subsection{Orientation-free magnetometry}
 Every protocol described so far requires a precise knowledge  of the transition frequency between the $\ket{0}$ and $\ket{\pm 1}$ states versus the magnetic field. This knowledge implies that the direction of each NV axis in a frame of reference is known, because of the strong anisotropy in the NV Hamiltonian. 
 
-For a single crystal, these axes can always be calibrated through ODMR. For a polycrystalline diamond, diamond powder or even a single diamond with an erratic motion however, the knowledge of these axes is not possible. New protocols need to be found if one wants to perform magnetometry with these materials.
+For a single crystal, these axes can always be calibrated through ODMR. However, for a polycrystalline diamond, diamond powder or even a single diamond with an erratic motion, the knowledge of these axes is not possible. New protocols need to be found if one wants to perform magnetometry with these materials.
 
 To our knowledge, the only orientation-free protocol for DC magnetometry is to use the change in PL caused by the transverse field, which is a property that depends only weakly on the field orientation, especially with an ensemble of NV centers with multiple axes. This protocol however has an extremely low sensitivity and only had marginal use so far\citep{rondin2012nanoscale, tetienne2012magnetic}.
 
@@ -421,10 +421,39 @@ Both AC (up to $\sim$ 10 kHz) and DC-magnetometry are possible with this setup. 
 
 Fig. [A FAIRE] shows how the AC and DC sensing work for LFDM. For DC sensing, we want to use an oscillating field with an amplitude that matches the width of the PL dip $|\delta B| \approx \sigma$, in order to maximize the slope of the lock-in signal around $B_0=0$. For AC sensing, we want to use a static field $B_0=\sigma$ corresponding to the region where the lock-in signal is most sensitive to AC field. 
 
-\subsection{Characterization of the experiment}
-We will now look at the performances of the LFDM protocol before comparing it to the other magnetometry protocols. The characterization was only done for DC sensing, but DC and AC are supposed to be symmetrical. The sample used for the characterization were 15 $\mu$m micro-diamond bought as is from Adamas nanodiamond (see the sample section [REF] for more information).
+\subsection{Characterization of the LFDM protocol}
+We will now look at the performances of the LFDM protocol before comparing it to the other magnetometry protocols. The characterization was only done for DC sensing. The samples used for the characterization were 15 $\mu$m micro-diamond bought as is from Adamas nanodiamond (see the sample section [REF] for more information).
 \subsubsection{Sensitivity}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/sensi_alternee}
+\caption{Sensitivity measurement of the LFDM on sample ADM-15-4. a) Temporal trace of the LIA signal when applying an alternating external magnetic field of amplitude 35 $\mu$T and frequency $f=1\ \rm Hz$. b) Histogram of the DC measurement over 50 s. The data is fitted with Gaussians of width $1.6\ \rm{\mu T}$.}
+\label{sensei alternee}
+\end{figure}
+We characterize the DC sensitivity by looking at the noise floor on the LIA signal when being on the steepest slope, around $B_0=0$. The following parameters were used in this case: the AC field for the modulation had an amplitude $|\tilde{B}_{\rm AC}|\approx 10\ \rm G$ and a frequency $f_{mod} \approx 1\ \rm kHz$, the laser power was $\approx 1\ \rm mW$ and the collected PL power $\approx 1\ \rm{\mu W}$, and the lock-in low-pass filter time constant was set to $\tau=3\ \rm ms$.
 
+Fig. \ref{sensei alternee} shows the sensitivity measurement protocol. First, the applied magnetic field is calibrated with ODMR spectra, then an alternating DC field of known amplitude (here $\Delta B_0=35\ \rm{\mu T}$) is applied on the sample. Fig. \ref{sensei alternee}-a) shows the temporal trace of the LIA signal in response to this alternating DC field. Knowing the amplitude of the alternating field, we can then convert the voltage signal into a magnetic field amplitude, with in this case a ratio $45 \pm 3\ \rm{\mu T /V}$.
+
+Fig. \ref{sensei alternee}-b) shows an histogram of the measured magnetic field amplitude for both the high and low value of the applied magnetic field. The total acquisition time was 50 s with the external field being alternated every second. The histograms are nicely fitted with Gaussian profiles of width $\sigma=1.5\pm 0.1\ \rm{\mu T}$ which allows us to estimate the DC sensitivity of the protocol:
+\begin{equation}
+\eta = \frac{\sigma}{\sqrt{2 \tau}}= 116 \pm 10\ \rm{nT} / \sqrt{\rm Hz},
+\end{equation}
+
+where $\tau=3\ r=\rm ms$ is the low-pass filter time constant. 
+
+We estimate that the sensitivity is mostly shot-noise limited because the same LIA voltage noise ($\delta V \approx 35\ \rm mV$) was observed on a magnetic insensitive region (for $B_0 \approx 100\ \rm G$), and is far above the electrical noise measured when no optical signal is sent to the photodiode ($\delta V < 1\ \rm mV$). Laser amplitude fluctuations could also play a role but the noise seem to grow as the square root of the optical power and not linearly with it.
+
+\subsubsection{Angular dependence of the sensitivity}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/sensi_angulaire}
+\caption{tata}
+\label{angular sensi}
+\end{figure}
+
+We will now look at the dependence of the sensitivity with respect to the magnetic field angle. In particular, we are interested in comparing the sensitivity when $\mathbf{B}\parallel [100]$, where there is no lift of degeneracy between the four classes as $\mathbf{B}$ increases; and a case where $\mathbf{B}\nparallel [100]$ and where there is a lift of degeneracy between the four classes. We previously saw in Fig. \ref{scan 1x1x1x1} and \ref{scan 100} that the PL and $T_1$ contrast was much smaller when $\mathbf{B}\parallel [100]$, but we now focus on the sensitivity which is related to the slope of the PL change, and not directly to the contrast.
+
+Fig. \ref{angular sensi}-a) and b) show the LIA signal when the DC field $B_0$ is scanned from $-150$ G to +150 G on the same sample ADM-15-4, but for two different angle of $B_0$. For the blue curve, the field was scanned along the [100] axis, for the orange curve, it was scanned with an angle of $\sim 20\ ^\circ$ compared to the [100] axis
 
 sensi, dépendence sensi angle, variance d'allan
 \subsection{Comparison with other magnetometry protocol}

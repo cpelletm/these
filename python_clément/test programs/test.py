@@ -1742,4 +1742,4 @@ def test_convolution():
 	plt.show()
 
 
-print(sqrt(2870*5)/2.8)
+print(sqrt(0.05**2+(0.0127/0.168)**2), sqrt(0.05**2+(0.0127/0.168)**2)*1.160917)

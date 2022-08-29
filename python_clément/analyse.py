@@ -152,7 +152,7 @@ def fit_ordre_6(x,y) :
 	w,z,a,b,c,d,e = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([w,z,a,b,c,d,e],w*x**6+z*x**5+a*x**4+b*x**3+c*x**2+d*x+e)
 
-def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0) :
+def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0,err=False) :
 	#HWHM = sigma*sqrt(2*np.log(2)) pour une gaussienne
 	if not ss :
 		ss=y[0]
@@ -169,7 +169,10 @@ def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0) :
 		return amp*np.exp(-(x-x0)**2/(2*sigma**2))+ss
 	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,*popt))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
 def gauss_derivative_fit(x,y,amp=None,x0=None,sigma=None,ss=0):
 	#Je gère pas le cas ou x n'est pas dans l'ordre croissant
@@ -194,7 +197,7 @@ def gauss_derivative_fit(x,y,amp=None,x0=None,sigma=None,ss=0):
 	return(popt,f(x,*popt))
 
 
-def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
+def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None,err=False) :
 	#sigma=HWHM
 	if not ss :
 		ss=y[0]
@@ -211,7 +214,10 @@ def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None) :
 		return ss+amp*1/(1+((x-x0)/(sigma))**2)
 	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,*popt))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
 def lor_fit_fixed(x,y,amp=None,x0=0,sigma=1,ss=None):
 	#x0 and sigma fixed
@@ -253,7 +259,7 @@ def invert_fit(x,y,amp=None):
 	return(popt,f(x,*popt))
 
 
-def exp_fit(x,y,amp=None,ss=None,tau=None) :
+def exp_fit(x,y,amp=None,ss=None,tau=None,err=False) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not ss :
@@ -264,9 +270,12 @@ def exp_fit(x,y,amp=None,ss=None,tau=None) :
 		return amp*np.exp(-x/tau)+ss
 	p0=[amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0)
-	return(popt,f(x,popt[0],popt[1],popt[2]))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
-def exp_fit_zero(x,y,amp=None,tau=None,norm=False) :
+def exp_fit_zero(x,y,amp=None,tau=None,norm=False,err=False) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not tau :
@@ -282,10 +291,13 @@ def exp_fit_zero(x,y,amp=None,tau=None,norm=False) :
 			return amp*np.exp(-x/tau)
 		p0=[amp,tau]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
-	return(popt,f(x,*popt))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
 
-def stretch_exp_fit(x,y,amp=None,ss=None,tau=None) :
+def stretch_exp_fit(x,y,amp=None,ss=None,tau=None,err=False) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not ss :
@@ -296,9 +308,12 @@ def stretch_exp_fit(x,y,amp=None,ss=None,tau=None) :
 		return amp*np.exp(-np.sqrt(x/tau))+ss
 	p0=[amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
-	return(popt,f(x,popt[0],popt[1],popt[2]))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
-def stretch_exp_fit_zero(x,y,amp=None,tau=None,norm=False) :
+def stretch_exp_fit_zero(x,y,amp=None,tau=None,norm=False,err=False) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not tau :
@@ -314,9 +329,12 @@ def stretch_exp_fit_zero(x,y,amp=None,tau=None,norm=False) :
 			return amp*np.exp(-np.sqrt(x/tau))
 		p0=[amp,tau]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
-	return(popt,f(x,*popt))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
-def stretch_arb_exp_fit(x,y,amp=None,ss=None,tau=None,alpha=0.5,fixed=False):
+def stretch_arb_exp_fit(x,y,amp=None,ss=None,tau=None,alpha=0.5,fixed=False,err=False):
 	if not amp :
 		amp=max(y)-min(y)
 	if not ss :
@@ -333,9 +351,12 @@ def stretch_arb_exp_fit(x,y,amp=None,ss=None,tau=None,alpha=0.5,fixed=False):
 			return amp*np.exp(-(x/tau)**alpha)+ss
 		p0=[amp,ss,tau,alpha]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
-	return(popt,f(x,*popt))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
-def stretch_arb_exp_fit_zero(x,y,amp=None,tau=None,alpha=0.5,fixed=False):
+def stretch_arb_exp_fit_zero(x,y,amp=None,tau=None,alpha=0.5,fixed=False,err=False):
 	if not amp :
 		amp=max(y)-min(y)
 	if not tau :
@@ -350,7 +371,10 @@ def stretch_arb_exp_fit_zero(x,y,amp=None,tau=None,alpha=0.5,fixed=False):
 			return amp*np.exp(-(x/tau)**alpha)
 		p0=[amp,tau,alpha]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
-	return(popt,f(x,*popt))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
 def stretch_with_baseline(x,y,tau_BL=5e-3,alpha_BL=1,alpha_dip=0.5,amp=None,tau=None):
 	if not amp :
@@ -374,7 +398,7 @@ def third_stretch(x,y,amp=None,tau=None) :
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,popt[0],popt[1]))
 
-def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3,fixed=True) :
+def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3,fixed=True,err=False) :
 	if not amp :
 		amp=max(y)-min(y)
 	if not tau :
@@ -389,7 +413,10 @@ def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3,fixed=True) :
 			return amp*np.exp(-x/T1ph-sqrt(x/tau))
 		p0=[amp,tau,T1ph]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
-	return(popt,f(x,*popt))
+	if err :
+		return(popt,f(x,*popt),pcov)
+	else :
+		return(popt,f(x,*popt))
 
 def stretch_et_phonons_non_zero(x,y,amp=None,ss=None,tau=None,T1ph=5E-3,fixed=True) :
 	if not amp :
