@@ -185,7 +185,7 @@ Nevertheless, the fact that there is a drop in zero field when $\mathbf{B} \para
 We can also note a drop in PL and a corresponding increase of $1/T_1^{\rm dd}$ for $B \sim 20\ \rm G$ which corresponds to the NV$-^{13}$C-NV cross-relaxation discussed in [REF]
 
 \subsection{Potential causes for low field depolarization}
-
+\label{sec causes zero field}
 We will discuss here three possible reasons for the zero field depolarization observed in Fig. \ref{scan 100}. Once presented, we will try to hierarchized the contribution of each of these effects.
 
 \subsubsection{Eigenstates modification}
@@ -350,7 +350,7 @@ Before we explore the application of low field depolarization to magnetometry, w
 
 NV magnetometry is generally decomposed between single NV and ensemble magnetometry. Single NVs,often associated with scanning probes, offer a spatial resolution limited only by how far the magnetic source can be from the NV center (typically $\sim 10\ \rm nm$), but at the cost of a relatively low sensitivity (typically $\sim \mu \rm{T} / \sqrt{\rm Hz}$ \citep{pelliccione2016scanned}).
 
-Ensemble NV centers center on the other hand offer sensitivities below $1\ \rm pT / \sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}, at the cost of working working with samples of several hundreds of $\mu$m.
+Ensemble NV centers center on the other hand offer sensitivities below $1\ \rm pT / \sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}, at the cost of working with samples of several hundreds of $\mu$m.
 
 We will only focus here on NV ensemble magnetometry since we want to give elements of comparisons with our technique based on NV-NV CR. We will not try to give a complete overview of this field, but only to the elements close to the technique we present. For a general overview on microwave-based ensemble NV magnetometry, we recommend the excellent review from Barry et al \citep{barry2020sensitivity}.
 
@@ -361,7 +361,7 @@ For DC-broadband magnetometry, the general technique consist of a Ramsey interfe
 
 For AC magnetometry, the basic protocol consist of a spin echo measurement, also presented in chapter 1, which extends the coherence time $T_2^*$ to $T_2 = 10 \sim 100 \rm{\mu s}$, which can be extended even further to $\sim \rm ms$ times with dynamical decoupling \citep{pham2012enhanced}. Due to the longer ``free" precession time, a larger phase can be imprinted on the spin for a similar magnetic field. The AC magnetic field however has to be in phase with the rephasing pulses, which limits the AC sensing to a relatively narrow band. The state of the art in term of AC sensing is $\sim 1\ \rm pT/\sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}.
 
-Recently, \citep{xie2021hybrid} have achieved new records in both DC ($\sim 200\ \rm fT/\sqrt{\rm Hz}$) and AC ($\sim 10\ \rm fT/\sqrt{\rm Hz}$) NV magnetometry by using flux concentrators which are ferromagnets concentrating the magnetic field in a small volume, similarly to an electromagnet.
+Recently, \citep{xie2021hybrid} have achieved new records in both DC ($\sim 200\ \rm fT/\sqrt{\rm Hz}$) and AC ($\sim 10\ \rm fT/\sqrt{\rm Hz}$) NV magnetometry by using flux concentrators which are ferromagnets concentrating the magnetic field in a small volume, similarly to an electromagnet. Because the gain from the flux concentrators is not tied to a specific magnetometry protocol, we will focus on the results obtained without flux concentrators.
 \subsection{Low field magnetometry}
 Magnetometry for low magnetic field ($\gamma B < d_\perp E_\perp$) is challenging since in this regime the NV eigenstates and eigenenergies do not depend on the magnetic field in the first order. This complication is often lifted  by simply using a bias magnetic field, typically from a permanent magnet. 
 
@@ -369,7 +369,7 @@ Some systems however need to be kept under low to zero external magnetic fields,
 
 The main technique for low field magnetometry consist in using circularly polarized microwaves, which can only excite the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions, even when these states are not the Hamiltonian's eigenstates \citep{mrozek2015circularly, zheng2019zero, lenz2021magnetic, vetter2022zero}. The best sensitivity achieved with this technique was $250\ \rm pT/\sqrt{\rm Hz}$.
 
-Another technique consist in using the $^{13}C-$NV complex we discussed in sec. [REF] which because of the magnetic field offset caused by the $^{13}C$ nucleus are frist order sensitive to the magnetic field even in zero external magnetic field \citep{wang2022zero}. With natural abundance $^{13}C$ however, this means that only $\sim 3\%$ of the NV centers are used, and increasing the $^{13}C$ concentration can lower the coherence of the NV centers. This technique is more suited for a carefully chosen single NV center.
+Another technique consist in using the $^{13}\rm{C}-$NV complex we discussed in sec. [REF] which because of the magnetic field offset caused by the $^{13}\rm{C}$ nucleus are frist order sensitive to the magnetic field even in zero external magnetic field \citep{wang2022zero}. With natural abundance $^{13}\rm{C}$ however, this means that only $\sim 3\%$ of the NV centers are used, and increasing the $^{13}\rm{C}$ concentration can lower the coherence of the NV centers. This technique is more suited for a carefully chosen single NV center.
 
 \subsection{Microwave-free magnetometry}
 All the precedent magnetemetry protocols described relied on the use of a controllable magnetic field, to coherently manipulate the NV spin state and to measure the action of the magnetic field on the NV Larmor frequency.
@@ -453,11 +453,51 @@ We estimate that the sensitivity is mostly shot-noise limited because the same L
 
 We will now look at the dependence of the sensitivity with respect to the magnetic field angle. In particular, we are interested in comparing the sensitivity when $\mathbf{B}\parallel [100]$, where there is no lift of degeneracy between the four classes as $\mathbf{B}$ increases; and a case where $\mathbf{B}\nparallel [100]$ and where there is a lift of degeneracy between the four classes. We previously saw in Fig. \ref{scan 1x1x1x1} and \ref{scan 100} that the PL and $T_1$ contrast was much smaller when $\mathbf{B}\parallel [100]$, but we now focus on the sensitivity which is related to the slope of the PL change, and not directly to the contrast.
 
-Fig. \ref{angular sensi}-a) and b) show the LIA signal when the DC field $B_0$ is scanned from $-150$ G to +150 G on the same sample ADM-15-4, but for two different angle of $B_0$. For the blue curve, the field was scanned along the [100] axis, for the orange curve, it was scanned with an angle of $\sim 20\ ^\circ$ compared to the [100] axis
+Fig. \ref{angular sensi}-a) and b) show the LIA signal when the DC field $B_0$ is scanned from $-150$ G to +150 G on the same sample ADM-15-4, but for two different angle of $B_0$. For the blue curve, the field was scanned along the [100] axis, for the orange curve, it was scanned with an angle of $\sim 20\ ^\circ$ compared to the [100] axis. We can see that the maximum amplitude of the lock-in signal (relevant for AC sensing) is of the same order of magnitude for both case, and the slope around $B_0$ (relevant for DC sensing) is almost identical. Fig. \ref{angular sensi}-c) shows the sensitivity, measured with the protocol described in Fig. \ref{sensei alternee}, with respect to the magnetic field angle with the [100] axis. We can notice that the sensitivity depends only weakly on the magnetic field angle. 
 
-sensi, dépendence sensi angle, variance d'allan
+The fact that the sensitivity is similar when $\mathbf{B}\parallel [100]$ or $\mathbf{B}\nparallel [100]$ means that the inter-class co-resonances plays a lower role in the sensitivity than the zero-field specific depolarization mechanisms, previously detailed in Sec. \ref{sec causes zero field}. We cannot be sure which of the three zero-field mechanism is the dominant one, but based on the experimental results shown in Fig. \ref{champ tranverse exp}, we can assume that the double-flips are the dominant factor in the LFDM sensitivity.
+
+\subsubsection{Temporal stability}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/Temporal_just_0B}
+\caption{tata}
+\label{temporal 0B}
+\end{figure}
+
+
+An important aspect of sensors is their stability in time. The sensitivity being expressed in $\rm{nT} / \sqrt{\rm Hz}$ suggests that the signal to noise ratio (SNR) given by repeating the measurement increases as $\sqrt{T}$ where $T$ is the total acquisition time. This is true for an ideal system, but in practice drifts and low frequency noise mean that the actual SNR for long acquisition time will be worse than the SNR at short time scaled by a factor $\sqrt{T}$.
+
+One of the main source of drift for NV magnetometry based on spin resonance is the lattice temperature change: the $D$ factor in the NV Hamiltonian (eq. [REF]) is sensitive to the lattice temperature because of the thermal dilatation of the crystal, which is the basis for NV thermometry \citep{kucsko2013nanometre}. This means that thermal fluctuations will impact the Larmor frequency of the spins and may cause a detuning with the initial measured frequency for long acquisition times. The LFDM protocol however does not rely on a specific resonance frequency, but rather on a co-resonnance condition between neighboring spins, which does not depend directly on the crystal temperature.
+
+Fig. \ref{temporal 0B} shows the temporal stability of the LFDM protocol over an acquisition time of 100 s. Fig. \ref{temporal 0B}-a) shows a temporal trace of the LIA signal where we have converted the signal into a measured magnetic field. Fig. \ref{temporal 0B}-b) shows the estimated SNR for a signal of 100 nT as a function of the total acquisition time and was computed from the temporal trace.
+
+We can see that the SNR does not deviate from the $\sqrt{T}$ scaling for times up to 50 s, and could probably be extended much longer. The non-linearity for shorter times comes from the LIA low-pass filter.
+
 \subsection{Comparison with other magnetometry protocol}
+We will now compare the LFDM performances with the previously mentioned magnetometry protocols. We should start by mentioning that the best sensitivity achieved with the LFDM ($\sim 100 \rm{nT} / \sqrt{\rm Hz}$) is about $10^5$ times worse than the best NV ensemble sensitivity. This discrepancy however come in large part to the smaller sensor volume used in the characterization, and to a relatively low PL collection efficiency compared to the other experiments.
+
+\subsubsection{Comparison with microwave based protocols}
+
+\begin{table}[htbp]
+\centering
+\caption{Simulated depolarization rate for flip-flops and double flips in zero magnetic field}
+ \label{table sensi volumiques}
+\begin{tabular}{c|cc}
+%\toprule
+{} & $l_c=0$ & $l_c=\infty$ \\
+\midrule
+$\bar{G}^2=1$ & $126.8 \Gamma_0^{\rm th}$ & $126.8 \Gamma_0^{\rm th}$ \\
+$\bar{G}^2=0.5$ & $NA \Gamma_0^{\rm th}$ & $NA \Gamma_0^{\rm th}$ \\
+$\bar{G}^2=0$ & $51.4 \Gamma_0^{\rm th}$ & $55 \Gamma_0^{\rm th}$ \\
+%\bottomrule
+\end{tabular}
+\end{table}
+
+
+comparaison microwave: le scan avec la microwave + zoom + les variances d'allan et trace temporelles.
 Budker : mesurer vite deuf les pentes
+champ tranverse : demerde toi
 \section{Conclusion and perspectives}
 - Improvement to the sensitivity : Scale up (les deux papiers sur le picoTesla mW, avec les deux systèmes), material optimization (15N !, [NV] concentration, )
 
