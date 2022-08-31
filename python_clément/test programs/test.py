@@ -1742,4 +1742,7 @@ def test_convolution():
 	plt.show()
 
 
-print(15e-12*sqrt(13*200*2000))
+x=np.linspace(-10,10,500)
+y=(np.sin(2*pi*x)/x)**2
+plt.plot(x,y)
+plt.show()

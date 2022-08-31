@@ -1,61 +1,44 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
-sys.path.append('/home/zouzou/these/python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 #les x et y sont inversés pour cette série
 
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+plt.locator_params(axis='x', nbins=5)
+plt.locator_params(axis='y', nbins=5)
+
 n=30
 xs=np.linspace(0,10,n)
 
-# data=np.zeros((n,n))
-# for j in range(n) :
-# 	print(j)
-# 	for k in range(n) :
-# 		x,y=extract_data('x=%.6f,y=%.6f'%(xs[k],xs[j]))
-# 		x2,y2=extract_data('x=%.6f,y=%.6f'%(xs[k],xs[j]),xcol=2,ycol=3)
-# 		PL=sum(y2)/len(y2)
-# 		C13=sum(y[341:384])-sum(y[163:221])
-# 		DQ=sum(y[233:278])-sum(y[278:316])
+def plot_DQ_contrast():
+	data=[]
+	for i in range(n) :
+		x,y=extract_data('x=0,y=%.6f'%(xs[i]),xcol=2,ycol=3)
+		PL=sum(y)
+		x,y=extract_data('x=0,y=%.6f'%(xs[i]))
+		y=y/PL
+
+		data+=[sum(y[495:527])-sum(y[527:560])]
+
+	plt.plot(xs,data)
 
 
-# 		data[k,j]=C13
+def plot_DQ_PL():
+	xmin=350
+	xmax=700
+	x,y=extract_data('x=0,y=2.413793',ycol=3)
+	y=y/max(y)-0.0004
+	x=x*35-4
+	plt.plot(x[xmin:xmax],y[xmin:xmax],label='region A',lw=2)
+	x,y=extract_data('x=0,y=10.000000',ycol=3)
+	y=y/max(y)
+	x=x*35-4
+	plt.plot(x[xmin:xmax],y[xmin:xmax],label='region B',lw=2)
+	plt.legend()
 
-# print_map(data[:,:])
-
-data=[]
-for i in range(n) :
-	x,y=extract_data('x=0,y=%.6f'%(xs[i]),xcol=2,ycol=3)
-	PL=sum(y)
-	x,y=extract_data('x=0,y=%.6f'%(xs[i]))
-	y=y/PL
-
-	data+=[sum(y[495:527])-sum(y[527:560])]
-
-plt.plot(xs,data)
-
-# x,y=extract_data('x=0,y=%.6f'%(xs[0]),xcol=2,ycol=3)
-# PL=sum(y)
-# x,y=extract_data('x=0,y=%.6f'%(xs[0]))
-# y=y/PL
-# plt.plot(y,'x-')
-
-# x,y=extract_data('x=0,y=%.6f'%(xs[8]),xcol=2,ycol=3)
-# PL=sum(y)
-# x,y=extract_data('x=0,y=%.6f'%(xs[8]))
-# y=y/PL
-# plt.plot(y,'x-')
-
-# x,y=extract_data('x=0,y=%.6f'%(xs[29]),xcol=2,ycol=3)
-# PL=sum(y)
-# x,y=extract_data('x=0,y=%.6f'%(xs[29]))
-# y=y/PL
-# plt.plot(y,'x-')
-
-
-# x,y=extract_data('x=0,y=%.6f'%(xs[29]),xcol=2,ycol=3)
-# y=y/sum(y)
-# plt.plot(y,'x-')
-
-
+plot_DQ_PL()
 plt.show()

@@ -79,7 +79,8 @@ def plot_sensi_alternee():
 
 def plot_scan():
 	fname='scan 100 20 deg from 100'
-	x,y=extract_data(fname,ycol=1)
+	x,y=extract_data(fname,ycol=3)
+	y=y/max(y)
 	x=x*65/2
 	x=x+0.35-7.91
 	# plt.plot(x,y,'o-',lw=1.5,markerfacecolor='None')
@@ -87,7 +88,8 @@ def plot_scan():
 	
 	
 	fname='scan 100'
-	x,y=extract_data(fname,ycol=1)
+	x,y=extract_data(fname,ycol=3)
+	y=y/max(y)
 	x=x*65/2
 	x=x-7.91
 	# plt.plot(x,y,'s-',lw=1.5,markerfacecolor='None')

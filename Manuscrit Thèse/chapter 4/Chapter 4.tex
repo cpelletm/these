@@ -180,7 +180,7 @@ Fig. \ref{scan 100} presents a way to circumvent this issue: by applying the mag
 
 We can notice that there still is a decrease of both the PL and $T_1^{\rm dd}$ in low field, although considerably smaller than the previous case: in Fig. \ref{scan 1x1x1x1}, $T_1^{\rm dd}$ was reduced by a factor of [REF] in zero field, whereas in Fig. \ref{scan 100}, it was only reduced by a factor of [REF]. The main reason for the PL and $T_1$ drop was indeed the co-resonance between the four classes.
 
-Nevertheless, the fact that there is a drop in zero field when $\mathbf{B} \parallel [100]$ cannot be explained by considering only the inter-class resonances. There are some additional depolarization mechanisms which are proper to the zero field region. We should also note that, while the zero-field PL contrast is bigger in Fig. \ref{scan 1x1x1x1}-c) than in Fig. \ref{scan 100}-c), the PL slope, which is the limiting factor for sensing ability, is actually very similar in both cases with a value $\sim [REF]\ \rm G^{-1}$.
+Nevertheless, the fact that there is a drop in zero field when $\mathbf{B} \parallel [100]$ cannot be explained by considering only the inter-class resonances. There are some additional depolarization mechanisms which are proper to the zero field region. We should also note that, while the zero-field PL contrast is bigger in Fig. \ref{scan 1x1x1x1}-c) than in Fig. \ref{scan 100}-c), the PL slope, which is the limiting factor for sensing ability, is actually similar in both cases.
 
 We can also note a drop in PL and a corresponding increase of $1/T_1^{\rm dd}$ for $B \sim 20\ \rm G$ which corresponds to the NV$-^{13}$C-NV cross-relaxation discussed in [REF]
 
@@ -388,7 +388,7 @@ Another DC microwave-less protocol was proposed based on NV-NV CR \citep{akhmedz
 \subsubsection{microwave-less AC magnetometry}
 The AC microwave-less protocols rely on a direct excitation of the $\ket{0} \to \ket{-1}$ or $\ket{0} \to \ket{+1}$ transitions by the magnetic field probed. The detection bandwidth is adjusted with an external magnetic field to bring the NV transitions in resonance with the field probed, which has been implemented from $\sim 10\ \rm MHz$ to $27\ \rm GHz$ \citep{magaletti2022quantum}.
 
-Sensitivities as low as a few $pT/\sqrt{\rm Hz}$ have been recorded near 2.87 GHz \citep{wang2022picotesla, alsid2022solid}, although both protocols rely on a secondary controllable microwave field (either for an heterodyne detection or to add additional pulses).
+Sensitivities as low as a few $pT/\sqrt{\rm Hz}$ have been recorded near 2.87 GHz \citep{wang2022picotesla, alsid2022solid}, but both protocols are not microwave-free as they rely on a secondary controllable microwave field (either for an heterodyne detection or to add additional pulses).
 
 \subsection{Orientation-free magnetometry}
 Every protocol described so far requires a precise knowledge  of the transition frequency between the $\ket{0}$ and $\ket{\pm 1}$ states versus the magnetic field. This knowledge implies that the direction of each NV axis in a frame of reference is known, because of the strong anisotropy in the NV Hamiltonian. 
@@ -457,6 +457,8 @@ Fig. \ref{angular sensi}-a) and b) show the LIA signal when the DC field $B_0$ i
 
 The fact that the sensitivity is similar when $\mathbf{B}\parallel [100]$ or $\mathbf{B}\nparallel [100]$ means that the inter-class co-resonances plays a lower role in the sensitivity than the zero-field specific depolarization mechanisms, previously detailed in Sec. \ref{sec causes zero field}. We cannot be sure which of the three zero-field mechanism is the dominant one, but based on the experimental results shown in Fig. \ref{champ tranverse exp}, we can assume that the double-flips are the dominant factor in the LFDM sensitivity.
 
+It should be noted that this non angular dependence was particularly marked on sample ADM-15-4. Other samples, including from the same batch, showed a higher angular dependence with typically a sensitivity $\sim 2$ times worse when $B\parallel [100]$ than in the other directions.
+
 \subsubsection{Temporal stability}
 \begin{figure}[h!]
 \centering
@@ -472,7 +474,7 @@ One of the main source of drift for NV magnetometry based on spin resonance is t
 
 Fig. \ref{temporal 0B} shows the temporal stability of the LFDM protocol over an acquisition time of 100 s. Fig. \ref{temporal 0B}-a) shows a temporal trace of the LIA signal where we have converted the signal into a measured magnetic field. Fig. \ref{temporal 0B}-b) shows the estimated SNR for a signal of 100 nT as a function of the total acquisition time and was computed from the temporal trace.
 
-We can see that the SNR does not deviate from the $\sqrt{T}$ scaling for times up to 50 s, and could probably be extended much longer. The non-linearity for shorter times comes from the LIA low-pass filter.
+We can see that the SNR does not deviate from the $\sqrt{T}$ scaling for times up to 50 s, and could probably be extended for longer times. The non-linearity for shorter times comes from the LIA low-pass filter.
 
 \subsection{Comparison with other magnetometry protocol}
 We will now compare the LFDM performances with the previously mentioned magnetometry protocols. We should start by mentioning that the best sensitivity achieved with the LFDM ($\sim 100 \rm{nT} / \sqrt{\rm Hz}$) is about $10^5$ times worse than the best NV ensemble sensitivity. This discrepancy however come in large part to the smaller sensor volume used in the characterization, and to a relatively low PL collection efficiency compared to the other experiments.
@@ -481,24 +483,76 @@ We will now compare the LFDM performances with the previously mentioned magnetom
 
 \begin{table}[htbp]
 \centering
-\caption{Simulated depolarization rate for flip-flops and double flips in zero magnetic field}
+\caption{Tutu}
  \label{table sensi volumiques}
-\begin{tabular}{c|cc}
-%\toprule
-{} & $l_c=0$ & $l_c=\infty$ \\
+\begin{tabular}{c|ccc}
+\toprule
+{} & Zhou et al. \citep{zhou2020quantum} (AC) & Barry et al.\citep{barry2016optical} (DC) & LFDM (DC) \\
 \midrule
-$\bar{G}^2=1$ & $126.8 \Gamma_0^{\rm th}$ & $126.8 \Gamma_0^{\rm th}$ \\
-$\bar{G}^2=0.5$ & $NA \Gamma_0^{\rm th}$ & $NA \Gamma_0^{\rm th}$ \\
-$\bar{G}^2=0$ & $51.4 \Gamma_0^{\rm th}$ & $55 \Gamma_0^{\rm th}$ \\
-%\bottomrule
+$\eta\ (\rm{nT} / \sqrt{\rm Hz})$ & 92&0.015& 116 \\
+$V\ (\mu \rm{m}^3)$ &$8.1 \cdot 10^{-3}$ &$5.2 \cdot 10^{6}$& $3.3 \cdot 10^{3}$ \\
+$\eta_v\ (\rm{nT}\mu \rm{m}^{3/2} \rm{Hz}^{-1/2})$ &8.3&34&6700 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
+We will first compare the LFDM protocol with the best microwave-based NV magnetometry protocols. A better metric than the sensitivity to compare different protocols is the volume-normalized sensitivity defined in \citep{zhou2020quantum} as $\eta_v=\eta\cdot \sqrt{V}$ where $\eta$ is the sensitivity and $V$ the effective volume of the sensor. This scaling assumes that each NV center in an ensemble is an independent magnetic field probe, and as the total number of NV centers is proportional to $V$, the sensitivity should scale as $1/\sqrt{V}$.
 
-comparaison microwave: le scan avec la microwave + zoom + les variances d'allan et trace temporelles.
-Budker : mesurer vite deuf les pentes
-champ tranverse : demerde toi
+Table \ref{table sensi volumiques} reports the best AC and DC volume-normalized sensitivities found in the literature. The LFDM protocol performs $\sim 200$ times worse than the best DC magnetometer. It should be noted however that the PL collection in our measurement, where we use a confocal microscope using an objective with NA=0.65, is estimated to be $\sim 1 \%$ \citep{le2012efficient}, while the best collection schemes \citep{le2012efficient,wolf2015subpicotesla,wang2022picotesla, alsid2022solid} achieve a collection efficiency above 50 \%.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/compariason_0B_MW}
+\caption{tata}
+\label{comparaison 0B MW}
+\end{figure}
+
+Fig. \ref{comparaison 0B MW} shows a comparison between LFDM and microwave-based magnetometry using our setup. A fixed microwave tone (here at 2600 MHz) is sent to the diamond and a magnetic field $B_0$ close to the [111] axis is scanned along an oscillating field $\delta B$ to perform a lock-in detection. 
+
+Fig. \ref{comparaison 0B MW}-b) shows the LIA signal over a $B_0$ scan: the profile is similar to the one in Fig. \ref{setup magneto}-b) with the addition to two sharp lines for $|B_0| \approx 100\ \rm G$. These two lines correspond to the transition $\ket{0} \to \ket{-1}$ (or $\ket{0} \to \ket{+1}$ for the negative fields) of the class aligned with the magnetic field when it comes to resonance with the 2600 MHz microwave tone. The microwave power used here correspond to a Rabi frequency $\Omega \approx (2\pi) 3\ \rm MHz$ and the slope on the steepest part of the microwave line is $\sim 2.5$ times higher than the slope in zero field.
+
+Fig. \ref{comparaison 0B MW}-c) and d) show the temporal stability of the sensor similarly to Fig. \ref{temporal 0B}, on both the zero field line and the microwave line. While we can see that the microwave signal is more sensitive thanks to the higher slope, it is also more prone to drift, most likely because of the shift of the Larmor frequency caused by the temperature fluctuations. We can even see that the LFDM becomes more sensitive for acquisition times beyond 10 s.
+
+We should acknowledge that this microwave-based detection is not optimal: we are using a technique analogous to CW ODMR which is not as sensitive as Ramsey interference (although CW ODMR was also the technique used in \citep{barry2016optical}), we were limited in the microwave power (although $\Omega_{Rabi} \sim 1/T_2^*$ which is supposed to be optimal), and the sample used here had a relatively poor $T_2^* \approx 68\ \rm ns$. Nevertheless, this shows that the LFDM protocol is not that far from basic microwave-based magnetometry with the samples and the optical setup used here.
+
+\subsubsection{Comparison with microwave-less protocols}
+The only microwave-less protocols to have measured a sensitivity are the GSLAC protocols described previously \citep{wickenbrock2016microwave, zheng2020microwave}. Unfortunately the sensing volume in this studies is not known, however due to the similarity in our approaches, we should be able to directly compare the physical origin of both protocols, i.e. comparing the zero field PL dip and the GSLAC PL dip.
+
+In Fig. \ref{scan 1x1x1x1}, we can observe a PL dip with a contrast $C=4.7\pm 1 \% $ for a full width at half maximum $\Gamma=20 \pm 1\ \rm G$. In comparison, in \citep{wickenbrock2016microwave} the authors observe a GSLAC PL dip with a contrast $C=4.5 \%$ for a full width of $12 \ \rm G$ with a type 1B irradiated diamond, similar to the ones we use. In \citep{zheng2020microwave} they manage to keep a contrast of 4.5 \% while reducing the GSLAC linewidth to $0.38 G$ by using a CVD sample with a lower [NV] and [N] density and isotopically enriched in $^{12}$C.
+
+The zero field technique is therefore comparable with the GSLAC technique for samples with high NV and impurity concentration, but unlike the GSLAC magnetometry, it is still unclear what kind of material engineering would improve its sensitivity.
+
+%Je parle pas de la dépendence en puissance ou du champ transverse, je laisse ça pour plus tard.
 \section{Conclusion and perspectives}
+We have seen in this chapter that dense ensemble of NV centers spontaneously depolarize at low magnetic field. We have seen that the depolarization is mediated by dipole-dipole coupling between the NV centers. 
+
+We have identified three mechanisms by which the depolarization is increased in zero-field: the inter-class flip-flops, the double flips, and the change in the NV eigenstates (which includes the change in $T_2^*$).We have then quantified both theoretically and experimentally the contribution of each of these mechanisms to the zero-field depolarization.
+
+Finally, we have seen how this low-field depolarization can be applied to perform magnetometry experiments, and what advantages and disadvantages this technique offers compared to the established NV magnetometry protocols.
+
+I will now describe what could be interesting investigation points to further improve the LFDM performance, as well as potential applications.
+
+\subsection{Material optimization for LFDM}
+
+Most magnetometry protocols have a relatively clear material optimization path: DC protocols want to improve the figure of merit $\rho T_2^*$ and AC protocols want to improve $\rho T_2$, where $\rho=[NV]$ is the NV concentration. The reason is that the number of NV centers for a given volume scales as $\rho$, and therefore the sensitivity scale as $\sqrt{\rho}$. Meanwhile increasing the density of defects tend to decrease the spin coherence times $T_2$ and $T_2^*$, and the AC and DC sensitivities scale respectively as $1/\sqrt{T_2}$ and $1/\sqrt{T_2^*}$.
+
+For the LFDM protocol however, the material optimization is far from obvious. Indeed, while increasing $T_2^*$ can only improve the sensitivity, the gain might not be as interesting as for other protocols due to the broadening caused by the fluctuator lifetime. On the other hand, increasing the NV density not only increases the number of sensor per volume, but also increases the dipole-dipole strength between NV centers. It has been my experience however that crystals with higher NV densities showed poorer LFDM performance (lower zero field PL contrast) than crystals with lower NV density. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/substrat}
+\caption{tata}
+\label{substrat chelou}
+\end{figure}
+
+Fig. \ref{substrat chelou} shows various measurements on the same sample SBST-C, an HPHT bulk sample containing [NV]$\sim 1\ \rm ppm$, on two spatially distinct regions A and B. These two regions most likely correspond to two distinct growth sectors of the diamond, meaning that these regions were not grown in the same exact environment, which can impact the creation of impurities. 
+
+The lifetime for both $B=0$ and $B\neq 0$ are shorter and closer to stretched exponential profile in region B than in region A, and the zero field PL contrast is larger when B is scanned in an arbitrary direction. These three observations seem to indicate that region B has a higher concentration of fluctuators than region A. When B is scanned along the [100] however (to observe double flips and the change of basis effect), there is no PL dip for region B, but there is still one for region A.
+
+
+
+\subsection{Finding the optimal parameters for LFDM}
+
 - Improvement to the sensitivity : Scale up (les deux papiers sur le picoTesla mW, avec les deux systèmes), material optimization (15N !, [NV] concentration, )
 
 - Understand the impact of the various factors on the flip-flop CR and DQ CR: T2*, strain, local electric noise ... Mettre ici les deux adamas du 20210927 avec le petit et le gros DQ, et peut etre aussi les DQ et SQ qui s'inversent sur le substrat. Comprendre 

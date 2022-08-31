@@ -151,7 +151,7 @@ def plot_SNR():
 	plt.ylim([ylims[0],10])
 	plt.show()
 
-plot_SNR()
+# plot_SNR()
 
 def plot_data_raw():
 	plt.figure(num=1,figsize=(4.5,3),dpi=80)
