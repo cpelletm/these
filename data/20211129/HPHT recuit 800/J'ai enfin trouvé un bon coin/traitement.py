@@ -27,28 +27,30 @@ def plot_scan_1x1x1x1():
 
 	plt.legend()
 
-x,y=extract_data('T1 0B/T1 brut 0,5',ycol=1)
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y)
 
-x,y=extract_data('T1 0B/T1 brut 0,10 fit stretch',ycol=1)
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y)
+def plot_T1_bruts():
+	x,y=extract_data('T1 0B/T1 brut 0,5',ycol=1)
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	plt.plot(x,y)
 
-x,y=extract_data('T1 1x1x1x1/T1 brut 0,5 fit exp',ycol=1)
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y)
+	x,y=extract_data('T1 0B/T1 brut 0,10 fit stretch',ycol=1)
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	plt.plot(x,y)
 
-x,y=extract_data('T1 1x1x1x1/T1 brut 0,10 fit exp',ycol=1)
-x=x*1000
-y=y-min(y)
-y=y/max(y)
-plt.plot(x,y)
+	x,y=extract_data('T1 1x1x1x1/T1 brut 0,5 fit exp',ycol=1)
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	plt.plot(x,y)
+
+	x,y=extract_data('T1 1x1x1x1/T1 brut 0,10 fit exp',ycol=1)
+	x=x*1000
+	y=y-min(y)
+	y=y/max(y)
+	plt.plot(x,y)
 
 plt.show()

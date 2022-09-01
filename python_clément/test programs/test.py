@@ -1741,8 +1741,12 @@ def test_convolution():
 
 	plt.show()
 
-
-x=np.linspace(-10,10,500)
-y=(np.sin(2*pi*x)/x)**2
-plt.plot(x,y)
+x=np.linspace(-10,10,1024)
+gauss_mask=gauss(x,sigma=0.1)
+y=np.random.randn(1024)
+yTF=np.fft.fft(y)
+yTF=yTF*gauss_mask
+yback=np.fft.ifft(yTF)
+plt.plot(yback**2)
+plt.ylim(0,3)
 plt.show()

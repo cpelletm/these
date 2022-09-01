@@ -13,12 +13,15 @@ m_carbon=12.01/Na #g
 #Autre odg : ppm=1e5/µm3
 #Autre odg : 5 ppm = 10.4 nm de distance moyenne
 
+print(1e5*(20e-3**3)*5)
+
 P=1e5
 T=300
 eV=1.6E-19
 # print('%e'%(kb*T/h))
 # Theta_NV=arccos(-1/3)
 # print(Theta_NV*180/pi)
+
 
 
 def pola_NV(T):
@@ -40,8 +43,3 @@ def couplage_NV():
 
 # couplage_NV()
 
-
-
-print((1e-17/(1.75*5))**(1/3))
-
-print(52/(10.4**3))
