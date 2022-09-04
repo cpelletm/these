@@ -25,11 +25,11 @@
 
 In the last chapter we saw how dense ensemble of NV centers have an intrinsic depolarization mechanism mediated by the NV-NV dipole interaction. In this chapter we will see how this feature can be exploited to perform magnetometry. 
 
-Using NV-NV CR for magnetometry in non-zero magnetic field has already been proposed \citep{akhmedzhanov2017microwave, akhmedzhanov2019magnetometry}. We will focus here on low to zero field magnetometry, which presents practical advantages as the relative orientation of the diamond with the magnetic field does not need to be controlled, but theoretical complications due to the complex physics of the NV centers in low magnetic field.
+Using NV-NV CR for magnetometry in non-zero magnetic field has already been proposed \citep{akhmedzhanov2017microwave, akhmedzhanov2019magnetometry}. We will focus here on the low to zero magnetic field region, which presents practical advantages as the relative orientation of the diamond with the magnetic field does not need to be controlled, but theoretical complications due to the more complex physics of the NV centers under low magnetic field.
 
 This chapter is constructed as follows: We will first describe the physics of NV centers under low or transverse magnetic field (the physics is similar in both cases), we will then show both theoretically and experimentally that the NV-NV CR is modified for low and transverse magnetic field. We will identify different mechanisms by which the relaxation is modified and we will try to quantify their relative importance.
 
-We will then focus on the low field depolarization magnetometry (LFDM) protocol which exploits the previously studied NV-NV CR at low magnetic field. We will start by giving a short overview of NV ensemble magnetometry before characterizing the LFDM protocol and comparing it to other magnetometry protocols. Finally we will give some perspectives on the how to improve LFDM and on potential applications.
+We will then focus on the low field depolarization magnetometry (LFDM) protocol which exploits the previously studied NV-NV CR at low magnetic field. We will start by giving a short overview of NV ensemble magnetometry before characterizing the LFDM protocol and comparing it to other magnetometry protocols. Finally we will give some perspectives on how to improve LFDM and on potential applications.
 
 The results presented in this chapter are based in large part on the article \citep{pellet2022spin}.
 
@@ -47,7 +47,7 @@ Before looking at the NV-NV CR in the low or transverse field regime, we first n
 
 In the absence of external magnetic field, we have to take into account other elements which would otherwise be of second order in the spin Hamiltonian. These elements are: the random local magnetic fields caused by paramagnetic impurities, the local electric field caused by charged impurities, and the crystal strain \citep{doherty2012theory, udvarhelyi2018spin, mittiga2018imaging}. The hyperfine splitting due to nearby nuclei will be considered separately, although to a large extent it behaves like a local magnetic field.
 
-Due to the large zero field splitting $D=2870 MHz$ between the $\ket{0}$ and $\ket{\pm 1}$ states, we will consider the $\ket{0}$ to always be an eigenstate of the spin Hamiltonian under zero external field (which is equivalent to say that we neglect the terms in $\ket{0}\bra{\pm 1}$ in the spin Hamiltonian). The problem is then reduced to the $\{ \ket{-1}, \ket{+1} \}$ subsystem.
+Due to the large zero field splitting $D=2870\ \rm MHz$ between the $\ket{0}$ and $\ket{\pm 1}$ states, we will consider the $\ket{0}$ to always be an eigenstate of the spin Hamiltonian under zero external field (which is equivalent to say that we neglect the terms in $\ket{0}\bra{\pm 1}$ in the spin Hamiltonian). The problem is then reduced to the $\{ \ket{-1}, \ket{+1} \}$ subsystem.
 
 The NV$^-$spin Hamiltonian in the $\{ \ket{-1}, \ket{+1} \}$ basis can be written as \citep{udvarhelyi2018spin}:
 \begin{equation}
@@ -73,7 +73,11 @@ The main difference between the electric field and the strain is in the numerica
 
 Fig. \ref{simus ESR} shows a simulation of how each parameters of the spin Hamiltonian - local magnetic field, local electric field and strain - affects the zero external field ODMR profile. To do these simulations, I sampled each parameters separately $10^6$ times and plotted the histogram of the two eigenvalues of the Hamiltonian written in eq. \ref{Hamiltonien pm1}. Fig. \ref{simus ESR}-d) shows an experimental zero field ODMR spectrum, typical of what we observe with dense NV ensembles. 
 
-Experimentally, almost all our samples show the characteristic two bumps in zero external field ODMR. Given the simulation results, the only parameter that can give rise to this shape is the electric field. We will therefore consider that the NV Hamiltonian of our samples is dominated by the local electric field, and more specifically by the transverse electric field $E_\perp\equiv E_x + i E_y$ given the ratio between $d_\perp$ and $d_\parallel$.
+Experimentally, almost all our samples show the characteristic two bumps in zero external field ODMR. Given the simulation results, the only parameter that can give rise to this shape is the electric field. 
+
+We should note that another potential explanation for the splitting of the $\ket{\pm 1}$ states could be the presence of a residual magnetic field, not randomly distributed among all the spins but homogeneous on the whole sample. In particular, we do not shield for the earth magnetic field in our experiment. The splitting caused by the earth magnetic field has a value $\gamma B_{\rm earth} \approx 1\ \rm MHz$ is $\sim 4$ times weaker than the splitting we typically observe. 
+
+We will therefore consider that the low external magnetic field spin Hamiltonian of our samples is dominated by the local electric field, and more specifically by the transverse electric field $E_\perp\equiv E_x + i E_y$ given the ratio between $d_\perp$ and $d_\parallel$.
 
 We will then adopt the following simplified Hamiltonian for the zero external field regime:
 \begin{equation}
@@ -89,8 +93,6 @@ whose eigenvectors are $\ket{0}$ and$\ket{\pm}$ of eigenvalues 0 and $D\pm d_\pe
 \end{equation}
 where $\tan(\phi_E)=E_y/E_x$.
 
-Parler du champs magnétique terrestre.
-
 \subsection{NV spin Hamiltonian under purely transverse magnetic field}
 \label{sec B transverse}
 %\begin{figure}[h]
@@ -100,9 +102,9 @@ Parler du champs magnétique terrestre.
 %\label{map champ transverse}
 %\end{figure}
 
-We will consider here the case of purely transverse magnetic field with respect to the NV axis, i.e. $\mathbf{B}=B_x \hat{e}_x + B_y \hat e_y$, and more specifically the regime where $d_\perp E_\perp < \frac{(\gamma_e B_\perp)^2}{D} << D$. In practice, this generally means $20\ \rm G \lesssim B_\perp \lesssim 200\ \rm G$.
+We now turn to the case of purely transverse magnetic field with respect to the NV axis, i.e. $\mathbf{B}=B_x \hat{e}_x + B_y \hat e_y$, and more specifically to the regime where $d_\perp E_\perp < \frac{(\gamma_e B_\perp)^2}{D} << D$. In practice, this generally corresponds to $20\ \rm G \lesssim B_\perp \lesssim 200\ \rm G$.
 
-In this regime, the NV Hamiltonian eigenstates are similar to the case dominated by the transverse electric field and can be written $\approx \ket{0}, \ket{\pm}$\citep{qiu2021nuclear, qiu2022nanoscale}, of eigenvalues $\approx -\frac{(\gamma_e B_\perp)^2}{D},D$ and $D+\frac{(\gamma_e B_\perp)^2}{D}$,  where:
+In this regime, the NV Hamiltonian eigenstates are similar to the case where it is dominated by the transverse electric field and can be written $\approx \ket{0}, \ket{\pm}$\citep{qiu2021nuclear, qiu2022nanoscale}, of eigenvalues $\approx -\frac{(\gamma_e B_\perp)^2}{D},D$ and $D+\frac{(\gamma_e B_\perp)^2}{D}$,  where:
 \begin{equation}
 \ket{\pm}=\frac{\ket{+1}\pm e^{-2i\phi_B}\ket{-1}}{\sqrt{2}},
 \end{equation}
@@ -110,7 +112,7 @@ and $\tan(\phi_B)=B_y/B_x$.
 
 For the case where $d_\perp E_\perp \sim \frac{(\gamma_e B_\perp)^2}{D}$ and $\phi_E \neq 2\phi_B$, the eigenstates of the Hamiltonian are still $\ket{0},\ket{\pm}$ with a relative angle $\phi$ in between $\phi_E$ and $2\phi_B$.
 
-In conclusion, whenever the spin Hamiltonian is dominated by a transverse field, either electric or magnetic, we can consider that the eigenstates of the spin Hamiltonian or $\ket{0}, \ket{-}$ and $\ket{+}$, whereas when the Hamiltonian is dominated by the longitudinal magnetic field, its eigenstates are $\ket{0}, \ket{-1}$ and $\ket{+1}$.
+In conclusion, whenever the spin Hamiltonian is dominated by a transverse field, either electric or magnetic, we can consider that the eigenstates of the spin Hamiltonian to be $\ket{0}, \ket{-}$ and $\ket{+}$, whereas when the Hamiltonian is dominated by the longitudinal magnetic field, its eigenstates are $\ket{0}, \ket{-1}$ and $\ket{+1}$.
 
 \subsection{Hyperfine coupling and inhomogeneous broadening}
 \label{sec modif T2*}
@@ -228,7 +230,7 @@ In both cases, this is a moderate ($\sim 20 \%$) increase compared to $\Gamma_1=
 {} & $l_c=0$ & $l_c=\infty$ \\
 \midrule
 $\bar{G}^2=1$ & $126.8 \Gamma_0^{\rm th}$ & $126.8 \Gamma_0^{\rm th}$ \\
-$\bar{G}^2=0.5$ & $NA \Gamma_0^{\rm th}$ & $NA \Gamma_0^{\rm th}$ \\
+$\bar{G}^2=0.5$ & $93.7 \Gamma_0^{\rm th}$ & $95.4 \Gamma_0^{\rm th}$ \\
 $\bar{G}^2=0$ & $51.4 \Gamma_0^{\rm th}$ & $55 \Gamma_0^{\rm th}$ \\
 %\bottomrule
 \end{tabular}
@@ -248,9 +250,9 @@ We therefore predict that the double flips amounts for an increase of the decay 
 
 The last aspect we considered was the change in $T_2^*$ (we include the change in the hyper-fine interaction in the $T_2^*$) for weak magnetic field, as discussed in sec. \ref{sec modif T2*}.
 
-To quantify its impact in the depolarization rate, we employ eq. [REF], wherche use the values $2\gamma_f = 6.5\ \rm MHz$ and we take for $\Gamma_f=\Gamma_NV$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. 
+To quantify its impact in the depolarization rate, we employ eq. [REF], where we use the values $2\gamma_f = 6.5\ \rm MHz$ estimated in the last chapter and we take for $\Gamma_f=\Gamma_{\rm NV}$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. 
 
-We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 6 \%$ for sample Sumi-2, and by $\sim 19 \%$ for sample CVD-pink. 
+We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 9 \%$ for sample Sumi-2, and by $\sim 24 \%$ for sample CVD-pink. 
 
 
 \subsubsection{Summary}
@@ -434,7 +436,7 @@ Fig. \ref{setup magneto} shows the principle of the LFDM protocol. The experimen
 
 Fig. \ref{setup magneto}-b) and c) show respectively the PL measured directly on the photodiode and the lock-in signal when the DC magnetic field is slowly varied ($f_{\rm scan}<1\ \rm Hz$) from -150 to +150 G. The magnetic field was randomly oriented with respect to the NV axes and did not match any particular crystalline axis.
 
-Both AC (up to $\sim$ 10 kHz) and DC-magnetometry are possible with this setup. to improve the sensitivity however, an AC field needs to be added for the DC sensing, and inversely a DC field needs to be added for the AC sensing. Both of these added fields are typically of a few G for optimal performances, which limits the ultra-low field applications.
+Both AC (up to $\sim$ 10 kHz) and DC-magnetometry are possible with this setup. To improve the sensitivity however, an AC field needs to be added for the DC sensing, and inversely a DC field needs to be added for the AC sensing. Both of these added fields are typically of a few G for optimal performances, which limits the ultra-low field applications.
 
 \begin{figure}[h!]
 \centering
@@ -549,9 +551,7 @@ The zero field technique is therefore comparable with the GSLAC technique for sa
 
 %Je parle pas de la dépendence en puissance ou du champ transverse, je laisse ça pour plus tard.
 \section{Conclusion and perspectives}
-We have seen in this chapter that dense ensemble of NV centers spontaneously depolarize at low magnetic field. We have seen that the depolarization is mediated by dipole-dipole coupling between the NV centers. 
-
-We have identified three mechanisms by which the depolarization is increased in zero-field: the inter-class flip-flops, the double flips, and the change in the NV eigenstates (which includes the change in $T_2^*$).We have then quantified both theoretically and experimentally the contribution of each of these mechanisms to the zero-field depolarization.
+We have seen in this chapter that dense ensemble of NV centers spontaneously depolarize at low magnetic field, and wee have seen that the depolarization is mediated by dipole-dipole coupling between the NV centers. We have identified three mechanisms by which the depolarization is increased in zero-field: the inter-class flip-flops, the double flips, and the change in the NV eigenstates (which includes the change in $T_2^*$).We have then quantified both theoretically and experimentally the contribution of each of these mechanisms to the zero-field depolarization.
 
 Finally, we have seen how this low-field depolarization can be applied to perform magnetometry experiments, and what advantages and disadvantages this technique offers compared to the established NV magnetometry protocols.
 
@@ -607,9 +607,9 @@ Other non-material parameters in the LFDM protocols should also be investigated.
 
 We will now turn to potential applications for LFDM, which could be useful even without material optimization.
 
-Fig. \ref{applications} illustrates two potential applications for LFDM. The first one is to probe a surface with irregularities in the micron-scale to perform wide-field magnetic imaging. The current leading technology for wide field imaging is to use a bulk CVD diamond with a very well polished surface in direct contact with the probed sample \citep{levine2019principles, scholten2021widefield}. While the diamond surface can be controlled within a few nm, the same is not always true for the sample, especially for paleomagnetism or biomagnetism. And even for two perfectly flat surface, controlling the angle between the diamond and the sample can be challenging. 
+Fig. \ref{applications} illustrates two potential applications for LFDM. The first one is to probe a surface with irregularities in the micron-scale to perform wide-field magnetic imaging. The current leading technology for wide field imaging is to use a bulk CVD diamond with a very well polished surface in direct contact with the probed sample \citep{levine2019principles, scholten2021widefield}. While the diamond surface can be controlled within a few nm, the same is not always true for the sample, especially for paleomagnetism or biomagnetism samples. Furthermore, controlling the angle between the diamond and the sample can be challenging even for two perfectly flat surface. 
 
-Instead we propose to deposit a thin layer of 1 $\mu$m diamonds on top of the sample in order to always be within $\sim$ 1 $\mu$m of the sample. Going below 1 $\mu$m may not prove useful as the spatial resolution is ultimately limited by the diffraction limit of the lens. One advantage of this method is that commercially available samples (Adamas Nano 1 $\mu$ m red fluorescent diamond) are well suited for this task. I have measured the sensitivity on some of these samples and found the same volumetric sensitivity $\eta_v \sim 6 \ \rm{\mu T}\mu \rm{m}^{3/2} \rm{Hz}^{-1/2}$ than for the 15 $\mu$m samples. This sensitivity is already better than some previous applications of wide field imaging at $20  \ \rm{\mu T}\mu \rm{m} \rm{Hz}^{-1/2}$ \citep{glenn2017micrometer}. Another potential advantage of LFDM is that a homogeneous magnetic field or microwave intensity along the sample is not required. Only a $\sim 10 \ \rm G$ AC magnetic field is required, and the sensitivity does not depend critically on the AC field homogeneity.
+Instead we propose to deposit a thin layer of 1 $\mu$m diamonds on top of the sample in order to always always have a sensor within $\sim$ 1 $\mu$m of the sample. Going below 1 $\mu$m may not prove useful as the spatial resolution is ultimately limited by the diffraction limit of the lens. One advantage of this method is that commercially available samples (Adamas Nano 1 $\mu$ m red fluorescent diamond) are well suited for this task. I have measured the sensitivity on some of these samples and found the same volumetric sensitivity $\eta_v \sim 6 \ \rm{\mu T}\mu \rm{m}^{3/2} \rm{Hz}^{-1/2}$ than for the 15 $\mu$m samples. This sensitivity is already better than some previous applications of wide field imaging at $20  \ \rm{\mu T}\mu \rm{m} \rm{Hz}^{-1/2}$ \citep{glenn2017micrometer}. Another potential advantage of LFDM is that a homogeneous magnetic field or microwave intensity along the sample is not required. Only a $\sim 10 \ \rm G$ AC magnetic field is required, and the sensitivity does not depend critically on the AC field homogeneity.
 
 Another potential application for LFDM is shown in Fig. \ref{applications}-b. It consists in the detection of magnetic field gradient on top of a surface thanks to a nano-diamond probe attached to a nano-resonator. The resonator motion transform the DC gradient in an AC field which can then be probed following the protocol described in Fig. \ref{AC and DC sensing}-b). This idea is based on the previous work with NV centers \citep{arcizet2011single} and magnetic resonance force microscopy (MRFM) \citep{rugar2004single}. A very similar protocol was recently developed with microwave based AC sensing \citep{huxter2022scanning}. 
 

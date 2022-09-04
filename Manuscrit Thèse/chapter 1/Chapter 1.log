@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  3 SEP 2022 11:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  4 SEP 2022 20:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**"Chapter 4.tex"
-(./Chapter 4.tex
+**"Chapter 1.tex"
+(./Chapter 1.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14>
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
@@ -818,8 +818,8 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \@quotelevel=\count421
 \@quotereset=\count422
 
-(./Chapter 4.aux)
-\openout1 = `"Chapter 4.aux"'.
+(./Chapter 1.aux)
+\openout1 = `"Chapter 1.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
@@ -878,9 +878,9 @@ LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
 LaTeX Info: Redefining \nameref on input line 23.
 
-(./Chapter 4.out) (./Chapter 4.out)
+(./Chapter 1.out) (./Chapter 1.out)
 \@outlinefile=\write7
-\openout7 = `"Chapter 4.out"'.
+\openout7 = `"Chapter 1.out"'.
 
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
@@ -891,303 +891,93 @@ File: english.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `"Chapter 4.bcf"'.
+\openout3 = `"Chapter 1.bcf"'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file '"Chapter 4".bbl' found.
+Package biblatex Info: ... file '"Chapter 1".bbl' found.
 
-(./Chapter 4.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                degen2017quantum
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                rondin2014magnetometry
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+(./Chapter 1.bbl)
 Package biblatex Info: Reference section=0 on input line 23.
 Package biblatex Info: Reference segment=0 on input line 23.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
+<Figures/diamant_et_NV.pdf, id=31, 534.30751pt x 299.2214pt>
+File: Figures/diamant_et_NV.pdf Graphic file (type pdf)
+<use Figures/diamant_et_NV.pdf>
+Package pdftex.def Info: Figures/diamant_et_NV.pdf  used on input line 31.
+(pdftex.def)             Requested size: 216.0022pt x 120.96484pt.
+<Figures/phase_diagram_carbon_wiki.pdf, id=33, 326.30872pt x 284.02905pt>
+File: Figures/phase_diagram_carbon_wiki.pdf Graphic file (type pdf)
+<use Figures/phase_diagram_carbon_wiki.pdf>
+Package pdftex.def Info: Figures/phase_diagram_carbon_wiki.pdf  used on input l
+ine 41.
+(pdftex.def)             Requested size: 216.0022pt x 188.01881pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Figures/ESR_simus.pdf, id=132, 839.72148pt x 645.36978pt>
-File: Figures/ESR_simus.pdf Graphic file (type pdf)
-<use Figures/ESR_simus.pdf>
-Package pdftex.def Info: Figures/ESR_simus.pdf  used on input line 43.
-(pdftex.def)             Requested size: 360.0pt x 276.6764pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/Diamant_et_NV.pd
+f>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2 <./Figures/ESR_simus.pdf>] [3]
-Overfull \hbox (1.89496pt too wide) in paragraph at lines 76--77
-[]\OT1/cmr/m/n/10.95 Experimentally, al-most all our sam-ples show the char-ac-
-ter-is-tic two bumps
+) [2 <./Figures/phase_diagram_carbon_wiki.pdf>]
+<Figures/Diamond_type.pdf, id=99, 646.46977pt x 290.44714pt>
+File: Figures/Diamond_type.pdf Graphic file (type pdf)
+<use Figures/Diamond_type.pdf>
+Package pdftex.def Info: Figures/Diamond_type.pdf  used on input line 59.
+(pdftex.def)             Requested size: 323.9978pt x 145.5689pt.
+ [3 <./Figures/Diamond_type.pdf>] [4]
+Overfull \hbox (9.3537pt too wide) in paragraph at lines 87--87
+\OT1/cmr/m/n/10.95 pro-duced in nat-u-ral brown di-a-monds by high-pressure, hi
+gh-temperature
  []
 
-[4]
-<Figures/Comparaison_ESR_T2.pdf, id=206, 879.68102pt x 623.29561pt>
-File: Figures/Comparaison_ESR_T2.pdf Graphic file (type pdf)
-<use Figures/Comparaison_ESR_T2.pdf>
-Package pdftex.def Info: Figures/Comparaison_ESR_T2.pdf  used on input line 121
-.
-(pdftex.def)             Requested size: 360.0pt x 255.07732pt.
- [5 <./Figures/Comparaison_ESR_T2.pdf>] [6] [7]
-<Figures/scan_1x1x1x1.pdf, id=274, 481.75352pt x 355.59846pt>
-File: Figures/scan_1x1x1x1.pdf Graphic file (type pdf)
-<use Figures/scan_1x1x1x1.pdf>
-Package pdftex.def Info: Figures/scan_1x1x1x1.pdf  used on input line 174.
-(pdftex.def)             Requested size: 323.9978pt x 239.15045pt.
- [8 <./Figures/scan_1x1x1x1.pdf>]
-<Figures/scan_100.pdf, id=302, 500.09718pt x 355.59846pt>
-File: Figures/scan_100.pdf Graphic file (type pdf)
-<use Figures/scan_100.pdf>
-Package pdftex.def Info: Figures/scan_100.pdf  used on input line 190.
-(pdftex.def)             Requested size: 323.9978pt x 230.38205pt.
- [9 <./Figures/scan_100.pdf>] [10] [11]
-<Figures/Shema_summary_theory.pdf, id=354, 941.58545pt x 739.7643pt>
-File: Figures/Shema_summary_theory.pdf Graphic file (type pdf)
-<use Figures/Shema_summary_theory.pdf>
-Package pdftex.def Info: Figures/Shema_summary_theory.pdf  used on input line 2
-61.
-(pdftex.def)             Requested size: 360.0pt x 282.8404pt.
+[5
 
+] [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 87.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 87.
+ (./Chapter 1.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 87.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 87.
+Package rerunfilecheck Info: File `"Chapter 1".out' has not changed.
+(rerunfilecheck)             Checksum: 8932D8A7FEC77AD240AAA32ED6F0E6F2;477.
+Package logreq Info: Writing requests to '"Chapter 1".run.xml'.
+\openout1 = `"Chapter 1.run.xml"'.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12]
-<Figures/alignement_rose.pdf, id=363, 560.11089pt x 275.551pt>
-File: Figures/alignement_rose.pdf Graphic file (type pdf)
-<use Figures/alignement_rose.pdf>
-Package pdftex.def Info: Figures/alignement_rose.pdf  used on input line 278.
-(pdftex.def)             Requested size: 251.9989pt x 123.97157pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Figures/pola_laser.pdf, id=366, 514.85477pt x 270.42155pt>
-File: Figures/pola_laser.pdf Graphic file (type pdf)
-<use Figures/pola_laser.pdf>
-Package pdftex.def Info: Figures/pola_laser.pdf  used on input line 290.
-(pdftex.def)             Requested size: 251.9989pt x 132.35916pt.
-[13 <./Figures/Shema_summary_theory.pdf>] [14 <./Figures/alignement_rose.pdf> <
-./Figures/pola_laser.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/pola_laser.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
->]
-<Figures/transis_transverse_field.pdf, id=459, 541.3889pt x 173.74205pt>
-File: Figures/transis_transverse_field.pdf Graphic file (type pdf)
-<use Figures/transis_transverse_field.pdf>
-Package pdftex.def Info: Figures/transis_transverse_field.pdf  used on input li
-ne 314.
-(pdftex.def)             Requested size: 360.0pt x 115.53171pt.
- [15 <./Figures/transis_transverse_field.pdf>]
-<Figures/scan_T1_perp.pdf, id=492, 529.37495pt x 518.0294pt>
-File: Figures/scan_T1_perp.pdf Graphic file (type pdf)
-<use Figures/scan_T1_perp.pdf>
-Package pdftex.def Info: Figures/scan_T1_perp.pdf  used on input line 329.
-(pdftex.def)             Requested size: 288.0011pt x 281.8422pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[16]
-Overfull \hbox (7.58585pt too wide) in paragraph at lines 348--349
-\OT1/cmr/m/n/10.95 We now turn to re-gion B. Even tough the dou-ble flips are c
-om-pletely quenched,
- []
-
-[17 <./Figures/scan_T1_perp.pdf>] [18]
-Overfull \hbox (22.31403pt too wide) in paragraph at lines 373--374
-\OT1/cmr/m/n/10.95 try, we rec-om-mend the ex-cel-lent fol-low-ing re-views [[]
-,
- []
-
-[19] [20] [21]
-<Figures/setup_magneto.pdf, id=612, 804.84013pt x 405.65526pt>
-File: Figures/setup_magneto.pdf Graphic file (type pdf)
-<use Figures/setup_magneto.pdf>
-Package pdftex.def Info: Figures/setup_magneto.pdf  used on input line 430.
-(pdftex.def)             Requested size: 360.0pt x 181.44759pt.
- [22 <./Figures/setup_magneto.pdf>]
-<Figures/AC_and_DC_sensing.pdf, id=670, 653.23338pt x 250.00345pt>
-File: Figures/AC_and_DC_sensing.pdf Graphic file (type pdf)
-<use Figures/AC_and_DC_sensing.pdf>
-Package pdftex.def Info: Figures/AC_and_DC_sensing.pdf  used on input line 443.
-
-(pdftex.def)             Requested size: 323.9978pt x 123.99814pt.
-<Figures/sensi_alternee.pdf, id=672, 681.69942pt x 231.30118pt>
-File: Figures/sensi_alternee.pdf Graphic file (type pdf)
-<use Figures/sensi_alternee.pdf>
-Package pdftex.def Info: Figures/sensi_alternee.pdf  used on input line 453.
-(pdftex.def)             Requested size: 360.0pt x 122.14786pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[23 <./Figures/AC_and_DC_sensing.pdf>] [24 <./Figures/sensi_alternee.pdf>]
-<Figures/sensi_angulaire.pdf, id=737, 639.3338pt x 503.67822pt>
-File: Figures/sensi_angulaire.pdf Graphic file (type pdf)
-<use Figures/sensi_angulaire.pdf>
-Package pdftex.def Info: Figures/sensi_angulaire.pdf  used on input line 477.
-(pdftex.def)             Requested size: 360.0pt x 283.61803pt.
-
-[25 <./Figures/sensi_angulaire.pdf>]
-<Figures/Temporal_just_0B.pdf, id=920, 678.50099pt x 246.93332pt>
-File: Figures/Temporal_just_0B.pdf Graphic file (type pdf)
-<use Figures/Temporal_just_0B.pdf>
-Package pdftex.def Info: Figures/Temporal_just_0B.pdf  used on input line 493.
-(pdftex.def)             Requested size: 360.0pt x 131.02098pt.
- [26 <./Figures/Temporal_just_0B.pdf>]
-Overfull \hbox (50.51294pt too wide) in paragraph at lines 515--524
- [][] 
- []
-
-[27]
-<Figures/compariason_0B_MW.pdf, id=963, 672.99588pt x 500.59688pt>
-File: Figures/compariason_0B_MW.pdf Graphic file (type pdf)
-<use Figures/compariason_0B_MW.pdf>
-Package pdftex.def Info: Figures/compariason_0B_MW.pdf  used on input line 532.
-
-(pdftex.def)             Requested size: 360.0pt x 267.78995pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[28] [29 <./Figures/compariason_0B_MW.pdf>]
-<Figures/substrat.pdf, id=1017, 725.1687pt x 548.98668pt>
-File: Figures/substrat.pdf Graphic file (type pdf)
-<use Figures/substrat.pdf>
-Package pdftex.def Info: Figures/substrat.pdf  used on input line 572.
-(pdftex.def)             Requested size: 360.0pt x 272.54085pt.
- [30] [31 <./Figures/substrat.pdf>]
-<Figures/double_adamas.pdf, id=1075, 718.10667pt x 544.69911pt>
-File: Figures/double_adamas.pdf Graphic file (type pdf)
-<use Figures/double_adamas.pdf>
-Package pdftex.def Info: Figures/double_adamas.pdf  used on input line 585.
-(pdftex.def)             Requested size: 360.0pt x 273.06366pt.
-
-[32 <./Figures/double_adamas.pdf>]
-<Figures/Applications.pdf, id=1129, 786.08493pt x 315.82402pt>
-File: Figures/Applications.pdf Graphic file (type pdf)
-<use Figures/Applications.pdf>
-Package pdftex.def Info: Figures/Applications.pdf  used on input line 603.
-(pdftex.def)             Requested size: 360.0pt x 144.63986pt.
- [33 <./Figures/Applications.pdf>] [34]
-Overfull \hbox (15.50153pt too wide) in paragraph at lines 624--624
-[]\OT1/cmr/m/n/10.95 Rinat Akhmedzhanov et al. ``Mag-ne-tom-e-try by cross-rela
-xation-resonance
- []
-
-
-Overfull \hbox (10.6348pt too wide) in paragraph at lines 624--624
-[]\OT1/cmr/m/n/10.95 Thomas Mit-tiga et al. ``Imag-ing the lo-cal charge en-vi-
-ron-ment of nitrogen-
- []
-
-
-Overfull \hbox (29.24857pt too wide) in paragraph at lines 624--624
-\OT1/cmr/m/n/10.95 Scan-ning Quan-tum Sen-sor Mi-cro-scope''. In: \OT1/cmr/m/it
-/10.95 arXiv preprint arXiv:2205.03952
- []
-
-[35
-
-]
-Overfull \hbox (3.22835pt too wide) in paragraph at lines 624--624
-[]\OT1/cmr/m/n/10.95 Georgios Chatzidrosos et al. ``Minia-ture cavity-enhanced 
-di-a-mond mag-
- []
-
-
-Overfull \hbox (4.85568pt too wide) in paragraph at lines 624--624
-[]\OT1/cmr/m/n/10.95 Huijie Zheng et al. ``Zero-field mag-ne-tom-e-try based on
- nitrogen-vacancy
- []
-
-
-Overfull \hbox (19.2782pt too wide) in paragraph at lines 624--624
-\OT1/cmr/m/n/10.95 en-sem-bles in di-a-mond''. In: \OT1/cmr/m/it/10.95 Phys-i-c
-al Re-view Ap-plied \OT1/cmr/m/n/10.95 11.6 (2019), p. 064068. 
- []
-
-[36]
-Overfull \hbox (1.23598pt too wide) in paragraph at lines 624--624
-[]\OT1/cmr/m/n/10.95 Arne Wick-en-brock et al. ``Microwave-free mag-ne-tom-e-tr
-y with nitrogen-
- []
-
-
-Overfull \hbox (5.76811pt too wide) in paragraph at lines 624--624
-[]\OT1/cmr/m/n/10.95 Huijie Zheng et al. ``Microwave-free vec-tor mag-ne-tom-e-
-try with nitrogen-
- []
-
-
-Overfull \hbox (10.29288pt too wide) in paragraph at lines 624--624
-\OT1/cmr/m/n/10.95 Picotesla-Level Sen-si-tiv-ity''. In: \OT1/cmr/m/it/10.95 ar
-Xiv preprint arXiv:2206.15440 \OT1/cmr/m/n/10.95 (2022). 
- []
-
-[37] [38]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 624.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 624.
- (./Chapter 4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 624.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 624.
-Package rerunfilecheck Info: File `"Chapter 4".out' has not changed.
-(rerunfilecheck)             Checksum: BD149449F8FDCAE0E51ADCAD78BEE3FD;2430.
-Package logreq Info: Writing requests to '"Chapter 4".run.xml'.
-\openout1 = `"Chapter 4.run.xml"'.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 624.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 87.
  ) 
 Here is how much of TeX's memory you used:
- 25461 strings out of 481239
- 483891 string characters out of 5920377
- 1118843 words of memory out of 5000000
- 40160 multiletter control sequences out of 15000+600000
- 540683 words of font info for 54 fonts, out of 8000000 for 9000
+ 25096 strings out of 481239
+ 474119 string characters out of 5920377
+ 1105111 words of memory out of 5000000
+ 39946 multiletter control sequences out of 15000+600000
+ 539754 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,14n,79p,1131b,1372s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Chapter 4.pdf" (38 pages, 1479843 bytes).
+ 59i,6n,75p,974b,1491s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb>
+Output written on "Chapter 1.pdf" (6 pages, 150749 bytes).
 PDF statistics:
- 1305 PDF objects out of 1440 (max. 8388607)
- 1025 compressed objects within 11 object streams
- 164 named destinations out of 1000 (max. 500000)
- 327 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 177 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,567 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{bundy1989pressure}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f9901be829fbdb8e42a1e0ecec53a66e}{%
+           family={Bundy},
+           familyi={B\bibinitperiod},
+           given={FP},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f9901be829fbdb8e42a1e0ecec53a66e}
+      \strng{fullhash}{f9901be829fbdb8e42a1e0ecec53a66e}
+      \strng{bibnamehash}{f9901be829fbdb8e42a1e0ecec53a66e}
+      \strng{authorbibnamehash}{f9901be829fbdb8e42a1e0ecec53a66e}
+      \strng{authornamehash}{f9901be829fbdb8e42a1e0ecec53a66e}
+      \strng{authorfullhash}{f9901be829fbdb8e42a1e0ecec53a66e}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physica A: Statistical Mechanics and its Applications}
+      \field{number}{1}
+      \field{title}{Pressure-temperature phase diagram of elemental carbon}
+      \field{volume}{156}
+      \field{year}{1989}
+      \field{pages}{169\bibrangedash 178}
+      \range{pages}{10}
+    \endentry
+    \entry{bundy1996pressure}{article}{}
+      \name{author}{6}{}{%
+        {{hash=f9901be829fbdb8e42a1e0ecec53a66e}{%
+           family={Bundy},
+           familyi={B\bibinitperiod},
+           given={FP},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e7bd717bc0deda2b17260bf2e4554e84}{%
+           family={Bassett},
+           familyi={B\bibinitperiod},
+           given={WA},
+           giveni={W\bibinitperiod}}}%
+        {{hash=91c6362ac300e6a098cad74ab8f456ca}{%
+           family={Weathers},
+           familyi={W\bibinitperiod},
+           given={MS},
+           giveni={M\bibinitperiod}}}%
+        {{hash=30c80376aaa35dadc64cee1b4e633982}{%
+           family={Hemley},
+           familyi={H\bibinitperiod},
+           given={RJ},
+           giveni={R\bibinitperiod}}}%
+        {{hash=4e9ed77bae9d91c9efa866eac7702998}{%
+           family={Mao},
+           familyi={M\bibinitperiod},
+           given={HU},
+           giveni={H\bibinitperiod}}}%
+        {{hash=46a528cb7895bcc20490788bd50662e8}{%
+           family={Goncharov},
+           familyi={G\bibinitperiod},
+           given={AF},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{deb93a2038236376ea97acbdf2bb0011}
+      \strng{fullhash}{a8636b01d652f3652f3f002187aacece}
+      \strng{bibnamehash}{deb93a2038236376ea97acbdf2bb0011}
+      \strng{authorbibnamehash}{deb93a2038236376ea97acbdf2bb0011}
+      \strng{authornamehash}{deb93a2038236376ea97acbdf2bb0011}
+      \strng{authorfullhash}{a8636b01d652f3652f3f002187aacece}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Carbon}
+      \field{number}{2}
+      \field{title}{The pressure-temperature phase and transformation diagram for carbon; updated through 1994}
+      \field{volume}{34}
+      \field{year}{1996}
+      \field{pages}{141\bibrangedash 153}
+      \range{pages}{13}
+    \endentry
+    \entry{tappert2011diamonds}{book}{}
+      \name{author}{2}{}{%
+        {{hash=8ae488859c19b8a3496f6cfff7501c45}{%
+           family={Tappert},
+           familyi={T\bibinitperiod},
+           given={Ralf},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e3de425ca61b11e53da3e1f25395947b}{%
+           family={Tappert},
+           familyi={T\bibinitperiod},
+           given={Michelle\bibnamedelima C},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{045263e272ca523903e99604e00ea5c5}
+      \strng{fullhash}{045263e272ca523903e99604e00ea5c5}
+      \strng{bibnamehash}{045263e272ca523903e99604e00ea5c5}
+      \strng{authorbibnamehash}{045263e272ca523903e99604e00ea5c5}
+      \strng{authornamehash}{045263e272ca523903e99604e00ea5c5}
+      \strng{authorfullhash}{045263e272ca523903e99604e00ea5c5}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Diamonds in nature: a guide to rough diamonds}
+      \field{year}{2011}
+    \endentry
+    \entry{barnard2000diamond}{book}{}
+      \name{author}{1}{}{%
+        {{hash=cf252aba2f63deeaad1bf7918519b185}{%
+           family={Barnard},
+           familyi={B\bibinitperiod},
+           given={Amanda\bibnamedelima S},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Butterworth-Heinemann}%
+      }
+      \strng{namehash}{cf252aba2f63deeaad1bf7918519b185}
+      \strng{fullhash}{cf252aba2f63deeaad1bf7918519b185}
+      \strng{bibnamehash}{cf252aba2f63deeaad1bf7918519b185}
+      \strng{authorbibnamehash}{cf252aba2f63deeaad1bf7918519b185}
+      \strng{authornamehash}{cf252aba2f63deeaad1bf7918519b185}
+      \strng{authorfullhash}{cf252aba2f63deeaad1bf7918519b185}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The diamond formula: diamond synthesis--a gemmological perspective}
+      \field{year}{2000}
+    \endentry
+    \entry{shenderova2019synthesis}{article}{}
+      \name{author}{6}{}{%
+        {{hash=2d2c94882cd65e526415e4e6a4292a81}{%
+           family={Shenderova},
+           familyi={S\bibinitperiod},
+           given={Olga\bibnamedelima A},
+           giveni={O\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=457518ecaf19beea74e46728119aa7b0}{%
+           family={Shames},
+           familyi={S\bibinitperiod},
+           given={Alexander\bibnamedelima I},
+           giveni={A\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=9aea3c28e07f5289b0eabca9bb771556}{%
+           family={Nunn},
+           familyi={N\bibinitperiod},
+           given={Nicholas\bibnamedelima A},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=f10bbb2ee03a6aae094aff7bb9d9c7bd}{%
+           family={Torelli},
+           familyi={T\bibinitperiod},
+           given={Marco\bibnamedelima D},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=57fd06c21f6a16934b5e8b2f859448fa}{%
+           family={Vlasov},
+           familyi={V\bibinitperiod},
+           given={Igor},
+           giveni={I\bibinitperiod}}}%
+        {{hash=5092aa438b92c9e4409ca7f863ed2824}{%
+           family={Zaitsev},
+           familyi={Z\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Vacuum Society}%
+      }
+      \strng{namehash}{992c7887a4a02de29d991eb56b8f1cbf}
+      \strng{fullhash}{84e60bb95d971099db10d4703b7931b4}
+      \strng{bibnamehash}{992c7887a4a02de29d991eb56b8f1cbf}
+      \strng{authorbibnamehash}{992c7887a4a02de29d991eb56b8f1cbf}
+      \strng{authornamehash}{992c7887a4a02de29d991eb56b8f1cbf}
+      \strng{authorfullhash}{84e60bb95d971099db10d4703b7931b4}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Vacuum Science \& Technology B, Nanotechnology and Microelectronics: Materials, Processing, Measurement, and Phenomena}
+      \field{number}{3}
+      \field{title}{Synthesis, properties, and applications of fluorescent diamond particles}
+      \field{volume}{37}
+      \field{year}{2019}
+      \field{pages}{030802}
+      \range{pages}{1}
+    \endentry
+    \entry{achard2020chemical}{article}{}
+      \name{author}{3}{}{%
+        {{hash=f9059fbdba9c6209562157db0b3f68b2}{%
+           family={Achard},
+           familyi={A\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=189d5a22548b363857711b78123ba1de}{%
+           family={Jacques},
+           familyi={J\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+        {{hash=dbaa94ec1647c3ec6f589d5f36c3398c}{%
+           family={Tallaire},
+           familyi={T\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{6ac778908b71d57a287ace0ab388f61e}
+      \strng{fullhash}{6ac778908b71d57a287ace0ab388f61e}
+      \strng{bibnamehash}{6ac778908b71d57a287ace0ab388f61e}
+      \strng{authorbibnamehash}{6ac778908b71d57a287ace0ab388f61e}
+      \strng{authornamehash}{6ac778908b71d57a287ace0ab388f61e}
+      \strng{authorfullhash}{6ac778908b71d57a287ace0ab388f61e}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics D: Applied Physics}
+      \field{number}{31}
+      \field{title}{Chemical vapour deposition diamond single crystals with nitrogen-vacancy centres: a review of material synthesis and technology for quantum sensing applications}
+      \field{volume}{53}
+      \field{year}{2020}
+      \field{pages}{313001}
+      \range{pages}{1}
+    \endentry
+    \entry{jayaraman1983diamond}{article}{}
+      \name{author}{1}{}{%
+        {{hash=66f3a90be89240bfa172be4c4f70625a}{%
+           family={Jayaraman},
+           familyi={J\bibinitperiod},
+           given={Aiyasami},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{66f3a90be89240bfa172be4c4f70625a}
+      \strng{fullhash}{66f3a90be89240bfa172be4c4f70625a}
+      \strng{bibnamehash}{66f3a90be89240bfa172be4c4f70625a}
+      \strng{authorbibnamehash}{66f3a90be89240bfa172be4c4f70625a}
+      \strng{authornamehash}{66f3a90be89240bfa172be4c4f70625a}
+      \strng{authorfullhash}{66f3a90be89240bfa172be4c4f70625a}
+      \field{sortinit}{6}
+      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Reviews of Modern Physics}
+      \field{number}{1}
+      \field{title}{Diamond anvil cell and high-pressure physical investigations}
+      \field{volume}{55}
+      \field{year}{1983}
+      \field{pages}{65}
+      \range{pages}{1}
+    \endentry
+    \entry{collins2000colour}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0b1138c5e0e01dc2daa27657272f333e}{%
+           family={Collins},
+           familyi={C\bibinitperiod},
+           given={Alan\bibnamedelima T},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=b60eb7eb0ff815608acf8c6647b730eb}{%
+           family={Kanda},
+           familyi={K\bibinitperiod},
+           given={Hisao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=8a083caf5e4c847c3d4a64119e4c8279}{%
+           family={Kitawaki},
+           familyi={K\bibinitperiod},
+           given={Hiroshi},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{41b80944851161ab3f1ff52e84a9978c}
+      \strng{fullhash}{41b80944851161ab3f1ff52e84a9978c}
+      \strng{bibnamehash}{41b80944851161ab3f1ff52e84a9978c}
+      \strng{authorbibnamehash}{41b80944851161ab3f1ff52e84a9978c}
+      \strng{authornamehash}{41b80944851161ab3f1ff52e84a9978c}
+      \strng{authorfullhash}{41b80944851161ab3f1ff52e84a9978c}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Diamond and Related Materials}
+      \field{number}{2}
+      \field{title}{Colour changes produced in natural brown diamonds by high-pressure, high-temperature treatment}
+      \field{volume}{9}
+      \field{year}{2000}
+      \field{pages}{113\bibrangedash 122}
+      \range{pages}{10}
+    \endentry
+    \entry{zaitsev2013optical}{book}{}
+      \name{author}{1}{}{%
+        {{hash=df2cabe5ab77eebe1cd19be0b9cadd6d}{%
+           family={Zaitsev},
+           familyi={Z\bibinitperiod},
+           given={Alexander\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{df2cabe5ab77eebe1cd19be0b9cadd6d}
+      \strng{fullhash}{df2cabe5ab77eebe1cd19be0b9cadd6d}
+      \strng{bibnamehash}{df2cabe5ab77eebe1cd19be0b9cadd6d}
+      \strng{authorbibnamehash}{df2cabe5ab77eebe1cd19be0b9cadd6d}
+      \strng{authornamehash}{df2cabe5ab77eebe1cd19be0b9cadd6d}
+      \strng{authorfullhash}{df2cabe5ab77eebe1cd19be0b9cadd6d}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Optical properties of diamond: a data handbook}
+      \field{year}{2013}
+    \endentry
+    \entry{dobrinets2016hpht}{book}{}
+      \name{author}{3}{}{%
+        {{hash=4772126be10e0ba830c91d1dba87bfbb}{%
+           family={Dobrinets},
+           familyi={D\bibinitperiod},
+           given={Inga\bibnamedelima A},
+           giveni={I\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=ad58b3e25d2c26b272da7088e385c58e}{%
+           family={Vins},
+           familyi={V\bibinitperiod},
+           given={Victor\bibnamedelima G},
+           giveni={V\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=df2cabe5ab77eebe1cd19be0b9cadd6d}{%
+           family={Zaitsev},
+           familyi={Z\bibinitperiod},
+           given={Alexander\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{7f7c455a9f7a77d7f8d4b05159749a61}
+      \strng{fullhash}{7f7c455a9f7a77d7f8d4b05159749a61}
+      \strng{bibnamehash}{7f7c455a9f7a77d7f8d4b05159749a61}
+      \strng{authorbibnamehash}{7f7c455a9f7a77d7f8d4b05159749a61}
+      \strng{authornamehash}{7f7c455a9f7a77d7f8d4b05159749a61}
+      \strng{authorfullhash}{7f7c455a9f7a77d7f8d4b05159749a61}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{HPHT-treated diamonds}
+      \field{year}{2016}
+    \endentry
+    \entry{ashfold2020nitrogen}{article}{}
+      \name{author}{6}{}{%
+        {{hash=3dff557f829ea672e4c5fa883a634b02}{%
+           family={Ashfold},
+           familyi={A\bibinitperiod},
+           given={Michael\bibnamedelima NR},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=5cf124a206b984a9f704be5919a1c62d}{%
+           family={Goss},
+           familyi={G\bibinitperiod},
+           given={Jonathan\bibnamedelima P},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=07a8f6df97a0cbd631c1285bdeaa0c59}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Ben\bibnamedelima L},
+           giveni={B\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=9d067f2d81321337382ac29aa3edff5d}{%
+           family={May},
+           familyi={M\bibinitperiod},
+           given={Paul\bibnamedelima W},
+           giveni={P\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=2798873ca1a1e4cf4e95ccea2535c2b0}{%
+           family={Newton},
+           familyi={N\bibinitperiod},
+           given={Mark\bibnamedelima E},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=f19d1f4f195d1f7077dbee9343b29733}{%
+           family={Peaker},
+           familyi={P\bibinitperiod},
+           given={Chloe\bibnamedelima V},
+           giveni={C\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACS Publications}%
+      }
+      \strng{namehash}{13955deab09088b286bf90045b25fb21}
+      \strng{fullhash}{2fe8b0e244b5462be3967e66aa93a1c4}
+      \strng{bibnamehash}{13955deab09088b286bf90045b25fb21}
+      \strng{authorbibnamehash}{13955deab09088b286bf90045b25fb21}
+      \strng{authornamehash}{13955deab09088b286bf90045b25fb21}
+      \strng{authorfullhash}{2fe8b0e244b5462be3967e66aa93a1c4}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Chemical reviews}
+      \field{number}{12}
+      \field{title}{Nitrogen in diamond}
+      \field{volume}{120}
+      \field{year}{2020}
+      \field{pages}{5745\bibrangedash 5794}
+      \range{pages}{50}
+    \endentry
+    \entry{macpherson2015practical}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7ad91114f6dd45b3d2a21b719dc8624b}{%
+           family={Macpherson},
+           familyi={M\bibinitperiod},
+           given={Julie\bibnamedelima V},
+           giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Royal Society of Chemistry}%
+      }
+      \strng{namehash}{7ad91114f6dd45b3d2a21b719dc8624b}
+      \strng{fullhash}{7ad91114f6dd45b3d2a21b719dc8624b}
+      \strng{bibnamehash}{7ad91114f6dd45b3d2a21b719dc8624b}
+      \strng{authorbibnamehash}{7ad91114f6dd45b3d2a21b719dc8624b}
+      \strng{authornamehash}{7ad91114f6dd45b3d2a21b719dc8624b}
+      \strng{authorfullhash}{7ad91114f6dd45b3d2a21b719dc8624b}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Chemistry Chemical Physics}
+      \field{number}{5}
+      \field{title}{A practical guide to using boron doped diamond in electrochemical research}
+      \field{volume}{17}
+      \field{year}{2015}
+      \field{pages}{2935\bibrangedash 2949}
+      \range{pages}{15}
+    \endentry
+    \entry{das2022diamond}{article}{}
+      \name{author}{7}{}{%
+        {{hash=96c5a46db11b94ff34e837813175e6c8}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Dhruba},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c5855af739d5c890a73715671657055c}{%
+           family={Raj},
+           familyi={R\bibinitperiod},
+           given={Rahul},
+           giveni={R\bibinitperiod}}}%
+        {{hash=1d4d3c92234b75563dcffc3d40edb51e}{%
+           family={Jana},
+           familyi={J\bibinitperiod},
+           given={Jayanta},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9999a1b934dc9390af79a0388e19165a}{%
+           family={Chatterjee},
+           familyi={C\bibinitperiod},
+           given={Subhajit},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3966e6a30a1ade59da876badb0354a81}{%
+           family={Kolla},
+           familyi={K\bibinitperiod},
+           given={Lakshmi\bibnamedelima Ganapathi},
+           giveni={L\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=599251f8e601347ba062ba2e4b35f90b}{%
+           family={Chandran},
+           familyi={C\bibinitperiod},
+           given={Maneesh},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bce110c27b6d990620f8fef9a90acbb8}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={MS\bibnamedelima Ramachandra},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{edfe8b60797e05cea7950810bafc1939}
+      \strng{fullhash}{80201f23571f80d11a18d7f6693369ea}
+      \strng{bibnamehash}{edfe8b60797e05cea7950810bafc1939}
+      \strng{authorbibnamehash}{edfe8b60797e05cea7950810bafc1939}
+      \strng{authornamehash}{edfe8b60797e05cea7950810bafc1939}
+      \strng{authorfullhash}{80201f23571f80d11a18d7f6693369ea}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Physics D: Applied Physics}
+      \field{title}{Diamond-The Ultimate Material for Exploring Physics of Spin-defects for Quantum Technologies and Diamontronics.}
+      \field{year}{2022}
+    \endentry
+    \entry{bradac2019quantum}{article}{}
+      \name{author}{5}{}{%
+        {{hash=38584257607b1ab810c74fa55cbf4bec}{%
+           family={Bradac},
+           familyi={B\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6fb24859a949878bae4e96d4ceb41985}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Weibo},
+           giveni={W\bibinitperiod}}}%
+        {{hash=26a6205b52a2f57444a9772fdc2ebdae}{%
+           family={Forneris},
+           familyi={F\bibinitperiod},
+           given={Jacopo},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9a19f6693bf7d48ec22485ead78e6d54}{%
+           family={Trusheim},
+           familyi={T\bibinitperiod},
+           given={Matthew\bibnamedelima E},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=a941eb3b9c7e0e7af7edda202d3af04b}{%
+           family={Aharonovich},
+           familyi={A\bibinitperiod},
+           given={Igor},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{0a60d81ff159bb9f5da033e8f825c526}
+      \strng{fullhash}{fddda3c6a8f93edb3883f7d33d2c6eb0}
+      \strng{bibnamehash}{0a60d81ff159bb9f5da033e8f825c526}
+      \strng{authorbibnamehash}{0a60d81ff159bb9f5da033e8f825c526}
+      \strng{authornamehash}{0a60d81ff159bb9f5da033e8f825c526}
+      \strng{authorfullhash}{fddda3c6a8f93edb3883f7d33d2c6eb0}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature communications}
+      \field{number}{1}
+      \field{title}{Quantum nanophotonics with group IV defects in diamond}
+      \field{volume}{10}
+      \field{year}{2019}
+      \field{pages}{1\bibrangedash 13}
+      \range{pages}{13}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -64,53 +64,53 @@ plt.locator_params(axis='x', nbins=5)
 # print(width)
 # plt.plot(x[xmin:xmax],y[xmin:xmax])
 
-# fname='rose/ESR 0B (+0.02V)'
-# x,y=extract_data(fname)
-# y=y-min(y)
-# y=y/max(y)
-# x=x-2870.5
-# xmin=find_elem(x,-15)
-# xmax=find_elem(x,15)
-# width=4.4-0.9
-# print(width)
-# plt.plot(x[xmin:xmax],y[xmin:xmax])
+fname='rose/ESR 0B (+0.02V)'
+x,y=extract_data(fname)
+y=y-min(y)
+y=y/max(y)
+x=x-2870.5
+xmin=find_elem(x,-15)
+xmax=find_elem(x,15)
+width=4.4-0.9
+print(width)
+plt.plot(x[xmin:xmax],y[xmin:xmax])
 
 
 
 #~~~~~~~~~~~~~~~~~~~~~ Sumi 2
 
-fname='Sumi 2/ESR 1 raie'
-x,y=extract_data(fname)
-y=y-min(y)
-y=y/max(y)
-x=x-2678
-xmin=find_elem(x,-15)
-xmax=find_elem(x,15)
-width=3.5+3.16
-print(width)
-plt.plot(x[xmin:xmax],y[xmin:xmax],label='Sumi-2')
+# fname='Sumi 2/ESR 1 raie'
+# x,y=extract_data(fname)
+# y=y-min(y)
+# y=y/max(y)
+# x=x-2678
+# xmin=find_elem(x,-15)
+# xmax=find_elem(x,15)
+# width=3.5+3.16
+# print(width)
+# plt.plot(x[xmin:xmax],y[xmin:xmax],label='Sumi-2')
 
-fname='Sumi 2/ESR B transverse zoom'
-x,y=extract_data(fname)
-y=y-min(y)
-y=y/max(y)
-x=x-2885.8
-xmin=find_elem(x,-15)
-xmax=find_elem(x,15)
-width=2.86+2.64
-print(width)
-plt.plot(x[xmin:xmax],y[xmin:xmax])
+# fname='Sumi 2/ESR B transverse zoom'
+# x,y=extract_data(fname)
+# y=y-min(y)
+# y=y/max(y)
+# x=x-2885.8
+# xmin=find_elem(x,-15)
+# xmax=find_elem(x,15)
+# width=2.86+2.64
+# print(width)
+# plt.plot(x[xmin:xmax],y[xmin:xmax])
 
-fname='Sumi 2/ESR 0B'
-x,y=extract_data(fname)
-y=y-min(y)
-y=y/max(y)
-x=x-2870.2
-xmin=find_elem(x,-15)
-xmax=find_elem(x,15)
-width=3.45+2.46
-print(width)
-plt.plot(x[xmin:xmax],y[xmin:xmax])
+# fname='Sumi 2/ESR 0B'
+# x,y=extract_data(fname)
+# y=y-min(y)
+# y=y/max(y)
+# x=x-2870.2
+# xmin=find_elem(x,-15)
+# xmax=find_elem(x,15)
+# width=3.45+2.46
+# print(width)
+# plt.plot(x[xmin:xmax],y[xmin:xmax])
 
 plt.plot([-15,15],[0.5,0.5])
 
