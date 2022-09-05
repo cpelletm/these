@@ -229,7 +229,7 @@ def plot_PL_1x1x1x1():
 	plt.plot(B,y)
 
 
-plot_PL_1x1x1x1()
+# plot_PL_1x1x1x1()
 
 def plot_T1_1x1x1() :
 
@@ -263,7 +263,7 @@ def plot_T1_1x1x1() :
 	# plt.plot(x,yfit)
 
 
-# plot_T1_1x1x1()
+plot_T1_1x1x1()
 
 def plot_T1_100() :
 	fnames,fval=extract_glob('T1 100 align 3/T1')
@@ -311,7 +311,7 @@ def plot_PL_100():
 
 	plt.plot(x,y)
 
-plot_PL_100()
+# plot_PL_100()
 
 
 plt.show()
