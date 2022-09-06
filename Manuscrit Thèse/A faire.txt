@@ -32,3 +32,4 @@ Sensi experimental sur le flanc d'ESR pour avoir une comparaison (sur un adamas 
 Choper un spectre de bruit APD/PD avec le laser vert sylo/pulsé
 T1 6 configurations de champs mag sur le rose (à moyenner longtemps, à refaire en septembre quand j'aurais le temps). Yep j'ai check les précédentes data et c'est de la merde.
 (long donc plus tard): Sur le rose, faire une mesure de gamma_f (donc croiser 2 classes et mesurer le T1), et une mesure (aussi du T1) du croisement avec les VH. Vérifier si les fluctuators sont lorentziens et les VH Gaussiens, ou si la mesure donne tjr une Lorentzienne. Faudra sans doute implanter une mesure ou tu regardes juste (PL(0)-PL(T1/2))/PL(0) sinon ça sera sans doute trop long. Encore que...
+

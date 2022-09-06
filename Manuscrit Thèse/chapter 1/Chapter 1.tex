@@ -22,7 +22,7 @@
 \title{}
 \begin{document}
 \chapter{Introduction to NV center and its common usage}
-In this first chapter we will introduce the 
+The aim of this first chapter is to introduce the tools and concepts required for the next chapters. We will start
 
 \section{The NV center as a physical object}
 \begin{figure}[h!]
@@ -31,6 +31,7 @@ In this first chapter we will introduce the
 \caption{From the diamond to the NV center. a) Drawing of a bulk diamond. We consider a diamond to be ``bulk" if it is bigger than a few 100 $\mu$m. b) Drawing representing a fluorescence microscopy image of a diamond surface. The red fluorescent spots symbolize NV centers. c) Zoom-in on the crystalline structure of an NV center. Block dots represent carbon atoms}
 \label{diamond+NV}
 \end{figure}
+Refaire ce paragraphe te foutre le summary après la description de la figure.
 We will start this chapter by discussing the physical aspect of the NV center, and of its host material, the diamond. We will cover some of the basic properties of diamond and of its most common defects before addressing the creation process of both diamonds and NV centers.
 
 Fig. \ref{diamond+NV} illustrates the various scales to consider in this study: we start with a diamond which for lab purposes is generally no bigger than a few mm. If we zoom-in on the surface of some diamonds, we can find bright fluorescent spots corresponding to particular crystalline defects. Standard confocal microscopy is limited in its resolution to the $\sim \mu$m range, but if we could zoom-in even further we would see the structure of the defect, illustrated here with the crystalline structure of an NV center. 
@@ -74,10 +75,40 @@ The boron defects are mainly studied in the context of p-doped diamond semi-cond
 
 The NV center however remains by far the most studied defect in diamond due to its unique spin properties which will be explained below.
 
-\subsection{Creation of synthetic diamond for NV application}
+\subsection{Creation of synthetic diamond for optics and electronics applications}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/HPHT_and_CVD}
+\caption{Schematics of HPHT (a) and CVD (b) growth process detailed in main text}
+\label{HPHT and CVD}
+\end{figure}
 
+We will now focus on the creation process of the diamonds. Almost all diamonds used in optics or electronics experiments today are synthetic, due to the higher control of the growth process required for these applications. There are two main competing technologies for the growth of large ($\mu \rm{m} \sim \rm{mm}$) single crystal diamonds: High pressure high temperature growth (HPHT) and chemical vapor deposition growth (CVD). Both of these processes have their own specificities which we will detail below.
 
+\subsubsection{HPHT growth}
 
+HPHT was the first route for synthetic diamonds, first developed in the 1950s \citep{barnard2000diamond ,bundy1955man}. It consists in reconstructing an environment where diamond is the thermodynamically stable phase of carbon, similarly to the growth process of natural diamonds. 
+
+Fig. \ref{HPHT and CVD}-a) illustrates the apparatus of HPHT synthesis: a carbon source (graphite) and a solvent metal composed of transition metals (Fe, NI, Co typically \citep{bundy1963direct}) are put under $5 \sim 6$ GPa pressure in a press and heated to temperatures $\geq 1300\ ^\circ$C. A diamond crystal seed is put in the metal catalyst and a temperature gradient insures that the carbon migrates from the graphite to the diamond.
+
+The first synthesis of HPHT diamonds were all of type Ib due to unwanted nitrogen pollution in the metal melt. The first HPHT type IIa diamonds were produced in the late 90s by adding other elements to the metal melt (Ti, Al, Zr) which would react preferentially with nitrogen and prevent its incorporation in the diamond \citep{burns1999growth, sumiya2002growth}.
+
+\subsubsection{CVD growth}
+
+CVD growth for diamond was first demonstrated convincingly in the 80s \citep{matsumoto1982growth, matsumoto1982vapor, kamo1983diamond}. Unlike HPHT, CVD operates in a regime where diamond is not the thermodynamically stable phase. It relies therefore heavily on catalysts to stabilize the diamond phase versus the graphite one. 
+
+The main catalyst used is atomic hydrogen, which can both create the free radicals required to form the $C-C$ diamond bonds, and which etches sp$^2$ bonds (graphite) faster than it does sp$^3$ bonds (diamond) \citep{gracio2010diamond}.
+
+Fig. \ref{HPHT and CVD}-b) illustrates the apparatus of a microwave plasma reactor: it consists in a modified vacuum chamber which acts as a microwave resonator. The microwave creates a plasma ball from the the gas introduced in the chamber (CH$_4$ and H$_2$ typically) with a plasma temperature $T \geq 3000 ^\circ$C \citep{ashfold2020nitrogen}, enough to dissociate the $H_2$ gas in atomic hydrogen \citep{balmer2009chemical}. The plasma acts as the carbon source for the diamond growing on top of the substrate, and as the catalyst to favor the diamond phase. The substrate is kept at a temperature $800 \sim 1200\ ^\circ$C during the growth.
+
+Other sources can be used to create the high temperature required for atomic hydrogen, such as a tungsten hot filament \citep{haubner1993diamond}, electrical discharge (arcjet) \citep{luque1998excited} or even an oxygen-acetylene combustion flame \citep{bachmann1991towards}.
+
+The main sources of extrinsic impurities for CVD-grown diamond comes from the source gasses \citep{balmer2009chemical}. The commercial availability of source gases containing less than $\sim$ ppm impurities made possible the growth of  high purity type IIa CVD diamonds \citep{kasu2003high, twitchen2004high, tallaire2006characterisation}.
+
+\medskip
+Both HPHT and CVD processes can produce diamonds of high quality for quantum optics or electronics application, each with their pros and cons. HPHT offers better scalability for thick crystals ($\sim \rm mm$) and allows the incorporation of heavy atoms (Ge \citep{palyanov2015germanium} , Sn \citep{ekimov2019effect}) which can be hard to incorporate from a gas phase. CVD on the other hand allows more versatility in the control of the impurities introduced in the crystal, including an isotopic control on both the impurities and the carbon itself. A particular advantage of CVD growth is the possibility of $\delta$-doping where a specific defect is grown only within a very thin layer of the crystal, as low as 5 nm \citep{ohno2012engineering, ishikawa2012optical, ohashi2013negatively}.
+
+\subsection{Optimizing NV center formation}
 
 
 

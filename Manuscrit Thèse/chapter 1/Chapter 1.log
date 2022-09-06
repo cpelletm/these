@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  5 SEP 2022 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  6 SEP 2022 19:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -903,7 +903,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-<Figures/diamant_et_NV.pdf, id=27, 624.29414pt x 246.16296pt>
+<Figures/diamant_et_NV.pdf, id=31, 624.29414pt x 246.16296pt>
 File: Figures/diamant_et_NV.pdf Graphic file (type pdf)
 <use Figures/diamant_et_NV.pdf>
 Package pdftex.def Info: Figures/diamant_et_NV.pdf  used on input line 30.
@@ -923,58 +923,101 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/Diamant_et_NV.pd
 f>]
-<Figures/phase_diagram_carbon_wiki.pdf, id=63, 326.30872pt x 284.02905pt>
+<Figures/phase_diagram_carbon_wiki.pdf, id=67, 326.30872pt x 284.02905pt>
 File: Figures/phase_diagram_carbon_wiki.pdf Graphic file (type pdf)
 <use Figures/phase_diagram_carbon_wiki.pdf>
 Package pdftex.def Info: Figures/phase_diagram_carbon_wiki.pdf  used on input l
-ine 40.
+ine 41.
 (pdftex.def)             Requested size: 216.0022pt x 188.01881pt.
  [2 <./Figures/phase_diagram_carbon_wiki.pdf>]
-<Figures/Diamond_type.pdf, id=91, 646.46977pt x 290.44714pt>
+<Figures/Diamond_type.pdf, id=95, 646.46977pt x 290.44714pt>
 File: Figures/Diamond_type.pdf Graphic file (type pdf)
 <use Figures/Diamond_type.pdf>
-Package pdftex.def Info: Figures/Diamond_type.pdf  used on input line 58.
+Package pdftex.def Info: Figures/Diamond_type.pdf  used on input line 59.
 (pdftex.def)             Requested size: 323.9978pt x 145.5689pt.
- [3 <./Figures/Diamond_type.pdf>] [4]
-Overfull \hbox (9.3537pt too wide) in paragraph at lines 86--86
+ [3 <./Figures/Diamond_type.pdf>]
+<Figures/HPHT_and_CVD.pdf, id=121, 493.84616pt x 235.07446pt>
+File: Figures/HPHT_and_CVD.pdf Graphic file (type pdf)
+<use Figures/HPHT_and_CVD.pdf>
+Package pdftex.def Info: Figures/HPHT_and_CVD.pdf  used on input line 81.
+(pdftex.def)             Requested size: 360.0pt x 171.36258pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Citation 'barnard2000diamond ' on page 4 undefined on input line
+ 90.
+
+[4] [5 <./Figures/HPHT_and_CVD.pdf>] [6]
+Overfull \hbox (9.3537pt too wide) in paragraph at lines 117--117
 \OT1/cmr/m/n/10.95 pro-duced in nat-u-ral brown di-a-monds by high-pressure, hi
 gh-temperature
  []
 
-[5
+[7
 
-] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
+]
+Overfull \hbox (4.41461pt too wide) in paragraph at lines 117--117
+[]\OT1/cmr/m/n/10.95 Seiichiro Mat-sumoto et al. ``Growth of di-a-mond par-ti-c
+les from methane-
+ []
+
+
+Overfull \hbox (0.60983pt too wide) in paragraph at lines 117--117
+\OT1/cmr/m/n/10.95 hydrogen gas''. In: \OT1/cmr/m/it/10.95 Jour-nal of ma-te-ri
+-als Sci-ence \OT1/cmr/m/n/10.95 17.11 (1982), pp. 3106{
+ []
+
+[8]
+Overfull \hbox (7.65404pt too wide) in paragraph at lines 117--117
+[]\OT1/cmr/m/n/10.95 Makoto Kasu and Naoki Kobayashi. ``High mo-bil-ity and hig
+h crystalline-
+ []
+
+[9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
  (./Chapter 1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
 Package rerunfilecheck Info: File `"Chapter 1".out' has not changed.
-(rerunfilecheck)             Checksum: 2A2DABBBD85385E8442DA0991DB61EFB;408.
+(rerunfilecheck)             Checksum: 0DD3D27A5CFC12C51CE574593CC5770A;512.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                "Chapter 1"
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to '"Chapter 1".run.xml'.
 \openout1 = `"Chapter 1.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
  ) 
 Here is how much of TeX's memory you used:
- 25094 strings out of 481239
- 474085 string characters out of 5920377
- 1105335 words of memory out of 5000000
- 39945 multiletter control sequences out of 15000+600000
- 539754 words of font info for 51 fonts, out of 8000000 for 9000
+ 25173 strings out of 481239
+ 476925 string characters out of 5920377
+ 1107777 words of memory out of 5000000
+ 39995 multiletter control sequences out of 15000+600000
+ 540062 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,6n,75p,974b,1491s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb>
-Output written on "Chapter 1.pdf" (6 pages, 153818 bytes).
+ 59i,6n,75p,974b,1493s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmti10.pfb>
+Output written on "Chapter 1.pdf" (9 pages, 209592 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 267 PDF objects out of 1000 (max. 8388607)
+ 230 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
