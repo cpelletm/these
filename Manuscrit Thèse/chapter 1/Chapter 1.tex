@@ -21,7 +21,7 @@
 
 \title{}
 \begin{document}
-\chapter{Introduction to NV center and its common usage}
+\chapter{Introduction to NV centers and their common usage}
 The aim of this first chapter is to introduce the tools and concepts required for the next chapters. We will start
 
 \section{The NV center as a physical object}
@@ -31,7 +31,7 @@ The aim of this first chapter is to introduce the tools and concepts required fo
 \caption{From the diamond to the NV center. a) Drawing of a bulk diamond. We consider a diamond to be ``bulk" if it is bigger than a few 100 $\mu$m. b) Drawing representing a fluorescence microscopy image of a diamond surface. The red fluorescent spots symbolize NV centers. c) Zoom-in on the crystalline structure of an NV center. Block dots represent carbon atoms}
 \label{diamond+NV}
 \end{figure}
-Refaire ce paragraphe te foutre le summary après la description de la figure.
+Refaire ce paragraphe te foutre le summary après la description de la figure. Et bien parler du NV- et du charge state
 We will start this chapter by discussing the physical aspect of the NV center, and of its host material, the diamond. We will cover some of the basic properties of diamond and of its most common defects before addressing the creation process of both diamonds and NV centers.
 
 Fig. \ref{diamond+NV} illustrates the various scales to consider in this study: we start with a diamond which for lab purposes is generally no bigger than a few mm. If we zoom-in on the surface of some diamonds, we can find bright fluorescent spots corresponding to particular crystalline defects. Standard confocal microscopy is limited in its resolution to the $\sim \mu$m range, but if we could zoom-in even further we would see the structure of the defect, illustrated here with the crystalline structure of an NV center. 
@@ -79,7 +79,7 @@ The NV center however remains by far the most studied defect in diamond due to i
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{Figures/HPHT_and_CVD}
-\caption{Schematics of HPHT (a) and CVD (b) growth process detailed in main text}
+\caption{Schematics of HPHT (a) and CVD (b) growth process as detailed in main text}
 \label{HPHT and CVD}
 \end{figure}
 
@@ -87,7 +87,7 @@ We will now focus on the creation process of the diamonds. Almost all diamonds u
 
 \subsubsection{HPHT growth}
 
-HPHT was the first route for synthetic diamonds, first developed in the 1950s \citep{barnard2000diamond ,bundy1955man}. It consists in reconstructing an environment where diamond is the thermodynamically stable phase of carbon, similarly to the growth process of natural diamonds. 
+HPHT was the first commercially viable process for synthetic diamonds, starting from the 1950s \citep{barnard2000diamond, bundy1955man}. The basic idea of HPHT synthesis is to reconstruct an environment where diamond is the thermodynamically stable phase of carbon, similarly to the growth process of natural diamond below the earth crust. 
 
 Fig. \ref{HPHT and CVD}-a) illustrates the apparatus of HPHT synthesis: a carbon source (graphite) and a solvent metal composed of transition metals (Fe, NI, Co typically \citep{bundy1963direct}) are put under $5 \sim 6$ GPa pressure in a press and heated to temperatures $\geq 1300\ ^\circ$C. A diamond crystal seed is put in the metal catalyst and a temperature gradient insures that the carbon migrates from the graphite to the diamond.
 
@@ -97,20 +97,46 @@ The first synthesis of HPHT diamonds were all of type Ib due to unwanted nitroge
 
 CVD growth for diamond was first demonstrated convincingly in the 80s \citep{matsumoto1982growth, matsumoto1982vapor, kamo1983diamond}. Unlike HPHT, CVD operates in a regime where diamond is not the thermodynamically stable phase. It relies therefore heavily on catalysts to stabilize the diamond phase versus the graphite one. 
 
-The main catalyst used is atomic hydrogen, which can both create the free radicals required to form the $C-C$ diamond bonds, and which etches sp$^2$ bonds (graphite) faster than it does sp$^3$ bonds (diamond) \citep{gracio2010diamond}.
+The main catalyst used is atomic hydrogen, which can both create the free radicals required to form the $C-C$ diamond bonds, and which etches sp$^2$ bonds (graphite) faster than it does sp$^3$ bonds (diamond) \citep{gracio2010diamond}. Hydrogen is by far the most abundant element in the gas phase: the precursor gases used for the growth are typically CH$_4$ and H$_2$ in proportions of $1-5\%$ and $95-99\%$ respectively \citep{achard2020chemical}.
 
-Fig. \ref{HPHT and CVD}-b) illustrates the apparatus of a microwave plasma reactor: it consists in a modified vacuum chamber which acts as a microwave resonator. The microwave creates a plasma ball from the the gas introduced in the chamber (CH$_4$ and H$_2$ typically) with a plasma temperature $T \geq 3000 ^\circ$C \citep{ashfold2020nitrogen}, enough to dissociate the $H_2$ gas in atomic hydrogen \citep{balmer2009chemical}. The plasma acts as the carbon source for the diamond growing on top of the substrate, and as the catalyst to favor the diamond phase. The substrate is kept at a temperature $800 \sim 1200\ ^\circ$C during the growth.
+Fig. \ref{HPHT and CVD}-b) illustrates the apparatus of a microwave plasma reactor: it consists in a modified vacuum chamber which acts as a microwave resonator. The microwave creates a plasma ball from the the precursor gases with a temperature $T_{\rm plasma} \geq 3000 ^\circ$C \citep{ashfold2020nitrogen}, enough to dissociate the $H_2$ gas in atomic hydrogen \citep{balmer2009chemical}. The plasma acts as the carbon source for the diamond growing on top of the substrate, and as the catalyst to favor the diamond phase. The substrate is kept at a temperature $700 \sim 1100\ ^\circ$C during the growth.
 
 Other sources can be used to create the high temperature required for atomic hydrogen, such as a tungsten hot filament \citep{haubner1993diamond}, electrical discharge (arcjet) \citep{luque1998excited} or even an oxygen-acetylene combustion flame \citep{bachmann1991towards}.
 
-The main sources of extrinsic impurities for CVD-grown diamond comes from the source gasses \citep{balmer2009chemical}. The commercial availability of source gases containing less than $\sim$ ppm impurities made possible the growth of  high purity type IIa CVD diamonds \citep{kasu2003high, twitchen2004high, tallaire2006characterisation}.
+For a good CVD reactor, the main sources of extrinsic impurities the diamond comes from the source gasses \citep{balmer2009chemical}. The commercial availability of source gases containing less than $\sim$ ppm impurities made possible the growth of  high purity type IIa CVD diamonds \citep{kasu2003high, twitchen2004high, tallaire2006characterisation}.
 
 \medskip
-Both HPHT and CVD processes can produce diamonds of high quality for quantum optics or electronics application, each with their pros and cons. HPHT offers better scalability for thick crystals ($\sim \rm mm$) and allows the incorporation of heavy atoms (Ge \citep{palyanov2015germanium} , Sn \citep{ekimov2019effect}) which can be hard to incorporate from a gas phase. CVD on the other hand allows more versatility in the control of the impurities introduced in the crystal, including an isotopic control on both the impurities and the carbon itself. A particular advantage of CVD growth is the possibility of $\delta$-doping where a specific defect is grown only within a very thin layer of the crystal, as low as 5 nm \citep{ohno2012engineering, ishikawa2012optical, ohashi2013negatively}.
+Both HPHT and CVD processes can produce diamonds of high quality for quantum optics or electronics application, each with their pros and cons. HPHT offers better scalability for thick crystals ($\sim \rm mm$) and allows the incorporation of heavy atoms (Ge \citep{palyanov2015germanium} , Sn \citep{ekimov2019effect}) which can be hard to incorporate from a gas phase. CVD on the other hand allows more versatility in the control of the impurities introduced in the crystal, including an isotopic control on both the impurities and the carbon itself. A particular advantage of CVD growth is the possibility of $\delta$-doping where a specific defect is grown only within a thin layer of the crystal, as low as 5 nm \citep{ohno2012engineering, ishikawa2012optical, ohashi2013negatively}.
 
 \subsection{Optimizing NV center formation}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/formtion_NV_2}
+\caption{Illustration of the formation of NV centers. Black dots represents carbon atoms and green dots nitrogen atoms}
+\label{formation NV}
+\end{figure}
 
+NV centers are a relatively rare impurity in untreated diamonds. In CVD diamond for instance, the proportion of nitrogen atoms forming an NV center in an untreated crystal is at best of $2-3 \%$ \citep{hartland2014study} and sometimes much less. While this ratio can sometimes be enough  to work with single NV centers, applications such as sensing that require dense ensemble need a higher conversion rate. We will discuss here the usual techniques used to improve the formation of NV centers.
 
+Fig. \ref{formation NV} illustrates the steps needed to maximize the number of NV centers in the crystal while keeping a relatively high crystalline purity.
+
+The first step to create NV centers is to get individual substitutional N atoms in the crystal ($N_s$, C-centers or P1 centers depending on the literature). This can be achieved either \textit{in situ} by introducing (voluntarily or not) nitrogen in the crystal during the growth process \citep{tallaire2006characterisation, lobaev2017influence}, or \textit{ex situ} by implanting N$^+$ ions with ion implantation techniques \citep{meijer2005generation, smith2019colour}. Because this present work focuses on dense NV ensembles, we will consider the simplest case where the starting crystal is a type-Ib diamond due to the presence of nitrogen during the growth. A starting concentration [N$_s$]= $10 \sim 300$ ppm is typical for type Ib HPHT diamonds \citep{achard2020chemical}.
+
+The second step is to create monovacancies in the crystal lattice. This step might be optional for crystals which already contain a large number of monovacancies, but CVD crystals in particular can have less vacancies that they have substitutional nitrogen atoms \citep{mainwood1999point}. The general technique to create monovacancy is to bombard the sample with high energy particle in order to knock out carbon atoms from the crystal. Several high energy particle have been used to create vacancies, such as protons, electrons, ions, neutrons and even gamma rays \citep{davies1976optical, ashbaugh1988gemstone, kleinsasser2016high}. The most common irradiation source for for bulk diamond however is electron irradiation (e-beam) \citep{acosta2009diamonds}, thanks to their ability to penetrate the crystal and to create vacancies uniformly.
+
+The final step is to migrate the vacancies next to the nitrogen atoms. The activation energy required to move vacancy is of $\sim 2.3\ \rm eV$ which corresponds to temperatures of $600\sim 700 ^\circ$C \citep{davies1992vacancy, newton2002recombination}. The most common method to move the vacancies is therefore to anneal the crystal at a temperature $800 \sim 1200 ^\circ$C for a few hours \citep{botsoa2011optimal}. NV centers anneal out at temperature of $1400 \sim 1500 ^\circ$C \citep{zaitsev2013optical, pinto2012diffusion} which explains why the vacancies tend to stick to the nitrogen atoms during the annealing phase. 
+
+The final N$_s$ to NV conversion rate can be as high as $\sim 50 \%$ \citep{grezes2015storage, hartland2014study}, although this ratio tend to decrease for higher [N$_s$] concentrations.
+
+\subsection{Controlling the NV center charge state}
+
+The charge state of the NV center is of crucial importance for NV applications. Only the negatively charged NV$^-$ center shows the specific spin properties that will be detailed below, but the NV center can exist under three charge states in the diamond: NV$^-$, NV$^0$ and NV$^+$. The presence of NV$^+$ is only marginal in standard diamonds \citep{hauf2014addressing, pfender2017protecting} and we will focus here solely on the NV$^-$ and NV$^0$ charge state.
+
+The charge state of the NV centers depends not only on the growth process of the crystal, but also on the usage made of the sample. In particular, illumination in the optical range can promote electrons in the conduction band or holes in the valence band and modify the charge state of the NV center.
+
+On the material side, the crystal has to remain electrically neutral which means that at least as many charge donors need to be present as there are NV$^-$ centers. For nitrogen-rich samples, the donors are mostly N$^+$ centers, which imposes a limit on the maximum conversion rate of N to NV in order to keep a high [NV$^-$]/[NV$^0$] ratio. The possibility to introduce other donors, such as phosphorus, has been studied \citep{doi2016pure} but remains impractical so far \citep{barry2020sensitivity}.
+
+On the experimental side, it has been shown that specific wavelengths 
 
 
 \printbibliography
