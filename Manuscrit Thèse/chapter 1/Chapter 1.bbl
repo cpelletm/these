@@ -2438,6 +2438,82 @@
       \field{pages}{5931\bibrangedash 5937}
       \range{pages}{7}
     \endentry
+    \entry{doi2016pure}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=0dac63a1441c89350a48aaa23d5c2747}{%
+           family={Doi},
+           familyi={D\bibinitperiod},
+           given={Yuki},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d00ca3a8cb555bd6492cf75f7fd057a5}{%
+           family={Fukui},
+           familyi={F\bibinitperiod},
+           given={Takahiro},
+           giveni={T\bibinitperiod}}}%
+        {{hash=921854a0abe69251a58f9a5568b0f939}{%
+           family={Kato},
+           familyi={K\bibinitperiod},
+           given={Hiromitsu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=795e87bc3873f7464743003d699da13b}{%
+           family={Makino},
+           familyi={M\bibinitperiod},
+           given={Toshiharu},
+           giveni={T\bibinitperiod}}}%
+        {{hash=cd83a4bb5b8a4afd1740bc2df02e25b7}{%
+           family={Yamasaki},
+           familyi={Y\bibinitperiod},
+           given={Satoshi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=08731b7be1dd1a0f996052bfcecff7e2}{%
+           family={Tashima},
+           familyi={T\bibinitperiod},
+           given={Toshiyuki},
+           giveni={T\bibinitperiod}}}%
+        {{hash=b0f3280e6257f8191a2a569deabbb131}{%
+           family={Morishita},
+           familyi={M\bibinitperiod},
+           given={Hiroki},
+           giveni={H\bibinitperiod}}}%
+        {{hash=4f05d7176cf3d49e8c4973b0cc16504c}{%
+           family={Miwa},
+           familyi={M\bibinitperiod},
+           given={Shinji},
+           giveni={S\bibinitperiod}}}%
+        {{hash=176f8a3c6b3820fedfad65dcbb8fb5c5}{%
+           family={Jelezko},
+           familyi={J\bibinitperiod},
+           given={Fedor},
+           giveni={F\bibinitperiod}}}%
+        {{hash=9dac1e661c2c21e26a584f778f0999ec}{%
+           family={Suzuki},
+           familyi={S\bibinitperiod},
+           given={Yoshishige},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{f2d08093208950ac32fcc9decc565496}
+      \strng{fullhash}{072bc10d7549d9d4e61b07cb7cb31752}
+      \strng{bibnamehash}{f2d08093208950ac32fcc9decc565496}
+      \strng{authorbibnamehash}{f2d08093208950ac32fcc9decc565496}
+      \strng{authornamehash}{f2d08093208950ac32fcc9decc565496}
+      \strng{authorfullhash}{072bc10d7549d9d4e61b07cb7cb31752}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{number}{8}
+      \field{title}{Pure negatively charged state of the NV center in n-type diamond}
+      \field{volume}{93}
+      \field{year}{2016}
+      \field{pages}{081203}
+      \range{pages}{1}
+    \endentry
     \entry{barry2020sensitivity}{article}{}
       \name{author}{7}{}{%
         {{hash=ced3d5f0404413bb3d8bd218f9dbac3f}{%
@@ -2497,8 +2573,57 @@
       \field{pages}{015004}
       \range{pages}{1}
     \endentry
+    \entry{aslam2013photo}{article}{}
+      \name{author}{5}{}{%
+        {{hash=5371c35a174585a6a0f846a59a37416a}{%
+           family={Aslam},
+           familyi={A\bibinitperiod},
+           given={Nabeel},
+           giveni={N\bibinitperiod}}}%
+        {{hash=9aebdefc22fec6f2b838b69a0d285b58}{%
+           family={Waldherr},
+           familyi={W\bibinitperiod},
+           given={Gerhald},
+           giveni={G\bibinitperiod}}}%
+        {{hash=5874df667c3bb432c96a057948be9843}{%
+           family={Neumann},
+           familyi={N\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+        {{hash=176f8a3c6b3820fedfad65dcbb8fb5c5}{%
+           family={Jelezko},
+           familyi={J\bibinitperiod},
+           given={Fedor},
+           giveni={F\bibinitperiod}}}%
+        {{hash=bf4d41276cfa1825d231c7eb1d726de3}{%
+           family={Wrachtrup},
+           familyi={W\bibinitperiod},
+           given={Joerg},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{30b188139e5ca738c1fe7400e362e578}
+      \strng{fullhash}{aab8ff72712eba3f1afe331d9f102c43}
+      \strng{bibnamehash}{30b188139e5ca738c1fe7400e362e578}
+      \strng{authorbibnamehash}{30b188139e5ca738c1fe7400e362e578}
+      \strng{authornamehash}{30b188139e5ca738c1fe7400e362e578}
+      \strng{authorfullhash}{aab8ff72712eba3f1afe331d9f102c43}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New Journal of Physics}
+      \field{number}{1}
+      \field{title}{Photo-induced ionization dynamics of the nitrogen vacancy defect in diamond investigated by single-shot charge state detection}
+      \field{volume}{15}
+      \field{year}{2013}
+      \field{pages}{013064}
+      \range{pages}{1}
+    \endentry
   \enddatalist
-  \missing{doi2016pure}
+  \missing{dhomkar2016long}
 \endrefsection
 \endinput
 
