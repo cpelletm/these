@@ -17,11 +17,11 @@ for i in ['-1','0','1']:
 
 B=[0,0,0]
 
-HNV=NVHamiltonian(B,c=5,E=4j).H
+HNV=NVHamiltonian(B,c=5,E=0).H
 # print(HNV)
-egval,egvect=np.linalg.eigh(HNV)
-print(egvect)
-print(np.absolute(egvect))
+# egval,egvect=np.linalg.eigh(HNV)
+# print(egvect)
+# print(np.absolute(egvect))
 
 Q=-4.945
 # HN=np.array([[-Q,0,0],[0,0,0],[0,0,-Q]])
@@ -38,10 +38,12 @@ Ayy=Axx
 Hc=Azz*convolution(Sz,Sz)+Axx*convolution(Sx,Sx)+Ayy*convolution(Sy,Sy)
 H=HNV+HN+Hc
 
-print_matrix(H,bname=basis)
+# print_matrix(H,bname=basis)
 
 egval,egvect=np.linalg.eigh(H)
+print_matrix(egvect,basis)
 print(egval)
+print(Q-Azz,2870+(Q-Azz))
 # transism=[egval[3]-egval[0],egval[5]-egval[2],egval[4]-egval[1]]
 # transisp=[egval[6]-egval[1],egval[8]-egval[2],egval[7]-egval[0]]
 # print(transism,transisp)

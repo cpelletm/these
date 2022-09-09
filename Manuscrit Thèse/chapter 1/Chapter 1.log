@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  7 SEP 2022 19:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  9 SEP 2022 21:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,22 +896,14 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '"Chapter 1".bbl' found.
 
-(./Chapter 1.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                dhomkar2016long
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+(./Chapter 1.bbl)
 Package biblatex Info: Reference section=0 on input line 23.
 Package biblatex Info: Reference segment=0 on input line 23.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-<Figures/diamant_et_NV.pdf, id=39, 624.29414pt x 246.16296pt>
+<Figures/diamant_et_NV.pdf, id=51, 624.29414pt x 246.16296pt>
 File: Figures/diamant_et_NV.pdf Graphic file (type pdf)
 <use Figures/diamant_et_NV.pdf>
 Package pdftex.def Info: Figures/diamant_et_NV.pdf  used on input line 30.
@@ -931,20 +923,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/Diamant_et_NV.pd
 f>]
-<Figures/phase_diagram_carbon_wiki.pdf, id=75, 326.30872pt x 284.02905pt>
+<Figures/phase_diagram_carbon_wiki.pdf, id=87, 326.30872pt x 284.02905pt>
 File: Figures/phase_diagram_carbon_wiki.pdf Graphic file (type pdf)
 <use Figures/phase_diagram_carbon_wiki.pdf>
 Package pdftex.def Info: Figures/phase_diagram_carbon_wiki.pdf  used on input l
 ine 41.
 (pdftex.def)             Requested size: 216.0022pt x 188.01881pt.
  [2 <./Figures/phase_diagram_carbon_wiki.pdf>]
-<Figures/Diamond_type.pdf, id=103, 646.46977pt x 290.44714pt>
+<Figures/Diamond_type.pdf, id=115, 646.46977pt x 290.44714pt>
 File: Figures/Diamond_type.pdf Graphic file (type pdf)
 <use Figures/Diamond_type.pdf>
 Package pdftex.def Info: Figures/Diamond_type.pdf  used on input line 59.
 (pdftex.def)             Requested size: 323.9978pt x 145.5689pt.
  [3 <./Figures/Diamond_type.pdf>]
-<Figures/HPHT_and_CVD.pdf, id=129, 493.84616pt x 235.07446pt>
+<Figures/HPHT_and_CVD.pdf, id=141, 493.84616pt x 235.07446pt>
 File: Figures/HPHT_and_CVD.pdf Graphic file (type pdf)
 <use Figures/HPHT_and_CVD.pdf>
 Package pdftex.def Info: Figures/HPHT_and_CVD.pdf  used on input line 81.
@@ -954,7 +946,7 @@ Package pdftex.def Info: Figures/HPHT_and_CVD.pdf  used on input line 81.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [4] [5 <./Figures/HPHT_and_CVD.pdf>]
-<Figures/formtion_NV_2.pdf, id=199, 1823.71315pt x 538.7372pt>
+<Figures/formtion_NV_2.pdf, id=211, 1823.71315pt x 538.7372pt>
 File: Figures/formtion_NV_2.pdf Graphic file (type pdf)
 <use Figures/formtion_NV_2.pdf>
 Package pdftex.def Info: Figures/formtion_NV_2.pdf  used on input line 114.
@@ -962,88 +954,115 @@ Package pdftex.def Info: Figures/formtion_NV_2.pdf  used on input line 114.
  [6 <./Figures/formtion_NV_2.pdf>] [7]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 144.
+(hyperref)                removing `math shift' on input line 143.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 144.
+(hyperref)                removing `superscript' on input line 143.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 144.
+(hyperref)                removing `math shift' on input line 143.
+
+<Figures/NV_electrons.pdf, id=378, 573.82103pt x 362.33038pt>
+File: Figures/NV_electrons.pdf Graphic file (type pdf)
+<use Figures/NV_electrons.pdf>
+Package pdftex.def Info: Figures/NV_electrons.pdf  used on input line 151.
+(pdftex.def)             Requested size: 288.0011pt x 181.85583pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [8]
-Overfull \hbox (9.3537pt too wide) in paragraph at lines 148--148
+<Figures/NV_optical.pdf, id=395, 823.87364pt x 613.73769pt>
+File: Figures/NV_optical.pdf Graphic file (type pdf)
+<use Figures/NV_optical.pdf>
+Package pdftex.def Info: Figures/NV_optical.pdf  used on input line 168.
+(pdftex.def)             Requested size: 360.0pt x 268.18181pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9 <./Figures/NV_electrons.pdf>] [10 <./Figures/NV_optical.pdf>]
+<Figures/spin_fine_hyperfine.pdf, id=479, 482.25972pt x 276.04654pt>
+File: Figures/spin_fine_hyperfine.pdf Graphic file (type pdf)
+<use Figures/spin_fine_hyperfine.pdf>
+Package pdftex.def Info: Figures/spin_fine_hyperfine.pdf  used on input line 18
+9.
+(pdftex.def)             Requested size: 360.0pt x 206.0656pt.
+ [11 <./Figures/Spin_fine_hyperfine.pdf>] [12]
+Overfull \hbox (9.3537pt too wide) in paragraph at lines 198--198
 \OT1/cmr/m/n/10.95 pro-duced in nat-u-ral brown di-a-monds by high-pressure, hi
 gh-temperature
  []
 
-[9
+[13
 
 ]
-Overfull \hbox (4.41461pt too wide) in paragraph at lines 148--148
+Overfull \hbox (4.41461pt too wide) in paragraph at lines 198--198
 []\OT1/cmr/m/n/10.95 Seiichiro Mat-sumoto et al. ``Growth of di-a-mond par-ti-c
 les from methane-
  []
 
 
-Overfull \hbox (0.60983pt too wide) in paragraph at lines 148--148
+Overfull \hbox (0.60983pt too wide) in paragraph at lines 198--198
 \OT1/cmr/m/n/10.95 hydrogen gas''. In: \OT1/cmr/m/it/10.95 Jour-nal of ma-te-ri
 -als Sci-ence \OT1/cmr/m/n/10.95 17.11 (1982), pp. 3106{
  []
 
-[10]
-Overfull \hbox (7.65404pt too wide) in paragraph at lines 148--148
+[14]
+Overfull \hbox (7.65404pt too wide) in paragraph at lines 198--198
 []\OT1/cmr/m/n/10.95 Makoto Kasu and Naoki Kobayashi. ``High mo-bil-ity and hig
 h crystalline-
  []
 
 
-Overfull \hbox (4.45296pt too wide) in paragraph at lines 148--148
+Overfull \hbox (4.45296pt too wide) in paragraph at lines 198--198
 \OT1/cmr/m/n/10.95 mond us-ing elec-tron para-m-ag-netic res-o-nance and op-ti-
 cal spec-troscopy''.
  []
 
-[11]
-Overfull \hbox (3.39561pt too wide) in paragraph at lines 148--148
+[15]
+Overfull \hbox (3.39561pt too wide) in paragraph at lines 198--198
 []\OT1/cmr/m/n/10.95 ME New-ton et al. ``Recombination-enhanced dif-fu-sion of 
 self-interstitial
  []
 
-[12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
+[16] [17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
  (./Chapter 1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 148.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 148.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
 Package rerunfilecheck Info: File `"Chapter 1".out' has not changed.
-(rerunfilecheck)             Checksum: BFC299BBE5F0A9933D69943BBF2C8529;674.
+(rerunfilecheck)             Checksum: ECC48980B0CAF762E0E9FB57B570A087;974.
 Package logreq Info: Writing requests to '"Chapter 1".run.xml'.
 \openout1 = `"Chapter 1.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 148.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
- 25260 strings out of 481239
- 479833 string characters out of 5920377
- 1109160 words of memory out of 5000000
- 40055 multiletter control sequences out of 15000+600000
- 542363 words of font info for 62 fonts, out of 8000000 for 9000
+ 25344 strings out of 481239
+ 482075 string characters out of 5920377
+ 1111086 words of memory out of 5000000
+ 40108 multiletter control sequences out of 15000+600000
+ 544553 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,6n,75p,974b,1493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,8n,75p,1078b,1493s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmti10.pfb>
-Output written on "Chapter 1.pdf" (12 pages, 244265 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on "Chapter 1.pdf" (17 pages, 401294 bytes).
 PDF statistics:
- 444 PDF objects out of 1000 (max. 8388607)
- 401 compressed objects within 5 object streams
- 82 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 600 PDF objects out of 1000 (max. 8388607)
+ 531 compressed objects within 6 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

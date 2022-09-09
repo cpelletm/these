@@ -138,11 +138,61 @@ On the material side, the crystal has to remain electrically neutral which means
 
 On the experimental side, it has been shown that the ionization of NV$^-$ to NV$^0$ and the reverse process depend on the intensity and wavelength of the laser used for illumination \citep{aslam2013photo}. It was found that the optimal wavelength to preserve the NV$^-$ charge state was  $510-540\ \rm nm$. The most common wavelength used with NV centers is 532 nm (green) due to the historical importance of Nd:YAG lasers. On the other hand, it is possible to semi-permanently ionize the NV$^-$ into NV$^0$ when using a red excitation, which has been used to create an optical memory \citep{dhomkar2016long}.
 
-For samples in high excess of [N$_s$] such as type Ib HPHT diamonds, the question of the charge state of the NV center is of relatively low importance as the NV$^-$ state is the predominant one. For sample with a lower [N$_s$] content and a higher [NV]/[N$_s$] ratio however, one must be more careful with the optical intensity and wavelength used as the concentration of [NV$^0$] can reach 50\% of the total [NV] concentration and even more [les refs chez achard et barry]
+For samples in high excess of [N$_s$] such as type Ib HPHT diamonds, the question of the charge state of the NV center is of relatively low importance as the NV$^-$ state is the predominant one. For sample with a lower [N$_s$] content and a higher [NV]/[N$_s$] ratio however, one must be more careful with the optical intensity and wavelength used as the concentration of NV$^0$ can reach 50\% of the total NV concentration \citep{grezes2015storage}
 
+\section{The NV$^-$ center optical and spin properties}
 
-\section{The NV$^-$ center physics}
+We will now focus on the magnetic and optical properties of the NV$^-$ center. This section will cover...
 
+\subsection{NV center molecular orbitals}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{Figures/NV_electrons}
+\caption{(a) Representation of the nitrogen and carbon orbitals surrounding the vacancy of an NV center. Each black dot represents an electron. A sixth electron is required to form the negatively charged NV$^-$ state. (b) Molecular orbitals of the NV center predicted from the the $C_{3v}$ symmetry of the defect. The electron occupation of the NV$^-$ ground state is represented by red arrows.}
+\label{NV electrons}
+\end{figure}
+
+We will first cover the molecular aspect of the NV defect in diamond and the energy levels of the defect predicted from group theory and ab initio computations.
+
+Fig. \ref{NV electrons}-a) illustrates the $sp^3$ orbitals of the carbons and nitrogen atoms neighboring the vacancy, as well as the 5 electrons occupying dangling bonds from these atoms and a sixth electron captured to form the negatively charged NV$^-$ state. 
+
+Fig. \ref{NV electrons}-b) shows the predicted molecular orbitals of the NV centers, initially computed as linear combination of the $sp^3$ orbitals respecting the $C_{3v}$ symmetry of the defect \citep{loubser1978electron}. This model has since been confirmed by ab initio computation and experimental observations \citep{doherty2013nitrogen}. In particular ab initio computations have shown that the molecular orbitals of the NV center are mostly localized on the nearest neighbors of the vacancy \citep{gali2008ab}. Ab initio computation has also determined that the $a'_1$ lies in the valence band and is therefore often ignored.
+
+The electron occupations shown in Fig. \ref{NV electrons}-b) corresponds to the electronic ground state of the NV$^-$ charge state.
+
+In the remaining part of this manuscript, we will only consider the negatively charged NV$^-$ state, unless specified otherwise. We will therefore omit the ``$-$" and simply refer to the negatively charged state as ``NV".
+\subsection{Optical properties of the NV center}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{Figures/NV_optical}
+\caption{Optical properties of the NV center. (a) Electron occupation of the molecular orbitals for the electronic ground state $^3A_2$ and the first excited state $^3E$. (b) Diagram of the main optical transition between the two spin triplet states and of the IR transition between the two singlet sates. The value of the transition corresponds to the ZPL and are taken from \citep{doherty2013nitrogen}. (c) Representation of the vibronic structure for the $^3A_2$ and $3^E$ states under the Franck-Condon approximation. The graph axes are the energy of the states E and configuration coordinate q. The green and red arrow represents non-resonant (Stokes or anti-Stokes) absorption and emission. (d) Emission and absorption spectrum of the NV center main transition at 300 K, from PL and PLE measurements respectively. Taken from Wikipedia}
+\label{NV optical}
+\end{figure}
+
+Thanks to the discrete electronic transitions inside the diamond bad gap, the NV center is fluorescent: it can absorb light from $450-630$ nm and re-emits light in the $630-800$ nm band.
+
+Fig. \ref{NV optical} explains the mechanisms of the NV center optical activity. Fig. \ref{NV optical}-a) illustrates the electronic ground state $^3A_2$ and first excited state $^3E$, where 1 electron from the $a_1$ molecular orbital is promoted to the $e$ level. Both of these electron occupations have two unpaired electrons, meaning that they can exist either either in a spin triplet state ($S=1$) or a spin singlet state ($S=0$) \footnote{The two singlet states $^1E$ and $^1A_1$ represented in Fig. \ref{NV optical}-b) are both of configuration $a_1^2e^2$ where the two $e$ electrons are either in a the same $e$ orbital, or in an antisymmetric superposition of the two $e$ orbitals \citep{doherty2011negatively}.}. 
+
+Fig. \ref{NV optical}-b) shows the zero phonon line (ZPL) for the main transition of the triplet ($^3A_2$ and $^3E$) and singlet ($^1E$ and $^1A_1$) states. It should be noted that due to an inter system crossing between the $^1E$ and $^3A_2$ levels, excitation or absorption of the singlet transition is only possible with a conjoint excitation of the triplet states. By default, we refer to the NV center photoluminescence (PL) as the emission between the two triplet states.
+
+Fig. \ref{NV optical}-c) illustrates the vibronic structure of the $^3A_2$ and $^3E$ states under the Franck-Condon approximation \citep{gali2011time}. The emission and absorption of light associated with the triplet transition can be accompanied by the emission or absorption of an optical phonon. Because the lifetime of the optical phonons is very short, the absorption or emission of light almost always start from the fundamental state of the $^3A_2$ and $^3E$ level, which explains why the absorption of light can only be done for energies above the ZPL, and the emission for energies below the ZPL (Stokes process).
+
+Finally Fig. \ref{NV optical}-d) shows the absorption and emission spectrum of NV centers at 300 K. A weak zero-phonon-line is visible at 637 nm, with large phonon sidebands in emission and absorption.
+
+\medskip
+Compared to similar solid state photon sources (other color centers, quantum dots, dye molecules...), the NV center offer several advantages: thanks to the $\sim 11\ \rm ns$ lifetime of the excited state and close to 1 quantum efficiency \citep{kurtsiefer2000stable}, they are very bright. With proper nanophotonics engineering (solid immersion lenses or diamond waveguide) the PL collected from a single NV center can reach a few $10^6$ photons/s \citep{schroder2016quantum}. The NV center is also extremely photostable under green excitation, and does not show any photobleaching \citep{brouri2000photon}. There are however drawbacks in using NV centers for photonics applications, the main one being that $\leq 4\%$ of the photons emitted by the NV centers are in the ZPL (Debye Waller factor), even at cryogenic temperature \citep{johnson2015tunable}. This limits the potential of NV centers for quantum communication protocols that rely on a deterministic photon source \citep{bradac2019quantum}.
+
+\subsection{Spin properties of the NV center electronic ground state}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{Figures/spin_fine_hyperfine}
+\caption{tata}
+\label{NV spin}
+\end{figure}
+
+For most intent and purposes the hyper-fine structure of the NV center can be ignored, either 1 raie or ensemble.
+
+"particularly long electron and nuclear spin coherence times compared to other solid-state defect center" (Quantum nanophotonics in diamond)
 \printbibliography
 \end{document}

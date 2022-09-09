@@ -1753,4 +1753,4 @@ def plot_irregular_surface():
 	plt.show()
 
 
-print(2*1.54*sin(109.5/2*pi/180))
+print(np.exp(-4.57/(1+(2/3)*pi**2*294**2/(1614**2))))
