@@ -187,12 +187,91 @@ Compared to similar solid state photon sources (other color centers, quantum dot
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{Figures/spin_fine_hyperfine}
-\caption{tata}
+\caption{Representation of the fine and hyper-fine structure of the $^3A_2$ state for a $^{14}N$ nucleus and $^{12}C$ nuclei.}
 \label{NV spin}
 \end{figure}
 
-For most intent and purposes the hyper-fine structure of the NV center can be ignored, either 1 raie or ensemble.
+We will only focus here on the spin structure of the electronic ground state $^3A_2$, as the lifetime of the other states is too short to make effective spin qubits. All the numerical values in this section were found in \citep{smeltzer2009robust, doherty2013nitrogen} and the references within.
 
-"particularly long electron and nuclear spin coherence times compared to other solid-state defect center" (Quantum nanophotonics in diamond)
+The spin structure in the ground state consists in an electronic spin $S=1$ coupled to the nuclear spin of the nearby nuclei. Carbon's most common isotope is $^{12}C$ at 98.9 \% natural abundance. $^{12}C$ has a a nuclear spin $I=0$ and therefore causes no hyper-fine splitting. Nitrogen's most common isotope however is $^{14}N$ at 99.6 \% natural abundance which has a nuclear spin $I=1$ and does cause a hyper-fine splitting. We will only cover here the most likely configuration for an NV center which is a $^{14}N$ nucleus and $^{12}C$ nuclei as closest neighbors. 
+
+The spin system considered is then an electronic spin $S=1$ coupled to a nuclear spin $I=1$ with a Hilbert space of dimension $(2S+1)(2I+1)=9$. The spin Hamiltonian of the system can be written:
+\begin{equation}
+\mathcal{H}=\mathcal{H}_e + \mathcal{H}_n + \mathbf{S}\cdot \bar{\bar{A}}\cdot \mathbf{I},
+\end{equation}
+where $\mathcal{H}_e$ is the purely electronic spin Hamiltonian, $\mathcal{H}_n$ the purely nuclear spin Hamiltonian, $\mathbf{S}$ the electronic spin operator, $\mathbf{I}$ the nuclear spin operator and $\bar{\bar{A}}$ the hyper fine tensor.
+\subsubsection{Electronic spin Hamiltonian}
+The electronic spin $\mathcal{H}_e$ can be written:
+\begin{equation}
+\label{eq. spin elec}
+\mathcal{H}_e=D S_z^2 + \gamma_e \mathbf{S} \cdot \mathbf{B} + \mathcal{H}_{elec}(\mathbf{E})+ \mathcal{H}_{strain}(\mathbf{\bar{\bar{\varepsilon}}}).
+\end{equation}
+
+The term $D S_z^2$ causes the fine structure of the electronic spin. It originates from the dipole-dipole coupling between the two unpaired electrons of the defect. Due to the strong anisotropy of the molecular orbitals of the defect, the fine structure term imposes the quantization axis $\mathbf{z}$ (via the $S_z$ operator) where $\mathbf{z}$ is the direction of the N$-$V axis in the diamond. $D$ is called the zero field splitting (ZFS) factor and its value is $D\approx 2.87\ \rm GHz$ at 300 K.
+
+$\gamma_e \mathbf{S} \cdot \mathbf{B}$ is the Zeeman splitting of the spin, where $\gamma_e \approx 2.8\ \rm MHz/G$ is the gyromagnetic ratio of the electronic spin (almost equal to that of a free electron in the case of the NV center).
+
+$\mathcal{H}_{elec}$ and $\mathcal{H}_{strain}$ are the dependency of the Hamiltonian on the electric field and crystal strain and will be discussed in further details in chapter 4.
+
+\subsubsection{Nuclear spin Hamiltonian and hyperfine coupling}
+The nuclear spin $\mathcal{H}_n$ can be written:
+\begin{equation}
+\mathcal{H}_e=Q I_z^2 + \gamma_n \mathbf{I} \cdot \mathbf{B},
+\end{equation}
+
+where $Q=-4.945\ \rm MHz$ is the nucleus electric quadrupole moment and $\gamma_n=0.308\ \rm kHz/G$ is the nuclear gyromagnetic ratio.
+
+Finally the hyper-fine tensor can be written diagonally:
+\begin{equation}
+\bar{\bar{A}} = \begin{pmatrix}
+A_{xx} & 0 & 0 \\
+0 & A_{yy} & 0 \\
+0 & 0 & A_{zz}
+\end{pmatrix},
+\end{equation}
+where $A_{zz}=-2.162\ \rm MHz$ and $A_{xx}=A_{yy}=-2.62\ \rm MHz$.
+
+Fig. \ref{NV spin} illustrates the fine and hyper-fine structure of the NV center in zero external field.
+
+Because $\gamma_n \ll \gamma_e$, the hyper-fine structure of the NV center can simply be thought of as a constant energy offset. This explains why for most intent and purposes the hyper-fine structure is ignored, along the electric and strain dependencies, which leads to the simpler spin Hamiltonian:
+
+\begin{align}
+\mathcal{H}&=D S_z^2 + \gamma_e \mathbf{S} \cdot \mathbf{B} \\
+&=\begin{pmatrix}
+D-\gamma_e B_z & \gamma_e (B_x+iB_y) & 0 \\
+\gamma_e (B_x-iB_y) & 0 & \gamma_e (B_x+iB_y) \\
+0 & \gamma_e (B_x+iB_y) & D+\gamma_e B_z
+\end{pmatrix}
+\end{align}
+
+
+
+\medskip
+The NV center's spin usage as a qubit is prevalent in quantum communication \citep{wehner2018quantum}, quantum computing \citep{de2021materials} and quantum sensing \citep{degen2017quantum}. Part of the reason is the overall long relaxation times (lifetime $T_1$ and coherence time $T_2$) of the order of a few ms at room temperature \citep{balasubramanian2009ultralong}, as well as the ability to address individual nuclear spins with even longer relaxation times \citep{awschalom2018quantum}. However the main advantage of the NV center spin compared to other spin qubit (quantum dots, superconducting) is its ability to be polarized and read-out optically thanks to the properties detailed in the following section.
+
+
+\subsection{Spin and optical levels intersystem crossing}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{Figures/ISC}
+\caption{Inter system crossing of the NV center. Blue arrows symbolize decay channels to and from the $\ket{m_s=\pm 1}$ states and red arrows the decay channels to and from the $\ket{m_s=0}$ states. Green arrows symbolize the optical excitation induced by the laser. The times indicated correspond to the inverse of the decay rates found in \citep{gupta2016efficient}.}
+\label{ISC}
+\end{figure}
+
+The optical excitation and radiative decay between the $^3A_2$ and $^3E$ levels preserve the spin projection $m_s$ \citep{robledo2011spin}. There is however a non-radiative decay path which involves in inter-system crossing with the singlet states $^1A_1$ and $^1E$ which depends on the the triplet states spin projection.
+
+Fig. \ref{ISC} summarizes the possible decay channels from the $^3E$ states. We assume that the electrons are initially excited from the $^3A_2$ states via a green laser with a rate $\gamma_las$. The $^3E$ states can then either decay radiatevely and emit a 637$-$800 nm photon, or undergo an intersystem crossing and decay through the singlet states. We do consider the decay channel through the singlet state as non-radiative due to the strong non radiative channels competing with the IR radiative transition (quantum efficiency $\leq 10^{-3}$ \citep{rogers2008infrared, ma2010excited, acosta2010optical}).
+
+The rates $\gamma$ of these intersystem crossings, represented in Fig. \ref{ISC} by the time constant $\tau=1/\gamma$, strongly depends on the spin projection $m_s$: the likeliness to undergo a non-radiative decay is $\sim 4$\footnote{$\frac{15+91}{15+11}\approx 4$} times more likely when starting from the $\ket{\pm 1}$ states than when starting from the $\ket{0}$ state. Similarly, the singlet state is $\sim 2.4$\footnote{$\frac{492}{204} \approx 2.4$} more likely to decay in the $\ket{0}$ state than in the $\ket{\pm 1}$ states.
+
+These spin selective intersystem crossings mean that under constant green excitation an optical pumping scheme in the $\ket{m_s=0}$ spin states takes place. At optical saturation, the polarization of the $\ket{0}$ state can reach $70-90\ \%$ \citep{gupta2016efficient}, which is equivalent to a thermal polarization (for B=0) with a spin temperature of $\approx 65\ \rm mK$ \footnote{\begin{equation*}
+T=\frac{h D}{k_B \ln (\frac{1-P}{2P})} \approx 65\ \rm mK,
+\end{equation*}
+where $D$ is th ZFS factor described in eq. (\ref{eq. spin elec}) and $P\approx 0.8$ is the spin polarization defined as the population in the $\ket{0}$ state.} even for a crystal lattice temperature of 300 K. 
+
+Another effect of the intersystem crossing is the ability optically readout the spin state of the NV center: since the $\ket{m_s=0}$ state is more likely to undergo a radiative decay than the $\ket{m_s=\pm 1}$ states, the expected photoluminescence (PL) is higher when starting from a $\ket{m_s=0}$ state than a $\ket{m_s=\pm 1}$ state. While the $\ket{+1}$ and $\ket{-1}$ cannot be a priori distinguished, a direct excitation of the $\ket{+1} \to \ket{0}$ or $\ket{-1} \to \ket{0}$ transition with a resonant microwave can ambiguously reveal the initial spin state.
+
+Check le papier de vincent, ça m'a l'air tout faux ce truc. It should be noted that the decay rates indicated in Fig. \ref{ISC} cannot be directly measured. \citep{gupta2016efficient} infers them from short-time evolution of the PL after the laser is turned on. \citep{tetienne2012magnetic} used a different approach where they looked at the photodynamics as a function of the transverse magnetic field and found significantly different decay rates (by up to a factor of $\sim$ 2). 
+
 \printbibliography
 \end{document}

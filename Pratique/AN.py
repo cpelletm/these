@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import cos, sin, tan, pi, arccos, arcsin, sqrt, exp
+from numpy import cos, sin, tan, pi, arccos, arcsin, sqrt, exp, log
 import matplotlib.pyplot as plt
 
 kb=1.38E-23
@@ -13,7 +13,7 @@ m_carbon=12.01/Na #g
 #Autre odg : ppm=1e5/µm3
 #Autre odg : 5 ppm = 10.4 nm de distance moyenne
 
-print(1e5*(20e-3**3)*5)
+# print(1e5*(20e-3**3)*5)
 
 P=1e5
 T=300
@@ -22,6 +22,7 @@ eV=1.6E-19
 # Theta_NV=arccos(-1/3)
 # print(Theta_NV*180/pi)
 
+print(h*2870*1e6/(kb*log((2*0.8)/(1-0.8))))
 
 
 def pola_NV(T):
