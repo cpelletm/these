@@ -240,14 +240,14 @@ Because $\gamma_n \ll \gamma_e$, the hyper-fine structure of the NV center can s
 &=\begin{pmatrix}
 D-\gamma_e B_z & \gamma_e (B_x+iB_y) & 0 \\
 \gamma_e (B_x-iB_y) & 0 & \gamma_e (B_x+iB_y) \\
-0 & \gamma_e (B_x+iB_y) & D+\gamma_e B_z
+0 & \gamma_e (B_x-iB_y) & D+\gamma_e B_z
 \end{pmatrix}
 \end{align}
 
 
 
 \medskip
-The NV center's spin usage as a qubit is prevalent in quantum communication \citep{wehner2018quantum}, quantum computing \citep{de2021materials} and quantum sensing \citep{degen2017quantum}. Part of the reason is the overall long relaxation times (lifetime $T_1$ and coherence time $T_2$) of the order of a few ms at room temperature \citep{balasubramanian2009ultralong}, as well as the ability to address individual nuclear spins with even longer relaxation times \citep{awschalom2018quantum}. However the main advantage of the NV center spin compared to other spin qubit (quantum dots, superconducting) is its ability to be polarized and read-out optically thanks to the properties detailed in the following section.
+The NV center's spin usage as a qubit is prevalent in quantum communication \citep{wehner2018quantum}, quantum computing \citep{de2021materials} and quantum sensing \citep{degen2017quantum}. Part of the reason is the overall long relaxation times (lifetime $T_1$ and coherence time $T_2$) of the order of a few ms at room temperature \citep{balasubramanian2009ultralong}, as well as the ability to address individual nuclear spins with even longer relaxation times \citep{awschalom2018quantum}. However the main advantage of the NV center spin compared to other spin qubits is its ability to be polarized and read-out optically thanks to the properties detailed in the following section.
 
 
 \subsection{Spin and optical levels intersystem crossing}
@@ -258,20 +258,81 @@ The NV center's spin usage as a qubit is prevalent in quantum communication \cit
 \label{ISC}
 \end{figure}
 
-The optical excitation and radiative decay between the $^3A_2$ and $^3E$ levels preserve the spin projection $m_s$ \citep{robledo2011spin}. There is however a non-radiative decay path which involves in inter-system crossing with the singlet states $^1A_1$ and $^1E$ which depends on the the triplet states spin projection.
+The optical excitation and radiative decay between the $^3A_2$ and $^3E$ levels preserve the spin projection $m_s$ \citep{robledo2011spin}. There is however a non-radiative decay path which involves in inter-system crossing with the singlet states $^1A_1$ and $^1E$ that depends on the the triplet states spin projection.
 
-Fig. \ref{ISC} summarizes the possible decay channels from the $^3E$ states. We assume that the electrons are initially excited from the $^3A_2$ states via a green laser with a rate $\gamma_las$. The $^3E$ states can then either decay radiatevely and emit a 637$-$800 nm photon, or undergo an intersystem crossing and decay through the singlet states. We do consider the decay channel through the singlet state as non-radiative due to the strong non radiative channels competing with the IR radiative transition (quantum efficiency $\leq 10^{-3}$ \citep{rogers2008infrared, ma2010excited, acosta2010optical}).
+Fig. \ref{ISC} summarizes the possible decay channels from the $^3E$ states. We assume that the electrons are initially excited from the $^3A_2$ states via a green laser with a rate $\gamma_{\rm las}$. The $^3E$ states can then either decay radiatevely and emit a 637$-$800 nm photon, or undergo an intersystem crossing and decay through the singlet states. We do consider the decay channel through the singlet state as non-radiative due to the strong non radiative channels competing with the IR radiative transition (quantum efficiency $\leq 10^{-3}$ for the singlet transition \citep{rogers2008infrared, ma2010excited, acosta2010optical}).
 
-The rates $\gamma$ of these intersystem crossings, represented in Fig. \ref{ISC} by the time constant $\tau=1/\gamma$, strongly depends on the spin projection $m_s$: the likeliness to undergo a non-radiative decay is $\sim 4$\footnote{$\frac{15+91}{15+11}\approx 4$} times more likely when starting from the $\ket{\pm 1}$ states than when starting from the $\ket{0}$ state. Similarly, the singlet state is $\sim 2.4$\footnote{$\frac{492}{204} \approx 2.4$} more likely to decay in the $\ket{0}$ state than in the $\ket{\pm 1}$ states.
+The rates $\gamma$ of the various decay processes, represented in Fig. \ref{ISC} by the time constant $\tau=1/\gamma$, strongly depends on the spin projection $m_s$: the likeliness to undergo a non-radiative decay is $\sim 4$ times\footnote{$$\frac{15+91}{15+11}\approx 4$$} more likely when starting from the $\ket{\pm 1}$ states than when starting from the $\ket{0}$ state. Similarly, the singlet state is $\sim 2.4$ times\footnote{$$\frac{492}{204} \approx 2.4$$} more likely to decay in the $\ket{0}$ state than in the $\ket{\pm 1}$ states.
 
-These spin selective intersystem crossings mean that under constant green excitation an optical pumping scheme in the $\ket{m_s=0}$ spin states takes place. At optical saturation, the polarization of the $\ket{0}$ state can reach $70-90\ \%$ \citep{gupta2016efficient}, which is equivalent to a thermal polarization (for B=0) with a spin temperature of $\approx 65\ \rm mK$ \footnote{\begin{equation*}
+These spin selective intersystem crossings mean that an optical pumping scheme in the $\ket{m_s=0}$ spin state takes place under constant green excitation. At optical saturation, the polarization of the $\ket{0}$ state can reach $70-90\ \%$ \citep{gupta2016efficient}, which is equivalent to a thermal polarization (for B=0) with a spin temperature of $\approx 65\ \rm mK$ \footnote{\begin{equation*}
 T=\frac{h D}{k_B \ln (\frac{1-P}{2P})} \approx 65\ \rm mK,
 \end{equation*}
-where $D$ is th ZFS factor described in eq. (\ref{eq. spin elec}) and $P\approx 0.8$ is the spin polarization defined as the population in the $\ket{0}$ state.} even for a crystal lattice temperature of 300 K. 
+where $D$ is th ZFS factor described in eq. (\ref{eq. spin elec}) and $P\approx 0.8$ is the spin polarization defined as the population in the $\ket{0}$ state.} while the diamond itself can remain at room temperature.
 
-Another effect of the intersystem crossing is the ability optically readout the spin state of the NV center: since the $\ket{m_s=0}$ state is more likely to undergo a radiative decay than the $\ket{m_s=\pm 1}$ states, the expected photoluminescence (PL) is higher when starting from a $\ket{m_s=0}$ state than a $\ket{m_s=\pm 1}$ state. While the $\ket{+1}$ and $\ket{-1}$ cannot be a priori distinguished, a direct excitation of the $\ket{+1} \to \ket{0}$ or $\ket{-1} \to \ket{0}$ transition with a resonant microwave can ambiguously reveal the initial spin state.
+Another effect of the intersystem crossing is the ability to optically readout the spin state of the NV center: since the $\ket{m_s=0}$ state is more likely to undergo a radiative decay than the $\ket{m_s=\pm 1}$ states, the expected photoluminescence (PL) is higher when starting from a $\ket{m_s=0}$ state than a $\ket{m_s=\pm 1}$ state. While the $\ket{+1}$ and $\ket{-1}$ states cannot be a priori distinguished, a direct excitation of the $\ket{+1} \to \ket{0}$ or $\ket{-1} \to \ket{0}$ transition with a resonant microwave can unambiguously reveal the initial spin state.
 
-Check le papier de vincent, ça m'a l'air tout faux ce truc. It should be noted that the decay rates indicated in Fig. \ref{ISC} cannot be directly measured. \citep{gupta2016efficient} infers them from short-time evolution of the PL after the laser is turned on. \citep{tetienne2012magnetic} used a different approach where they looked at the photodynamics as a function of the transverse magnetic field and found significantly different decay rates (by up to a factor of $\sim$ 2). 
+It should be noted that the decay rates indicated in Fig. \ref{ISC} cannot be directly measured. They have to be inferred from the PL dynamics at short times after illumination. Different experiments and different modeling processes have thus lead to different decay rates \citep{duarte2021effect}. 
+
+
+\section{Basic operations with NV centers}
+
+This section will cover
+
+\subsection{Experimental setup}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{Figures/shema_exp}
+\caption{Confocal microscopy setup detailed in main text}
+\label{setup}
+\end{figure}
+The three most common experimental degrees of freedom to consider for NV experiments are: the optical illumination, the microwave field and the external magnetic field. Other parameters such as the crystal temperature, the electric field or the crystal stress can also be controlled for specific applications.
+
+Fig. \ref{setup} shows a multi-purpose experimental setup which offers a control over these three degree of freedoms. Unless specified otherwise, this is the experimental setup that we used to perform all the measurements shown in this manuscript. 
+
+The setup consists of a confocal microscope where the excitation from a green laser (Thorlabs CPS532, 532 nm, 5 mW) is focused on a sample containing NV centers with a microscope objective (NA $\sim$ 0.5). The NV PL is then collected by the same objective and isolated from the back-scattered laser light with a dichroic mirror (DM) and additional filters (532 nm notch filter and 645 nm longpass filter to filter out the NV$^0$ PL). The PL is collected on an avalanche photodiode (Thorlabs APD410A or Perkin Elmer SPCM-AQRH-15) whose signal is sent to the acquisition card (NI X-series).
+
+The laser beam goes through an acousto-optic modulator (AOM, AA opto-electronic) controlled externally to create arbitrary light pulses (resolution $\sim$ ns). The microwave field is generated by a Rhode \& Shwarz SMB 100A generator and emitted with a home-made loop antenna positioned at $<$ 1 mm of the sample. A microwave switch (Mini-circuits ZASWA-2-50DRA+) is used to create microwave pulses (resolution $\sim$ 10 ns). The control pulses for the AOM and the microwave switch are generated either by the NI X-series card (resolution $\sim$ 1 $\mu$s), or by a pulseblaster ESR-PRO (resolution $\sim$ 10 ns). The microwave field can be amplified with a Mini-circuits ZHL-5W-422+ amplifier to achieve higher Rabi frequencies. 
+
+Finally the magnetic field is generated either with a permanent magnet (up to $\sim$ 200 mT) or with a homemade electromagnet (up to $\sim$ 30 mT) alimented via a low freqency amplifier (Leybold power function generator 522663). Both the permanent magnet and the electromagnet can be  attached to a rotation stage for precise alignment.
+\subsection{Rabi Oscillations}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/Rabi}
+\caption{Rabi oscillations. (a) pulse sequence used to measure Rabi oscillations. (b) Experimental data on sample CVD-pink (cf samples [REF]).}
+\label{Rabi}
+\end{figure}
+
+The general technique for experiments involving NV spins proceeds as follow: 
+\begin{itemize}
+\item First the spins are polarized. This is done with a green laser pulse ($1-100$ $\mu$s depending on the laser intensity) which polarizes the spins in the $\ket{m_s=0}$ state at $\sim$ 80 \%.
+\item  Then the spins are manipulated. This process often involves a microwave field resonant with one of the spin transitions.
+\item Finally the spins are read out. The simplest spin readout for NV centers (but not the only one) consists in looking at the PL right after the laser is turned on: if the spin was in the $\ket{m_s=0}$ state, the initial PL will be high, whereas if the spin was in a $\ket{m_s=\pm 1}$ state, the initial PL will be low. For longer exposure time, the spins end up re-polarized in the $\ket{m_s=0}$ state and no information can be gained on the initial spin state anymore. The optimal readout time is of the same order as the spin polarization time ($1-100$ $\mu$s).
+\end{itemize}
+
+Fig. \ref{Rabi}-a) shows the pulse sequence used to observe Rabi oscillations with NV centers. In this case, the spins manipulation simply consists in a microwave pulse of variable duration $\tau$. The microwave frequency or the magnetic field need to be adjusted so that at least one NV spin transition (either $\ket{0} \to \ket{+1}$ or $\ket{0} \to \ket{-1}$) is resonant with the microwave field. 
+
+Fig. \ref{Rabi}-b) shows the result of such an experiment on a spin ensemble. The PL signal oscillations correspond to the oscillations of the spin population between the bright $\ket{0}$ state and the dark $\ket{-1}$ state. For long microwave pulses ($>$ 1 $\mu$s typically), the spins reach a steady state with  $\sim$ 50 \% population in both the $\ket{0}$ and $\ket{-1}$ states.
+
+
+\subsection{Optically detected magnetic resonance}
+
+\subsubsection{intro (PL)}
+
+\subsubsection{8 classes}
+
+\subsubsection{hyper-fine (?)}
+
+\subsubsection{Lock-in}
+
+\section{Measuring the NV center spin properties}
+
+\subsection{$T_1$ measurement}
+
+\subsection{$T_2^*$ measurement: Ramsey interferometry}
+
+\subsection{$T_2$ measurement: Spin-echo and dynamical decoupling}
+
+\section{Dipole-dipole interaction between two electronic spins}
 
 \printbibliography
 \end{document}

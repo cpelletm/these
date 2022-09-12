@@ -437,7 +437,7 @@ def stretch_et_phonons_non_zero(x,y,amp=None,ss=None,tau=None,T1ph=5E-3,fixed=Tr
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
 	return(popt,f(x,*popt))
 
-def Rabi_fit(x,y,amp=None,omega=None,tau=None,ss=None):
+def Rabi_fit(x,y,amp=None,omega=None,tau=None,ss=None,phi=0,typ='lor'):
 	if not amp :
 		amp=max(y)-min(y)
 	if not ss :
@@ -446,8 +446,12 @@ def Rabi_fit(x,y,amp=None,omega=None,tau=None,ss=None):
 		tau=x[int(len(x)/3)]-x[0]
 	if not omega :
 		omega=1/(x[int(len(x)/10)]-x[0])
-	def f(x,amp,ss,tau,omega) :
-		return amp*np.exp(-x/tau)*np.cos(omega*x)+ss
+	if typ=='lor' :
+		def f(x,amp,ss,tau,omega) :
+			return amp*np.exp(-x/tau)*np.cos(omega*x+phi)+ss
+	elif typ=='gauss' :
+		def f(x,amp,ss,tau,omega) :
+			return amp*np.exp(-(x/tau)**2)*np.cos(omega*x+phi)+ss
 	p0=[amp,ss,tau,omega]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
