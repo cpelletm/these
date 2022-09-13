@@ -1,6 +1,11 @@
 import numpy as np
 from numpy import cos, sin, tan, pi, arccos, arcsin, sqrt, exp, log
 import matplotlib.pyplot as plt
+import sys
+sys.path.append('D:\\These Clément\\these\\python_clément')
+sys.path.append('C:\\Users\\cleme\\OneDrive\\Documents\\these\\python_clément')
+sys.path.append('/home/pellet-mary/these/python_clément')
+from analyse import *
 
 kb=1.38E-23
 Na=6.02e23
@@ -41,6 +46,32 @@ def couplage_NV():
 	J=52*1e6*(1e-9**3) #J=52 MHz*nm3 en SI
 	c=J/(d_NV**3)
 	print('%e'%c)
+
+def simu_NRJ_NV():
+	D=2870
+	gamma=2.8
+	theta=1
+	Bmax=500
+	n=300
+	Bs=[[B*sin(theta),0,B*cos(theta)] for B in np.linspace(0,Bmax,n)]
+	Bnorms=np.array([np.linalg.norm(B) for B in Bs])
+	levels=np.zeros((n,3))
+	for i in range(n):
+		H=NVHamiltonian(Bs[i],c=5)
+		levels[i,:]=H.egval()
+	plt.plot(Bnorms,levels)
+	approx_zero=-(gamma*Bnorms*sin(theta))**2/D
+	approx_moins=D-gamma*Bnorms*cos(theta)+(gamma*Bnorms*sin(theta))**2/D/2
+	approx_plus=D+gamma*Bnorms*cos(theta)+(gamma*Bnorms*sin(theta))**2/D/2
+	plt.plot(Bnorms,approx_zero,'--')
+	plt.plot(Bnorms,approx_moins,'--')
+	plt.plot(Bnorms,approx_plus,'--')
+	plt.show()
+
+
+simu_NRJ_NV()
+
+
 
 # couplage_NV()
 

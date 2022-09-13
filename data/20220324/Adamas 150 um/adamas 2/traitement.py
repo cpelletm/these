@@ -1,13 +1,15 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
+sys.path.append('C:\\Users\\cleme\\OneDrive\\Documents\\these\\python_clément')
 sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-plt.figure(num=1,figsize=(3,2),dpi=80)
-plt.xticks(fontsize=13)
-plt.yticks(fontsize=13)
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 plt.locator_params(axis='x', nbins=5)
+plt.locator_params(axis='y', nbins=5)
 
 
 

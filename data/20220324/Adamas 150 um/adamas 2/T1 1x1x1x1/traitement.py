@@ -1,15 +1,18 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
+sys.path.append('C:\\Users\\cleme\\OneDrive\\Documents\\these\\python_clément')
 sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-plt.figure(num=1,figsize=(3,2),dpi=80)
-x,y=extract_data('ESR/V=-2.040000')
-y=y/max(y)
-plt.plot(x,y)
-plt.xticks(fontsize=11)
-plt.yticks(fontsize=12)
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+plt.locator_params(axis='x', nbins=5)
+plt.locator_params(axis='y', nbins=5)
+
+
+
 
 fnames,fval=extract_glob('ESR')
 n=len(fval)
@@ -21,30 +24,46 @@ n=len(fval)
 # B=find_B_cartesian_mesh(peaks,transi='all')
 # print(B,B.amp,B.angleFrom100(),B.angleFrom111())
 
-# Bs=[np.array([78.55,31.8,16.86])*(x-0.17)/2.8 for x in fval]
+def plot_ESR_3V():
+	x,y=extract_data('ESR/V=3.000000')
+	# y=y/max(y)
+	plt.plot(x,y)
 
-# transis=np.zeros((n,8))
-# for i in range(n):
-# 	fname=fnames[i]
-# 	x,y=extract_data(fname)
-# 	cs=find_ESR_peaks(x,y,threshold=0.3)
-# 	if len(cs)==8 :
-# 		transis[i,:]=cs
-# 	else :
-# 		transis[i,:]=[np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan]
+def plot_transis_exp():
+	Bs=[np.array([78.55,31.8,16.86])*(x-0.17)/2.8 for x in fval]
+	transis=np.zeros((n,8))
+	for i in range(n):
+		fname=fnames[i]
+		x,y=extract_data(fname)
+		cs=find_ESR_peaks(x,y,threshold=0.3)
+		if len(cs)==8 :
+			transis[i,:]=cs
+		else :
+			transis[i,:]=[np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan]
 
-# for j in range(8):
-# 	plt.plot(fval,transis[:,j],'x')
+	for j in range(8):
+		plt.plot(fval,transis[:,j],'x')
+
+def plot_NRJ_8_classes():
+	n=300
+	Bs=[np.array([78.55,31.8,16.86])*x for x in np.linspace(0,5,n)]
+	Bnorm=[norm(B) for B in Bs]
+	transis=np.zeros((n,8))
+	for i in range(n):
+		cart=Bs[i]
+		B=magneticField(cart[0],cart[1],cart[2])
+		transis[i,:]=B.transitions4Classes()
+
+	for j in range(4):
+		plt.plot(Bnorm,transis[:,j],color=color(j),label='Class %i'%(j+1))
+
+	for j in range(4,8):
+		plt.plot(Bnorm,transis[:,j],color=color(7-j))
+
+	plt.legend()
 
 
-# transis=np.zeros((n,8))
-# for i in range(n):
-# 	cart=Bs[i]
-# 	B=magneticField(cart[0],cart[1],cart[2])
-# 	transis[i,:]=B.transitions4Classes()
 
-# for j in range(8):
-# 	plt.plot(fval,transis[:,j])
 
 # y=list(transis[:35,0])+list(transis[65:,7])
 # x=fval[:35]+fval[65:]

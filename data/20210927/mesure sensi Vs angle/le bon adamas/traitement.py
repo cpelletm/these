@@ -1,5 +1,6 @@
 import sys
 sys.path.append('D:\\These Clément\\these\\python_clément')
+sys.path.append('C:\\Users\\cleme\\OneDrive\\Documents\\these\\python_clément')
 sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
@@ -31,8 +32,6 @@ def plot_sensi_angulaire():
 	errbars=0.09*y
 	plt.errorbar(x,y,lw=2,elinewidth=1.5,ecolor=color(0),yerr=errbars,capsize=4)
 	plt.ylim([0,170])
-
-
 
 # plot_sensi_angulaire()
 
@@ -97,7 +96,7 @@ def plot_scan():
 
 	plt.legend()
 
-plot_scan()
+# plot_scan()
 
 
 def plot_T1_exp():
@@ -120,4 +119,11 @@ def plot_T1_exp():
 	plt.legend()
 
 # plot_T1_exp()
+
+def plot_ESR_OB():
+	x,y=extract_data('ESR 0B')
+	# y=y/max(y)
+	plt.plot(x[35:265],y[35:265])
+
+plot_ESR_OB()
 plt.show()

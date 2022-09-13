@@ -236,6 +236,7 @@ Fig. \ref{NV spin} illustrates the fine and hyper-fine structure of the NV cente
 Because $\gamma_n \ll \gamma_e$, the hyper-fine structure of the NV center can simply be thought of as a constant energy offset. This explains why for most intent and purposes the hyper-fine structure is ignored, along the electric and strain dependencies, which leads to the simpler spin Hamiltonian:
 
 \begin{align}
+\label{NV spin Hamiltonian basic}
 \mathcal{H}&=D S_z^2 + \gamma_e \mathbf{S} \cdot \mathbf{B} \\
 &=\begin{pmatrix}
 D-\gamma_e B_z & \gamma_e (B_x+iB_y) & 0 \\
@@ -315,20 +316,60 @@ Fig. \ref{Rabi}-b) shows the result of such an experiment on a spin ensemble. Th
 
 
 \subsection{Optically detected magnetic resonance}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/ODMR_basique}
+\caption{ODMR protocol. (a) Pulse sequence used for CW ODMR: the microwave is kept on during the whole sequence while the frequency is scanned from $f_{\rm start}$ to $f_{\rm end}$. (b) ODMR spectrum with no magnetic field on sample ADM-15-4.
+\label{ODMR basique}
+\end{figure}
 
-\subsubsection{intro (PL)}
+Optically detected magnetic resonance (ODMR) is the most commonly employed magnetometry protocol with NV centers due to its simplicity and the fact that it does not require prior calibration.
 
-\subsubsection{8 classes}
+The protocol for continuous wave (CW) ODMR is presented in Fig. \ref{ODMR basique}. In this simple protocol, the microwave is always turned on while the frequency spans a predefined interval $[f_{\rm start}, f_{\rm end}]$. The PL is recorded as the microwave is being swept, with a typical acquisition time for each PL sample $> 1\ \rm ms$. The sweeping frequency must be slow enough so that the PL can reach a steady state with the microwave field for each sample acquisition. 
 
-\subsubsection{hyper-fine (?)}
+As we saw in the last section, the steady state of the NV center spin with a resonant microwave field is a statistical mixture of 50 \% $\ket{0}$ and 50 \% $\ket{\pm 1}$ \footnote{We are assuming here that the Rabi frequency is greater than the laser polarizing rate, which is often the case in practice}. If the microwave field is not resonant with a spin transition however, the steady state is predominantly $\ket{0}$ due to the spin polarization caused by the laser. The NV PL will therefore be lowered when the scanning microwave field becomes resonant with one of the NV spin transitions. 
 
-\subsubsection{Lock-in}
+Fig. \ref{ODMR basique}-b) shows an example of ODMR spectrum on an NV ensemble with no external magnetic field. The reason for the two bumps instead of a single one centered on $D=2870\ \rm MHz$ is the splitting of the $\ket{+1}$ and $\ket{-1}$ levels occasioned by the strain and local electric field, which will be further discussed in chapter 4.
+
+\subsubsection{ODMR with lock-in detection}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/ODMR_lockin}
+\caption{ODMR protocol with lock-in detection. (a) Simplified confocal microscope setup with a lock-in amplifier (LIA) modulating the mircowave and demodulating the PL. (b) Demodulated ODMR spectrum with no magnetic field on sample ADM-15-4.}
+\label{ODMR lockin}
+\end{figure}
+
+
+Because of the ODMR protocol delivers a continuous signal (the PL) as a function of a periodic excitation (the microwave field), it is well suited to amplitude or frequency modulation and lock-in detection. 
+
+The principle of lock-in detection will not be covered here, the key idea is that lock-in detection allows to translate the signal spectrally in a region less prone to noise. In this case, the ODMR signal is a DC measurement and is therefore prone to slow freqency noises such as thermal or mechanical drifts and laser amplitude fluctuations. The microwave field can thus be modulated (in amplitude, frequency or phase) at a frequency fast enough to mitigate the low freqency noises, but slow enough compared to the NV photodynamics. All the lock-in spectra shown in this manuscript were produced with 100 \% amplitude modulation at a frequency $f_{\rm mod} \sim 1 kHz$.
+
+Fig. \ref{ODMR lockin}-a) shows the ODMR lock-in setup, and Fig. \ref{ODMR lockin}-b) shows an example of ODMR spectrum with microwave amplitude modulation.
+
+\subsection{ODMR with NV ensemble: longitudinal and transverse magnetic field}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/ODMR_8_classes}
+\caption{(a) Geometry of the NV center and definition of $B_z$ and $B_\perp$. (b) Representation of the 4 possibles orientations (``classes") of the N$-$V axis, corresponding to the 4 $\langle 111 \rangle$ directions of the diamond cubic cell. (c) Simulation of the evolution of the transition frequencies for each class of NV center as a function of the amplitude of the applied magnetic field ($\textbf{B}$ orientation chosen arbitrarily). (d) ODMR spectrum on sample ADM-150-1 for a magnetic field of $\sim 90\ \rm G$.}
+\label{ODMR lockin}
+\end{figure}
+
+We mentioned previously that the NV spin Hamiltonian (eq. (\ref{NV spin Hamiltonian basic})) was highly anisotropic due to the fine structure term $D S_z^2$ where $z$ is the direction of the N$-$V axis in the crystal. The magnetic field is thus often decomposed between the longitudinal magnetic field $B_z$ and the transverse magnetic field $B_\perp$. For weak magnetic fields ($\gamma |\textbf{B}| \ll D$), the energy of each of the three spin Hamiltonian eigenstates $\ket{0}$, $\ket{+1}$ and $\ket{-1}$\footnote{The notation of ... is slightly abusive as ...} can be approximated to: %cf AN.py
+\begin{align}
+\nu_0&= 
+\end{align}
+
+
+
+
 
 \section{Measuring the NV center spin properties}
 
 \subsection{$T_1$ measurement}
 
 \subsection{$T_2^*$ measurement: Ramsey interferometry}
+Parler aussi d'ODMR et pourquoi pas un exemple de différence entre 2 samples clean et pas clean
 
 \subsection{$T_2$ measurement: Spin-echo and dynamical decoupling}
 
