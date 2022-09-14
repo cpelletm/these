@@ -50,7 +50,7 @@ def couplage_NV():
 def simu_NRJ_NV():
 	D=2870
 	gamma=2.8
-	theta=1
+	theta=1.5
 	Bmax=500
 	n=300
 	Bs=[[B*sin(theta),0,B*cos(theta)] for B in np.linspace(0,Bmax,n)]
@@ -61,8 +61,8 @@ def simu_NRJ_NV():
 		levels[i,:]=H.egval()
 	plt.plot(Bnorms,levels)
 	approx_zero=-(gamma*Bnorms*sin(theta))**2/D
-	approx_moins=D-gamma*Bnorms*cos(theta)+(gamma*Bnorms*sin(theta))**2/D/2
-	approx_plus=D+gamma*Bnorms*cos(theta)+(gamma*Bnorms*sin(theta))**2/D/2
+	approx_moins=D-gamma*Bnorms*cos(theta)+(gamma*Bnorms*sin(theta))**2/(D-gamma*Bnorms*cos(theta))
+	approx_plus=D+gamma*Bnorms*cos(theta)+(gamma*Bnorms*sin(theta))**2/(D+gamma*Bnorms*cos(theta))
 	plt.plot(Bnorms,approx_zero,'--')
 	plt.plot(Bnorms,approx_moins,'--')
 	plt.plot(Bnorms,approx_plus,'--')

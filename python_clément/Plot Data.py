@@ -8,24 +8,30 @@ def choseFileAction(filename=False):
 	lineSelection.removeAll()
 	global startPath,lastFile
 	if not filename :
-		filename,filters=QFileDialog.getOpenFileName(directory=startPath,filter='*.csv')
+		filename,filters=QFileDialog.getOpenFileName(directory=startPath,filter="data file(*.csv *.txt)")
 	GUI.changeTitle('Plot Data:'+filename)
 	lastFile=filename
 	if filename :	
 		startPath=os.path.dirname(filename)
-		with open(filename,'r',encoding = "ISO-8859-1") as f:
-			global data
-			data = list(csv.reader(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_NONNUMERIC))
-		for i in range(len(data)//2):
-			lineSelection.addItem('Line %i'%(i+1))
-		lineSelection.setEnabled(True)
-		try :
-			assert lastIndex < len(lineSelection.dic) #Sinon il est trop malin et il plante pas
-			lineSelection.setIndex(lastIndex)
-			choseLineAction()
-		except :
-			lineSelection.setIndex(0)
-			choseLineAction()
+		if filename[-4:]=='.csv' :
+			with open(filename,'r',encoding = "ISO-8859-1") as f:
+				global data
+				data = list(csv.reader(f, delimiter=' ', quotechar='|', quoting=csv.QUOTE_NONNUMERIC))
+			for i in range(len(data)//2):
+				lineSelection.addItem('Line %i'%(i+1))
+			lineSelection.setEnabled(True)
+			try :
+				assert lastIndex < len(lineSelection.dic) #Sinon il est trop malin et il plante pas
+				lineSelection.setIndex(lastIndex)
+				choseLineAction()
+			except :
+				lineSelection.setIndex(0)
+				choseLineAction()
+		elif filename[-4:]=='.txt' :
+			x,y=extract_data(filename)
+			if len(x) != len(y) :
+				x,y=extract_data(fname,decimalPoint=',')
+			gra.updateLine(l1,x,y)
 
 def choseLineAction():
 	i=lineSelection.index()

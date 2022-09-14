@@ -1000,6 +1000,11 @@ def lissage(t,n):
 	newt=np.array([sum(t[i:i+n])/n for i in range(len(t)-n)])
 	return newt
 
+def average(t,n):
+	m=len(t)//n
+	newt=np.array([sum(t[n*i:n*(i+1)])/n for i in range(m)])
+	return newt
+
 def derivative(x,y):
 	dx=x[1]-x[0]
 	n=len(y)
