@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  14 SEP 2022 19:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  15 SEP 2022 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -900,14 +900,35 @@ Package biblatex Info: ... file '"Chapter 1".bbl' found.
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
-(biblatex)                hahn1950spin
+(biblatex)                astner2018solid
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
-(biblatex)                naydenov2011dynamical
+(biblatex)                norambuena2018spin
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                redman1991spin
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                sangtawesin2019origins
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                takahashi2008quenching
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
@@ -1012,7 +1033,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/ISC.pdf, id=565, 403.13081pt x 230.95755pt>
 File: Figures/ISC.pdf Graphic file (type pdf)
 <use Figures/ISC.pdf>
-Package pdftex.def Info: Figures/ISC.pdf  used on input line 258.
+Package pdftex.def Info: Figures/ISC.pdf  used on input line 255.
 (pdftex.def)             Requested size: 288.0011pt x 164.99947pt.
 
 
@@ -1022,13 +1043,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/shema_exp.pdf, id=615, 599.90169pt x 425.70027pt>
 File: Figures/shema_exp.pdf Graphic file (type pdf)
 <use Figures/shema_exp.pdf>
-Package pdftex.def Info: Figures/shema_exp.pdf  used on input line 286.
+Package pdftex.def Info: Figures/shema_exp.pdf  used on input line 283.
 (pdftex.def)             Requested size: 288.0011pt x 204.37277pt.
  [15 <./Figures/shema_exp.pdf>]
 <Figures/Rabi.pdf, id=638, 692.36432pt x 273.4702pt>
 File: Figures/Rabi.pdf Graphic file (type pdf)
 <use Figures/Rabi.pdf>
-Package pdftex.def Info: Figures/Rabi.pdf  used on input line 302.
+Package pdftex.def Info: Figures/Rabi.pdf  used on input line 299.
 (pdftex.def)             Requested size: 360.0pt x 142.1928pt.
 
 
@@ -1038,172 +1059,187 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Figures/ODMR_basique.pdf, id=646, 739.80559pt x 252.66322pt>
 File: Figures/ODMR_basique.pdf Graphic file (type pdf)
 <use Figures/ODMR_basique.pdf>
-Package pdftex.def Info: Figures/ODMR_basique.pdf  used on input line 322.
+Package pdftex.def Info: Figures/ODMR_basique.pdf  used on input line 319.
 (pdftex.def)             Requested size: 360.0pt x 122.95016pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [17 <./Figures/Rabi.pdf>]
-<Figures/ODMR_lockin.pdf, id=671, 989.75484pt x 350.6325pt>
+<Figures/ODMR_lockin.pdf, id=670, 989.75484pt x 350.6325pt>
 File: Figures/ODMR_lockin.pdf Graphic file (type pdf)
 <use Figures/ODMR_lockin.pdf>
-Package pdftex.def Info: Figures/ODMR_lockin.pdf  used on input line 338.
+Package pdftex.def Info: Figures/ODMR_lockin.pdf  used on input line 335.
 (pdftex.def)             Requested size: 360.0pt x 127.53305pt.
- [18 <./Figures/ODMR_basique.pdf> <./Figures/ODMR_lockin.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/ODMR_lockin.pdf): PDF inclusi
-on: multiple pdfs with page group included in a single page
->]
-<Figures/ODMR_8_classes.pdf, id=735, 680.63422pt x 486.38937pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18 <./Figures/ODMR_basique.pdf>]
+<Figures/ODMR_8_classes.pdf, id=691, 680.63422pt x 486.38937pt>
 File: Figures/ODMR_8_classes.pdf Graphic file (type pdf)
 <use Figures/ODMR_8_classes.pdf>
-Package pdftex.def Info: Figures/ODMR_8_classes.pdf  used on input line 354.
+Package pdftex.def Info: Figures/ODMR_8_classes.pdf  used on input line 351.
 (pdftex.def)             Requested size: 360.0pt x 257.2582pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[19] [20 <./Figures/ODMR_8_classes.pdf>]
-Overfull \hbox (26.61136pt too wide) in paragraph at lines 376--377
-\OT1/cmr/m/n/10.95 [[]] or a dy-nam-i-cal de-cou-pling scheme [[]].
- []
+[19 <./Figures/ODMR_lockin.pdf>] [20 <./Figures/ODMR_8_classes.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 380.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 383.
+(hyperref)                removing `subscript' on input line 380.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 383.
+(hyperref)                removing `math shift' on input line 380.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 383.
-
-<Figures/T1_basique.pdf, id=837, 658.79059pt x 250.66364pt>
+<Figures/T1_basique.pdf, id=841, 658.79059pt x 250.66364pt>
 File: Figures/T1_basique.pdf Graphic file (type pdf)
 <use Figures/T1_basique.pdf>
-Package pdftex.def Info: Figures/T1_basique.pdf  used on input line 387.
+Package pdftex.def Info: Figures/T1_basique.pdf  used on input line 385.
 (pdftex.def)             Requested size: 360.0pt x 136.97806pt.
-[21 <./Figures/T1_basique.pdf>]
-<Figures/T1_protocole_soustraction.pdf, id=861, 696.18002pt x 466.39752pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21]
+<Figures/T1_protocole_soustraction.pdf, id=857, 696.18002pt x 466.39752pt>
 File: Figures/T1_protocole_soustraction.pdf Graphic file (type pdf)
 <use Figures/T1_protocole_soustraction.pdf>
 Package pdftex.def Info: Figures/T1_protocole_soustraction.pdf  used on input l
-ine 399.
+ine 397.
 (pdftex.def)             Requested size: 360.0pt x 241.18306pt.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 404.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 404.
-
+[22 <./Figures/T1_basique.pdf>] [23 <./Figures/T1_protocole_soustraction.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 404.
+(hyperref)                removing `math shift' on input line 421.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 404.
+(hyperref)                removing `subscript' on input line 421.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 407.
+(hyperref)                removing `superscript' on input line 421.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 407.
+(hyperref)                removing `math shift' on input line 421.
+
+
+Overfull \hbox (1.5013pt too wide) in paragraph at lines 422--424
+\OT1/cmr/m/n/10.95 Allez have fun Par-ler aussi d'ODMR et pourquoi pas un ex-em
+-ple de diff^^Serence
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 407.
+(hyperref)                removing `math shift' on input line 425.
 
 
-Overfull \hbox (13.4578pt too wide) in paragraph at lines 409--409
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 425.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 425.
+
+
+Overfull \hbox (13.4578pt too wide) in paragraph at lines 427--427
 []\OT1/cmr/bx/n/14.4 Dipole-dipole in-ter-ac-tion be-tween two elec-tronic
  []
 
-[22 <./Figures/T1_protocole_soustraction.pdf>]
-Overfull \hbox (9.3537pt too wide) in paragraph at lines 412--412
+[24]
+Overfull \hbox (9.3537pt too wide) in paragraph at lines 430--430
 \OT1/cmr/m/n/10.95 pro-duced in nat-u-ral brown di-a-monds by high-pressure, hi
 gh-temperature
  []
 
-[23
+[25
 
 ]
-Overfull \hbox (4.41461pt too wide) in paragraph at lines 412--412
+Overfull \hbox (4.41461pt too wide) in paragraph at lines 430--430
 []\OT1/cmr/m/n/10.95 Seiichiro Mat-sumoto et al. ``Growth of di-a-mond par-ti-c
 les from methane-
  []
 
 
-Overfull \hbox (0.60983pt too wide) in paragraph at lines 412--412
+Overfull \hbox (0.60983pt too wide) in paragraph at lines 430--430
 \OT1/cmr/m/n/10.95 hydrogen gas''. In: \OT1/cmr/m/it/10.95 Jour-nal of ma-te-ri
 -als Sci-ence \OT1/cmr/m/n/10.95 17.11 (1982), pp. 3106{
  []
 
-[24]
-Overfull \hbox (7.65404pt too wide) in paragraph at lines 412--412
+[26]
+Overfull \hbox (7.65404pt too wide) in paragraph at lines 430--430
 []\OT1/cmr/m/n/10.95 Makoto Kasu and Naoki Kobayashi. ``High mo-bil-ity and hig
 h crystalline-
  []
 
 
-Overfull \hbox (4.45296pt too wide) in paragraph at lines 412--412
+Overfull \hbox (4.45296pt too wide) in paragraph at lines 430--430
 \OT1/cmr/m/n/10.95 mond us-ing elec-tron para-m-ag-netic res-o-nance and op-ti-
 cal spec-troscopy''.
  []
 
-[25]
-Overfull \hbox (3.39561pt too wide) in paragraph at lines 412--412
+[27]
+Overfull \hbox (3.39561pt too wide) in paragraph at lines 430--430
 []\OT1/cmr/m/n/10.95 ME New-ton et al. ``Recombination-enhanced dif-fu-sion of 
 self-interstitial
  []
 
-[26]
-Overfull \hbox (2.22633pt too wide) in paragraph at lines 412--412
+[28]
+Overfull \hbox (2.22633pt too wide) in paragraph at lines 430--430
 \OT1/cmr/m/n/10.95 quan-tum com-put-ing hard-ware''. In: \OT1/cmr/m/it/10.95 Sc
 i-ence \OT1/cmr/m/n/10.95 372.6539 (2021), eabb2823. 
  []
 
 
-Overfull \hbox (9.30376pt too wide) in paragraph at lines 412--412
+Overfull \hbox (9.30376pt too wide) in paragraph at lines 430--430
 []\OT1/cmr/m/n/10.95 Christian L De-gen, Friede-mann Rein-hard, and Paola Cap-p
 el-laro. ``Quan-
  []
 
 
-Overfull \hbox (2.19423pt too wide) in paragraph at lines 412--412
+Overfull \hbox (2.19423pt too wide) in paragraph at lines 430--430
 []\OT1/cmr/m/n/10.95 Gopalakrishnan Bal-a-sub-ra-ma-nian et al. ``Ul-tra-long s
 pin co-her-ence time
  []
 
-[27] [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 412.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 412.
+[29] [30]
+Overfull \hbox (5.40323pt too wide) in paragraph at lines 430--430
+[]\OT1/cmr/m/n/10.95 Mariusz Mr^^Sozek et al. ``Lon-gi-tu-di-nal spin re-lax-at
+ion in nitrogen-vacancy
+ []
+
+[31]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 430.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 430.
  (./Chapter 1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 412.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 412.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 430.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 430.
 Package rerunfilecheck Info: File `"Chapter 1".out' has not changed.
-(rerunfilecheck)             Checksum: 1415592A1AFD4A7B7F6FD2E48EC44CF2;1955.
+(rerunfilecheck)             Checksum: B3A04DE9A4602143CFBC54EB24F24D0C;1950.
 Package logreq Info: Writing requests to '"Chapter 1".run.xml'.
 \openout1 = `"Chapter 1.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 412.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 430.
  ) 
 Here is how much of TeX's memory you used:
- 25527 strings out of 481239
- 486372 string characters out of 5920377
- 1116516 words of memory out of 5000000
- 40216 multiletter control sequences out of 15000+600000
+ 25567 strings out of 481239
+ 487834 string characters out of 5920377
+ 1117366 words of memory out of 5000000
+ 40239 multiletter control sequences out of 15000+600000
  547379 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,15n,75p,1078b,1493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,15n,75p,1082b,1493s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1225,10 +1261,10 @@ amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
 b></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on "Chapter 1.pdf" (28 pages, 862667 bytes).
+Output written on "Chapter 1.pdf" (31 pages, 872529 bytes).
 PDF statistics:
- 1029 PDF objects out of 1200 (max. 8388607)
- 884 compressed objects within 9 object streams
- 166 named destinations out of 1000 (max. 500000)
+ 1084 PDF objects out of 1200 (max. 8388607)
+ 935 compressed objects within 10 object streams
+ 183 named destinations out of 1000 (max. 500000)
  269 words of extra memory for PDF output out of 10000 (max. 10000000)
 

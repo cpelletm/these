@@ -30,7 +30,7 @@ def choseFileAction(filename=False):
 		elif filename[-4:]=='.txt' :
 			x,y=extract_data(filename)
 			if len(x) != len(y) :
-				x,y=extract_data(fname,decimalPoint=',')
+				x,y=extract_data(filename,decimalPoint=',')
 			gra.updateLine(l1,x,y)
 
 def choseLineAction():
