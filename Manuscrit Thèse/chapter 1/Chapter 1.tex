@@ -413,16 +413,61 @@ We distinguish three different origin for the the $T_1$ relaxation process:
 
 \item \textbf{Electric and magnetic field noises:} both electric and magnetic fields can directly excite the $\ket{0} \to \ket{\pm 1}$ spin transition \citep{udvarhelyi2018spin}. As a result, magnetic and electric field noise can reduce the spin $T_1$ if their spectrum overlap with the NV transitions. This is particularly important for near surface spins because of the strong noise caused by electronic defects on the surface \citep{sangtawesin2019origins}. The $T_1$ of near surface NV center can be as low as $\sim 10\ \mu$s, but the surface effect are only effective at very short range (within $\sim 10\ \rm nm$ of the surface).
 
-\item \textbf{Resonant dipolar interaction with other paramagnetic impurities:} Dipolar interaction betwen two spins will be detailed more thoroughly in the following section. Dipole-dipole interaction between NV centers and surrounding spins is responsible for both transverse and longitudinal spin relaxation, with the added condition of energy matching (resonance) for longitudinal relaxation. Relaxation induced by NV-NV dipole-dipole coupling will be the object of chapter 3 and 4 while NV-other spin coupling will be the object of chapter 2. The $T_1$ time associated with dipole-dipole interaction strongly depends on the spin concentration, but it can be as low as $\sim 25 \mu$s \citep{hall2016detection}.
+\item \textbf{Resonant dipolar interaction with other paramagnetic impurities:} Dipolar interaction betwen two spins will be detailed more thoroughly in the following section. Dipole-dipole interaction between NV centers and surrounding spins is responsible for both transverse and longitudinal spin relaxation, with the added condition of energy matching (resonance) for longitudinal relaxation. Relaxation induced by NV-NV dipole-dipole coupling will be the object of chapter 3 and 4 while NV-other spin coupling will be the object of chapter 2. The $T_1$ time associated with dipole-dipole interaction strongly depends on the spin concentration and can be as low as $\sim 25 \mu$s \citep{hall2016detection}.
 \end{itemize}
 
 All the measurements shown in this manuscript were performed at room temperature. The spin-phonon interaction thus creates a baseline value for the NV $T_1$ time at $\sim 5\ \rm ms$. Every sample studied were at least a few $\mu$m thick and we will therefore neglect the surface noise contribution in our analyses. The dipole-dipole induced relaxation however is of crucial importance for the next chapters, where it will be further detailed. $T_1$ times between $0.1 \sim 1\ \rm ms$ were routinely observed for samples with high NV concentration.
 
-\subsection{$T_2^*$ measurement: Ramsey interferometry}
-Allez have fun
-Parler aussi d'ODMR et pourquoi pas un exemple de différence entre 2 samples clean et pas clean
+\subsection{NV spin $T_2^*$}
+\subsubsection{Measurement protocol}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/Ramsey}
+\caption{Ramsey interferometry protocol. (a) Pulse seqeunce used. (b) Experimental data obtained on sample CVD-pink.} %The orange line corresponds to an Gaussian fit with time constant $\tau=400 \pm 100\ \rm ns$.}
+\label{Ramsey}
+\end{figure}
 
-\subsection{$T_2$ measurement: Spin-echo and dynamical decoupling}
+The $T_2^*$ time is the characteristic time for the loss of quantum coherence of a freely evolving system. It is generally defined as the decay time of of a Ramsey interferometry measurement \citep{barry2020sensitivity}.
+
+Fig. \ref{Ramsey} shows the Ramsey pulse sequence and an  example obtained on a spin ensemble. The microwave frequency is detuned by $\sim 300\ \rm kHz$ compared to the spin Larmor frequency which causes oscillations in the signal. $T_2^*$ is the decay time of the envelope of the Ramsey fringes. Unfortunately, it is hard to correctly fit the envelope of signal with so few fringes, but increasing the potential number of fringes mean further detuning the microwave which decreases the Rabi frequency to the point where $\pi$-pulses are of comparable length with the decoherence time (with our current microwave setup).
+
+Ramsey sequences are generally harder to perform on NV ensemble than they are on single NV for two main reasons. The first one is that the $T_2^*$ times tend to be longer for single NV centers as they do not suffer from spatial inhomogeneity and since the diamond subtrate generally contains less impurities than NV ensemble. The second one is the inhomogeneous microwave power which leads to a variation of the Rabi frequencies among the spins \citep{barry2016optical, zhou2020quantum} and lowers the fringe contrast.
+
+An alternative measurement of $T_2^*$ can be performed by looking at the linewidth of an ODMR spectrum. Indeed, ideally the ODMR spectrum should be the Fourier transform of the Ramsey signal (also called free induction decay in NMR literature). In practice however, both methods suffer from experimental noises and imperfections, with Ramsey-type methods being more sensitive to microwave inhomogeneities \citep{barry2020sensitivity} while ODMR is prone to laser and microwave power broadening \citep{dreau2011avoiding}. 
+
+The method chosen to extract $T_2^*$ values in this manuscript was ODMR with low microwave power ($\Omega_{\rm Rabi} \ll 1/T_2^*$) and low laser intensity (compared to the the NV optical saturation).
+
+\subsubsection{Physical origin}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/ODMR_1_classes}
+\caption{ODMR spectra on a single NV class. (a) Experimental data on sample CVD-pink, fitted with three Lorentzians with HWHM $530$ kHz ($T_2^*=300\ \rm ns$). (b) Experimental data on sample Sumi-2, fitted with a single Gaussian with HWHM $3.2$ MHz ($T_2^*=83 ns$).}
+\label{ODMR 1 classe}
+\end{figure}
+
+For most samples, the leading cause of inhomogeneous dephasing is the temporal and spatial variations of magnetic fields caused by the paramagnetic impurities in the crystal \citep{barry2020sensitivity}. The nature of these different paramagnetic impurities will be further discussed in the section dedicated to dark spins in diamond in chapter 2. We will simply mention here that for sample with high NV density ([NV] $\geq$ ppm), $T_2^*$ is mostly limited by the electronic spins of nitrogen impurities \citep{bauch2018ultralong}.
+
+Fig. \ref{ODMR 1 classe} shows ODMR spectra of a single NV class on two distinct samples (see [REF]). The first sample is a CVD sample with a total substitutional nitrogen  concentration $[N_s] \approx 26\ \rm ppm$, while the second is a type-Ib HPHT sample with a likely nitrogen concentration $[N_s] \geq 100\ \rm ppm$. We can clearly see a higher linewidth, corresponding to a smaller $T_2^* value$ on the sample with higher nitrogen concentration. In particular, we can notice the hyperfine structure of the $^{14}$N nuclei on the CVD sample, whereas it is completely hidden by the inhomogeneous broadening on the HPHT sample.
+
+Fig. \ref{ODMR 1 classe} illustrates another difficulty of $T_2^*$ measurement which is to find the correct fitting formula. While the spectral profile of single NV centers is expected to be Gaussian, the spectral profile of an ensemble of NV centers  is expected to be Lorentzian \citep{dobrovitski2008decoherence, hall2014analytic}. For Fig. \ref{ODMR 1 classe}-a), it was indeed found that Lorentzians fitted the data better than Gaussians. For Fig. \ref{ODMR 1 classe}-b) however, a Gaussian was found to be a better fit than a Lorentzian, although this could be in part due to the unresolved hyperfine structure.
+
+\subsection{NV spin $T_2$}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/Echo}
+\caption{Spin-echo protocol. (a) Pulse seqeunce used. (b) Experimental data obtained on sample CVD-pink, fitted with an exponential decay of time $3.9\ \rm{\mu s}$.} 
+\label{Echo}
+\end{figure}
+\subsubsection{Measurement protocol}
+As precised earlier, the exact $T_2$ definition depends on the rephasing scheme used. We will focus here on the simplest known rephasing process known as as the spin-echo or Hahn-echo sequence.
+
+Fig. \ref{Echo} shows the pulse sequence used and an example on the same sample than the Ramsey measurement. The pulse sequence differs from the Ramsey one by adding a a $\pi$-pulse in the middle of the free precession time. This additional $\pi$-pulse causes static or slowly varying dephasing originating from detuning between the Larmor frequency and the microwave frequency to be rephased \citep{hahn1950spin}. 
+
+This protocol extends the coherence time on this particular sample from $T_2^* \approx 300\ \rm ns$ to $T_2 \approx 4\ \rm{\mu s}$, an increase by more than a factor of 10. Improvement by a factor of $10 \sim 100$ or typical for NV ensembles \citep{barry2020sensitivity}. This value could be extended even further by using a more complex dynamical decoupling scheme from the CPMG or XY sequence families \citep{naydenov2011dynamical, bar2012suppression}.
+
+\subsubsection{Physical origin}
+The origin of the relaxation time $T_2$ are fluctuating noises which are too fast to be efficiently rephased by the sequence. The origin of these noises is generally attributed to the flipping of spins in the vicinity of the NV center (either through spin-lattice or spin-spin mechanisms) \citep{hall2014analytic}. For samples with high nitrogen concentration, it has been measured that the $T_2$ time  was directly correlated to the nitrogen concentration, with the same scaling than the $T_2^*$ time \citep{bauch2019decoherence}.
 
 \section{Dipole-dipole interaction between two electronic spins}
 
