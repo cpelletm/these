@@ -22,7 +22,15 @@
 \title{}
 \begin{document}
 \chapter{Introduction to NV centers and their common usage}
-The aim of this first chapter is to introduce the tools and concepts required for the next chapters. We will start
+The aim of this first chapter is to introduce the tools and concepts needed to understand the next chapters.
+
+This chapter will first cover the material aspects of NV centers by focusing on the creation process of synthetic diamonds and the required steps to create NV defects inside them. 
+
+It will then cover the fundamentals of NV physics, including the NV center optical and spin properties, basic experiments with NV centers and the various relaxations times ($T_1$,$T_2$,$T_2^*$) which characterizes the NV center's spin. 
+
+Finally it will introduce dipole-dipole coupling between two spins and the concept of cross-relaxation.
+
+The three subjects that are the NV center physics, the diamond material aspects and the dipole-dipole interaction are at the heart of the work carried out in this thesis. 
 
 \section{The NV center as a physical object}
 \begin{figure}[h!]
@@ -250,6 +258,7 @@ The NV center's spin usage as a qubit is prevalent in quantum communication \cit
 
 
 \subsection{Spin and optical levels intersystem crossing}
+\label{sec ISC}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\textwidth]{Figures/ISC}
@@ -364,6 +373,8 @@ Fig. \ref{ODMR 8 classes}-b) represent the 4 possible orientation of the N$-$V a
 
 Fig. \ref{ODMR 8 classes}-c) shows a simulation of the evolution of the transition frequencies $\nu_{+1} - \nu_{0}$ and $\nu_{-1} - \nu_{0}$ for all 4 classes as a function of the magnetic field amplitude, with the magnetic field orientation fixed in an arbitrary direction. Fig. \ref{ODMR 8 classes}-d) shows an ODMR spectrum with NV ensembles. 8 lines are visible corresponding to the two transitions of the 4 classes. Based on the position of these 8 lines, it is possible to determine the projection of the magnetic field on each of the 4 N$-$V axes, and thus to reconstruct the full 3D magnetic field with respect to the diamond crystalline axes.
 
+We should also note that the state mixing caused by the transverse magnetic field deteriorates the polarization scheme detailed in Sec. \ref{sec ISC}. For strong magnetic fields ($\gamma_e B_\perp \sim D$), the optical polarization is almost completely quenched, which prevents any kind of coherent NV manipulation \citep{tetienne2012magnetic}.
+
 \section{Dynamics the NV center spin}
 
 This section focuses on the dynamics of the NV spin, and more specifically on its various relaxation times. Relaxation times are very important properties of spin qubits as they often are the limiting factor for quantum information or quantum sensing applications \citep{de2021materials, degen2017quantum}.
@@ -378,7 +389,7 @@ T_2^* < T_2 < 2 T_1.
 The relaxation times of NV centers depend mainly on their environment, and can vary by several order of magnitude depending on the sample used. The following paragraphs will cover the measurement processes of the relaxation times and the typical values for the samples used in this manuscript.
 
 \subsection{NV spin $T_1$}
-
+\label{sec T1 NV}
 \subsubsection{Measurement protocol}
 \begin{figure}[h!]
 \centering
@@ -413,7 +424,7 @@ We distinguish three different origin for the the $T_1$ relaxation process:
 
 \item \textbf{Electric and magnetic field noises:} both electric and magnetic fields can directly excite the $\ket{0} \to \ket{\pm 1}$ spin transition \citep{udvarhelyi2018spin}. As a result, magnetic and electric field noise can reduce the spin $T_1$ if their spectrum overlap with the NV transitions. This is particularly important for near surface spins because of the strong noise caused by electronic defects on the surface \citep{sangtawesin2019origins}. The $T_1$ of near surface NV center can be as low as $\sim 10\ \mu$s, but the surface effect are only effective at very short range (within $\sim 10\ \rm nm$ of the surface).
 
-\item \textbf{Resonant dipolar interaction with other paramagnetic impurities:} Dipolar interaction betwen two spins will be detailed more thoroughly in the following section. Dipole-dipole interaction between NV centers and surrounding spins is responsible for both transverse and longitudinal spin relaxation, with the added condition of energy matching (resonance) for longitudinal relaxation. Relaxation induced by NV-NV dipole-dipole coupling will be the object of chapter 3 and 4 while NV-other spin coupling will be the object of chapter 2. The $T_1$ time associated with dipole-dipole interaction strongly depends on the spin concentration and can be as low as $\sim 25 \mu$s \citep{hall2016detection}.
+\item \textbf{Resonant dipolar interaction with other paramagnetic impurities:} Dipolar interaction betwen two spins will be detailed more thoroughly in the following section. Dipole-dipole interaction between NV centers and surrounding spins is responsible for both transverse and longitudinal spin relaxation, with the added condition of energy matching (resonance) for longitudinal relaxation. The $T_1$ time associated with dipole-dipole interaction strongly depends on the spin concentration and can be as low as $\sim 25 \mu$s \citep{hall2016detection}.
 \end{itemize}
 
 All the measurements shown in this manuscript were performed at room temperature. The spin-phonon interaction thus creates a baseline value for the NV $T_1$ time at $\sim 5\ \rm ms$. Every sample studied were at least a few $\mu$m thick and we will therefore neglect the surface noise contribution in our analyses. The dipole-dipole induced relaxation however is of crucial importance for the next chapters, where it will be further detailed. $T_1$ times between $0.1 \sim 1\ \rm ms$ were routinely observed for samples with high NV concentration.
@@ -431,7 +442,7 @@ The $T_2^*$ time is the characteristic time for the loss of quantum coherence of
 
 Fig. \ref{Ramsey} shows the Ramsey pulse sequence and an  example obtained on a spin ensemble. The microwave frequency is detuned by $\sim 300\ \rm kHz$ compared to the spin Larmor frequency which causes oscillations in the signal. $T_2^*$ is the decay time of the envelope of the Ramsey fringes. Unfortunately, it is hard to correctly fit the envelope of signal with so few fringes, but increasing the potential number of fringes mean further detuning the microwave which decreases the Rabi frequency to the point where $\pi$-pulses are of comparable length with the decoherence time (with our current microwave setup).
 
-Ramsey sequences are generally harder to perform on NV ensemble than they are on single NV for two main reasons. The first one is that the $T_2^*$ times tend to be longer for single NV centers as they do not suffer from spatial inhomogeneity and since the diamond subtrate generally contains less impurities than NV ensemble. The second one is the inhomogeneous microwave power which leads to a variation of the Rabi frequencies among the spins \citep{barry2016optical, zhou2020quantum} and lowers the fringe contrast.
+Ramsey sequences are generally harder to perform on NV ensemble than they are on single NV for two main reasons. The first one is that the $T_2^*$ times tend to be longer for single NV centers as they do not suffer from spatial inhomogeneity and since the samples used for single NV experiments generally contains less impurities than those used for NV ensemble. The second one is the inhomogeneous microwave power which leads to a variation of the Rabi frequencies among the spins \citep{barry2016optical, zhou2020quantum} and lowers the fringe contrast.
 
 An alternative measurement of $T_2^*$ can be performed by looking at the linewidth of an ODMR spectrum. Indeed, ideally the ODMR spectrum should be the Fourier transform of the Ramsey signal (also called free induction decay in NMR literature). In practice however, both methods suffer from experimental noises and imperfections, with Ramsey-type methods being more sensitive to microwave inhomogeneities \citep{barry2020sensitivity} while ODMR is prone to laser and microwave power broadening \citep{dreau2011avoiding}. 
 
@@ -478,7 +489,7 @@ The origin of the relaxation time $T_2$ are fluctuating noises which are too fas
 \label{dipole-dipole}
 \end{figure}
 
-This final introductory section will focus on the dipole-dipole interaction between two electronic spins. 
+This final introductory section will focus on the dipole-dipole interaction between two electronic spins, which is the main form of spin-spin interaction and plays a key part in the properties of dense spin ensemble. 
 
 We will consider the general situation represented in Fig. \ref{dipole-dipole}: two spins separated by a distance $r$ with their own coordinate systems ($\mathbf{x}_1,\mathbf{y}_1,\mathbf{z}_1$) and ($\mathbf{x}_2,\mathbf{y}_2,\mathbf{z}_2$). The coordinate system is chosen so that each spin operator can be written:
 
@@ -486,7 +497,7 @@ We will consider the general situation represented in Fig. \ref{dipole-dipole}: 
 \hat{\mathbf{S}}_i=\hat{S}_x \mathbf{x}_i + \hat{S}_y \mathbf{y}_i + \hat{S}_z \mathbf{z}_i
 \end{equation}
 
-where the spin operators $S_{\{x,y,z\} }$ have their usual definitions. In particular, this means that the spin axis of quantization of each spin is $z_i$, which classically corresponds to the magnetization direction of the dipole. This axis can be defined either by the magnetic field, or by crystal field anisotropies, which is often the case for solid state spins at low magnetic fields with $S\geq 1$  (including the NV center).
+where the spin operators $S_{\{x,y,z\} }$ have their usual definitions in term of Pauli matrices. In particular, this means that the spin axis of quantization of each spin is $z_i$, which classically corresponds to the magnetization direction of the dipole. This axis can be defined either by the magnetic field, or by crystal field anisotropies, as is often the case for solid state spins with $S\geq 1$ (which includes the NV center).
 
 \subsection{Magnetic dipole-dipole Hamiltonian}
 
@@ -524,7 +535,7 @@ For two electronic spins with $g$-factors $\approx -2$,
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=.8\textwidth]{Figures/flip-flop_double-flip}
+\includegraphics[width=.7\textwidth]{Figures/flip-flop_double-flip}
 \caption{Representation of the two energy transfer mechanisms: flip-flop and double flips} 
 \label{flip flop double flip}
 \end{figure}
@@ -535,7 +546,49 @@ In what follows, we will assume that both spins have the same quantization axis 
 
 Following the notation introduced in Fig. \ref{dipole-dipole}, we will then assume that $$(\mathbf{x}_1,\mathbf{y}_1,\mathbf{z}_1) = (\mathbf{x}_2,\mathbf{y}_2,\mathbf{z}_2) = (\mathbf{x},\mathbf{y},\mathbf{z}).$$ We will denote $\mathbf{u}=u_x \mathbf{x} + u_y \mathbf{y} + u_z \mathbf{z}$ the decomposition of the unitary vector $\mathbf{u}$ in this basis. The dipole-dipole Hamiltonian can then be written:
 \begin{equation}
-\mathcal{H}_{\rm dd}=\frac{J_0}{r^3} (3 u_x^-1)
+\mathcal{H}_{\rm dd}=\frac{J_0}{r^3}\left[ (3 u_x^2-1) S_x^1 S_x^2 + (3 u_y^2-1) S_y^1 S_y^2 + (3 u_z^2-1) S_z^1 S_z^2 \right],
 \end{equation}
+where $S_{\{x,y,z\} }^i$ are the spin operators acting on spin $i$. The $S_z^1 S_z^2$ term is the only diagonal term and corresponds to energy shifts while the $S_x^1 S_x^2$ and $S_y^1 S_y^2$ terms are responsible for energy transfer. To make the transfer mechanism more apparent, we will rewrite $S_x^i$ as $\frac{1}{2}(S_+^i+S_-^i)$ and $S_y^i$ as $\frac{1}{2i}(S_+^i-S_-^i)$:
+\begin{align}
+\mathcal{H}_{\rm dd}&=\frac{J_0}{r^3}\bigg{[} \frac{1}{4}(3 u_x^2 + 3 u_y^2 -2)(S_+^1 S_-^2 + S_-^1 S_+^2) \nonumber \\
+&\quad + \frac{1}{4}(3 u_x^2 - 3 u_y^2)(S_+^1 S_+^2 + S_-^1 S_-^2) \nonumber \\
+&\quad +(3 u_z^2-1) S_z^1 S_z^2 \bigg{]} \\
+\medskip
+&= \Omega_{\rm ff} (S_+^1 S_-^2 + S_-^1 S_+^2) + \Omega_{\rm df} (S_+^1 S_+^2 + S_-^1 S_-^2) + \Omega_{\rm shift} S_z^1 S_z^2. \label{eq. ff df}
+\end{align}
+
+We have introduced in eq. (\ref{eq. ff df}) the three relevant matrix elements $\Omega_{\rm ff}$, $\Omega_{\rm df}$, and $\Omega_{\rm shift}$ which correspond respectively to flip-flops, double flips and energy shifts. Flip-flops and double flips (sometimes referred as flip-flips) are represented in Fig. \ref{flip flop double flip}. Flip flops correspond to energy transfer between two spins for which the sum of the spin angular momentum is conserved ($\Delta (m_s^1+m_s^2)=0$), while double flips correspond to energy transfer for which the spin angular momentum is not conserved ($\Delta (m_s^1+m_s^2)=\pm 2$)\footnote{In order to preserve the total angular momentum, double flips transfer angular moment to the crystal, which is a form of Einstein de Haas effect \citep{einstein1915experimental} }. In both cases however, the energy between the initial and final states needs to be preserved for the transfer to be efficient. 
+
+It should be noted that on average, each matrix element is of the same order of magnitude: $\Omega_{\rm ff} \sim \Omega_{\rm df} \sim \Omega_{\rm shift} \sim \frac{J_0}{r^3}$. 
+
+\subsection{Cross-relaxations with NV centers}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Figures/Shema_CR}
+\caption{Illustration of cross-relaxations between an NV center and an unpolarized spin. Red dots represent the population in each states, and the arrows the various population transfer mechanisms}
+\label{CR_shema}
+\end{figure}
+
+Cross-relaxation (CR) is the transfer of polarization from one spin to another (or more generally from one family of spins to another family). This process can occur through either flip-flops or double flips, as long as the resonance condition between the two spins is met. 
+
+On of the condition for cross-relaxation is to have a difference in polarization between the two spins species considered. The NV center is therefore a good candidate to observe cross-relaxations as it can be optically polarized while most other spin species are not. 
+
+Fig. \ref{CR_shema} illustrates CR between a polarized NV center and an unpolarized second spin. When the two considered spin transitions become resonant, in this case by tuning the magnetic field, polarization from the NV center will be transferred to the second spin, making the NV center less polarized and the second spin more polarized than when they are out of resonance. 
+
+For a single NV center coupled to spin 2, assuming that spin 2 always remains depolarized\footnote{This is the case in practice if the spin 2 bath is much bigger than the NV bath and effectively acts as a thermostat, or if the lifetime of spin 2 is much smaller than that of the NV center.} and that the coupling strength between the two spins is smaller than their respective dephasing time $T_2^*$ (weak coupling regime), the modification in the NV relaxation rate $\Gamma_1=\frac{1}{T_1}$ caused by the cross-relaxation with spin 2 can be analytically computed \citep{hall2016detection}:
+\begin{equation}
+\delta \Gamma_1=\frac{\Omega^2}{\Gamma_2^*} \frac{(\Gamma_2^*)^2}{(\delta \nu)^2+(\Gamma_2^*)^2},
+\label{delta gamma 1}
+\end{equation}
+where $\Gamma_2^*=\frac{1}{T_2^*(\rm NV)}+\frac{1}{T_2^*(\rm Spin 2)}$ is the joint dephasing rate of the NV center and the second spin, $\delta \nu$ is the detuning in energy (expressed in frequency) between the initial and final states and $\Omega=\Omega_{\rm ff}$ or $\Omega_{\rm df}$ is the dipole-dipole matrix element corresponding to the flip-flop or double-flip process considered. T
+
+Eq. (\ref{delta gamma 1}) is the basis for every cross-relaxation detection performed in this manuscript. Because the NV center lifetime can be measured optically, as detailed in Sec. \ref{sec T1 NV}, cross-relaxation between NV-centers and other spin species can be measured optically. Measuring the cross-relaxation depolarization can then be used to gain information on the second spin or on the dipole-dipole interaction mechanisms, as will be explained in the following chapters.
+
+\section{Conclusion}
+
+We have covered in this introductory chapter every concepts needed to understand the results presented in the next chapter. We have seen the main steps in the creation of artificial diamonds and NV centers, we have covered the optical and spin properties of the NV center as well as the ways to measure them, and we have introduced the notion of dipole-dipole coupling and cross-relaxation between two spins.
+
+The focus of chapter 2 will be on the cross-relaxation between NV centers and other spin impurities in CVD-grown diamond, while the focus of chapter 3 and 4 will be on the cross-relaxation between NV centers and other NV centers and their potential application in magnetometry.
 \printbibliography
 \end{document}
