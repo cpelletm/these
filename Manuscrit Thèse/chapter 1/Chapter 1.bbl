@@ -4915,6 +4915,7 @@
       \strng{authorbibnamehash}{7b85e472e4f9f0e3fac780ff63e461d9}
       \strng{authornamehash}{7b85e472e4f9f0e3fac780ff63e461d9}
       \strng{authorfullhash}{9d76d2be1d4c99da7c5800f318132208}
+      \field{extraname}{1}
       \field{sortinit}{9}
       \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
       \field{labelnamesource}{author}
@@ -5010,9 +5011,269 @@
       \field{pages}{075201}
       \range{pages}{1}
     \endentry
+    \entry{bar2012suppression}{article}{}
+      \name{author}{9}{}{%
+        {{hash=6554a7f74ef9c45fafb205436281f6c8}{%
+           family={Bar-Gill},
+           familyi={B\bibinithyphendelim G\bibinitperiod},
+           given={Nir},
+           giveni={N\bibinitperiod}}}%
+        {{hash=d2b21fdeea0439dee4b633153cf91725}{%
+           family={Pham},
+           familyi={P\bibinitperiod},
+           given={Linh\bibnamedelima My},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b57a3c78053fec8f1b68a3ed18d15b53}{%
+           family={Belthangady},
+           familyi={B\bibinitperiod},
+           given={Chinmay},
+           giveni={C\bibinitperiod}}}%
+        {{hash=98109f9b8bc975ced07a8ab9c00e7755}{%
+           family={Le\bibnamedelima Sage},
+           familyi={L\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=a40d3dbd4ebae867388e31e7ea735406}{%
+           family={Cappellaro},
+           familyi={C\bibinitperiod},
+           given={Paola},
+           giveni={P\bibinitperiod}}}%
+        {{hash=ac944d5a4246cef0e1c8f2be420ea3f9}{%
+           family={Maze},
+           familyi={M\bibinitperiod},
+           given={JR},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8fd921a549ae6718702b6c8c84fef487}{%
+           family={Lukin},
+           familyi={L\bibinitperiod},
+           given={Mikhail\bibnamedelima D},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=9f09ad550514c418ed82b394b684e887}{%
+           family={Yacoby},
+           familyi={Y\bibinitperiod},
+           given={Amir},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2880156a14d7cdd1fa10547e93a1fe9f}{%
+           family={Walsworth},
+           familyi={W\bibinitperiod},
+           given={Ronald},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{561db104d6a59263f34cc36bba791279}
+      \strng{fullhash}{11e6a27a7567e762a6cf876dab5c6817}
+      \strng{bibnamehash}{561db104d6a59263f34cc36bba791279}
+      \strng{authorbibnamehash}{561db104d6a59263f34cc36bba791279}
+      \strng{authornamehash}{561db104d6a59263f34cc36bba791279}
+      \strng{authorfullhash}{11e6a27a7567e762a6cf876dab5c6817}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature communications}
+      \field{number}{1}
+      \field{title}{Suppression of spin-bath dynamics for improved coherence of multi-spin-qubit systems}
+      \field{volume}{3}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+    \endentry
+    \entry{bauch2019decoherence}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=7d20f5983000a6bbd40dc1b19eed0e6a}{%
+           family={Bauch},
+           familyi={B\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+        {{hash=81bd3aa9b53357bbe6714b94827cae17}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Swati},
+           giveni={S\bibinitperiod}}}%
+        {{hash=dd0e25a1271e2a5bc4cf3a382a180a0c}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Junghyun},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5afd9deae0da66b6c3e8145888f5aeed}{%
+           family={Hart},
+           familyi={H\bibinitperiod},
+           given={Connor\bibnamedelima A},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=4ccb89c33167c116fccbbba1e808414c}{%
+           family={Schloss},
+           familyi={S\bibinitperiod},
+           given={Jennifer\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=c96331bf8c3a125c08982e04120ba318}{%
+           family={Turner},
+           familyi={T\bibinitperiod},
+           given={Matthew\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=ced3d5f0404413bb3d8bd218f9dbac3f}{%
+           family={Barry},
+           familyi={B\bibinitperiod},
+           given={John\bibnamedelima F},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=c080ff9412e9adc55d2ce7b622234b7c}{%
+           family={Pham},
+           familyi={P\bibinitperiod},
+           given={Linh},
+           giveni={L\bibinitperiod}}}%
+        {{hash=6554a7f74ef9c45fafb205436281f6c8}{%
+           family={Bar-Gill},
+           familyi={B\bibinithyphendelim G\bibinitperiod},
+           given={Nir},
+           giveni={N\bibinitperiod}}}%
+        {{hash=50a30c7798fdc92d08a3754a9103b1e0}{%
+           family={Yelin},
+           familyi={Y\bibinitperiod},
+           given={Susanne\bibnamedelima F},
+           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b85e472e4f9f0e3fac780ff63e461d9}
+      \strng{fullhash}{40bfecc8edfbbbeec46bb7e7e47b24f6}
+      \strng{bibnamehash}{7b85e472e4f9f0e3fac780ff63e461d9}
+      \strng{authorbibnamehash}{7b85e472e4f9f0e3fac780ff63e461d9}
+      \strng{authornamehash}{7b85e472e4f9f0e3fac780ff63e461d9}
+      \strng{authorfullhash}{40bfecc8edfbbbeec46bb7e7e47b24f6}
+      \field{extraname}{2}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1904.08763}
+      \field{title}{Decoherence of dipolar spin ensembles in diamond}
+      \field{year}{2019}
+    \endentry
+    \entry{jackson1999classical}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bc51fc62aec5c2fb2968eb631d48cf2a}{%
+           family={Jackson},
+           familyi={J\bibinitperiod},
+           given={John\bibnamedelima David},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association of Physics Teachers}%
+      }
+      \strng{namehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{fullhash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{bibnamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authorbibnamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authornamehash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \strng{authorfullhash}{bc51fc62aec5c2fb2968eb631d48cf2a}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Classical electrodynamics}
+      \field{year}{1999}
+    \endentry
+    \entry{doherty2012theory}{article}{}
+      \name{author}{7}{}{%
+        {{hash=427049b8632d3b62410bc3755f6a229a}{%
+           family={Doherty},
+           familyi={D\bibinitperiod},
+           given={MW},
+           giveni={M\bibinitperiod}}}%
+        {{hash=afa988a6f595101eb56b43586c9cbec0}{%
+           family={Dolde},
+           familyi={D\bibinitperiod},
+           given={F},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a60fffde33952d7d21e09b031b829d32}{%
+           family={Fedder},
+           familyi={F\bibinitperiod},
+           given={H},
+           giveni={H\bibinitperiod}}}%
+        {{hash=176f8a3c6b3820fedfad65dcbb8fb5c5}{%
+           family={Jelezko},
+           familyi={J\bibinitperiod},
+           given={Fedor},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a3a4bc90ce7f9a04b50cd8c57d459a2c}{%
+           family={Wrachtrup},
+           familyi={W\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=58a27d0dd1fc8bd13fdfad027427a0d6}{%
+           family={Manson},
+           familyi={M\bibinitperiod},
+           given={NB},
+           giveni={N\bibinitperiod}}}%
+        {{hash=3f2afb6d35ac9cb47f0f0baca1c4216c}{%
+           family={Hollenberg},
+           familyi={H\bibinitperiod},
+           given={LCL},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{fullhash}{77e0e6b33c4cf5c31c6f8a140562f29f}
+      \strng{bibnamehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{authorbibnamehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{authornamehash}{7a3bd8fff263fbfddbc225c551cceec8}
+      \strng{authorfullhash}{77e0e6b33c4cf5c31c6f8a140562f29f}
+      \field{extraname}{3}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review B}
+      \field{number}{20}
+      \field{title}{Theory of the ground-state spin of the NV- center in diamond}
+      \field{volume}{85}
+      \field{year}{2012}
+      \field{pages}{205203}
+      \range{pages}{1}
+    \endentry
+    \entry{smeltzer201113c}{article}{}
+      \name{author}{3}{}{%
+        {{hash=63f64e0779cf9f3a1fc86342ccbbc3d8}{%
+           family={Smeltzer},
+           familyi={S\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=bb7b91156f3241a205fa598aa9346a30}{%
+           family={Childress},
+           familyi={C\bibinitperiod},
+           given={Lilian},
+           giveni={L\bibinitperiod}}}%
+        {{hash=de77ce5fe1ed747f73784b4e44f26add}{%
+           family={Gali},
+           familyi={G\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{fullhash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{bibnamehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{authorbibnamehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{authornamehash}{02939b4dd431e7f97ffde0216140e15f}
+      \strng{authorfullhash}{02939b4dd431e7f97ffde0216140e15f}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New Journal of Physics}
+      \field{number}{2}
+      \field{title}{13C hyperfine interactions in the nitrogen-vacancy centre in diamond}
+      \field{volume}{13}
+      \field{year}{2011}
+      \field{pages}{025021}
+      \range{pages}{1}
+    \endentry
   \enddatalist
-  \missing{bar2012suppression}
-  \missing{bauch2019decoherence}
 \endrefsection
 \endinput
 

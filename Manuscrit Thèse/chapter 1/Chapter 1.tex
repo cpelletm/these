@@ -39,7 +39,7 @@ Fig. \ref{diamond+NV} illustrates the various scales to consider in this study: 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\textwidth]{Figures/phase_diagram_carbon_wiki}
-\caption{Pressure-temperature phase diagram of elemental carbon. From wikipedia, adapted from \citep{bundy1989pressure, bundy1996pressure}.}
+\caption{Pressure-temperature phase diagram of elemental carbon. Credits: Wikimedia commons, adapted from \citep{bundy1989pressure, bundy1996pressure}.}
 \label{carbon phase diagram}
 \end{figure}
 
@@ -166,7 +166,7 @@ In the remaining part of this manuscript, we will only consider the negatively c
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{Figures/NV_optical}
-\caption{Optical properties of the NV center. (a) Electron occupation of the molecular orbitals for the electronic ground state $^3A_2$ and the first excited state $^3E$. (b) Diagram of the main optical transition between the two spin triplet states and of the IR transition between the two singlet sates. The value of the transition corresponds to the ZPL and are taken from \citep{doherty2013nitrogen}. (c) Representation of the vibronic structure for the $^3A_2$ and $3^E$ states under the Franck-Condon approximation. The graph axes are the energy of the states E and configuration coordinate q. The green and red arrow represents non-resonant (Stokes or anti-Stokes) absorption and emission. (d) Emission and absorption spectrum of the NV center main transition at 300 K, from PL and PLE measurements respectively. Taken from Wikipedia}
+\caption{Optical properties of the NV center. (a) Electron occupation of the molecular orbitals for the electronic ground state $^3A_2$ and the first excited state $^3E$. (b) Diagram of the main optical transition between the two spin triplet states and of the IR transition between the two singlet sates. The value of the transition corresponds to the ZPL and are taken from \citep{doherty2013nitrogen}. (c) Representation of the vibronic structure for the $^3A_2$ and $3^E$ states under the Franck-Condon approximation. The graph axes are the energy of the states E and configuration coordinate q. The green and red arrow represents non-resonant (Stokes) absorption and emission. (d) Emission and absorption spectrum of the NV center main transition at 300 K, from PL and PLE measurements respectively. Credits: Wikimedia commons}
 \label{NV optical}
 \end{figure}
 
@@ -364,9 +364,9 @@ Fig. \ref{ODMR 8 classes}-b) represent the 4 possible orientation of the N$-$V a
 
 Fig. \ref{ODMR 8 classes}-c) shows a simulation of the evolution of the transition frequencies $\nu_{+1} - \nu_{0}$ and $\nu_{-1} - \nu_{0}$ for all 4 classes as a function of the magnetic field amplitude, with the magnetic field orientation fixed in an arbitrary direction. Fig. \ref{ODMR 8 classes}-d) shows an ODMR spectrum with NV ensembles. 8 lines are visible corresponding to the two transitions of the 4 classes. Based on the position of these 8 lines, it is possible to determine the projection of the magnetic field on each of the 4 N$-$V axes, and thus to reconstruct the full 3D magnetic field with respect to the diamond crystalline axes.
 
-\section{Relaxation times of the NV center spin}
+\section{Dynamics the NV center spin}
 
-This section focuses on the dynamics of the NV spin, and more specifically on the various relaxation times. Relaxation times are very important properties of spin qubits as they often are the limiting factor for quantum information or quantum sensing potential applications \citep{de2021materials, degen2017quantum}.
+This section focuses on the dynamics of the NV spin, and more specifically on its various relaxation times. Relaxation times are very important properties of spin qubits as they often are the limiting factor for quantum information or quantum sensing applications \citep{de2021materials, degen2017quantum}.
 
 The relaxation times are generally decomposed between the longitudinal relaxation time $T_1$ which corresponds to the characteristic time of the return to thermal equilibrium for the populations (diagonal elements of the density matrix), and the transverse relaxation time $T_2$\footnote{We follow here the NMR nomenclature} which corresponds to the relaxation of the spin state coherences (non diagonal elements of the density matrix).
 
@@ -471,5 +471,71 @@ The origin of the relaxation time $T_2$ are fluctuating noises which are too fas
 
 \section{Dipole-dipole interaction between two electronic spins}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.4\textwidth]{Figures/shema_dipole_dipole}
+\caption{Geometric representation of two interacting spins. ($\mathbf{x}_1,\mathbf{y}_1,\mathbf{z}_1$) and ($\mathbf{x}_2,\mathbf{y}_2,\mathbf{z}_2$) represent Cartesian coordinate systems in the spin frames of reference, where $\mathbf{z}_i$ is the axis of quantization of spin $i$.} 
+\label{dipole-dipole}
+\end{figure}
+
+This final introductory section will focus on the dipole-dipole interaction between two electronic spins. 
+
+We will consider the general situation represented in Fig. \ref{dipole-dipole}: two spins separated by a distance $r$ with their own coordinate systems ($\mathbf{x}_1,\mathbf{y}_1,\mathbf{z}_1$) and ($\mathbf{x}_2,\mathbf{y}_2,\mathbf{z}_2$). The coordinate system is chosen so that each spin operator can be written:
+
+\begin{equation}
+\hat{\mathbf{S}}_i=\hat{S}_x \mathbf{x}_i + \hat{S}_y \mathbf{y}_i + \hat{S}_z \mathbf{z}_i
+\end{equation}
+
+where the spin operators $S_{\{x,y,z\} }$ have their usual definitions. In particular, this means that the spin axis of quantization of each spin is $z_i$, which classically corresponds to the magnetization direction of the dipole. This axis can be defined either by the magnetic field, or by crystal field anisotropies, which is often the case for solid state spins at low magnetic fields with $S\geq 1$  (including the NV center).
+
+\subsection{Magnetic dipole-dipole Hamiltonian}
+
+Classically, the dipole-dipole interaction between two magnetic moments $\mathbf{m}_1$ and $\mathbf{m}_2$ can be derived by computing the static magnetic field generated by one dipole at the position of the second dipole \cite[p.~188]{jackson1999classical}:
+
+\begin{align}
+U&=-\mathbf{m}_1 \cdot \mathbf{B}(\mathbf{r}) \nonumber \\
+&=-\frac{\mu_0}{4 \pi}\left[ \frac{3 (\mathbf{m}_1\cdot\mathbf{u})(\mathbf{m}_2\cdot\mathbf{u}) - \mathbf{m}_1\cdot\mathbf{m}_2}{r^3}+\frac{8\pi}{3}\mathbf{m}_1\cdot\mathbf{m}_2\,\delta(\mathbf{r})\right], \label{eq. dipole classique}
+\end{align}
+
+where $\mathbf{r}=r \mathbf{u}$ is the relative position of the two dipoles (see Fig. \ref{dipole-dipole}). 
+
+The quantum analog of the dipole-dipole interaction between spins simply replaces the magnetic moments $\mathbf{m}_i$ in eq. (\ref{eq. dipole classique}) with $\hbar \gamma_i \hat{\mathbf{S}}_i$, where $\gamma_i$ is the gryromagnetic ratio and $\hat{\mathbf{S}}_i$ the spin vector operator for spin $i$:
+
+\begin{equation}
+\mathcal{H}_{\rm dd}=\frac{\mu_0 \gamma_1 \gamma_2 \hbar^2}{4 \pi}\left[ \frac{3 (\hat{\mathbf{S}}_1\cdot\mathbf{u})(\hat{\mathbf{S}}_2\cdot\mathbf{u}) - \hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2}{r^3}+\frac{8\pi}{3}\hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2\,\delta(\mathbf{r})\right].
+\end{equation}
+
+The $\delta(\mathbf{r})$ term represents the Fermi contact energy. This term plays an important role for hyperfine coupling when there is an overlap of the electron and nuclear wavefunctions, such as the hyperfine coupling between the NV$^-$ electron spin and $^{14}$N \cite{doherty2012theory} or  $^{13}$C \cite{smeltzer201113c} nuclear spins.
+
+The focus of this manuscript is on the interaction between electronic spins which are separated by several atomic sites (density impurities in the $\sim$ ppm range). We will therefore assume that there is negligible overlap between the electronic wavefunctions and neglect the Fermi contact term. This leads the simplified dipole-dipole Hamiltonian:
+
+\begin{equation}
+\mathcal{H}_{\rm dd}= \frac{J_0}{r^3}\left[ 3 (\hat{\mathbf{S}}_1\cdot\mathbf{u})(\hat{\mathbf{S}}_2\cdot\mathbf{u}) - \hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2] \right],
+\end{equation}
+
+where $J_0=\frac{\mu_0 \gamma_1 \gamma_2 \hbar^2}{4 \pi}$.
+
+For two electronic spins with $g$-factors $\approx -2$, 
+\begin{equation*}
+\frac{J_0}{h} \approx 51.8\ \rm{MHz}\cdot \rm{nm}^3.
+\end{equation*}
+
+\subsection{Decomposition of the dipole-dipole Hamiltonian}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{Figures/flip-flop_double-flip}
+\caption{Representation of the two energy transfer mechanisms: flip-flop and double flips} 
+\label{flip flop double flip}
+\end{figure}
+
+In the weak coupling approximation, the dipole-dipole Hamiltonian between two spins can be decomposed between diagonal terms which are responsible for energy shifts of the individual spin levels, and the off-diagonal terms which are responsible for energy transfers between the two spins.
+
+In what follows, we will assume that both spins have the same quantization axis in order to simplify the Hamiltonian decomposition. A more general case is detailed in [REF].
+
+Following the notation introduced in Fig. \ref{dipole-dipole}, we will then assume that $$(\mathbf{x}_1,\mathbf{y}_1,\mathbf{z}_1) = (\mathbf{x}_2,\mathbf{y}_2,\mathbf{z}_2) = (\mathbf{x},\mathbf{y},\mathbf{z}).$$ We will denote $\mathbf{u}=u_x \mathbf{x} + u_y \mathbf{y} + u_z \mathbf{z}$ the decomposition of the unitary vector $\mathbf{u}$ in this basis. The dipole-dipole Hamiltonian can then be written:
+\begin{equation}
+\mathcal{H}_{\rm dd}=\frac{J_0}{r^3} (3 u_x^-1)
+\end{equation}
 \printbibliography
 \end{document}

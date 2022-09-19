@@ -11,6 +11,7 @@ kb=1.38E-23
 Na=6.02e23
 hbar=1.05e-34
 h=2*pi*hbar
+mu0=4*pi*1e-7
 
 density_diam=3.5 #g/cm3
 m_carbon=12.01/Na #g
@@ -27,7 +28,10 @@ eV=1.6E-19
 # Theta_NV=arccos(-1/3)
 # print(Theta_NV*180/pi)
 
-print(h*2870*1e6/(kb*log((2*0.8)/(1-0.8))))
+gamma_SI=1.761*1e11
+J0=mu0/(4*pi)*(gamma_SI*hbar)**2
+
+print(J0/h*1e27)
 
 
 def pola_NV(T):
@@ -69,7 +73,7 @@ def simu_NRJ_NV():
 	plt.show()
 
 
-simu_NRJ_NV()
+# simu_NRJ_NV()
 
 
 
