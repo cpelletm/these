@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  19 SEP 2022 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  20 SEP 2022 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -903,55 +903,63 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 Chapter 1.
-<Figures/diamant_et_NV.pdf, id=111, 624.29414pt x 246.16296pt>
-File: Figures/diamant_et_NV.pdf Graphic file (type pdf)
-<use Figures/diamant_et_NV.pdf>
-Package pdftex.def Info: Figures/diamant_et_NV.pdf  used on input line 30.
-(pdftex.def)             Requested size: 323.9978pt x 127.7538pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/Diamant_et_NV.pd
-f>]
-<Figures/phase_diagram_carbon_wiki.pdf, id=147, 326.30872pt x 284.02905pt>
-File: Figures/phase_diagram_carbon_wiki.pdf Graphic file (type pdf)
-<use Figures/phase_diagram_carbon_wiki.pdf>
-Package pdftex.def Info: Figures/phase_diagram_carbon_wiki.pdf  used on input l
-ine 41.
-(pdftex.def)             Requested size: 216.0022pt x 188.01881pt.
- [2 <./Figures/phase_diagram_carbon_wiki.pdf>]
-<Figures/Diamond_type.pdf, id=175, 646.46977pt x 290.44714pt>
-File: Figures/Diamond_type.pdf Graphic file (type pdf)
-<use Figures/Diamond_type.pdf>
-Package pdftex.def Info: Figures/Diamond_type.pdf  used on input line 59.
-(pdftex.def)             Requested size: 323.9978pt x 145.5689pt.
- [3 <./Figures/Diamond_type.pdf>]
-<Figures/HPHT_and_CVD.pdf, id=202, 493.84616pt x 235.07446pt>
-File: Figures/HPHT_and_CVD.pdf Graphic file (type pdf)
-<use Figures/HPHT_and_CVD.pdf>
-Package pdftex.def Info: Figures/HPHT_and_CVD.pdf  used on input line 81.
-(pdftex.def)             Requested size: 360.0pt x 171.36258pt.
+)
+<Figures/diamant_et_NV.pdf, id=111, 624.29414pt x 246.16296pt>
+File: Figures/diamant_et_NV.pdf Graphic file (type pdf)
+<use Figures/diamant_et_NV.pdf>
+Package pdftex.def Info: Figures/diamant_et_NV.pdf  used on input line 32.
+(pdftex.def)             Requested size: 323.9978pt x 127.7538pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4] [5 <./Figures/HPHT_and_CVD.pdf>]
-<Figures/formtion_NV_2.pdf, id=271, 1823.71315pt x 538.7372pt>
+[1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<Figures/phase_diagram_carbon_wiki.pdf, id=125, 326.30872pt x 284.02905pt>
+File: Figures/phase_diagram_carbon_wiki.pdf Graphic file (type pdf)
+<use Figures/phase_diagram_carbon_wiki.pdf>
+Package pdftex.def Info: Figures/phase_diagram_carbon_wiki.pdf  used on input l
+ine 42.
+(pdftex.def)             Requested size: 216.0022pt x 188.01881pt.
+ [2 <./Figures/Diamant_et_NV.pdf> <./Figures/phase_diagram_carbon_wiki.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/phase_diagram_carbon_wiki.pdf
+): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+<Figures/Diamond_type.pdf, id=175, 646.46977pt x 290.44714pt>
+File: Figures/Diamond_type.pdf Graphic file (type pdf)
+<use Figures/Diamond_type.pdf>
+Package pdftex.def Info: Figures/Diamond_type.pdf  used on input line 60.
+(pdftex.def)             Requested size: 323.9978pt x 145.5689pt.
+ [3 <./Figures/Diamond_type.pdf>] [4]
+<Figures/HPHT_and_CVD.pdf, id=218, 493.84616pt x 235.07446pt>
+File: Figures/HPHT_and_CVD.pdf Graphic file (type pdf)
+<use Figures/HPHT_and_CVD.pdf>
+Package pdftex.def Info: Figures/HPHT_and_CVD.pdf  used on input line 81.
+(pdftex.def)             Requested size: 360.0pt x 171.36258pt.
+ [5 <./Figures/HPHT_and_CVD.pdf>]
+<Figures/formtion_NV_2.pdf, id=269, 1823.71315pt x 538.7372pt>
 File: Figures/formtion_NV_2.pdf Graphic file (type pdf)
 <use Figures/formtion_NV_2.pdf>
 Package pdftex.def Info: Figures/formtion_NV_2.pdf  used on input line 114.
 (pdftex.def)             Requested size: 360.0pt x 106.33983pt.
- [6 <./Figures/formtion_NV_2.pdf>] [7]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6] [7 <./Figures/formtion_NV_2.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 143.
@@ -964,16 +972,14 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 143.
 
-<Figures/NV_electrons.pdf, id=439, 573.82103pt x 362.33038pt>
+[8]
+<Figures/NV_electrons.pdf, id=451, 573.82103pt x 362.33038pt>
 File: Figures/NV_electrons.pdf Graphic file (type pdf)
 <use Figures/NV_electrons.pdf>
 Package pdftex.def Info: Figures/NV_electrons.pdf  used on input line 151.
 (pdftex.def)             Requested size: 288.0011pt x 181.85583pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[8]
-<Figures/NV_optical.pdf, id=456, 823.87364pt x 613.73769pt>
+ [9 <./Figures/NV_electrons.pdf>]
+<Figures/NV_optical.pdf, id=505, 823.87364pt x 613.73769pt>
 File: Figures/NV_optical.pdf Graphic file (type pdf)
 <use Figures/NV_optical.pdf>
 Package pdftex.def Info: Figures/NV_optical.pdf  used on input line 168.
@@ -982,183 +988,159 @@ Package pdftex.def Info: Figures/NV_optical.pdf  used on input line 168.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9 <./Figures/NV_electrons.pdf>] [10 <./Figures/NV_optical.pdf>]
-<Figures/spin_fine_hyperfine.pdf, id=539, 482.25972pt x 276.04654pt>
+[10] [11 <./Figures/NV_optical.pdf>]
+<Figures/spin_fine_hyperfine.pdf, id=551, 482.25972pt x 276.04654pt>
 File: Figures/spin_fine_hyperfine.pdf Graphic file (type pdf)
 <use Figures/spin_fine_hyperfine.pdf>
 Package pdftex.def Info: Figures/spin_fine_hyperfine.pdf  used on input line 18
 9.
 (pdftex.def)             Requested size: 360.0pt x 206.0656pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[11] [12 <./Figures/Spin_fine_hyperfine.pdf>]
-<Figures/ISC.pdf, id=582, 403.13081pt x 230.95755pt>
+ [12 <./Figures/Spin_fine_hyperfine.pdf>]
+[13]
+<Figures/ISC.pdf, id=594, 403.13081pt x 230.95755pt>
 File: Figures/ISC.pdf Graphic file (type pdf)
 <use Figures/ISC.pdf>
 Package pdftex.def Info: Figures/ISC.pdf  used on input line 256.
 (pdftex.def)             Requested size: 288.0011pt x 164.99947pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[13] [14 <./Figures/ISC.pdf>]
-<Figures/shema_exp.pdf, id=631, 599.90169pt x 425.70027pt>
+ [14 <./Figures/ISC.pdf>] [15]
+<Figures/shema_exp.pdf, id=639, 599.90169pt x 425.70027pt>
 File: Figures/shema_exp.pdf Graphic file (type pdf)
 <use Figures/shema_exp.pdf>
-Package pdftex.def Info: Figures/shema_exp.pdf  used on input line 284.
+Package pdftex.def Info: Figures/shema_exp.pdf  used on input line 288.
 (pdftex.def)             Requested size: 288.0011pt x 204.37277pt.
- [15 <./Figures/shema_exp.pdf>]
-<Figures/Rabi.pdf, id=654, 692.36432pt x 273.4702pt>
+ [16 <./Figures/shema_exp.pdf>]
+<Figures/Rabi.pdf, id=661, 692.36432pt x 273.4702pt>
 File: Figures/Rabi.pdf Graphic file (type pdf)
 <use Figures/Rabi.pdf>
-Package pdftex.def Info: Figures/Rabi.pdf  used on input line 300.
+Package pdftex.def Info: Figures/Rabi.pdf  used on input line 304.
 (pdftex.def)             Requested size: 360.0pt x 142.1928pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[16]
-<Figures/ODMR_basique.pdf, id=662, 739.80559pt x 252.66322pt>
+ [17 <./Figures/Rabi.pdf>]
+<Figures/ODMR_basique.pdf, id=684, 739.80559pt x 252.66322pt>
 File: Figures/ODMR_basique.pdf Graphic file (type pdf)
 <use Figures/ODMR_basique.pdf>
-Package pdftex.def Info: Figures/ODMR_basique.pdf  used on input line 320.
+Package pdftex.def Info: Figures/ODMR_basique.pdf  used on input line 324.
 (pdftex.def)             Requested size: 360.0pt x 122.95016pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[17 <./Figures/Rabi.pdf>]
-<Figures/ODMR_lockin.pdf, id=686, 989.75484pt x 350.6325pt>
+ [18 <./Figures/ODMR_basique.pdf>]
+<Figures/ODMR_lockin.pdf, id=705, 989.75484pt x 350.6325pt>
 File: Figures/ODMR_lockin.pdf Graphic file (type pdf)
 <use Figures/ODMR_lockin.pdf>
-Package pdftex.def Info: Figures/ODMR_lockin.pdf  used on input line 336.
+Package pdftex.def Info: Figures/ODMR_lockin.pdf  used on input line 340.
 (pdftex.def)             Requested size: 360.0pt x 127.53305pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[18 <./Figures/ODMR_basique.pdf>]
-<Figures/ODMR_8_classes.pdf, id=708, 680.63422pt x 486.38937pt>
+ [19 <./Figures/ODMR_lockin.pdf>]
+<Figures/ODMR_8_classes.pdf, id=760, 680.63422pt x 486.38937pt>
 File: Figures/ODMR_8_classes.pdf Graphic file (type pdf)
 <use Figures/ODMR_8_classes.pdf>
-Package pdftex.def Info: Figures/ODMR_8_classes.pdf  used on input line 352.
+Package pdftex.def Info: Figures/ODMR_8_classes.pdf  used on input line 356.
 (pdftex.def)             Requested size: 360.0pt x 257.2582pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[19 <./Figures/ODMR_lockin.pdf>] [20 <./Figures/ODMR_8_classes.pdf>]
+[20 <./Figures/ODMR_8_classes.pdf>] [21]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 383.
+(hyperref)                removing `math shift' on input line 387.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 383.
+(hyperref)                removing `subscript' on input line 387.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 383.
+(hyperref)                removing `math shift' on input line 387.
 
-<Figures/T1_basique.pdf, id=859, 658.79059pt x 250.66364pt>
+<Figures/T1_basique.pdf, id=867, 658.79059pt x 250.66364pt>
 File: Figures/T1_basique.pdf Graphic file (type pdf)
 <use Figures/T1_basique.pdf>
-Package pdftex.def Info: Figures/T1_basique.pdf  used on input line 388.
+Package pdftex.def Info: Figures/T1_basique.pdf  used on input line 392.
 (pdftex.def)             Requested size: 360.0pt x 136.97806pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[21]
-<Figures/T1_protocole_soustraction.pdf, id=875, 696.18002pt x 466.39752pt>
+[22 <./Figures/T1_basique.pdf>]
+<Figures/T1_protocole_soustraction.pdf, id=896, 696.18002pt x 466.39752pt>
 File: Figures/T1_protocole_soustraction.pdf Graphic file (type pdf)
 <use Figures/T1_protocole_soustraction.pdf>
 Package pdftex.def Info: Figures/T1_protocole_soustraction.pdf  used on input l
-ine 400.
+ine 404.
 (pdftex.def)             Requested size: 360.0pt x 241.18306pt.
+ [23 <./Figures/T1_protocole_soustraction.pdf>]
+[24]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 428.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 428.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 428.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 428.
+
+<Figures/Ramsey.pdf, id=968, 698.9891pt x 259.30359pt>
+File: Figures/Ramsey.pdf Graphic file (type pdf)
+<use Figures/Ramsey.pdf>
+Package pdftex.def Info: Figures/Ramsey.pdf  used on input line 432.
+(pdftex.def)             Requested size: 360.0pt x 133.54877pt.
+[25 <./Figures/Ramsey.pdf>]
+<Figures/ODMR_1_classes.pdf, id=995, 695.69873pt x 250.96248pt>
+File: Figures/ODMR_1_classes.pdf Graphic file (type pdf)
+<use Figures/ODMR_1_classes.pdf>
+Package pdftex.def Info: Figures/ODMR_1_classes.pdf  used on input line 451.
+(pdftex.def)             Requested size: 360.0pt x 129.86555pt.
+ [26 <./Figures/ODMR_1_classes.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 462.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 462.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 462.
+
+<Figures/Echo.pdf, id=1032, 728.52063pt x 252.93323pt>
+File: Figures/Echo.pdf Graphic file (type pdf)
+<use Figures/Echo.pdf>
+Package pdftex.def Info: Figures/Echo.pdf  used on input line 465.
+(pdftex.def)             Requested size: 360.0pt x 124.98813pt.
+[27 <./Figures/Echo.pdf>]
+Overfull \hbox (13.4578pt too wide) in paragraph at lines 479--479
+[]\OT1/cmr/bx/n/14.4 Dipole-dipole in-ter-ac-tion be-tween two elec-tronic
+ []
+
+<Figures/shema_dipole_dipole.pdf, id=1063, 251.13464pt x 219.10452pt>
+File: Figures/shema_dipole_dipole.pdf Graphic file (type pdf)
+<use Figures/shema_dipole_dipole.pdf>
+Package pdftex.def Info: Figures/shema_dipole_dipole.pdf  used on input line 48
+3.
+(pdftex.def)             Requested size: 143.9978pt x 125.63641pt.
+[28 <./Figures/shema_dipole_dipole.pdf>]
+<Figures/flip-flop_double-flip.pdf, id=1091, 734.74745pt x 596.39659pt>
+File: Figures/flip-flop_double-flip.pdf Graphic file (type pdf)
+<use Figures/flip-flop_double-flip.pdf>
+Package pdftex.def Info: Figures/flip-flop_double-flip.pdf  used on input line 
+534.
+(pdftex.def)             Requested size: 251.9989pt x 204.5467pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[22 <./Figures/T1_basique.pdf>] [23 <./Figures/T1_protocole_soustraction.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 424.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 424.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 424.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 424.
-
-<Figures/Ramsey.pdf, id=958, 698.9891pt x 259.30359pt>
-File: Figures/Ramsey.pdf Graphic file (type pdf)
-<use Figures/Ramsey.pdf>
-Package pdftex.def Info: Figures/Ramsey.pdf  used on input line 428.
-(pdftex.def)             Requested size: 360.0pt x 133.54877pt.
-[24 <./Figures/Ramsey.pdf>]
-<Figures/ODMR_1_classes.pdf, id=985, 695.69873pt x 250.96248pt>
-File: Figures/ODMR_1_classes.pdf Graphic file (type pdf)
-<use Figures/ODMR_1_classes.pdf>
-Package pdftex.def Info: Figures/ODMR_1_classes.pdf  used on input line 447.
-(pdftex.def)             Requested size: 360.0pt x 129.86555pt.
- [25 <./Figures/ODMR_1_classes.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 458.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 458.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 458.
-
-<Figures/Echo.pdf, id=1024, 728.52063pt x 252.93323pt>
-File: Figures/Echo.pdf Graphic file (type pdf)
-<use Figures/Echo.pdf>
-Package pdftex.def Info: Figures/Echo.pdf  used on input line 461.
-(pdftex.def)             Requested size: 360.0pt x 124.98813pt.
-[26 <./Figures/Echo.pdf>]
-Overfull \hbox (13.4578pt too wide) in paragraph at lines 475--475
-[]\OT1/cmr/bx/n/14.4 Dipole-dipole in-ter-ac-tion be-tween two elec-tronic
- []
-
-<Figures/shema_dipole_dipole.pdf, id=1055, 251.13464pt x 219.10452pt>
-File: Figures/shema_dipole_dipole.pdf Graphic file (type pdf)
-<use Figures/shema_dipole_dipole.pdf>
-Package pdftex.def Info: Figures/shema_dipole_dipole.pdf  used on input line 47
-9.
-(pdftex.def)             Requested size: 143.9978pt x 125.63641pt.
-[27 <./Figures/shema_dipole_dipole.pdf>] [28]
-<Figures/flip-flop_double-flip.pdf, id=1094, 734.74745pt x 596.39659pt>
-File: Figures/flip-flop_double-flip.pdf Graphic file (type pdf)
-<use Figures/flip-flop_double-flip.pdf>
-Package pdftex.def Info: Figures/flip-flop_double-flip.pdf  used on input line 
-530.
-(pdftex.def)             Requested size: 251.9989pt x 204.5467pt.
- [29 <./Figures/flip-flop_double-flip.pdf>]
-<Figures/Shema_CR.pdf, id=1122, 848.74898pt x 321.33702pt>
+[29] [30 <./Figures/flip-flop_double-flip.pdf>]
+<Figures/Shema_CR.pdf, id=1133, 848.74898pt x 321.33702pt>
 File: Figures/Shema_CR.pdf Graphic file (type pdf)
 <use Figures/Shema_CR.pdf>
-Package pdftex.def Info: Figures/Shema_CR.pdf  used on input line 560.
+Package pdftex.def Info: Figures/Shema_CR.pdf  used on input line 564.
 (pdftex.def)             Requested size: 323.9978pt x 122.66829pt.
- [30 <./Figures/Shema_CR.pdf>] [31] [32]
-Overfull \hbox (0.80183pt too wide) in paragraph at lines 586--586
+ [31 <./Figures/Shema_CR.pdf>]
+[32]
+Overfull \hbox (0.80183pt too wide) in paragraph at lines 590--590
 []\OT1/cmr/m/n/10.95 Amanda S Barnard. \OT1/cmr/m/it/10.95 The di-a-mond for-mu
 la: di-a-mond synthesis--a gem-
  []
 
 
-Overfull \hbox (14.8287pt too wide) in paragraph at lines 586--586
+Overfull \hbox (14.8287pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 pro-duced in nat-u-ral brown di-a-monds by high-pressure, hi
 gh-temperature
  []
@@ -1166,92 +1148,98 @@ gh-temperature
 [33
 
 ]
-Overfull \hbox (5.78285pt too wide) in paragraph at lines 586--586
+Overfull \hbox (5.78285pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 di-a-mond crys-tals''. In: \OT1/cmr/m/it/10.95 Jour-nal of C
 rys-tal Growth \OT1/cmr/m/n/10.95 237 (2002), pp. 1281{
  []
 
 
-Overfull \hbox (9.88962pt too wide) in paragraph at lines 586--586
+Overfull \hbox (9.88962pt too wide) in paragraph at lines 590--590
 []\OT1/cmr/m/n/10.95 Seiichiro Mat-sumoto et al. ``Growth of di-a-mond par-ti-c
 les from methane-
  []
 
 
-Overfull \hbox (6.08484pt too wide) in paragraph at lines 586--586
+Overfull \hbox (6.08484pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 hydrogen gas''. In: \OT1/cmr/m/it/10.95 Jour-nal of ma-te-ri
 -als Sci-ence \OT1/cmr/m/n/10.95 17.11 (1982), pp. 3106{
  []
 
 [34]
-Overfull \hbox (13.12904pt too wide) in paragraph at lines 586--586
+Overfull \hbox (13.12904pt too wide) in paragraph at lines 590--590
 []\OT1/cmr/m/n/10.95 Makoto Kasu and Naoki Kobayashi. ``High mo-bil-ity and hig
 h crystalline-
  []
 
 
-Overfull \hbox (16.08907pt too wide) in paragraph at lines 586--586
+Overfull \hbox (16.08907pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 tro-gen delta-doping''. In: \OT1/cmr/m/it/10.95 Ap-plied Phy
 sics Let-ters \OT1/cmr/m/n/10.95 101.8 (2012), p. 082413. 
  []
 
 
-Overfull \hbox (9.92796pt too wide) in paragraph at lines 586--586
+Overfull \hbox (9.92796pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 mond us-ing elec-tron para-m-ag-netic res-o-nance and op-ti-
 cal spec-troscopy''.
  []
 
 [35]
-Overfull \hbox (8.87062pt too wide) in paragraph at lines 586--586
+Overfull \hbox (8.87062pt too wide) in paragraph at lines 590--590
 []\OT1/cmr/m/n/10.95 ME New-ton et al. ``Recombination-enhanced dif-fu-sion of 
 self-interstitial
  []
 
 [36]
-Overfull \hbox (3.09052pt too wide) in paragraph at lines 586--586
+Overfull \hbox (3.09052pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 cen-tre in di-a-mond: the elec-tronic so-lu-tion''. In: \OT1
 /cmr/m/it/10.95 New Jour-nal of Physics
  []
 
 
-Overfull \hbox (7.70134pt too wide) in paragraph at lines 586--586
+Overfull \hbox (18.45795pt too wide) in paragraph at lines 590--590
+[]\OT1/cmr/m/n/10.95 Romana Schirhagl et al. ``Nitrogen-vacancy cen-ters in di-
+a-mond: nanoscale
+ []
+
+
+Overfull \hbox (7.70134pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 quan-tum com-put-ing hard-ware''. In: \OT1/cmr/m/it/10.95 Sc
 i-ence \OT1/cmr/m/n/10.95 372.6539 (2021), eabb2823. 
  []
 
 
-Overfull \hbox (20.18915pt too wide) in paragraph at lines 586--586
+Overfull \hbox (20.18915pt too wide) in paragraph at lines 590--590
 \OT1/cmr/m/n/10.95 ``Quan-tum sens-ing''. In: \OT1/cmr/m/it/10.95 Re-views of m
 od-ern physics \OT1/cmr/m/n/10.95 89.3 (2017), p. 035002. 
  []
 
 [37] [38]
-Overfull \hbox (1.12952pt too wide) in paragraph at lines 586--586
+Overfull \hbox (1.12952pt too wide) in paragraph at lines 590--590
 []\OT1/cmr/m/n/10.95 Federico Gor-rini et al. ``Long-Lived En-sem-bles of Shal-
 low NV--Centers
  []
 
 [39] [40]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 586.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 586.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 590.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 590.
  (./Chapter 1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 586.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 586.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 590.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 590.
 Package rerunfilecheck Info: File `"Chapter 1".out' has not changed.
-(rerunfilecheck)             Checksum: 787CEBC5581AF848CE53C243F2FAF06E;2204.
+(rerunfilecheck)             Checksum: 124F72F02A6C994438D0CC22CA340F03;2227.
 Package logreq Info: Writing requests to '"Chapter 1".run.xml'.
 \openout1 = `"Chapter 1.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 586.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 590.
  ) 
 Here is how much of TeX's memory you used:
- 25711 strings out of 481239
- 491969 string characters out of 5920377
- 1119948 words of memory out of 5000000
- 40326 multiletter control sequences out of 15000+600000
+ 25716 strings out of 481239
+ 492135 string characters out of 5920377
+ 1119062 words of memory out of 5000000
+ 40328 multiletter control sequences out of 15000+600000
  547379 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,15n,75p,1082b,1493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,15n,75p,1204b,1493s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1274,10 +1262,10 @@ s/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 ></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on "Chapter 1.pdf" (40 pages, 1119122 bytes).
+Output written on "Chapter 1.pdf" (40 pages, 1121309 bytes).
 PDF statistics:
- 1332 PDF objects out of 1440 (max. 8388607)
- 1144 compressed objects within 12 object streams
- 234 named destinations out of 1000 (max. 500000)
+ 1338 PDF objects out of 1440 (max. 8388607)
+ 1150 compressed objects within 12 object streams
+ 237 named destinations out of 1000 (max. 500000)
  331 words of extra memory for PDF output out of 10000 (max. 10000000)
 

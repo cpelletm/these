@@ -21,29 +21,22 @@
 
 \title{}
 \begin{document}
-\chapter{Introduction to NV centers and their common usage}
-The aim of this first chapter is to introduce the tools and concepts needed to understand the next chapters.
+\chapter{Introduction to Nitrogen-Vacancy centers and their common usage}
+The aim of this first chapter is to introduce concepts related to Nitrogen-vacancy (NV) centers, to the diamond material, and to the dipole-dipole interaction which are necessary to explain the work presented in the later chapters.
 
-This chapter will first cover the material aspects of NV centers by focusing on the creation process of synthetic diamonds and the required steps to create NV defects inside them. 
-
-It will then cover the fundamentals of NV physics, including the NV center optical and spin properties, basic experiments with NV centers and the various relaxations times ($T_1$,$T_2$,$T_2^*$) which characterizes the NV center's spin. 
-
-Finally it will introduce dipole-dipole coupling between two spins and the concept of cross-relaxation.
-
-The three subjects that are the NV center physics, the diamond material aspects and the dipole-dipole interaction are at the heart of the work carried out in this thesis. 
+In this introductory chapter, we will first cover the material aspects of NV centers by focusing on the creation process of synthetic diamonds and the required steps to create NV defects inside them. We will then cover the fundamentals of NV physics, including the NV center optical and spin properties, basic experiments with NV centers and the various relaxations times ($T_1$,$T_2$,$T_2^*$) which characterizes the NV center's spin. Finally we will present the dipole-dipole interaction between two spins and the concept of cross-relaxation.
 
 \section{The NV center as a physical object}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/diamant_et_NV}
-\caption{From the diamond to the NV center. a) Drawing of a bulk diamond. We consider a diamond to be ``bulk" if it is bigger than a few 100 $\mu$m. b) Drawing representing a fluorescence microscopy image of a diamond surface. The red fluorescent spots symbolize NV centers. c) Zoom-in on the crystalline structure of an NV center. Block dots represent carbon atoms}
+\caption{From the diamond to the NV center. a) Drawing of a bulk diamond. We consider a diamond to be ``bulk" if it is bigger than a few 100 $\mu$m. b) Drawing representing a fluorescence microscopy image of a diamond surface. The red fluorescent spots symbolize NV centers photoluminescence. c) Zoom-in on the crystalline structure of an NV center. Black balls represent carbon atoms}
 \label{diamond+NV}
 \end{figure}
-Refaire ce paragraphe te foutre le summary après la description de la figure. Et bien parler du NV- et du charge state
-We will start this chapter by discussing the physical aspect of the NV center, and of its host material, the diamond. We will cover some of the basic properties of diamond and of its most common defects before addressing the creation process of both diamonds and NV centers.
+The NV center is a particular defect in diamond. Before studying the NV centers properties, we must first discuss the diamond itself and answer these questions: How are diamond created, what kind of defects are there in diamond, and how to specifically create NV defects. The field of material science related to diamonds and NV centers is a rich and complex one, and this section will only introduce basic notions regarding these subjects.
 
-Fig. \ref{diamond+NV} illustrates the various scales to consider in this study: we start with a diamond which for lab purposes is generally no bigger than a few mm. If we zoom-in on the surface of some diamonds, we can find bright fluorescent spots corresponding to particular crystalline defects. Standard confocal microscopy is limited in its resolution to the $\sim \mu$m range, but if we could zoom-in even further we would see the structure of the defect, illustrated here with the crystalline structure of an NV center. 
-\subsection{Diamond overview}
+Fig. \ref{diamond+NV} illustrates the various scales to consider in the study of NV centers. Starting with a bulk diamond, typically few mm wide, then zooming-in on the diamond surface with an optical microscope to find fluorescent spots corresponding to the photoluminescence of NV centers. Standard confocal microscopy is limited in its resolution to the $\sim \mu$m range, but if it was possible to zoom-in even further, we would see the atomic structure of a few \AA \ illustrated in the last panel. 
+\subsection{Diamond material overview}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\textwidth]{Figures/phase_diagram_carbon_wiki}
@@ -53,13 +46,13 @@ Fig. \ref{diamond+NV} illustrates the various scales to consider in this study: 
 
 Diamond is a remarkable material in many aspects, it is famous for having the highest hardness and thermal conductivity of any natural material, and for its high optical refractive index and optical dispersion which makes it an extremely valuable crystal in jewelry.
 
-Diamond is also famous for being extremely rare in nature, even though its only constituent, carbon, is one of the most abundant element on the Earth surface. The reason being that graphite, and not diamond, is the thermodynamically stable phase of carbon in ambient conditions.
+Diamond is also famous for being extremely rare in nature, even though its only constituent, carbon, is one of the most abundant element on the Earth surface. The reason being that graphite, and not diamond, is the thermodynamically stable phase of carbon under ambient conditions.
 
 Fig. \ref{carbon phase diagram} shows the PT phase diagram of elemental carbon. We can see that diamond becomes the thermodynamically stable phase only for pressure above a few GPa, $10^4$ times higher than atmospheric pressure. Even though diamond is unstable under ambient conditions, the extremely high energy activation needed to break the sp$^3$ bond between two carbon atoms means that the kinematics of the $C_{\rm diamond} \to C_{\rm graphite}$ transition is almost completely frozen. In many ways diamonds are more stable than graphite under ambient condition due to their relative chemical inertness.
 
-Where the thermodynamic equilibrium really matters is for the crystallization process. The higher pressure needed to reach the diamond-stable region can only be found naturally deep under the earth crust, typically between 150 and 240 km below sea level \citep{tappert2011diamonds}, which explain their rarity. It also explains why, despite many previous efforts, diamonds were synthetically produced for the first time only in 1953 \citep{barnard2000diamond}, more than 50 years after the first synthetic sapphires. To this day, artificial diamond synthesis remains an active field of research \citep{shenderova2019synthesis, achard2020chemical}.
+Where the thermodynamic equilibrium really matters is for the crystallization process. The higher pressure needed to reach the diamond-stable region can only be found naturally deep under the earth crust, typically between 150 and 240 km below sea level \citep{tappert2011diamonds}, which explain their rarity. It also explains why, despite many previous attempts, diamonds were only synthetically produced in 1953 \citep{barnard2000diamond}, more than 50 years after the first synthetic sapphires. To this day, artificial diamond synthesis remains an active field of research \citep{shenderova2019synthesis, achard2020chemical}.
 
-Diamonds, either natural or artificial, are used in the lab and in industry for their extreme sturdiness, with applications ranging from abrasive to diamond anvil cells \citep{jayaraman1983diamond}. More recently, diamonds have been the object of optics and electronics applications. For both of these fields however, the focus is no longer solely on the diamond but also on the defects found inside it.
+Diamonds, either natural or artificial, are used in the lab and in industry for their extreme sturdiness, with applications ranging from abrasive to diamond anvil cells \citep{jayaraman1983diamond}. More recently, diamonds have been the object of optics and electronics applications. For both of these fields however, the focus is no longer solely on the diamond but also on the defects hosted inside it.
 
 \subsection{Point defects in diamond}
 \begin{figure}[h!]
@@ -68,20 +61,19 @@ Diamonds, either natural or artificial, are used in the lab and in industry for 
 \caption{Traditional classification of diamonds, based on \citep{tappert2011diamonds}}
 \label{diamond type}
 \end{figure}
-Diamond in its intrinsic form is an insulator with a bandgap of $\sim 5.47\ \rm eV$ and is transparent from far infrared to deep UV. As any crystal however, diamond is prone to defects. We will focus here on 0D point-like defects and omit structural defects such as dislocations, even though those too can affect the optical properties of the diamond \citep{collins2000colour}. 
+Diamond in its intrinsic form is an insulator with a bandgap of $\sim 5.47\ \rm eV$ and is transparent from far infrared to deep UV. As any crystal however, diamond is prone to defects. We will focus here on point-like (0D) defects and omit structural defects such as dislocations, even though those too can affect the optical properties of the diamond \citep{collins2000colour}. 
 
-Point-like defects can be constituted by the absence of a carbon atom (``vacancies"), an interstitial defect between two carbon atoms or the substitution of a carbon atom with another atom. These impurities result in unpaired electron or holes localized around the impurity site. This localization causes discrete energy levels for the holes or the electrons, some of which will lie inside the diamond bandgap and will impact the crystal optical and electrical properties. 
+Point-like defects can be constituted by the absence of a carbon atom (``vacancies"), an interstitial defect between two carbon atoms or the substitution of a carbon atom with another atom. These impurities result in unpaired electron or holes localized around the impurity site. This localization causes discrete energy levels for the holes or the electrons, some of which lie inside the diamond bandgap and impact the crystal optical and electrical properties. 
 
-Defects with electronic transitions in the optical range are called ``colored centers" as they are responsible for the coloring of the gems.  H, He, Li, B, N,
-O, Ne, P, Si, As, Ti, Cr, Ni, Co, Zn, Zr, Ag, W, Xe and Tl are known to form colored centers when introduced in diamond \citep{zaitsev2013optical, shenderova2019synthesis}, and each of these elements can form several defects. Nitrogen alone can form more than 50 different colored centers \citep{dobrinets2016hpht, ashfold2020nitrogen}.
+Defects with electronic transitions in the optical range are called ``colored centers" as they are responsible for the coloring of the gems.  Over 20 elements are known to form colored centers when introduced in diamond \citep{zaitsev2013optical, shenderova2019synthesis}, and each of these elemental atoms can form several defects. Nitrogen alone can form more than 50 different colored centers \citep{dobrinets2016hpht, ashfold2020nitrogen}.
 
-Nitrogen, and to a lesser extant boron, are the most commonly found extrinsic elements in natural diamond. The traditional classification of diamond is presented in Fig. \ref{diamond type}. It is based on the N and B concentration, with a threshold of a few ppm (part per million) for each species as this was the smaller amount easily detectable through IR absorption. Type Ia diamonds contain clustered N defects such as the B-center which is the N$_4$V defect. In contrast, type Ib diamond mostly contains C-center which are single substitutional N$_s$ defects, also referred to as P1 centers in the spin community. Type IIb diamond contains B impurities which give them a blueish-grey color, and type IIa diamond contains no detectable impurities via IR absorption \citep{ashfold2020nitrogen}.
+Nitrogen, and to a lesser extant boron, are the most commonly found extrinsic elements in natural diamond. The traditional classification of diamond is presented in Fig. \ref{diamond type}. It is based on the N and B concentration, with a threshold of a few ppm (part per million) for each species as this was the smaller amount easily detectable through IR absorption. Type Ia diamonds contain clustered N defects such as the B-center (N$_4$V defect). In contrast, type Ib diamond mostly contains C-center which are single substitutional N$_s$ defects, also referred to as P1 centers in the spin community. Type IIb diamond contains boron impurities which give them a blueish-grey color, and type IIa diamond contains no detectable impurities via IR absorption \citep{ashfold2020nitrogen}.
 
-Nitrogen-vacancy centers are a rare occurrence in both natural diamonds and untreated synthetic diamonds, but we will see later that the much more common N$_s$ defects can be converted in NV centers. When working with NV centers, the starting crystal is therefore often a type Ib if one wants to work with ensemble, or a type IIa if one wants to work with single NV centers.
+Nitrogen-vacancy centers are a rare occurrence in both natural diamonds and untreated synthetic diamonds, but we will see later that the much more common N$_s$ defects can be converted in NV centers. When working with NV centers, the starting crystal is therefore often a type Ib diamond if one wants to work with ensemble, or a type IIa diamond if one wants to work with single NV centers \footnote{In order to isolate single NV in a confocal optical spot, the concentration needs to be [NV] $<$ 1 ppb.}.
 
-The boron defects are mainly studied in the context of p-doped diamond semi-conductor: a concentration of [B] $\approx 1000\ \rm ppm$ is needed to achieve a significant overlap between the impurity sites, which turns the diamond into a semi-metal \citep{macpherson2015practical}.Other defects of interest, generally not present naturally but introduced voluntarily, include P and S defects to create n-doped diamond \citep{das2022diamond} (still an active field of research), as well as group IV-vacancy defects (SiV, GeV, SnV, PbV) for quantum optics application \citep{bradac2019quantum}. 
+The boron defects are mainly studied in the context of p-doped diamond semi-conductor: a concentration of [B] $\approx 1000\ \rm ppm$ is needed to achieve a significant overlap between the impurity sites, which turns the diamond into a semi-metal \citep{macpherson2015practical}. Other defects of interest, generally not present naturally but introduced voluntarily, include P and S defects to create n-doped diamond \citep{das2022diamond} (still an active field of research), as well as group IV-vacancy defects (SiV, GeV, SnV, PbV) for quantum optics application \citep{bradac2019quantum}. 
 
-The NV center however remains by far the most studied defect in diamond due to its unique spin properties which will be explained below.
+The NV center however remains by far the most studied defect in diamond due to its unique spin properties which will be detailed below.
 
 \subsection{Creation of synthetic diamond for optics and electronics applications}
 \begin{figure}[h!]
@@ -95,11 +87,11 @@ Almost all diamonds used in optics or electronics experiments today are syntheti
 
 \subsubsection{HPHT growth}
 
-HPHT was the first commercially viable process for synthetic diamonds, starting from the 1950s \citep{barnard2000diamond, bundy1955man}. The basic idea of HPHT synthesis is to reconstruct an environment where diamond is the thermodynamically stable phase of carbon, similarly to the growth process of natural diamond below the earth crust. 
+HPHT was the first commercially viable process for synthetic diamonds, starting from the 1950s \citep{barnard2000diamond, bundy1955man}. The basic idea of HPHT synthesis is to reconstruct an environment where diamond is the thermodynamically stable phase of carbon, similarly to the growth process of natural diamond below the earth surface. 
 
 Fig. \ref{HPHT and CVD}-a) illustrates the apparatus of HPHT synthesis: a carbon source (graphite) and a solvent metal composed of transition metals (Fe, NI, Co typically \citep{bundy1963direct}) are put under $5 \sim 6$ GPa pressure in a press and heated to temperatures $\geq 1300\ ^\circ$C. A diamond crystal seed is put in the metal melt and a temperature gradient insures that the carbon migrates from the graphite to the diamond.
 
-The first synthesis of HPHT diamonds were all of type Ib due to unwanted nitrogen pollution in the metal melt. The first HPHT type IIa diamonds were produced in the late 90s by adding other elements to the metal melt (Ti, Al, Zr) which would react preferentially with nitrogen and prevent its incorporation in the diamond \citep{burns1999growth, sumiya2002growth}.
+The first synthesis of HPHT diamonds were all of type Ib due to unwanted nitrogen pollution in the metal melt. The first HPHT type IIa diamonds were produced in the late 90s by adding other elements to the metal bath (Ti, Al, Zr) which would react preferentially with nitrogen and prevent its incorporation in the diamond \citep{burns1999growth, sumiya2002growth}.
 
 \subsubsection{CVD growth}
 
@@ -114,7 +106,7 @@ Other sources can be used to create the high temperature required for atomic hyd
 If the CVD reactor is well made, the main sources of extrinsic impurities in the diamond comes from the source gasses \citep{balmer2009chemical}. The commercial availability of source gases containing less than $\sim$ ppm impurities made possible the growth of  high purity type IIa CVD diamonds \citep{kasu2003high, twitchen2004high, tallaire2006characterisation}.
 
 \medskip
-Both HPHT and CVD processes can produce diamonds of high quality for quantum optics or electronics application, each with their pros and cons. HPHT offers better scalability for thick crystals ($\sim \rm mm$) and allows the incorporation of heavy atoms (Ge \citep{palyanov2015germanium} , Sn \citep{ekimov2019effect}) which can be hard to incorporate from a gas phase. CVD on the other hand allows more versatility in the control of the impurities introduced in the crystal, including an isotopic control on both the impurities and the carbon itself. A particular advantage of CVD growth is the possibility of $\delta$-doping where a specific defect is grown only within a thin layer of the crystal, as low as 5 nm \citep{ohno2012engineering, ishikawa2012optical, ohashi2013negatively}.
+Both HPHT and CVD processes can produce diamonds of high quality for quantum optics or electronics application, each with their own pros and cons. HPHT offers better scalability for thick crystals ($\sim \rm mm$) and allows the incorporation of heavy atoms (Ge \citep{palyanov2015germanium} , Sn \citep{ekimov2019effect}) which can be hard to incorporate from a gas phase. CVD on the other hand allows more versatility in the control of the impurities introduced in the crystal, including an isotopic control on both the impurities and the carbon itself. A particular advantage of CVD growth is the possibility of $\delta$-doping where a specific defect is grown only within a thin layer of the crystal, as low as 5 nm \citep{ohno2012engineering, ishikawa2012optical, ohashi2013negatively}.
 
 \subsection{Optimizing NV center formation}
 \begin{figure}[h!]
@@ -124,33 +116,33 @@ Both HPHT and CVD processes can produce diamonds of high quality for quantum opt
 \label{formation NV}
 \end{figure}
 
-NV centers are a relatively rare impurity in untreated diamonds. In CVD diamond for instance, the proportion of nitrogen atoms forming an NV center in an untreated crystal is at best of $2-3 \%$ \citep{hartland2014study} and sometimes much less. While this ratio can sometimes be enough  to work with single NV centers, applications such as sensing that require dense ensemble need a higher conversion rate. We will discuss here the usual techniques used to improve the formation of NV centers.
+NV centers are a relatively rare impurity in untreated diamonds. In CVD diamond for instance, the proportion of nitrogen atoms forming an NV center in an untreated crystal is at best of $2-3 \%$ \citep{hartland2014study} and oftentimes much lower. While this ratio can be enough  to work with single NV centers, applications such as sensing that require dense ensemble need a higher conversion rate. We will discuss here the usual techniques employed to improve the formation of NV centers.
 
 Fig. \ref{formation NV} illustrates the steps needed to maximize the number of NV centers in the crystal while keeping a relatively high crystalline purity.
 
 The first step to create NV centers is to get individual substitutional N atoms in the crystal ($N_s$, C-centers or P1 centers depending on the literature). This can be achieved either \textit{in situ} by introducing (voluntarily or not) nitrogen in the crystal during the growth process \citep{tallaire2006characterisation, lobaev2017influence}, or \textit{ex situ} by implanting N$^+$ ions with ion implantation techniques \citep{meijer2005generation, smith2019colour}. Because this present work focuses on dense NV ensembles, we will consider the simplest case where the starting crystal is a type-Ib diamond due to the presence of nitrogen during the growth. A starting concentration [N$_s$]= $10 \sim 300$ ppm is typical for type Ib HPHT diamonds \citep{achard2020chemical}.
 
-The second step is to create monovacancies in the crystal lattice. This step might be optional for crystals which already contain a large number of monovacancies, but CVD crystals in particular can have less vacancies that they have substitutional nitrogen atoms \citep{mainwood1999point}. The general technique to create monovacancy is to bombard the sample with high energy particle in order to knock out carbon atoms from the crystal. Several high energy particle have been used to create vacancies, such as protons, electrons, ions, neutrons and even gamma rays \citep{davies1976optical, ashbaugh1988gemstone, kleinsasser2016high}. The most common irradiation source for for bulk diamond however is electron irradiation (e-beam) \citep{acosta2009diamonds}, thanks to their ability to penetrate the crystal and to create vacancies uniformly.
+The second step is to create monovacancies in the crystal lattice. This step might be optional for crystals which already contain a large number of monovacancies, but CVD crystals in particular can have less vacancies that they have substitutional nitrogen atoms \citep{mainwood1999point}. The general technique to create monovacancy is to bombard the sample with high energy particle in order to knock out carbon atoms from the crystal. Several high energy particle have been used to create vacancies, such as protons, electrons, ions, neutrons and even gamma rays \citep{davies1976optical, ashbaugh1988gemstone, kleinsasser2016high}. The most common irradiation source for for bulk diamond however is electron irradiation (e-beam) \citep{acosta2009diamonds}, thanks to their relatively frequent availability (compared to neutrons or gamma rays) and their ability to deeply penetrate the crystal.
 
 The final step is to migrate the vacancies next to the nitrogen atoms. The activation energy required to move vacancy is of $\sim 2.3\ \rm eV$ which corresponds to temperatures of $600\sim 700 ^\circ$C \citep{davies1992vacancy, newton2002recombination}. The most common method to move the vacancies is therefore to anneal the crystal at a temperature $800 \sim 1200 ^\circ$C for a few hours \citep{botsoa2011optimal}. When the vacancy is next to a nitrogen atom, it will only become mobile again for temperatures of $1400 \sim 1500 ^\circ$C \citep{zaitsev2013optical, pinto2012diffusion} which explains why the annealing process favors NV creation.
 
-The final N$_s$ to NV conversion rate can be as high as $\sim 50 \%$ \citep{grezes2015storage, hartland2014study}, although this ratio tend to decrease for higher [N$_s$] concentrations. Most sample studied in this manuscript had a concentration $[\rm NV]= 1-10\ \rm ppm$
+The final N$_s$ to NV conversion rate can be as high as $\sim 50 \%$ \citep{grezes2015storage, hartland2014study}, although this ratio tend to decrease for higher [N$_s$] concentrations. Most sample studied in this manuscript had a concentration $[\rm NV]= 1-10\ \rm ppm$ (see [REF] samples)
 
 \subsection{Controlling the NV center charge state}
 
-The charge state of the NV center is of crucial importance for NV applications. Only the negatively charged NV$^-$ center shows the specific spin properties that will be detailed below, but the NV center can exist under three charge states in the diamond: NV$^-$, NV$^0$ and NV$^+$. The presence of NV$^+$ is only marginal in standard diamonds \citep{hauf2014addressing, pfender2017protecting} and we will focus here solely on the NV$^-$ and NV$^0$ charge state.
+The charge state of the NV center is of crucial importance for NV applications. Only the negatively charged NV$^-$ center shows the specific spin properties that will be detailed below, but the NV center can exist under three charge states in the diamond: NV$^-$, NV$^0$ and NV$^+$. The presence of NV$^+$ is usually marginal \citep{hauf2014addressing, pfender2017protecting} and we will focus here solely on the NV$^-$ and NV$^0$ charge state.
 
-The charge state of the NV centers depends not only on the growth process of the crystal, but also on the usage made of the sample. In particular, illumination in the optical range can promote electrons in the conduction band or holes in the valence band and modify the charge state of the NV center.
+The charge state of the NV centers depends not only on the growth process of the crystal, but also on the experiment performed with the sample. In particular, illumination in the optical range can promote electrons in the conduction band or holes in the valence band and modify the charge state of the NV center.
 
 On the material side, the crystal has to remain electrically neutral which means that at least as many charge donors need to be present as there are NV$^-$ centers. For nitrogen-rich samples, the donors are mostly N$^+$ centers, which imposes a limit on the maximum conversion rate of N to NV in order to keep a high [NV$^-$]/[NV$^0$] ratio. The possibility to introduce other donors, such as phosphorus, has been studied \citep{doi2016pure} but remains impractical so far \citep{barry2020sensitivity}.
 
-On the experimental side, it has been shown that the ionization of NV$^-$ to NV$^0$ and the reverse process depend on the intensity and wavelength of the laser used for illumination \citep{aslam2013photo}. It was found that the optimal wavelength to preserve the NV$^-$ charge state was  $510-540\ \rm nm$. The most common wavelength used with NV centers is 532 nm (green) due to the historical importance of Nd:YAG lasers. On the other hand, it is possible to semi-permanently ionize the NV$^-$ into NV$^0$ when using a red excitation, which has been used to create an optical memory \citep{dhomkar2016long}.
+On the experimental side, it has been shown that the ionization of NV$^-$ to NV$^0$ and the reverse process depend on the intensity and wavelength of the laser used for illumination \citep{aslam2013photo}. It was found that the optimal wavelength to preserve the NV$^-$ charge state was  $510-540\ \rm nm$. The most common wavelength used with NV centers is 532 nm (green) due to the historical importance of Nd:YAG lasers. On the other hand, it is possible to semi-permanently ionize the NV$^-$ into NV$^0$ when using a red excitation, which has been used to create optical memories \citep{dhomkar2016long}.
 
 For samples in high excess of [N$_s$] such as type Ib HPHT diamonds, the question of the charge state of the NV center is of relatively low importance as the NV$^-$ state is the predominant one. For sample with a lower [N$_s$] content and a higher [NV]/[N$_s$] ratio however, one must be more careful with the optical intensity and wavelength used as the concentration of NV$^0$ can reach up to 50\% of the total NV concentration \citep{grezes2015storage}
 
 \section{The NV$^-$ center optical and spin properties}
 
-We will now focus on the magnetic and optical properties of the NV$^-$ center. This section will cover...
+This section focuses on the NV$^-$ center properties both as an optical defect (colored center) and as a spin defect, and compare them to other solid state systems. It also covers the interplay between the spin and the optical levels, a property almost unique to the NV$^-$ center which is the basis for optical polarization and readout of the NV$^-$ spin state.
 
 \subsection{NV center molecular orbitals}
 
@@ -174,13 +166,13 @@ In the remaining part of this manuscript, we will only consider the negatively c
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{Figures/NV_optical}
-\caption{Optical properties of the NV center. (a) Electron occupation of the molecular orbitals for the electronic ground state $^3A_2$ and the first excited state $^3E$. (b) Diagram of the main optical transition between the two spin triplet states and of the IR transition between the two singlet sates. The value of the transition corresponds to the ZPL and are taken from \citep{doherty2013nitrogen}. (c) Representation of the vibronic structure for the $^3A_2$ and $3^E$ states under the Franck-Condon approximation. The graph axes are the energy of the states E and configuration coordinate q. The green and red arrow represents non-resonant (Stokes) absorption and emission. (d) Emission and absorption spectrum of the NV center main transition at 300 K, from PL and PLE measurements respectively. Credits: Wikimedia commons}
+\caption{Optical properties of the NV center. (a) Electron occupation of the molecular orbitals for the electronic ground state $^3A_2$ and the first excited state $^3E$. (b) Diagram of the main optical transition between the two spin triplet states and of the IR transition between the two singlet sates. The value of the transition corresponds to the zero phonon line (ZPL) and are taken from \citep{doherty2013nitrogen}. (c) Representation of the vibronic structure for the $^3A_2$ and $3^E$ states under the Franck-Condon approximation. The graph axes are the energy of the states E and configuration coordinate q. The green and red arrow represents non-resonant (Stokes) absorption and emission. (d) Emission and absorption spectrum of the NV center main transition at 300 K, from PL and PLE measurements respectively. Credits: Wikimedia commons}
 \label{NV optical}
 \end{figure}
 
-Because the NV center has discrete electronic transitions inside the diamond bad gap, it fluoresces: it can absorb light from $450-650$ nm and re-emits light in the $600-800$ nm band.
+Because the NV center has discrete electronic transitions inside the diamond band gap, it fluoresces: it can absorb light from $450-650$ nm and re-emits light in the $600-800$ nm band.
 
-Fig. \ref{NV optical} explains the mechanisms of the NV center optical activity. Fig. \ref{NV optical}-a) illustrates the electronic ground state $^3A_2$ and first excited state $^3E$, where 1 electron from the $a_1$ molecular orbital is promoted to the $e$ level. Both of these electron occupations have two unpaired electrons, meaning that they can exist either either in a spin triplet state ($S=1$) or a spin singlet state ($S=0$) \footnote{The two singlet states $^1E$ and $^1A_1$ represented in Fig. \ref{NV optical}-b) are both of configuration $a_1^2e^2$ where the two $e$ electrons are either in a the same $e$ orbital, or in an antisymmetric superposition of the two $e$ orbitals \citep{doherty2011negatively}.}. 
+Fig. \ref{NV optical} explains the origin of the NV center optical properties. Fig. \ref{NV optical}-a) illustrates the electronic ground state $^3A_2$ and first excited state $^3E$, where 1 electron from the $a_1$ molecular orbital is promoted to the $e$ level. Both of these electron occupations have two unpaired electrons, meaning that they can exist either either in a spin triplet state ($S=1$) or a spin singlet state ($S=0$) \footnote{The two singlet states $^1E$ and $^1A_1$ represented in Fig. \ref{NV optical}-b) are both of configuration $a_1^2e^2$ where the two $e$ electrons are either in a the same $e$ orbital, or in an antisymmetric superposition of the two $e$ orbitals \citep{doherty2011negatively}.}. 
 
 Fig. \ref{NV optical}-b) shows the zero phonon line (ZPL) for the main transition of the triplet ($^3A_2$ and $^3E$) and singlet ($^1E$ and $^1A_1$) states. It should be noted that due to an inter system crossing between the $^1E$ and $^3A_2$ levels, excitation or absorption of the singlet transition is only possible with a conjoint excitation of the triplet states. By default, we refer to the NV center photoluminescence (PL) as the emission between the two triplet states.
 
@@ -189,7 +181,7 @@ Fig. \ref{NV optical}-c) illustrates the vibronic structure of the $^3A_2$ and $
 Finally Fig. \ref{NV optical}-d) shows the absorption and emission spectrum of NV centers at 300 K. A weak zero-phonon-line is visible at 637 nm, with large phonon sidebands in emission and absorption.
 
 \medskip
-Compared to similar solid state photon sources (other color centers, quantum dots, dye molecules...), the NV center offer several advantages: thanks to the $\sim 11\ \rm ns$ lifetime of the excited state and close to 1 quantum efficiency \citep{kurtsiefer2000stable}, they are very bright. With proper nanophotonics engineering (solid immersion lenses or diamond waveguide) the PL collected from a single NV center can reach a few $10^6$ photons/s \citep{schroder2016quantum}. The NV center is also extremely photostable under green excitation, and does not show any photobleaching \citep{brouri2000photon}. There are however drawbacks in using NV centers for photonics applications, the main one being that $\leq 4\%$ of the photons emitted by the NV centers are in the ZPL (low Debye Waller factor), even at cryogenic temperature \citep{johnson2015tunable}. This limits the potential of NV centers for quantum communication protocols that rely on a deterministic photon source \citep{bradac2019quantum}.
+Compared to similar solid state photon sources (other color centers, quantum dots, dye molecules...), the NV center offer several advantages. First, they are very bright thanks to the $\sim 11\ \rm ns$ lifetime of the excited state and quantum efficiency of $0.7-0.8$ \citep{schirhagl2014nitrogen}. With proper nanophotonics engineering (solid immersion lenses or diamond waveguide) the PL collected from a single NV center can reach a few $10^6$ photons/s \citep{schroder2016quantum}.  Secondly, the NV center is also extremely photostable under green excitation, and does not show any photobleaching \citep{brouri2000photon}. Finally, the diamond itself is resistant to heat and chemical attacks, and presents low toxicity for biologic systems \citep{fu2007characterization}. There are however drawbacks in using NV centers for photonics applications, the main one being that $\leq 4\%$ of the photons emitted by the NV centers are in the ZPL (low Debye Waller factor), even at cryogenic temperature \citep{johnson2015tunable}. This limits the potential of NV centers for quantum photonic devices \citep{bradac2019quantum}.
 
 \subsection{Spin properties of the NV center electronic ground state}
 \begin{figure}[h!]
@@ -201,7 +193,7 @@ Compared to similar solid state photon sources (other color centers, quantum dot
 
 We will only focus here on the spin structure of the electronic ground state $^3A_2$, as the lifetime of the other states is too short to make effective spin qubits. All the numerical values in this section were found in \citep{smeltzer2009robust, doherty2013nitrogen} and the references within.
 
-The spin structure in the ground state consists in an electronic spin $S=1$ coupled to the nuclear spin of the nearby nuclei. Carbon's most common isotope is $^{12}C$ at 98.9 \% natural abundance. $^{12}C$ has a a nuclear spin $I=0$ and therefore causes no hyper-fine splitting. Nitrogen's most common isotope however is $^{14}N$ at 99.6 \% natural abundance which has a nuclear spin $I=1$ and does cause a hyper-fine splitting. We will only cover here the most likely configuration for an NV center which is a $^{14}N$ nucleus and $^{12}C$ nuclei as closest neighbors. 
+The spin structure in the ground state consists in an electronic spin $S=1$ coupled to the nuclear spin of the nearby nuclei. Carbon's most common isotope is $^{12}C$ at 98.9 \% natural abundance. $^{12}C$ has a a nuclear spin $I=0$ and therefore does not contribute to the hyper-fine structure. Nitrogen's most common isotope however is $^{14}N$ at 99.6 \% natural abundance which has a nuclear spin $I=1$ and does create a hyper-fine splitting. We will only cover here the most likely configuration for an NV center which is a $^{14}N$ nucleus and $^{12}C$ nuclei as closest neighbors. 
 
 The spin system considered is then an electronic spin $S=1$ coupled to a nuclear spin $I=1$ with a Hilbert space of dimension $(2S+1)(2I+1)=9$. The spin Hamiltonian of the system can be written:
 \begin{equation}
@@ -215,7 +207,7 @@ The electronic spin $\mathcal{H}_e$ can be written:
 \mathcal{H}_e=D S_z^2 + \gamma_e \mathbf{S} \cdot \mathbf{B} + \mathcal{H}_{elec}(\mathbf{E})+ \mathcal{H}_{strain}(\mathbf{\bar{\bar{\varepsilon}}}).
 \end{equation}
 
-The term $D S_z^2$ causes the fine structure of the electronic spin. It originates from the dipole-dipole coupling between the two unpaired electrons of the defect. Due to the strong anisotropy of the molecular orbitals of the defect, the fine structure term imposes the quantization axis $\mathbf{z}$ (via the $S_z$ operator) where $\mathbf{z}$ is the direction of the N$-$V axis in the diamond. $D$ is called the zero field splitting (ZFS) factor and its value is $D\approx 2.87\ \rm GHz$ at 300 K.
+The term $D S_z^2$ corresponds to the fine structure of the electronic spin. It originates from the dipole-dipole coupling between the two unpaired electrons of the defect. Due to the strong anisotropy of the molecular orbitals of the defect, the fine structure term imposes the quantization axis $\mathbf{z}$ (via the $S_z$ operator) where $\mathbf{z}$ is the direction of the N$-$V axis in the diamond. $D$ is called the zero field splitting (ZFS) factor and its value is $D\approx 2.87\ \rm GHz$ at 300 K.
 
 $\gamma_e \mathbf{S} \cdot \mathbf{B}$ is the Zeeman splitting of the spin, where $\gamma_e \approx 2.8\ \rm MHz/G$ is the gyromagnetic ratio of the electronic spin (almost equal to that of a free electron in the case of the NV center).
 
@@ -237,7 +229,7 @@ A_{xx} & 0 & 0 \\
 0 & 0 & A_{zz}
 \end{pmatrix},
 \end{equation}
-where $A_{zz}=-2.162\ \rm MHz$ and $A_{xx}=A_{yy}=-2.62\ \rm MHz$.
+where $A_{zz}=-2.162\ \rm MHz$ and $A_{xx}=A_{yy}=-2.62\ \rm MHz$. The $z$ direction in the electronic spin Hamiltonian, the nuclear spin Hamiltonian and the hyper-fine tensor awlays refer to the direction of the N$-$V axis.
 
 Fig. \ref{NV spin} illustrates the fine and hyper-fine structure of the NV center without any external fields.
 
@@ -254,7 +246,7 @@ D-\gamma_e B_z & \frac{\gamma_e (B_x+iB_y)}{\sqrt{2}} & 0 \\
 \end{align}
 
 \bigskip
-The NV center's spin usage as a qubit is prevalent in quantum communication \citep{wehner2018quantum}, quantum computing \citep{de2021materials} and quantum sensing \citep{degen2017quantum}. Part of the reason are the overall long relaxation times (lifetime $T_1$ and coherence time $T_2$) of the order of a few ms at room temperature \citep{balasubramanian2009ultralong}, as well as the ability to address individual nuclear spins with even longer relaxation times \citep{awschalom2018quantum}. However the main advantage of the NV center spin compared to other solid state spin qubits is its ability to be polarized and read-out optically thanks to the properties detailed in the following section.
+The NV center's spin usage as a qubit is prevalent in quantum communication \citep{wehner2018quantum}, quantum computing \citep{de2021materials} and quantum sensing \citep{degen2017quantum}. Part of the reason for this wide usage are the overall long relaxation times (lifetime $T_1$ and coherence time $T_2$) of the order of a few ms at room temperature \citep{balasubramanian2009ultralong}, as well as the ability to address individual nuclear spins with even longer relaxation times \citep{awschalom2018quantum}. However the main advantage of the NV center spin compared to other solid state spin qubits is its ability to be polarized and read-out optically thanks to the properties detailed in the following section.
 
 
 \subsection{Spin and optical levels intersystem crossing}
@@ -268,7 +260,7 @@ The NV center's spin usage as a qubit is prevalent in quantum communication \cit
 
 The optical excitation and radiative decay between the $^3A_2$ and $^3E$ levels preserve the spin projection $m_s$ \citep{robledo2011spin}. There is however a non-radiative decay path which involves in inter-system crossing with the singlet states $^1A_1$ and $^1E$ that depends on the the triplet states spin projection.
 
-Fig. \ref{ISC} summarizes the possible decay channels from the $^3E$ states. We assume that the electrons are initially excited from the $^3A_2$ states via a green laser with a rate $\gamma_{\rm las}$. The $^3E$ states can then either decay radiatevely and emit a 637$-$800 nm photon, or undergo an intersystem crossing and decay through the singlet states. We do consider the decay channel through the singlet state as non-radiative due to the strong non radiative channels competing with the IR radiative transition (quantum efficiency $\leq 10^{-3}$ for the singlet transition \citep{rogers2008infrared, ma2010excited, acosta2010optical}).
+Fig. \ref{ISC} summarizes the possible decay channels from the $^3E$ states. We assume that the electrons are initially excited from the $^3A_2$ states via a green laser with a rate $\gamma_{\rm las}$. The $^3E$ states can then either decay radiatevely and emit a 600$-$800 nm photon, or undergo an intersystem crossing and decay through the singlet states. We consider the decay channel through the singlet state as non-radiative due to the strong non radiative channels competing with the IR radiative transition (quantum efficiency $\leq 10^{-3}$ for the singlet transition \citep{rogers2008infrared, ma2010excited, acosta2010optical}).
 
 The rates $\gamma$ of the various decay processes, represented in Fig. \ref{ISC} by the time constant $\tau=1/\gamma$, strongly depends on the spin projection $m_s$: the likeliness to undergo a non-radiative decay is $\sim 4$ times\footnote{$\frac{15+91}{15+11}\approx 4$} more likely when starting from the $\ket{\pm 1}$ states than when starting from the $\ket{0}$ state. Similarly, the singlet state is $\sim 2.4$ times\footnote{$\frac{492}{204} \approx 2.4$} more likely to decay in the $\ket{0}$ state than in the $\ket{\pm 1}$ states.
 
@@ -284,7 +276,11 @@ It should be noted that the decay rates indicated in Fig. \ref{ISC} cannot be di
 
 \section{Basic operations with NV centers}
 
-This section covers the two elementary bricks of almost any NV experiments which are the Rabi oscillations and optically detected magnetic resonance (ODMR). ODMR is the technique most commonly used to find ...
+This section introduces two elementary operations with NV centers that are Rabi oscillations and optically detected magnetic resonance (ODMR).
+
+Rabi oscillations is the basis for any kind of coherent qubit manipulation while ODMR is used to find the transition frequencies of the NV centers, as well as being a basic magnetometry protocol.
+
+This section also covers the general purpose experimental setup used for these two operations and for many other NV experiments, as well as the concept of longitudinal and transverse magnetic field with regard to the NV principal axis.
 
 \subsection{Experimental setup}
 \begin{figure}[h!]
@@ -526,7 +522,7 @@ The focus of this manuscript is on the interaction between electronic spins whic
 
 where $J_0=\frac{\mu_0 \gamma_1 \gamma_2 \hbar^2}{4 \pi}$.
 
-For two electronic spins with $g$-factors $\approx -2$, 
+For two electronic spins with $g$-factors $\approx -2$\footnote{Most spin defects in diamond, including the NV center have a g-factor $\approx -2$ similarly to free electrons.}, 
 \begin{equation*}
 \frac{J_0}{h} \approx 51.8\ \rm{MHz}\cdot \rm{nm}^3.
 \end{equation*}
@@ -587,8 +583,8 @@ Eq. (\ref{delta gamma 1}) is the basis for every cross-relaxation detection perf
 
 \section{Conclusion}
 
-We have covered in this introductory chapter every concepts needed to understand the results presented in the next chapter. We have seen the main steps in the creation of artificial diamonds and NV centers, we have covered the optical and spin properties of the NV center as well as the ways to measure them, and we have introduced the notion of dipole-dipole coupling and cross-relaxation between two spins.
+We have covered in this introductory chapter every concepts needed to understand the results presented in the next chapters. We have seen the main steps in the creation of artificial diamonds and NV centers, we have covered the optical and spin properties of the NV center as well as the ways to measure them, and we have introduced the notion of dipole-dipole coupling and cross-relaxation between two spins.
 
-The focus of chapter 2 will be on the cross-relaxation between NV centers and other spin impurities in CVD-grown diamond, while the focus of chapter 3 and 4 will be on the cross-relaxation between NV centers and other NV centers and their potential application in magnetometry.
+The focus of chapter 2 will be on the cross-relaxation between NV centers and other spin impurities in CVD-grown diamond, while the focus of chapter 3 and 4 will be on the cross-relaxation between NV centers and other NV centers, as well as their potential application in magnetometry.
 \printbibliography
 \end{document}
