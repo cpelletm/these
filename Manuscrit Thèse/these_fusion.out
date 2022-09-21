@@ -1,0 +1,110 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction to Nitrogen-Vacancy centers and their common usage}{}% 1
+\BOOKMARK [1][-]{section.1.1}{The NV center as a physical object}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Diamond material overview}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Point defects in diamond}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Creation of synthetic diamond for optics and electronics applications}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{Optimizing NV center formation}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.5}{Controlling the NV center charge state}{section.1.1}% 7
+\BOOKMARK [1][-]{section.1.2}{The NV- center optical and spin properties}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.2.1}{NV center molecular orbitals}{section.1.2}% 9
+\BOOKMARK [2][-]{subsection.1.2.2}{Optical properties of the NV center}{section.1.2}% 10
+\BOOKMARK [2][-]{subsection.1.2.3}{Spin properties of the NV center electronic ground state}{section.1.2}% 11
+\BOOKMARK [2][-]{subsection.1.2.4}{Spin and optical levels intersystem crossing}{section.1.2}% 12
+\BOOKMARK [1][-]{section.1.3}{Basic operations with NV centers}{chapter.1}% 13
+\BOOKMARK [2][-]{subsection.1.3.1}{Experimental setup}{section.1.3}% 14
+\BOOKMARK [2][-]{subsection.1.3.2}{Rabi Oscillations}{section.1.3}% 15
+\BOOKMARK [2][-]{subsection.1.3.3}{Optically detected magnetic resonance}{section.1.3}% 16
+\BOOKMARK [2][-]{subsection.1.3.4}{ODMR with NV ensemble: longitudinal and transverse magnetic field}{section.1.3}% 17
+\BOOKMARK [1][-]{section.1.4}{Dynamics of the NV center spin}{chapter.1}% 18
+\BOOKMARK [2][-]{subsection.1.4.1}{NV spin T1}{section.1.4}% 19
+\BOOKMARK [2][-]{subsection.1.4.2}{NV spin T2*}{section.1.4}% 20
+\BOOKMARK [2][-]{subsection.1.4.3}{NV spin T2}{section.1.4}% 21
+\BOOKMARK [1][-]{section.1.5}{Dipole-dipole interaction between two electronic spins}{chapter.1}% 22
+\BOOKMARK [2][-]{subsection.1.5.1}{Magnetic dipole-dipole Hamiltonian}{section.1.5}% 23
+\BOOKMARK [2][-]{subsection.1.5.2}{Decomposition of the dipole-dipole Hamiltonian}{section.1.5}% 24
+\BOOKMARK [2][-]{subsection.1.5.3}{Cross-relaxations with NV centers}{section.1.5}% 25
+\BOOKMARK [1][-]{section.1.6}{Conclusion}{chapter.1}% 26
+\BOOKMARK [0][-]{chapter.2}{Detection of dark spins via cross-relaxations}{}% 27
+\BOOKMARK [1][-]{section.2.1}{Flip-Flops, double flips and cross-relaxation}{chapter.2}% 28
+\BOOKMARK [2][-]{subsection.2.1.1}{Resonant interaction : flip-flops and double flips}{section.2.1}% 29
+\BOOKMARK [2][-]{subsection.2.1.2}{Cross-relaxations}{section.2.1}% 30
+\BOOKMARK [1][-]{section.2.2}{The dark spins in diamond}{chapter.2}% 31
+\BOOKMARK [2][-]{subsection.2.2.1}{P1 centers and 13C}{section.2.2}% 32
+\BOOKMARK [2][-]{subsection.2.2.2}{Other spin defects, VH-, War1}{section.2.2}% 33
+\BOOKMARK [2][-]{subsection.2.2.3}{EPR spectroscopy}{section.2.2}% 34
+\BOOKMARK [1][-]{section.2.3}{NV center relaxometry}{chapter.2}% 35
+\BOOKMARK [2][-]{subsection.2.3.1}{Principle of NV center Relaxometry}{section.2.3}% 36
+\BOOKMARK [2][-]{subsection.2.3.2}{PL and single- relaxometry protocols}{section.2.3}% 37
+\BOOKMARK [2][-]{subsection.2.3.3}{Comparison with DEER protocol}{section.2.3}% 38
+\BOOKMARK [1][-]{section.2.4}{Choice of the magnetic field orientation}{chapter.2}% 39
+\BOOKMARK [2][-]{subsection.2.4.1}{The [100] and [111] magnetic field orientations}{section.2.4}% 40
+\BOOKMARK [2][-]{subsection.2.4.2}{CR condition between NV- and P1}{section.2.4}% 41
+\BOOKMARK [2][-]{subsection.2.4.3}{CR condition between NV- and VH-}{section.2.4}% 42
+\BOOKMARK [2][-]{subsection.2.4.4}{CR condition between NV- and and 13C-NV-}{section.2.4}% 43
+\BOOKMARK [2][-]{subsection.2.4.5}{CR contrast and transverse magnetic field}{section.2.4}% 44
+\BOOKMARK [1][-]{section.2.5}{Dark spin spectroscopy with NV centers}{chapter.2}% 45
+\BOOKMARK [2][-]{subsection.2.5.1}{Detection of P1 centers}{section.2.5}% 46
+\BOOKMARK [2][-]{subsection.2.5.2}{Detection of VH-, War1 and 13C-NV-}{section.2.5}% 47
+\BOOKMARK [1][-]{section.2.6}{Attribution of the 13C-NV-, VH- and War1 lines}{chapter.2}% 48
+\BOOKMARK [2][-]{subsection.2.6.1}{The VH- and War1 lines}{section.2.6}% 49
+\BOOKMARK [2][-]{subsection.2.6.2}{The 13C-NV- lines}{section.2.6}% 50
+\BOOKMARK [1][-]{section.2.7}{Quantitative estimates of the NV-Dark spins CR}{chapter.2}% 51
+\BOOKMARK [2][-]{subsection.2.7.1}{Dark spin Hamiltonian parameters}{section.2.7}% 52
+\BOOKMARK [2][-]{subsection.2.7.2}{Dark spin linewidth}{section.2.7}% 53
+\BOOKMARK [2][-]{subsection.2.7.3}{Dark spin concentration}{section.2.7}% 54
+\BOOKMARK [1][-]{section.2.8}{Temperature dependence of VH- and War1}{chapter.2}% 55
+\BOOKMARK [2][-]{subsection.2.8.1}{Mofifications on CVD samples}{section.2.8}% 56
+\BOOKMARK [2][-]{subsection.2.8.2}{Modification on HPHT samples}{section.2.8}% 57
+\BOOKMARK [1][-]{section.2.9}{Conclusion and perspectives}{chapter.2}% 58
+\BOOKMARK [2][-]{subsection.2.9.1}{Unidentified CR lines}{section.2.9}% 59
+\BOOKMARK [2][-]{subsection.2.9.2}{Measuring the spin dynamics of VH-}{section.2.9}% 60
+\BOOKMARK [2][-]{subsection.2.9.3}{Isolating a single VH-}{section.2.9}% 61
+\BOOKMARK [0][-]{chapter.3}{NV-NV cross-relaxations : the fluctuator model}{}% 62
+\BOOKMARK [1][-]{section.3.1}{Experimental observation of NV-NV CR}{chapter.3}% 63
+\BOOKMARK [2][-]{subsection.3.1.1}{NV-NV CR between nonequivalent NV centers}{section.3.1}% 64
+\BOOKMARK [2][-]{subsection.3.1.2}{NV-NV CR between equivalent NV centers}{section.3.1}% 65
+\BOOKMARK [1][-]{section.3.2}{NV inhomogeneity and the fluctuator model}{chapter.3}% 66
+\BOOKMARK [2][-]{subsection.3.2.1}{CR in an inhomogeneous NV bath}{section.3.2}% 67
+\BOOKMARK [2][-]{subsection.3.2.2}{Presentation of the fluctuator model}{section.3.2}% 68
+\BOOKMARK [2][-]{subsection.3.2.3}{Single NV center coupled to a single fluctuator}{section.3.2}% 69
+\BOOKMARK [2][-]{subsection.3.2.4}{Ensemble of NV centers coupled to a bath of fluctuators}{section.3.2}% 70
+\BOOKMARK [2][-]{subsection.3.2.5}{Computation of }{section.3.2}% 71
+\BOOKMARK [2][-]{subsection.3.2.6}{Possible microscopic origin of the fluctuators}{section.3.2}% 72
+\BOOKMARK [1][-]{section.3.3}{Experimental investigation of the fluctuator model}{chapter.3}% 73
+\BOOKMARK [2][-]{subsection.3.3.1}{The stretched exponential lifetime}{section.3.3}% 74
+\BOOKMARK [2][-]{subsection.3.3.2}{Fitting T1 profile in the general case}{section.3.3}% 75
+\BOOKMARK [2][-]{subsection.3.3.3}{The fluctuators linewidth}{section.3.3}% 76
+\BOOKMARK [1][-]{section.3.4}{Resonance between several NV classes}{chapter.3}% 77
+\BOOKMARK [2][-]{subsection.3.4.1}{Geometric conditions for inter-class resonance}{section.3.4}% 78
+\BOOKMARK [2][-]{subsection.3.4.2}{Quantitative modification of T1}{section.3.4}% 79
+\BOOKMARK [1][-]{section.3.5}{Conclusion and perspectives}{chapter.3}% 80
+\BOOKMARK [2][-]{subsection.3.5.1}{Limitations of the fluctuator model}{section.3.5}% 81
+\BOOKMARK [2][-]{subsection.3.5.2}{Investigation of the fluctuators nature}{section.3.5}% 82
+\BOOKMARK [0][-]{chapter.4}{NV-NV CR under transverse or low fields: application to magnetometry}{}% 83
+\BOOKMARK [1][-]{section.4.1}{NV spin Hamiltonian under low and transverse fields}{chapter.4}% 84
+\BOOKMARK [2][-]{subsection.4.1.1}{NV spin Hamiltonian in zero external magnetic field}{section.4.1}% 85
+\BOOKMARK [2][-]{subsection.4.1.2}{NV spin Hamiltonian under purely transverse magnetic field}{section.4.1}% 86
+\BOOKMARK [2][-]{subsection.4.1.3}{Hyperfine coupling and inhomogeneous broadening}{section.4.1}% 87
+\BOOKMARK [1][-]{section.4.2}{NV-NV CR in the low magnetic field regime}{chapter.4}% 88
+\BOOKMARK [2][-]{subsection.4.2.1}{Experimental observations}{section.4.2}% 89
+\BOOKMARK [2][-]{subsection.4.2.2}{Theory of the low field depolarization}{section.4.2}% 90
+\BOOKMARK [2][-]{subsection.4.2.3}{Other potential causes for zero field depolarization}{section.4.2}% 91
+\BOOKMARK [1][-]{section.4.3}{NV-NV CR under purely transverse magnetic field}{chapter.4}% 92
+\BOOKMARK [2][-]{subsection.4.3.1}{Principle of the experiment}{section.4.3}% 93
+\BOOKMARK [2][-]{subsection.4.3.2}{Experimental data}{section.4.3}% 94
+\BOOKMARK [1][-]{section.4.4}{Introduction to ensemble NV magnetometry}{chapter.4}% 95
+\BOOKMARK [2][-]{subsection.4.4.1}{AC and DC magnetometry}{section.4.4}% 96
+\BOOKMARK [2][-]{subsection.4.4.2}{Low field magnetometry}{section.4.4}% 97
+\BOOKMARK [2][-]{subsection.4.4.3}{Microwave-free magnetometry}{section.4.4}% 98
+\BOOKMARK [2][-]{subsection.4.4.4}{Orientation-free magnetometry}{section.4.4}% 99
+\BOOKMARK [1][-]{section.4.5}{Low field depolarization magnetometry}{chapter.4}% 100
+\BOOKMARK [2][-]{subsection.4.5.1}{Principle of the experiment}{section.4.5}% 101
+\BOOKMARK [2][-]{subsection.4.5.2}{Sensitivity of the LFDM protocol}{section.4.5}% 102
+\BOOKMARK [2][-]{subsection.4.5.3}{Angular dependence of the sensitivity}{section.4.5}% 103
+\BOOKMARK [2][-]{subsection.4.5.4}{Temporal stability}{section.4.5}% 104
+\BOOKMARK [1][-]{section.4.6}{Comparison between LFDM and other magnetometry protocol}{chapter.4}% 105
+\BOOKMARK [2][-]{subsection.4.6.1}{Comparison with microwave based protocols}{section.4.6}% 106
+\BOOKMARK [2][-]{subsection.4.6.2}{Comparison with microwave-less protocols}{section.4.6}% 107
+\BOOKMARK [1][-]{section.4.7}{Conclusion and perspectives}{chapter.4}% 108
+\BOOKMARK [2][-]{subsection.4.7.1}{LFDM optimization}{section.4.7}% 109
+\BOOKMARK [2][-]{subsection.4.7.2}{Potential applications for LFDM}{section.4.7}% 110

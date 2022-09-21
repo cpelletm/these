@@ -19,6 +19,8 @@
 \usepackage{tcolorbox} % toujours plus de boites
 \usepackage{xcolor} % Pour avoir des couleurs dans les équations
 
+\DeclareUnicodeCharacter{0308}{HERE!HERE!} % je vais pas m'énerver, mais un peu quand meme
+
 \title{}
 \begin{document}
 \chapter{Introduction to Nitrogen-Vacancy centers and their common usage}
@@ -269,9 +271,9 @@ T=\frac{h D}{k_B \ln (\frac{1-P}{2P})} \approx 65\ \rm mK,
 \end{equation*}
 where $D$ is th ZFS factor described in eq. (\ref{eq. spin elec}) and $P\approx 0.8$ is the spin polarization defined as the population in the $\ket{0}$ state.} while the diamond itself can remain at room temperature.
 
-Another effect of the intersystem crossing is the ability to optically readout the spin state of the NV center: since the $\ket{m_s=0}$ state is more likely to undergo a radiative decay than the $\ket{m_s=\pm 1}$ states, the expected photoluminescence (PL) is higher when starting from a $\ket{m_s=0}$ state than a $\ket{m_s=\pm 1}$ state. While the $\ket{+1}$ and $\ket{-1}$ states cannot be a priori distinguished, a direct excitation of the $\ket{+1} \to \ket{0}$ or $\ket{-1} \to \ket{0}$ transition with a resonant microwave can unambiguously reveal the initial spin state.
+Another effect of the intersystem crossing is the ability to optically readout the spin state of the NV center: since the $\ket{0}$ state is more likely to undergo a radiative decay than the $\ket{\pm 1}$ states, the expected photoluminescence (PL) is higher when starting from the $\ket{0}$ state than a $\ket{\pm 1}$ state. While the $\ket{+1}$ and $\ket{-1}$ states cannot be a priori distinguished, a direct excitation of the $\ket{+1} \to \ket{0}$ or $\ket{-1} \to \ket{0}$ transition with a resonant microwave can unambiguously reveal the initial spin state.
 
-It should be noted that the decay rates indicated in Fig. \ref{ISC} cannot be directly measured. They have to be inferred from the PL dynamics at short times after illumination. Different experiments and different modeling processes have thus lead to different decay rates \citep{duarte2021effect}. 
+It should be noted that the decay rates indicated in Fig. \ref{ISC} cannot be directly measured. They have to be inferred from the PL dynamics at short times after illumination. Different experiments and different models have thus lead to different decay rates \citep{duarte2021effect}. 
 
 
 \section{Basic operations with NV centers}
@@ -280,7 +282,7 @@ This section introduces two elementary operations with NV centers that are Rabi 
 
 Rabi oscillations is the basis for any kind of coherent qubit manipulation while ODMR is used to find the transition frequencies of the NV centers, as well as being a basic magnetometry protocol.
 
-This section also covers the general purpose experimental setup used for these two operations and for many other NV experiments, as well as the concept of longitudinal and transverse magnetic field with regard to the NV principal axis.
+This section also covers the experimental setup used for these two operations and for many other NV experiments, as well as the concept of longitudinal and transverse magnetic field with regard to the NV principal axis.
 
 \subsection{Experimental setup}
 \begin{figure}[h!]
@@ -291,7 +293,7 @@ This section also covers the general purpose experimental setup used for these t
 \end{figure}
 The three most common experimental degrees of freedom to consider for NV experiments are: the optical illumination, the microwave field and the external magnetic field. Other parameters such as the crystal temperature, the electric field or the crystal stress can also be controlled for specific applications.
 
-Fig. \ref{setup} shows a multi-purpose experimental setup which offers a control over these three degree of freedoms. Unless specified otherwise, this is the experimental setup that we used to perform all the measurements shown in this manuscript. 
+Fig. \ref{setup} shows a multi-purpose experimental setup which offers a control over these three degree of freedoms. Unless specified otherwise, this is the experimental setup that was used to perform all the measurements shown in this manuscript. 
 
 The setup consists of a confocal microscope where the excitation from a green laser (Thorlabs CPS532, 532 nm, 5 mW) is focused on a sample containing NV centers with a microscope objective (NA $\sim$ 0.5). The NV PL is then collected by the same objective and isolated from the back-scattered laser light with a dichroic mirror (DM) and additional filters (532 nm notch filter and 645 nm longpass filter to filter out the NV$^0$ PL). The PL is collected on an avalanche photodiode (Thorlabs APD410A or Perkin Elmer SPCM-AQRH-15) whose signal is sent to the acquisition card (NI X-series).
 
@@ -310,10 +312,10 @@ The general technique for experiments involving NV spins proceeds as follow:
 \begin{itemize}
 \item First the spins are polarized. This is done with a green laser pulse ($1-100$ $\mu$s depending on the laser intensity) which polarizes the spins in the $\ket{m_s=0}$ state at $\sim$ 80 \%.
 \item  Then the spins are manipulated. This process often involves a microwave field resonant with one of the spin transitions.
-\item Finally the spins are read out. The simplest spin readout for NV centers (but not the only one) consists in looking at the PL right after the laser is turned on: if the spin was in the $\ket{m_s=0}$ state, the initial PL will be high, whereas if the spin was in a $\ket{m_s=\pm 1}$ state, the initial PL will be low. For longer exposure time, the spins end up re-polarized in the $\ket{m_s=0}$ state and no information can be gained on the initial spin state anymore. The optimal readout time is of the same order as the spin polarization time ($1-100$ $\mu$s).
+\item Finally the spins are read out. The simplest spin readout for NV centers consists in looking at the PL right after the laser is turned on: if the spin was in the $\ket{m_s=0}$ state, the initial PL will be high, whereas if the spin was in a $\ket{m_s=\pm 1}$ state, the initial PL will be low. For longer exposure time, the spins end up re-polarized in the $\ket{m_s=0}$ state and no information can be gained on the initial spin state anymore. The optimal readout time is of the same order as the spin polarization time ($1-100$ $\mu$s).
 \end{itemize}
 
-Fig. \ref{Rabi}-a) shows the pulse sequence used to observe Rabi oscillations with NV centers. In this case, the spins manipulation simply consists in a microwave pulse of variable duration $\tau$. The microwave frequency or the magnetic field need to be adjusted so that at least one NV spin transition (either $\ket{0} \to \ket{+1}$ or $\ket{0} \to \ket{-1}$) is resonant with the microwave field. 
+Fig. \ref{Rabi}-a) shows the pulse sequence used to observe Rabi oscillations with NV centers. In this case, the spins manipulation simply consists in a microwave pulse of variable duration $\tau$. The microwave frequency or the magnetic field needs to be adjusted so that at least one NV spin transition (either $\ket{0} \to \ket{+1}$ or $\ket{0} \to \ket{-1}$) is resonant with the microwave field. 
 
 Fig. \ref{Rabi}-b) shows the result of such an experiment on a spin ensemble. The PL signal oscillations correspond to the oscillations of the spin population between the bright $\ket{0}$ state and the dark $\ket{-1}$ state. For long microwave pulses ($>$ 1 $\mu$s typically), the spins reach a steady state with  $\sim$ 50 \% population in both the $\ket{0}$ and $\ket{-1}$ states.
 
@@ -347,18 +349,20 @@ Because the ODMR protocol delivers a continuous signal (the PL) as a function of
 
 The principle of lock-in detection will not be covered here, the key idea is that lock-in detection allows to translate the signal spectrally in a region less prone to noise. In this case, the ODMR signal is a DC measurement and is therefore prone to slow freqency noises such as thermal or mechanical drifts and laser amplitude fluctuations. The microwave field can thus be modulated (in amplitude, frequency or phase) at a frequency fast enough to mitigate the low freqency noises, but slow enough compared to the NV photodynamics. 
 
-Fig. \ref{ODMR lockin}-a) shows the ODMR lock-in setup, and Fig. \ref{ODMR lockin}-b) shows an example of ODMR spectrum with microwave amplitude modulation. All the lock-in spectra shown in this manuscript were produced with 100 \% amplitude modulation at a frequency $f_{\rm mod} \sim 1 kHz$.
+Fig. \ref{ODMR lockin}-a) shows the ODMR lock-in setup, and Fig. \ref{ODMR lockin}-b) shows an example of ODMR spectrum with microwave amplitude modulation. All the lock-in spectra shown in this manuscript were produced with 100 \% amplitude modulation at a frequency $f_{\rm mod} \sim 1\ \rm kHz$.
 
 \subsection{ODMR with NV ensemble: longitudinal and transverse magnetic field}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{Figures/ODMR_8_classes}
-\caption{(a) Geometry of the NV center and definition of $B_z$ and $B_\perp$. (b) Representation of the 4 possibles orientations (``classes") of the N$-$V axis, corresponding to the 4 $\langle 111 \rangle$ directions of the diamond cubic cell. (c) Simulation of the evolution of the transition frequencies for each class of NV center as a function of the amplitude of the applied magnetic field ($\textbf{B}$ orientation chosen arbitrarily). (d) ODMR spectrum on sample ADM-150-1 for a magnetic field of $\sim 90\ \rm G$.}
+\caption{(a) Geometry of the NV center and definition of $B_z$ and $B_\perp$. (b) Representation of the 4 possibles orientations (``classes") of the N$-$V axis, corresponding to the 4 $\langle 111 \rangle$ directions of the diamond cubic cell. (c) Simulation of the evolution of the transition frequencies for each class of NV centers as a function of the amplitude of the applied magnetic field ($\textbf{B}$ orientation chosen arbitrarily). (d) ODMR spectrum on sample ADM-150-1 for a magnetic field of $\sim 90\ \rm G$.}
 \label{ODMR 8 classes}
 \end{figure}
 
-We mentioned previously that the NV spin Hamiltonian (eq. (\ref{NV spin Hamiltonian basic})) was highly anisotropic due to the fine structure term $D S_z^2$ where $z$ is the direction of the N$-$V axis in the crystal. The magnetic field is thus often decomposed between the longitudinal magnetic field $B_z$ and the transverse magnetic field $B_\perp=\sqrt{B_x^2+B_y^2}$ (see Fig. \ref{ODMR 8 classes}-a). For weak magnetic fields ($\gamma |\textbf{B}| \ll D$), the energy of each of the three spin Hamiltonian eigenstates $\ket{0}$, $\ket{+1}$ and $\ket{-1}$\footnote{The notation of $\ket{0}$, $\ket{\pm 1}$ to designate the spin Hamiltonian eigenstates is slightly abusive as $S_z$ does not commute with $\mathcal{H}$ when $B_\perp \neq 0$. The true eigenstates however remain close to $\ket{0}$, $\ket{\pm 1}$ as long as $\gamma_e B_z > \frac{(\gamma_e B_\perp)^2}{D}$.} can be approximated in a perturtbative approach to: %cf AN.py
+We mentioned previously that the NV spin Hamiltonian (eq. (\ref{NV spin Hamiltonian basic})) was anisotropic due to the fine structure term $D S_z^2$ where $z$ is the direction of the N$-$V axis in the crystal. The magnetic field is thus often decomposed between the longitudinal magnetic field $B_z$ and the transverse magnetic field $B_\perp=\sqrt{B_x^2+B_y^2}$ (see Fig. \ref{ODMR 8 classes}-a). 
+
+For weak magnetic fields ($\gamma |\textbf{B}| \ll D$), the energy of each of the three spin Hamiltonian eigenstates $\ket{0}$, $\ket{+1}$ and $\ket{-1}$\footnote{The notation of $\ket{0}$, $\ket{\pm 1}$ to designate the spin Hamiltonian eigenstates is slightly abusive as $S_z$ does not commute with $\mathcal{H}$ when $B_\perp \neq 0$. The true eigenstates however remain close to $\ket{0}$, $\ket{\pm 1}$ as long as $\gamma_e B_z > \frac{(\gamma_e B_\perp)^2}{D}$.} can be approximated in a perturtbative approach to: %cf AN.py
 \begin{align}
 \nu_0&= -\frac{(\gamma_e B_\perp)^2}{D} \\
 \nu_{-1} &= D - \gamma_e B_z + \frac{(\gamma_e B_\perp)^2}{2D} \\
@@ -369,20 +373,20 @@ Fig. \ref{ODMR 8 classes}-b) represent the 4 possible orientation of the N$-$V a
 
 Fig. \ref{ODMR 8 classes}-c) shows a simulation of the evolution of the transition frequencies $\nu_{+1} - \nu_{0}$ and $\nu_{-1} - \nu_{0}$ for all 4 classes as a function of the magnetic field amplitude, with the magnetic field orientation fixed in an arbitrary direction. Fig. \ref{ODMR 8 classes}-d) shows an ODMR spectrum with NV ensembles. 8 lines are visible corresponding to the two transitions of the 4 classes. Based on the position of these 8 lines, it is possible to determine the projection of the magnetic field on each of the 4 N$-$V axes, and thus to reconstruct the full 3D magnetic field with respect to the diamond crystalline axes.
 
-We should also note that the state mixing caused by the transverse magnetic field deteriorates the polarization scheme detailed in Sec. \ref{sec ISC}. For strong magnetic fields ($\gamma_e B_\perp \sim D$), the optical polarization is almost completely quenched, which prevents any kind of coherent NV manipulation \citep{tetienne2012magnetic}.
+We should also note that the state mixing caused by the transverse magnetic field deteriorates the polarization scheme detailed in Sec. \ref{sec ISC}. For strong transverse magnetic fields ($\gamma_e B_\perp \sim D$), the optical polarization is almost completely quenched, which prevents any kind of coherent NV manipulation \citep{tetienne2012magnetic}.
 
-\section{Dynamics the NV center spin}
+\section{Dynamics of the NV center spin}
 
-This section focuses on the dynamics of the NV spin, and more specifically on its various relaxation times. Relaxation times are very important properties of spin qubits as they often are the limiting factor for quantum information or quantum sensing applications \citep{de2021materials, degen2017quantum}.
+This section focuses on the dynamics of the NV spin, and more specifically on its various relaxation times. Relaxation times are important properties of spin qubits as they often are the limiting factor for quantum information or quantum sensing applications \citep{de2021materials, degen2017quantum}.
 
 The relaxation times are generally decomposed between the longitudinal relaxation time $T_1$ which corresponds to the characteristic time of the return to thermal equilibrium for the populations (diagonal elements of the density matrix), and the transverse relaxation time $T_2$\footnote{We follow here the NMR nomenclature} which corresponds to the relaxation of the spin state coherences (non diagonal elements of the density matrix).
 
-The transverse relaxation time, also called coherence time or dephasing time, is often further decomposed between the inhomogeneous dephasing time $T_2^*$ and the homogeneous dephasing time $T_2$. The $T_2^*$ time includes inhomogeneous dephasing processes such as the inhomogeneity in space (when multiple qubits are probed) and time of the external fields. The $T_2$ time corresponds to the coherence time where some of these inhomogeneities have been corrected, for instance with a Hanh echo sequence \citep{hahn1950spin} or a dynamical decoupling scheme \citep{naydenov2011dynamical}. While $T_2^*$ is an intrinsic property of the sample studied, $T_2$ depends on the rephasing scheme used. More careful nomenclatures will label the $T_2$ times $T_{2,\rm echo}$ or $T_{2,\rm DD}$ \citep{de2021materials} for instance. The relaxation times are ordered as follows:
+The transverse relaxation time, also called coherence time or dephasing time, is often further decomposed between the inhomogeneous dephasing time $T_2^*$ and the homogeneous dephasing time $T_2$. The $T_2^*$ time includes inhomogeneous dephasing processes such as the inhomogeneity in space (when multiple qubits are probed) and time of the external fields. The $T_2$ time corresponds to the coherence time where some of these inhomogeneities have been corrected, for instance with a Hanh echo sequence \citep{hahn1950spin} or a dynamical decoupling scheme \citep{naydenov2011dynamical}. While $T_2^*$ is an intrinsic property of the sample studied, $T_2$ depends on the rephasing scheme used. More careful nomenclatures will label the $T_2$ times as $T_{2,\rm echo}$ or $T_{2,\rm DD}$ \citep{de2021materials} for instance. The relaxation times are ordered as follows:
 \begin{equation}
 T_2^* < T_2 < 2 T_1.
 \end{equation}
 
-The relaxation times of NV centers depend mainly on their environment, and can vary by several order of magnitude depending on the sample used. The following paragraphs will cover the measurement processes of the relaxation times and the typical values for the samples used in this manuscript.
+The relaxation times of NV centers depend mainly on their environment, and can vary by several order of magnitude depending on the sample used. The following paragraphs will cover the measurement processes of the different relaxation times and the typical values for the samples used in this manuscript.
 
 \subsection{NV spin $T_1$}
 \label{sec T1 NV}
@@ -395,9 +399,15 @@ The relaxation times of NV centers depend mainly on their environment, and can v
 \end{figure}
 
 
-$T_1$ is the simplest relaxation time to measure because the spin populations are directly correlated to the PL. Fig. \ref{T1 basique} shows the pulse sequence used and an experimental result of the $T_1$ sequence. The spin lifetime $T_1$ is one of the only spin property that can be measured without a resonant microwave.
+$T_1$ is the simplest relaxation time to measure because the spin populations are directly correlated to the NV centers PL. Fig. \ref{T1 basique} shows the pulse sequence used and an experimental result of the $T_1$ sequence. The spin lifetime $T_1$ is one of the only spin property that can be measured without a resonant microwave.
 
-The sequence shown in Fig.\ref{T1 basique} can be improved by implementing a common mode rejection technique described in Fig. \ref{T1 soustraction}-a). This protocol works as follow: first, a basic $T_1$ sequence is recorded, which we will denote $S_1$. Then the sequence is repeated with an additional $\pi$-pulse on one the NV transitions right before the readout. This $\pi$-pulse will project the remaining $\ket{0}$ population difference into a $\ket{\pm 1}$ state. The second readout is labeled $S_2$, and the final spin state readout is $S_1 -S_2$ which reject every contribution to the PL outside of the spin relaxation. 
+The sequence shown in Fig.\ref{T1 basique} can be improved by implementing a common mode rejection technique described in Fig. \ref{T1 soustraction}-a). This protocol works as follow: first, a basic $T_1$ sequence is recorded, which we will denote $S_1$. Then the sequence is repeated with an additional $\pi$-pulse on one the NV transitions right before the readout. This $\pi$-pulse will project the remaining $\ket{0}$ population difference into a $\ket{\pm 1}$ state. The second readout is labeled $S_2$, and the final spin state readout is $S_1 -S_2$ which rejects every contribution to the PL outside of the spin relaxation. 
+
+
+
+Fig. \ref{T1 soustraction}-b) shows the experimental result of the $S_1$ and $S_2$ sequences on the same sample that was used in Fig. \ref{T1 basique}. The difference between the $S_1$ data in Fig. \ref{T1 soustraction}-b) and the the data in Fig. \ref{T1 basique}-b) comes from the laser intensity used. In Fig. \ref{T1 soustraction}, the laser intensity was high enough ($> 1\ \rm{mW}$) that photoionization between NV$^-$ and NV$^0$ becomes significant. Furthermore, for dense ensemble, a charge recombination mechanism operates even in the dark \citep{giri2018coupled, giri2019selective} (most likely due to charge tunneling between impurities \citep{choi2017depolarization}) . On the other hand, the laser intensity used in Fig. \ref{T1 basique} was small enough ($< 10\ \mu \rm{W}$) that the charge state state photodynamics contribution was negligible compared to the spin depolarization.
+
+Fig. \ref{T1 soustraction}-c) Shows the subtraction of the $S_1$ and $S_2$ signal. Despite the complex shape of the initial $S_1$ and $S_2$ signals, $S_1-S_2$ is nicely fitted with an exponential decay similar to the results found in Fig. \ref{T1 basique}.
 
 \begin{figure}[h!]
 \centering
@@ -406,19 +416,15 @@ The sequence shown in Fig.\ref{T1 basique} can be improved by implementing a com
 \label{T1 soustraction}
 \end{figure}
 
-Fig. \ref{T1 soustraction}-b) shows the experimental result of the $S_1$ and $S_2$ sequences on the same sample as for Fig. \ref{T1 basique}. The difference between the $S_1$ data in Fig. \ref{T1 soustraction}-b) and the the data in Fig. \ref{T1 basique}-b) comes from the laser intensity used. In Fig. \ref{T1 soustraction}, the laser intensity was high enough ($> 1\ \rm{mW}$) that photoionization between NV$^-$ and NV$^0$ becomes significant. Furthermore, for dense ensemble, a charge recombination mechanism operates even in the dark which is most likely due to charge tunneling between impurities \citep{choi2017depolarization, giri2018coupled, giri2019selective}. On the other hand, the laser intensity used in Fig. \ref{T1 basique} was small enough ($< 10\ \mu \rm{W}$) that the charge state state photodynamics contribution was negligible compared to the spin depolarization.
-
-Fig. \ref{T1 soustraction}-c) Shows the subtraction of the $S_1$ and $S_2$ signal. Despite the complex shape of the initial $S_1$ and $S_2$ signals, $S_1-S_2$ is nicely fitted with an exponential decay similar to the results found in Fig. \ref{T1 basique}.
-
 The photodynamics of the NV charge state is a complex subject which is still actively researched \citep{craik2020microwave, gorrini2021long}. The common mode rejection scheme described  here is often employed with dense ensemble of NV centers \citep{jarmola2012temperature, mrozek2015longitudinal, choi2017depolarization} as it allows to completely bypass the charge dynamics.
 
 \subsubsection{Physical origin and typical values}
 
 We distinguish three different origin for the the $T_1$ relaxation process:
 \begin{itemize}
-\item \textbf{Spin-phonon interaction:} the spin states are weakly coupled to the crystal phonon bath through spin-spin and spin-orbit interactions \citep{norambuena2018spin}, which results in a phonon-induced spin relaxation. The dominant relaxation mechanism depends on the  temperature regime, with the two-photon Raman process believed to be dominant at room temperature \citep{takahashi2008quenching, jarmola2012temperature} while the dominant process as at cryogenic temperature ($4\sim100$ K) is believed to be a two phonons Orbach process \citep{redman1991spin, norambuena2018spin}. The spin-phonon relaxation time strongly depends on the crystal lattice temperature, with relaxtion times of the order $T_1 \sim 5\ \rm ms$ at room temperature, and up to 8 hours at for mili-K temperatures \citep{astner2018solid}.
+\item \textbf{Spin-phonon relaxation:} the spin states are weakly coupled to the crystal phonon bath through spin-spin and spin-orbit interactions \citep{norambuena2018spin}, which can result in a phonon-induced spin relaxation. The dominant relaxation mechanism depends on the  temperature regime, with the two-photon Raman process believed to be dominant at room temperature \citep{takahashi2008quenching, jarmola2012temperature} while the dominant process as at cryogenic temperature ($4\sim100$ K) is believed to be a two phonons Orbach process \citep{redman1991spin, norambuena2018spin}. The spin-phonon relaxation time strongly depends on the crystal lattice temperature, with relaxtion times of the order $T_1 \sim 5\ \rm ms$ at room temperature, and up to 8 hours at for mili-K temperatures \citep{astner2018solid}.
 
-\item \textbf{Electric and magnetic field noises:} both electric and magnetic fields can directly excite the $\ket{0} \to \ket{\pm 1}$ spin transition \citep{udvarhelyi2018spin}. As a result, magnetic and electric field noise can reduce the spin $T_1$ if their spectrum overlap with the NV transitions. This is particularly important for near surface spins because of the strong noise caused by electronic defects on the surface \citep{sangtawesin2019origins}. The $T_1$ of near surface NV center can be as low as $\sim 10\ \mu$s, but the surface effect are only effective at very short range (within $\sim 10\ \rm nm$ of the surface).
+\item \textbf{Electric and magnetic field noises:} both electric and magnetic fields can directly excite the $\ket{0} \to \ket{\pm 1}$ spin transition \citep{udvarhelyi2018spin}. As a result, magnetic and electric field noise can reduce the spin $T_1$ if their spectrum overlap with the NV transitions. This is particularly important for near surface spins because of the strong noise caused by electronic defects on the surface \citep{sangtawesin2019origins}. The $T_1$ of near surface NV center can be as low as $\sim 10\ \mu$s, but the surface effects are only effective at very short range (within $\sim 10\ \rm nm$ of the surface).
 
 \item \textbf{Resonant dipolar interaction with other paramagnetic impurities:} Dipolar interaction betwen two spins will be detailed more thoroughly in the following section. Dipole-dipole interaction between NV centers and surrounding spins is responsible for both transverse and longitudinal spin relaxation, with the added condition of energy matching (resonance) for longitudinal relaxation. The $T_1$ time associated with dipole-dipole interaction strongly depends on the spin concentration and can be as low as $\sim 25 \mu$s \citep{hall2016detection}.
 \end{itemize}
@@ -436,9 +442,9 @@ All the measurements shown in this manuscript were performed at room temperature
 
 The $T_2^*$ time is the characteristic time for the loss of quantum coherence of a freely evolving system. It is generally defined as the decay time of of a Ramsey interferometry measurement \citep{barry2020sensitivity}.
 
-Fig. \ref{Ramsey} shows the Ramsey pulse sequence and an  example obtained on a spin ensemble. The microwave frequency is detuned by $\sim 300\ \rm kHz$ compared to the spin Larmor frequency which causes oscillations in the signal. $T_2^*$ is the decay time of the envelope of the Ramsey fringes. Unfortunately, it is hard to correctly fit the envelope of signal with so few fringes, but increasing the potential number of fringes mean further detuning the microwave which decreases the Rabi frequency to the point where $\pi$-pulses are of comparable length with the decoherence time (with our current microwave setup).
+Fig. \ref{Ramsey} shows the Ramsey pulse sequence and an  example obtained on a spin ensemble. The microwave frequency is detuned by $\sim 300\ \rm kHz$ compared to the spin central Larmor frequency which causes oscillations in the signal. $T_2^*$ is the decay time of the envelope of the Ramsey fringes. Unfortunately, it is hard to correctly fit the envelope of a signal with so few fringes. Increasing the number of fringes with our current microwave and optical setup might prove hard, as further microwave detuning would decrease the signal contrast, and would be ultimately limited by the microwave pulses resolution.
 
-Ramsey sequences are generally harder to perform on NV ensemble than they are on single NV for two main reasons. The first one is that the $T_2^*$ times tend to be longer for single NV centers as they do not suffer from spatial inhomogeneity and since the samples used for single NV experiments generally contains less impurities than those used for NV ensemble. The second one is the inhomogeneous microwave power which leads to a variation of the Rabi frequencies among the spins \citep{barry2016optical, zhou2020quantum} and lowers the fringe contrast.
+Ramsey sequences are generally harder to perform on NV ensemble than they are on single NV for two main reasons. The first one is that the $T_2^*$ times tend to be longer for single NV centers as they do not suffer from spatial inhomogeneity, and because the samples used for single NV experiments generally contains less impurities than those used for NV ensemble. The second one is the inhomogeneous microwave power which leads to a variation of the Rabi frequencies among the spins \citep{barry2016optical, zhou2020quantum} and lowers the fringe contrast.
 
 An alternative measurement of $T_2^*$ can be performed by looking at the linewidth of an ODMR spectrum. Indeed, ideally the ODMR spectrum should be the Fourier transform of the Ramsey signal (also called free induction decay in NMR literature). In practice however, both methods suffer from experimental noises and imperfections, with Ramsey-type methods being more sensitive to microwave inhomogeneities \citep{barry2020sensitivity} while ODMR is prone to laser and microwave power broadening \citep{dreau2011avoiding}. 
 
@@ -455,7 +461,7 @@ The method chosen to extract $T_2^*$ values in this manuscript was ODMR with low
 
 For most samples, the leading cause of inhomogeneous dephasing is the temporal and spatial variations of magnetic fields caused by the paramagnetic impurities in the crystal \citep{barry2020sensitivity}. The nature of these different paramagnetic impurities will be further discussed in the section dedicated to dark spins in diamond in chapter 2. We will simply mention here that for sample with high NV density ([NV] $\geq$ ppm), $T_2^*$ is mostly limited by the electronic spins of nitrogen impurities \citep{bauch2018ultralong}.
 
-Fig. \ref{ODMR 1 classe} shows ODMR spectra of a single NV class on two distinct samples (see [REF]). The first sample is a CVD sample with a total substitutional nitrogen  concentration $[N_s] \approx 26\ \rm ppm$, while the second is a type-Ib HPHT sample with a likely nitrogen concentration $[N_s] \geq 100\ \rm ppm$. We can clearly see a higher linewidth, corresponding to a smaller $T_2^* value$ on the sample with higher nitrogen concentration. In particular, we can notice the hyperfine structure of the $^{14}$N nuclei on the CVD sample, whereas it is completely hidden by the inhomogeneous broadening on the HPHT sample.
+Fig. \ref{ODMR 1 classe} shows ODMR spectra of a single NV class on two distinct samples (see [REF]). The first sample is a CVD sample with a total substitutional nitrogen  concentration $[N_s] \approx 26\ \rm ppm$, while the second is a type-Ib HPHT sample with a likely nitrogen concentration $[N_s] \geq 100\ \rm ppm$. We can clearly see a higher linewidth, corresponding to a smaller $T_2^*$ value on the sample with higher nitrogen concentration. In particular, we can notice the hyperfine structure of the $^{14}$N nuclei on the CVD sample, whereas it is hidden by the inhomogeneous broadening on the HPHT sample.
 
 Fig. \ref{ODMR 1 classe} illustrates another difficulty of $T_2^*$ measurement which is to find the correct fitting formula. While the spectral profile of single NV centers is expected to be Gaussian, the spectral profile of an ensemble of NV centers  is expected to be Lorentzian \citep{dobrovitski2008decoherence, hall2014analytic}. For Fig. \ref{ODMR 1 classe}-a), it was indeed found that Lorentzians fitted the data better than Gaussians. For Fig. \ref{ODMR 1 classe}-b) however, a Gaussian was found to be a better fit than a Lorentzian, although this could be in part due to the unresolved hyperfine structure.
 
@@ -467,11 +473,11 @@ Fig. \ref{ODMR 1 classe} illustrates another difficulty of $T_2^*$ measurement w
 \label{Echo}
 \end{figure}
 \subsubsection{Measurement protocol}
-As precised earlier, the exact $T_2$ definition depends on the rephasing scheme used. We will focus here on the simplest known rephasing process known as as the spin-echo or Hahn-echo sequence.
+As precised earlier, the exact $T_2$ definition depends on the rephasing scheme used. We will focus here on the simplest known rephasing process which is the spin-echo or Hahn-echo sequence.
 
-Fig. \ref{Echo} shows the pulse sequence used and an example on the same sample than the Ramsey measurement. The pulse sequence differs from the Ramsey one by adding a a $\pi$-pulse in the middle of the free precession time. This additional $\pi$-pulse causes static or slowly varying dephasing originating from detuning between the Larmor frequency and the microwave frequency to be rephased \citep{hahn1950spin}. 
+Fig. \ref{Echo} shows the pulse sequence used and an example on the same sample than the Ramsey measurement. The pulse sequence differs from the Ramsey one by adding a a $\pi$-pulse in the middle of the free precession time. This additional $\pi$-pulse causes static or slowly varying dephasing to be rephased \citep{hahn1950spin}. 
 
-This protocol extends the coherence time on this particular sample from $T_2^* \approx 300\ \rm ns$ to $T_2 \approx 4\ \rm{\mu s}$, an increase by more than a factor of 10. Improvement by a factor of $10 \sim 100$ or typical for NV ensembles \citep{barry2020sensitivity}. This value could be extended even further by using a more complex dynamical decoupling scheme from the CPMG or XY sequence families \citep{naydenov2011dynamical, bar2012suppression}.
+This protocol extends the coherence time on this particular sample from $T_2^* \approx 300\ \rm ns$ to $T_2 \approx 4\ \rm{\mu s}$, an increase by more than a factor of 10. Improvement by a factor of $10 \sim 100$ or typical for NV ensembles \citep{barry2020sensitivity}. This value could likely be extended even further by using a more complex dynamical decoupling scheme from the CPMG or XY sequence families \citep{naydenov2011dynamical, bar2012suppression}.
 
 \subsubsection{Physical origin}
 The origin of the relaxation time $T_2$ are fluctuating noises which are too fast to be efficiently rephased by the sequence. The origin of these noises is generally attributed to the flipping of spins in the vicinity of the NV center (either through spin-lattice or spin-spin mechanisms) \citep{hall2014analytic}. For samples with high nitrogen concentration, it has been measured that the $T_2$ time  was directly correlated to the nitrogen concentration, with the same scaling than the $T_2^*$ time \citep{bauch2019decoherence}.
@@ -493,7 +499,7 @@ We will consider the general situation represented in Fig. \ref{dipole-dipole}: 
 \hat{\mathbf{S}}_i=\hat{S}_x \mathbf{x}_i + \hat{S}_y \mathbf{y}_i + \hat{S}_z \mathbf{z}_i
 \end{equation}
 
-where the spin operators $S_{\{x,y,z\} }$ have their usual definitions in term of Pauli matrices. In particular, this means that the spin axis of quantization of each spin is $z_i$, which classically corresponds to the magnetization direction of the dipole. This axis can be defined either by the magnetic field, or by crystal field anisotropies, as is often the case for solid state spins with $S\geq 1$ (which includes the NV center).
+where the spin operators $\hat S_{\{x,y,z\} }$ have their usual definitions in term of Pauli matrices. In particular, this means that the spin axis of quantization of each spin is $z_i$, which classically corresponds to the magnetization direction of the dipole. This axis can be defined either by the magnetic field, or by crystal field anisotropies, as is often the case for solid state spins with $S\geq 1$ (including the NV center).
 
 \subsection{Magnetic dipole-dipole Hamiltonian}
 
@@ -501,7 +507,7 @@ Classically, the dipole-dipole interaction between two magnetic moments $\mathbf
 
 \begin{align}
 U&=-\mathbf{m}_1 \cdot \mathbf{B}(\mathbf{r}) \nonumber \\
-&=-\frac{\mu_0}{4 \pi}\left[ \frac{3 (\mathbf{m}_1\cdot\mathbf{u})(\mathbf{m}_2\cdot\mathbf{u}) - \mathbf{m}_1\cdot\mathbf{m}_2}{r^3}+\frac{8\pi}{3}\mathbf{m}_1\cdot\mathbf{m}_2\,\delta(\mathbf{r})\right], \label{eq. dipole classique}
+&=-\frac{\mu_0}{4 \pi}\left[ \frac{3 (\mathbf{m}_1\cdot\mathbf{u})(\mathbf{m}_2\cdot\mathbf{u}) - \mathbf{m}_1\cdot\mathbf{m}_2}{r^3}+\frac{8\pi}{3}\mathbf{m}_1\cdot\mathbf{m}_2\,\delta(r)\right], \label{eq. dipole classique}
 \end{align}
 
 where $\mathbf{r}=r \mathbf{u}$ is the relative position of the two dipoles (see Fig. \ref{dipole-dipole}). 
@@ -509,12 +515,12 @@ where $\mathbf{r}=r \mathbf{u}$ is the relative position of the two dipoles (see
 The quantum analog of the dipole-dipole interaction between spins simply replaces the magnetic moments $\mathbf{m}_i$ in eq. (\ref{eq. dipole classique}) with $\hbar \gamma_i \hat{\mathbf{S}}_i$, where $\gamma_i$ is the gryromagnetic ratio and $\hat{\mathbf{S}}_i$ the spin vector operator for spin $i$:
 
 \begin{equation}
-\mathcal{H}_{\rm dd}=\frac{\mu_0 \gamma_1 \gamma_2 \hbar^2}{4 \pi}\left[ \frac{3 (\hat{\mathbf{S}}_1\cdot\mathbf{u})(\hat{\mathbf{S}}_2\cdot\mathbf{u}) - \hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2}{r^3}+\frac{8\pi}{3}\hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2\,\delta(\mathbf{r})\right].
+\mathcal{H}_{\rm dd}=\frac{\mu_0 \gamma_1 \gamma_2 \hbar^2}{4 \pi}\left[ \frac{3 (\hat{\mathbf{S}}_1\cdot\mathbf{u})(\hat{\mathbf{S}}_2\cdot\mathbf{u}) - \hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2}{r^3}+\frac{8\pi}{3}\hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2\,\delta(r)\right].
 \end{equation}
 
-The $\delta(\mathbf{r})$ term represents the Fermi contact energy. This term plays an important role for hyperfine coupling when there is an overlap of the electron and nuclear wavefunctions, such as the hyperfine coupling between the NV$^-$ electron spin and $^{14}$N \cite{doherty2012theory} or  $^{13}$C \cite{smeltzer201113c} nuclear spins.
+The $\delta(r)$ term represents the Fermi contact energy. This term plays an important role when there is an overlap of the spin particle wavefunctions, such as the hyperfine coupling between the NV$^-$ electron spin and $^{14}$N \cite{doherty2012theory} or  $^{13}$C \cite{smeltzer201113c} nuclear spins.
 
-The focus of this manuscript is on the interaction between electronic spins which are separated by several atomic sites (density impurities in the $\sim$ ppm range). We will therefore assume that there is negligible overlap between the electronic wavefunctions and neglect the Fermi contact term. This leads the simplified dipole-dipole Hamiltonian:
+The focus of this manuscript is on the interaction between electronic spins which are separated by several atomic sites (density impurities in the $\sim$ ppm range). We will therefore assume that there is negligible overlap between the electronic wavefunctions and omit the Fermi contact term. This leads the simplified dipole-dipole Hamiltonian:
 
 \begin{equation}
 \mathcal{H}_{\rm dd}= \frac{J_0}{r^3}\left[ 3 (\hat{\mathbf{S}}_1\cdot\mathbf{u})(\hat{\mathbf{S}}_2\cdot\mathbf{u}) - \hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2] \right],
@@ -548,7 +554,7 @@ where $S_{\{x,y,z\} }^i$ are the spin operators acting on spin $i$. The $S_z^1 S
 \begin{align}
 \mathcal{H}_{\rm dd}&=\frac{J_0}{r^3}\bigg{[} \frac{1}{4}(3 u_x^2 + 3 u_y^2 -2)(S_+^1 S_-^2 + S_-^1 S_+^2) \nonumber \\
 &\quad + \frac{1}{4}(3 u_x^2 - 3 u_y^2)(S_+^1 S_+^2 + S_-^1 S_-^2) \nonumber \\
-&\quad +(3 u_z^2-1) S_z^1 S_z^2 \bigg{]} \\
+&\quad +(3 u_z^2-1) S_z^1 S_z^2 \bigg{]} \nonumber \\
 \medskip
 &= \Omega_{\rm ff} (S_+^1 S_-^2 + S_-^1 S_+^2) + \Omega_{\rm df} (S_+^1 S_+^2 + S_-^1 S_-^2) + \Omega_{\rm shift} S_z^1 S_z^2. \label{eq. ff df}
 \end{align}
@@ -577,7 +583,7 @@ For a single NV center coupled to spin 2, assuming that spin 2 always remains de
 \delta \Gamma_1=\frac{\Omega^2}{\Gamma_2^*} \frac{(\Gamma_2^*)^2}{(\delta \nu)^2+(\Gamma_2^*)^2},
 \label{delta gamma 1}
 \end{equation}
-where $\Gamma_2^*=\frac{1}{T_2^*(\rm NV)}+\frac{1}{T_2^*(\rm Spin 2)}$ is the joint dephasing rate of the NV center and the second spin, $\delta \nu$ is the detuning in energy (expressed in frequency) between the initial and final states and $\Omega=\Omega_{\rm ff}$ or $\Omega_{\rm df}$ is the dipole-dipole matrix element corresponding to the flip-flop or double-flip process considered. T
+where $\Gamma_2^*=\frac{1}{T_2^*(\rm NV)}+\frac{1}{T_2^*(\rm Spin 2)}$ is the joint dephasing rate of the NV center and the second spin, $\delta \nu$ is the detuning in energy (expressed in frequency) between the initial and final states and $\Omega=\Omega_{\rm ff}$ or $\Omega_{\rm df}$ is the dipole-dipole matrix element corresponding to the flip-flop or double-flip process considered. 
 
 Eq. (\ref{delta gamma 1}) is the basis for every cross-relaxation detection performed in this manuscript. Because the NV center lifetime can be measured optically, as detailed in Sec. \ref{sec T1 NV}, cross-relaxation between NV-centers and other spin species can be measured optically. Measuring the cross-relaxation depolarization can then be used to gain information on the second spin or on the dipole-dipole interaction mechanisms, as will be explained in the following chapters.
 

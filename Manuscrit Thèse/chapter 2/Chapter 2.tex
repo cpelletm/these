@@ -21,52 +21,26 @@
 
 \title{}
 \begin{document}
-\chapter{Detection of dark spins via cross-relaxations}
-In this chapter, we will see how the interplay between the optical and spin properties of the NV centers can be transferred to other spins in the crystal by coupling them to NV centers. More specifically, I will discuss the first optical detection of two spin species, VH$^-$ and War1, in a CVD diamond by the mean of cross-relaxations with NV centers.
-\section{Flip-Flops, double flips and cross-relaxation}
-\label{Sec_CR}
+\chapter{Cross-relaxations between NV centers and dark spins in CVD-grown diamond}
+Crystal defects are promising candidates for quantum information technologies, either through their optical or spin degree of freedom \citep{aharonovich2016solid, atature2018material, bassett2019quantum}. Spectrocopic studies are a necessary step in identifying and characterizing these defects, with electron paramagnetic resonance (EPR) being the spectrocopic tool of choice to measure the spin properties of the defects \citep{newton2007epr}. 
 
-\subsection{Resonant interaction : flip-flops and double flips}
+In this chapter, we present a method to characterize the spin of diamond impurities through cross-relaxation with NV centers \citep{hall2016detection,pellet2021optical}. This method allows an all-optical detection of non-NV center spin defects, a method that is both cheaper and more sensitive than traditional EPR. We focus in particular on defects in CVD-grown diamonds which have historically been less studied than HPHT diamond, and for which no prior NV cross-relaxation had been reported. 
 
-The dominant form of interaction between two distant spins is the magnetic dipole-dipole interaction. For two spins with with vector spin Hamiltonian $\hat{\mathbf{S}}_1$ and $\hat{\mathbf{S}}_2$, separated by a distance $\mathbf{r}=r\mathbf{u}$, the dipole-dipole interaction Hamiltonian reads (see Appendix A) :
-\begin{equation}
-\mathcal{H}_{dd}=\frac{J_0}{r^3}\left[ \hat{\mathbf{S}}_1\cdot\hat{\mathbf{S}}_2 - 3 (\hat{\mathbf{S}}_1\cdot\mathbf{u})(\hat{\mathbf{S}}_2\cdot\mathbf{u})\right],
-\end{equation}
-where $J_0= \frac{\mu_0\gamma_1\gamma_2 \hbar^2}{4\pi}$. For two electronic spins with $g-$factors close to 2 (which is the case for the NV center and most spin defect in diamond), the numerical value of $J_0$ is $(2\pi)\,52\ \rm{MHz}\cdot\rm{nm}^3$.
+The chapter is organized as follow: we will first detail the most common paramagnetic impurities in the diamond (the so-called ``dark spins") before explaining the proceeding of NV cross-relaxation experiments, and more generally of NV relaxometry. We will then focus on the detection of two particular defects in a CVD diamond, VH$^-$ and War1, and on their characterization (density, spin parameters, temperature dependence). We will finally conclude on the possible improvements and application of this detection method.
 
-Flip-flop, in the context of dipole-dipole interaction, is the mechanism which exchanges a quantum of spin between two spins. For an initial state of two spins $\ket{m_s^1=i;m_s^2=j}$, a flip-flop process will result in a final state $\ket{i+1;j-1}$ or $\ket{i-1;j+1}$. The effective rate of this process depends on the matrix element $\mel{i;j}{\mathcal{H}_{dd}}{i\pm 1;j \mp 1}$, as well as the resonance condition between the initial and final state. We should note that for two identical spins, the flip-flop process $\ket{i;i\pm 1}\bra{i\pm 1,i}$ is always resonant.
+The work presented in this chapter has already been published in large part in the articles \citep{pellet2021optical, ngambou2022improving}.
 
-Another mechanism authorized by the dipole-dipole Hamiltonian is the double-flip, either up or down, which couple the states $\ket{i;j}$ and $\ket{i-1;j-1}$ or $\ket{i+1;j+1}$. For a single spin species in a strong magnetic field, the lift of the various spin levels by the Zeeman effect means that no double-flip process can be resonant. However with weak magnetic field or when two different spin species are present, double flip process can be as important as flip-flops since the matrix elements $\mel{i;j}{\mathcal{H}_{dd}}{i\pm 1;j \pm 1}$ are typically of the same order of magnitude as the flip-flop ones.
 
-\subsection{Cross-relaxations}
+\section{Dark spins in diamond}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{Figures/Shema_CR}
-\caption{Illustration of cross-relaxations between an NV center and an unpolarized spin. Red dots represent the population in each states, and the arrows the various population transfer mechanisms}
-\label{CR_shema}
-\end{figure}
+We refer by dark spins to paramagnetic impurities for which, unlike the NV center, the spin degree of freedom is not accessible optically. At room temperature, only two defects in diamond do not have a dark spin: the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}. Every other spin impurity studied so far can be considered to be dark.
 
-Cross-relaxation (CR) is the transfer of polarization from one spin to another (or more generally from one family of spins to another family). This process con occur either through flip-flops, or through double flips, as long as the resonance condition between the two spins is met. 
-
-Fig. \ref{CR_shema} illustrates CR between a polarized NV center and an unpolarized second spin. When the two considered spin transitions become resonant, in this case by tuning the magnetic field, polarization from the NV center will be transferred to the second spin, making the NV center less polarized and the second spin more polarized than when they are out of resonance. 
-
-The reason why CR tend to depolarize the NV center simply comes from a rate equation : since the initial NV population is higher in the $\ket{0}$ state than in the $\ket{-1}$ state, the flip-flop (or double flip) process that makes the NV center go to $\ket{-1}$ (symbolized by the two red arrows in Fig. \ref{CR_shema}) is more likely than the reverse flip-flop. If we only focus on the NV center, cross-relaxation is simply another thermalization process due to the coupling of the NV center to its environment.
-
-For a single NV center coupled to spin 2, assuming that spin 2 is initially depolarized and that the coupling strength between the two spins is smaller than their respective dephasing time $T_2^*$, we can compute the modification in the NV relaxation rate $\Gamma_1=\frac{1}{T_1}$ caused by spin 2 as \citep{hall2016detection}:
-\begin{equation}
-\delta \Gamma_1=\frac{\Omega^2}{\Gamma_2^*} \frac{(\Gamma_2^*)^2}{(\delta \nu)^2+(\Gamma_2^*)^2},
-\label{delta gamma 1}
-\end{equation}
-where $\Omega=\frac{\mel{i;j}{\mathcal{H}_{\rm dd}}{j;i}}{\hbar}$ is the matrix element of the dipole-dipole Hamiltonian that couples the initial and final states, $\Gamma_2^*=\frac{1}{T_2^*(\rm NV)}+\frac{1}{T_2^*(\rm Spin 2)}$ is the joint dephasing rate of the NV center and the second spin, and $\delta \nu$ is the detuning between the central frequencies of the NV center and spin 2.
-\section{The dark spins in diamond}
-
-We refer by dark spins to spin defects which do not interact with light, which in the case of diamond defects consist of almost every known spin defect bar the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}.
+In this section we will present the most common dark spins encountered in diamond, which are simply the most common paramagnetic impurities aside from the NV center, and the relation between the diamond growth process and the presence of these impurities. We will also briefly present EPR spectroscopy which is the most common method to characterize these dark spins.
 
 \subsection{P1 centers and $^{13}$C}
-By far the most common spin defects in NV-rich diamond, outside of NV centers, are the substitutional nitrogen centers N$^0_S$ known as the P1 centers, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^{13}$C $1/2$ nuclear spin which is present at 1.1\% in natural abundance carbon, the remaining carbon atoms being almost exclusively the spinless $^{12}$C isotope. 
+The most common spin defects in NV-rich diamond are the substitutional nitrogen centers N$^0_S$ known as the P1 centers, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^{13}$C $1/2$ nuclear spin which represents 1.1\% of natural abundance carbon atoms, the remaining carbon atoms being almost exclusively the spinless $^{12}$C isotope. 
 
-In NV-rich diamonds, these two impurities are the main causes of the inhomogeneous dephasing rate $\Gamma_2^*=1/T_2^*$ of the NV centers ensemble \citep{barry2020sensitivity}. The dephasing comes from the distribution of dipole-dipole coupling from each NV centers to its neighboring spin defects, which varies in space and time. 
+In NV-rich diamonds, these two impurities are the main causes of the inhomogeneous dephasing rate $\Gamma_2^*=1/T_2^*$ of the NV centers ensemble \citep{barry2020sensitivity}. 
 
 The dephasing rate caused by a given impurity is directly proportional to the diagonal dipole-dipole matrix elements \citep{bauch2020decoherence}: 
 \begin{equation}

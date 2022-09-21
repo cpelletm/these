@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.14 (beta)
-[1] Config.pm:307> INFO - Logfile is 'Chapter 2.blg'
-[37] biber:322> INFO - === dim. août 21, 2022, 18:35:07
-[45] Biber.pm:415> INFO - Reading 'Chapter 2.bcf'
-[80] Biber.pm:943> INFO - Found 43 citekeys in bib section 0
-[87] Biber.pm:4256> INFO - Processing section 0
-[87] Utils.pm:75> INFO - Globbing data source 'Bib_ch2.bib'
-[87] Utils.pm:91> INFO - Globbed data source 'Bib_ch2.bib' to Bib_ch2.bib
-[93] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch2.bib' for section 0
-[94] bibtex.pm:1653> INFO - LaTeX decoding ...
-[123] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch2.bib'
-[363] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[363] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[363] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[363] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[378] bbl.pm:652> INFO - Writing 'Chapter 2.bbl' with encoding 'UTF-8'
-[403] bbl.pm:755> INFO - Output to Chapter 2.bbl
+[0] Config.pm:307> INFO - Logfile is 'Chapter 2.blg'
+[34] biber:322> INFO - === mer. sept. 21, 2022, 17:06:31
+[41] Biber.pm:415> INFO - Reading 'Chapter 2.bcf'
+[75] Biber.pm:943> INFO - Found 43 citekeys in bib section 0
+[81] Biber.pm:4256> INFO - Processing section 0
+[82] Utils.pm:75> INFO - Globbing data source 'Bib_ch2.bib'
+[82] Utils.pm:91> INFO - Globbed data source 'Bib_ch2.bib' to Bib_ch2.bib
+[86] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch2.bib' for section 0
+[88] bibtex.pm:1653> INFO - LaTeX decoding ...
+[116] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch2.bib'
+[353] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[353] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[353] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[353] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[367] bbl.pm:652> INFO - Writing 'Chapter 2.bbl' with encoding 'UTF-8'
+[392] bbl.pm:755> INFO - Output to Chapter 2.bbl

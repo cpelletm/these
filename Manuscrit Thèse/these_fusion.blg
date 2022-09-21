@@ -1,0 +1,52 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'these_fusion.blg'
+[36] biber:322> INFO - === mer. sept. 21, 2022, 16:21:46
+[43] Biber.pm:415> INFO - Reading 'these_fusion.bcf'
+[84] Biber.pm:943> INFO - Found 0 citekeys in bib section 0
+[88] Biber.pm:943> INFO - Found 106 citekeys in bib section 1
+[88] Biber.pm:943> INFO - Found 0 citekeys in bib section 0
+[90] Biber.pm:943> INFO - Found 43 citekeys in bib section 2
+[90] Biber.pm:943> INFO - Found 0 citekeys in bib section 0
+[91] Biber.pm:943> INFO - Found 30 citekeys in bib section 3
+[91] Biber.pm:943> INFO - Found 0 citekeys in bib section 0
+[92] Biber.pm:943> INFO - Found 55 citekeys in bib section 4
+[92] Biber.pm:943> INFO - Found 0 citekeys in bib section 0
+[110] Biber.pm:4256> INFO - Processing section 1
+[110] Utils.pm:75> INFO - Globbing data source 'bib_thesis.bib'
+[111] Utils.pm:91> INFO - Globbed data source 'bib_thesis.bib' to bib_thesis.bib
+[116] Biber.pm:4455> INFO - Looking for bibtex format file 'bib_thesis.bib' for section 1
+[120] bibtex.pm:1653> INFO - LaTeX decoding ...
+[256] bibtex.pm:1471> INFO - Found BibTeX data source 'bib_thesis.bib'
+[260] Utils.pm:293> WARN - Duplicate entry key: 'wang2022picotesla' in file 'bib_thesis.bib', skipping ...
+[263] Utils.pm:293> WARN - Duplicate entry key: 'wiki:VoigtProfile' in file 'bib_thesis.bib', skipping ...
+[766] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[766] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[766] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[766] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[798] Biber.pm:4256> INFO - Processing section 2
+[798] Utils.pm:75> INFO - Globbing data source 'bib_thesis.bib'
+[798] Utils.pm:91> INFO - Globbed data source 'bib_thesis.bib' to bib_thesis.bib
+[799] Biber.pm:4455> INFO - Looking for bibtex format file 'bib_thesis.bib' for section 2
+[1027] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1028] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1028] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1028] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[1042] Biber.pm:4256> INFO - Processing section 3
+[1042] Utils.pm:75> INFO - Globbing data source 'bib_thesis.bib'
+[1042] Utils.pm:91> INFO - Globbed data source 'bib_thesis.bib' to bib_thesis.bib
+[1043] Biber.pm:4455> INFO - Looking for bibtex format file 'bib_thesis.bib' for section 3
+[1174] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1174] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1174] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1174] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[1183] Biber.pm:4256> INFO - Processing section 4
+[1183] Utils.pm:75> INFO - Globbing data source 'bib_thesis.bib'
+[1183] Utils.pm:91> INFO - Globbed data source 'bib_thesis.bib' to bib_thesis.bib
+[1183] Biber.pm:4455> INFO - Looking for bibtex format file 'bib_thesis.bib' for section 4
+[1496] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1496] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1496] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1496] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[1516] bbl.pm:652> INFO - Writing 'these_fusion.bbl' with encoding 'UTF-8'
+[1637] bbl.pm:755> INFO - Output to these_fusion.bbl
+[1642] Biber.pm:128> INFO - WARNINGS: 2
