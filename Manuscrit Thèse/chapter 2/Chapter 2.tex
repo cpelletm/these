@@ -28,62 +28,76 @@ In this chapter, we present a method to characterize the spin of diamond impurit
 
 The chapter is organized as follow: we will first detail the most common paramagnetic impurities in the diamond (the so-called ``dark spins") before explaining the proceeding of NV cross-relaxation experiments, and more generally of NV relaxometry. We will then focus on the detection of two particular defects in a CVD diamond, VH$^-$ and War1, and on their characterization (density, spin parameters, temperature dependence). We will finally conclude on the possible improvements and application of this detection method.
 
-The work presented in this chapter has already been published in large part in the articles \citep{pellet2021optical, ngambou2022improving}.
+The work presented in this chapter has been published in large part in the articles \citep{pellet2021optical, ngambou2022improving}.
 
 
 \section{Dark spins in diamond}
 
-We refer by dark spins to paramagnetic impurities for which, unlike the NV center, the spin degree of freedom is not accessible optically. At room temperature, only two defects in diamond do not have a dark spin: the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}. Every other spin impurity studied so far can be considered to be dark.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/tronche_de_spin}
+\caption{Crystalline structure of three spin defects: the NV center, the P1 enter (substituional Nitrogen) and the VH center.} 
+\label{repr NV P1 VH}
+\end{figure}
+
+We refer by dark spins to paramagnetic impurities for which the spin degree of freedom is not accessible optically. At room temperature, only two defects in diamond do not have a dark spin: the NV center and the more recently found ST1 center \citep{lee2013readout, john2017bright}. Every other spin impurity identified so far is considered to be dark.
 
 In this section we will present the most common dark spins encountered in diamond, which are simply the most common paramagnetic impurities aside from the NV center, and the relation between the diamond growth process and the presence of these impurities. We will also briefly present EPR spectroscopy which is the most common method to characterize these dark spins.
 
 \subsection{P1 centers and $^{13}$C}
-The most common spin defects in NV-rich diamond are the substitutional nitrogen centers N$^0_S$ known as the P1 centers, which have an electronic spin $1/2$ and a nuclear spin 1, and the $^{13}$C $1/2$ nuclear spin which represents 1.1\% of natural abundance carbon atoms, the remaining carbon atoms being almost exclusively the spinless $^{12}$C isotope. 
+The most common spin defects in NV-rich diamond are the substitutional nitrogen centers N$^0_S$ known as the P1 centers (see Fig. \ref{repr NV P1 VH}), which have an electronic spin $1/2$ and a nuclear spin 1, and the $^{13}$C $1/2$ nuclear spin which represents 1.1\% of natural abundance carbon atoms, the remaining carbon atoms being almost exclusively the spinless $^{12}$C isotope. In NV-rich diamonds, these two impurities are the main causesof the NV center dephasing rates $\Gamma_2^*=1/T_2^*$ and $\Gamma_2=1/T_2$  \citep{barry2020sensitivity}. 
 
-In NV-rich diamonds, these two impurities are the main causes of the inhomogeneous dephasing rate $\Gamma_2^*=1/T_2^*$ of the NV centers ensemble \citep{barry2020sensitivity}. 
+The dephasing rate caused by a given impurity is directly proportional to the average diagonal dipole-dipole matrix elements ($\Omega_{\rm shift}$ in (eq. \ref{eq. ff df})) between the two spin species \citep{taylor2008high, bauch2020decoherence}. Since the dipole-dipole interaction scales as $1/r^3$, and the distance $r$ between each spin scales as the inverse cubic root of the concentration,  it is expected that the dephasing rate associated with a particular impurity scales linearly with the concentration of the impurity: $\Gamma_2^*(\rm P1) \propto [P1]$. 
 
-The dephasing rate caused by a given impurity is directly proportional to the diagonal dipole-dipole matrix elements \citep{bauch2020decoherence}: 
-\begin{equation}
-\Gamma_2^*(\rm P1) \propto \Omega_{\rm NV-P1}=\frac{1}{\hbar}\sqrt{\sum_j \abs{\mel{NV=i;P1=j}{\mathcal{H}_{\rm dd}}{NV=i;P1=j}}^2}.
-\label{Gamma2 P1}
-\end{equation}
-Since the dipole-dipole coupling rate scales as $1/r^3$, and the distance $r$ between each spin scales as the inverse cubic root of the concentration,  it is expected that the dephasing rate associated with a particular impurity scales linearly with the concentration of the impurity: $\Gamma_2^*(\rm P1) \propto [P1]$. In the case of P1 centers, this was verified experimentally by \citep{bauch2020decoherence} who found a value of $\Gamma_2^*(\rm P1)= (2 \pi) 16\ \rm kHz/ppm$. The typical concentrations of P1 center go from [REF] for high purity CVD diamond, up to 500 ppm for type 1B HPHT or natural diamonds.
+In the case of P1 centers, this was verified experimentally by looking at controlled sample with varying concentration of nitrogen \citep{bauch2020decoherence}. The authors of the study found a value of $\Gamma_2^*(\rm P1)= (2 \pi) 16\ \rm kHz/ppm$. For the samples studied in this manuscript [REF], the P1 concentration was 
 
-$^{13}$C is much more abundant than P1 center ($\sim$ 10 000 ppm at natural abundance) but being a nuclear spin, it has a gyromagnetic ratio $\approx 2.8\cdot 10^3$ times smaller than that of the P1. This results in a contribution to $\Gamma_2^* \sim 10^3$ times smaller per impurity. It was found experimentally that the broadening caused by $^{13}$C is $\Gamma_2^*(^{13}\rm C ) \approx (2 \pi) 16\ \rm Hz/ppm$ \citep{van1997dependences, barry2020sensitivity}. For natural abundance diamond, this means that $\Gamma_2^*(^{13}\rm C ) \approx (2 \pi) 160\ \rm kHz$.
+$^{13}$C nuclei are typically much more abundant than P1 center ($\sim$ 10 000 ppm without istopic engineering) but being a nuclear spin, it has a gyromagnetic ratio $\approx 2.8\cdot 10^3$ times smaller than that of the P1. As a result, the contribution of a single $^{13}$C nucleus to the NV dephasing rate is $\sim 10^3$ times that of a single P1 center. It was found experimentally that the broadening caused by $^{13}$C is $\Gamma_2^*(^{13}\rm C ) \approx (2 \pi) 16\ \rm Hz/ppm$ \citep{van1997dependences, barry2020sensitivity}. In samples with natural isotopic abundance of carbon, the inhomogeneous dephasing rate due to the $^{13}$C nuclear spins has a value $\Gamma_2^*(^{13}\rm C ) \approx (2 \pi) 160\ \rm kHz$.
 
 \subsection{Other spin defects, VH$^-$, War1}
 \label{other defects}
-Other spin defects are also commonly found in diamond containing NV centers, such as charged vacancy or vacancy clusters \citep{hounsome2006origin}, other nitrogen related defects \citep{newton2007epr}, transition metals \citep{isoya1990fourier}, and especially for CVD grown diamond, hydrogen related defects \citep{hartland2014study}, since the CVD plasma contains up to 95 \% hydrogen.
+Other spin defects are also commonly found in diamond containing NV centers, such as charged vacancy or vacancy clusters \citep{hounsome2006origin}, other nitrogen related defects \citep{newton2007epr}, transition metals \citep{isoya1990fourier}, and especially for CVD grown diamond, hydrogen related defects \citep{hartland2014study}, since the CVD plasma contains up to 95 \% hydrogen (see sec. \ref{fab HPHT}).
 
 Of particular interest in this chapter are two defects: the VH$^-$ defect \citep{glover2003hydrogen, glover2004hydrogen} and the War1 defect \citep{cruddace2007magnetic}. 
 
-The VH$^-$ defect, prior to our observations, had only been observed \textit{via} electron paramagnetic resonance (EPR) in CVD grown diamond. It is formed by a vacancy with a hydrogen atom bonded to one of the four dangling carbon bond, with an extra electron trapped in the vacancy. This defect has a similar electronic structure to the NV$^-$ which results in an electronic spin-1 with a similar zero field splitting parameter (see Table \ref{table VH et War1}). Although the presence of hydrogen in this defect was confirmed by isotopic study, it has been debated whether this defect was VH$^-$ or V$_2$H$^-$ due to a conflict with \textit{ab initio} calculations \citep{shaw2005importance}. The defect is therefore sometimes referred as V$_n$H$^-$. In this manuscript I will employ the original name VH$^-$.
+The VH$^-$ defect, prior to our observations, had only been observed via electron paramagnetic resonance (EPR) in CVD grown diamond. It is formed by a vacancy with a hydrogen atom forming a bond with one of the four neighboring carbon atoms (see Fig. \ref{repr NV P1 VH}). To acquire its negtatively charged state, the VH center needs to capture an electron from a donor in the crystal, similarly to the NV center. 
+
+This defect has a similar electronic structure as the NV$^-$ which results in an electronic spin-1 with a similar zero field splitting parameter (see Table \ref{table VH et War1}). Although the presence of hydrogen in this defect was confirmed by isotopic study, it has been debated whether this defect was VH$^-$ or V$_2$H$^-$ due to a conflict with \textit{ab initio} calculations \citep{shaw2005importance}. The defect is therefore sometimes referred to as V$_n$H$^-$. In this manuscript we will employ the original terminology: VH$^-$.
 
 The War1 defect, named after the University of Warwick where it was first observed in a CVD diamond \citep{cruddace2007magnetic}, is another spin-1 defect whose chemical structure remains unknown. No hyperfine structure could be discerned in the relatively broad EPR line, and the use of deuterium instead of $^1$H did not change the shape of the line.
 
 \subsection{EPR spectroscopy}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.7\textwidth]{Figures/EPR_spectometer.jpg}
+\caption{EPR specrometer. Credits: Bruker Corporation} 
+\label{photo EPR}
+\end{figure}
+
 Electron paramagnetic resonance (EPR), the electronic equivalent to NMR, is the the most common way to detect electronic spins in solids and liquids. The principle of its detection is the absorption or reflection of a microwave field resonant with a spin transition.
 
 EPR generally relies on the thermal polarization of the spins to observe an absorption. In order to increase the polarization, an important magnetic field is applied (typ. 0.35 T or 3500 G) and a microwave cavity (typ. 9500 MHz) is used to improve the coupling of the spins to the field.
 
-At room temperature, the thermal polarization of a transition at 9500 MHz is $\sim 0.002$. This low value, compared to $\sim 0.8$ for the NV centers, explains in part why EPR is way less sensitive than NV ODMR. The current noise floor for EPR is typically of $\sim 10^{11}$ spins for electronic spins in diamond \citep{mitchell2013x}.
+The usual EPR apparatus, shown in Fig. \ref{photo EPR}, is a bulky and expensive lab equipment ($\gtrsim$ 1 M€). In contrast, optical detection such as ODMR is technically easier, less expensive, and allows better spatial resolution. 
+
+ODMR can also be significantly more sensitive than EPR: single NV centers are routinely observed in ODMR while the the current EPR noise floor for electronic spins in diamond is typically of $\sim 10^{11}$ \citep{mitchell2013x}. This difference in sensitivity comes in part from the better spin polarization \footnote{At room temperature, the thermal polarization of a transition at 9500 MHz is $\sim 0.002$ while the NV center optical polarization can reach 0.8.}, and from the more efficient photon detection in the optical range than in the microwave range.
+
+EPR however remains a far more versatile tool as only very few spin defects have the properties required for ODMR. The key idea of this chapter is to allow the optical detection of spin defects that do not show ODMR, by making them resonant with NV centers and observing NV cross-relaxation.
 
 \section{NV center relaxometry}
 
-\subsection{Principle of NV center Relaxometry}
-Detection \textit{via} cross-relaxation	with NV centers fall under the more general technique of NV relaxometry, where we are effectively measuring a modification in the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure resonant cross-relaxation with dark spins \citep{van1989cross, holliday1989optical, epstein2005anisotropic, armstrong2010nv,   hall2016detection, wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}, magnetic domains \citep{finco2021imaging}...
+Detection of dark spins via NV center cross-relaxation fall under the more general technique of NV relaxometry, which consists in measuring a modification of the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure cross-relaxation with dark spins \citep{van1989cross, holliday1989optical, epstein2005anisotropic, armstrong2010nv,   hall2016detection, wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}or magnetic domains \citep{finco2021imaging}. 
 
-There can be several advantages to use relaxometry protocols, which measures a change in the NV $T_1$, over the more common magnetometry protocols that rely on a change in the NV $T_2$ or $T_2^*$: the first and most obvious one is that relaxometry does not need to use an external microwave field. This however comes at the cost of a greater precision needed on the external magnetic field. Relaxometry also allows AC-magnetic field sensing in the GHz regime \citep{wang2022picotesla, alsid2022solid}, while traditional microwave-based AC-megnetometry is limited to tens of MHz. Finally, relaxometry measurement can be more sensitive than the T2-based one in some instances \citep{steinert2013magnetic}, which comes from the fact that changes in NV $T_1$ times are easier to detect than changes in $T_2$ or $T_2^*$ since $T_1$ is much longer than $T_2$ or $T_2^*$.
+The protocols used in NV relaxometry measure either directly the spin $T_1$, as detailed in sec. \ref{sec T1 NV}, or indirectly through the NV photoluminescence.
 
 \subsection{PL and single$-\tau$ relaxometry protocols}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Figures/relaxo_pulsed_continuous}
-\caption{Representation of the two relaxometry protocol. Left : representation of the three level system of the NV center with the polarization rate $\Gamma_{\rm las}$ and spin decay rates $\Gamma_1=1/T_1$ and the perturbation $\delta \Gamma$. Right: simulation of a $T_1$ measurement for $1/\Gamma_1=3\ \rm ms$ and $1/(\Gamma_1+\delta \Gamma)=2\ \rm ms$. $\delta \rm S$ represents the maximum difference in signal between the two curves for a dark time $\tau$.}
+\includegraphics[width=0.9\textwidth]{Figures/relaxo_pulsed_continuous_2}
+\caption{Representation of the two relaxometry protocol. (a) Simple $T_1$ measurement pulse sequence. (b) Simulation of two $T_1$ measurement with different $T_1$ values. $\tau$ represents the optimal dark time in order to maximize the signal $\delta S$ (c) Representation of the optical pumping (green arrows) and depolarization (blue arrows) of the NV center spin. (d) Simulation of the PL modification caused by a change in the spin $T_1$. The spin $T_1$ profile in term of the magnetic field was arbitrarily chosen.}
 \label{T1 vs PL}
 \end{figure}
 
-There are two ways to measure a change in the spin $T_1$, as represented on Fig. \ref{T1 vs PL}. The first and most basic method simply consist in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, which itself results from an equilibrium between the polarization rate $\Gamma_{\rm las}$ and the spin decay rate $\Gamma_1=1/T_1$. A change in $\Gamma_1$ will therefore conduct to a new equilibrium with a different PL. 
+The two most common protocols to perform NV relaxometry ar represented on Fig. \ref{T1 vs PL}. The first and most basic method simply consist in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, which itself results from an equilibrium between the polarization rate $\Gamma_{\rm las}$ and the spin decay rate $\Gamma_1=1/T_1$. A change in $\Gamma_1$ will therefore conduct to a new equilibrium with a different PL. 
 
 The second method is a pulsed sequence referred as single$-\tau$ measurement, used for example in \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. It simply consists in a $T_1$ measurement sequence (as seen in chapter 1) where you first polarize the spins in the $\ket{0}$ state with a laser pulse and read out the spin state with a second laser pulse after a dark time $\tau$. In this case however, instead of scanning the time $\tau$, you fix its value to maximize the sensitivity in a change of $T_1$ (typically $\tau \approx T_1$). 
 
@@ -99,6 +113,8 @@ On a technical level, the PL-based method is easier to implement since it does n
 \caption{Pulse sequence of the DEER protocol}
 \label{DEER}
 \end{figure}
+
+There can be several advantages to use relaxometry protocols, which measures a change in the NV $T_1$, over the more common magnetometry protocols that rely on a change in the NV $T_2$ or $T_2^*$: the first and most obvious one is that relaxometry does not need to use an external microwave field. This however comes at the cost of a greater precision needed on the external magnetic field. Relaxometry also allows AC-magnetic field sensing in the GHz regime \citep{wang2022picotesla, alsid2022solid}, while traditional microwave-based AC-megnetometry is limited to tens of MHz. Finally, relaxometry measurement can be more sensitive than the T2-based one in some instances \citep{steinert2013magnetic}, which comes from the fact that changes in NV $T_1$ times are easier to detect than changes in $T_2$ or $T_2^*$ since $T_1$ is much longer than $T_2$ or $T_2^*$.
 
 Outside of cross-relaxations, another protocol exists to address dark spin resonance with NV centers, based on a modification of the NV $T_2$ time \citep{serbyn2014interferometric}. This protocol called double electron-electron resonance (DEER) is depicted on Fig. \ref{DEER}. The pulse sequence consist in a spin-echo sequence on the NV center, as described in chapter 1, with a simultaneous $\pi-$pulse on the probed dark spins during the rephasing pulse on the NV centers. This additional pulse means that the static (or slowly variable) contribution of the probed spins to the $T_2^*$ of the NV center wont be rephased. The newly measured $T_2$ time should therefore be slightly shorter:
 
