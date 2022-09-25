@@ -87,7 +87,7 @@ EPR however remains a far more versatile tool as only very few spin defects have
 
 Detection of dark spins via NV center cross-relaxation fall under the more general technique of NV relaxometry, which consists in measuring a modification of the NV center spin lifetime $T_1$. Relaxometry with NV centers has been used not only to measure cross-relaxation with dark spins \citep{van1989cross, holliday1989optical, epstein2005anisotropic, armstrong2010nv,   hall2016detection, wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross}, but also to probe the magnetic noise in the diamond environment coming from spins \citep{steinert2013magnetic}, ions\citep{tetienne2013spin}, free radicals \citep{nie2021quantum}or magnetic domains \citep{finco2021imaging}. 
 
-The protocols used in NV relaxometry measure either directly the spin $T_1$, as detailed in sec. \ref{sec T1 NV}, or indirectly through the NV photoluminescence.
+The protocols used in NV relaxometry measure either directly the spin $T_1$ or indirectly through the NV photoluminescence.
 
 \subsection{PL and single$-\tau$ relaxometry protocols}
 \begin{figure}[h]
@@ -97,11 +97,16 @@ The protocols used in NV relaxometry measure either directly the spin $T_1$, as 
 \label{T1 vs PL}
 \end{figure}
 
-The two most common protocols to perform NV relaxometry ar represented on Fig. \ref{T1 vs PL}. The first and most basic method simply consist in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, which itself results from an equilibrium between the polarization rate $\Gamma_{\rm las}$ and the spin decay rate $\Gamma_1=1/T_1$. A change in $\Gamma_1$ will therefore conduct to a new equilibrium with a different PL. 
+The two most common NV relaxometry protocols are represented on Fig. \ref{T1 vs PL}. The first method simply consists in measuring the spin lifetime, following the protocols described in \ref{sec T1 NV}. In Fig. \ref{T1 vs PL}, we picture the simpler $T_1$ measurement protocol, but the technique can be used with the common mode rejection protocol. In order to more efficiently measure a modification of the spin $T_1$, the ``single$-\tau$" protocol does not record the entire depolarization curve represented in Fig. \ref{T1 vs PL}-b), but instead probes the spins for a single dark time value $\tau$ \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. This value is chosen in order to maximize the change in signal $\delta S$ for a given change in lifetime $\delta T_1$, typically $\tau \sim T_1$.
 
-The second method is a pulsed sequence referred as single$-\tau$ measurement, used for example in \citep{pelliccione2014two, schmid2015relaxometry, tetienne2016scanning}. It simply consists in a $T_1$ measurement sequence (as seen in chapter 1) where you first polarize the spins in the $\ket{0}$ state with a laser pulse and read out the spin state with a second laser pulse after a dark time $\tau$. In this case however, instead of scanning the time $\tau$, you fix its value to maximize the sensitivity in a change of $T_1$ (typically $\tau \approx T_1$). 
+ The second method simply consists in monitoring the PL of the NV centers : since the PL is proportional to the population in the $\ket{0}$ state, and since the steady state population in the $\ket{0}$ state results from the equilibrium between the optical polarization rate $\Gamma_{\rm las}$ and the depolarization rate $\Gamma_1=1/T_1$. A simple rate equation for the $\ket{0}$ state population $\rho_{00}$ gives:
+ \begin{equation}
+ \rho_{00}=\frac{\Gamma_{\rm las}+\Gamma_1}{\Gamma_{\rm las}+3\Gamma_1}.
+ \end{equation}
+ 
+ Fig. \ref{T1 vs PL} shows a simulation of NV centers PL when the spin decay rate $\Gamma_1$ is modified. In this fictional scenario, we assume that $\Gamma_1$ resonantly increases for a given value of the magnetic field (we will see later in this manuscript situations matching this scenario). We can see that the PL decreases as an answer to the $\Gamma_1$ increase. The exact value of the PL drop ($\sim 2\%$ in the crase presented here) depends on the optical polarization rate $\Gamma_{\rm las}$, but this value generally does exceed a few \%, even for important $T_1$ modifications.
 
-It is argued in \citep{finco2021imaging} that both methods result in similar signal to noise ratio: in the first case you need to adjust $\Gamma_{\rm las} \sim \Gamma_1$ to maximize the PL contrast, meaning that the laser power used is very far from the saturation limit (typically $\Gamma_1 \approx 10^3\ \rm s^{-1}$ and $\Gamma_{\rm sat} = 5\cdot10^6\ \rm s^{-1}$\citep{dreau2011avoiding}), while the second method needs to wait a time $\tau \sim T_1$ between each measurement, which result in a similar PL count and shot noise limit in both case.
+It is argued in \citep{finco2021imaging} that both methods result in similar signal to noise ratio: in the PL case, the laser intensity needs to be adjusted so that $\Gamma_{\rm las} \sim \Gamma_1$ in order to maximize the PL contrast, while the single$-\tau$ method requires a waiting time $\tau \sim T_1$ between each measurement, which result in a similar PL count and shot noise limit in both case.
 
 On a technical level, the PL-based method is easier to implement since it does not require the use of a pulsed laser, and uses an overall smaller laser power, however it is more sensitive to drifts and changes in the optical setup. Most of the relaxometry measurement in this manuscript were performed using a PL-based detection.
 
@@ -114,9 +119,7 @@ On a technical level, the PL-based method is easier to implement since it does n
 \label{DEER}
 \end{figure}
 
-There can be several advantages to use relaxometry protocols, which measures a change in the NV $T_1$, over the more common magnetometry protocols that rely on a change in the NV $T_2$ or $T_2^*$: the first and most obvious one is that relaxometry does not need to use an external microwave field. This however comes at the cost of a greater precision needed on the external magnetic field. Relaxometry also allows AC-magnetic field sensing in the GHz regime \citep{wang2022picotesla, alsid2022solid}, while traditional microwave-based AC-megnetometry is limited to tens of MHz. Finally, relaxometry measurement can be more sensitive than the T2-based one in some instances \citep{steinert2013magnetic}, which comes from the fact that changes in NV $T_1$ times are easier to detect than changes in $T_2$ or $T_2^*$ since $T_1$ is much longer than $T_2$ or $T_2^*$.
-
-Outside of cross-relaxations, another protocol exists to address dark spin resonance with NV centers, based on a modification of the NV $T_2$ time \citep{serbyn2014interferometric}. This protocol called double electron-electron resonance (DEER) is depicted on Fig. \ref{DEER}. The pulse sequence consist in a spin-echo sequence on the NV center, as described in chapter 1, with a simultaneous $\pi-$pulse on the probed dark spins during the rephasing pulse on the NV centers. This additional pulse means that the static (or slowly variable) contribution of the probed spins to the $T_2^*$ of the NV center wont be rephased. The newly measured $T_2$ time should therefore be slightly shorter:
+Aside from cross-relaxations, another protocol exists to address dark spin resonance with NV centers, based on a modification of the NV $T_2$ time \citep{mamin2012detecting, serbyn2014interferometric}. This protocol, called double electron-electron resonance (DEER), is depicted on Fig. \ref{DEER}. The pulse sequence consists in applying a spin-echo on the NV center, as described in \ref{sec T2 echo}, with a simultaneous $\pi-$pulse on the probed dark spins during the rephasing pulse on the NV centers. This additional pulse means that the static (or slowly variable) contribution of the probed spins to the $T_2^*$ of the NV center will not be rephased. The newly measured $T_2$ time should thus be slightly shorter.
 
 \begin{equation}
 \frac{1}{T_2^{\rm DEER}}=\frac{1}{T_2^{\rm echo}} + \delta \Gamma_2^*,
@@ -124,17 +127,17 @@ Outside of cross-relaxations, another protocol exists to address dark spin reson
 
 where $\delta \Gamma_2^*$ is the contribution of the dark spin to the $T_2^*$ of the NV center.
 
-By scanning the frequency of the second microwave (RF2) and monitoring the $T_2$ time of the NV centers, one can therefore find dark spin resonance without having to bring them to resonance with NV centers, which can be useful when the dark spin resonance is very far detuned from the NV one.
+By scanning the frequency of the second microwave (RF2) and monitoring the $T_2$ time of the NV centers, one can find dark spin resonance without having to bring them to resonance with NV centers, which can be useful when the dark spin resonance is very far detuned from the NV one.
 
-While both cross-relaxation and DEER measure the dipole-dipole coupling of dark spins to an NV center, there are several differences between the two protocols:
+Both relaxometry and DEER protocols have their own advantages. While DEER allows more control on the probed impurity, allowing in particular coherent control of the dark spin \citep{sushkov2014magnetic}, relaxometry protocols are generally easier to implement as they do not require a pulsed microwave setup. In some cases at least, relaxometry protocols have been shown to be more sensitive than $T_2$ based protocols such as DEER due to the fact that $T_1$ is typically orders of magnitude greater than $T_2$ \citep{steinert2013magnetic}.
 
-Frist, the two protocols do not measure the same elements of the dipole-dipole Hamiltonian: CR measures the off-diagonal elements $\Omega_{\rm CR}=\mel{i,j}{\mathcal{H}_{\rm dd}}{j,i}/\hbar$ which are responsible for the flip-flops or double flips, while DEER measures the diagonal elements $\Omega_{\rm DEER}=\mel{i,j}{\mathcal{H}_{\rm dd}}{i,j}/\hbar$ which are responsible for the pure dephasing. These terms however are on average of the same amplitude, and when averaging over an ensemble we can consider $\Omega_{\rm CR} \sim \Omega_{\rm DEER}$
-
-Second and more importantly, the scaling is not the same in both cases : CR measures a change in the NV decay rate $\Gamma_1=1/T_1$ which is proportional to $\Omega_{\rm CR}^2$, as given by eq. \ref{delta gamma 1}, while DEER measures a change in $\Gamma_2=1/T_2$ which is proportional to $\Omega_{\rm DEER}$, as given by eq. \ref{Gamma2 P1}. This means that the signal of CR scales quadratically with the impurity concentration, while the DEER signal scales linearly with it. CR is therefore more suited to probe concentrated impurities, when the average distance between the NV and the probed spin is small.
+Relaxometry protocols do require however specific magnetic field values in order to bring in and out of resonance the two spins involved in the cross-relaxation. The choice of the field orientation and strength in order to best observe NV-dark spin cross-relaxations will be covered in the following section.
 
 \section{Choice of the magnetic field orientation}
 
-Since relaxometry does not rely on a microwave field, the only parameter left to tune is the external magnetic field, which is often scanned with an electromagnet. Due to the strong NV anisotropy however, the direction along which $\mathbf{B}$ is scanned plays a crucial role in the ability to detect dark spins.
+As relaxometry does not rely on a microwave field, the only external parameter left to tune is the magnetic field. Typically, the magnetic field is scanned in a fixed direction while the signal, either PL or T1, is recorded. Due to the strong NV anisotropy however, the direction along which $\mathbf{B}$ is scanned plays a crucial role in the ability to detect NV-dark spins CR.
+
+This section focuses on particular field orientation with respect to the diamond crystalline axes, and details the advantages and disadvantages of the two main choices that are the [100] and [111] direction in order to detect four particular dark spins: P1 centers, Vh$^-$, War1 and the $^{13}C-NV$ complex\footnote{The $^{13}C-NV$ complex is normally not dark, as discussed in its own section.}.
 
 \subsection{The [100] and [111] magnetic field orientations}
 \label{sec simu}
@@ -147,11 +150,13 @@ Since relaxometry does not rely on a microwave field, the only parameter left to
 \end{figure}
 
 Fig. \ref{121 vs 22 NV} shows the two main choices of scanning orientation : either $\mathbf{B} \parallel [100]$ or 
-$\mathbf{B} \parallel [111]$ where [100] and [111] refer to the diamond crystalline axes as defined in chapter 1. When $\mathbf{B} \parallel [100]$, all four classes (the different possible NV orientations represented at the top of the figure) are equivalent, whereas for $\mathbf{B} \parallel [111]$, one class is perfectly aligned with the magnetic field while the three others are equivalently unaligned. 
+$\mathbf{B} \parallel [111]$ where [100] and [111] refer to the diamond crystalline axes. When $\mathbf{B} \parallel [100]$, all four classes (the different possible NV orientations represented at the top of the figure) are equivalent, whereas for $\mathbf{B} \parallel [111]$, one class is perfectly aligned with the magnetic field while the three others are equivalently unaligned. 
 
-These changes in the field orientation result in massive changes in the NV behavior, manly due to the transverse magnetic field: Fig. \ref{121 vs 22 NV}-a) shows the transition frequency between the $\ket{0}$ and $\ket{\pm 1}$ states of the ground state spin Hamiltonian (REF chapter 1) - or to be more precise the transitions between the ground state of the spin Hamiltonian and the two excited states - for any of the four classes of NV centers when $\mathbf{B} \parallel [100]$. Notably, there is no transitions frequencies below 2500 MHz. 
+These changes in the field orientation result in important changes in the NV behavior, mainly due to the transverse magnetic field: Fig. \ref{121 vs 22 NV}-a) shows the transition frequency between the $\ket{0}$ and $\ket{\pm 1}$ states of the ground state spin Hamiltonian (REF chapter 1) - or to be more precise the transitions between the ground state of the spin Hamiltonian and the two excited states - for any of the four classes of NV centers when $\mathbf{B} \parallel [100]$. Notably, there is no transitions frequencies below 2500 MHz. 
 
 On the other hand, Fig. \ref{121 vs 22 NV}-b) shows the transition frequencies when $\mathbf{B} \parallel [111]$, for both the class aligned and the three class misaligned. The three classes behave similarly than the four classes in the $[100]$ case, but the one class aligned with the magnetic field can get its $\ket{0}\to\ket{-1}$ transition arbitrarily small, as long as the magnetic field is perfectly aligned with the NV axis.
+
+We will now compare these two possible field orientation in order to observe cross-relaxation between NV centers and the four previously mentioned dark spin species.
 
 \subsection{CR condition between NV$^-$ and P1}
 
@@ -190,11 +195,11 @@ The War1 spin mentioned previously is also an electronic spin 1 with (pseudo)-$C
 \label{121 vs 22 13C-NV}
 \end{figure}
 
-I refer by $^{13}$C-NV$^-$ to a complex formed by an NV center where one of the three carbon atoms neighboring the vacancy is a $^{13}$C isotope. Such a complex is illustrated in Fig. \ref{121 vs 22 13C-NV}-a).
+The $^{13}$C-NV$^-$ complex is formed by an NV center where one of the three carbon atoms neighboring the vacancy is a $^{13}$C isotope. Such a complex is illustrated in Fig. \ref{121 vs 22 13C-NV}-a).
 
-The $^{13}$C-NV$^-$ complex still behaves as a ``normal" NV center, except that its transition lines are shifted by the hyper-fin coupling. In particular its electronic spin is still polarized in the $\ket{0}$ state and the $\ket{0}$ state is still brighter than the $\ket{\pm 1}$ states. This is confirmed by the presence of sideband in ODMR spectra around the main NV lines \citep{simanovskaia2013sidebands}.
+The $^{13}$C-NV$^-$ complex still behaves as a ``normal" NV center, except that its transition lines are shifted by the hypere-fin coupling. In particular its electronic spin is still polarized in the $\ket{0}$ state and the $\ket{0}$ state is still brighter than the $\ket{\pm 1}$ states\footnote{This is confirmed by the presence of sideband in ODMR spectra around the main NV lines \citep{simanovskaia2013sidebands}.}. 
 
-Since both NV$^-$ and $^{13}$C-NV$^-$ are \textit{a priori} equally polarized, then following the argument in \ref{Sec_CR} there should be no CR between the two spin families. The reason why those transitions are still in some case visible, as will be shown below, and why in fact any NV-NV co-resonance gives a visible CR signal will be the object of the next chapter.
+Since both NV$^-$ and $^{13}$C-NV$^-$ are \textit{a priori} equally polarized, then following the argument in \ref{Sec_CR} there should be no CR between the two spin families. The reason why those transitions are still visible is the presence of dark NV-centers (``fluctuators") which will be further explained in chapter 3.
 
 The transitions of the $^{13}$C-NV$^-$ complex are given by diagonalizing the full spin Hamiltonian:
 \begin{equation*}
@@ -209,7 +214,9 @@ $$ \mathcal{A} = \begin{pmatrix}
 \end{pmatrix},$$
 where $\mathcal{A}_{xx}=190$ MHz, $\mathcal{A}_{yy}=120$ MHz, $\mathcal{A}_{zz}=129$ MHz, and  $\mathcal{A}_{xz}=\mathcal{A}_{zx}=-25.0$ MHz. 
 
-Fig. \ref{121 vs 22 13C-NV}-b) and c) show the simulated transition frequencies for a $^{13}$C-NV$^-$ complex when B is scanned along the [100] or [111] axis, as well as the ``normal" NV transitions and the co-resonance between those two. When $\mathbf{B} \parallel [100]$, there are 4 co-resonances between 18 and 25 G. When $\mathbf{B} \parallel [100]$ there are 18 of them between 10 and 60 G. This abundance of transitions for low ($<100\ \rm G$) magnetic field makes analyzing experimental data quickly intractable in the second case.
+Fig. \ref{121 vs 22 13C-NV}-b) and c) show the simulated transition frequencies for a $^{13}$C-NV$^-$ complex when B is scanned along the [100] or [111] axis, as well as the ``normal" NV transitions and the co-resonance between those two. When $\mathbf{B} \parallel [100]$, there are 4 co-resonances between 18 and 25 G. When $\mathbf{B} \parallel [100]$ there are 18 of them between 10 and 60 G. This abundance of transitions for low ($<100\ \rm G$) magnetic field makes the experimental analysis quickly intractable in the second case.
+
+There is one last aspect to take into account regarding the field orientation choice which is the impact of the transverse magnetic field on the cross-relaxation contrast.
 
 \subsection{CR contrast and transverse magnetic field}
 \label{CR contrast}
@@ -221,15 +228,22 @@ Fig. \ref{121 vs 22 13C-NV}-b) and c) show the simulated transition frequencies 
 \label{121 vs 22 contrast}
 \end{figure}
 
-In order to optically detect CR between an NV center and a dark spin, two conditions must be met: the NV center must be polarized in order to have a population transfer between the NV and the dark spin, and there must be a difference in brightness between the two NV levels involved in order to have an optical signature of the CR.
+Similarly to ODMR, there are two required conditions to observe NV cross-relaxation on the PL signal: 
+\begin{itemize}
+\item There must be a difference in population between the two NV spin states involved in the CR (e.g. $\ket{0}$ and $\ket{-1}$), otherwise there would be no population transfer with the unpolarized dark spin.
+\item The two NV spin states must have a difference brightness in order to be optically detectable.
+\end{itemize}
 
-These two conditions are in fact the same needed to observe an ODMR spectrum (REF chapter 1), and while the NV centers verifies both criteria in presence of a purely longitudinal magnetic field, this is not always the case anymore in presence of a transverse magnetic field (REF chapter 1).
+These two conditions are fulfilled when there is no magnetic field or purely longitudinal magnetic field, but not anymore in the presence of transverse magnetic field which mixes the NV spin Hamiltonian eigenstates \citep{tetienne2012magnetic}.
 
-Fig. \ref{121 vs 22 contrast} shows the simulated relative contrast of an ODMR spectrum, as computed from \citep{tetienne2012magnetic}, for a magnetic field aligned along [100] or [111]. When the NV center is aligned with the magnetic field, the constrats remains equals to 1 regardless of the magnetic field because there is no transverse field. When the NV is not aligned however, either in the [111] or [100] case, the ODMR contrast quickly drops down for B$>100\ \rm G$.
+Fig. \ref{121 vs 22 contrast} shows the simulated relative contrast of a CR process \footnote{Due to the similarity between ODMR and CR, we assume here that the ODMR contrast is equal to the CR contrast} computed from the rates found in \citep{tetienne2012magnetic}, for a magnetic field aligned along either [100] or [111]. When the NV center is aligned with the magnetic field, the contrast remains equal to 1 regardless of the magnetic field because there is no transverse field. When the NV is not aligned however, the CR contrast quickly drops down for B$>100\ \rm G$.
 
-This tells us that we should not expect to observe a CR signal for B greater than a few hundreds G when B is scanned along the [100] axis. We could however observe CR for arbitrarily large magnetic field when scanned along the [111] axis, as long as the field is properly aligned with the NV axis.
+The [100] direction is therefore not well suited to observe CR at magnetic fields higher than a few hundreds gauss. Fortunately, the co-resonance between NV centers and VH$^-$, War1 or $^{13}$C-NV$^-$ all happen for $|\mathbf{B}| < 150 \ \rm G$, and can thus be detected with a [100] oriented magnetic field. 
 
 \section{Dark spin spectroscopy with NV centers}
+This section shows experimental observation of NV-dark spins CR. Previously to our work, several studies \citep{van1989cross, holliday1989optical, epstein2005anisotropic, armstrong2010nv,   hall2016detection, wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross} had been performed on the detection of dark spins through CR with NV centers, and to our knowledge, all this studies where done on the detection of P1 centers. 
+
+We show an example of one this study to illustrate the principle of dark spin spectroscopy before showing our results on the detection of VH$^-$ and War1 in a CVD diamond.
 
 \subsection{Detection of P1 centers}
 
@@ -240,13 +254,9 @@ This tells us that we should not expect to observe a CR signal for B greater tha
 \label{CR P1 exp}
 \end{figure}
 
-Previously to our work, several studies \citep{van1989cross, holliday1989optical, epstein2005anisotropic, armstrong2010nv,   hall2016detection, wickenbrock2016microwave,  wood2016wide,  alfasi2019detection, lazda2021cross} had been done on the detection of dark spins through CR with NV centers, and to our knowledge, all this studies where done on the detection of P1 centers. Following the discussion in the last section, these studies were therefore all done with $\mathbf{B} \parallel [111]$.
+An example of a NV-P1 CR study (\citep{armstrong2010nv}) is shown in Fig. \ref{CR P1 exp}. It shows the evolution of the NV PL with respect to a magnetic field scanned along the [111] crystalline axis. There are several information to gather from this graph: First, one observes a slowly decaying PL envelope, which stabilizes to a plateau for $B\sim 1000\ \rm G$. This change in PL is caused by the transverse magnetic field acting on the three NV classes that are not aligned with the magnetic field. For $B \gtrsim 1000\ \rm G$, these three classes are fully depolarized which explains the plateau observed.
 
-An example of one of this study (\citep{armstrong2010nv}) is shown in Fig. \ref{CR P1 exp}. It shows the evolution of the NV PL with respect to a magnetic field scanned along the [111] crystalline axis. There are several information to gather from this graph:
-
-First, there is the slowly decaying PL envelope, which stabilizes to a plateau for $B\sim 1000\ \rm G$. This change in PL is caused by the transverse magnetic field acting on the three NV classes that are not aligned with the magnetic field. For $B \gtrsim 1000\ \rm G$, these three classes are fully depolarized which explains the plateau observed.
-
-Second, there are the three salient features denoted Ns-NV, NV-NV and NV-LAC. All these features come from cross-relaxations or level anti-crossing (LAC) from the NV class aligned with the magnetic field.
+Second, there are three salient features denoted Ns-NV, NV-NV and NV-LAC. All these features come from cross-relaxations or level anti-crossing (LAC) from the NV class aligned with the magnetic field.
 
 The first feature (Ns-NV) for $B\approx 512 \ \rm G$ is the signature of the CR between NV and P1 centers. Its relatively complicated shape comes from the hyper-fine coupling between the P1 electronic spin and the $^{14}$N nucleus \citep{lazda2021cross}. Excited state level anti-crossing (ESLAC) also occurs in this region, but its optical signature, if it exists, is expected to be much weaker than the NV-P1 CR \citep{zheng2017level}.
 
@@ -265,21 +275,19 @@ Finally the third feature (LAC) for $B\approx 1024 \ \rm G$ correspond to the le
 
 Our work \citep{pellet2021optical} focuses on the optical detection of VH$^-$, War1 and $^{13}$C-NV$^-$ through NV CR. This study was the first to detect VH$^-$ and War1 defects optically and the first CR experiment on a CVD diamond. It was also the first,to our knowledge, to use a [100] aligned magnetic field.
 
-The diamond used for this study is the sample CVD-pink [REF appendix] whose fabrication was detailed in \citep{tallaire2020high}. It is a CVD diamond containing $[\rm NV ]\approx 4\ \rm ppm$ for $[\rm N ]\approx26\ \rm ppm$, and a natural abundance (1.1\%) of  $^{13}$C. Being a CVD diamond it is also likely to incorporate hydrogen defects, as discussed in \ref{other defects}.
+The diamond used for this study is the sample CVD-pink [REF appendix]. The experimental setup used to obtain this data is the standard confocal microscopy setup shown in Sec \ref{Sec setup cahp 1}. The magnetic field here is generated with an electromagnet (EM), aligned along the [100] diamond axis with a precision $<1^\circ$. 
 
-Fig. \ref{CR VH exp}-a) shows the change in PL with respect to a magnetic field scanned along the diamond [100] axis. Similarly to fig. \ref{CR P1 exp}, we can see a slowly decaying envelope of the PL due to the transverse magnetic field (we don't see the plateau here since the magnetic field stops at 150 G). We can also see three deviations to the smooth decreasing curve at $\sim$ 20 G, 55 G and 120 G.
+Fig. \ref{CR VH exp}-a) shows the change in PL with respect to a magnetic field scanned along the diamond [100] axis. Similarly to fig. \ref{CR P1 exp}, there is a slowly decaying envelope of the PL due to the transverse magnetic field \footnote{The plateau is not visible in this case as the scan stops at 150 G}. There also are three deviations from the smooth decreasing curve at $\sim$ 20 G, 55 G and 120 G.
 
-In order to better discern the three features, we fitted the envelope by using a polynomial fit of order 4 on the smooth part of the data. We previously tried to use a fit based on the expected PL rate of the NV centers, by using the model in \citep{tetienne2012magnetic}, but the results were not satisfying.
+In order to better discern the three features, we fitted the envelope with a polynomial fit of order 4. We previously tried to simulate the PL dependency on the transverse field  by using the model in \citep{tetienne2012magnetic}, but the result did not correctly fit our data.
 
 Fig. \ref{CR VH exp}-b) shows the subtraction of the PL data by the envelope fit. We can clearly see three dips in PL around the values 20 G, 56 G and 122 G. We then computed the expected value of the magnetic field for the expected CR line thanks to the simulations shown in sec. \ref{sec simu}. For the VH$^-$ and War1 lines, we took the ZFS $D$ values from \citep{cruddace2007magnetic} and included the error bars. For the $^{13}$C-NV$^-$ lines, the error bars given in \citep{simanovskaia2013sidebands} are much smaller and we only plotted the expected value. We can see that the dips in PL match relatively well the predicted CR lines of $^{13}$C-NV$^-$, VH$^-$ and War1 respectively.
 
-The experimental setup used to obtain this data is the standard confocal microscopy setup shown in appendix REF. The magnetic field here is generated with an electromagnet (EM), aligned along the [100] diamond axis with a precision $<1^\circ$. 
-
-The data shown here was acquired over 24 h. It should be noted however that a single-photon counting APD was used here, which considerably worsens the sensitivity of the measurement as discussed in [REF]. Using a photodiode and modulation of the magnetic field, we estimate that we could get similar signal to noise ratio within a few minutes.
+The data shown here was acquired over 24 h. It should be noted however that a single-photon counting APD was used for this acquisition, which reduces significantly the sensitivity because of the high shot noise \footnote{The sample produces $\sim$ 100 nW of PL, which means that only $\sim 10^{-5}$ of the total PL is actually measured by an SPC-APD with a max counting rate of $10^7$ photons/s.}. Using a photodiode and modulation of the magnetic field, we estimate that we could get similar signal to noise ratio within a few minutes.
 
 To calibrate the magnetic field, we added a microwave field at a  fixed frequency $\nu > 2870\ \rm MHz$, and measured the EM voltage at which the PL dropped due to the $\ket{+1}$ state of the NV centers becoming resonant with the microwave tone. We could then use the values in Fig. \ref{121 vs 22 NV} to find the corresponding magnetic field. We varied the frequency in the range  $[2870,3150]\ \rm MHz$ by step of 2 MHz to get a calibration of the magnetic field in the $[0,150]\ \rm G$ region. Considering the uncertainty in the field angle, the NV ZFS $D$ value and the width of the PL drop, we estimate the final precision of the calibration to be within $\pm 1\ \rm G$.
 
-\section{Attribution of the $^{13}$C-NV$^-$, VH$^-$ and War1 lines}
+\section{Identification of the $^{13}$C-NV$^-$, VH$^-$ and War1 lines}
 
 \subsection{The VH$^-$ and War1 lines}
 \begin{table}[htbp]
@@ -297,15 +305,15 @@ WAR1 & 2466(60) & 2470(10) \\
   \label{table VH et War1}
 \end{table}
 
-The attribution of the PL dips at 56 and 122 G in Fig. \ref{CR VH exp} to CR between NV and respectively VH$^-$ and War1 comes from two main observations: the closeness in the ZFS values, and the CVD nature of the sample.
+The identification of the PL dips at 56 and 122 G in Fig. \ref{CR VH exp} as CR between NV and respectively VH$^-$ and War1 comes from two main observations: the closeness in the ZFS values, and the CVD nature of the sample.
 
 Table \ref{table VH et War1} shows the value and precision of the $D$ factor when measured through EPR \citep{cruddace2007magnetic}, and when computed from the data in Fig. \ref{CR VH exp}. In order to get to the $D$ value of VH$^-$ and War1, we had to assume that the spin structure was that of a spin 1 similar to the NV center, with a g-factor close to 2. Both of this assumptions are confirmed by the EPR measurements. We do find that that both $D$ measurement concord within their respective error bars.
 
-The second reason comes from the nature of the sample used. We tried similar PL scans along the [100] axis on many samples with dense ensemble of NV centers. We found that the dip at 55 G was present on all CVD samples ($\sim$ 5 samples) used, and none of the HPHT samples ($\sim$ 20 samples). The same is true of the 122 G line, except that it did appear on some HPHT samples, as will be discussed below. We know that the VH$^-$ defect is much more likely to appear in a CVD sample due to the large quantity of hydrogen used in the process, and while we don't know the chemical nature of the War1 defect, the only time it was observed through EPR was on a CVD diamond.
+The second reason comes from the nature of the sample used. We tried similar PL scans along the [100] axis on many samples with dense ensemble of NV centers. We found that the dip at 55 G was present on all CVD samples ($\sim$ 5 samples) used, and none of the HPHT samples ($\sim$ 20 samples). The same is true of the 122 G line, except that it did appear on some HPHT samples, as will be discussed below. We know that the VH$^-$ defect is much more likely to appear in a CVD sample due to the large quantity of hydrogen used in the process, and while we do not know the chemical nature of the War1 defect, the only time it was observed through EPR was on a CVD diamond.
 
 Finally, the apparent larger linewidth of the War1 line compared to the VH$^-$ one is also corroborated by the EPR measurements.
 
-For all of this reasons we attribute the 55 and 122 G dip to CR with VH$^-$ and War1 respectively, with a slightly stronger confidence for the VH$^-$ since more is known about it.
+For all of this reasons we attribute the 55 and 122 G dip to CR with VH$^-$ and War1 respectively, with a slightly stronger confidence for the VH$^-$ one.
 
 \subsection{The $^{13}$C-NV$^-$ lines}
 
@@ -316,15 +324,19 @@ For all of this reasons we attribute the 55 and 122 G dip to CR with VH$^-$ and 
 \label{scan sumi 4}
 \end{figure}
 
-The attribution of the $\sim 20\ \rm G$ dip to CR with $^{13}$C-NV$^-$ also come from two observations. First, the lines are present on every single sample with dense ensemble ($\gtrapprox 1$ ppm), regardless of the fabrication process. Fig. \ref{scan sumi 4} for example shows a PL scan along the [100] axis for sample Sumi-4, an HPHT sample with [NV]$\approx 5\ \rm ppm$ and natural abundance of $^{13}$C. I could unfortunately not try a sample isotopically enriched in $^{12}$C since those samples are generally reserved to low-nitrogen concentration ($< 10\ \rm ppm$), which does not yield enough NV centers to perform CR spectroscopy. 
+The identification of the $\sim 20\ \rm G$ as CR between $^{13}$C-NV$^-$ and ``normal" NV centers also come from two observations. First, the lines are present on every single sample with dense ensemble ($\gtrapprox 1$ ppm), regardless of the fabrication process. Fig. \ref{scan sumi 4} for example shows a PL scan along the [100] axis for sample Sumi-4, an HPHT sample with [NV]$\approx 5\ \rm ppm$ and natural abundance of $^{13}$C \footnote{We could unfortunately not try a sample isotopically enriched in $^{12}$C since those samples are generally reserved to low-nitrogen concentration ($< 10\ \rm ppm$), which does not yield enough NV centers to perform CR spectroscopy. }. 
 
 The second reason is the shape of the PL dip. The two other dips seem be formed of a single line and are reasonably well fitted with Gaussian curves. The 20 G dip however has a flat bottom which would indicate the presence of several overlapping lines, and Fig. \ref{121 vs 22 13C-NV} indeed predicts that there would be 4 CR lines between 18 and 25 G.
 
 For this two reasons, we attribute the 20 G line to CR between $^{13}$C-NV$^-$ and ``normal" NV centers.
 
+\bigskip
+
+The CR spectra shown in this section can be used to detect the presence of particular impurities in the sample, but more quantitative information on these impurities can also be extracted from these spectra, which is the object of the following section.
+
 \section{Quantitative estimates of the NV-Dark spins CR}
 
-We can extract some quantitative information about the dark spins by exploiting the CR spectrum shown in Fig. \ref{CR VH exp}.
+This section exploit the CR spectrum shown in Fig. \ref{CR VH exp} in order to extract information on the  .
 
 \subsection{Dark spin Hamiltonian parameters}
 

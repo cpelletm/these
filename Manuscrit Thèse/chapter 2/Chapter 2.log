@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  22 SEP 2022 19:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  25 SEP 2022 20:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -968,9 +968,6 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3] [4 <./Figures/EPR_spectometer.jpg>]
 
-LaTeX Warning: Reference `sec T1 NV' on page 5 undefined on input line 90.
-
-
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 92.
 
@@ -988,30 +985,29 @@ File: Figures/relaxo_pulsed_continuous_2.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/relaxo_pulsed_continuous_2.pdf  used on input 
 line 95.
 (pdftex.def)             Requested size: 323.9978pt x 273.61037pt.
+
+LaTeX Warning: Reference `sec T1 NV' on page 5 undefined on input line 100.
+
 [5 <./Figures/relaxo_pulsed_continuous_2.pdf>]
-<Figures/DEER.pdf, id=307, 252.44475pt x 148.50441pt>
+<Figures/DEER.pdf, id=309, 252.44475pt x 148.50441pt>
 File: Figures/DEER.pdf Graphic file (type pdf)
 <use Figures/DEER.pdf>
-Package pdftex.def Info: Figures/DEER.pdf  used on input line 112.
+Package pdftex.def Info: Figures/DEER.pdf  used on input line 117.
 (pdftex.def)             Requested size: 180.0pt x 105.88979pt.
- [6 <./Figures/DEER.pdf>]
-Overfull \hbox (32.58922pt too wide) in paragraph at lines 131--132
-\OT1/cmr/m/n/10.95 dipole Hamil-to-nian: CR mea-sures the off-diagonal el-e-men
-ts $
-[] = [] [] \OML/cmm/m/it/10.95 =\U/msb/m/n/10.95 ~$
+
+
+LaTeX Warning: Reference `sec T2 echo' on page 6 undefined on input line 122.
+
+[6 <./Figures/DEER.pdf>]
+Overfull \hbox (1.30576pt too wide) in paragraph at lines 132--133
+[]\OT1/cmr/m/n/10.95 Both re-lax-om-e-try and DEER pro-to-cols have their own a
+d-van-tages. While
  []
 
-
-LaTeX Warning: Reference `delta gamma 1' on page 7 undefined on input line 133.
-
-
-
-LaTeX Warning: Reference `Gamma2 P1' on page 7 undefined on input line 133.
-
-<Figures/121_vs_22_NV.pdf, id=324, 909.47635pt x 513.96527pt>
+<Figures/121_vs_22_NV.pdf, id=326, 909.47635pt x 513.96527pt>
 File: Figures/121_vs_22_NV.pdf Graphic file (type pdf)
 <use Figures/121_vs_22_NV.pdf>
-Package pdftex.def Info: Figures/121_vs_22_NV.pdf  used on input line 144.
+Package pdftex.def Info: Figures/121_vs_22_NV.pdf  used on input line 147.
 (pdftex.def)             Requested size: 323.9978pt x 183.0981pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1019,20 +1015,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [7]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 156.
+(hyperref)                removing `math shift' on input line 161.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 156.
+(hyperref)                removing `superscript' on input line 161.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 156.
+(hyperref)                removing `math shift' on input line 161.
 
-<Figures/121_vs_22_P1.pdf, id=337, 871.60818pt x 309.44946pt>
+<Figures/121_vs_22_P1.pdf, id=340, 871.60818pt x 309.44946pt>
 File: Figures/121_vs_22_P1.pdf Graphic file (type pdf)
 <use Figures/121_vs_22_P1.pdf>
-Package pdftex.def Info: Figures/121_vs_22_P1.pdf  used on input line 160.
+Package pdftex.def Info: Figures/121_vs_22_P1.pdf  used on input line 165.
 (pdftex.def)             Requested size: 323.9978pt x 115.02806pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1040,271 +1036,265 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [8 <./Figures/121_vs_22_NV.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
+(hyperref)                removing `math shift' on input line 174.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 169.
+(hyperref)                removing `superscript' on input line 174.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
+(hyperref)                removing `math shift' on input line 174.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
+(hyperref)                removing `math shift' on input line 174.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 169.
+(hyperref)                removing `superscript' on input line 174.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 169.
+(hyperref)                removing `math shift' on input line 174.
 
-<Figures/121_vs_22_VH.pdf, id=372, 870.3203pt x 309.44946pt>
+<Figures/121_vs_22_VH.pdf, id=375, 870.3203pt x 309.44946pt>
 File: Figures/121_vs_22_VH.pdf Graphic file (type pdf)
 <use Figures/121_vs_22_VH.pdf>
-Package pdftex.def Info: Figures/121_vs_22_VH.pdf  used on input line 173.
+Package pdftex.def Info: Figures/121_vs_22_VH.pdf  used on input line 178.
 (pdftex.def)             Requested size: 323.9978pt x 115.19804pt.
-[9 <./Figures/121_vs_22_P1.pdf> <./Figures/121_vs_22_VH.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/121_vs_22_VH.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
->]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 184.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 184.
-
-<Figures/121_vs_22_13CNV.pdf, id=467, 940.67757pt x 602.10297pt>
-File: Figures/121_vs_22_13CNV.pdf Graphic file (type pdf)
-<use Figures/121_vs_22_13CNV.pdf>
-Package pdftex.def Info: Figures/121_vs_22_13CNV.pdf  used on input line 188.
-(pdftex.def)             Requested size: 360.0pt x 230.42766pt.
-[10 <./Figures/121_vs_22_13CNV.pdf>]
-
-LaTeX Warning: Reference `Sec_CR' on page 11 undefined on input line 197.
-
-<Figures/contrast_OMDR_111_Vs_100.pdf, id=603, 875.8128pt x 309.4495pt>
-File: Figures/contrast_OMDR_111_Vs_100.pdf Graphic file (type pdf)
-<use Figures/contrast_OMDR_111_Vs_100.pdf>
-Package pdftex.def Info: Figures/contrast_OMDR_111_Vs_100.pdf  used on input li
-ne 219.
-(pdftex.def)             Requested size: 323.9978pt x 114.48035pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11]
-<Figures/NV_P1_libreAcces.png, id=612, 363.60844pt x 228.10219pt>
+[9 <./Figures/121_vs_22_P1.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 189.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 189.
+
+<Figures/121_vs_22_13CNV.pdf, id=421, 940.67757pt x 602.10297pt>
+File: Figures/121_vs_22_13CNV.pdf Graphic file (type pdf)
+<use Figures/121_vs_22_13CNV.pdf>
+Package pdftex.def Info: Figures/121_vs_22_13CNV.pdf  used on input line 193.
+(pdftex.def)             Requested size: 360.0pt x 230.42766pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `Sec_CR' on page 10 undefined on input line 202.
+
+[10 <./Figures/121_vs_22_VH.pdf>]
+<Figures/contrast_OMDR_111_Vs_100.pdf, id=486, 875.8128pt x 309.4495pt>
+File: Figures/contrast_OMDR_111_Vs_100.pdf Graphic file (type pdf)
+<use Figures/contrast_OMDR_111_Vs_100.pdf>
+Package pdftex.def Info: Figures/contrast_OMDR_111_Vs_100.pdf  used on input li
+ne 226.
+(pdftex.def)             Requested size: 323.9978pt x 114.48035pt.
+ [11 <./Figures/121_vs_22_13CNV.pdf>]
+<Figures/NV_P1_libreAcces.png, id=620, 363.60844pt x 228.10219pt>
 File: Figures/NV_P1_libreAcces.png Graphic file (type png)
 <use Figures/NV_P1_libreAcces.png>
-Package pdftex.def Info: Figures/NV_P1_libreAcces.png  used on input line 238.
+Package pdftex.def Info: Figures/NV_P1_libreAcces.png  used on input line 250.
 (pdftex.def)             Requested size: 251.9989pt x 158.09026pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <./Figures/contrast_OMDR_111_Vs_100.pdf>]
+[12 <./Figures/contrast_OMDR_111_Vs_100.pdf>] [13 <./Figures/NV_P1_libreAcces.p
+ng (PNG copy)>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 257.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 257.
+(hyperref)                removing `math shift' on input line 267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 257.
+(hyperref)                removing `superscript' on input line 267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 257.
+(hyperref)                removing `math shift' on input line 267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 257.
+(hyperref)                removing `math shift' on input line 267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 257.
+(hyperref)                removing `superscript' on input line 267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 257.
+(hyperref)                removing `math shift' on input line 267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 257.
+(hyperref)                removing `math shift' on input line 267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 257.
+(hyperref)                removing `superscript' on input line 267.
 
-<Figures/fig_VH_et_co.pdf, id=658, 871.80423pt x 297.61028pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 267.
+
+<Figures/fig_VH_et_co.pdf, id=672, 871.80423pt x 297.61028pt>
 File: Figures/fig_VH_et_co.pdf Graphic file (type pdf)
 <use Figures/fig_VH_et_co.pdf>
-Package pdftex.def Info: Figures/fig_VH_et_co.pdf  used on input line 261.
+Package pdftex.def Info: Figures/fig_VH_et_co.pdf  used on input line 271.
 (pdftex.def)             Requested size: 360.0pt x 122.8929pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `Sec setup cahp 1' on page 14 undefined on input line 
+278.
 
-[13 <./Figures/NV_P1_libreAcces.png (PNG copy)>] [14 <./Figures/fig_VH_et_co.pd
-f>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 282.
-
+[14 <./Figures/fig_VH_et_co.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 282.
+(hyperref)                removing `math shift' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 282.
+(hyperref)                removing `superscript' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 282.
+(hyperref)                removing `math shift' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 282.
+(hyperref)                removing `math shift' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 282.
+(hyperref)                removing `superscript' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 282.
+(hyperref)                removing `math shift' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 282.
+(hyperref)                removing `math shift' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 282.
+(hyperref)                removing `superscript' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 284.
+(hyperref)                removing `math shift' on input line 290.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 284.
+(hyperref)                removing `math shift' on input line 292.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 284.
+(hyperref)                removing `superscript' on input line 292.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 292.
 
 [15]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 310.
+(hyperref)                removing `math shift' on input line 318.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 310.
+(hyperref)                removing `superscript' on input line 318.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 310.
+(hyperref)                removing `math shift' on input line 318.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 310.
+(hyperref)                removing `math shift' on input line 318.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 310.
+(hyperref)                removing `superscript' on input line 318.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 310.
+(hyperref)                removing `math shift' on input line 318.
 
-<Figures/scan_100_Sumi4.pdf, id=734, 414.20096pt x 272.73589pt>
+<Figures/scan_100_Sumi4.pdf, id=742, 414.20096pt x 272.73589pt>
 File: Figures/scan_100_Sumi4.pdf Graphic file (type pdf)
 <use Figures/scan_100_Sumi4.pdf>
-Package pdftex.def Info: Figures/scan_100_Sumi4.pdf  used on input line 314.
+Package pdftex.def Info: Figures/scan_100_Sumi4.pdf  used on input line 322.
 (pdftex.def)             Requested size: 216.0022pt x 142.2313pt.
 [16 <./Figures/scan_100_Sumi4.pdf>]
 
-LaTeX Warning: Reference `delta gamma 1' on page 17 undefined on input line 344
+LaTeX Warning: Reference `delta gamma 1' on page 17 undefined on input line 352
 .
 
 [17]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 357.
+(hyperref)                removing `math shift' on input line 365.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 357.
+(hyperref)                removing `superscript' on input line 365.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 357.
+(hyperref)                removing `math shift' on input line 365.
 
-<Figures/VH_CVD_chauffage.pdf, id=760, 914.29453pt x 318.76761pt>
+<Figures/VH_CVD_chauffage.pdf, id=767, 914.29453pt x 318.76761pt>
 File: Figures/VH_CVD_chauffage.pdf Graphic file (type pdf)
 <use Figures/VH_CVD_chauffage.pdf>
-Package pdftex.def Info: Figures/VH_CVD_chauffage.pdf  used on input line 363.
+Package pdftex.def Info: Figures/VH_CVD_chauffage.pdf  used on input line 371.
 (pdftex.def)             Requested size: 360.0pt x 125.51053pt.
-[18 <./Figures/VH_CVD_chauffage.pdf>]
-<Figures/VH_HPHT_chauffage.pdf, id=795, 435.79318pt x 285.48367pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[18]
+<Figures/VH_HPHT_chauffage.pdf, id=782, 435.79318pt x 285.48367pt>
 File: Figures/VH_HPHT_chauffage.pdf Graphic file (type pdf)
 <use Figures/VH_HPHT_chauffage.pdf>
-Package pdftex.def Info: Figures/VH_HPHT_chauffage.pdf  used on input line 382.
+Package pdftex.def Info: Figures/VH_HPHT_chauffage.pdf  used on input line 390.
 
 (pdftex.def)             Requested size: 251.9989pt x 165.08405pt.
- [19 <./Figures/VH_HPHT_chauffage.pdf>]
-[20]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 415.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 415.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 415.
-
+[19 <./Figures/VH_CVD_chauffage.pdf>] [20 <./Figures/VH_HPHT_chauffage.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 423.
@@ -1317,62 +1307,68 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 423.
 
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 431.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 431.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 431.
+
 [21] [22] [23
 
 ]
-Overfull \hbox (4.45296pt too wide) in paragraph at lines 428--428
+Overfull \hbox (4.45296pt too wide) in paragraph at lines 436--436
 \OT1/cmr/m/n/10.95 mond us-ing elec-tron para-m-ag-netic res-o-nance and op-ti-
 cal spec-troscopy''.
  []
 
 
-Overfull \hbox (2.23067pt too wide) in paragraph at lines 428--428
+Overfull \hbox (2.23067pt too wide) in paragraph at lines 436--436
 []\OT1/cmr/m/n/10.95 Claire Glover et al. ``Hy-dro-gen in-cor-po-ra-tion in di-
 a-mond: The nitrogen-
  []
 
 
-Overfull \hbox (0.37526pt too wide) in paragraph at lines 428--428
+Overfull \hbox (0.37526pt too wide) in paragraph at lines 436--436
 []\OT1/cmr/m/n/10.95 Claire Glover et al. ``Hy-dro-gen in-cor-po-ra-tion in di-
 a-mond: The vacancy-
  []
 
 
-Overfull \hbox (2.48314pt too wide) in paragraph at lines 428--428
+Overfull \hbox (2.48314pt too wide) in paragraph at lines 436--436
 []\OT1/cmr/m/n/10.95 MJ Shaw et al. ``Im-por-tance of quan-tum tun-nel-ing in v
 acancy-hydrogen
  []
 
 
-Overfull \hbox (15.98567pt too wide) in paragraph at lines 428--428
+Overfull \hbox (15.98567pt too wide) in paragraph at lines 436--436
 \OT1/cmr/m/n/10.95 com-plexes in di-a-mond''. In: \OT1/cmr/m/it/10.95 Phys-i-ca
 l re-view let-ters \OT1/cmr/m/n/10.95 95.10 (2005), p. 105502. 
  []
 
 
-Overfull \hbox (1.23598pt too wide) in paragraph at lines 428--428
+Overfull \hbox (1.23598pt too wide) in paragraph at lines 436--436
 []\OT1/cmr/m/n/10.95 Arne Wick-en-brock et al. ``Microwave-free mag-ne-tom-e-tr
 y with nitrogen-
  []
 
-[24]
-Overfull \hbox (10.29288pt too wide) in paragraph at lines 428--428
-\OT1/cmr/m/n/10.95 Picotesla-Level Sen-si-tiv-ity''. In: \OT1/cmr/m/it/10.95 ar
-Xiv preprint arXiv:2206.15440 \OT1/cmr/m/n/10.95 (2022). 
- []
-
-[25]
-Overfull \hbox (5.76811pt too wide) in paragraph at lines 428--428
+[24] [25]
+Overfull \hbox (5.76811pt too wide) in paragraph at lines 436--436
 []\OT1/cmr/m/n/10.95 Huijie Zheng et al. ``Microwave-free vec-tor mag-ne-tom-e-
 try with nitrogen-
  []
 
 [26]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 428.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 428.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 436.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 436.
  (./Chapter 2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 428.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 428.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 436.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 436.
 Package rerunfilecheck Info: File `"Chapter 2".out' has not changed.
 (rerunfilecheck)             Checksum: 0F128B73676084DAE2B694F8FA1962DB;2562.
 
@@ -1382,14 +1378,14 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to '"Chapter 2".run.xml'.
 \openout1 = `"Chapter 2.run.xml"'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 428.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 436.
  ) 
 Here is how much of TeX's memory you used:
- 25429 strings out of 481239
- 482614 string characters out of 5920377
- 1111475 words of memory out of 5000000
- 40162 multiletter control sequences out of 15000+600000
- 547380 words of font info for 81 fonts, out of 8000000 for 9000
+ 25433 strings out of 481239
+ 482503 string characters out of 5920377
+ 1111362 words of memory out of 5000000
+ 40161 multiletter control sequences out of 15000+600000
+ 547997 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,9n,75p,974b,1434s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
@@ -1407,13 +1403,12 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-s
-uper/sfrm1095.pfb>
-Output written on "Chapter 2.pdf" (26 pages, 1255318 bytes).
+pe1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfrm1095.pfb>
+Output written on "Chapter 2.pdf" (26 pages, 1256427 bytes).
 PDF statistics:
- 944 PDF objects out of 1000 (max. 8388607)
- 763 compressed objects within 8 object streams
- 123 named destinations out of 1000 (max. 500000)
+ 948 PDF objects out of 1000 (max. 8388607)
+ 768 compressed objects within 8 object streams
+ 126 named destinations out of 1000 (max. 500000)
  331 words of extra memory for PDF output out of 10000 (max. 10000000)
 

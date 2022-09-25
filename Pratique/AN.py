@@ -31,7 +31,7 @@ eV=1.6E-19
 gamma_SI=1.761*1e11
 J0=mu0/(4*pi)*(gamma_SI*hbar)**2
 
-print(J0/h*1e27)
+print(1240/800*eV*10**7)
 
 
 def pola_NV(T):
