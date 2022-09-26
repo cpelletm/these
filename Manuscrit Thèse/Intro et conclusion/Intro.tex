@@ -1,0 +1,36 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[]{amsmath}
+\usepackage[]{physics} % \bra, \ket etc
+\usepackage{graphicx} %Pour les figures je crois
+\usepackage{hyperref}
+\usepackage[
+    backend=biber, 
+    natbib=true,
+    style=numeric-comp,
+    sorting=none, %Pour faire apparaitre les refs dans l'ordre
+    hyperref=true
+]{biblatex} %Imports biblatex package
+\addbibresource{Bib_intro.bib} %Import the bibliography file
+
+\usepackage{amssymb} %quelques symboles dont gtrsim /lesssim
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usepackage{xcolor} % Pour avoir des couleurs dans les équations
+
+\DeclareUnicodeCharacter{0308}{HERE!HERE!} % je vais pas m'énerver, mais un peu quand meme
+\title{}
+\begin{document}
+\chapter*{Introduction}
+
+Quantum mechanics was first developed at the beginning of the 20th century as an answer to  . In the second half of the 20th century, technological development based on the new understanding of light and matter have led to what was retroactively called the first quantum revolution \citep{thew2019focus}. Technological developments in the 50s and 60s include the semiconductor transistor, the laser, and nuclear magnetic resonance  which have since revolutionized the fields of information science, global communications and medical imaging. 
+
+A new field of quantum technology has emerged in the last two decades. This ``second quantum revolution" differs from the first one in the usage of individual quantum systems, such as single photons, atoms or electrons \citep{peil1999observing}, which have properties that can not be emulated by larger classical systems. These properties include quantum entanglement, superposition or measurement and form the basis of the newly formed quantum information science \citep{nielsen2002quantum, vedral2006introduction, hayashi2006quantum}. 
+
+Central to the quantum information science is the idea of quantum bits or qubits \citep{schumacher1996sending}, which are the building blocks of quantum information in analogy to the bits of classical information theory. Physical implementation of a qubit could be any quantum system with two well defined quantum states, as long as these states can be initialized, manipulated and readout \citep{divincenzo2000physical}. Popular qubit candidates include superconducting circuits \citep{nakamura1999coherent, orlando1999superconducting}, photons \citep{bennett1992quantum, zhong2020quantum}, quantum dots \citep{veldhorst2014addressable, zajac2018resonantly}
+
+
+
+\printbibliography
+\end{document}
