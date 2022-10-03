@@ -1290,32 +1290,32 @@ def sort_y_by_x(x,y):
 	x=sorted(x)
 	return(x,y)
 
-def dichotomy(f,target,xmin,xmax,precision='auto'):
+def dichotomy(f,target,xmin,xmax,precision='auto',**fargs):
 	import time
 	tmax=10 #s
 
-	assert (f(xmax)-target)*(f(xmin)-target) < 0
+	assert (f(xmax,**fargs)-target)*(f(xmin,**fargs)-target) < 0
 
-	if f(xmax)-target > 0:
+	if f(xmax,**fargs)-target > 0:
 		pass
 	else :
 		xmin,xmax=xmax,xmin #S'arrange pour que f(xmax)> target et f(xmin)< target
 
 	if precision=='auto':
-		precision=abs((f(xmax)-target))*1e-10
+		precision=abs((f(xmax,**fargs)-target))*1e-10
 
 
 	t=time.time()
 	ctr=0
-	delta=f(xmax)-f(xmin)
+	delta=f(xmax,**fargs)-f(xmin,**fargs)
 	while delta > precision:
 		xmid=(xmin+xmax)/2
-		if f(xmid)>target:
+		if f(xmid,**fargs)>target:
 			xmax=xmid
 		else :
 			xmin=xmid
 
-		delta=f(xmax)-f(xmin)
+		delta=f(xmax,**fargs)-f(xmin,**fargs)
 		ctr+=1
 		if time.time()-10>t:
 			raise ValueError('Took too long (iter=%i)'%ctr)

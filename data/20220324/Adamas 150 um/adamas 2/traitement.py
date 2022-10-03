@@ -110,6 +110,7 @@ def plot_T1__fit_main_text():
 
 def plot_T1_fit(i=104):
 	fnames,fval=extract_glob('T1 1x1x1x1/T1')
+	print(fnames[i])
 	x,y=extract_data(fnames[i],ycol=5)
 	# x=x-x[0]
 	y=y/max(y)
@@ -155,6 +156,7 @@ def plot_T1_fit_avg():
 		x2,y2=extract_data(fnames[i],ycol=5)
 		y+=y2
 	y=y/max(y)
+	# save_data(x,y,fname='T1 1x1x1x1 avg ADM-150-1')
 	T1ph=0.003626*1e3
 	plt.plot(x,y,'x',markerfacecolor='None',mew=1.2,ms=8,color=color(0),label='Experimental data')
 	popt,yfit=stretch_exp_fit_zero(x,y,norm=False)
@@ -193,7 +195,7 @@ def alphas_T1():
 	# plt.plot(taus)
 	alphas=[]
 	taus=[]
-	for i in range(n):
+	for i in range(10,n):
 		x,y=extract_data(fnames[i],ycol=5)
 		y=y/max(y)
 		popt,yfit=stretch_arb_exp_fit_zero(x,y)
@@ -204,12 +206,12 @@ def alphas_T1():
 	taus=np.array(taus)
 	taus=taus/max(taus)
 	Bs=[np.array([78.55,31.8,16.86])*(x-0.17)/2.8 for x in fval]
-	Bamps=np.array([norm(B)*np.sign(B[0]) for B in Bs])
+	Bamps=np.array([norm(B)*np.sign(B[0]) for B in Bs[10:]])
 	plt.plot(Bamps,alphas,'o',markerfacecolor='None')
 	# plt.plot(taus)
 
 
-# alphas_T1()
+alphas_T1()
 
 
 
@@ -265,7 +267,7 @@ def plot_T1_1x1x1() :
 	# plt.plot(x,yfit)
 
 
-plot_T1_1x1x1()
+# plot_T1_1x1x1()
 
 def plot_T1_100() :
 	fnames,fval=extract_glob('T1 100 align 3/T1')

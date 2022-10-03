@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  22 AUG 2022 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  3 OCT 2022 18:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -955,13 +955,16 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 171.
 
 [7] [8] [9]
-<Figures/Stretch_vs_pas_stretch.pdf, id=323, 834.00119pt x 307.786pt>
+<Figures/Stretch_vs_pas_stretch.pdf, id=323, 719.3684pt x 520.37062pt>
 File: Figures/Stretch_vs_pas_stretch.pdf Graphic file (type pdf)
 <use Figures/Stretch_vs_pas_stretch.pdf>
 Package pdftex.def Info: Figures/Stretch_vs_pas_stretch.pdf  used on input line
  237.
-(pdftex.def)             Requested size: 360.0pt x 132.8573pt.
- [10 <./Figures/Stretch_vs_pas_stretch.pdf>]
+(pdftex.def)             Requested size: 360.0pt x 260.41493pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 248.
@@ -974,22 +977,23 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 248.
 
-<Figures/various_fit_formulae.pdf, id=366, 844.31212pt x 596.51091pt>
+<Figures/various_fit_formulae.pdf, id=327, 715.89264pt x 525.6169pt>
 File: Figures/various_fit_formulae.pdf Graphic file (type pdf)
 <use Figures/various_fit_formulae.pdf>
 Package pdftex.def Info: Figures/various_fit_formulae.pdf  used on input line 2
 52.
-(pdftex.def)             Requested size: 360.0pt x 254.3466pt.
+(pdftex.def)             Requested size: 360.0pt x 264.3156pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11] [12 <./Figures/various_fit_formulae.pdf>]
-<Figures/betas.pdf, id=452, 850.15848pt x 307.45277pt>
+[10] [11 <./Figures/Stretch_vs_pas_stretch.pdf>] [12 <./Figures/various_fit_for
+mulae.pdf>]
+<Figures/betas.pdf, id=476, 700.18185pt x 250.18216pt>
 File: Figures/betas.pdf Graphic file (type pdf)
 <use Figures/betas.pdf>
 Package pdftex.def Info: Figures/betas.pdf  used on input line 291.
-(pdftex.def)             Requested size: 360.0pt x 130.18953pt.
-<Figures/fluctuator linewidth.pdf, id=458, 929.18921pt x 275.13318pt>
+(pdftex.def)             Requested size: 360.0pt x 128.63336pt.
+<Figures/fluctuator linewidth.pdf, id=482, 929.18921pt x 275.13318pt>
 File: Figures/fluctuator linewidth.pdf Graphic file (type pdf)
 <use Figures/fluctuator linewidth.pdf>
 Package pdftex.def Info: Figures/fluctuator linewidth.pdf  used on input line 3
@@ -999,14 +1003,14 @@ Package pdftex.def Info: Figures/fluctuator linewidth.pdf  used on input line 3
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13 <./Figures/betas.pdf>]
-<Figures/deconvolution.pdf, id=503, 410.69589pt x 270.67432pt>
+[13 <./Figures/betas.pdf>] [14 <./Figures/fluctuator linewidth.pdf>]
+<Figures/deconvolution.pdf, id=572, 410.69589pt x 270.67432pt>
 File: Figures/deconvolution.pdf Graphic file (type pdf)
 <use Figures/deconvolution.pdf>
 Package pdftex.def Info: Figures/deconvolution.pdf  used on input line 330.
 (pdftex.def)             Requested size: 216.0022pt x 142.35808pt.
- [14 <./Figures/fluctuator linewidth.pdf>] [15 <./Figures/deconvolution.pdf>]
-<Figures/Resonance_geometries.pdf, id=587, 632.38585pt x 966.0116pt>
+ [15 <./Figures/deconvolution.pdf>] [16]
+<Figures/Resonance_geometries.pdf, id=619, 632.38585pt x 966.0116pt>
 File: Figures/Resonance_geometries.pdf Graphic file (type pdf)
 <use Figures/Resonance_geometries.pdf>
 Package pdftex.def Info: Figures/Resonance_geometries.pdf  used on input line 3
@@ -1016,13 +1020,15 @@ Package pdftex.def Info: Figures/Resonance_geometries.pdf  used on input line 3
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16] [17 <./Figures/Resonance_geometries.pdf>]
-<Figures/carte.pdf, id=629, 555.91539pt x 334.81839pt>
+<Figures/carte.pdf, id=622, 555.91539pt x 334.81839pt>
 File: Figures/carte.pdf Graphic file (type pdf)
 <use Figures/carte.pdf>
 Package pdftex.def Info: Figures/carte.pdf  used on input line 398.
 (pdftex.def)             Requested size: 360.0pt x 216.82216pt.
- [18 <./Figures/carte.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[17] [18 <./Figures/Resonance_geometries.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 409.
@@ -1035,23 +1041,19 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 409.
 
-[19]
-<Figures/Anormal_T1.pdf, id=661, 824.4089pt x 311.74414pt>
+[19 <./Figures/carte.pdf>] [20]
+<Figures/Anormal_T1.pdf, id=689, 824.4089pt x 311.74414pt>
 File: Figures/Anormal_T1.pdf Graphic file (type pdf)
 <use Figures/Anormal_T1.pdf>
 Package pdftex.def Info: Figures/Anormal_T1.pdf  used on input line 454.
 (pdftex.def)             Requested size: 360.0pt x 136.13084pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[20] [21 <./Figures/Anormal_T1.pdf>] [22]
+ [21 <./Figures/Anormal_T1.pdf>] [22] [23]
 Overfull \hbox (5.40323pt too wide) in paragraph at lines 480--480
 []\OT1/cmr/m/n/10.95 Mariusz Mr^^Sozek et al. ``Lon-gi-tu-di-nal spin re-lax-at
 ion in nitrogen-vacancy
  []
 
-[23
+[24
 
 ]
 Overfull \hbox (0.6277pt too wide) in paragraph at lines 480--480
@@ -1059,7 +1061,7 @@ Overfull \hbox (0.6277pt too wide) in paragraph at lines 480--480
 ngsen-ergie''. In:
  []
 
-[24] [25]
+[25] [26]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 480.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 480.
  (./Chapter 3.aux)
@@ -1073,9 +1075,9 @@ Package logreq Info: Writing requests to '"Chapter 3".run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 480.
  ) 
 Here is how much of TeX's memory you used:
- 25311 strings out of 481239
- 479387 string characters out of 5920377
- 1115661 words of memory out of 5000000
+ 25312 strings out of 481239
+ 479394 string characters out of 5920377
+ 1116681 words of memory out of 5000000
  40071 multiletter control sequences out of 15000+600000
  542271 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1097,10 +1099,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
 onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm
 -super/sfrm1095.pfb>
-Output written on "Chapter 3.pdf" (25 pages, 1264093 bytes).
+Output written on "Chapter 3.pdf" (26 pages, 1343664 bytes).
 PDF statistics:
- 821 PDF objects out of 1000 (max. 8388607)
- 651 compressed objects within 7 object streams
- 108 named destinations out of 1000 (max. 500000)
+ 851 PDF objects out of 1000 (max. 8388607)
+ 672 compressed objects within 7 object streams
+ 109 named destinations out of 1000 (max. 500000)
  236 words of extra memory for PDF output out of 10000 (max. 10000000)
 

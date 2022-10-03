@@ -309,11 +309,11 @@ The identification of the PL dips at 56 and 122 G in Fig. \ref{CR VH exp} as CR 
 
 Table \ref{table VH et War1} shows the value and precision of the $D$ factor when measured through EPR \citep{cruddace2007magnetic}, and when computed from the data in Fig. \ref{CR VH exp}. In order to get to the $D$ value of VH$^-$ and War1, we had to assume that the spin structure was that of a spin 1 similar to the NV center, with a g-factor close to 2. Both of this assumptions are confirmed by the EPR measurements. We do find that that both $D$ measurement concord within their respective error bars.
 
-The second reason comes from the nature of the sample used. We tried similar PL scans along the [100] axis on many samples with dense ensemble of NV centers. We found that the dip at 55 G was present on all CVD samples ($\sim$ 5 samples) used, and none of the HPHT samples ($\sim$ 20 samples). The same is true of the 122 G line, except that it did appear on some HPHT samples, as will be discussed below. We know that the VH$^-$ defect is much more likely to appear in a CVD sample due to the large quantity of hydrogen used in the process, and while we do not know the chemical nature of the War1 defect, the only time it was observed through EPR was on a CVD diamond.
+The second reason comes from the nature of the sample used. We tried similar PL scans along the [100] axis on many samples with dense ensemble of NV centers. We found that the dip at 55 G was present on all CVD samples ($\sim$ 5 samples) used, and none of the HPHT samples ($\sim$ 20 samples). The same is true of the 122 G line, except that it did appear on some HPHT samples, as will be discussed below. We know that the VH$^-$ defect is much more likely to appear in a CVD sample due to the large quantity of hydrogen used in the growth process, and while we do not know the chemical nature of the War1 defect, the only time it was observed through EPR was on a CVD diamond.
 
 Finally, the apparent larger linewidth of the War1 line compared to the VH$^-$ one is also corroborated by the EPR measurements.
 
-For all of this reasons we attribute the 55 and 122 G dip to CR with VH$^-$ and War1 respectively, with a slightly stronger confidence for the VH$^-$ one.
+For all of this reasons we attribute the 55 and 122 G dip to CR with VH$^-$ and War1 respectively.
 
 \subsection{The $^{13}$C-NV$^-$ lines}
 
@@ -336,7 +336,7 @@ The CR spectra shown in this section can be used to detect the presence of parti
 
 \section{Quantitative estimates of the NV-Dark spins CR}
 
-This section exploit the CR spectrum shown in Fig. \ref{CR VH exp} in order to extract information on the  .
+This section exploit the CR spectrum shown in Fig. \ref{CR VH exp} in order to extract information on the dark spins Hamiltonian parameters, linewidth and concentration.
 
 \subsection{Dark spin Hamiltonian parameters}
 
@@ -346,11 +346,11 @@ First, as discussed in the last section, we can estimate the dark spin ZFS $D$ v
 
 The second quantitative estimate we can make is of the dark spin inhomogeneous broadening $T_2^*$: if we assume the change in PL to be proportional to the change in the NV lifetime $T_1$, which is true for small enough changes, then the linewidth of the PL dips in Fig. \ref{CR VH exp} is the convolution of the NV and dark spin spectrum. By deconvoluting the data with the NV spectrum, known for example from ODMR, we can then recover the dark spin spectral response as was done in \citep{hall2016detection}. 
 
-This procedure will be discussed in more details in the next chapter. We find here that the linewidth of VH$^-$ and War1 are respectively [REF] and [REF] MHz.
+This procedure will be discussed in more details in the next chapter. We find here that the linewidth of VH$^-$ and War1 are respectively (half width at half maximum) $5.7\pm 0.6$ and $15.7\pm 1.6$ MHz \footnote{We follow here the pseudo-Voigt deconvolution method described in [REF]. The linewidth $W=2.7$ MHz (half witdth at half maximum) of the NV centers was measured from ODMR (see Fig. [REF]). It includes all three hyper-fine transistions}.
 
 \subsection{Dark spin concentration}
 
-Finally, the third tentative estimate we can make is that of the dark spins concentration. We can indeed calibrate the measurement by using the $^{13}$C-NV$^-$ line, of which we know the concentration in natural abundance diamond: [$^{13}$C-NV$^-$] $\approx$ 3.3 \% [NV]. We can then, knowing the NV concentration, try to estimate the concentration of the dark spins. There are several caveats though:
+Finally, the third estimate we can make is that of the dark spins concentration. We can indeed calibrate the measurement by using the $^{13}$C-NV$^-$ line, of which we know the concentration in natural abundance diamond: [$^{13}$C-NV$^-$] $\approx$ 3.3 \% [NV]. We can then, knowing the NV concentration, try to estimate the concentration of the dark spins. There are however several caveats:
 
 \begin{itemize}
 \item Since the change in $T_1$ is proportional to the $T_2^*$ of the probed spins (eq. \ref{delta gamma 1}), we should compensate that by integrating over the entire feature, instead of simply looking at the maximum of the line.
@@ -358,9 +358,9 @@ Finally, the third tentative estimate we can make is that of the dark spins conc
 \item The $^{13}$C-NV$^-$ are not ``dark spins", and its CR feature cannot be \textit{a priori} compared to the one from VH$^-$ and War1. We will see however in the next chapter that we can consider a fraction of the NV centers as dark spins, and that this fraction can be estimated. \citep{choi2017depolarization} found a ratio of $\sim 1/4$ dark NV centers for $\sim 3/4$ bright ones.
 \end{itemize}
 
-With all this considerations, we can give an estimate of the concentrations of VH$^-$ and War1 based on the data on Fig. \ref{121 vs 22 VH}-b): 
+From these considerations, we can give an estimate of the concentrations of VH$^-$ and War1 based on the data on Fig. \ref{121 vs 22 VH}-b): 
 
-For the VH$^-$ line we find that the area of the line is $\approx 1.4$ times bigger than that of the $^{13}$C-NV$^-$ one, from \ref{121 vs 22 contrast} we find that the expected CR contrast is $\approx 1.2$ times smaller at 55 G than at 20 G, and finally we chose the dark to bright NV ratio value from \citep{choi2017depolarization} at 0.25.
+For the VH$^-$ line we find that the area of the line is $\approx 1.4$ times bigger than that of the $^{13}$C-NV$^-$ one, from \ref{121 vs 22 contrast} we find that the expected CR contrast is $\approx 1.2$ times smaller at 55 G than at 20 G, and finally we chose a dark to bright NV ratio of 0.25 as found in \citep{choi2017depolarization}.
 
 With an estimated NV concentration [NV] $\approx\ \rm 4.6 ppm$, giving us a concentration $[^{13}\rm{C-NV}^-]\approx \ \rm 130 ppb$, we then find $[\rm VH^-] \approx 58\ \rm ppb$. Similarly, we find $[\rm VH^-] \approx 68\ \rm ppb$. Given the large uncertainty on some parameters, in particular the dark to bright spin ratio, these estimates are probably only precise within an order of magnitude.
 
@@ -383,7 +383,7 @@ Fig. \ref{chauffage CVD} shows the results of this experiment. This time, a modu
 
 Fig \ref{chauffage CVD}-a) shows the demodulated PL versus mganetic field amplitude along [100] on sample CVD-C, while \ref{chauffage CVD}-b) shows the same experiment on sample CVD-B. The fabrication and subsequent operations done on this two samples are detailed thoroughly in \citep{ngambou2022improving}, but the main difference between these two sample is that CVD-C was only annealed once after irradiation, for 2 hours at 800$^\circ$C, while CVD-B was annealed for 2 hours at 800$^\circ$C and then for 1 hour at 1000$^\circ$C and 1 hour at 1200$^\circ$C.
 
-We can see that the VH$^-$ line in particular completely disappear on sample CVD-B, which we attribute to the additional annealing. This measurement also corroborate modifications in the infrared absorption spectrum, and an increase of the NV coherence time, associated with the annealing at higher temperature \citep{ngambou2022improving}.
+We can see that the VH$^-$ line in particular completely disappears on sample CVD-B, which we attribute to the additional annealing. This measurement also corroborate modifications in the infrared absorption spectrum, and an increase of the NV coherence time, associated with the annealing at higher temperature \citep{ngambou2022improving}.
 
 The War1 line on the other hand is still present after the high temperature annealings, albeit slightly smaller. This information can give us some insights on the chemistry of the War1 defect. %Et en vrai je crois que c'était deja vu dans la thèse de Cruddace
 
@@ -396,7 +396,7 @@ The War1 line on the other hand is still present after the high temperature anne
 \label{chauffage HPHT}
 \end{figure}
 
-An unexpected side-study was done on HPHT samples. Indeed, the CVD samples used previously are grown by homoepithaxy on top of a diamond substrate. In this case, the substrate was a type 1B HPHT diamond, which was irradiated and annealed along the CVD layer. We Will name SBST-C and SBST-B the respective HPHT substrate of CVD-C and CVD-B.
+An unexpected side-study was done on HPHT samples. Indeed, the CVD samples used previously are grown by homoepithaxy on top of a diamond substrate. In this case, the substrate was a type 1B HPHT diamond, which was irradiated and annealed along the CVD layer. We will name SBST-C and SBST-B the respective HPHT substrate of CVD-C and CVD-B.
 
 Fig. \ref{chauffage HPHT} shows demodulated PL scans with B $\parallel$ [100] on both samples. They both show a line at $B \approx 20\ \rm G$ corresponding to the $^{13}$C-NV$^-$ line, and none of them show a line at $B = 56\ \rm G$ corresponding to the VH$^-$ line. There is however a stark difference for the War1 line: SBST-C seems to show a weak line, while SBST-B shows a very clear line, with an amplitude more than 5 times greater than SBST-C. 
 
@@ -408,13 +408,13 @@ These results suggest that, while some defects are removed by the high temperatu
 
 \section{Conclusion and perspectives}
 
-To conclude this chapter, we have seen how NV centers can be used to detect dark spins via cross-relaxations. This detection can be way more sensitive than the usual EPR spectroscopy, and considerably cheaper to set up. It is however not as versatile and should be seen as a complimentary tool for diamonds with dense NV ensemble. 
+To conclude this chapter, we have seen how NV centers can be used to detect dark spins via cross-relaxations. This detection can be significantly more sensitive than the usual EPR spectroscopy, and considerably cheaper to set up. This technique however is only applicable to a few defects in NV-rich diamond, meaning that its main application would probably be to characterize the environment of samples with high NV density.
 
-We have also seen the importance of the magnetic field direction, and the underused aspect of the [100] magnetic field scan, much less noisy than the [111] scans for weak magnetic field.
+We have also seen the importance of the magnetic field direction, and the underused aspect of the [100] magnetic field scan which provides a significantly less noisy signal than the [111] scans for weak magnetic field.
 
-Finally we have seen an application of the CR to detect optically two dark spins in CVD diamond, and to find out the response of these defects to high temperature annealing.
+Finally we have seen an application of the CR to detect and characterize optically two dark spins in CVD diamond, and to find out the response of these defects to high temperature annealing.
 
-There still remains a lot of open questions and there are several experiments that could be build upon these results. I will list some of them here.
+There still remains a lot of open questions and there are several experiments that could be build upon these results. Some of these questions are listed below.
 
 \subsection{Unidentified CR lines}
 
@@ -426,15 +426,15 @@ Further studies would be needed to find how common these lines are, and what cou
 
 \subsection{Measuring the spin dynamics of VH$^-$}
 
-We found that NV-VH$^-$ CR in CVD could produce a change in PL of $\sim 0.2 \%$. This kind of values are not too far from ODMR contrast with NV ensembles, which means that it would be reasonable to probe the dynamics ($T_1$, $T_2$) of the VH$^-$ spin. The main issue comes from the fact that in order to measure the VH$^-$ spin states, it needs to be resonant with the NV center. Therefore, resonant microwave pulses with VH$^-$ will also be resonant with the NV centers, which will create an unwanted optical signal.
+We found that NV-VH$^-$ CR in CVD could produce a change in PL of $\sim 0.2 \%$. This value is within one order of magnitude from ODMR contrast with NV ensembles (typically $<5 \%$), which means that it would be reasonable to probe the dynamics ($T_1$, $T_2$) of the VH$^-$ spin. The main issue comes from the fact that in order to measure the VH$^-$ spin states, it needs to be resonant with the NV center. Therefore, resonant microwave pulses with VH$^-$ will also be resonant with the NV centers, which will create an unwanted optical signal.
 
-There are two solution to circumvent this problem: the first is to use a fast switching magnetic field in order to bring the VH$^-$ and NV centers in resonance when you want to polarize or readout the VH$^-$ state, and out of resonance when you want to coherently manipulate the VH$^-$. This means that the magnetic field needs to be switched faster than the spin dynamics you want to probe. This might be doable for the population dynamics $T_1$ but this is probably too slow to probe the $T_2$ time.
+There are two solution to circumvent this problem: the first is to use a fast switching magnetic field in order to bring the VH$^-$ and NV centers in resonance when initializing or reading out the VH$^-$ state, and out of resonance to coherently manipulate the VH$^-$. This means that the magnetic field needs to be switched faster than the probed spin dynamics, which may be doable for the population dynamics $T_1$ but is likely too slow to probe the $T_2$ time.
 
-The other solution consists in using the spin-1 nature of VH$^-$: when a NV$^-$-VH$^-$ CR occurs, only one of the transitions of VH$^-$ and NV$^-$ is brought to resonance. The other one ($\ket{0} \to \ket{-1}$ for the VH$^-$) is out of resonance. The idea would therefore be to keep the NV $\ket{0} \to \ket{-1}$ transition and VH $\ket{0} \to \ket{+1}$ transition resonant, and to coherently manipulate the VH $\ket{0} \to \ket{-1}$ transition. While the polarization on this transition, and the back-action it would produce on the NV centers, is not as strong as if you were manipulating the $\ket{0} \to \ket{+1}$ transition, it should still produce a measurable signal.
+The other solution consists in using the spin-1 nature of VH$^-$: when a NV$^-$-VH$^-$ CR occurs, only one of the transitions of VH$^-$ and NV$^-$ is brought to resonance. The other one ($\ket{0} \to \ket{-1}$ for the VH$^-$ and $\ket{0} \to \ket{+1}$ for the NV) is out of resonance. The idea would therefore be to keep the NV $\ket{0} \to \ket{-1}$ transition and VH $\ket{0} \to \ket{+1}$ transition resonant, and to coherently manipulate the VH $\ket{0} \to \ket{-1}$ transition. Further studies are needed to assess the effectiveness of this scheme.
 
 \subsection{Isolating a single VH$^-$}
 
-We estimated the concentration of VH$^-$ in CVD-pink to be $\sim 60\ \rm ppb$. This concentration is too high by about two orders of magnitude to isolate a single emitter with a diffraction-limited microscope. We know however that we can reduce the VH$^-$ concentration arbitrarily by applying high temperature annealing. We could therefore reduce the VH$^-$ concentration to be in the $0.1 \sim 1\ \rm ppb$ range and optically isolate a single VH$^-$ center by scanning a confocal microscope with a fixed $B_{[100]}=56\ \rm G$ while monitoring the NV PL or $T_1$. It is however unclear to me whether this detection scheme would be sensitive enough to detect single dark spins.
+We estimated the concentration of VH$^-$ in CVD-pink to be $\sim 60\ \rm ppb$. This concentration is about two orders of magnitude too high to contemplate isolating a single emitter with a diffraction-limited microscope. We know however that we can reduce the VH$^-$ concentration arbitrarily by applying high temperature annealing. We could therefore reduce the VH$^-$ concentration to be in the $0.1 \sim 1\ \rm ppb$ range and optically isolate a single VH$^-$ center by scanning a confocal microscope with a fixed $B_{[100]}=56\ \rm G$ while monitoring the NV PL or $T_1$. It is however still unclear whether the present detection scheme is sensitive enough to detect single VH$^-$.
 
 \printbibliography
 \end{document}

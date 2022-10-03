@@ -1,21 +1,20 @@
 [0] Config.pm:304> INFO - This is Biber 2.14 (beta)
 [0] Config.pm:307> INFO - Logfile is 'Chapter 3.blg'
-[34] biber:322> INFO - === lun. août 22, 2022, 15:26:40
-[41] Biber.pm:415> INFO - Reading 'Chapter 3.bcf'
-[75] Biber.pm:943> INFO - Found 30 citekeys in bib section 0
-[82] Biber.pm:4256> INFO - Processing section 0
-[82] Utils.pm:75> INFO - Globbing data source 'Bib_ch3.bib'
-[82] Utils.pm:91> INFO - Globbed data source 'Bib_ch3.bib' to Bib_ch3.bib
-[87] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch3.bib' for section 0
-[89] bibtex.pm:1653> INFO - LaTeX decoding ...
-[136] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch3.bib'
-[138] Utils.pm:293> WARN - Duplicate entry key: 'holliday1989optical' in file 'Bib_ch3.bib', skipping ...
-[138] Utils.pm:293> WARN - Duplicate entry key: 'van1989cross' in file 'Bib_ch3.bib', skipping ...
-[138] Utils.pm:293> WARN - Duplicate entry key: 'choi2017depolarization' in file 'Bib_ch3.bib', skipping ...
-[276] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[276] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[276] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[276] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[286] bbl.pm:652> INFO - Writing 'Chapter 3.bbl' with encoding 'UTF-8'
-[299] bbl.pm:755> INFO - Output to Chapter 3.bbl
-[299] Biber.pm:128> INFO - WARNINGS: 3
+[39] biber:322> INFO - === lun. oct.  3, 2022, 18:21:41
+[47] Biber.pm:415> INFO - Reading 'Chapter 3.bcf'
+[83] Biber.pm:943> INFO - Found 30 citekeys in bib section 0
+[91] Biber.pm:4256> INFO - Processing section 0
+[91] Utils.pm:75> INFO - Globbing data source 'Bib_ch3.bib'
+[91] Utils.pm:91> INFO - Globbed data source 'Bib_ch3.bib' to Bib_ch3.bib
+[96] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch3.bib' for section 0
+[101] bibtex.pm:1653> INFO - LaTeX decoding ...
+[245] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch3.bib'
+[248] Utils.pm:293> WARN - Duplicate entry key: 'wang2022picotesla' in file 'Bib_ch3.bib', skipping ...
+[252] Utils.pm:293> WARN - Duplicate entry key: 'wiki:VoigtProfile' in file 'Bib_ch3.bib', skipping ...
+[405] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[405] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[405] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[405] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[416] bbl.pm:652> INFO - Writing 'Chapter 3.bbl' with encoding 'UTF-8'
+[433] bbl.pm:755> INFO - Output to Chapter 3.bbl
+[433] Biber.pm:128> INFO - WARNINGS: 2
