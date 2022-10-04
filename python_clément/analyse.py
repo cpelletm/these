@@ -118,7 +118,6 @@ def quad_fit(x,y) :
 	a,b,c = np.linalg.lstsq(A, y, rcond=None)[0]
 	return([a,b,c],a*x**2+b*x+c)
 
-
 def parabola_fit(x,y):
 	if y[0]-min(y) > max(y)-y[0] :
 		typ='upside'
@@ -170,7 +169,7 @@ def gauss_fit(x,y,amp=None,x0=None,sigma=None,ss=0,err=False) :
 	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -215,7 +214,7 @@ def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None,err=False) :
 	p0=[amp,x0,sigma,ss]
 	popt, pcov = curve_fit(f, x, y, p0)
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -271,7 +270,7 @@ def exp_fit(x,y,amp=None,ss=None,tau=None,err=False) :
 	p0=[amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0)
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -292,7 +291,7 @@ def exp_fit_zero(x,y,amp=None,tau=None,norm=False,err=False) :
 		p0=[amp,tau]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -309,7 +308,7 @@ def stretch_exp_fit(x,y,amp=None,ss=None,tau=None,err=False) :
 	p0=[amp,ss,tau]
 	popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0],[np.inf,np.inf,np.inf]))
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -330,7 +329,7 @@ def stretch_exp_fit_zero(x,y,amp=None,tau=None,norm=False,err=False) :
 		p0=[amp,tau]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0],[np.inf,np.inf]))
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -352,7 +351,7 @@ def stretch_arb_exp_fit(x,y,amp=None,ss=None,tau=None,alpha=0.5,fixed=False,err=
 		p0=[amp,ss,tau,alpha]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,-np.inf,0,0],[np.inf,np.inf,np.inf,np.inf]))
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -372,7 +371,7 @@ def stretch_arb_exp_fit_zero(x,y,amp=None,tau=None,alpha=0.5,fixed=False,err=Fal
 		p0=[amp,tau,alpha]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -414,7 +413,7 @@ def stretch_et_phonons(x,y,amp=None,tau=None,T1ph=5E-3,fixed=True,err=False) :
 		p0=[amp,tau,T1ph]
 		popt, pcov = curve_fit(f, x, y, p0,bounds=([-np.inf,0,0],[np.inf,np.inf,np.inf]))
 	if err :
-		return(popt,f(x,*popt),pcov)
+		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
 
@@ -995,6 +994,14 @@ def estim_error(y,yfit,rel=True):
 	else :
 		errors=(y-yfit)**2
 	return(sum(errors)/n)
+
+def RMSD(y,yfit):
+	#root mean square deviation/error
+	return sigma(y-yfit)
+
+def R2(y,yfit):
+	R=1-sigma(y-yfit)**2/sigma(y)**2
+	return R
 
 def lissage(t,n):
 	newt=np.array([sum(t[i:i+n])/n for i in range(len(t)-n)])

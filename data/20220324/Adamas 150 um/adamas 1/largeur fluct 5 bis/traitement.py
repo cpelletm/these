@@ -91,6 +91,8 @@ def get_T1_croisement():
 	y=1/taus[nbeg:]
 	return(x,y)
 
+
+
 def wiener_deconvolution(signal, kernel, lambd):
 	from numpy.fft import fft, ifft, ifftshift
 	"lambd is the SNR"
@@ -146,8 +148,9 @@ def plot_T1_fluct_lw_and_ODMR():
 	ax1=plt.gca()
 
 	ax1.plot(x,y,'o',markerfacecolor='none',label=r'Experiment')
-	popt,yfit=lor_fit(x,y)
+	popt,yfit,pcov=lor_fit(x,y,err=True)
 	print(popt)
+	print(np.sqrt(np.diag(pcov)))
 	ax1.plot(x,yfit,lw=2,color=color(1),label='Lorentzian fit'%popt[2])
 
 
@@ -178,28 +181,33 @@ def plot_T1_fluct_deconvo():
 	ax1=plt.gca()
 
 	ax1.plot(x,y,'o',markerfacecolor='none',label=r'Experiment')
-	popt,yfit=lor_fit(x,y)
+	popt,yfit,pcov=lor_fit(x,y,err=True)
 	print(popt)
+	print(pcov)
 	ax1.plot(x,yfit,lw=2,color=color(0))#,label='Lorentzian fit'%popt[2])
 
 	ymax=max(y)
 	x,y=get_T1_dconvoloved(x,y,nmiddle=24,lambd=2)
 	y=y/max(y)*ymax
 	ax1.plot(x,y,'o',markerfacecolor='none', label='1st deconvolution',color=color(3))
-	popt,yfit=lor_fit(x,y)
-	ax1.plot(x,yfit,lw=2,color=color(3))#,label='Lorentzian fit'%popt[2])
+	popt,yfit,pcov=lor_fit(x,y,err=True)
 	print(popt)
+	print(pcov)
+	ax1.plot(x,yfit,lw=2,color=color(3))#,label='Lorentzian fit'%popt[2])
+
 
 	x,y=get_T1_dconvoloved(x,y,nmiddle=22,lambd=2)
 	y=y/max(y)*ymax
 	ax1.plot(x,y,'o',markerfacecolor='none', label='2nd deconvolution',color=color(2))
-	popt,yfit=lor_fit(x,y)
-	ax1.plot(x,yfit,lw=2,color=color(2))#,label='Lorentzian fit'%popt[2])
+	popt,yfit,pcov=lor_fit(x,y,err=True)
 	print(popt)
+	print(pcov)
+	ax1.plot(x,yfit,lw=2,color=color(2))#,label='Lorentzian fit'%popt[2])
+
 
 	ax1.legend(loc=2)
 
-# plot_T1_fluct_deconvo()
+plot_T1_fluct_deconvo()
 
 def widthVoigt(fL,fG=4.5*np.sqrt(2)): #3.68=2.6*sqrt(2)
 	fG=fG*(sqrt(2*np.log(2)))
@@ -207,7 +215,7 @@ def widthVoigt(fL,fG=4.5*np.sqrt(2)): #3.68=2.6*sqrt(2)
 	return (f)
 
 
-print(dichotomy(f=widthVoigt,target=12.5,xmin=0,xmax=9,precision='auto')[0])
+# print(dichotomy(f=widthVoigt,target=12.5,xmin=0,xmax=9,precision='auto')[0])
 
 
 

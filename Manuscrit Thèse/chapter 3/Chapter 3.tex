@@ -22,37 +22,36 @@
 \title{}
 \begin{document}
 \chapter{NV-NV cross-relaxations : the fluctuator model}
-In this chapter we will look at the phenomenon of cross-relaxations between NV centers, both from an experimental and theoretical point of view. 
+This chapter will cover cross-relaxations between NV centers in the non-zero magnetic field regime, both from an experimental and theoretical point of view. The case of zero magnetic field will be treated in the next chapter.
 
 The presence of strong NV-NV dipolar interaction in dense ensemble ([NV] $\gtrsim 1\ \rm ppm$) proved to be both an obstacle for ensemble magnetometry \citep{zhou2020quantum} and an opportunity to explore and use the many-body interaction resulting from it \citep{zhou2020quantum, choi2017observation, kucsko2018critical, zu2021emergent}.
 
-We will see here how a model of fast and slow relaxing centers, the fluctuator model \citep{choi2017depolarization}, can explain most of the experimental observations, and we will see some limitations of the model.
+We will see in this chapter how a model of fast and slow relaxing centers, the fluctuator model \citep{choi2017depolarization}, explains most observations related to the cross-relaxation, including the stretched exponential lifetime profile and the spectral broadening of the interaction.
 
 \section{Experimental observation of NV-NV CR}
-Before we discuss the theoretical implications of NV-NV cross-relaxations (CR), let us first show the unambiguous experimental proof of the presence of NV-NV CR in the samples with dense NV ensembles.
+Let us start with the experimental proof of the presence of NV-NV CR in the samples with dense NV ensembles.
+
+When dealing with NV-NV CR, we have to make the distinction between what we will label ``equivalent" and ``non-equivalent" NV centers. Two equivalent centers are NV centers with the same spin Hamiltonian ([REF] chap 1), which implies that they both see the same transverse and longitudinal magnetic field. In contrast, non-equivalent centers are center with different single-spin Hamiltonian, which may result in different eigenstates and spin polarization for the two spins.
+
+While the NV physics can explain cross-relaxations between non-equivalent NV centers, it cannot explain cross-relaxation between equivalent NV centers. Nevertheless, as we will see in this section, CR between both equivalent and non-equivalent NV centers is observed for samples with high NV density. 
 \subsection{NV-NV CR between nonequivalent NV centers}
 \label{non_equi_valent_CR}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/NV-NV_non_equivalent}
-\caption{a) Representation of two non equivalent spins resonantly coupled. One spin is aligned with the magnetic field and therefore well polarized, while the second spin is not. b) Simulated frequencies for the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions when $\mathbf{B}\parallel [111]$ for the class aligned with B, and the 3 equivalent classes not aligned with B. c) Taken from \citep{armstrong2010nv}, PL change of an ensemble of NV centers as a magnetic field is scanned along the [111] axis.}
-\label{non equivalent NV-NV}
+\caption{a) Illustration of the four possible direction of the the NV axis (four classes of NV centers) with a magnetic field along class 1 b) Representation of the polarization of two non equivalent spins, one aligned with the magnetic field (well polarized) and one misaligned with the magnetic field (unpolarized). c) Simulated frequencies for the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions when $\mathbf{B}\parallel [111]$ for the class aligned with B, and the 3 equivalent classes not aligned with B. d) Taken from \citep{armstrong2010nv}, PL change of an ensemble of NV centers as a magnetic field is scanned along the [111] axis.}
+\label{non-equivalent NV-NV}
 \end{figure}
-NV-NV CR was first observed more than thirty years ago \citep{holliday1989optical, van1989cross}. The first observations were between non-equivalent NV centers, meaning that the two NV centers involved in the dipole-dipole coupling were not polarized equally.
 
-This scenario can happen for instance when two NV centers from different classes see a different transverse (and longitudinal) magnetic field. Fig \ref{non equivalent NV-NV} illustrates this in the case where the magnetic field is parallel with one of the four classes: $\mathbf{B} \parallel [111]$
+In the absence of magnetic gradient, two NV centers can only be non-equivalent if the projection of the magnetic field upon their respective NV axis is different. Fig. \ref{non-equivalent NV-NV}-a) illustrates such a case: we label here the four possible NV axis orientation (or NV classes) 1 to 4 and we assume that the magnetic field is aligned with class 1. In this conditions, an NV center belong to class 1 will always be non-equivalent with NV centers from classes 2-4, as the projection of the magnetic field on their respective axis will never be the same. On the other hand, NV centers from the classes 2-4 are all equivalents, even though they do not necessary belong to the same class.
 
-When $\mathbf{B} \parallel [111]$, as we discussed in the last chapter, one class sees no transverse field and is therefore always polarized. The three other (equivalent) classes on the other hand get more and more depolarized as the magnetic field amplitude is increased. 
+Fig. \ref{non-equivalent NV-NV}-b) shows the difference between the NV centers belonging to class 1 labeled NV$_\parallel$) and those belonging to classes 2-4 (labeled NV$_\nparallel$). As explained in [REF], the transverse magnetic field leads to a mixing of the eigenstates \footnote{The states of the misaligned NV on Fig. \ref{non-equivalent NV-NV}-b) are labeled $\ket{0},\ket{\pm 1}$ which is an abusive (but common) notation since the mixing caused by the transverse field means that the eigenstates of $S_z$ are no longer the Hamiltonian eigenstates.} and to a loss of the optical polarization mechanism. As a result, the NV$_\nparallel$ spins are less polarized than the NV$_\parallel$ ones, which is a necessary condition to observe cross-relaxation.
 
-It turns out that there is a co-resonnance at B=592 G between the class parallel to $\mathbf{B}$ and the three other classes. This co-resonance is represented in Fig. \ref{non equivalent NV-NV}-b) by an orange circle.
+Another necessary condition to observe cross-relaxation is the condition of co-resonance. In most situations, non-equivalent NV centers are not co-resonant, as the differences in the spin Hamiltonian generally leads to different eigenvalues. This is in contrast with equivalent NV centers which are by definition always resonant. Fig. \ref{non-equivalent NV-NV}-c) shows the transition frequencies of spin from class 1 and a spin from class 2-4 as a function of the magnetic field amplitude. Unintuitively, there is a co-resonance between the two $\ket{0} \to \ket{+1}$ transitions for $\abs{\mathbf{B}}=592\ \rm G$. For this particular value of the magnetic field, cross-relaxation between the NV centers from class 1 and those from classes 2-4 is possible.
 
-Fig. \ref{non equivalent NV-NV}-c), which we already saw in the last chapter, shows the change in PL of an ensemble of NV centers as $\mathbf{B}$ is scanned along the [111] axis. For B=592 G, we can see a drop in PL also circled in orange. This drop is the result of the CR between NV centers from the class parallel to $\mathbf{B}$ and NV centers from the three other classes. 
+Finally, Fig. \ref{non-equivalent NV-NV}-d), which was presented in the last chapter, shows the experimental value of the total NV PL as a function of the magnetic field amplitude, in a scenario similar to the one we just described. We can indeed observe the signature of NV-NV CR in the presence of a PL dip at $\abs{\mathbf{B}}=592\ \rm G$.
 
-While a difference in polarization is needed to observe a population transfer, it is not enough to explain the drop in PL. This PL drop is due to the difference in brightness between the $\ket{0}$ and $\ket{+1}$ from the different classes involved. The PL contrast between the two states is higher for the class parallel to $\mathbf{B}$ than for the three other ones, which is another consequence of the transverse field.
-
-The co-resonance between two different classes of NV centers with different magnetic field projection is a relatively rare event: it can only occur for the $\ket{0} \to \ket{+1}$ transition, and only for magnetic fields greater than 592 G.
-
-%techniquement y'a les resonances 0->-1 et -1/+1 mais c'est le delbor, j'ai pas envie d'embrouiller plus que ca.
+As previously mentioned, cross-relaxation between non-equivalent NV centers is easily explained by the physics of single NV centers, and has been known for more than thirty years \citep{holliday1989optical, van1989cross}.
 
 \subsection{NV-NV CR between equivalent NV centers}
 
@@ -259,15 +258,16 @@ On the other hand, Fig. \ref{stretch_or_not_stretch}-b) shows a $T_1$ measuremen
 \caption{Fitting parameters for Fig.
  \ref{various_fit_formulae}}
  \label{fitting table}
-\begin{tabular}{c|cc|cc}
+\begin{tabular}{c|ccc|ccc}
 \toprule
-Figure &  \multicolumn{2}{c}{$B=0$} & \multicolumn{2}{c}{$B\neq0$}\\
+Figure &  \multicolumn{3}{c}{$B=0$} & \multicolumn{3}{c}{$B\neq0$}\\
 \midrule
-{} &  $T_1^{\rm ph}$ (ms)& $T_1^{\rm dd}$ (ms)&  $T_1^{\rm ph}$ (ms)& $T_1^{\rm dd}$(ms)\\
-Fig. a) & 0.95 & * & 2.64 & * \\
-Fig. b) & * & 0.32 & * & 1.03  \\
-Fig. c) & 6.75 & 0.44 & 4.22 & 7.19 \\
-Fig. d) & \textbf{5} & 0.51 & \textbf{5} & 4.65 \\
+{} &  $T_1^{\rm ph}$ (ms)& $T_1^{\rm dd}$ (ms) & $1-R^2$ &  $T_1^{\rm ph}$ (ms)& $T_1^{\rm dd}$(ms)& $1-R^2$\\
+\midrule
+Fig. a) & 0.95 & * & $2\cdot 10^{-2}$ & 2.64 & * & $6\cdot 10^{-3}$ \\
+Fig. b) & * & 0.32 & $2\cdot 10^{-3}$& * & 1.03 & $2\cdot 10^{-2}$ \\
+Fig. c) & 6.75 & 0.44 & $6\cdot 10^{-4}$ & 4.22 & 7.19 & $2\cdot 10^{-4}$\\
+Fig. d) & \textbf{5} & 0.51 & $6\cdot 10^{-4}$ & \textbf{5} & 4.65 & $6\cdot 10^{-4}$\\
 \bottomrule
 \end{tabular}
 
@@ -303,7 +303,7 @@ Even though this method also yields satisfying fits, it needs two free parameter
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/fluctuator linewidth}
-\caption{Measurement of the fluctuators linewidth on sample ADM-150-2 using the same setup as in Fig. \ref{equivalent NV-NV}. a) Simulation of the $\ket{0} \to \ket{-1}$ transition frequency for the four classes of NV centers and actual frequencies of the two central classes from ODMR measurements. b) Measurement of $T_1^{\rm dd}$ as a function of the splitting $\Delta \nu$ between the two central classes, fitted with a Lorentzian of half-width $\sigma=8.78\ \rm MHz$. The green dashed line correspond to the ODMR spectrum of a single class of NV centers, and the red dashed one to the same line scaled up by a factor $\sqrt{2}$}
+\caption{Measurement of the fluctuators linewidth on sample ADM-150-2 using the same setup as in Fig. \ref{equivalent NV-NV}. a) Simulation of the $\ket{0} \to \ket{-1}$ transition frequency for the four classes of NV centers and actual frequencies of the two central classes from ODMR measurements. b) Measurement of $T_1^{\rm dd}$ as a function of the splitting $\Delta \nu$ between the two central classes, fitted with a Lorentzian of half-width $\sigma=8.8 \pm 0.2\ \rm MHz$. The green dashed line correspond to the ODMR spectrum of a single class of NV centers, and the red dashed one to the same line scaled up by a factor $\sqrt{2}$}
 \label{fluct linewidth}
 \end{figure}
 
@@ -328,7 +328,7 @@ We attribute this broadening to the fluctuators lifetime. Another potential expl
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{Figures/deconvolution}
-\caption{Blue curve $1/T_1^{\rm dd}$ data presented in Fig. \ref{fluct linewidth}. Red curve: deconvolution of the blue curve the  by the ODMR line shown on the same figure. Green curve: deconvolution of the red curve the  by the ODMR line. All three curves are fitted with Lorentzian of respective half widths 8.78, 7.49 and 6.38 MHz}
+\caption{Blue curve $1/T_1^{\rm dd}$ data presented in Fig. \ref{fluct linewidth}. Red curve: deconvolution of the blue curve the  by the ODMR line shown on the same figure. Green curve: deconvolution of the red curve the  by the ODMR line. All three curves are fitted with Lorentzian of respective half widths $8.8 \pm 0.2$, $7.5 \pm 0.3$ and $6.4 \pm 0.4$ MHz}
 \label{deconvolution}
 \end{figure}
 
@@ -416,12 +416,12 @@ We know that when $\mathbf{B}$ belongs to any of these four planes, there is a c
 \toprule
 $\Gamma_1^{\rm dd} (\mathbf{B})$ &  Theory & Experimental \\
 \midrule
-random $\mathbf{B}$ (1 class) & $\Gamma_0^{\rm th}$ & 1.53 ms$^{-1} \equiv \Gamma_0^{\rm exp}$ \\
-$\mathbf{B} \in \{110\}$ (2 classes) & 10.0 $\Gamma_0^{\rm th}$ & 5.20 $\Gamma_0^{\rm exp}$ \\
-$\mathbf{B} \in \{100\}$ (2 classes) & 7.24 $\Gamma_0^{\rm th}$ & 4.22 $\Gamma_0^{\rm exp}$ \\
-$\mathbf{B} \parallel \langle 111 \rangle$ (3 classes) & 28.4 $\Gamma_0^{\rm th}$ & 9.07 $\Gamma_0^{\rm exp}$ \\
-$\mathbf{B} \parallel \langle 100 \rangle$ (4 classes) & 42.8 $\Gamma_0^{\rm th}$ & 11.3 $\Gamma_0^{\rm exp}$ \\
-$\mathbf{B}=0$ (4 classes) & 51+($^*$) $\Gamma_0^{\rm th}$ & 15.4 $\Gamma_0^{\rm exp}$ \\
+random $\mathbf{B}$ (1 class) & $\Gamma_0^{\rm th}$ & $1.53\pm 0.04$ ms$^{-1} \equiv \Gamma_0^{\rm exp}$ \\
+$\mathbf{B} \in \{110\}$ (2 classes) & 10.0 $\Gamma_0^{\rm th}$ & $5.2 \pm 0.1$ $\Gamma_0^{\rm exp}$ \\
+$\mathbf{B} \in \{100\}$ (2 classes) & 7.24 $\Gamma_0^{\rm th}$ & $4.2 \pm 0.1$ $\Gamma_0^{\rm exp}$ \\
+$\mathbf{B} \parallel \langle 111 \rangle$ (3 classes) & 28.4 $\Gamma_0^{\rm th}$ & $11.6 \pm 0.4$ $\Gamma_0^{\rm exp}$ \\
+$\mathbf{B} \parallel \langle 100 \rangle$ (4 classes) & 42.8 $\Gamma_0^{\rm th}$ & $14.1 \pm 0.5$ $\Gamma_0^{\rm exp}$ \\
+$\mathbf{B}=0$ (4 classes) & 51+($^*$) $\Gamma_0^{\rm th}$ & $19.9 \pm 0.8$ $\Gamma_0^{\rm exp}$ \\
 \bottomrule
 \end{tabular}
 
@@ -430,7 +430,7 @@ $\mathbf{B}=0$ (4 classes) & 51+($^*$) $\Gamma_0^{\rm th}$ & 15.4 $\Gamma_0^{\rm
 
 The fluctuator model allows quantitative predictions of the change in the spin lifetime, thanks to eq. \ref{eq 1/T}. There are however several unknown in this equation, such as the fluctuator density and lifetime which can be hard to estimate. It is however relatively easy to compare the predictions of eq. \ref{eq 1/T} for various magnetic field configurations.
 
-What we decided to do was to take the case of an isolated class, where we consider that NV centers from said class or only affected by fluctuators of the same class, as the baseline value for the dipole-dipole decay rate $\Gamma_0$, and to express the decay rates when 2,3 or 4 classes are co-resonant as a function of $\Gamma_0$. Doing so allows to normalize $n_f$ and $\gamma_f$ in eq. \ref{eq 1/T} and to keep $\bar G$ the geometrical part of $\bar \eta$ as the only unknown.
+What we decided to do was to take the case of an isolated class, where we consider that NV centers from said class or only affected by fluctuators of the same class, as the baseline value for the dipole-dipole decay rate $\Gamma_0$, and to express the decay rates when 2, 3 or 4 classes are co-resonant as a function of $\Gamma_0$. Doing so allows to normalize $n_f$ and $\gamma_f$ in eq. \ref{eq 1/T} and to keep $\bar G$ the geometrical part of $\bar \eta$ as the only unknown.
 
 $\bar G$ can be analytically or numerically computed for each of the magnetic configurations listed before, as detailed in appendix [REF]. This allows us to predict the value of the spin decay rate in every situations as a function of the decay rate of an isolated class.
 
