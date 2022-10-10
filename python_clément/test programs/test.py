@@ -1753,4 +1753,4 @@ def plot_irregular_surface():
 	plt.show()
 
 
-print((sqrt(log(2))/(pi*3.2)))
+print(0.8328*sqrt(1/3))

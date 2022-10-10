@@ -4,10 +4,11 @@ sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
 
-plt.figure(num=1,figsize=(6,4),dpi=80)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 plt.locator_params(axis='x', nbins=5)
+plt.locator_params(axis='y', nbins=5)
 
 
 
@@ -54,6 +55,7 @@ def plot_ESR_et_prediction():
 	E2=popt[0]*x+popt[1]
 	plt.plot(x,E2)
 
+plot_ESR_et_prediction()
 
 def plot_single_T1(i=54):
 	fnames,fval=extract_glob('T1')
@@ -90,8 +92,6 @@ def get_T1_croisement():
 	x=(E1-E2)[nbeg:]
 	y=1/taus[nbeg:]
 	return(x,y)
-
-
 
 def wiener_deconvolution(signal, kernel, lambd):
 	from numpy.fft import fft, ifft, ifftshift
@@ -149,8 +149,8 @@ def plot_T1_fluct_lw_and_ODMR():
 
 	ax1.plot(x,y,'o',markerfacecolor='none',label=r'Experiment')
 	popt,yfit,pcov=lor_fit(x,y,err=True)
-	print(popt)
-	print(np.sqrt(np.diag(pcov)))
+	# print(popt)
+	# print(np.sqrt(np.diag(pcov)))
 	ax1.plot(x,yfit,lw=2,color=color(1),label='Lorentzian fit'%popt[2])
 
 
@@ -158,10 +158,11 @@ def plot_T1_fluct_lw_and_ODMR():
 	x,y=extract_data('ESR 1 classe pas loin 111')
 	y=y/max(y)
 	c=hist_mean(x,y)
+	# print(c)
 	x=x-2740
-	ax2.plot(x,y,'--',color=color(2),label=r'ESR line',mew=0.5,ms=3)
-	x=x*sqrt(2)
-	ax2.plot(x,y,'--',color=color(3),label=r'ESR line$\times \sqrt{2}$',mew=0.5,ms=3)
+	ax2.plot(x,y,'--',color=color(2),label=r'ODMR',mew=0.5,ms=3)
+	x=(x-1)*2+1
+	ax2.plot(x[100:400],y[100:400],'--',color=color(3),label=r'ODMR$\times 2$',mew=0.5,ms=3)
 	# x=x*sqrt(2)
 	# n=len(x)
 	# x=x[n//5:n-n//5]
@@ -207,13 +208,12 @@ def plot_T1_fluct_deconvo():
 
 	ax1.legend(loc=2)
 
-plot_T1_fluct_deconvo()
+# plot_T1_fluct_deconvo()
 
 def widthVoigt(fL,fG=4.5*np.sqrt(2)): #3.68=2.6*sqrt(2)
 	fG=fG*(sqrt(2*np.log(2)))
 	f=((fG**5)+2.69269*(fG**4)*(fL)+2.42843*(fG**3)*(fL**2)+4.47163*(fG**2)*(fL**3)+0.07842*(fG)*(fL**4)+(fL**5))**(1/5)
 	return (f)
-
 
 # print(dichotomy(f=widthVoigt,target=12.5,xmin=0,xmax=9,precision='auto')[0])
 

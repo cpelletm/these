@@ -284,15 +284,16 @@ Rabi oscillations is the basis for any kind of coherent qubit manipulation while
 This section also covers the experimental setup used for these two operations and for many other NV experiments, as well as the concept of longitudinal and transverse magnetic field with regard to the NV principal axis.
 
 \subsection{Experimental setup}
+\label{Sec setup cahp 1}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\textwidth]{Figures/shema_exp}
 \caption{Confocal microscopy setup detailed in main text}
-\label{setup}
+\label{setup ch1}
 \end{figure}
 The three most common experimental degrees of freedom to consider for NV experiments are: the optical illumination, the microwave field and the external magnetic field. Other parameters such as the crystal temperature, the electric field or the crystal stress can also be controlled for specific applications.
 
-Fig. \ref{setup} shows a multi-purpose experimental setup which offers a control over these three degree of freedoms. Unless specified otherwise, this is the experimental setup that was used to perform all the measurements shown in this manuscript. 
+Fig. \ref{setup ch1} shows a multi-purpose experimental setup which offers a control over these three degree of freedoms. Unless specified otherwise, this is the experimental setup that was used to perform all the measurements shown in this manuscript. 
 
 The setup consists of a confocal microscope where the excitation from a green laser (Thorlabs CPS532, 532 nm, 5 mW) is focused on a sample containing NV centers with a microscope objective (NA $\sim$ 0.5). The NV PL is then collected by the same objective and isolated from the back-scattered laser light with a dichroic mirror (DM) and additional filters (532 nm notch filter and 645 nm longpass filter to filter out the NV$^0$ PL). The PL is collected on an avalanche photodiode (Thorlabs APD410A or Perkin Elmer SPCM-AQRH-15) whose signal is sent to the acquisition card (NI X-series).
 
@@ -465,6 +466,7 @@ Fig. \ref{ODMR 1 classe} shows ODMR spectra of a single NV class on two distinct
 Fig. \ref{ODMR 1 classe} illustrates another difficulty of $T_2^*$ measurement which is to find the correct fitting formula. While the spectral profile of single NV centers is expected to be Gaussian, the spectral profile of an ensemble of NV centers  is expected to be Lorentzian \citep{dobrovitski2008decoherence, hall2014analytic}. For Fig. \ref{ODMR 1 classe}-a), it was indeed found that Lorentzians fitted the data better than Gaussians. For Fig. \ref{ODMR 1 classe}-b) however, a Gaussian was found to be a better fit than a Lorentzian, although this could be in part due to the unresolved hyperfine structure.
 
 \subsection{NV spin $T_2$}
+\label{sec T2 echo}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{Figures/Echo}
@@ -563,7 +565,7 @@ We have introduced in eq. (\ref{eq. ff df}) the three relevant matrix elements $
 It should be noted that on average, each matrix element is of the same order of magnitude: $\Omega_{\rm ff} \sim \Omega_{\rm df} \sim \Omega_{\rm shift} \sim \frac{J_0}{r^3}$. 
 
 \subsection{Cross-relaxations with NV centers}
-
+\label{Sec_CR}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{Figures/Shema_CR}

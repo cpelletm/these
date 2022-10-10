@@ -79,9 +79,9 @@ EPR generally relies on the thermal polarization of the spins to observe an abso
 
 The usual EPR apparatus, shown in Fig. \ref{photo EPR}, is a bulky and expensive lab equipment ($\gtrsim$ 1 M€). In contrast, optical detection such as ODMR is technically easier, less expensive, and allows better spatial resolution. 
 
-ODMR can also be significantly more sensitive than EPR: single NV centers are routinely observed in ODMR while the the current EPR noise floor for electronic spins in diamond is typically of $\sim 10^{11}$ \citep{mitchell2013x}. This difference in sensitivity comes in part from the better spin polarization \footnote{At room temperature, the thermal polarization of a transition at 9500 MHz is $\sim 0.002$ while the NV center optical polarization can reach 0.8.}, and from the more efficient photon detection in the optical range than in the microwave range.
+ODMR can also be significantly more sensitive than EPR: single NV centers are routinely observed in ODMR while the the current EPR noise floor for electronic spins in diamond is typically of $\sim 10^{11}$ spins \citep{mitchell2013x}. This difference in sensitivity comes in part from the better spin polarization \footnote{At room temperature, the thermal polarization of a spin with a transition at 9500 MHz is $\sim 0.002$ while the NV center optical polarization can reach 0.8.}, and in part from the more efficient photon detection in the optical range than in the microwave range.
 
-EPR however remains a far more versatile tool as only very few spin defects have the properties required for ODMR. The key idea of this chapter is to allow the optical detection of spin defects that do not show ODMR, by making them resonant with NV centers and observing NV cross-relaxation.
+The key idea of this chapter is to allow the optical detection of spin defects that normally do not show ODMR thanks to cross-relaxation with NV centers.
 
 \section{NV center relaxometry}
 
@@ -104,11 +104,11 @@ The two most common NV relaxometry protocols are represented on Fig. \ref{T1 vs 
  \rho_{00}=\frac{\Gamma_{\rm las}+\Gamma_1}{\Gamma_{\rm las}+3\Gamma_1}.
  \end{equation}
  
- Fig. \ref{T1 vs PL} shows a simulation of NV centers PL when the spin decay rate $\Gamma_1$ is modified. In this fictional scenario, we assume that $\Gamma_1$ resonantly increases for a given value of the magnetic field (we will see later in this manuscript situations matching this scenario). We can see that the PL decreases as an answer to the $\Gamma_1$ increase. The exact value of the PL drop ($\sim 2\%$ in the crase presented here) depends on the optical polarization rate $\Gamma_{\rm las}$, but this value generally does exceed a few \%, even for important $T_1$ modifications.
+ Fig. \ref{T1 vs PL} shows a simulation of NV centers PL when the spin decay rate $\Gamma_1$ is modified. In this fictional scenario, we assume that $\Gamma_1$ resonantly increases for a given value of the magnetic field (we will see later in this manuscript physical examples corresponding to this scenario). We can see that the PL decreases as an answer to the $\Gamma_1$ increase. The exact value of the PL drop ($\sim 2\%$ in the crase presented here) depends on the optical polarization rate $\Gamma_{\rm las}$ as well as the modification of the spin lifetime. 
 
-It is argued in \citep{finco2021imaging} that both methods result in similar signal to noise ratio: in the PL case, the laser intensity needs to be adjusted so that $\Gamma_{\rm las} \sim \Gamma_1$ in order to maximize the PL contrast, while the single$-\tau$ method requires a waiting time $\tau \sim T_1$ between each measurement, which result in a similar PL count and shot noise limit in both case.
+It is argued in \citep{finco2021imaging} that both methods result in similar signal to noise ratio: in the PL case, the laser intensity needs to be adjusted so that $\Gamma_{\rm las} \sim \Gamma_1$ in order to maximize the PL contrast, while the single$-\tau$ method requires a waiting time $\tau \sim T_1$ between each measurement, which results in a similar PL count and shot noise limit in both case.
 
-On a technical level, the PL-based method is easier to implement since it does not require the use of a pulsed laser, and uses an overall smaller laser power, however it is more sensitive to drifts and changes in the optical setup. Most of the relaxometry measurement in this manuscript were performed using a PL-based detection.
+On a technical level, the PL-based method is easier to implement since it does not require the use of a pulsed laser, and because it requires a smaller laser power to work optimally. It is however more sensitive to drifts and changes in the optical setup. Most of the relaxometry measurement in this manuscript were performed using a PL-based detection.
 
 \subsection{Comparison with DEER protocol}
 
@@ -137,14 +137,14 @@ Relaxometry protocols do require however specific magnetic field values in order
 
 As relaxometry does not rely on a microwave field, the only external parameter left to tune is the magnetic field. Typically, the magnetic field is scanned in a fixed direction while the signal, either PL or T1, is recorded. Due to the strong NV anisotropy however, the direction along which $\mathbf{B}$ is scanned plays a crucial role in the ability to detect NV-dark spins CR.
 
-This section focuses on particular field orientation with respect to the diamond crystalline axes, and details the advantages and disadvantages of the two main choices that are the [100] and [111] direction in order to detect four particular dark spins: P1 centers, Vh$^-$, War1 and the $^{13}C-NV$ complex\footnote{The $^{13}C-NV$ complex is normally not dark, as discussed in its own section.}.
+This section focuses on particular field orientation with respect to the diamond crystalline axes, and details the advantages and disadvantages of the two main choices that are the [100] and [111] direction in order to detect four particular dark spins: P1 centers, Vh$^-$, War1 and the $^{13}$C$-$NV complex\footnote{The $^{13}$C$-$NV complex is normally not dark, as will be discussed in its own section.}.
 
 \subsection{The [100] and [111] magnetic field orientations}
 \label{sec simu}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Figures/121_vs_22_NV}
+\includegraphics[width=1\textwidth]{Figures/121_vs_22_NV}
 \caption{Simulated transition frequencies of the $\ket{0} \to {-1}$ and $\ket{0} \to {+1}$ transitions for the 4 classes of NV centers as a function of the magnetic field. a) When the magnetic field is along the diamond [100] crystalline axis, b) along the [111] axis. A representation of the 4 classes of NV centers, labeled 1 to 4, and the orientation of the magnetic field in both cases is put on top}
 \label{121 vs 22 NV}
 \end{figure}
@@ -162,7 +162,7 @@ We will now compare these two possible field orientation in order to observe cro
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{Figures/121_vs_22_P1}
+\includegraphics[width=1\textwidth]{Figures/121_vs_22_P1}
 \caption{Simulation of the transition frequencies of NV$^-$ centers and P1 centers (without the hyperfine interactions) for a magnetic field a) along the [100] axis and b) along the [111] axis}
 \label{121 vs 22 P1}
 \end{figure}

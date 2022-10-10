@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  3 OCT 2022 13:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  7 OCT 2022 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -966,7 +966,7 @@ Package pdftex.def Info: Figures/EPR_spectometer.jpg  used on input line 71.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3] [4 <./Figures/EPR_spectometer.jpg>]
+[3]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 92.
@@ -979,12 +979,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 92.
 
-<Figures/relaxo_pulsed_continuous_2.pdf, id=267, 742.88663pt x 627.36592pt>
+<Figures/relaxo_pulsed_continuous_2.pdf, id=248, 742.88663pt x 627.36592pt>
 File: Figures/relaxo_pulsed_continuous_2.pdf Graphic file (type pdf)
 <use Figures/relaxo_pulsed_continuous_2.pdf>
 Package pdftex.def Info: Figures/relaxo_pulsed_continuous_2.pdf  used on input 
 line 95.
 (pdftex.def)             Requested size: 323.9978pt x 273.61037pt.
+[4 <./Figures/EPR_spectometer.jpg>]
 
 LaTeX Warning: Reference `sec T1 NV' on page 5 undefined on input line 100.
 
@@ -1008,7 +1009,7 @@ d-van-tages. While
 File: Figures/121_vs_22_NV.pdf Graphic file (type pdf)
 <use Figures/121_vs_22_NV.pdf>
 Package pdftex.def Info: Figures/121_vs_22_NV.pdf  used on input line 147.
-(pdftex.def)             Requested size: 323.9978pt x 183.0981pt.
+(pdftex.def)             Requested size: 360.0pt x 203.44147pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1029,7 +1030,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 File: Figures/121_vs_22_P1.pdf Graphic file (type pdf)
 <use Figures/121_vs_22_P1.pdf>
 Package pdftex.def Info: Figures/121_vs_22_P1.pdf  used on input line 165.
-(pdftex.def)             Requested size: 323.9978pt x 115.02806pt.
+(pdftex.def)             Requested size: 360.0pt x 127.81pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1396,7 +1397,7 @@ nts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
 frm1095.pfb>
-Output written on "Chapter 2.pdf" (26 pages, 1268481 bytes).
+Output written on "Chapter 2.pdf" (26 pages, 1267168 bytes).
 PDF statistics:
  959 PDF objects out of 1000 (max. 8388607)
  778 compressed objects within 8 object streams

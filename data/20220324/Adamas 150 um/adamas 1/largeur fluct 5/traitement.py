@@ -3,10 +3,12 @@ sys.path.append('D:\\These Clément\\these\\python_clément')
 sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
-plt.figure(num=1,figsize=(6,4),dpi=80)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 plt.locator_params(axis='x', nbins=5)
+plt.locator_params(axis='y', nbins=5)
+
 
 def plot_conversion_V_to_f():
 	fnames,fval=extract_glob('ESR')
@@ -55,18 +57,18 @@ def plot_conversion_V_to_f():
 # plt.plot(x,E2)
 
 
-fnames,fval=extract_glob('T1')
-print(fnames)
-n=len(fnames)
-taus=np.zeros(n)
-for i in range(n):
-	fname=fnames[i]
-	x,y=extract_data(fname,ycol=5)
-	T1ph=0.005
-	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
-	taus[i]=1/popt[1]
-plt.plot(taus)
-plt.show()
+# fnames,fval=extract_glob('T1')
+# print(fnames)
+# n=len(fnames)
+# taus=np.zeros(n)
+# for i in range(n):
+# 	fname=fnames[i]
+# 	x,y=extract_data(fname,ycol=5)
+# 	T1ph=0.005
+# 	popt,yfit=stretch_et_phonons(x,y,T1ph=T1ph)
+# 	taus[i]=1/popt[1]
+# plt.plot(taus)
+# plt.show()
 
 # ax1=plt.gca()
 # ax1.plot((E2-E1),1/taus)
@@ -124,3 +126,5 @@ def plot_transitions_et_odmr():
 
 	plt.legend()
 	plt.show()
+
+plot_transitions_et_odmr()
