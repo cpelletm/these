@@ -30,7 +30,7 @@ plt.locator_params(axis='y', nbins=5)
 # print(popt)
 # plt.show()
 
-fname='ESR 0B zoom +10 dBm avec un T et 50 ohms'
+fname='Vrai ESR 1x1x1x1'
 x,y=extract_data(fname)
 plt.plot(x,y)
 
