@@ -125,7 +125,7 @@ In conclusion, whenever the spin Hamiltonian is dominated by a transverse field,
 \label{ESR for T2*}
 \end{figure}
 
-A consequence of the change in the Hamiltonian eigenstates from the $\{ \ket{0}, \ket{\pm 1} \}$ to the $\{ \ket{0}, \ket{\pm} \}$ basis is that the Hamiltonian eigenvalues are sensitive to different part of the environment. The energy of the $\ket{\pm 1}$ states depend linearly on the longitudinal magnetic field, and to the second  order on the transverse electric and magnetic fields. On the contrary, the $\ket{\pm}$ states depend linearly on the transverse electric field, and to the second order on the longitudinal and transverse magnetic field \footnote{The transverse magnetic field is always of second order for weak magnetic field because $D\gg \gamma B_\perp}$.}. 
+A consequence of the change in the Hamiltonian eigenstates from the $\{ \ket{0}, \ket{\pm 1} \}$ to the $\{ \ket{0}, \ket{\pm} \}$ basis is that the Hamiltonian eigenvalues are sensitive to different part of the environment. The energy of the $\ket{\pm 1}$ states depend linearly on the longitudinal magnetic field, and to the second  order on the transverse electric and magnetic fields. On the contrary, the $\ket{\pm}$ states depend linearly on the transverse electric field, and to the second order on the longitudinal and transverse magnetic field \footnote{The transverse magnetic field is always of second order for weak magnetic field because $D\gg \gamma B_\perp$.}. 
 
 The shape of the ODMR lines (i.e. the spectral response of the spins) is therefore dominated by the magnetic noise and the hyper-fine coupling in the $\{ \ket{0}, \ket{\pm 1} \}$ basis, and by the electric noise in the $\{ \ket{0}, \ket{\pm} \}$ basis. Further details on the low magnetic field physics of the NV center are available in \citep{jamonneau2016competition} and on the purely transverse magnetic field regime in \citep{qiu2021nuclear, qiu2022nanoscale}.
 
@@ -133,8 +133,6 @@ Fig. \ref{ESR for T2*} shows ODMR profile on two samples, CVD-pink which shows w
 
 We are particularly interested in the spin transition linewidth since it directly impacts the dipole-dipole relaxation rate (as seen in sec. [REF]): the smaller the linewidth, the higher the dipole-dipole relaxation rate is.
 
-
-Réécrire tout ca en plus concis.
 %We will now look at the modification in the ODMR linewidths caused by the different magnetic field regimes. These change are relevant to our study of NV-NV CR due to the relation between the dipole-induced relaxation rate and $T_2^*$ detailed in sec. [REF].
 %
 %A consequence of the change in the Hamiltonian eigenstates from the $\{ \ket{0}, \ket{\pm 1} \}$ to the $\{ \ket{0}, \ket{\pm} \}$ basis is that the Hamiltonian eigenvalues are sensitive to different part of the environment. In the $\{ \ket{0}, \ket{\pm 1} \}$, the eigen energies are linearly sensitive to (longitudinal) magnetic field, and only sensitive to electric fields at the second order, and vice versa for the $\{ \ket{0}, \ket{\pm} \}$ basis.
@@ -178,9 +176,13 @@ Réécrire tout ca en plus concis.
 %
 %The table in Fig. \ref{ESR for T2*}-d) reports the linewidths measured on both sample for the various magnetic field configurations. We can see that the linewidth of sample CVD-pink varies by more than a factor of 2, while the ones from sample Sumi-2 varied by less than 20 \%. We should note that  almost all samples used in this chapter are HPHT type 1b diamond, similar to sample Sumi-2 and unlike sample CVD-pink. We should therefore expect the modification of $T_2^*$ to have a moderate impact on the depolarization dynamics.
 %
-\medskip
+\bigskip
 
-To summarize this section, we have seen that (for the samples used in this chapter) the NV centers spin Hamiltonian is dominated by transverse electric field for low external magnetic field, and that it causes a change of the Hamiltonian eigenstates from $\{ \ket{0}, \ket{\pm 1} \}$ to $\{ \ket{0}, \ket{\pm} \}$. We have seen that the Hamiltonian has the same eigenstates for a purely transverse magnetic field, and finally we have seen that this change of eigenstates occasion a modification of the spins $T_2^*$, although this modification is slight for samples with a high impurity density.
+To summarize this section, we have seen that (for the samples used in this chapter) the NV center spin Hamiltonian is dominated by transverse electric field at low external magnetic field, which causes a change of the Hamiltonian eigenstates from $\{ \ket{0}, \ket{\pm 1} \}$ to $\{ \ket{0}, \ket{\pm} \}$. 
+
+We have also seen that the spin Hamiltonian has the same eigenstates for purely transverse magnetic field than it does for low magnetic field. 
+
+Finally we have seen that this change of eigenstates occasions a modification of the spectral profile and linewidth of the spins.
 
 \section{NV-NV CR in the low magnetic field regime}
 In this part, we will study the cross-relaxation between NV centers under low magnetic field, whose spin Hamiltonian is dominated by a transverse electric field. Understanding the various mechanisms operating in this regime will be important for the magnetometry protocol presented after.
@@ -261,6 +263,9 @@ The double flip, or flip-flip, processes that we consider here are the one that 
 
 In the low magnetic field regime however, we have to consider the new eigenstates $\ket{+}$ and $\ket{-}$ and the two-qubits states $\ket{0, \pm}$ and $\ket{\mp, 0}$. These terms are still not fully resonant because of the splitting between the $\ket{+}$ and $\ket{-}$ states caused by the local electric field, but they are close enough in energy that the double flip processes are not entirely turned off.
 
+The computation of the depolarization rate including the double flips is detailed in appendix [REF]. To obtain a numerical value, we need to input the experimental values of the dipole-dipole interaction range \footnote{By interaction range we mean the constant to be compared to the spectral detuning $\Delta \nu$ between the two groups. This is $2\gamma_f+\Gamma_{NV}+\Gamma_f$ in eq. [REF]} which we measured to be $\Gamma=8.8\ \rm MHz$ in Fig. [REF], as well as the average splitting $\Delta \nu$ between the $\ket{+}$ and $\ket{-}$ state. We typically measure $\Delta \nu \approx 8\ \rm MHz$ on type 1b HPHT samples.
+
+For the value presented in Fig. \ref{simus ESR}, we inputted $\Gamma=\Delta \nu$.
 %\begin{table}[htbp]
 %\centering
 %\caption{Simulated depolarization rate for flip-flops and double flips in zero magnetic field}
@@ -287,14 +292,11 @@ In the low magnetic field regime however, we have to consider the new eigenstate
 
 \subsubsection{$T_2^*$ modification}
 
-The last aspect we considered was the change in $T_2^*$ (we include the change in the hyper-fine interaction in the $T_2^*$) for weak magnetic field, as discussed in sec. \ref{sec modif T2*}.
+The last aspect we considered was the change in the ODMR lineshape discussed in sec. \ref{sec modif T2*} for weak magnetic field (we refer to this as $T_2^*$ for conciseness).
 
-To quantify its impact in the depolarization rate, we employ eq. [REF], where we use the values $2\gamma_f = 6.5\ \rm MHz$ estimated in the last chapter and we take for $\Gamma_f=\Gamma_{\rm NV}$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. 
+To quantify its impact in the depolarization rate, we employ eq. [REF], where we use the values $2\gamma_f = 6.5\ \rm MHz$ estimated in the last chapter and we take for $\Gamma_f=\Gamma_{\rm NV}$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 9 \%$ for sample Sumi-2, and by $\sim 24 \%$ for sample CVD-pink. 
 
-We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 9 \%$ for sample Sumi-2, and by $\sim 24 \%$ for sample CVD-pink. 
-
-
-
+The value shown in Fig. \ref{summary_theory} corresponds to a $9 \%$ increase, as most of the samples studied in this manuscript are type 1b HPHT diamonds (therefore more similar to sample Sumi-2 than to sample CVD-pink).
 
 \subsection{Other potential causes for zero field depolarization}
 We have also considered two other potential causes that we have ultimately ruled out in this case.

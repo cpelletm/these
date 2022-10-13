@@ -104,7 +104,7 @@ def fit_T1_1classe():
 	plt.plot(x,yfit,lw=2)
 	print(popt,1/popt[1]*1e3)
 
-fit_T1_1classe()
+# fit_T1_1classe()
 
 def plot_ESR_0B():
 	# x,y=extract_data('ESR 0B -20 et -30 dB',ycol=1)
@@ -114,7 +114,7 @@ def plot_ESR_0B():
 	y=y/max(y)
 	plt.plot(x,y,color=color(3))
 
-# plot_ESR_0B()
+plot_ESR_0B()
 
 def plot_ESR_1x4():
 	x,y=extract_data('ESR/V=5.000000 V')

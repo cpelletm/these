@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  12 OCT 2022 20:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  13 OCT 2022 21:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1051,6 +1051,64 @@ Package pdftex.def Info: Slide_fluct_intro.pdf  used on input line 74.
  <./Slide_fluct_intro.pdf>] [10
 
 ]
+<slide_T1_protocol.pdf, id=633, 830.50713pt x 629.28766pt>
+File: slide_T1_protocol.pdf Graphic file (type pdf)
+<use slide_T1_protocol.pdf>
+Package pdftex.def Info: slide_T1_protocol.pdf  used on input line 88.
+(pdftex.def)             Requested size: 266.23659pt x 201.73145pt.
+ [11
+
+ <./slide_T1_protocol.pdf>]
+<Slide_T1_exp_stretch.pdf, id=689, 915.44438pt x 497.52724pt>
+File: Slide_T1_exp_stretch.pdf Graphic file (type pdf)
+<use Slide_T1_exp_stretch.pdf>
+Package pdftex.def Info: Slide_T1_exp_stretch.pdf  used on input line 93.
+(pdftex.def)             Requested size: 307.2799pt x 167.00099pt.
+ [12
+
+ <./Slide_T1_exp_stretch.pdf>]
+<Slide_T1_exp_et_stretch.pdf, id=807, 755.22287pt x 563.51054pt>
+File: Slide_T1_exp_et_stretch.pdf Graphic file (type pdf)
+<use Slide_T1_exp_et_stretch.pdf>
+Package pdftex.def Info: Slide_T1_exp_et_stretch.pdf  used on input line 98.
+(pdftex.def)             Requested size: 270.35889pt x 201.72864pt.
+
+[13
+
+ <./Slide_T1_exp_et_stretch.pdf>]
+<Slide_fluct_linewidth.pdf, id=897, 756.98544pt x 438.16663pt>
+File: Slide_fluct_linewidth.pdf Graphic file (type pdf)
+<use Slide_fluct_linewidth.pdf>
+Package pdftex.def Info: Slide_fluct_linewidth.pdf  used on input line 103.
+(pdftex.def)             Requested size: 307.29356pt x 177.87103pt.
+ [14
+
+ <./slide_fluct_linewidth.pdf>]
+<Slide_geométries.pdf, id=964, 971.955pt x 652.33102pt>
+File: Slide_geométries.pdf Graphic file (type pdf)
+<use Slide_geométries.pdf>
+Package pdftex.def Info: Slide_geométries.pdf  used on input line 108.
+(pdftex.def)             Requested size: 300.5614pt x 201.72284pt.
+
+[15
+
+ <./Slide_geométries.pdf>]
+<Slide_carte.pdf, id=1017, 645.11969pt x 340.37405pt>
+File: Slide_carte.pdf Graphic file (type pdf)
+<use Slide_carte.pdf>
+Package pdftex.def Info: Slide_carte.pdf  used on input line 113.
+(pdftex.def)             Requested size: 307.30127pt x 162.1364pt.
+ [16
+
+ <./Slide_carte.pdf>]
+<Slide_limit_fluct.pdf, id=1054, 942.03745pt x 611.05898pt>
+File: Slide_limit_fluct.pdf Graphic file (type pdf)
+<use Slide_limit_fluct.pdf>
+Package pdftex.def Info: Slide_limit_fluct.pdf  used on input line 118.
+(pdftex.def)             Requested size: 307.27974pt x 199.31908pt.
+ [17
+
+ <./Slide_limit_fluct.pdf>]
 \tf@nav=\write8
 \openout8 = `presentation.nav'.
 
@@ -1060,19 +1118,19 @@ Package pdftex.def Info: Slide_fluct_intro.pdf  used on input line 74.
 \tf@snm=\write10
 \openout10 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 133.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 133.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 97.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 133.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 133.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 56EABB06F29EA6B1807950EE25775018;155.
  ) 
 Here is how much of TeX's memory you used:
- 22453 strings out of 481239
- 441037 string characters out of 5920377
+ 22523 strings out of 481239
+ 442507 string characters out of 5920377
  689241 words of memory out of 5000000
- 37189 multiletter control sequences out of 15000+600000
+ 37245 multiletter control sequences out of 15000+600000
  543192 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,80p,806b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1082,12 +1140,13 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentation.pdf (10 pages, 994194 bytes).
+ts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb>
+Output written on presentation.pdf (17 pages, 2000046 bytes).
 PDF statistics:
- 665 PDF objects out of 1000 (max. 8388607)
- 558 compressed objects within 6 object streams
- 23 named destinations out of 1000 (max. 500000)
- 99 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1161 PDF objects out of 1200 (max. 8388607)
+ 951 compressed objects within 10 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 134 words of extra memory for PDF output out of 10000 (max. 10000000)
 
