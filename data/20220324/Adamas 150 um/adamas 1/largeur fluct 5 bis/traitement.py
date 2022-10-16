@@ -55,7 +55,7 @@ def plot_ESR_et_prediction():
 	E2=popt[0]*x+popt[1]
 	plt.plot(x,E2)
 
-plot_ESR_et_prediction()
+# plot_ESR_et_prediction()
 
 def plot_single_T1(i=54):
 	fnames,fval=extract_glob('T1')

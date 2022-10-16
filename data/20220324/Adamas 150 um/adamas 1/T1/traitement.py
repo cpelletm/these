@@ -3,9 +3,15 @@ sys.path.append('D:\\These Clément\\these\\python_clément')
 sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
-plt.figure(num=1,figsize=(6,3),dpi=80)
-plt.xticks(fontsize=12)
-plt.yticks(fontsize=12)
+# plt.figure(num=1,figsize=(6,3),dpi=80)
+# plt.xticks(fontsize=12)
+# plt.yticks(fontsize=12)
+
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+plt.locator_params(axis='x', nbins=5)
+plt.locator_params(axis='y', nbins=5)
 
 #les x et y sont inversés pour cette série
 fnames=glob.glob('*.csv')
@@ -91,7 +97,7 @@ def test_aller():
 x=Bs
 y=1/taus
 plt.plot(x,y,'o',markerfacecolor='none',ms=5,mew=0.7,label=r'B $\perp$ [111]')
-plt.plot(x,[183]*nmax,'--',lw=2,color=color(3),label=r'Plateau B $\perp$ [111]')
+# plt.plot(x,[183]*nmax,'--',lw=2,color=color(3),label=r'Plateau B $\perp$ [111]')
 
 
 # popt,yfit=lor_fit_fixed(x,y,x0=0,sigma=8)
@@ -107,10 +113,10 @@ plt.plot(x,[gammaref]*nmax,'--',lw=2,color=color(2),label=r'B $\parallel$ [111]'
 bsup=[gammaref+10]*nmax
 binf=[gammaref-10]*nmax
 ax.fill_between(x,binf,bsup,alpha=0.3,color='red')
-plt.plot(x,bsup,'-',lw=1,color='black')
-plt.plot(x,binf,'-',lw=1,color='black')
+# plt.plot(x,bsup,'-',lw=1,color='black')
+# plt.plot(x,binf,'-',lw=1,color='black')
 
-# plt.plot(x,[gammaref]*nmax,'-',lw=2,color=color(3))
+
 ylims=ax.get_ylim()
 ax.set_ylim([100,ylims[1]])
 plt.legend()

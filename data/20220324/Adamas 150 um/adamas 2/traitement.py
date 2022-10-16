@@ -20,8 +20,8 @@ def plot_ESR_1x1x1x1():
 	n=len(x)#//2
 	x=x[:n]
 	y=y[:n]
-	y=y/max(y)
-	plt.plot(x,y)
+	# y=y/max(y)
+	plt.plot(x,y,'--')
 
 # plot_ESR_1x1x1x1()
 
@@ -58,7 +58,8 @@ def plot_spread_1x1x1x1():
 
 def plot_ESR_100():
 	x,y=extract_data('T1 100 align 3/ESR/V=-2.000000')
-	y=y/max(y)
+	y=y/2
+	# y=y/max(y)
 	plt.plot(x,y)
 
 # plot_ESR_100()
@@ -211,8 +212,7 @@ def alphas_T1():
 	# plt.plot(taus)
 
 
-alphas_T1()
-
+# alphas_T1()
 
 
 def plot_PL_1x1x1x1():
@@ -261,13 +261,16 @@ def plot_T1_1x1x1() :
 
 
 
-	plt.plot(x,y)
-	# popt,yfit=lor_fit(x,y,x0=0.00001,amp=1600,ss=50,sigma=6) #Ok je fais full merde
-	# print(popt)
-	# plt.plot(x,yfit)
+	plt.plot(x,y,label=r'$\Gamma_1 (B)$')
+	gammaref=220
+	ax=plt.gca()
+	bsup=[gammaref+20]*(nmax-nmin)
+	binf=[gammaref-20]*(nmax-nmin)
+	ax.fill_between(x,binf,bsup,alpha=0.3,color='red',label=r'$\Gamma_1 (\rm{1\ class})$')
+	plt.legend()
 
 
-# plot_T1_1x1x1()
+plot_T1_1x1x1()
 
 def plot_T1_100() :
 	fnames,fval=extract_glob('T1 100 align 3/T1')
@@ -291,13 +294,17 @@ def plot_T1_100() :
 
 	x=-Bs[:nmax]
 	y=1/taus[:nmax]
+	n=len(x)
 	# y=y-y[-1]
 	# y=y/max(y)
-	plt.plot(x,y)
 
-	# popt,yfit=lor_fit(x,y,x0=0.00001)
-	# print(popt)
-	# plt.plot(x,yfit)
+	plt.plot(x,y,label=r'$\Gamma_1 (B)$')
+	gammaref=220
+	ax=plt.gca()
+	bsup=[gammaref+20]*n
+	binf=[gammaref-20]*n
+	ax.fill_between(x,binf,bsup,alpha=0.3,color='red',label=r'$\Gamma_1 (\rm{1\ class})$')
+	plt.legend()
 
 # plot_T1_100()
 

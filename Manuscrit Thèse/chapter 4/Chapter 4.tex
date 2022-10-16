@@ -22,34 +22,35 @@
 \DeclareUnicodeCharacter{0308}{HERE!HERE!} % je vais pas m'énerver, mais un peu quand meme
 \title{}
 \begin{document}
-\chapter{NV-NV CR under transverse or low fields: application to magnetometry}
+\chapter{NV-NV cross-relaxation at low fields: application to magnetometry}
 
-In the last chapter we saw how dense ensemble of NV centers have an intrinsic depolarization mechanism mediated by the NV-NV dipole interaction. In this chapter we will see how this feature can be exploited to perform magnetometry. 
+In the last chapter we have identified a dipole-dipole relaxation mechanism within dense NV centers ensemble, and we have studied its influence in non-zero magnetic field. In this chapter we will cover the low to zero magnetic field region and see how the depolarization at low magnetic field can be used for magnetometry.
 
-Using NV-NV CR for magnetometry in non-zero magnetic field has already been proposed \citep{akhmedzhanov2017microwave, akhmedzhanov2019magnetometry}. We will focus here on the low to zero magnetic field region, which presents practical advantages as the relative orientation of the diamond with the magnetic field does not need to be controlled, but theoretical complications due to the more complex physics of the NV centers under low magnetic field.
+This chapter is constructed as follows: We will first describe in sec. \ref{sec 4.1} the physics of NV centers under low or transverse magnetic field. In sec. \ref{sec causes zero field}
+we will present the different zero field depolarization causes that we have identified as well as their theoretical impact on the NV relaxation rates according to the fluctuator model. In sec. \ref{sec 4.3} we will confront the predictions of the fluctuator model with experiments under low and transverse magnetic field. 
 
-This chapter is constructed as follows: We will first describe the physics of NV centers under low or transverse magnetic field (the physics is similar in both cases), we will then show both theoretically and experimentally that the NV-NV CR is modified for low and transverse magnetic field. We will identify different mechanisms by which the relaxation is modified and we will try to quantify their relative importance.
-
-We will then focus on the low field depolarization magnetometry (LFDM) protocol which exploits the previously studied NV-NV CR at low magnetic field. We will start by giving a short overview of NV ensemble magnetometry before characterizing the LFDM protocol and comparing it to other magnetometry protocols. Finally we will give some perspectives on how to improve LFDM and on potential applications.
+We will then focus on the low field depolarization magnetometry (LFDM) protocol which exploits the previously studied NV-NV CR at low magnetic field. We will start by giving a short overview of NV ensemble magnetometry in sec. \ref{sec 4.4} before characterizing the LFDM protocol in sec. \ref{sec LFDM} and comparing it to other magnetometry protocols in sec. \ref{sec 4.6}. Finally we will give some perspectives on how to improve LFDM and on potential applications.
 
 The results presented in this chapter are based in large part on the article \citep{pellet2022spin}.
 
 \section{NV spin Hamiltonian under low and transverse fields}
+\label{sec 4.1}
+We will start this chapter by studying the single NV physics under low and transverse magnetic field. On of the main difference with the previously studied regime is that the eigenstates of the Hamiltonian are no longer $\{ \ket{0}, \ket{+1}, \ket{-1} \}$, which will then in turn modify the dipole-dipole interaction between the NV centers.
 
-Before looking at the NV-NV CR in the low or transverse field regime, we first need to consider how the general NV physics is modified under those regimes, and in particular we need to look at the modifications of the spin Hamiltonian and the change in the eigenstates compared to the high magnetic field regime.
+We will first describe the spin Hamiltonian of the NV center under low magnetic field and determine the dominant factors in our samples, then do the same for transverse magnetic field, and finally investigate the modification of the ODMR lineshapes in those regimes.
 
 \subsection{NV spin Hamiltonian in zero external magnetic field}
 \label{sec. Hamltonian 0 B}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/ESR_simus}
-\caption{Simulations of inhomogeneous zero field ODMR when sampling various parameters. a) Simulation when sampling each components of the magnetic field over a Gaussian of deviation $\sigma=2\ \rm G$. b) Simulation when sampling each components of the strain tensor $\bar{\bar{\varepsilon}}$ over a Gaussian of deviation $\sigma=2\cdot 10^{-4}$. c) Simulation when sampling each components of the electric field over a Gaussian of deviation $\sigma=2\cdot 10^{5}\ \rm{V/cm}$. d) Experimental ODMR spectrum in zero external field taken on sample ADM-150-2}
+\caption{Monte-Carlo simulations of inhomogeneous zero field ODMR for different noise sources. a) Magnetic noise: each of the $\mathbf{B}$ components is sampled over a Gaussian of deviation $\sigma=2\ \rm G$. b) Strain noise: each of the components of the strain tensor $\bar{\bar{\varepsilon}}$ is sampled over a Gaussian of deviation $\sigma=2\cdot 10^{-4}$. c) Electric noise: each of the $\mathbf{E}$ components is sampled over a Gaussian of deviation $\sigma=2\cdot 10^{5}\ \rm{V/cm}$. d) Experimental ODMR spectrum in zero external field taken on sample ADM-150-2}
 \label{simus ESR}
 \end{figure}
 
-In the absence of external magnetic field, we have to take into account other elements which would otherwise be of second order in the spin Hamiltonian. These elements are: the random local magnetic fields caused by paramagnetic impurities, the local electric field caused by charged impurities, and the crystal strain \citep{doherty2012theory, udvarhelyi2018spin, mittiga2018imaging}. The hyperfine splitting due to nearby nuclei will be considered separately, although to a large extent it behaves like a local magnetic field.
+In the absence of a strong external magnetic field, the dominant terms of the NV spin Hamiltonian originate from local noises. These noises are: the random local magnetic fields caused by paramagnetic impurities, the local electric field caused by charged impurities, and the crystal strain \citep{doherty2012theory, udvarhelyi2018spin, mittiga2018imaging}. 
 
-Due to the large zero field splitting $D=2870\ \rm MHz$ between the $\ket{0}$ and $\ket{\pm 1}$ states, we will consider the $\ket{0}$ state to always be an eigenstate of the spin Hamiltonian under zero external field (which is equivalent to say that we neglect the terms in $\ket{0}\bra{\pm 1}$ in the spin Hamiltonian). The problem is then reduced to the $\{ \ket{-1}, \ket{+1} \}$ subsystem.
+Due to the large zero field splitting $D=2870\ \rm MHz$ between the $\ket{0}$ and $\ket{\pm 1}$ states, we will consider the $\ket{0}$ state to always be an eigenstate of the spin Hamiltonian under zero external field. The problem is then reduced to the $\{ \ket{-1}, \ket{+1} \}$ subsystem.
 
 The NV$^-$spin Hamiltonian in the $\{ \ket{-1}, \ket{+1} \}$ basis can be written as \citep{udvarhelyi2018spin}:
 \begin{equation}
@@ -69,19 +70,19 @@ g_\perp(\bar{\bar{\varepsilon}}) &= \frac{1}{2} \left[ h_{16}(\varepsilon_{zx}+i
 \end{align}
 where $d_\parallel=0.35 \ \rm{Hz\, cm/V}$ and $d_\perp=17\ \rm{Hz\, cm/V}$ have been measured experimentally \citep{van1990electric}, and $h_{43}=2300\ \rm{MHz}$, $h_{41}=-6420\ \rm{MHz}$, $h_{15}=5700\ \rm{MHz}$ and $h_{16}=19660\ \rm{MHz}$ were computed through DFT \citep{udvarhelyi2018spin} and show reasonable agreement with experiments \citep{barson2017nanomechanical}.
 
-Importantly, as pointed in \citep{mittiga2018imaging} we notice that both the electric field and the strain have a \textit{shifting} component ($f_\parallel$ and $g_\parallel$) which shifts equally both eigenstates of the Hamiltonian, and a \textit{splitting} component ($f_\perp$ and $g_\perp$) which splits in energy the two eigenstates. 
+%Importantly, as pointed in \citep{mittiga2018imaging} we notice that both the electric field and the strain have a \textit{shifting} component ($f_\parallel$ and $g_\parallel$) which shifts equally both eigenstates of the Hamiltonian, and a \textit{splitting} component ($f_\perp$ and $g_\perp$) which splits in energy the two eigenstates. 
+%
+%The main difference between the electric field and the strain is in the numerical prefactors of these components: for the electric field, the splitting parameter $d_\perp$ is $\sim 50$ times higher than the shifting parameter $d_\parallel$, which will result on average to a strong energy split without much shifting. For the strain however, the splitting parameters $h_{15}$ and $h_{16}$ are only $\sim 3$ times higher than the shifting parameters $h_{43}$ and $h_{41}$. The shift in energy will therefore tend to blur the energy split when averaging over a large number of spins.
 
-The main difference between the electric field and the strain is in the numerical prefactors of these components: for the electric field, the splitting parameter $d_\perp$ is $\sim 50$ times higher than the shifting parameter $d_\parallel$, which will result on average to a strong energy split without much shifting. For the strain however, the splitting parameters $h_{15}$ and $h_{16}$ are only $\sim 3$ times higher than the shifting parameters $h_{43}$ and $h_{41}$. The shift in energy will therefore tend to blur the energy split when averaging over a large number of spins.
+Fig. \ref{simus ESR}-a) b) and c) shows the result of Monte-Carlo simulations of the ODMR of an ensemble of NV centers for different noise sources. The simulation work as follow: one of the three possible noise source (magnetic field, electric field or strain) is sampled randomly while the two other are kept at zero. The eigenvalues of the spin Hamiltonian given in eq. \ref{Hamiltonien pm1} are then computed and the process is repeated $10^6$ times to create the histograms shown in Fig. \ref{simus ESR}.
 
-Fig. \ref{simus ESR} shows a simulation of how each parameters of the spin Hamiltonian - local magnetic field, local electric field and strain - affects the zero external field ODMR profile. To do these simulations, I sampled each parameters separately $10^6$ times and plotted the histogram of the two eigenvalues of the Hamiltonian written in eq. \ref{Hamiltonien pm1}. Fig. \ref{simus ESR}-d) shows an experimental zero field ODMR spectrum, typical of what we observe with dense NV ensembles. 
+Fig. \ref{simus ESR}-d) shows an experimental zero-field ODMR which is typical of the samples used in this manuscript. In particular we can notice a central splitting of the spectrum. This splitting is only present in the simulation when the dominant noise is the electric field. We then conclude that the dominant noise source in our sample (in the absence of external magnetic field) is the local electric field.
 
-Experimentally, almost all our samples show the characteristic two bumps in zero external field ODMR. Given the simulation results, the only parameter that can give rise to this shape is the local electric field. 
+The authors of \citep{mittiga2018imaging} came to the same conclusion for the samples with dense NV ensemble that they studied by using a more sophisticated simulation model.
 
-We should note that another potential explanation for the splitting of the $\ket{\pm 1}$ states could be the presence of a residual magnetic field, not randomly distributed among all the spins but homogeneous on the whole sample. In particular, we do not shield for the earth magnetic field in our experiment. The splitting caused by the earth magnetic field however has a value $\gamma B_{\rm earth} \approx 1\ \rm MHz$, which is $\sim 4$ times weaker than the splitting we typically observe. 
+%We should note that another potential explanation for the splitting of the $\ket{\pm 1}$ states could be the presence of a residual magnetic field, not randomly distributed among all the spins but homogeneous on the whole sample. In particular, we do not shield for the earth magnetic field in our experiment. The splitting caused by the earth magnetic field however has a value $\gamma B_{\rm earth} \approx 1\ \rm MHz$, which is $\sim 4$ times weaker than the splitting we typically observe. 
 
-We will therefore consider that the low external magnetic field spin Hamiltonian of our samples is dominated by the local electric field, and more specifically by the transverse electric field $E_\perp\equiv E_x + i E_y$ given the ratio between $d_\perp$ and $d_\parallel$.
-
-We will then adopt the following simplified Hamiltonian for the zero external field regime:
+Given that $d_\perp \approx 50 d_\parallel$, we can consider that the dominant electric field noise comes from the transverse electric field. We will then adopt the following simplified Hamiltonian for the zero external magnetic field regime:
 \begin{equation}
 \mathcal{H}=\begin{pmatrix}
 D&0&d_\perp E_\perp^* \\
@@ -104,7 +105,7 @@ where $\tan(\phi_E)=E_y/E_x$.
 %\label{map champ transverse}
 %\end{figure}
 
-We now turn to the case of purely transverse magnetic field with respect to the NV axis, i.e. $\mathbf{B}=B_x \hat{e}_x + B_y \hat e_y$, and more specifically to the regime where $d_\perp E_\perp < \frac{(\gamma_e B_\perp)^2}{D} << D$. In practice, this generally corresponds to $20\ \rm G \lesssim B_\perp \lesssim 200\ \rm G$.
+We now turn to the case of a magnetic field that is orthogonal to the NV axis, i.e. $\mathbf{B}=B_x \hat{e}_x + B_y \hat e_y$, and more specifically to the regime where $d_\perp E_\perp < \frac{(\gamma_e B_\perp)^2}{D} << D$. In practice, this generally corresponds to $20\ \rm G \lesssim B_\perp \lesssim 200\ \rm G$.
 
 In this regime, the NV Hamiltonian eigenstates are similar to the case where it is dominated by the transverse electric field and can be written $\approx \ket{0}, \ket{-}, \ket{+}$\citep{qiu2021nuclear, qiu2022nanoscale}, of respective eigenvalues $\approx -\frac{(\gamma_e B_\perp)^2}{D},D,D+\frac{(\gamma_e B_\perp)^2}{D}$,  where:
 \begin{equation}
@@ -114,7 +115,7 @@ and $\tan(\phi_B)=B_y/B_x$.
 
 For the case where $d_\perp E_\perp \sim \frac{(\gamma_e B_\perp)^2}{D}$ and $\phi_E \neq 2\phi_B$, the eigenstates of the Hamiltonian are still of the form $\ket{0},\ket{\pm}$ with a relative angle $\phi$ in between $\phi_E$ and $2\phi_B$.
 
-In conclusion, whenever the spin Hamiltonian is dominated by a transverse field, either electric or magnetic, we can consider that the eigenstates of the spin Hamiltonian to be $\ket{0}, \ket{-}$ and $\ket{+}$, whereas when the Hamiltonian is dominated by the longitudinal magnetic field, its eigenstates are $\ket{0}, \ket{-1}$ and $\ket{+1}$.
+In conclusion, whenever the spin Hamiltonian is dominated by the local electric field or by the transverse magnetic field, we can consider that the eigenstates of the spin Hamiltonian to be $\ket{0}, \ket{-}$ and $\ket{+}$, whereas when the Hamiltonian is dominated by the longitudinal magnetic field, its eigenstates are $\ket{0}, \ket{-1}$ and $\ket{+1}$.
 
 \subsection{Hyperfine and inhomogeneous broadening}
 \label{sec modif T2*}
@@ -125,9 +126,9 @@ In conclusion, whenever the spin Hamiltonian is dominated by a transverse field,
 \label{ESR for T2*}
 \end{figure}
 
-A consequence of the change in the Hamiltonian eigenstates from the $\{ \ket{0}, \ket{\pm 1} \}$ to the $\{ \ket{0}, \ket{\pm} \}$ basis is that the Hamiltonian eigenvalues are sensitive to different part of the environment. The energy of the $\ket{\pm 1}$ states depend linearly on the longitudinal magnetic field, and to the second  order on the transverse electric and magnetic fields. On the contrary, the $\ket{\pm}$ states depend linearly on the transverse electric field, and to the second order on the longitudinal and transverse magnetic field \footnote{The transverse magnetic field is always of second order for weak magnetic field because $D\gg \gamma B_\perp$.}. 
+A consequence of the change in the Hamiltonian eigenstates from the $\{ \ket{0}, \ket{\pm 1} \}$ to the $\{ \ket{0}, \ket{\pm} \}$ basis is that the Hamiltonian eigenvalues are sensitive to different part of the environment. The energy of the $\ket{\pm 1}$ states depends linearly on the longitudinal magnetic field, and quadratically on the transverse electric and magnetic fields. On the contrary, the $\ket{\pm}$ states depend linearly on the transverse electric field, and quadratically on the longitudinal and transverse magnetic field \footnote{The transverse magnetic field is always of second order for weak magnetic field because $D\gg \gamma B_\perp$.}. 
 
-The shape of the ODMR lines (i.e. the spectral response of the spins) is therefore dominated by the magnetic noise and the hyper-fine coupling in the $\{ \ket{0}, \ket{\pm 1} \}$ basis, and by the electric noise in the $\{ \ket{0}, \ket{\pm} \}$ basis. Further details on the low magnetic field physics of the NV center are available in \citep{jamonneau2016competition} and on the purely transverse magnetic field regime in \citep{qiu2021nuclear, qiu2022nanoscale}.
+The shape of the ODMR lines (i.e. the spectral response of the spins) is therefore dominated by the magnetic noise and the hyper-fine coupling in the $\{ \ket{0}, \ket{\pm 1} \}$ basis, and by the electric noise in the $\{ \ket{0}, \ket{\pm} \}$ basis, as we established in the previous part. Further details on the low magnetic field regime are available in \citep{jamonneau2016competition} and on the purely transverse magnetic field regime in \citep{qiu2021nuclear, qiu2022nanoscale}.
 
 Fig. \ref{ESR for T2*} shows ODMR profile on two samples, CVD-pink which shows weak dipole-induced depolarization and Sumi-2 which shows strong dipole-induced depolarization, in three distinct regime: for a purely longitudinal magnetic field, for a purely transverse magnetic field, and without magnetic field. The linewidths of the spin transition \footnote{We consider here the full linewidth of the electronic levels, i.e. including all three hyper fine levels} for both samples are reported in the Table \ref{ESR for T2*}-d). In both cases, the linewidths are smaller in the $B=0$ and $B \perp NV$ cases than in the $B \parallel NV$ case, mainly due to the modification of the hyper-fine coupling. The linewidth modification reaches up to $\sim 50\ \%$ for the CVD sample and $\sim 20\ \%$ for the HPHT one.
 
@@ -184,65 +185,33 @@ We have also seen that the spin Hamiltonian has the same eigenstates for purely 
 
 Finally we have seen that this change of eigenstates occasions a modification of the spectral profile and linewidth of the spins.
 
-\section{NV-NV CR in the low magnetic field regime}
-In this part, we will study the cross-relaxation between NV centers under low magnetic field, whose spin Hamiltonian is dominated by a transverse electric field. Understanding the various mechanisms operating in this regime will be important for the magnetometry protocol presented after.
-
-\subsection{Experimental observations}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{Figures/scan_1x1x1x1}
-\caption{Low field depolarization on sample ADM-150-1 for $\mathbf{B}$ in an arbitrary direction. a) ODMR spectrum for B=0. b) ODMR spectrum for B=60 G. c) PL contrast as a function of the external magnetic field. d) $1/T_1^{\rm dd}$ as a function of the external magnetic field. A $T_1$ measurement was recorded for each magnetic field value and fitted accorded to the protocol described in [REF] with $T_1^{\rm ph}=5\ \rm ms$}
-\label{scan 1x1x1x1}
-\end{figure}
-We will start by showing that NV-NV CR behaves differently in the low magnetic field regime compared to the longitudinal field dominated regime which we studied in the last chapter.
-
-The main issue with studying NV-NV CR in low to zero magnetic field is that there are many competing effects happening simultaneously, with few buttons to adjust in order to isolate each effects.
-
-Fig. \ref{scan 1x1x1x1}-c) and d) show the evolution of the NV PL and stretched lifetime $T_1^{\rm dd}$, defined in the last chapter [REF], as the magnetic field is scanned from 0 to 60 G. The ODMR at the initial and final magnetic fields are shown in Fig. \ref{scan 1x1x1x1}-a) and b).
-
-While it is clear that the spin lifetime as well as the PL increases with the magnetic field, there is no clear indication that this is because of the specificity of the low field region. Indeed, the most likely explanation in this case is that the four classes of NV centers get split apart as the magnetic field increases, which reduces the density of resonant fluctuators for each NV centers. 
-
-We can note however that the PL is not an exact mirror of the spin dynamics: while the low field drop in PL is indeed associated with a reduced spin lifetime, the drop in PL at higher magnetic field comes from the states mixing induced by the transverse magnetic field, and is not associated with a modification of the spin dynamics (to the first order).
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.9\textwidth]{Figures/scan_100}
-\caption{Same measurements as Fig. \ref{scan 1x1x1x1}, still on sample ADM-150-1, but with $\mathbf{B}$ along the [100] axis.}
-\label{scan 100}
-\end{figure}
-
-Fig. \ref{scan 100} presents a way to circumvent this issue: by applying the magnetic field along the [100] crystalline axis, we can make sure that the four classes of NV centers always stay resonant regardless of the magnetic field amplitude.
-
-We can notice that there still is a decrease of both the PL and $T_1^{\rm dd}$ in low field, although considerably smaller than the previous case: in Fig. \ref{scan 1x1x1x1}, $T_1^{\rm dd}$ was reduced by a factor of $\sim$ 8 in zero field, whereas in Fig. \ref{scan 100}, it was only reduced by a factor of $\sim$ 1.2. The main reason for the PL and $T_1$ drop in Fig. \ref{scan 1x1x1x1} was indeed the co-resonance between the four classes.
-
-Nevertheless, the fact that there is a drop in zero field when $\mathbf{B} \parallel [100]$ cannot be explained if we consider only the inter-class resonances. This means that there are some additional depolarization mechanisms which are proper to the zero field region. We should also note that, while the zero-field PL contrast is bigger in Fig. \ref{scan 1x1x1x1}-c) than in Fig. \ref{scan 100}-c), the PL slope, which is the limiting factor for sensing ability, is actually similar in both cases.
-
-We can also note a drop in PL and a corresponding increase of $1/T_1^{\rm dd}$ for $B \sim 20\ \rm G$ which corresponds to the NV$-^{13}$C-NV cross-relaxation discussed in [REF]
-
-\subsection{Theory of the low field depolarization}
+\section{Theory of the low field depolarization}
 \label{sec causes zero field}
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Figures/Shema_summary_theory}
-\caption{Visual summary of the different depolarization effects in low magnetic field and their predicted depolarization rate}
+\includegraphics[width=\textwidth]{Figures/Shema_summary_theory_2}
+\caption{Summary of the different depolarization effects in low magnetic field and their predicted depolarization rate. The ODMR spectra were taken on sample ADM-150-1}
 \label{summary_theory}
 \end{figure}
 
-Fig. \ref{summary_theory} summarizes the different contribution that we have identified to the depolarization of the NV centers at low magnetic field. 
+We will focus on this section on the mechanisms responsible for the depolarization of dense NV ensemble at low magnetic fields. We have identified four such mechanisms that lead to an increase in the resonant dipole-dipole coupling between NV and fluctuators, which in turn results in an increased spin depolarization rate.
 
-The first and main contribution is degeneracy between the four classes as the magnetic field decreases. Following the arguments presented in the last chapter, the degeneracy between the four classes of NV centers causes in theory an increase in the relaxation rate by a factor $\sim 40$. This contribution is not specific to the zero field region, as we can observe the same resonance condition when $\mathbf{B} \parallel [100]$.
-
-The three other contributions, which are the eigenbasis change, the presence of double flips and the increase in $T_2^*$ will be detailed below and in the appendix [REF]. These three contributions are the reason for the depolarization at low magnetic field in Fig. \ref{scan 100}. In total, they amount for a further increase in the relaxation rate by a factor of $\sim 2$ compared to the $\mathbf{B} \parallel [100]$ case. Although this increase is small compared to the 4-classes degeneracy, we will see in sec. \ref{sec LFDM} that it is relevant for the  low field magnetometry protocol.
+Fig. \ref{summary_theory} summarizes these four mechanisms along with the theoretical increase in the depolarization rate caused by each of them. We will detail below the physical origin of these four mechanisms and the calculations that lead to the values presented in Fig. \ref{summary_theory}.
 
 We should note that the values indicated in Fig. \ref{summary_theory} for the double flips and the $T_2^*$ contributions depend on experimental parameters, while the ones for the 4-classes degeneracy and the eigenbasis change are purely based on theory.
 
-\subsubsection{Eigenstates modification}
+\subsection{Four classes degeneracy}
+
+The first and main contribution to the low field depolarization is the degeneracy between the four classes as the magnetic field decreases. Following the arguments presented in the last chapter, the degeneracy between the four classes of NV centers causes in theory an increase in the relaxation rate by a factor $\sim 43$. This contribution is not specific to the zero field region, as we can observe the same resonance condition when $\mathbf{B} \parallel [100]$.
+
+
+\subsection{Eigenstates modification}
 
 The modification of the Hamiltonian eigenstates discussed in sec. \ref{sec. Hamltonian 0 B} from the eigenbasis $\{ \ket{0}, \ket{+1},\ket{-1} \}$ when $B\neq 0$ to the eigenbasis $\{ \ket{0}, \ket{+},\ket{-} \}$ when $B\sim 0$ changes the dipole-dipole interaction between the two spins. 
 
-A consequence of this change is the absence of diagonal terms  in the dipole-dipole Hamiltonian for the $\{ \ket{0}, \ket{+},\ket{-} \} \times \{ \ket{0}, \ket{+},\ket{-} \}$ basis, which explains why the NV centers states are protected from the magnetic noise at low magnetic field \citep{jamonneau2016competition}. 
+A consequence of this change is the absence of diagonal terms  in the dipole-dipole Hamiltonian written in the $\{ \ket{0}, \ket{+},\ket{-} \} \times \{ \ket{0}, \ket{+},\ket{-} \}$ basis, which explains why the NV centers states are protected from magnetic noises at low magnetic field \citep{jamonneau2016competition}. 
 
-Another consequence is a slight modification in the flip-flop rates. Once averaged over all possible orientation and position, as detailed in appendix [REF], this modification of the flip-flop rates amount for an increase of $\Gamma_1$ by about $20\ \%$ in the $\{ \ket{0}, \ket{+},\ket{-} \}$ basis compared to the $\{ \ket{0}, \ket{+1},\ket{-1} \}$ basis.
+Another consequence is a slight modification of the flip-flop rates. Once averaged over all possible orientation and position, as detailed in appendix [REF], this modification of the flip-flop rates amount for an increase of $\Gamma_1$ by about $20\ \%$ in the $\{ \ket{0}, \ket{+},\ket{-} \}$ basis compared to the $\{ \ket{0}, \ket{+1},\ket{-1} \}$ basis.
 %The first explanation is the modification of the dipole-dipole interaction caused by the change of the NV Hamiltonian eigenbasis from $\{ \ket{0}, \ket{\pm 1} \}$ when $\mathbf{B} \neq 0$ to $\{ \ket{0}, \ket{\pm} \}$ when $\mathbf{B} = 0$.
 %
 %This modification arise from the new form of the dipole-dipole Hamiltonian in the $\{ \ket{0}, \ket{+}, \ket{-} \} \times \{ \ket{0}, \ket{+}, \ket{-} \}$ basis. We justify this change of basis, where we only considered the single NV Hamiltonian instead of the full two-spins Hamiltonian, by the fact that we are in the weak coupling regime, where $\expval{\mathcal{H}_{dd}} \approx 50\ \rm kHz \ll \frac{1}{2\pi T_2^*} \approx 5\ \rm MHz$ meaning that we can treat the dipole-dipole interaction perturbatively. To compute the decay rate with these new eigenstates, we now need to consider the $\mel{0,\pm}{\mathcal{H}_{dd}}{\pm ,0}$ matrix elements instead of the $\mel{0,\pm 1}{\mathcal{H}_{dd}}{\pm 1,0}$ ones.
@@ -257,15 +226,15 @@ Another consequence is a slight modification in the flip-flop rates. Once averag
 %
 %In both cases, this is a moderate ($\sim 20 \%$) increase compared to $\Gamma_1=42.8 \Gamma_0^{\rm th}$ which we previously found for $\mathbf{B} \parallel [100]$, where all four classes were degenerate but the Hamiltonian eignebasis was $\{ \ket{0}, \ket{\pm 1} \}$. The change in the Hamiltonian eigenbasis for low field is therefore a possible candidate to explain the low field depolarization in Fig. \ref{scan 100}
 
-\subsubsection{Double flips}
+\subsection{Double flips}
 
-The double flip, or flip-flip, processes that we consider here are the one that couple the states $\ket{0, \pm 1}$ and $\ket{\mp 1, 0}$ (in contrast with the flip-flop which couple the states $\ket{0, \pm 1}$ and $\ket{\pm 1, 0}$). These terms are normally not resonant because of the zeeman splitting between the $\ket{+1}$ and $\ket{-1}$ states. 
+The double flip processes have been previously discussed in sec. [REF] and naturally arise from the dipole-dipole Hamiltonian. The ones that we consider here couple the states $\ket{0, \pm 1}$ and $\ket{\mp 1, 0}$ (in contrast with the flip-flop which couple the states $\ket{0, \pm 1}$ and $\ket{\pm 1, 0}$). These terms are generally not resonant because of the Zeeman splitting between the $\ket{+1}$ and $\ket{-1}$ states. 
 
-In the low magnetic field regime however, we have to consider the new eigenstates $\ket{+}$ and $\ket{-}$ and the two-qubits states $\ket{0, \pm}$ and $\ket{\mp, 0}$. These terms are still not fully resonant because of the splitting between the $\ket{+}$ and $\ket{-}$ states caused by the local electric field, but they are close enough in energy that the double flip processes are not entirely turned off.
+In the low magnetic field regime however, we have to consider the new eigenstates $\ket{+}$ and $\ket{-}$ and the two-qubits states $\ket{0, \pm}$ and $\ket{\mp, 0}$. These terms are still not fully resonant because of the splitting between the $\ket{+}$ and $\ket{-}$ states caused by the local electric field, but they are close enough in energy that the double flip processes are not entirely quenched.
 
-The computation of the depolarization rate including the double flips is detailed in appendix [REF]. To obtain a numerical value, we need to input the experimental values of the dipole-dipole interaction range \footnote{By interaction range we mean the constant to be compared to the spectral detuning $\Delta \nu$ between the two groups. This is $2\gamma_f+\Gamma_{NV}+\Gamma_f$ in eq. [REF]} which we measured to be $\Gamma=8.8\ \rm MHz$ in Fig. [REF], as well as the average splitting $\Delta \nu$ between the $\ket{+}$ and $\ket{-}$ state. We typically measure $\Delta \nu \approx 8\ \rm MHz$ on type 1b HPHT samples.
+The computation of the depolarization rate including the double flips is detailed in appendix [REF]. To obtain a numerical value, we need to input the experimental values of the dipole-dipole interaction range \footnote{By interaction range we mean the value to be compared to the spectral detuning $\Delta \nu$ between the two groups. This is $2\gamma_f+\Gamma_{NV}+\Gamma_f$ in eq. [REF]} which we measured to be $\Gamma=8.8\ \rm MHz$ in Fig. [REF], as well as the average splitting $\Delta \nu$ between the $\ket{+}$ and $\ket{-}$ states. We typically measure $\Delta \nu \approx 8\ \rm MHz$ on type Ib HPHT samples.
 
-For the value presented in Fig. \ref{simus ESR}, we inputted $\Gamma=\Delta \nu$.
+For the value presented in Fig. \ref{simus ESR}, we inputted $\Gamma=\Delta \nu=8.8\ \rm MHz$.
 %\begin{table}[htbp]
 %\centering
 %\caption{Simulated depolarization rate for flip-flops and double flips in zero magnetic field}
@@ -290,54 +259,76 @@ For the value presented in Fig. \ref{simus ESR}, we inputted $\Gamma=\Delta \nu$
 %The results are summed up in Table \ref{table double flips}. We again give the results for the two extreme cases regarding the correlations in the electric field, and we show three possible scenario regarding the pseudo-resonance of the $\ket{+}$ and $\ket{-}$ states, represented by the $\bar{R}^2$ factor: $\bar{R}^2=1$ means that the states are fully resonant ($\omega_+-\omega_- \ll \Gamma^{\rm dd} $), this would be the maximum possible decay rate involving the double flips. $\bar{R}^2=0.5$ represents the case where the splitting between the states is equal to the fluctuator linewidth ($\omega_+-\omega_- \approx \Gamma^{\rm dd}$). This is close to the the experimental values we have. Finally $\bar{R}^2=0$ correspond to the case where the states are too far detuned for the double flips ($\omega_+-\omega_- \gg \Gamma^{\rm dd} $). We come back to the results of the last section where only considered the flip-flops.
 
 
-\subsubsection{$T_2^*$ modification}
+\subsection{$T_2^*$ increase}
 
-The last aspect we considered was the change in the ODMR lineshape discussed in sec. \ref{sec modif T2*} for weak magnetic field (we refer to this as $T_2^*$ for conciseness).
+The last aspect we considered was the change in the ODMR lineshape discussed in sec. \ref{sec modif T2*} for weak magnetic field (we refer to the spectral linewidth as $T_2^*$ for conciseness).
 
-To quantify its impact in the depolarization rate, we employ eq. [REF], where we use the values $2\gamma_f = 6.5\ \rm MHz$ estimated in the last chapter and we take for $\Gamma_f=\Gamma_{\rm NV}$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. We then find that the modification of $T_2^*$ should increase the decay rate in zero field by $\sim 9 \%$ for sample Sumi-2, and by $\sim 24 \%$ for sample CVD-pink. 
+To quantify the impact of the $T_2^*$ increase in the depolarization rate, we employ eq. [REF], where we use the values $2\gamma_f = 6.5\ \rm MHz$ estimated in the last chapter and we take for $\Gamma_f=\Gamma_{\rm NV}$ the values of half width at half maximum found in Fig. \ref{ESR for T2*}. We then find that the increase of $T_2^*$ in zero magnetic field occasions an increase of the decay rate by $\sim 9 \%$ for sample Sumi-2, and by $\sim 24 \%$ for sample CVD-pink. 
 
-The value shown in Fig. \ref{summary_theory} corresponds to a $9 \%$ increase, as most of the samples studied in this manuscript are type 1b HPHT diamonds (therefore more similar to sample Sumi-2 than to sample CVD-pink).
+The value shown in Fig. \ref{summary_theory} corresponds to a $9 \%$ increase.
 
-\subsection{Other potential causes for zero field depolarization}
-We have also considered two other potential causes that we have ultimately ruled out in this case.
+\bigskip
 
-\subsubsection{Magnetic field alignment}
+In conclusion, we predict that the 4-classes degeneracy is by far the dominant causes for low field depolarization ($\sim \Gamma_1 \times 40$), followed by the double flips ($\sim \Gamma_1 \times 2$). We will however see in sec \ref{sec LFDM} that the double flips, along with the change of eigenbasis and increase in $T_2^*$ are determinant factor in the sensitivity of the low field magnetometry protocol.
+
+In the following section we will confront the theoretical results with experimental ones.
+
+\section{Experimental investigation of the low field depolarization}
+\label{sec 4.3}
+In this section we will try to experimentally discriminate the contribution of the four depolarization sources described in Fig. \ref{summary_theory} and confront the experimental values with the theoretical ones. 
+
+We will first determine the contribution of the 4-classes degeneracy by comparing [100] aligned and non-[100] aligned magnetic field in the weak magnetic field regime, before studying the influence of the double-flips thanks to purely transverse magnetic fields.
+
+On top of the four previously discussed relaxation mechanisms, we have also considered two additional causes for the observation of low-field depolarization: the misalignment of the magnetic field (when $\mathbf{B}\parallel [100]$) and the influence of the laser polarization. Following further experiments detailed in appendix [REF], we have determined that these two effects were negligible compared to the four ones we identified before.
+
+\subsection{NV-NV CR in the low magnetic field regime}
+
+
+In this part, we will try to isolate the contribution of the 4-classes degeneracy from the three other ones by using the fact that all four classes can be at resonance for two distinct scenario:
+\begin{itemize}
+\item When $\mathbf{B}=0$.
+\item When $\mathbf{B}\parallel [100]$ (cf. Fig. [REF] (la figure avec toutes les config)).
+\end{itemize}
+
+\subsubsection{Magnetic scan in a random direction}
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=.7\textwidth]{Figures/alignement_rose}
-\caption{PL of sample CVD-pink as a function of the magnetic field for various misalignment of the field direction with the [100] axis}
-\label{alignement rose}
+\includegraphics[width=0.9\textwidth]{Figures/scan_1x1x1x1}
+\caption{Low field depolarization on sample ADM-150-1 for $\mathbf{B}$ in an arbitrary direction. a) ODMR spectrum for B=0. b) ODMR spectrum for B=60 G. c) PL contrast as a function of the external magnetic field. d) $1/T_1^{\rm dd}$ as a function of the external magnetic field. A $T_1$ measurement was recorded for each magnetic field value and fitted accorded to the protocol described in [REF] with $T_1^{\rm ph}=5\ \rm ms$}
+\label{scan 1x1x1x1}
 \end{figure}
 
-The first is a potential misalignment of the magnetic field with the [100] axis, which would cause a splitting of the 4 classes as the magnetic field increases. This hypothesis is not consistent with the observations in Fig. \ref{scan 100}-d): we would expect a small  misalignment to cause a slow but steady decrease of $1/T_1^{\rm dd}$ as the magnetic field is increased. Instead we observe a sharp decrease followed by a pseudo-plateau.
+First we will run a control experiment by scanning the magnetic field in a non [100] direction. Fig. \ref{scan 1x1x1x1}-a) and b) shows ODMR spectrum at the starting point ($|\mathbf{B}|=0$) and end point ($|\mathbf{B}|\approx 60\ \rm G$) of the magnetic field scan. The magnetic field orientation was chosen in order to maximize the splitting of the four classes.
 
-We still estimated how sensitive the PL dip was with respect to the field alignment. Fig. \ref{alignement rose} shows PL scans on sample CVD-pink for various alignment of the magnetic field around the [100] axis. We estimate our alignments to be precise within $\pm 1^\circ$. We can see that the central feature is almost unaffected by the orientation within [$-3^\circ$:$+3^\circ$] which confirms that the low field depolarization does not come from a field misalignment.
+Fig. \ref{scan 1x1x1x1}-c) and d) show the evolution of the NV PL and stretched lifetime $T_1^{\rm dd}$, defined in the last chapter [REF], as a function of the magnetic field. We can observe a decrease of $T_1^{\rm dd}$ by a factor of $\sim 10$ in zero magnetic field compared to non-zero magnetic field, with a half-width at half maximum of $\sim 10\ \rm G$. Correspondingly, we can observe a drop in PL by $\sim 4\%$ in zero magnetic field \footnote{We can also note the decrease in PL for $|\mathbf{B}|> 30\ \rm G$ is not corroborated by an increase of $1/T_1^{\rm dd}$. This is because this drop of PL is associated with transverse magnetic field state mixing, and not with spin depolarization.}. 
 
-\subsubsection{Laser polarization}
+We attribute the spin depolarization observed in Fig. \ref{scan 1x1x1x1}-d) to all four mechanisms described in the last part acting simultaneously. To determine the contribution of each mechanism individually, we will need to run dedicated experiments.
+
+\subsubsection{Magnetic scan with $\mathbf{B} \parallel [100]$}
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=.7\textwidth]{Figures/pola_laser}
-\caption{PL of sample ADM-150-3 with respect to the magnetic field for various laser polarization angle. The magnetic field orientation was chosen arbitrarily in the plane of polarization of the laser field}
-\label{pola laser}
+\includegraphics[width=0.9\textwidth]{Figures/scan_100}
+\caption{Same measurements as Fig. \ref{scan 1x1x1x1}, still on sample ADM-150-1, but with $\mathbf{B}$ along the [100] axis.}
+\label{scan 100}
 \end{figure}
 
-Other studies \citep{anishchik2015low, filimonenko2020weak} previously saw a correlation between the zero magnetic field PL dip and the polarization angle of the laser with respect to the magnetic field. 
+This second experiment is similar to the last one except that the magnetic field was scanned in the [100] direction. Fig. \ref{scan 100}-a) and b) again show ODMR at the starting and ending point of the magnetic scan, while Fig. \ref{scan 100}-c) and d) show the PL and $1/T_1^{\rm dd}$ recorded during the scan.
 
-Fig. \ref{pola laser} shows PL scans on sample ADM-150-3 for various polarization angle of the incident laser. We chose to apply the magnetic field in the laser polarization plane, in a direction that did not match any particular crystalline planes.
+The main difference with the previous experiment is that in this case, the degeneracy between the four classes is never lifted. We therefore attribute the increase in $1/T_1^{\rm dd}$ at low magnetic field to the three other identified mechanisms. The increase in the depolarization rate in zero field ($\sim 20\ \%$) as well as the decrease inPL ($\sim 0.5 \%$) are still present, but significantly smaller than in the previous case. We can note however that the half-width at half maximum of the zero field depolarization ($\sim 2\ \rm G$) is also smaller in this case.
 
-We can see no clear differences between the different polarization angles used, whereas \citep{anishchik2015low} and \citep{filimonenko2020weak} saw an antiline growing inside the PL dip when $B \perp E_{\rm las}$. We think that the difference between our experiments come from the fact that we are using denser NV ensembles, and that any effects tied to the laser polarization are hidden by the stronger effects discussed previously.
+We can also note a drop in PL and a corresponding increase of $1/T_1^{\rm dd}$ for $B \sim 20\ \rm G$ which corresponds to the NV$-^{13}$C-NV cross-relaxation discussed in [REF]. We can not explain however why the depolarization rate appear to be smaller at $B \sim 10\ \rm G$ than it is for $B > 30\ \rm G$.
 
+The fact that the increase of the depolarization rate at zero field is about $\sim 50$ times weaker in Fig. \ref{scan 100} than it was in Fig. \ref{scan 1x1x1x1} confirms that the leading cause of depolarization in zero field is the degeneracy between the four classes of NV centers. 
 
-\section{NV-NV CR under purely transverse magnetic field}
-We have seen in the last part that there was a spontaneous spin depolarization specifically in zero external magnetic field, and we have identified three potential mechanisms which are the double-flips, the change in the Hamiltonian eigenstates and the modification of $T_2^*$. We now want to experimentally discriminate the contribution of each of these mechanisms and to see how close the actual decay rates are to the predicted ones. 
+\subsection{NV-NV CR under purely transverse magnetic field}
 
-One of the reason we want to separate these contributions is that they scale differently with the different variables of the sample ($T_2^*$, $\gamma_f$ , magnetic and electric noise ...). Understanding which of these effect dominates the zero field dynamics might give us insight on which parameter to optimize if one wants to avoid the zero field depolarization, or on the contrary to increase it.
+Thank to the two previous experiments, we were able to discriminate the contribution of the 4-classes degeneracy from the three other mechanisms that are which are the eigenbasis change, the double-flips and the $T_2^* increase$. We now seek to discriminate the contribution of each of these three mechanisms.
 
-The ideal way to isolate each contributions would be to apply an electric field strong enough to split the transition of the 4 classes, and to measure the decay rate of a single class dominated by the transverse electric field. Such an electric field would need to be of the order of $\sim 10^6\ \rm{V/cm}$, which is several order of magnitudes greater than the breakdown voltage of air and out of our experimental reach.
+We unfortunately were not able to discriminate the change of eigenbasis from the $T_2^* increase$, which would likely require a statistical study over different samples with different $T_2^*$ values. We were however able to discriminate the double flip contribution from the two other ones by scanning the magnetic field in a direction orthogonal to one NV class ($\mathbf{B} \perp [111]$).
 
-Instead of an electric field, we will use a transverse magnetic field, which as described in sec. \ref{sec B transverse} leads to a spin Hamiltonian similar to the one where the transverse electric field dominates, or at least to similar eigenstates.
-
-\subsection{Principle of the experiment}
+\subsubsection{Principle of the experiment}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Figures/transis_transverse_field}
@@ -345,110 +336,118 @@ Instead of an electric field, we will use a transverse magnetic field, which as 
 \label{eigenstates transverse field}
 \end{figure}
 
-Fig. \ref{eigenstates transverse field} shows a simulation of the eigenstates and eigenenergies for a NV Hamiltonian subject to transverse electric field and magnetic field. For convenience we chose to take $E_\perp = E_x$ and $B_\perp = B_x$, taking other geometric configuration alters only slightly the results. We labeled the eigenstates of the Hamiltonian $\ket{1}$, $\ket{2}$ and $\ket{3}$ in ascending order of energy.
+The idea behind the experiment is that the Hamiltonian eigenbasis is the same (or close to be the same) when $\mathbf{B}=0$ than it is when $\mathbf{B} \perp [111]$, as described in sec. \ref{sec B transverse}. For simplicity, we will assume here that both the magnetic field and the transverse electric field lies along the NV $x$ axis : $\mathbf{B}=B_x \hat{e}_x$ and $\mathbf{E}_\perp =E_x \hat{e}_x$
 
-Fig. \ref{eigenstates transverse field}-b) shows both the splitting $\Delta \nu$ between the $\ket{2}$ and $\ket{3}$ states, and how close the $\ket{3}$ state is to the $\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}}$ state via the factor $\abs{\bra{3}\ket{+}}^2$. We look at the $\ket{3}$ state since $\ket{2}=\ket{-}=\frac{\ket{+1}-\ket{-1}}{\sqrt{2}}$ in this case.
+Fig. \ref{eigenstates transverse field} shows a simulation of the eigenstates and eigenenergies for a NV Hamiltonian subject to transverse electric field and magnetic field. We labeled the eigenstates of the Hamiltonian $\ket{1}$, $\ket{2}$ and $\ket{3}$ in ascending order of energy.
 
-These two metrics, $\Delta \nu$ and $\abs{\bra{3}\ket{+}}^2$ are what we are interested in: we want to increase $\Delta \nu$ to the point where the double flips are completely quenched, but we want $\abs{\bra{3}\ket{+}}^2$ to remain close to 1 since we wanted to observe the modification caused by the eigenbasis $\{\ket{0},\ket{\pm}\}$. This way we can isolate the $T_1^{\rm dd}$ contribution coming from the change of eigenstates to the one coming from the double flips. Based on the plots in Fig.\ref{eigenstates transverse field}-b), the region with $B_\perp \in$ [100,200] G seems to satisfy both these criteria.
+Fig. \ref{eigenstates transverse field}-b) shows both the splitting $\Delta \nu$ between the $\ket{2}$ and $\ket{3}$ states, and how close the $\ket{3}$ state is to the $\ket{+}=\frac{\ket{+1}+\ket{-1}}{\sqrt{2}}$ state via the factor $\abs{\bra{3}\ket{+}}^2$. We should note that with the assumption that $B_\perp \parallel E_\perp$, the $\ket{2}$ state is strictly equal to the $\ket{-}$ state regardless of the magnetic field amplitude.
 
-\subsection{Results}
+These two metrics, $\Delta \nu$ and $\abs{\bra{3}\ket{+}}^2$ are what we are interested in for the experiment: we want to increase $\Delta \nu$ to the point where the double flips are completely quenched, but we want $\abs{\bra{3}\ket{+}}^2$ to remain close to 1 in order to preserve the eigenbasis and $T_2^*$ contribution. Based on the plots in Fig.\ref{eigenstates transverse field}-b), the region with $B_\perp \in$ [100 G,200 G] seems to satisfy both these criteria: $\Delta \nu\,(100\ \rm G) \approx 30\ \rm MHz \gg \gamma_f$\footnote{Technically, we want to compare $\Delta \nu$ with the dipole-dipole interaction width $2\gamma_f+\Gamma_{NV}+\Gamma_f$ which we measured to be $\Gamma=8.8\ \rm MHz$ in Fig. [REF].} and $\abs{\bra{3}\ket{+}}^2\, (200\ \rm G) \approx 0.96$.
+
+Ideally, we would have used an electric field instead of a transverse magnetic field to split the 4 classes energetically, but such an electric field would need to be $> 10^6\ \rm{V/cm}$ which is several order of magnitudes greater than the breakdown voltage of air and out of our experimental reach.
+
+\subsubsection{Results}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.8\textwidth]{Figures/scan_T1_perp}
-\caption{Experimental data for the depolarization under purely transverse magnetic field on sample ADM-150-2. a) ODMR spectrum for $|\mathbf{B}|=20\ \rm G$. The transitions of the class orthogonal to the magnetic field are labeled $\nu_+$ and $\nu_-$. b) Dependency of $\nu_+$ and $\nu_-$ with the magnetic field, as measured through ODMR. c) Measurement of $T_1^{\rm dd}$ as a function of the transverse magnetic field. The corresponding energy splittings $\Delta \nu=\nu_+-\nu_-$ are written on top. We divided the plot between the A region where $1/T_1^{\rm dd}$ decreases, and the B region where it reaches a plateau with a value $1/T_1^{\rm dd}=185 \pm 5\ \rm s^{-1}$ indicated by a red line. We also indicate in green the value found for a purely longitudinal magnetic field $1/T_1^{\rm dd}=126 \pm 10\ \rm s^{-1}$}
+\caption{Experimental data for the depolarization under purely transverse magnetic field on sample ADM-150-2. a) ODMR spectrum for $|\mathbf{B}|=20\ \rm G$. The transitions of the class orthogonal to the magnetic field are labeled $\nu_+$ and $\nu_-$. b) Dependency of $\nu_+$ and $\nu_-$ with the magnetic field, as measured through ODMR. c) Measurement of $T_1^{\rm dd}$ as a function of the transverse magnetic field. The corresponding energy splittings $\Delta \nu=\nu_+-\nu_-$ are written on top. We divided the plot between the A region where $1/T_1^{\rm dd}$ decreases, and the B region where it reaches a plateau with a value $1/T_1^{\rm dd}=185 \pm 5\ \rm s^{-1}$. We also indicate in green the value found for a purely longitudinal magnetic field $1/T_1^{\rm dd}=126 \pm 10\ \rm s^{-1}$}
 \label{champ tranverse exp}
 \end{figure}
 
-We perform here a $T_1^{\rm dd}$ measurement similar to the one presented in Fig. [REF], on the same sample and with the same fitting parameters, but this time probing a class orthogonal to the magnetic field.
+Fig. \ref{champ tranverse exp}-a) shows an ODMR spectrum for $B=20\ \rm G$ with the two central lines corresponding to the $\ket{0} \to \ket{+}$ and $\ket{0} \to \ket{-}$ transitions of the class orthogonal to the magnetic field. We decided to start the scan of the magnetic field at $20\ \rm G$ because the class orthogonal to $\mathbf{B}$ was far enough ($> 20 MHz\ \rm MHz$) from the three other ones that flip-flop between them could be neglected\footnote{The small plateau at the beginning of the $1/T_1^{\rm dd}$ curve in Fig. \ref{champ tranverse exp}-c) confirms that flip-flop between the class orthogonal to $\mathbf{B}$ and the three other classes are indeed negligible compared to the other depolarization factors.}
 
-Fig. \ref{champ tranverse exp}-a) and b) show the evolution of the transition frequencies $\nu_+=\frac{E_{\ket{3}}-E_{\ket{1}}}{h}$ and $\nu_-=\frac{E_{\ket{2}}-E_{\ket{1}}}{h}$ where $\ket{1}$, $\ket{2}$ and $\ket{3}$ are the states described in Fig. \ref{eigenstates transverse field}. The magnetic field was scanned between 20 and 130 G by increment of $\sim 0.5\ \rm G$.
+Fig. \ref{champ tranverse exp}-b) shows the evolution of the $\nu_+$ and $\nu_-$ transition frequencies as a function of the magnetic field, measured via ODMR. The difference in frequency $\Delta \nu = \nu_+ - \nu_-$ is at first determined by the transverse electric field ($\sim 9\ \rm MHz$) and then grows qudratically with the transverse magnetic field up to a value of $\sim 50\ \rm MHz$.
 
-Fig. \ref{champ tranverse exp}-c) shows the evolution of $1/T_1^{\rm dd}$ with the magnetic field. We have denoted two region: in region A, $1/T_1^{\rm dd}$ decreases with the magnetic field, from a value of $350\ \rm s^{-1}$ to a value of $185\ \rm s^{-1}$. In region B, the value of $1/T_1^{\rm dd}$ is stable and does not decrease further when $B_\perp$ is increased.
+Fig. \ref{champ tranverse exp}-c) shows the evolution of $1/T_1^{\rm dd}$ on a single class as a purely transverse magnetic field is scanned from 20 to 130 G. It also includes the $1/T_1^{\rm dd}$ value found for a purely longitudinal magnetic field which we will consider as a baseline, since the eigenbasis in this case is $\ket{\pm 1}$ and not $\ket{\pm}$. We have divided the graph in two regions labeled A and B:
 
-\subsubsection{Region A}
+In region A, $1/T_1^{\rm dd}$ decreases with the magnetic field. The difference in the depolarizing rate between the $\mathbf{B} \perp [111]$ case and the $\mathbf{B} \parallel [111]$ case comes from the double flips, the eigenbasis change and the $T_2^*$ increase. We measure an increase by a factor $\sim 3$ for B=20 G compared to the baseline.
 
-We attribute the decrease in region A to the double flips: as the magnetic field increases, so does $\Delta \nu$ and the double flips become less and less resonant to the point where they become completely quenched for $B_\perp \approx 90\ \rm G$ or $\Delta \nu \approx 30\ \rm MHz$. This value is coherent with the previously measured fluctuator linewidth. We can then estimate the part of the double flips in the total depolarization rate for the low field regime (20 G here) and find that they amount for $\sim 50\%$ in this case.
+In region B, $1/T_1^{\rm dd}$ reaches a plateau with a value of $\sim 180\ \rm s^{-1}$. We attribute this plateau to the fact that the double flips are completely quenched, which is coherent with the fact that $\Delta \nu \geq 30\ \rm MHz$. The remaining difference between the $\mathbf{B} \perp [111]$ and $\mathbf{B} \parallel [111]$ cases therefore comes from the eigenbasis change and the $T_2^*$ increase. This increase amount for $\sim$ 50\% of the relaxation rate baseline.
 
-Another possibility to explain this drop could be that the class orthogonal to $\mathbf{B}$ still exerts flip-flops with the other classes at low magnetic field, as we can see in Fig. \ref{champ tranverse exp}-a) that they are not very far detuned. However we have to consider that the detuning between the two states $\nu_+-\nu_-= 9\ \rm MHz$ is significantly lower, even at $B_\perp=20\ \rm G$, than the detuning with the closest class $\nu_\pm-\nu_{\rm other}= 22\ \rm MHz$; and also that there seem to be a small plateau for $1/T_1^{\rm dd}$ at the beginning of region A which is consistent with the double flip hypothesis since  $\nu_+-\nu_-$ is almost flat in this region while $\nu_\pm-\nu_{\rm other}$ increases linearly with the magnetic field.
+We should note that the theoretical increase from the double flips and the change of eigenbasis\footnote{The $T_2^*$ increase should still amount for $\sim 10\%$.} are not the values shown in Fig. \ref{summary_theory}: those were computed for a 4-class resonance, while we are looking here at a single class. The theoretical increase of the depolarization rate for a single class are detailed in Appendix [REF]. They are:
+\begin{itemize}
+\item $\Gamma_1^{\ket{\pm}}=4 \Gamma_0$ when taking into account the change of eigenbasis.
+\item $\Gamma_1^{dd}=[REF]\Gamma_1^{\ket{\pm}}=[REF]\Gamma_0$ when taking into account the double flips.
+\end{itemize}
+We have labeled here $\Gamma_0$ the relaxation rate coming from the flip-flop inside of a single class in the $\ket{\pm 1}$ basis (same definition as in table [REF] (table des valeurs chap 3). Experimentally, $\Gamma_0$ corresponds to the baseline shown in Fig. \ref{champ tranverse exp}-c).
 
-\subsubsection{Region B}
+Although we find again that the fluctuator model overestimates the actual relaxation rates, these experimental observations still confirm the qualitative predictions of the model. In particular, they confirm that the double-flips are the second leading cause of zero-field depolarization after the 4-classes degeneracy.
 
-We now turn to region B. Even tough the double flips are completely quenched, the effects of the eigenbasis modification and the $T_2^*$ reduction are still present, because we can see on Fig. \ref{eigenstates transverse field}-b) that the eigenstates of the spin Hamiltonian are still very close to $\{ \ket{0}, \ket{\pm} \}$ for these magnetic field values.
+\subsection{Conclusion of the experimental observation}
 
-To evaluate the contribution of the eigenbasis and $T_2^*$, we measure the same class of NV centers, but this time with a longitudinal magnetic field ($B_\parallel \sim 100 G$) to get a baseline value of $1/T_1^{\rm dd}$ in the $\ket{\pm 1}$ basis. We found a value of $1/T_1^{\rm dd}=126 \pm 10\ \rm s^{-1}$ in this case, reported on Fig. \ref{champ tranverse exp}-c) as a green line. 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figures/Shema_summary_exp}
+\caption{Summary of the different experimental investigation. A baseline value is indicated with the pink shaded region in all experimental plots. The left box indicates the relaxation mechanisms added compared to the baseline for the minimum value of B, and the right box those for the maximum value of B. (a) corresponds to Fig. \ref{scan 1x1x1x1}-d) where the baseline was measured to be $220\pm 20$ s$^{-1}$, (b) corresponds to Fig. \ref{scan 100}-d) with the same baseline, and (c) corresponds to Fig. \ref{champ tranverse exp}-c).}
+\label{summary_exp}
+\end{figure}
 
-We do find that the decay rate is higher in the $\ket{\pm}$ basis by $\sim 50\% $ which corroborates our predictions, as both the change of eigenbasis from $\ket{\pm 1}$ to $\ket{\pm}$ and the increase of $T_2^*$ in the $\ket{\pm}$ basis are predicted to increase the depolarization rate. The theoretical increase however overestimates once again the actual increase: for the change of eigenbasis alone we predicted an increase of the decay rate by a factor of 4 (see appendix [REF]), over 8 times more than the actual increase.
+Fig. \ref{summary_exp} summarizes the experimental results of this section. We explicitly indicates which of the four depolarization mechanisms are responsible for the observed depolarization rate at the beginning and at the end of each curve.
 
-We unfortunately cannot experimentally discriminate the depolarization coming from the eigenbasis change or the $T_2^*$ while using the same sample, since both of this properties are tied to the Hamiltonian eigenstates. But we do know that in this scenario, for a single isolated class, the contribution of both the change of eigenbasis and $T_2^*$ amounts for $\sim 3$ times less than the double flips. 
+The experiments confirm the overall predictions of the previous section: the dominant cause of depolarization in zero magnetic field is the degeneracy of the 4 NV classes, followed by the double-flips and then by the eigenbasis change and $T_2^*$ increase.
 
-\subsubsection{Conclusion of the experimental observation}
+We will now cover the low-field magnetometry protocol, after a quick overview of the field of NV magnetometry, and see the role that the different depolarization mechanisms play in it.
 
-We have here quantitatively measured different depolarization contributions for a single class submitted to purely transverse magnetic field, and we expect that the depolarization for low magnetic fields behave similarly. We therefore claim that the difference in NV polarization between the $\mathbf{B}=0$ region and $\mathbf{B} \neq 0$ region is caused by (in order of importance):
-\begin{enumerate}
-\item The lift of degeneracy between the four classes caused by the projection of the magnetic field on the different NV axis.
-\item The double flips between the nearly resonant $\ket{+}$ and $\ket{-}$ states at low magnetic field.
-\item The change of the Hamiltonian eigenbasis from $\{\ket{0}, \ket{\pm} \}$ in the electric field dominated region to $\{\ket{0}, \ket{\pm 1} \}$ in the magnetic field dominated region, and the incident change in $T_2^*$.
-\end{enumerate}
 
 \section{Introduction to ensemble NV magnetometry}
+\label{sec 4.4}
 
-Before we explore the application of low field depolarization to magnetometry, we must discuss the general field of NV magnetometry. 
-
-NV magnetometry is generally decomposed between single NV and ensemble magnetometry. Single NVs,often associated with scanning probes, offer a spatial resolution limited only by how far the magnetic source can be from the NV center (typically $\sim 10\ \rm nm$), but at the cost of a relatively low sensitivity (typically $\sim \mu \rm{T} / \sqrt{\rm Hz}$ \citep{pelliccione2016scanned}).
+There are two classes of NV magnetometer: single NV or ensemble. Single NVs offer a spatial resolution limited only by how far the magnetic source can be from the NV center (down to $\sim 10\ \rm nm$), but at the cost of a relatively low sensitivity (typically $\sim \mu \rm{T} / \sqrt{\rm Hz}$ \citep{pelliccione2016scanned}).
 
 Ensemble NV centers center on the other hand offer sensitivities as low as $1\ \rm pT / \sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}, at the cost of working with samples of sizes up to several mm.
 
-We will only focus here on NV ensemble magnetometry since we want to give elements of comparisons with our technique based on NV-NV CR. We will not try to give a complete overview of this field, but only of the elements close to the technique we present. For a general overview on NV magnetometry, we recommend the excellent reviews  \citep{rondin2014magnetometry, degen2017quantum, barry2020sensitivity}.
+We will only focus in this section on NV ensemble magnetometry since we want to give elements of comparisons with our technique based on NV-NV CR. We will not try to give a complete overview of this field, but only of the elements close to the technique we present. For a general overview on NV magnetometry, we recommend the excellent reviews  \citep{rondin2014magnetometry, degen2017quantum, barry2020sensitivity}.
 
 \subsection{AC and DC magnetometry}
-The most sensitive NV magnetometry protocols use the free precession of the spins to map a small change in the Zeeman energy into the phase of the spins, which is then converted into spin population. These protocols are generally distinguished between DC-broadband and AC-narrow band.
+The most sensitive NV magnetometry protocols use the free precession of the spins to map a small change in the Zeeman energy into the phase of the spins, which is then converted into spin population. These protocols are generally separated between DC-broadband and AC-narrow band.
 
-For DC-broadband magnetometry, the general technique consist of a Ramsey interferometry experiment, presented in chapter 1, which is limited by the spin inhomogeneous coherence time $T_2^* \lesssim 1\ \rm{\mu s}$ for NV ensembles. The bandwidth of the protocol is limited by the repetition rate of the experiment, generally up to $\sim 100\ \rm kHz$. Although less sensitive in theory, continuous-wave (CW) ODMR and pulsed ODMR are also often employed for DC magnetometry. The state of the art in term of DC ensemble magnetometry is a sensitivity of $\sim 20\ \rm pT/ \sqrt{\rm Hz}$ \citep{barry2016optical, chatzidrosos2017miniature}.
+For DC-broadband magnetometry, the general technique consists of a Ramsey interferometry experiment, presented in chapter 1, the sensitivity of which is limited by the spin inhomogeneous coherence time $T_2^*$ (which can reach up to $\ \rm{\mu s}$ for NV ensembles). The bandwidth of the protocol is limited by the repetition rate of the experiment, generally up to $\sim 100\ \rm kHz$. Although less sensitive in theory, continuous-wave (CW) ODMR and pulsed ODMR are also often employed for DC magnetometry. The state of the art DC ensemble magnetometr operates with a sensitivity of $\sim 20\ \rm pT/ \sqrt{\rm Hz}$ \citep{barry2016optical, chatzidrosos2017miniature}.
 
-For AC magnetometry, the basic protocol consist of a spin echo measurement, also presented in chapter 1, which extends the coherence time $T_2^*$ to $T_2 = 10 \sim 100 \rm{\mu s}$, and which can be extended even further to $\sim \rm ms$ times with dynamical decoupling \citep{pham2012enhanced}. Due to the longer ``free" precession time, a larger phase can be imprinted on the spin for a similar magnetic field. The AC magnetic field however has to be in phase with the rephasing pulses, which limits the AC sensing to a relatively narrow band. The state of the art in term of AC sensing is $\sim 1\ \rm pT/\sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}.
+For AC magnetometry, the basic protocol consists of a spin echo measurement, also presented in chapter 1, which extends the coherence time $T_2^*$ to $T_2 = 10 \sim 100 \rm{\mu s}$, and which can be extended even further to $\sim \rm ms$ times with dynamical decoupling \citep{pham2012enhanced}. Due to the longer ``free" precession time, a larger phase can be imprinted on the spin for a similar magnetic field. The AC magnetic field however has to be in phase with the rephasing pulses, which limits the AC sensing to a relatively narrow band. The state of the art in term of AC sensing is $\sim 1\ \rm pT/\sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}.
 
-Recently, \citep{xie2021hybrid} have achieved new records in both DC ($\sim 200\ \rm fT/\sqrt{\rm Hz}$) and AC ($\sim 10\ \rm fT/\sqrt{\rm Hz}$) NV magnetometry by using flux concentrators which are ferromagnets concentrating the magnetic field in a small volume, similarly to an electromagnet. Because the gain from the flux concentrators is not tied to a specific magnetometry protocol, we will focus on the results obtained without flux concentrators.
+Recently, \citep{xie2021hybrid} have achieved new records in both DC ($\sim 200\ \rm fT/\sqrt{\rm Hz}$) and AC ($\sim 10\ \rm fT/\sqrt{\rm Hz}$) NV magnetometry by using flux concentrators which are ferromagnets concentrating the magnetic field in a small volume, similarly to an electromagnet. The technology of flux concentrator could be applied to any NV magnetometry protocol. We will here only compare experimental results obtained without a flux concentrator.
+
 \subsection{Low field magnetometry}
-Magnetometry for low magnetic field ($\gamma B < d_\perp E_\perp$) is challenging since in this regime the NV eigenstates and eigenenergies do not depend on the magnetic field in the first order. This complication is often lifted  by simply using a bias magnetic field, typically from a permanent magnet. 
+Magnetometry at low magnetic fields ($\gamma B < d_\perp E_\perp$) is challenging since in this regime the NV eigenstates and eigenenergies do not depend on the magnetic field to the first order. This complication is often lifted  by simply using a bias magnetic field.
 
-Some systems however need to be kept under low to zero external magnetic fields, for example to study the J-coupling between spins \citep{sutter2012computational}, or the phase of skyrmions \citep{zazvorka2020skyrmion}. To study these systems with NV centers, we need to find new protocols for low field NV magnetometry.
+Some systems however need to be kept under low to zero external magnetic fields, for example to study the J-coupling between spins \citep{sutter2012computational}, or the phase of skyrmions \citep{zazvorka2020skyrmion}. To study these systems with NV centers, new protocols for low field NV magnetometry are required.
 
-The main technique for low field magnetometry consist in using circularly polarized microwaves, which can only excite the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions, even when these states are not the Hamiltonian's eigenstates \citep{mrozek2015circularly, zheng2019zero, lenz2021magnetic, vetter2022zero}. The best sensitivity achieved with this technique was $250\ \rm pT/\sqrt{\rm Hz}$ \citep{zheng2019zero}.
+The main technique for low field magnetometry consists in using circularly polarized microwaves, which can only excite the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions, even when these states are not the Hamiltonian's eigenstates \citep{mrozek2015circularly, zheng2019zero, lenz2021magnetic, vetter2022zero}. These states are linearly dependent on the magnetic field and can therefore be used to perform magnetometry. The best sensitivity achieved with this technique was $250\ \rm pT/\sqrt{\rm Hz}$ \citep{zheng2019zero}.
 
-Another technique consist in using the $^{13}\rm{C}-$NV complex we discussed in sec. [REF] which because of the magnetic field offset caused by the $^{13}\rm{C}$ nucleus are frist order sensitive to the magnetic field even in zero external magnetic field \citep{wang2022zero}. With natural abundance $^{13}\rm{C}$ however, this means that only $\sim 3\%$ of the NV centers are used, and increasing the $^{13}\rm{C}$ concentration can lower the coherence of the NV centers. This technique is more suited for a carefully chosen single NV center.
+Another technique consists in using the $^{13}\rm{C}-$NV complex we discussed in sec. [REF] which because of the magnetic field offset caused by the $^{13}\rm{C}$ nucleus are first order sensitive to the magnetic field even in zero external magnetic field \citep{wang2022zero}. With natural abundance $^{13}\rm{C}$ however, this means that only $\sim 3\%$ of the NV centers are used, and increasing the $^{13}\rm{C}$ concentration can lower the coherence of the NV centers. 
 
-\subsection{Microwave-free magnetometry}
-All the precedent magnetemetry protocols described relied on the use of a controllable magnetic field, to coherently manipulate the NV spin state and to measure the phase imprinted by the magnetic field in the rotating frame.
+\subsection{Microwave-free DC magnetometry}
+All the previously described magnetemetry protocols relied on the use of a controllable microwave field to coherently manipulate the NV spin state.
 
-There are other protocols which correlate the magnetic field with the spin $T_1$ time (relaxometry). These protocols can operate without microwave field and work for either DC or high frequency AC sensing.
+%There are other protocols which correlate the magnetic field to the spin $T_1$ time (relaxometry). These protocols can operate without microwave field and work for either DC or high frequency AC sensing.
 
-\subsubsection{microwave-less DC magnetometry}
-The DC microwave-free protocols rely on sharp feature in the PL for specific magnetic fields around certain cross-relaxations processes or level anti-crossing. Fig. [REF] in chapter 2 show such PL features, in particular the ground state level anti-crossing (GSLAC, simply labeled LAC on the figure), the sharpest of these features.
+%\subsubsection{microwave-less DC magnetometry}
+The DC microwave-free protocols rely on sharp features in the PL for specific magnetic fields values. Fig. [REF] in chapter 2 show such PL features, in particular the ground state level anti-crossing (GSLAC, simply labeled LAC on the figure), the sharpest of these features.
 
 The GSLAC occurs for a purely longitudinal magnetic field where $\gamma B_z = D$, which corresponds to $B=1024\ \rm G$. In these conditions, the normally bright $\ket{0}$ state and the dark $\ket{-1}$ state become resonant and any residual mixing between these two states (coming from the electric field, the strain or the residual transverse magnetic field) will cause a drop in the NV polarization, and in the PL \citep{broadway2016anticrossing}. 
 
-A protocol based on the GSLAC line has been implemented, first only for longitudinal magnetic field measurement \citep{wickenbrock2016microwave} and then for 3D vector measurement \citep{zheng2020microwave} with a sensitivity $\sim 300\ \rm pT/\sqrt{\rm Hz}$.
+A protocol based on the GSLAC line has been implemented, first only for longitudinal magnetic field measurements \citep{wickenbrock2016microwave} and then for 3D vector measurement \citep{zheng2020microwave} with a sensitivity $\sim 300\ \rm pT/\sqrt{\rm Hz}$.
 
 Another DC microwave-less protocol was proposed based on NV-NV CR \citep{akhmedzhanov2017microwave, akhmedzhanov2019magnetometry}. This technique reconstructs the external magnetic field by scanning an other magnetic field, similar to Fig. [REF] in chapter 3, and by measuring the position of the NV-NV CR lines. By scanning the magnetic field in different directions, one can then recover the initial 3D magnetic field. The author of this paper did not measure the sensitivity of this protocol, but they predict a shot noise limited sensitivity of $24.7\ \rm nT/\sqrt{\rm Hz}$.
 
-\subsubsection{microwave-less AC magnetometry}
-The AC microwave-less protocols rely on a direct excitation of the $\ket{0} \to \ket{-1}$ or $\ket{0} \to \ket{+1}$ transitions by the magnetic field probed. The detection bandwidth is adjusted with an external DC magnetic field to bring the NV transitions in resonance with the field probed, which has been implemented from $\sim 10\ \rm MHz$ to $27\ \rm GHz$ \citep{magaletti2022quantum}.
-
-Sensitivities as low as a few $\rm pT/\sqrt{\rm Hz}$ have been recorded near 2.87 GHz \citep{wang2022picotesla, alsid2022solid}, but both protocols are not microwave-free as they rely on a secondary controllable microwave field (either for an heterodyne detection or to add additional pulses).
+%\subsubsection{microwave-less AC magnetometry}
+%The AC microwave-less protocols rely on a direct excitation of the $\ket{0} \to \ket{-1}$ or $\ket{0} \to \ket{+1}$ transitions by the magnetic field probed. The detection bandwidth is adjusted with an external DC magnetic field to bring the NV transitions in resonance with the field probed, which has been implemented from $\sim 10\ \rm MHz$ to $27\ \rm GHz$ \citep{magaletti2022quantum}.
+%
+%Sensitivities as low as a few $\rm pT/\sqrt{\rm Hz}$ have been recorded near 2.87 GHz \citep{wang2022picotesla, alsid2022solid}, but both protocols are not microwave-free as they rely on a secondary controllable microwave field (either for an heterodyne detection or to add additional pulses).
 
 \subsection{Orientation-free magnetometry}
-Every protocol described so far requires a precise knowledge  of the Larmor frequency between the $\ket{0}$ and $\ket{\pm 1}$ states as a function of the magnetic field. This knowledge implies that the direction of each NV axis in the frame of the magnetic field is known, because of the strong anisotropy in the NV Hamiltonian. 
+All protocols described so far require precise knowledge of the Larmor frequency between the $\ket{0}$ and $\ket{\pm 1}$ states for a given magnetic field. This knowledge implies that the direction of each NV axis in the frame of the magnetic field is known, because of the strong anisotropy in the NV Hamiltonian. 
 
 For a single crystal, these axes can always be calibrated through ODMR. However, for a polycrystalline diamond, diamond powder or even a single diamond with an erratic motion, the knowledge of these axes is not possible. New protocols need to be found if one wants to perform magnetometry with these materials.
 
-To our knowledge, the only known orientation-free protocol for DC magnetometry is to use the change in PL caused by the transverse field, which is a property that depends only weakly on the field orientation, especially with an ensemble of NV centers with multiple axes. This protocol however has an very low sensitivity and only had marginal use so far\citep{rondin2012nanoscale, tetienne2012magnetic, maletinsky2012robust, chapman2013background, jones2020selective}.
+To our knowledge, the only known orientation-free protocol for DC magnetometry is to use the change in PL caused by the transverse field, which is a property that depends only weakly on the field orientation, especially with an ensemble of NV centers with multiple axes. This protocol has an very low sensitivity and found limited use so far\citep{rondin2012nanoscale, tetienne2012magnetic, maletinsky2012robust, chapman2013background, jones2020selective}.
 
 Orientation-free magnetometry can also be performed for noise sensing, provided that that the noise is sufficiently broadband to directly excite the NV transitions regardless of their Larmor frequencies. The noise can be probed either by measuring the spin $T_1$ time \citep{kolkowitz2015probing, andersen2019electron} (which does not require a knowledge of the Larmor frequency), or via the PL \citep{finco2021imaging}.
 
 \section{Low field depolarization magnetometry}
 \label{sec LFDM}
-We will now present and characterize the low field depolarization magnetometry (LFDM) protocol which rely on the spontaneous depolarization of dense NV ensemble at low magnetic field. This protocol works for DC or slowly varying ($\lesssim 10\ \rm kHz$) magnetic field, is microwave-free, orientation-free, and operates at low magnetic field, although a small additional field is required to improve performances.
+We will now present and characterize the low field depolarization magnetometry (LFDM) protocol which rely on the depolarization of dense NV ensemble at low magnetic field. This protocol works for DC or slowly varying ($\lesssim 10\ \rm kHz$) magnetic field, is microwave-free, orientation-free, and operates at low magnetic field, although a small additional AC field is required to improve performances.
 
 We will first describe its operation and characterize it before comparing it to the previously mentioned NV magnetometry protocols.
 
@@ -463,7 +462,7 @@ We will first describe its operation and characterize it before comparing it to 
 
 Fig. \ref{setup magneto} shows the principle of the LFDM protocol. The experimental setup is similar to the one presented in Fig. [REF] with the exception that there are no microwaves, and that the magnetic field generated by the electro-magnet contains both a DC or slowly variable component $B_0$ and an oscillating component $\tilde{B}_{\rm AC}$ used for the modulation. We typically use a modulation frequency $f_{\rm mod} \approx 1\ \rm kHz$, the same value we use for ODMR measurements. The main voltage $V_0$ responsible for the DC field and the oscillating voltage $\tilde{V}_{\rm AC}$ responsible for the AC field are summed via a homemade bias tee.
 
-Fig. \ref{setup magneto}-b) and c) show respectively the PL measured directly on the photodiode and the lock-in signal when the DC magnetic field is slowly varied ($f_{\rm scan}<1\ \rm Hz$) from -150 to +150 G. For this configuration, the magnetic field was randomly oriented with respect to the NV axes and did not match any particular crystalline axis.
+Fig. \ref{setup magneto}-b) and c) show the PL measured on the photodiode and on the lock-in respectively, when the DC magnetic field is slowly varied ($f_{\rm scan}<1\ \rm Hz$) from -150 to +150 G. For this configuration, the magnetic field was randomly oriented with respect to the NV axes and did not match any particular crystalline axis.
 
 Both AC (up to $\sim$ 10 kHz) and DC-magnetometry are possible with this setup. To improve the sensitivity however, an AC field needs to be added for the DC sensing, and inversely a DC field needs to be added for the AC sensing. Both of these added fields are typically of a few G for optimal performances, which limits the ultra-low field applications.
 
@@ -486,7 +485,7 @@ Fig. \ref{AC and DC sensing} shows how the AC and DC sensing work for LFDM: for 
 
 We will now look at the performances of the LFDM protocol before comparing it to the other magnetometry protocols. The characterization was only done for DC sensing. The samples used for the characterization were 15 $\mu$m micro-diamond bought as is from Adamas nanodiamond (see the sample section [REF] for more information).
 
-We characterize the DC sensitivity by looking at the noise floor on the LIA signal when sitting on the steepest slope, around $B_0=0$. The following parameters were used in the case presented: the AC field for the modulation had an amplitude $|\tilde{B}_{\rm AC}|\approx 10\ \rm G$ and a frequency $f_{mod} \approx 1\ \rm kHz$, the laser power was $\approx 1\ \rm mW$ and the collected PL power $\approx 1\ \rm{\mu W}$, and the lock-in low-pass filter time constant was set to $\tau=3\ \rm ms$.
+We characterize the DC sensitivity by looking at the noise floor on the LIA signal when sitting on the steepest sloped ($B_0\approx 0$). The following parameters were used: $|\tilde{B}_{\rm AC}|\approx 10\ \rm G$ and $f_{mod} \approx 1\ \rm kHz$, the laser power was $\approx 1\ \rm mW$ and the collected PL power $\approx 1\ \rm{\mu W}$. The lock-in low-pass filter time constant was set to $\tau=3\ \rm ms$.
 
 Fig. \ref{sensei alternee} shows the sensitivity measurement protocol. First, the applied magnetic field is calibrated with ODMR spectra, then an alternating DC field of known amplitude (here $\Delta B_0=35\ \rm{\mu T}$) is applied on the sample. Fig. \ref{sensei alternee}-a) shows the temporal trace of the LIA signal in response to this alternating DC field. Knowing the amplitude of the alternating field, we can then convert the voltage signal into a magnetic field amplitude, with in this case a ratio $45 \pm 3\ \rm{\mu T /V}$.
 
@@ -497,7 +496,7 @@ Fig. \ref{sensei alternee}-b) shows an histogram of the measured magnetic field 
 
 where $\tau=3\ \rm ms$ is the LIA low-pass filter time constant. 
 
-We estimate that the sensitivity is mostly shot-noise limited because the same LIA voltage noise ($\delta V \approx 35\ \rm mV$) was observed on a magnetic insensitive region (for $B_0 \approx 100\ \rm G$), and is far above the electrical noise measured when no optical signal is sent to the photodiode ($\delta V < 1\ \rm mV$). Laser fluctuations could also play a role but the noise seem to grow as the square root of the optical power and not linearly with it.
+We estimate that the sensitivity is mostly shot-noise limited because the same LIA voltage noise ($\sqrt{\langle \delta V^2 \rangle} \approx 35\ \rm mV$) was observed on a magnetic insensitive region (for $B_0 \approx 100\ \rm G$), and is far above the electrical noise measured when no optical signal is sent to the photodiode ($\sqrt{\langle \delta V^2 \rangle} < 1\ \rm mV$). The remaining noise could also come from laser intensity fluctuations.
 
 \subsection{Angular dependence of the sensitivity}
 \label{sec angular sensi}
@@ -508,11 +507,11 @@ We estimate that the sensitivity is mostly shot-noise limited because the same L
 \label{angular sensi}
 \end{figure}
 
-We will now look at the dependence of the sensitivity with respect to the magnetic field angle. In particular, we are interested in comparing the sensitivity when $\mathbf{B}\parallel [100]$, where there is no lift of degeneracy between the four classes as $\mathbf{B}$ increases; and a case where $\mathbf{B}\nparallel [100]$ and where there is a lift of degeneracy between the four classes. We previously saw in Fig. \ref{scan 1x1x1x1} and \ref{scan 100} that the PL and $T_1$ contrast was much smaller when $\mathbf{B}\parallel [100]$, but we now focus on the sensitivity which is related to the slope of the PL change, and not directly to the contrast.
+We will now study the dependence of the sensitivity with respect to the magnetic field angle. In particular, we will compare the sensitivity for two scenarios: the case $\mathbf{B}\parallel [100]$and the four classes remains degenerate when $\mathbf{B}$ increases, and the case $\mathbf{B}\nparallel [100]$ where there is a lift of degeneracy between the four classes. We previously saw in Fig. \ref{scan 1x1x1x1} and \ref{scan 100} that the PL and $T_1$ contrast was much smaller when $\mathbf{B}\parallel [100]$, but we now focus on the sensitivity which is related to the slope of the PL change, and not directly to the contrast.
 
-Fig. \ref{angular sensi}-a) and b) show the LIA signal when the DC field $B_0$ is scanned from $-150$ G to +150 G on the same sample ADM-15-4, but for two different angle of $B_0$. For the blue curve, the field was scanned along the [100] axis, for the orange curve, it was scanned with an angle of $\sim 20\ ^\circ$ compared to the [100] axis. We can see that the maximum amplitude of the lock-in signal (relevant for AC sensing) is of the same order of magnitude for both case, and the slope around $B_0$ (relevant for DC sensing) is almost identical. Fig. \ref{angular sensi}-c) shows the sensitivity, measured with the protocol described in Fig. \ref{sensei alternee}, with respect to the angle between the magnetic field and the [100] axis. We can notice that the sensitivity depends only weakly on the magnetic field angle. 
+Fig. \ref{angular sensi}-a) and b) show the LIA signal when the DC field $B_0$ is scanned from $-150$ G to +150 G on the same sample ADM-15-4, but for two different angles of $B_0$. For the blue curve the field was scanned along the [100] axis, while for the orange curve it was scanned with an angle of $\sim 20\ ^\circ$ compared to the [100] axis. We can see that the maximum amplitude of the lock-in signal (relevant for AC sensing) is of the same order of magnitude for both case, and the slope around $B_0$ (relevant for DC sensing) is almost identical. Fig. \ref{angular sensi}-c) shows the sensitivity, measured with the protocol described in Fig. \ref{sensei alternee}, with respect to the angle between the magnetic field and the [100] axis. We can notice that the sensitivity depends only weakly on the magnetic field angle. 
 
-The fact that the sensitivity is similar when $\mathbf{B}\parallel [100]$ or $\mathbf{B}\nparallel [100]$ means that the inter-class co-resonances plays a lower role in the sensitivity than the zero-field specific depolarization mechanisms, previously detailed in Sec. \ref{sec causes zero field}. We cannot be sure which of the three zero-field mechanism is the dominant one, but based on the experimental results shown in Fig. \ref{champ tranverse exp}, we can assume that the double-flips are the dominant factor in the LFDM sensitivity.
+The fact that the sensitivity is similar when $\mathbf{B}\parallel [100]$ or $\mathbf{B}\nparallel [100]$ means that the degeneracy between the four classes plays a lower role in the sensitivity than the three other mechanisms detailed in sec. \ref{sec causes zero field}. We cannot measure the individual impact of each of these three mechanisms, but based on the experimental results shown in Fig. \ref{champ tranverse exp}, we can assume that the double-flips are the dominant factor in the LFDM sensitivity.
 
 It should be noted that this low angular dependence was particularly marked on sample ADM-15-4. Other samples, including from the same batch, showed a higher angular dependence with typically a sensitivity $2 \sim 3$ times worse for $B\parallel [100]$ than for the other directions.
 
@@ -533,7 +532,8 @@ Fig. \ref{temporal 0B} shows the temporal stability of the LFDM protocol over an
 We can see that the SNR does not deviate from the $\sqrt{T}$ scaling for times up to 50 s, and could probably be extended for longer times. The non-linearity for shorter times comes from the LIA low-pass filter.
 
 \section{Comparison between LFDM and other magnetometry protocol}
-Now that we have characterized the LFDM protocol, we can compare its performances with the previously mentioned magnetometry protocols. We should start by mentioning that the best sensitivity achieved with the LFDM ($\sim 100 \rm{nT} / \sqrt{\rm Hz}$) is about $10^5$ times worse than the best NV ensemble sensitivity. This discrepancy however come in large part to the smaller sensor volume used in the characterization, and to a relatively low PL collection efficiency compared to the other experiments.
+\label{sec 4.6}
+Now that we have characterized the LFDM protocol, we can compare its performances with the previously mentioned magnetometry protocols. The best sensitivity achieved with the LFDM ($\sim 100 \rm{nT} / \sqrt{\rm Hz}$) is about $10^5$ times worse than the best NV ensemble sensitivity. This discrepancy however come in large part to the smaller sensor volume used in the characterization, and to a relatively low PL collection efficiency compared to the other experiments.
 
 \subsection{Comparison with microwave based protocols}
 
@@ -552,7 +552,7 @@ $\eta_v\ (\rm{nT}\mu \rm{m}^{3/2} \rm{Hz}^{-1/2})$ &8.3&34&6700 \\
 \end{tabular}
 \end{table}
 
-We will first compare the LFDM protocol with the best microwave-based NV magnetometry protocols. A better metric than the sensitivity to compare different protocols is the volume-normalized sensitivity defined in \citep{zhou2020quantum} as $\eta_v=\eta\cdot \sqrt{V}$ where $\eta$ is the sensitivity and $V$ the effective volume of the sensor. This scaling assumes that each NV center in an ensemble is an independent magnetic field probe, and as the total number of NV centers is proportional to $V$, the sensitivity should scale as $1/\sqrt{V}$.
+A better metric than the sensitivity to compare different protocols is the volume-normalized sensitivity defined in \citep{zhou2020quantum} as $\eta_v=\eta\cdot \sqrt{V}$ where $\eta$ is the sensitivity and $V$ the effective volume of the sensor. This scaling assumes that each NV center in an ensemble is an independent magnetic field probe, and as the total number of NV centers is proportional to $V$, the sensitivity should scale as $1/\sqrt{V}$.
 
 Table \ref{table sensi volumiques} reports the best AC and DC volume-normalized sensitivities found in the literature. The LFDM protocol performs $\sim 200$ times worse than the best DC magnetometer. It should be noted however that the PL collection in our measurement, where we use a confocal microscope with a numerical aperture NA=0.65, is estimated to be $\sim 1 \%$ \citep{le2012efficient}, while the best collection schemes \citep{le2012efficient,wolf2015subpicotesla,wang2022picotesla, alsid2022solid} achieve a collection efficiency above 50 \%.
 
@@ -584,45 +584,53 @@ We have seen in this chapter that dense ensemble of NV centers spontaneously dep
 
 Finally, we have seen how this low-field depolarization can be applied to perform magnetometry experiments, and what advantages and disadvantages this technique offers compared to the established NV magnetometry protocols.
 
-I will now describe what could be interesting investigation points to further improve the LFDM performance, as well as potential applications.
+We will now describe what could be interesting investigation points to further improve the LFDM performance, as well as potential applications.
 
 \subsection{LFDM optimization}
-
-Given the few parameters involved in the LFDM protocol, the main path for LFDM optimization seem to be the material optimization of the samples.
-
-Most magnetometry protocols have a relatively clear material optimization path: DC protocols want to improve the figure of merit $\rho T_2^*$ and AC protocols want to improve $\rho T_2$, where $\rho=[\rm NV]$ is the NV concentration. The reason is that the number of NV centers for a given volume scales as $\rho$, and therefore the sensitivity scale as $\sqrt{\rho}$. Meanwhile increasing the density of defects tend to decrease the spin coherence times $T_2$ and $T_2^*$, and the AC and DC sensitivities scale respectively as $1/\sqrt{T_2}$ and $1/\sqrt{T_2^*}$.
-
-For the LFDM protocol however, the material optimization is far from obvious. Indeed, while increasing $T_2^*$ would improve the sensitivity, the gain might not be as interesting as for other protocols due to the broadening caused by the fluctuator lifetime. On the other hand, increasing the NV density not only increases the number of sensor per volume, but also increases the dipole-dipole strength between NV centers. If we assume that fluctuators are constituted of closely packed impurities, then increasing the NV density should also increase the fluctuator proportion.
-
-It seems then that increasing the NV density would be the obvious path to improve the LFDM performances. In practice however, I observed that the relationship between NV density, fluctuators, and LFDM performances was generally not straightforward. The two following examples will illustrate that.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\textwidth]{Figures/substrat}
-\caption{Measurements on sample SBST-C for two different regions A and B. a) PL contrast as a function of a magnetic field scanned in an aribitrary direction (same direction for both regions). b) PL contrast as a function of a magnetic field scanned in the [100] direction. c) $T_1$ measurement on a single class when $B\neq 0$. d) $T_1$ measurement on all  four classes when $B=0$ }
-\label{substrat chelou}
-\end{figure}
-
-Fig. \ref{substrat chelou} shows various measurements on the same sample SBST-C, a HPHT bulk sample containing [NV]$\sim  \rm ppm$, on two spatially distinct regions A and B. These two regions most likely correspond to two distinct growth sectors of the diamond, meaning that these regions were not grown in the same exact environment, which can impact among other things the creation of impurities. Both region showed a similar PL which would indicate a similar density of NV centers.
-
-The metric we are interested in to evaluate the LFDM performance are the PL contrast when $\mathbf{B}$ is scanned in an arbitrary direction, which mainly represents the inter-class flip flop and which I will refer to as FF-contrast; and the PL contrast when B is scanned $\mathbf{B}$ is scanned along the [100] direction, which mainly represents the double flips and which I will refer to as DF-contrast. We are interested in the DF-contrast since we have seen in sec. \ref{sec angular sensi} that it could be the main contribution to the LFDM sensitivity.
-
-Fig. \ref{substrat chelou}-a) and b) indicate that region B shows a higher FF-contrast, but a smaller DF-contrast than region A. Looking at the $T_1$ measurements for both regions, region B shows a shorter $T_1$ in both zero field and non-zero field, which would indicate a larger fluctuator density in region B. If this is true, than the fluctuator density is not directly correlated to the DF-contrast.
-
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{Figures/double_adamas}
-\caption{Same measurements as Fig. \ref{substrat chelou} on two distinct samples ADM-15-4 and ADM-15-1. Every parameters (laser power,optical setup , AC magnetic field) was kept identical for the two samples.}
+\caption{a) PL of two distinct samples ADM-15-1 and ADM-15-4 as the magnetic field is scanned in an arbitrary direction (which splits the 4 classes similarly in both cases). b) Same measurement with $B\parallel [100]$ c) $T_1$ measurement on both samples on a single class for $B\approx 50\ \rm G$. d) $T_1$ measurement on both samples on all four classes for $B=0$.}
 \label{double dragon}
 \end{figure}
 
-We now turn to Fig. \ref{double dragon}. This figure shows the same 4 measurements but this time on two distinct samples, ADM-15-1 and ADM-15-4, which came from the same batch. Both samples showed relatively similar PL which could again indicate a similar NV density.
 
-We can first notice the disparity in the  zero field PL contrasts: the FF-contrast is twice as big in sample ADM-15-4 as in sample ADM-15-1, and the DF-contrast is almost 5 times bigger. When looking at the $T_1$, we can notice that the lifetime for non-zero field is slightly longer for sample ADM-15-4 than for ADM-15-1, but its lifetime in zero-field is shorter (it is also exponential and not stretched-exponential as discussed in the last chapter [REF], which could have an influence on the PL contrast). From the $T_1$ measurements we can not determine which sample contains the most fluctuators, and therefore correlate the fluctuator or NV density with the DF and FF-contrasts.
+Given the few parameters involved in the LFDM protocol, the main path for LFDM optimization seem to be the material optimization of the samples.
 
-These two examples illustrate the complexity of finding the sample-dependent parameters that governs the PL contrasts in zero field. We have noticed a large variability in PL contrasts among sample grown in similar condition, which would indicate that those parameters are quite sensitive. If these parameters were to be identified, samples with dedicated fabrication process could then substantially improve the LFDM sensitivity.
+Most magnetometry protocols have a relatively clear material optimization path: DC protocols use the figure of merit $\rho T_2^*$ and AC protocols $\rho T_2$, where $\rho=[\rm NV]$ is the NV concentration. The reason is that the number of NV centers for a given volume scales as $\rho$, and therefore the sensitivity scale as $1/\sqrt{\rho}$. Meanwhile increasing the density of defects tend to decrease the spin coherence times $T_2$ and $T_2^*$, and the AC and DC sensitivities scale respectively as $1/\sqrt{T_2}$ and $1/\sqrt{T_2^*}$. The sensitivity in both of these cases is then inversely proportional to the figure of merit.
 
-Other non-material parameters in the LFDM protocols should also be investigated. This includes the temperature of the sample, the intensity and wavelength of the laser, the frequency and amplitude of the AC magnetic field. For the results presented in sec. \ref{sec LFDM}, we chose the parameters which we found optimal within our available experimental range.
+For the LFDM protocol however, the material optimization is far from obvious. Indeed, while increasing $T_2^*$ would improve the sensitivity, the gain might not be as interesting as for traditional protocols due to the broadening caused by $\gamma_f$. On the other hand, increasing the NV density not only increases the number of sensor per volume, but also increases the dipole-dipole strength between NV centers. If we assume that fluctuators are constituted of closely packed impurities, then increasing the NV density should also increase the fluctuator proportion.
+
+Increasing the NV density seem to be the path for further material optimization, but other issues may arise in the process.
+
+We should note that we observed large discrepancy in the zero field depolarization among the samples that we studied, even from samples coming from the same batch.
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=\textwidth]{Figures/substrat}
+%\caption{Measurements on sample SBST-C for two different regions A and B. a) PL contrast as a function of a magnetic field scanned in an aribitrary direction (same direction for both regions). b) PL contrast as a function of a magnetic field scanned in the [100] direction. c) $T_1$ measurement on a single class when $B\neq 0$. d) $T_1$ measurement on all  four classes when $B=0$ }
+%\label{substrat chelou}
+%\end{figure}
+%
+%Fig. \ref{substrat chelou} shows various measurements on the same sample SBST-C, a HPHT bulk sample containing [NV]$\sim  \rm ppm$, on two spatially distinct regions A and B. These two regions most likely correspond to two distinct growth sectors of the diamond, meaning that these regions were not grown in the same exact environment, which can impact among other things the creation of impurities. Both region showed a similar PL which would indicate a similar density of NV centers.
+%
+%The metric we are interested in to evaluate the LFDM performance are the PL contrast when $\mathbf{B}$ is scanned in an arbitrary direction, which mainly represents the inter-class flip flop and which I will refer to as FF-contrast; and the PL contrast when B is scanned $\mathbf{B}$ is scanned along the [100] direction, which mainly represents the double flips and which I will refer to as DF-contrast. We are interested in the DF-contrast since we have seen in sec. \ref{sec angular sensi} that it could be the main contribution to the LFDM sensitivity.
+%
+%Fig. \ref{substrat chelou}-a) and b) indicate that region B shows a higher FF-contrast, but a smaller DF-contrast than region A. Looking at the $T_1$ measurements for both regions, region B shows a shorter $T_1$ in both zero field and non-zero field, which would indicate a larger fluctuator density in region B. If this is true, than the fluctuator density is not directly correlated to the DF-contrast.
+
+
+
+Fig. \ref{double dragon}-a) shows the PL on two distinct 15-$\mu$m Adamas microdiamonds for a magnetic field scanned in a random direction, and Fig. \ref{double dragon}-b) for a magnetic field scanned along the [100]. We can notice that the PL contrast in zero field is twice as big for sample ADM-15-4 when $B \nparallel [100]$, and 5 time as big when $B \parallel [100]$, which would directly impact their respective sensitivity in LFDM.
+
+Fig. \ref{double dragon}-c) and d) shows $T_1$ measurement on both samples either on a single class for $B\neq 0$ or for all four classes for $B=0$. Interestingly, we can notice that the $T_1$ of sample ADM-15-1 is both shorter than the one of ADM-15-4 for $B\neq 0$, and longer for $B=0$. This could indicate that another relaxation mechanism is competing with the NV-fluctuator one on sample ADM-15-1, which would limit the LFDM sensitivity.
+
+%We now turn to Fig. \ref{double dragon}. This figure shows the same 4 measurements but this time on two distinct samples, ADM-15-1 and ADM-15-4, which came from the same batch. Both samples showed relatively similar PL which could again indicate a similar NV density.
+%
+%We can first notice the disparity in the  zero field PL contrasts: the FF-contrast is twice as big in sample ADM-15-4 as in sample ADM-15-1, and the DF-contrast is almost 5 times bigger. When looking at the $T_1$, we can notice that the lifetime for non-zero field is slightly longer for sample ADM-15-4 than for ADM-15-1, but its lifetime in zero-field is shorter (it is also exponential and not stretched-exponential as discussed in the last chapter [REF], which could have an influence on the PL contrast). From the $T_1$ measurements we can not determine which sample contains the most fluctuators, and therefore correlate the fluctuator or NV density with the DF and FF-contrasts.
+%
+%These two examples illustrate the complexity of finding the sample-dependent parameters that governs the PL contrasts in zero field. We have noticed a large variability in PL contrasts among sample grown in similar condition, which would indicate that those parameters are quite sensitive. If these parameters were to be identified, samples with dedicated fabrication process could then substantially improve the LFDM sensitivity.
+
+Other non-material parameters in the LFDM protocols should also be investigated. This includes the temperature of the sample, the intensity and wavelength of the laser, the frequency and amplitude of the AC magnetic field. 
 
 
 \subsection{Potential applications for LFDM}

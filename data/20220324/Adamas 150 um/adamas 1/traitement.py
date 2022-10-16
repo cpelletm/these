@@ -6,10 +6,11 @@ from analyse import *
 # Pour la figure en fonction du décalage en fréquence, voir le traitement.py dans T1/
 
 
-plt.figure(num=1,figsize=(6,4),dpi=80)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
+plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 plt.locator_params(axis='x', nbins=5)
+plt.locator_params(axis='y', nbins=5)
 
 def find_B():
 	fnames,fval=extract_glob('ESR',LastValIndex=-5)
