@@ -1,0 +1,46 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[]{amsmath}
+\usepackage[]{physics} % \bra, \ket etc
+\usepackage{graphicx} %Pour les figures je crois
+\usepackage{hyperref}
+\usepackage[
+    backend=biber, 
+    natbib=true,
+    style=numeric-comp,
+    sorting=none, %Pour faire apparaitre les refs dans l'ordre
+    hyperref=true
+]{biblatex} %Imports biblatex package
+\addbibresource{Bib_intro.bib} %Import the bibliography file
+
+\usepackage{amssymb} %quelques symboles dont gtrsim /lesssim
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usepackage{xcolor} % Pour avoir des couleurs dans les équations
+
+
+\title{}
+\begin{document}
+\chapter*{Conclusion}
+
+The work presented in this manuscript is part of an ongoing effort to develop quantum technologies, and NV centers, among many other systems, are a part of this new ecosystem. While the properties of single NV centers have been thoroughly studied in the past 20 years, we showed in this thesis that emerging properties of NV ensemble can still be discovered. These ensemble properties are relevant for the many fields using NV ensembles \citep{ barry2020sensitivity, eills2022spin, fu2007characterization, perdriat2021spin}. They also are relevant to explore fundamental aspects \citep{choi2017observation, kucsko2018critical, angerer2018superradiant} and for new potential applications \citep{akhmedzhanov2017microwave, pellet2021optical, pellet2022spin}.
+
+At the heart of this manuscript is the notion of cross-relaxation with NV centers. Cross-relaxations are a powerful spectroscopic tool, and NV centers are naturally suited to cross-relaxation studies due to their ability to be optically polarized and read-out, in opposition to their environment.
+
+We have showed how cross-relaxations can be used in a CVD-grown diamond to detect trace amount of other spin impurities, with higher sensitivity than the standard EPR apparatus, and only a fraction of the cost. These observations allowed us to study the temperature dependence of these impurities, and could eventually allow the detection and coherent manipulation of single dark spins through their interaction with an NV bath.
+
+We have then studied the cross-relaxation between NV centers, thanks to the multiple classes of NV and the ability to tune them in and out of resonance. The observation of cross-relaxation between seemingly equivalent spins has led previous researchers to postulate the existence of dark NV centers called fluctuators. We investigated experimentally the predictions of the fluctuator model, in particular the prediction of a stretched exponential profile for the depolarization of the spins, and a broadening of the fluctuators spectra compared to those of regular NV centers. Our observations for the large part comfort the fluctuator model, although we did notice some deviations which could indicate some limitations of the model. 
+
+Dipole-dipole interaction within dense ensemble of NV centers ([NV] > ppm) can be responsible for an increase of the depolarization rate by more than a factor of 10. This changes considerably the properties of NV ensemble compared to single NV. Having a better understanding of the fluctuators and of their microscopic origin will be a crucial point in the future development of NV ensemble technologies. The further steps to determine the nature of the fluctuators could include the study of dedicated samples grown with specific concentrations of NV and other defects, as well as the study of nano-diamonds to try to isolate a single fluctuator.
+
+Finally, we investigated the depolarization of NV ensemble at low magnetic field. We identified 4 different contributions to the zero field depolarization which we analyzed both theoretically through the fluctuator model, and experimentally by varying the magnetic field orientation. We concluded that the dominant factor in the zero field depolarization was the degeneracy of the 4 NV classes, followed by the double flips. 
+
+The depolarization of NV ensemble in zero field can in itself be used to measure magnetic field. We characterized such a magnetometer and compared it to the state of the art NV magnetometers. We found in particular that the dominant factor in the sensitivity of the magnetometer was the presence of the double flips, and not the classes degeneracy. 
+
+The low-field depolarization magnetometer is unique among the NV magnetometers in that is does not require a microwave or a precise orientation of the magnetic field to work, which makes it usable with powdered or polycrystalline samples. Applications of magnetometry with powders include wide-field imaging of uneven surfaces, background free fluorescence microscopy, and microwave-free nano-probe sensing.
+
+\printbibliography
+
+
+\end{document}

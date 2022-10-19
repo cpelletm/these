@@ -1,0 +1,163 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{tallaire2020high}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=57dc05eeee2c31c6a1745c0dd7de2e19}{%
+           family={Tallaire},
+           familyi={T\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8ecf086e39224efb181725dd2bd6072b}{%
+           family={Brinza},
+           familyi={B\bibinitperiod},
+           given={Ovidiu},
+           giveni={O\bibinitperiod}}}%
+        {{hash=28dfed4180aa164f0e54b48fedc35117}{%
+           family={Huillery},
+           familyi={H\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e0fa8edc0ab4d3f326cc26f699d69069}{%
+           family={Delord},
+           familyi={D\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a28b88910740ef60a0f6beccc960b557}{%
+           family={Pellet-Mary},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Cl{é}ment},
+           giveni={C\bibinitperiod}}}%
+        {{hash=20588a6da4a927466b47d4cf59106a52}{%
+           family={Staacke},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f7a6fc1ab6e846248512662adb2b12f4}{%
+           family={Abel},
+           familyi={A\bibinitperiod},
+           given={Bernd},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f51fc2eb9829010127928a14530fb343}{%
+           family={Pezzagna},
+           familyi={P\bibinitperiod},
+           given={S{é}bastien},
+           giveni={S\bibinitperiod}}}%
+        {{hash=7dcf126ac136dc5c93e9b1acdf63b445}{%
+           family={Meijer},
+           familyi={M\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1f20c4f65345c081597391c2722632a8}{%
+           family={Touati},
+           familyi={T\bibinitperiod},
+           given={Nadia},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{fullhash}{9154a237cb20084d920687fd044096f1}
+      \strng{bibnamehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{authorbibnamehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{authornamehash}{0d1fca73f3bbf0bf5ae77e945810cb4d}
+      \strng{authorfullhash}{9154a237cb20084d920687fd044096f1}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Carbon}
+      \field{title}{High NV density in a pink CVD diamond grown with N2O addition}
+      \field{volume}{170}
+      \field{year}{2020}
+      \field{pages}{421\bibrangedash 429}
+      \range{pages}{9}
+    \endentry
+    \entry{ngambou2022improving}{article}{}
+      \name{author}{8}{}{%
+        {{hash=52e6d9184a530a527ebd4e1882fe840c}{%
+           family={Ngambou},
+           familyi={N\bibinitperiod},
+           given={Midrel\bibnamedelimb Wilfried\bibnamedelima Ngandeu},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=a28b88910740ef60a0f6beccc960b557}{%
+           family={Pellet-Mary},
+           familyi={P\bibinithyphendelim M\bibinitperiod},
+           given={Cl{é}ment},
+           giveni={C\bibinitperiod}}}%
+        {{hash=8ecf086e39224efb181725dd2bd6072b}{%
+           family={Brinza},
+           familyi={B\bibinitperiod},
+           given={Ovidiu},
+           giveni={O\bibinitperiod}}}%
+        {{hash=e4127f4478917ecc10b6caedb30a7b29}{%
+           family={Antonino},
+           familyi={A\bibinitperiod},
+           given={Alessi},
+           giveni={A\bibinitperiod}}}%
+        {{hash=f425a4a7f5fb6705b4b95745fb779db4}{%
+           family={Hetet},
+           familyi={H\bibinitperiod},
+           given={Gabriel},
+           giveni={G\bibinitperiod}}}%
+        {{hash=57dc05eeee2c31c6a1745c0dd7de2e19}{%
+           family={Tallaire},
+           familyi={T\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6d9648a13685634fd92b46ee25d5a091}{%
+           family={B{é}n{é}dic},
+           familyi={B\bibinitperiod},
+           given={Fabien},
+           giveni={F\bibinitperiod}}}%
+        {{hash=c6fc7a015a04fa9a513d2c1a4bc91601}{%
+           family={Achard},
+           familyi={A\bibinitperiod},
+           given={Jocelyn},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{fullhash}{ce7108d5caf86e9dc67ce006d5a4b3df}
+      \strng{bibnamehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{authorbibnamehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{authornamehash}{cfb9cef1593ec901e409435b41c5c0a5}
+      \strng{authorfullhash}{ce7108d5caf86e9dc67ce006d5a4b3df}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Diamond and Related Materials}
+      \field{title}{Improving NV centre density during diamond growth by CVD process using N2O gas}
+      \field{volume}{123}
+      \field{year}{2022}
+      \field{pages}{108884}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

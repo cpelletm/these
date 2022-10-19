@@ -1,0 +1,20 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'appendix_samples.blg'
+[35] biber:322> INFO - === mer. oct. 19, 2022, 18:04:24
+[42] Biber.pm:415> INFO - Reading 'appendix_samples.bcf'
+[74] Biber.pm:943> INFO - Found 2 citekeys in bib section 0
+[81] Biber.pm:4256> INFO - Processing section 0
+[81] Utils.pm:75> INFO - Globbing data source 'Bib_ch1.bib'
+[81] Utils.pm:91> INFO - Globbed data source 'Bib_ch1.bib' to Bib_ch1.bib
+[87] Biber.pm:4455> INFO - Looking for bibtex format file 'Bib_ch1.bib' for section 0
+[91] bibtex.pm:1653> INFO - LaTeX decoding ...
+[220] bibtex.pm:1471> INFO - Found BibTeX data source 'Bib_ch1.bib'
+[223] Utils.pm:293> WARN - Duplicate entry key: 'wang2022picotesla' in file 'Bib_ch1.bib', skipping ...
+[226] Utils.pm:293> WARN - Duplicate entry key: 'wiki:VoigtProfile' in file 'Bib_ch1.bib', skipping ...
+[253] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[253] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[253] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[253] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[255] bbl.pm:652> INFO - Writing 'appendix_samples.bbl' with encoding 'UTF-8'
+[257] bbl.pm:755> INFO - Output to appendix_samples.bbl
+[257] Biber.pm:128> INFO - WARNINGS: 2

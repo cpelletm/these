@@ -21,7 +21,7 @@
 
 \title{}
 \begin{document}
-\chapter{Appendix: Computation of $\bar \eta$}
+\chapter{Computation of $\bar \eta$}
 We will discuss here the specifics to the computation of the  $\bar \eta$ factor for different geometric configurations, and how to compute the $T_1$ times in table [REF] of chapter [REF], and table [REF] of chapter [REF].
 
 As a reminder, $\bar \eta$ is defined as the averaged value of $\eta$ over all possible configurations.
@@ -140,7 +140,7 @@ $\frac{2}{9}=0.222$ & 0.3757 & 0.4808 \\
 
 \subsection{Interclass resonance and magnetic field orientation}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=.8\textwidth]{Figures/110_vs_100}
 \caption{(a) Illustration of the co-resonance condition between a NV center parallel to the [111] axis and a fluctuator parallel to the [$\bar 1$11] axis. The $\hat z$ direction is defined by the condition $\mathbf{B}\cdot\hat{z} >0$. (b) 8 individual $T_1$ measurements on sample ADM-15-3 on a two-class resonance for 8 different values of the magnetic field (4 $\mathbf{B} \in \{110\}$ and 4 $\mathbf{B} \in \{100\}$).}
@@ -170,5 +170,123 @@ Finally, the values in Table [REF] are computed thanks to the relation: \begin{e
 \end{equation}
 
 Note that we only give here the relaxation rates for a single class. To estimate the total PL, one would need to compute the relaxation rate of all 4 classes independently, for instance in a $\mathbf{B} \in \{110\}$ scenario, two classes have a relaxation rate $\Gamma(\mathbf{B} \in \{110\})$ and two classes have a relaxation rate $\Gamma_0$.
+
+\section{$\bar \eta$ in the non-magnetic basis $\{ \ket{0}, \ket{+}, \ket{-}\}$}
+
+In this part we will study the averaged flip-flop and double flip rates in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis which corresponds to the various mechanisms discribed in chapter 4.
+
+We will define here the $\ket{\pm}$ states as:
+\begin{equation}
+\ket{\pm}=\frac{\ket{+1}\pm\ket{-1}}{\sqrt{2}}.
+\end{equation}
+
+In this basis, the spin operators become:
+\begin{align*}
+S_x&=\begin{pmatrix}
+0&0&0 \\
+0&0&1 \\
+0&1&0
+\end{pmatrix} \\
+S_y&=\begin{pmatrix}
+0&-i&0 \\
+i&0&0 \\
+0&0&0
+\end{pmatrix} \\
+S_z&=\begin{pmatrix}
+0&0&1 \\
+0&0&0 \\
+1&0&0
+\end{pmatrix}.
+\end{align*}
+
+
+Importantly, we have to note the breaking of the symmetry in the (xy) plane. This comes from the transverse electric or magnetic field dominating the single spin Hamiltonian. By convention, we define the $x$ direction as the direction of the dominant transverse electric or magnetic field.
+
+\subsection{Flip-flops in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis}
+\label{sec flip-flop +/-}
+Rewriting the dipole-dipole Hamiltonian in the $\{ \ket{0}, \ket{+}, \ket{-}\} \times \{ \ket{0}, \ket{+}, \ket{-}\}$ changes the value of the flip-flop and double flip prefactors. For instance, the prefactor of the $\ket{+,0}\bra{0,+}$ term is: \begin{equation}
+-\frac{J_0}{r^3}\left[3(\hat{u}\cdot\hat{x}_s)(\hat{u}\cdot\hat{x}_f) - (\hat{x}_s \cdot \hat{x}_f)\right]
+\end{equation}
+while the prefactor of the $\ket{+1,0}\bra{0,+1}$ term was: \begin{equation}
+-\frac{J_0}{r^3}\frac{1}{2}\left[3(\hat{u}\cdot\hat{x}_s)(\hat{u}\cdot\hat{x}_f) - (\hat{x}_s \cdot \hat{x}_f) + 3(\hat{u}\cdot\hat{y}_s)(\hat{u}\cdot\hat{y}_f) - (\hat{y}_s \cdot \hat{y}_f) \right] 
+\end{equation}
+
+Because of the symmetry breaking of the $(xy)$ plane, we now have to consider the relative orientation of $x_1$ and $x_2$ on top of the previously mentioned angles $\theta$, $\phi$ and $\psi$. We define $\alpha_1$ and $\alpha_2$ as the relative angle formed by the $x_1$ and $x_2$ axes with an arbitrary axis in their respective $(xy)$ plane (the arbitrary axis can be defined for instance in the lab frame of reference). 
+
+Because we assume that the physical orientation of the $x_1$ and $x_2$ axes in zero external magnetic field is determined by a random local electric field, we will sample than angles $\alpha_1$ and $\alpha_2$ on a uniform [0,$2\pi$] distribution independently for each spin.
+
+The integral to compute the $\bar G$ factor of the dipole-dipole interaction in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis then becomes\footnote{The flip-flop term considered here is $\ket{+,0}\bra{0,+}$. The $\ket{-,0}\bra{0,-}$ term gives the same numerical values once averaged.}
+\begin{equation}
+\bar G= \frac{1}{\sqrt{3}} \iiiint \abs{3(\hat{u}\cdot\hat{x}_s)(\hat{u}\cdot\hat{x}_f) - (\hat{x}_s \cdot \hat{x}_f)} \frac{\rm d\theta \cos \theta \rm d\phi}{4 \pi} \frac{d \alpha_1}{2\pi} \frac{d \alpha_2}{2\pi}.
+\end{equation}
+
+The numerical values obtained are reported in table \ref{table G flip-flop non mag}.
+\begin{table}[htbp]
+\centering
+\caption{Computation of $\bar G$ in the $\ket{\pm}$ basis}
+ \label{table G flip-flop non mag}
+\begin{tabular}{c|c|c}
+\toprule
+$\psi=0$ & $\psi=70.5 \ ^\circ$ & $\psi=109.5 \ ^\circ$ \\
+
+0.410 & 0.394 & 0.394 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Finally the value $\Gamma_1^{\rm th}= 51.4 \Gamma_0^{\rm th}$ shown in Fig. [REF] was computed from:
+\begin{equation}
+\frac{\Gamma_1^{\rm th}}{\Gamma_0^{\rm th}}=\left(\frac{\bar G_{\ket{\pm}}(\psi=0) + 3 \bar G_{\ket{\pm}}(\psi\neq 0) }{\bar G_{\ket{\pm 1}}(\psi=0)}\right)^2
+\end{equation}
+\subsection{Double-flips in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis}
+Including the double flips, there are two possible relaxation path for each transition of the regular NV center. For instance the transition $\ket{0} \to \ket{-}$ can involve either the flip flop $\ket{0,-} \bra{-,0}$ or the double-flip $\ket{0,+} \bra{-,0}$.
+
+The inclusion of the double flips require to modify the  expression of $\eta^2$ to include both relaxation path. According to the more general definition given in \citep{choi2017depolarization}, the $\eta^2$ term corresponding to the $\ket{0} \to \ket{-}$ transition of the NV center can be written\footnote{The $\ket{\pm}$ states in the formula can be replaced by $\ket{\pm 1}$ depending on the eigenbasis of the single spin Hamiltonian.}:
+\begin{align}
+\label{eq eta2 avec DQ}
+\eta^2&=\frac{1}{3} \left(\frac{\mel{0,-}{\mathcal{H_{\rm dd}}}{-,0}}{\frac{J_0}{r^3}}\right)^2 \frac{4\gamma_f^2}{\left(\Delta_{\omega_f}^{(0,-)} - \Delta_{\omega_{NV}}^{(0,-)}\right)^2+4\gamma_f^2} \nonumber\\
+&+\frac{1}{3} \left(\frac{\mel{0,+}{\mathcal{H_{\rm dd}}}{-,0}}{\frac{J_0}{r^3}}\right)^2 \frac{4\gamma_f^2}{\left(\Delta_{\omega_f}^{(0,+)} - \Delta_{\omega_{NV}}^{(0,-)}\right)^2+4\gamma_f^2},
+\end{align}
+where $\Delta_{\omega_{NV}}^{(0,\pm)}$ corresponds to the central frequency of the $\ket{0} \to \ket{\pm}$ transition of the NV center, and $\Delta_{\omega_{f}}^{(0,\pm)}$ that of the fluctuator.
+
+Eq. (\ref{eq eta2 avec DQ}) can no longer be factorized as a product of a spectral and spatial function. To compute the value of $\bar eta$ in zero magnetic field, we will proceed to the following assumptions: $\Delta_{\omega_{NV}}^{(0,\pm)}=\Delta_{\omega_{f}}^{(0,\pm)}$, and $|\Delta_{\omega_{NV}}^{(0,\pm)}-\Delta_{\omega_{f}}^{(0,\mp)}|=2 \gamma_f$\footnote{This second assumption is justified by experimental measurements.}. Eq. (\ref{eq eta2 avec DQ}) then become:
+\begin{equation}
+\eta^2=\frac{1}{3} \left(\frac{\mel{0,-}{\mathcal{H_{\rm dd}}}{-,0}}{\frac{J_0}{r^3}}\right)^2 
++\frac{1}{3} \left(\frac{\mel{0,+}{\mathcal{H_{\rm dd}}}{-,0}}{\frac{J_0}{r^3}}\right)^2 \frac{1}{2}.
+\end{equation}
+
+Following the same procedure as in the last section, we then compute $\bar \eta$ in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis and report the values in table \ref{table eta double flip non mag}. These values are used to compute the double-flip term in Fig. [REF]
+
+\begin{table}[htbp]
+\centering
+\caption{Computation of $\bar \eta$ in the $\ket{\pm}$ basis including the double flips.}
+ \label{table eta double flip non mag}
+\begin{tabular}{c|c|c}
+\toprule
+$\psi=0$ & $\psi=70.5 \ ^\circ$ & $\psi=109.5 \ ^\circ$ \\
+
+0.554 & 0.532 & 0.532 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Flip-flops and double flips in the $B\perp [111]$ regime}
+
+We will focus here on the case detailed in Fig. [REF]: a single class of NV centers whose Hamiltonian is dominated by the transverse magnetic field. Unlike the case presented in Sec. \ref{sec flip-flop +/-}, the $x$ direction is fixed for all spins and imposed by the direction of the magnetic field.
+
+The expression of $\bar G$ then becomes:
+\begin{equation}
+\bar{G}= \frac{1}{\sqrt{3}}\iint \abs{3(\hat{u}\cdot\hat{x})^2 - 1} \frac{\rm d\theta \cos \theta \rm d\phi}{4 \pi}= \frac{4}{9}\approx 0.444.
+\end{equation}
+
+The increase in the decay rate of the eigenbasis when considering only the flip-flop is:
+\begin{equation}
+\frac{\Gamma_1^{\rm th}}{\Gamma_0^{\rm th}}=\left(\frac{\bar G_{\ket{\pm}}(\psi=0)}{\bar G_{\ket{\pm 1}}(\psi=0)}\right)^2=4.
+\end{equation}
+
+To include the double-flip, we once again make the assumption that $|\Delta_{\omega_{NV}}^{(0,\pm)}-\Delta_{\omega_{f}}^{(0,\mp)}|=2 \gamma_f$ and find $\bar \eta=0.567$. The increase in the decay rate when including the decay rate is:
+\begin{equation}
+\frac{\Gamma_1^{\rm th}}{\Gamma_0^{\rm th}}=\left(\frac{\bar \eta_{\ket{\pm}}(\psi=0)}{\bar \eta_{\ket{\pm 1}}(\psi=0)}\right)^2\approx 6.5.
+\end{equation}
 \printbibliography
 \end{document}

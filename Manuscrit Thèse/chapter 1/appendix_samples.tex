@@ -1,0 +1,76 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[]{amsmath}
+\usepackage[]{physics} % \bra, \ket etc
+\usepackage{graphicx} %Pour les figures je crois
+\usepackage{hyperref}
+\usepackage[
+    backend=biber, 
+    natbib=true,
+    style=numeric-comp,
+    sorting=none, %Pour faire apparaitre les refs dans l'ordre
+    hyperref=true
+]{biblatex} %Imports biblatex package
+\addbibresource{Bib_ch1.bib} %Import the bibliography file
+
+\usepackage{amssymb} %quelques symboles dont gtrsim /lesssim
+\usepackage{subcaption} % package pour faire des subfigures
+\usepackage{multirow} % package pour multirow/multicolumn
+\usepackage{booktabs} % package pour top/mid/bottom rule
+\usepackage{tcolorbox} % toujours plus de boites
+\usepackage{xcolor} % Pour avoir des couleurs dans les équations
+
+\title{}
+\begin{document}
+\chapter{Diamond samples}
+This appendix document the known properties of every diamond samples used in this manuscript.
+
+\section{CVD samples}
+\begin{table}[htbp]
+\centering
+\caption{Concentration in nitrogen and NV centers for the CVD samples}
+\label{Table samples CVD}
+\begin{tabular}{c|cc}
+\toprule
+Name &  [NV$^-$]  & [N] \\
+\midrule
+CVD-pink & 4.6 ppm & 26 ppm \\
+CVD-B & 0.43 ppm & 10-30 ppm \\
+CVD-C & 0.43 ppm & 10-30 ppm \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+Table \ref{Table samples CVD} summarizes the most relevant parameters in our study which are the concentration in (negatively charged) NV centers and the total concentration of nitrogen in the sample.
+\subsection{CVD-pink}
+The growth process and characterization of sample CVD pink are detailed in \citep{tallaire2020high}. The sample was grown by CVD in a gas environment containing 500 ppm of N$_2$O. The sample was then irradiated by a 10 MeV electron beam at a fluence of $2\cdot 10^{18}\ \rm cm^{-2}$ for 20 hours, while heated to 900 $^\circ$C during the irradiation process.
+
+The concentration of NV centers and nitrogen impurities was determined via UV-visible absorption and FTIR.
+
+\subsection{CVD-B and CVD-C}
+The growth process and characterization of sample CVD pink are detailed in \citep{ngambou2022improving}. These two samples were grown with a N$_2$O concentration of 100 ppm in the gas phase, and were irradiated similarly to sample CVD-pink. The main difference between the two sample is the further annealing step on sample CVD-B, as detailed in chapter 2.
+
+\section{HPHT samples}
+\subsection{Adamas fluorescent microdimaonds}
+\begin{table}[htbp]
+\centering
+\caption{Concentration in nitrogen and NV centers for the HPHT samples}
+\label{Table samples adamas}
+\begin{tabular}{c|cc}
+\toprule
+Name &  [NV$^-$] & [N] \\
+\midrule
+Adamas & 2.5-3.5 ppm & $\sim$100 ppm \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+The main HPHT sample studied in this manuscript are the commercially available red fluorescent agents from Adamas nano. Samples labeled ADM-15-$n$ correspond to 15 $\mu$m micro-diamonds, and samples labeled ADM-150-$n$ to 150 $\mu$m micro-diamonds. The Adamas website indicates that the fluorescent diamonds contain $\sim 100$ ppm of nitrogen impurities, and that the micro-diamonds are irradiated with 2-3 MeV electron beams and annealed, without further information. The [NV] concentration, also indicated on the website, was measured via EPR.
+
+\subsection{Other HPHT samples}
+\subsubsection{Sumi-2}
+Sample Sumi-2 is a type Ib HPHT sample bought from Sumitomo and irradiated with a 2 MeV electron beam and a fluence of $7\cdot 10^{18}\ \rm cm^{-2}$ which were further annealed at 800 $^\circ$C for two hours. The NV and N concentration were not measured on this sample.
+\subsubsection{SBST-B and SBST-C}
+Samples SBST-B and SBST-C are the type Ib HPHT substrates on which the samples CVD-B and CVD-C grew. They were irradiated and annealed along the CVD layers. The NV and N concentrations in these samples has not been measured.
+\printbibliography
+\end{document}
