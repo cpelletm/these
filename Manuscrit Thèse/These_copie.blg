@@ -1,0 +1,23 @@
+[0] Config.pm:304> INFO - This is Biber 2.14 (beta)
+[0] Config.pm:307> INFO - Logfile is 'These_copie.blg'
+[37] biber:322> INFO - === jeu. oct. 20, 2022, 11:25:17
+[44] Biber.pm:415> INFO - Reading 'These_copie.bcf'
+[139] Biber.pm:943> INFO - Found 277 citekeys in bib section 0
+[146] Biber.pm:4256> INFO - Processing section 0
+[146] Utils.pm:75> INFO - Globbing data source 'bib_thesis.bib'
+[147] Utils.pm:91> INFO - Globbed data source 'bib_thesis.bib' to bib_thesis.bib
+[152] Biber.pm:4455> INFO - Looking for bibtex format file 'bib_thesis.bib' for section 0
+[157] bibtex.pm:1653> INFO - LaTeX decoding ...
+[335] bibtex.pm:1471> INFO - Found BibTeX data source 'bib_thesis.bib'
+[338] Utils.pm:293> WARN - Duplicate entry key: 'wang2022picotesla' in file 'bib_thesis.bib', skipping ...
+[341] Utils.pm:293> WARN - Duplicate entry key: 'wiki:VoigtProfile' in file 'bib_thesis.bib', skipping ...
+[342] Utils.pm:293> WARN - Duplicate entry key: 'maletinsky2012robust' in file 'bib_thesis.bib', skipping ...
+[342] Utils.pm:293> WARN - Duplicate entry key: 'rondin2014magnetometry' in file 'bib_thesis.bib', skipping ...
+[344] Utils.pm:293> WARN - Duplicate entry key: 'giri2018coupled' in file 'bib_thesis.bib', skipping ...
+[1673] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1673] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1673] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1673] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[1763] bbl.pm:652> INFO - Writing 'These_copie.bbl' with encoding 'UTF-8'
+[1913] bbl.pm:755> INFO - Output to These_copie.bbl
+[1913] Biber.pm:128> INFO - WARNINGS: 5
