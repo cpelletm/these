@@ -64,7 +64,20 @@ def fusion_these():
 		f.write('\\printbibliography')
 		f.write(closure())
 
-fusion_these()
+def check_double_word(file='These.tex'):
+	with open(file,'r') as f:
+		content=f.read()
+		content=content.split(' ')
+
+		for i in range(1,len(content)):
+			if content[i]==content[i-1]:
+				print(content[i])
+
+
+
+check_double_word()
+
+# fusion_these()
 
 # with open('sample.tex','r') as f:
 # 	print(f.read().__repr__())
