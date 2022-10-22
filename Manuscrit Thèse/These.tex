@@ -1125,7 +1125,7 @@ Let us start with the experimental proof of the presence of NV-NV cross-relaxati
 
 We make the distinction between what we will label ``equivalent" and ``non-equivalent" NV centers. Two equivalent centers are NV centers with the same spin Hamiltonian (cf eq. (\ref{NV spin Hamiltonian basic})), which implies that they both see the same transverse and longitudinal magnetic field. In contrast, non-equivalent centers are center with different single-spin Hamiltonian, which may result in different eigenstates and spin polarization for the two spins.
 
-While the NV physics can explain cross-relaxations between non-equivalent NV centers, it cannot explain cross-relaxation between equivalent NV centers. Nevertheless, as we will see in this section, CR between both equivalent and non-equivalent NV centers is observed for samples with high NV density. 
+While the single NV physics can explain cross-relaxations between non-equivalent NV centers, it cannot explain cross-relaxation between equivalent NV centers. Nevertheless, as we will see in this section, CR between both equivalent and non-equivalent NV centers is observed for samples with high NV density. 
 \subsection{NV-NV CR between non-equivalent NV centers}
 \label{non_equi_valent_CR}
 \begin{figure}[h]
@@ -1135,7 +1135,7 @@ While the NV physics can explain cross-relaxations between non-equivalent NV cen
 \label{non-equivalent NV-NV}
 \end{figure}
 
-In the absence of magnetic gradient, two NV centers can only be non-equivalent if the projection of the magnetic field upon their respective NV axis is different. Fig. \ref{non-equivalent NV-NV}-a) illustrates such a case: we label here the four possible NV axis orientation (or NV classes) 1 to 4 and we assume that the magnetic field is aligned with class 1. In this conditions, an NV center belong to class 1 will always be non-equivalent with NV centers from classes 2-4, as the projection of the magnetic field on their respective axis will never be the same. On the other hand, NV centers from the classes 2-4 are all equivalents, even though they do not necessary belong to the same class.
+In the absence of magnetic gradient, two NV centers can only be non-equivalent if the projection of the magnetic field upon their respective NV axis is different. Fig. \ref{non-equivalent NV-NV}-a) illustrates such a case: we label here the four possible NV axis orientation (or NV classes) 1 to 4 and we assume that the magnetic field is aligned with class 1. In this conditions, an NV center belonging to class 1 will always be non-equivalent with NV centers from classes 2-4, as the projection of the magnetic field on their respective axis will never be the same. On the other hand, NV centers from the classes 2-4 are all equivalents, even though they do not necessary belong to the same class.
 
 Fig. \ref{non-equivalent NV-NV}-b) shows the difference between the NV centers belonging to class 1 (labeled NV$_\parallel$) and those belonging to classes 2-4 (labeled NV$_\nparallel$). As explained in sec. \ref{sec champs transverse}, the transverse magnetic field leads to a mixing of the eigenstates \footnote{The states of the misaligned NV on Fig. \ref{non-equivalent NV-NV}-b) are labeled $\ket{0},\ket{\pm 1}$ which is an abusive (but common) notation since the mixing caused by the transverse field means that the eigenstates of $S_z$ are no longer the Hamiltonian eigenstates.} and to a loss of the optical polarization mechanism. As a result, the NV$_\nparallel$ spins are less polarized than the NV$_\parallel$ ones, which is a necessary condition to observe cross-relaxation.
 
@@ -1150,7 +1150,7 @@ As previously mentioned, cross-relaxation between non-equivalent NV centers is e
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{chapter 3/Figures/NV-NV_equivalent}
-\caption{CR between equivalent NV centers for sample ADM-15-1. (a) Representation of equivalent NV centers: either two NVs from the same class, or two classes with the same projected magnetic field. (b) Magnetic setup used for the experiment: a permanent magnet is used to apply a bias magnetic field, and an electromagnet is used to add a variable magnetic field. (c) Simulation showing the $\ket{0}\to\ket{-1}$ transition frequencies for the 4 classes of NV centers as a function of the scanned magnetic field. The transitions were computed based on ODMR spectra recorded for different magnetic field values. (d) Change in the PL of the NV centers ensemble as a function of the scanned magnetic field.}
+\caption{CR between equivalent NV centers for sample ADM-15-1 (see sample details in appendix \ref{Appendix samples}). (a) Representation of equivalent NV centers: either two NVs from the same class, or two classes with the same projected magnetic field. (b) Magnetic setup used for the experiment: a permanent magnet is used to apply a bias magnetic field, and an electromagnet is used to add a variable magnetic field. (c) Simulation showing the $\ket{0}\to\ket{-1}$ transition frequencies for the 4 classes of NV centers as a function of the scanned magnetic field. The transitions were computed based on ODMR spectra recorded for different magnetic field values. (d) Change in the PL of the NV centers ensemble as a function of the scanned magnetic field.}
 \label{equivalent NV-NV}
 \end{figure}
 
@@ -1172,18 +1172,18 @@ This observation, and similar ones made by many groups \citep{jarmola2012tempera
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{chapter 3/Figures/inhomogene_2_spins}
-\caption{a) Schematics of the model: we consider a four level system consisting of 2 levels of 2 NV centers resonantly coupled through the flip-flop rate $\Gamma_{\rm dd}$. These two NV centers are each pumped in their respective $\ket{0}$ state via the green laser with a rate $\Gamma_{\rm las}$, and have their own relaxation rate $\Gamma_1$ and $\Gamma_1^*$ respectively. b) Average population of the two NV centers in the $\ket{0}$ state in the steady state as a function of $\Gamma_{\rm dd}$ and $\Gamma_1^*$. The steady state was computed by solving a classical rate equation where we fixed $\Gamma_{\rm las}=1000\ \rm Hz$ and $\Gamma_1=300\ \rm Hz$.}
+\caption{a) Schematics of the model: we consider a four level system consisting of 2 levels of 2 NV centers resonantly coupled through the flip-flop rate $\Gamma_{\rm dd}$. These two NV centers are each pumped in their respective $\ket{0}$ state via the green laser with a rate $\Gamma_{\rm las}$, and have their own relaxation rate $\Gamma_1$ and $\Gamma_1^*$ respectively. b) Average population of the two NV centers in the $\ket{0}$ state in the steady state as a function of $\Gamma_{\rm dd}$ and $\Gamma_1^*$. The steady state was computed by solving for a classical rate equation where we fixed $\Gamma_{\rm las}=1000\ \rm Hz$ and $\Gamma_1=300\ \rm Hz$.}
 \label{inhomogene}
 \end{figure}
 A likely explanation to the observed NV-NV CR is that the NV centers are not all equivalents.
 
-Indeed, if we assume that, for instance, the relaxation rate $\Gamma_1=1/T_1$ is not strictly the same for each NV centers, but instead follows a certain distribution $\rho(\Gamma_1)$, then CR between NV centers with different $\Gamma_1$ can explain the observations in Fig. \ref{equivalent NV-NV}.
+Indeed, if we assume that, for instance, the relaxation rate $\Gamma_1=1/T_1$ is not strictly the same for each NV centers, but instead follows a certain distribution $\rho(\Gamma_1)$, then CR between NV centers with different $\Gamma_1$ can explain the observations in Fig. \ref{equivalent NV-NV}-d).
 
-Fig. \ref{inhomogene}-a) and b) illustrates this case. Our model here consists of two (resonantly coupled) NV centers with two different relaxation rates $\Gamma_1$ and $\Gamma_1'$. To complete the model, we add the rate $\Gamma_{\rm las}$ which is the optical pumping rate from the $\ket{-1}$ to the $\ket{0}$ state of each spin, and $\Gamma_{\rm dd}$ the flip-flop rate between the two spins \footnote{We consider here a two level system instead of the full three levels of the spin 1. The choice of $\ket{-1}$ instead of $\ket{+1}$ is arbitrary.}. We only consider here the incoherent dynamics of the population, modeled with the rates reported on Fig. \ref{inhomogene}-a). Solving for the steady state of these rate equations, we can compute the final population in the $\ket{0}$ state for both spins. 
+Fig. \ref{inhomogene}-a) and b) illustrates this case. Our model here consists of two (resonantly coupled) NV centers with two different relaxation rates $\Gamma_1$ and $\Gamma_1'$. To complete the model, we add the rate $\Gamma_{\rm las}$ which is the optical pumping rate from the $\ket{-1}$ to the $\ket{0}$ state of each spin, and $\Gamma_{\rm dd}$ the flip-flop rate between the two spins \footnote{We only consider two levels for each spin instead of the full three levels of the spin 1. The choice of $\ket{-1}$ instead of $\ket{+1}$ is arbitrary.}. We only consider here the incoherent dynamics of the population, modeled with the rates reported on Fig. \ref{inhomogene}-a). Solving for the steady state of these rate equations, we can compute the final population in the $\ket{0}$ state for both spins. 
 
 Fig. \ref{inhomogene}-b) shows the spin population in the $\ket{0}$ state of both spins, $\rho_{00}$, as a function of the flip-flop rate $\Gamma_{\rm dd}$ and for various values of $\Gamma_1'$. The first thing to notice is that, as $\Gamma_1'$ is increased, $\rho_{00}$ decreases. This is because NV$_2$ becomes less polarized as its decay rate increases. The second thing to notice is that, when $\Gamma_1'=\Gamma_1$, i.e. when the two NV centers are truly equivalent, the flip-flop rate has no incidence on $\rho_{00}$. However, when $\Gamma_1'>\Gamma_1$, $\rho_{00}$ decreases when the flip-flop rate increases. Intuitively, this can be thought of as NV$_2$ acting as a polarization drain on NV$_1$. 
 
-We can also notice that the influence of the flip-flop rate on $\rho_{00}$ increases when the difference in decay rates between NV$_1$ and NV$_2$ increases. As a result, we can suppose that a greater inhomogeneity between the NV centers would result in a stronger NV-NV cross-relaxation effect.
+We can also notice that the influence of the flip-flop rate on $\rho_{00}$ increases when the difference in decay rates between NV$_1$ and NV$_2$ increases. As a result, we conclude that a greater inhomogeneity between the NV centers results in a stronger NV-NV cross-relaxation effect.
 
 
 \subsection{Presentation of the fluctuator model}
@@ -1193,7 +1193,7 @@ We can also notice that the influence of the flip-flop rate on $\rho_{00}$ incre
 \caption{Representation of a ``normal" NV center with spin depolarization rate $\Gamma_1 \ll \Gamma_{\rm las}$ and a fluctuator NV with spin depolarization rate $\gamma_f \gg \Gamma_{\rm las}$. Red circles represent the spin population in the steady state of each spin.}
 \label{NV vs fluct}
 \end{figure}
-Choi et al. in \citep{choi2017depolarization} take this approach a step further by separating the NV centers into two groups: ``normal" NV centers with a phonon-limited lifetime outside of dipole-dipole interaction, and ``fluctuators" which are NV centers with an intrinsic, extremely fast relaxation mechanism leading to a new depolarization rate $\gamma_f$. Normal and fluctuator NV are represented in Fig. \ref{NV vs fluct}: in their model, Choi et al. assume that the fluctuator decay rate is fast enough compared to the laser polarization rate $\gamma_f \gg \Gamma_{\rm las}$ that the fluctuators are effectively always depolarized. Fluctuators are therefore similar to the dark spins we introduced in the last chapter.
+Choi et al. in \citep{choi2017depolarization} take this approach a step further by separating the NV centers into two groups: ``normal" NV centers with a phonon-limited lifetime (not taking into account the dipole-dipole interaction), and ``fluctuators" which are NV centers with an intrinsic, extremely fast relaxation mechanism leading to a new depolarization rate $\gamma_f$. Normal and fluctuator NV are represented in Fig. \ref{NV vs fluct}: in their model, Choi et al. assume that the fluctuator decay rate is fast enough compared to the laser polarization rate $\gamma_f \gg \Gamma_{\rm las}$ that the fluctuators are effectively always depolarized. Fluctuators are therefore similar to the dark spins we introduced in the last chapter.
 
 We should note here that, while this simplifications seem a bit extreme, the fluctuator model is more than a toy model. There are good evidence of the presence of these dark NV centers in dense NV ensemble, as will be discussed below.
 
@@ -1222,14 +1222,14 @@ We will first decompose the dipole-dipole Hamiltonian as a product between radia
 \begin{equation}
 \mathcal{H}_{\rm dd} \approx - \frac{J_0}{r^3} \left[(g+ih)(\ket{0,+1}\bra{+1,0}+\ket{0,-1}\bra{-1,0}+qS_z^1 S_z^2 \right] + h.c. ,
 \end{equation}
-where the expression of $J_0, g, h$ and $q$ is given in appendix \ref{Appendix eta}. $g, h$ and $q$ are dimensionless factors that are function of the relative radial positions and orientation of the two dipoles.
+where the expression of $J_0, g, h$ and $q$ are given in appendix \ref{Appendix eta}. $g, h$ and $q$ are dimensionless factors that are function of the relative radial positions and orientation of the two dipoles.
 
 We then introduce the dimensionless number $\eta$ defined as:
 \begin{equation}
 \label{eq eta}
 \eta^2=\frac{1}{3} (\abs{g}^2+\abs{h}^2) \frac{4\gamma_f^2}{(\omega_f - \omega_{NV})^2+4\gamma_f^2},
 \end{equation}
-where $\gamma_f$ is the fluctuator decay rate for each possible channel between $\ket{0}, \ket{-1}$ and $\ket{+1}$. This number $\eta$ encapsulates both the angular dependency (through $g$ and $h$) and the resonance condition between the NV center and the fluctuator.
+where $\gamma_f$ is the fluctuator decay rate for each possible channel between $\ket{0}, \ket{-1}$ and $\ket{+1}$ (cf Fig. \ref{NV vs fluct}). This number $\eta$ encapsulates both the angular dependency (through $g$ and $h$) and the resonance condition between the NV center and the fluctuator.
 
 We can note that the spectral response of a single fluctuator, for which we only consider the broadening caused by the decay rate $\gamma_f$, is a Lorentzian of half width $2\gamma_f$. This is different from the usual lifetime limited optical spectra which are Lorentzian of half width $1/2T_1=\Gamma_1/2$. The difference comes here from the fact that we consider thermalization going both ways (i.e. $\ket{e} \to \ket{g}$ and $\ket{g} \to \ket{e}$ instead of only $\ket{e} \to \ket{g}$) and that each state of the fluctuator can decay into two other states (see Fig. \ref{NV vs fluct}).
 
@@ -1250,7 +1250,7 @@ Compared to eq. (\ref{delta gamma 1}), the dependency on the inhomogeneous broad
 
 The next step is to compute the depolarization caused by the ensemble of fluctuators on a single NV center.
 
-We consider the situation pictured in Fig. \ref{NV + bain fluct}: the NV center is at the center of the frame and the position of each fluctuator is labeled $\vec{r}_i$. We consider that each fluctuator is an independent depolarization source, therefore the depolarization on a single NV center reads: 
+We consider the situation pictured in Fig. \ref{NV + bain fluct}: the NV center is at the center of the frame of reference and the position of each fluctuator is labeled $\vec{r}_i$. We consider that each fluctuator is an independent depolarization source, therefore the depolarization on a single NV center reads: 
 \begin{equation}
 \gamma=\sum_i \gamma_s(\vec{r}_i).
 \end{equation}
@@ -1289,7 +1289,7 @@ The parameter $\bar \eta$ in eq. (\ref{eq 1/T}) is of crucial importance as it e
 
 The aim of this section is to give an explicit formula of $\bar \eta$ as a function of $\omega_{NV}^0$, $\omega_{f}^0$ and $T_2^*$.
 
-We will start by separating the factor $\eta$ given in eq. (\ref{eq eta}) into a geometric and a spectral part:
+We will start by rewriting the factor $\eta$ given in eq. (\ref{eq eta}) as the product of a geometric and spectral part:
 \begin{align}
 \eta^2&=G^2(\{\theta\}) R^2(\omega_f,\omega_{NV}), \\
 G^2&=\frac{1}{3}\left(\abs{g}^2+\abs{h}^2 \right), \\ 
@@ -1307,7 +1307,7 @@ We then average the $\eta$ factor for an ensemble of fluctuators and NV centers:
 \end{align*}
 where we introduced $\rho(\{\theta\})$ the probability distribution of the angles $\{\theta\}$, $\rho(\omega_{NV})$ the inhomogeneous spectral distribution of the ensemble of NV centers and $\rho(\omega_{f})$ the inhomogeneous spectral distribution of the ensemble of fluctuators. We also introduced the notations $\bar G$ and $\bar R$ as the average of $|G|$ and $|R|$.
 
-The computation of $\bar G$ will be further discussed in sec. \ref{sec quantitative T1} and in appendix \ref{delta gamma 1}. We will focus here on $\bar R$.
+The computation of $\bar G$ will be further discussed in sec. \ref{sec quantitative T1} and in appendix \ref{Appendix eta}. We will focus here on $\bar R$.
 
 To perform the computation, we need to know the distributions $\rho(\omega_{NV})$ and $\rho(\omega_{f})$. We can experimentally measure $\rho(\omega_{NV})$ though ODMR, and we can reasonably expect $\rho(\omega_{f})$ to follow the same probability.
 
@@ -1325,7 +1325,7 @@ where $\Gamma_{f}=1/T_2^*(\rm fluctuator)$ and $\Gamma_{NV}=1/T_2^*(\rm NV)$ are
 &=\frac{2 \gamma_f}{2 \gamma_f + \Gamma_f + \Gamma_{NV}} \cdot \frac{1}{1+\left(\frac{\omega^0_{NV}-\omega^0_{f}}{2 \gamma_f + \Gamma_f + \Gamma_{NV}}\right)^2}.
 \end{align*}
 
-In the case where $\omega^0_{NV}=\omega^0_{f}$, meaning that either the considered NVs and fluctuators are from the same class, or from two classes perfectly resonant, by substituting $\overline{R ^2}$ for $(\bar{R})^2$ (which again is only approximately valid for $2 \gamma_f \gg 1/T_2^*$) in eq. (\ref{eq 1/T}), we find that:
+By substituting $\overline{R ^2}$ for $(\bar{R})^2$ (which again is only approximately valid for $2 \gamma_f \gg 1/T_2^*$) in eq. (\ref{eq 1/T}), we find that:
 \begin{equation}
 \label{eq 1/T avec T2*}
 \frac{1}{T} \propto \frac{1}{2\gamma_f + \Gamma_f + \Gamma_{NV}}\cdot \frac{1}{1+\left(\frac{\omega^0_{NV}-\omega^0_{f}}{2 \gamma_f + \Gamma_f + \Gamma_{NV}}\right)^2}.
@@ -1334,10 +1334,6 @@ In the case where $\omega^0_{NV}=\omega^0_{f}$, meaning that either the consider
 If $\rho(\omega_{f})$ and $\rho(\omega_{NV})$ follow Gaussian profiles instead, $\overline{R^2}$ is the integral of a Voigt profile, the convolution of a Lorentzian and a Gaussian, which does not have a clear analytic solution.
 
 Eq. (\ref{eq 1/T avec T2*}) was obtained via several approximations: the inhomogeneous distribution of the NV centers is generally not Lorentzian, and $\overline{R^2} \neq (\bar{R})^2$ in the general case. Nevertheless, it gives us a general idea of the evolution of $1/T$ with $T_2^*$, $\omega_{NV}^0$ and $\omega_{f}^0$, which will be crucial to compare the predictions of the model with experimental data.
-
-
-
-
 
 
 \section{Experimental investigation of the fluctuator model}
@@ -1356,7 +1352,7 @@ Fig. \ref{stretch_or_not_stretch} shows the results of this protocol on two dist
 
 The spin relaxation results presented in Fig. \ref{stretch_or_not_stretch}-a) and b) was performed on sample CVD-pink (see sample details in appendix \ref{Appendix samples}), which despite a relatively high NV concentration shows only moderate amount of dipole-dipole spin relaxation. In order to further minimize the amount of cross-relaxations, we chose a magnetic field for which all four NV classes are spectrally isolated, so that only fluctuators from the same class as the NV center could lead to relaxation. As a result, we can see a relaxation profile mostly exponential with a lifetime $T_1=4.1\ \rm ms$ comparable to the phonon-limited $T_1$ value of $\sim 5\ \rm ms$ at room temperature \citep{jarmola2012temperature}.
 
-The second spin relaxation presented in Fig. \ref{stretch_or_not_stretch}-c) and d) was performed on sample ADM-15-2 which showed a great amount of dipole-dipole spin relaxation. To further enhance the cross-relaxation rate, the experiment was performed in zero external magnetic field so that every class of NV centers would be resonant. We can observe a relaxation profile that deviates significantly from tthe exponential profile, and which is nicely fitted by a stretched exponential. The $T_1$ value obtained from the fit is also an order of magnetite lower than the phonon-limited value, which is coherent with the fact that dipole-dipole interactions dominate the spin relaxation in this case.
+The second spin relaxation presented in Fig. \ref{stretch_or_not_stretch}-c) and d) was performed on sample ADM-15-2 which showed a great amount of dipole-dipole spin relaxation. To further enhance the cross-relaxation rate, the experiment was performed in zero external magnetic field so that every class of NV centers would be resonant. We can observe a relaxation profile that deviates significantly from the exponential profile, and which is nicely fitted by a stretched exponential. The $T_1$ value obtained from the fit is also an order of magnetite lower than the phonon-limited value, which is coherent with the fact that dipole-dipole interactions dominate the spin relaxation in this case.
 
 \subsection{Fitting $T_1$ profile in the general case}
 
@@ -1388,17 +1384,17 @@ Fig. d) & \textbf{5} & 0.51 & $6\cdot 10^{-4}$ & \textbf{5} & 4.65 & $6\cdot 10^
 Bold characters indicate parameters that were arbitrarily fixed.
 \end{table}
 
-For many samples, the $T_1$ profile is neither fully exponential nor fully stretched exponential, because the relaxation time associated with CR, which we will call $T_1^{\rm dd}$, is of the same order of magnitude as the phonon limited lifetime $T_1^{\rm ph}$. Sometimes the same sample can go from mostly exponential to mostly stretched exponential depending on the number of NV-NV co-resonances, meaning that we have to include both aspects in the fitting formula.
+For many samples, the $T_1$ profile is neither fully exponential nor fully stretched exponential, because the relaxation time associated with CR, which we will call $T_1^{\rm dd}$, is of the same order of magnitude as the phonon limited lifetime $T_1^{\rm ph}$. Some samples have both predominantly exponential and predominantly stretched exponential profile depending on the number of NV-NV co-resonances. We therefore have to include both aspects in the fitting formula.
 
 Fig. \ref{various_fit_formulae} shows four different fitting procedure on the two same relaxation measurements. The measurements were performed on the same sample ADM-150-1, with and without an external magnetic field ($\sim 50 G$). The magnetic field was strong enough to split the four classes and only one class was probed in the case $B\neq0$ , whereas all 4 classes were resonant in the case $B=0$, which strongly increases the NV-NV CR. 
 
-The fits used here are either purely exponential or purely stretched exponential, or a combination of both where the exponential lifetime $T_1^{\rm ph}$ was either left as a free parameter or fixed at a value $T_1^{\rm ph}=5\ \rm ms$. The values of the different fitting parameters used is reported in Table \ref{fitting table}.
+The fit functions investigated here are: pure exponential, stretched exponential, or a combination of both where the exponential lifetime $T_1^{\rm ph}$ was either left as a free parameter or fixed at a value $T_1^{\rm ph}=5\ \rm ms$. The values of the different fitting parameters used is reported in Table \ref{fitting table}.
 
-We can see that neither the purely exponential nor stretched exponential fits can be satisfying for both measurements: the $B=0$ curve is poorly fitted by the exponential fit and the $B \neq 0$ curve is poorly fitted by the stretched exponential. The protocols that include both exponential and stretched lifetimes correctly fit both curves. In the case of Fig. \ref{various_fit_formulae}-d), we arbitrarily fixed $T_1^{\rm ph}=5\ \rm ms$ since this is the value we typically measure on samples with low NV density, and we expect that the phonon-limited exponential lifetime is not modified by the NV concentration.
+We can see that neither the pure exponential nor stretched exponential can satisfyingly fit both measurements: the $B=0$ curve is poorly fitted by the exponential fit and the $B \neq 0$ curve is poorly fitted by the stretched exponential. The protocols that include both exponential and stretched lifetimes correctly fit both curves. In the case of Fig. \ref{various_fit_formulae}-d), we arbitrarily fixed $T_1^{\rm ph}=5\ \rm ms$ since this is the value we typically measure on samples with low NV density, and we expect that the phonon-limited exponential lifetime is not modified by the NV concentration.
 
 Both the protocol where $T_1^{\rm ph}$ was fixed and the one where it was not correctly fit our data. We therefore decided to use the protocol where $T_1^{\rm ph}$ was fixed in order to minimize the number of free parameter in the fitting function. This way, the values of $T_1^{\rm dd}$ obtained on different measurements can be directly compared. 
 
-We should note however that the values of $T_1^{\rm dd}$ we obtain are not absolute. Indeed, in the case of Fig. \ref{various_fit_formulae}, the value of $T_1^{\rm ph}$ can be somewhat arbitrarily fixed between 3 and 6 ms with satisfying fits, and the resulting values $T_1^{\rm dd}$ can vary by almost an order of magnitude in the case of $B\neq0$. The values of $T_1^{\rm dd}$ obtained with this method have therefore to be compared to values from the same method and the same fixed value of $T_1^{\rm ph}$.
+We should note however that the values of $T_1^{\rm dd}$ we obtain are not absolute. Indeed, in the case of Fig. \ref{various_fit_formulae}, the value of $T_1^{\rm ph}$ can be somewhat arbitrarily fixed between 3 and 6 ms, and the resulting values $T_1^{\rm dd}$ can vary by almost an order of magnitude in the case of $B\neq0$. The values of $T_1^{\rm dd}$ obtained with this method have therefore to be compared to values from the same method and the same fixed value of $T_1^{\rm ph}$.
 
 \begin{figure}[h]
 \centering
@@ -1407,19 +1403,18 @@ We should note however that the values of $T_1^{\rm dd}$ we obtain are not absol
 \label{betas}
 \end{figure}
 
-Finally, another fitting procedure is shown in Fig. \ref{betas}. This time a single stretched exponential with an arbitrary stretch factor $\beta$ is used, and satisfyingly fits the data. Fig. \ref{betas}-b) shows the optimal $\beta$ parameter as a function of the external magnetic field. It confirms that the $T_1$ profile gets closer to a stretched exponential ($\beta=0.5$) when $B$ goes to 0. Even though this method also yields satisfying fits, it employs more free parameters ($\beta$ and $T_1$) than the method of \ref{various_fit_formulae}-d). We therefore decided to go with the later.
+Finally, another fitting procedure is shown in Fig. \ref{betas}. This time a single stretched exponential with an arbitrary stretch factor $\beta$ is used, and satisfyingly fits the data. Fig. \ref{betas}-b) shows the optimal $\beta$ parameter as a function of the external magnetic field. It confirms that the $T_1$ profile gets closer to a stretched exponential ($\beta=0.5$) when $B$ goes to 0. Even though this method also yields satisfying fits, it employs more free parameters ($\beta$ and $T_1$) than the method of \ref{various_fit_formulae}-d). We therefore decided to work with the later.
 
 \subsection{The fluctuators linewidth}
 
-\subsubsection{The fluctuators spectral response}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{chapter 3/Figures/fluctuator linewidth}
-\caption{Measurement of the fluctuators linewidth on sample ADM-150-2 using the same setup as in Fig. \ref{equivalent NV-NV}. a) Simulation of the $\ket{0} \to \ket{-1}$ transition frequency for the four classes of NV centers and actual frequencies of the two central classes from ODMR measurements. b) Measurement of $T_1^{\rm dd}$ as a function of the splitting $\Delta \nu$ between the two central classes, fitted with a Lorentzian of half-width $\sigma=8.8 \pm 0.2\ \rm MHz$. The green dashed line correspond to the ODMR spectrum of a single class of NV centers, and the red dashed line correspond to the same spectrm scaled up by a factor of 2.}
+\caption{Measurement of the fluctuators linewidth on sample ADM-150-2 using the same setup as in Fig. \ref{equivalent NV-NV}. a) Simulation of the $\ket{0} \to \ket{-1}$ transition frequency for the four classes of NV centers and actual frequencies of the two central classes from ODMR measurements. b) Measurement of $T_1^{\rm dd}$ as a function of the splitting $\Delta \nu$ between the two central classes, fitted with a Lorentzian of half-width $\sigma=8.8 \pm 0.2\ \rm MHz$. The green dashed line correspond to the ODMR spectrum of a single class of NV centers, and the red dashed line correspond to the same spectrum scaled up by a factor of 2.}
 \label{fluct linewidth}
 \end{figure}
 
-We now move to the second major prediction of the fluctuator model which is the spectral broadening of the fluctuators caused by the their relaxation rate $\gamma_f$. Indeed, following the arguments presented in \citep{choi2017depolarization}, the fluctuators homogeneous spectral response is a Lorentzian of half-width $2\gamma_f$. The inhomogeneous spectral response of the ensemble of fluctuators is then further broadened by the same electric, magnetic or strain noises than the NV centers, which is characterized by $1/T_2^*$.
+We now move to the second major prediction of the fluctuator model which is the spectral broadening of the fluctuators caused by the their relaxation rate $\gamma_f$. Indeed, following the arguments presented in \citep{choi2017depolarization}, the inhomogeneous spectral response of the fluctuators is broadened by a Lorentzian of half-width $2\gamma_f$ on top of the ``normal" $T_2^*$ broadening resulting from magnetic, electric or strain noise.
 
 The fluctuator are effectively dark to ODMR measurement since they are not polarized, meaning that we cannot directly measure their linewidth as we would do for normal NV centers. We can however measure their linewidth through cross-relaxation, similarly to the detection of dark spins presented in the previous chapter.
 
@@ -1430,60 +1425,19 @@ Fig. \ref{fluct linewidth}-a) shows the simulated transitions of the four classe
 
 Fig. \ref{fluct linewidth}-b) shows the dipole-dipole induced relaxation rate $\Gamma_1^{\rm dd}=1/T_1^{\rm dd}$ as a function of the detuning $\Delta \nu$ between the two central classes. For each magnetic field value, a $T_1$ profile was recorded and fitted following the procedure described in Fig. \ref{various_fit_formulae}-d) where we again fixed $T_1^{\rm ph}=5\ \rm ms$. We also show the ODMR spectrum of a single NV class for comparison.
 
-We can clearly see that the $\Gamma^{\rm dd}$ profile is much broader than the ODMR line of the NV centers, whereas in a standard CR process, we expect the decay rate to be proportional to the spectral overlap of the two classes \citep{hall2016detection}. If we assume that both NV classes spectral response are Lorentzian of same width $\sigma$, then the spectral overlap between the two classes is also a Lorentzian of width $2 \sigma$ \footnote{For other line profile, the overlap would be smaller than $2 \sigma$. For instances, the overlap of two Gaussians of width $\sigma$ is a Gaussian of width $\sqrt{2} \sigma$.}. Fig. \ref{fluct linewidth}-b) also shows the ODMR line scaled by a factor $2$, which is still significantly narrower than the $1/T_1^{\rm dd}$ line.
+We can clearly see that the $\Gamma_1^{\rm dd}$ profile is much broader than the ODMR line of the NV centers, whereas in a standard CR process, we expect the decay rate to be proportional to the spectral overlap of the two classes \citep{hall2016detection}. If we assume that both NV classes spectral response are Lorentzian of same width $\sigma$, then the spectral overlap between the two classes is also a Lorentzian of width $2 \sigma$ \footnote{For other line profile, the overlap would be smaller than $2 \sigma$. For instances, the overlap of two Gaussians of width $\sigma$ is a Gaussian of width $\sqrt{2} \sigma$.}. Fig. \ref{fluct linewidth}-b) also shows the ODMR line scaled by a factor $2$, which is still significantly narrower than the $1/T_1^{\rm dd}$ line.
 
 We attribute this broadening to the fluctuators lifetime. Another potential explanation for the broadening could be the interaction strength between the NV center and the fluctuator, but for [NV] $\sim$ 5 ppm, the average dipole-dipole coupling strength between closest NV neighbor is $\expval{\mathcal{H}_{\rm dd}} \sim 46\ \rm kHz$, which cannot explain the $\sim 4\ \rm MHz$ broadening observed here.
 
-\subsubsection{The fluctuators lifetime}
-\label{sec fluctuators lifetime}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\textwidth]{chapter 3/Figures/deconvolution}
-\caption{Blue curve $1/T_1^{\rm dd}$ data presented in Fig. \ref{fluct linewidth}. Red curve: deconvolution of the blue curve by the ODMR line shown on the same figure. Green curve: deconvolution of the red curve by the ODMR line. All three curves are fitted with Lorentzian of respective half widths $8.8 \pm 0.2$, $7.5 \pm 0.3$ and $6.4 \pm 0.4$ MHz (the precision is determined by the variance of the optimal fit parameters).}
-\label{deconvolution}
-\end{figure}
+We proceed to extract the value of $\gamma_f$ from the data presented in Fig. \ref{fluct linewidth} by two methods: one involves the deconvolution of the $\Gamma_1^{\rm dd}$ profile by the ODMR profile, and the other involves approximations with pseudo-Voigt profiles. Both methods are detailed in appendix \ref{Appendix fluct T1} and result in $\gamma_f$ values of $(2\pi) 3.3 \pm 0.2\ \rm MHz$ and $(2\pi) 3.2 \pm 0.2\ \rm MHz$ respectively, which corresponds to a fluctuator spin lifetime $T_1^f=\frac{1}{3 \gamma_f}\approx 17\ \rm ns$\footnote{The expression of $T_1^f$ as a function of $\gamma_f$ is found by solving for the time dependent solution of the rate equations associated with the fluctuator model shown in Fig. \ref{NV vs fluct}.}.
 
-We now want to extract the fluctuators lifetime $T_1^f=1/\gamma_f$ to get further information on their potential nature. 
-
-To do this we first assume that the dipole induced decay rate is proportional to the overlap of the spectral responses of the NV centers and fluctuators $S_{NV}$ and $S_f$. We will take $S_{NV}( \omega)$ and $S_{f}( \omega)$ as functions centered in $\omega=0$, and consider that the spectral responses are shifted by $\omega^0_{NV}$ and $\omega^0_{f}$ respectively, the central frequencies of each group. We then have:
-\begin{align*}
-\frac{1}{T_1^{\rm dd}} &\propto \int S_{NV} (\omega-\omega_{NV}^0) S_f (\omega-\omega_{f}^0) d\omega \\
-&= \int S_{NV} (\omega-\Delta \omega) S_f (\omega)
- d\omega \\
- &= (S_{NV}*S_{f})(\Delta \omega),
-\end{align*}
-
-where $\Delta \omega=\omega_{NV}^0-\omega_{f}^0$.
-
-Using the approximation $\bar {R ^2} \approx (\bar{R})^2$ detailed in sec. \ref{sec computation eta}, we can then decompose the fluctuator spectral response as a convolution of the lifetime contribution and the inhomogeneous broadening:
-\begin{equation}
-S_{f}(\omega)=\left(S_f^*(\omega)\right)*\left(\frac{1}{1+\left(\frac{\omega}{2 \gamma_f}\right)^2} \right),
-\end{equation}
-
-where $S_f^*$ is the spectral broadening caused by the inhomogeneous distribution of the fluctuators, which we will suppose to be equal to $S_{NV}$. With these assumptions, we are now ready to extract $\gamma_f$ from the data of Fig. \ref{fluct linewidth}.
-
-The first way to do this, as was done for NV-P1 CR in \citep{hall2016detection}, is to deconvolve the $1/T_1^{\rm dd}$ data by the ODMR spectrum using a Wiener deconvolution algorithm. The result of the deconvolution is shown in Fig. \ref{deconvolution}: the data is deconvolved once to get the spectral response of the fluctuator (red curve), and a second time to get only the lifetime contribution of the fluctuator (green curve). Fitting with Lorentzians, we find a final value $\Gamma_2 =2\gamma_f= (2\pi) 6.4 \pm 0.4\ \rm MHz$ which corresponds to a fluctuator lifetime $T_1^f=\frac{1}{\gamma_f}=50 \pm 3\ \rm ns$\footnote{We define here the fluctuators lifetime $T_1^f$ as $\frac{1}{\gamma_f}$ for simplicity, but it should be noted that the actual lifetime of the fluctuators states is $\frac{1}{2\gamma_f}$ due to the competition between the two possible decay channels for each state (cf Fig. \ref{NV vs fluct}).}.
-
-Another, simpler alternative is to consider that the $1/T_1^{\rm dd}$ profile is a Voigt profile given by the convolution of two Gaussians of half width at half maximum (HWHM) $f_G=\frac{\sqrt{\ln (2)}}{\pi T_2^*}$ and a Lorentzian of HWHM $f_L=\frac{2 \gamma_f}{2 \pi}$:
-\begin{align*}
-\Gamma_1^{\rm dd}&\propto \mathcal{G}(f_G)*(\mathcal{L}(f_L)*\mathcal{G}(f_G)) \\
-&\propto \mathcal{L}(f_L)*\mathcal{G}(\sqrt{2} f_G),
-\end{align*}
-where $\mathcal{G}(f_G)$ and $\mathcal{L}(f_L)$ denote Gaussian and Lorentzian functions of HWHM $f_G$ and $f_L$ respectively.
-We can then use the formula of a pseudo-Voigt profile which gives an approximation of the Voigt profile's HWHM $f$ as a function of $f_G$ and $f_L$ \citep{ida2000extended}:
-\begin{equation}
-f = [f_G^5 + 2.69269 f_G^4 f_L + 2.42843 f_G^3 f_L^2 + 4.47163 f_G^2 f_L^3 + 0.07842 f_G f_L^4 + f_L^5]^{1/5}.
-\end{equation}
-
-With $f=8.8 \pm 0.2\ \rm MHz$ and $\sqrt{2}f_G=4.3 \pm 0.2\ \rm MHz$, we find $f_L=6.5 \pm 0.3\ \rm MHz$ for a final lifetime value $T_1^f = 49 \pm 2\ \rm ns$, a value consistent with the one found with the deconvolution method.
-
-Doing similar experiments and calculations, \citep{choi2017depolarization} found $\gamma_f=1/T_1^f=(2\pi) 3.3\ \rm MHz$ which gives them a fluctuator lifetime value $T_1^f = 48\ \rm ns$, a value very close to the ones we obtained above, despite using a completely different sample.
+It is worth noting that that \citep{choi2017depolarization} found on their sample $\gamma_f=(2\pi) 3.3\ \rm MHz$ by performing similar experiments, a value very close to the ones we obtained above.
 
 In conclusion, we observed that the fluctuators linewidth was indeed broadened by their relaxation rate which justifies the initial hypothesis that $T_1^f \ll T_1^{NV}$. It even shows that $T_1^f$ is of the same order of magnitude as the optical lifetime ($\sim 15\ \rm ns$) which explains why the fluctuators cannot be optically polarized.
 
 \section{Resonance between several NV classes}
 
-The main tool to probe NV-NV CR is to use the co-resonances between the NV classes. While it is not possible to completely shut down the CR, because the NV centers from the same class are always resonant with each other, we can tune the density of resonant NV centers (and resonant fluctuators) by a factor of 4 by playing with the inter-class co-resonances. In this section, we will discuss the various scenarios where NV classes overlap, and quantify theoretically and experimentally the dipole-induced relaxation rate in each case.
+The main tool to probe NV-NV CR is to use the co-resonances between the NV classes. While it is not possible to completely shut down the CR, because NV centers and fluctuators from the same class are always resonant with each other, we can tune the density of resonant NV centers and fluctuators by a factor of 4 by playing with the inter-class co-resonances. In this section, we will discuss the various scenarios where NV classes overlap, and quantify theoretically and experimentally the dipole-induced relaxation rate in each case.
 
 \subsection{Geometric conditions for inter-class resonance}
 \label{sec geometrie resonance}
@@ -1515,7 +1469,7 @@ An ODMR spectrum and a representation of the magnetic field in the diamond unit 
 
 This relation between NV-NV class resonances and the magnetic field being in specific crystalline planes or directions means that we can determine the crystal main axes simply by PL experiments.
 
-Fig. \ref{Carte} shows a map where we monitored the PL of sample CVD-pink while scanning the magnetic field angle around the [001] axis, thanks to a permanent magnet on a motorized goniometer. We have also reported the locus of $\vec{B}$ being in the planes [100], [010], [110] and [$1\bar 1 0$].
+Fig. \ref{Carte} shows a map where we monitored the PL of sample CVD-pink while scanning the magnetic field angle around the [001] axis, thanks to a permanent magnet mounted on a motorized goniometer. We have also reported the locus of $\vec{B}$ being in the planes [100], [010], [110] and [$1\bar 1 0$].
 
 We know that when $\vec{B}$ belongs to any of these four planes, there is a co-resonance between at least two NV classes. This co-resonance leads to an increase in NV-NV CR and a faster depolarization of the spins involved, which ultimately leads to a drop in PL. We can indeed see in fig. \ref{Carte} that there is clear correlation between the loci of $\vec{B}$ and drops in PL. We can also see that the PL is at its lowest when $\vec{B}\parallel [001]$, which corresponds to a four class degeneracy.
 
@@ -1547,7 +1501,7 @@ We decided to take the case of an isolated class as the baseline value for the d
 
 $\bar G$ can be analytically or numerically computed for each of the magnetic configurations listed before, as detailed in appendix \ref{Appendix eta}. This allows us to predict the value of the spin decay rate in every situations as a function of the decay rate of an isolated class.
 
-Table \ref{T1 champ mag} shows these predicted values, along with experimental ones on sample ADM-15-3. The experimental values were obtained with the protocol described in Fig. \ref{various_fit_formulae}-d) with a double exponential fit where we fixed again $T_1^{\rm dd}=5\ \rm ms$.
+Table \ref{T1 champ mag} shows these predicted values, along with experimental ones measured on sample ADM-15-3 (see sample details in appendix \ref{Appendix samples}). The experimental values were obtained with the protocol described in Fig. \ref{various_fit_formulae}-d) with a double exponential fit where we fixed again $T_1^{\rm dd}=5\ \rm ms$.
 
 The theoretical values are in a good qualitative agreement with the experimental ones, both ranking the different scenarios in the same order. The quantitative predictions of the theory however are rather poor, being off by more than a factor of 3 for the shortest lifetimes.
 
@@ -1557,7 +1511,7 @@ The failure of the fluctuator model to accurately predict the changes in $T_1$ i
 
 \section{Conclusion and perspectives}
 
-In conclusion, we have seen in this chapter that dense NV ensemble present ``anormal" CR between the NV centers, and we have shown how the fluctuator model developed by Choi et al. in \citep{choi2017depolarization} can explain this behavior. The fluctuator model not only explains the NV-NV CR, but also correctly predicts the stretched exponential lifetime profile. It also correctly predicts that the fluctuators have a broader spectral response than the other NV centers. Nevertheless, the model does not describe perfectly every aspects of NV-NV relaxation, and there still are many aspects of this problem, both theoretical and experimental, to explore.
+In conclusion, we have seen in this chapter that dense NV ensemble present ``anormal" CR between the NV centers, and we have shown how the fluctuator model developed by Choi et al. in \citep{choi2017depolarization} can explain this behavior. The fluctuator model not only explains the NV-NV CR, but also correctly predicts the stretched exponential lifetime profile. It also correctly predicts that the fluctuators have a broader spectral response than the other NV centers. Nevertheless, the model does not describe perfectly every aspects of NV-NV relaxation.
 
 In what follows we will describe what could be interesting investigation points to further understand the NV-NV relaxation and the fluctuator model.
 
@@ -1569,11 +1523,11 @@ In what follows we will describe what could be interesting investigation points 
 \label{anormal T1}
 \end{figure}
 
-We mentioned previously that the discrepancy between the theoretical and experimental $T_1$ values were in contradiction with the current fluctuator model, although the difference could come in part from the $T_1$ fitting procedure. Another, more glaring problem is the fact that some $T_1$ profile are not stretched exponential.
+We mentioned previously that the discrepancy between the theoretical and experimental $T_1$ values was a limitation of the fluctuator model, although the difference could come in part from the $T_1$ fitting procedure. Another, more glaring problem is the fact that $T_1$ profiles are not always stretched exponential.
 
-Fig. \ref{anormal T1} shows $T_1$ measurement on sample ADM-15-4, either on a single isolated class ,where the dipole-dipole interactions are at their weakest, or on all four resonant classes at $\vec{B}=0$, where the interactions are at their strongest.
+Fig. \ref{anormal T1} shows two $T_1$ measurement on sample ADM-15-4: one on a single isolated class (weak dipole-dipole relaxation) and one on all four resonant classes at $\vec{B}=0$ (strong dipole-dipole relaxation).
 
-Although the spin lifetime still gets $\sim$ 10 times shorter in the $\vec{B}=0$ case, indicating that dipole-dipole interaction still plays an important role in the spin relaxation, this time the lifetime profile does not converge to a purely stretched exponential. In fact it seems to be the opposite: the lifetime profile is closer to a pure exponential for the shorter $T_1$ (especially for the very short times), and closer to a stretched exponential for the longer $T_1$, which is in complete contradiction with the fluctuator model and the previous observations in Fig. \ref{stretch_or_not_stretch} and \ref{various_fit_formulae}.
+Although the spin lifetime is $\sim$ 10 times shorter in the $\vec{B}=0$ case, indicating that dipole-dipole interaction still plays an important role in the spin relaxation, on this example the lifetime profile does not converge to a purely stretched exponential. In fact it seems to be the opposite: the lifetime profile is closer to a pure exponential for the shorter $T_1$ (especially for the very short times), and closer to a stretched exponential for the longer $T_1$, which is in complete contradiction with the fluctuator model and the previous observations in Fig. \ref{stretch_or_not_stretch} and \ref{various_fit_formulae}.
 
 We should note that most sample studied follow the fluctuator model, in that the their lifetime profile gets closer to a stretched exponential when the dipole-dipole relaxation rate is increased. Sample ADM-15-4 seem to be an anomaly in this regard, since most of the samples from the same batch (including sample ADM-15-2 in Fig. \ref{stretch_or_not_stretch}) seem to follow the ``normal" behavior predicted by the fluctuator model. However, some other samples, including bulk HPHT samples and 150 $\mu$m Adamas micro-diamond also showed short (non stretched) exponential lifetimes.
 
@@ -1590,9 +1544,9 @@ The other aspect would be to identify potential defects that could form fluctuat
 
 \chapter{NV-NV cross-relaxation at low magnetic field: application to magnetometry}
 
-In the last chapter we have identified a dipole-dipole relaxation mechanism within dense NV centers ensemble, and we have studied its influence in non-zero magnetic field. In this chapter we will cover the low to zero magnetic field region and see how the depolarization at low magnetic field can be used for magnetometry.
+In the last chapter we have identified a dipole-dipole relaxation mechanism within dense NV centers ensemble, and we have studied its influence in non-zero magnetic field. In this chapter we will cover the low to zero magnetic field regime and see how the depolarization at low magnetic field can be used for magnetometry.
 
-This chapter is constructed as follows: We will first describe in sec. \ref{sec 4.1} the physics of NV centers under low or transverse magnetic field. In sec. \ref{sec causes zero field}
+This chapter is constructed as follows: We will first describe in sec. \ref{sec 4.1} the physics of single NV centers under low or transverse magnetic field. In sec. \ref{sec causes zero field}
 we will present the different zero field depolarization causes that we have identified as well as their theoretical impact on the NV relaxation rates according to the fluctuator model. In sec. \ref{sec 4.3} we will confront the predictions of the fluctuator model with experiments under low and transverse magnetic field. 
 
 We will then focus on the low field depolarization magnetometry (LFDM) protocol which exploits the previously studied NV-NV CR at low magnetic field. We will start by giving a short overview of NV ensemble magnetometry in sec. \ref{sec 4.4} before characterizing the LFDM protocol in sec. \ref{sec LFDM} and comparing it to other magnetometry protocols in sec. \ref{sec 4.6}. Finally we will give some perspectives on how to improve LFDM and on potential applications.
@@ -1601,16 +1555,16 @@ The results presented in this chapter are based in large part on the article \ci
 
 \section{NV spin Hamiltonian under low and transverse fields}
 \label{sec 4.1}
-We will start this chapter by studying the single NV physics under low and transverse magnetic field. On of the main difference with the previously studied regime is that the eigenstates of the Hamiltonian are no longer $\{ \ket{0}, \ket{+1}, \ket{-1} \}$, which will then in turn modify the dipole-dipole interaction between the NV centers.
+We will start this chapter by studying the single NV physics under low and transverse magnetic field. One of the main difference with the previously studied regime is that the eigenstates of the Hamiltonian are no longer $\{ \ket{0}, \ket{+1}, \ket{-1} \}$, which will then in turn modify the dipole-dipole interaction between the NV centers.
 
-We will first describe the spin Hamiltonian of the NV center under low magnetic field and determine the dominant factors in our samples, then do the same for transverse magnetic field, and finally investigate the modification of the ODMR lineshapes in those regimes.
+We will first describe the spin Hamiltonian of the NV center under low magnetic field and determine the dominant terms in our samples, then do the same for transverse magnetic field, and finally investigate the modification of the ODMR lineshapes in those regimes.
 
 \subsection{NV spin Hamiltonian in zero external magnetic field}
 \label{sec. Hamltonian 0 B}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{chapter 4/Figures/ESR_simus}
-\caption{Monte-Carlo simulations of inhomogeneous zero field ODMR for different noise sources. a) Magnetic noise: each of the $\vec{B}$ components is sampled over a Gaussian of deviation $\sigma=2\ \rm G$. b) Strain noise: each of the components of the strain tensor $\bar{\bar{\varepsilon}}$ is sampled over a Gaussian of deviation $\sigma=2\cdot 10^{-4}$. c) Electric noise: each of the $\vec{E}$ components is sampled over a Gaussian of deviation $\sigma=2\cdot 10^{5}\ \rm{V/cm}$. d) Experimental ODMR spectrum in zero external field taken on sample ADM-150-2.}
+\caption{Monte-Carlo simulations of inhomogeneous zero field ODMR for different noise sources. a) Magnetic noise: each of the $\vec{B}$ components is sampled over a Gaussian of deviation $\sigma=2\ \rm G$. b) Strain noise: each of the components of the strain tensor $\bar{\bar{\varepsilon}}$ is sampled over a Gaussian of deviation $\sigma=2\cdot 10^{-4}$. c) Electric noise: each of the $\vec{E}$ components is sampled over a Gaussian of deviation $\sigma=2\cdot 10^{5}\ \rm{V/cm}$. d) Experimental ODMR spectrum in zero external field taken on sample ADM-150-2 (see sample details in appendix \ref{Appendix samples}).}
 \label{simus ESR}
 \end{figure}
 
@@ -1660,7 +1614,7 @@ whose eigenvectors are $\ket{0}$ and$\ket{\pm}$ of eigenvalues 0 and $D\pm d_\pe
 \begin{equation}
 \ket{\pm}=\frac{\ket{+1}\pm e^{-i\phi_E}\ket{-1}}{\sqrt{2}},
 \end{equation}
-where $\tan(\phi_E)=E_y/E_x$.
+and where $\tan(\phi_E)=E_y/E_x$.
 
 \subsection{NV spin Hamiltonian under purely transverse magnetic field}
 \label{sec B transverse}
@@ -1671,7 +1625,7 @@ where $\tan(\phi_E)=E_y/E_x$.
 %\label{map champ transverse}
 %\end{figure}
 
-We now turn to the case of a magnetic field that is orthogonal to the NV axis, i.e. $\vec{B}=B_x \hat{e}_x + B_y \hat e_y$, and more specifically to the regime where $d_\perp E_\perp < \frac{(\gamma_e B_\perp)^2}{D} << D$. In practice, this generally corresponds to $20\ \rm G \lesssim B_\perp \lesssim 200\ \rm G$.
+We now turn to the case of a magnetic field that is orthogonal to the NV axis, i.e. $\vec{B}=B_x \hat{e}_x + B_y \hat e_y$, and more specifically to the regime where $d_\perp E_\perp < \frac{(\gamma_e B_\perp)^2}{D} \ll D$. In practice, this generally corresponds to $20\ \rm G \lesssim B_\perp \lesssim 200\ \rm G$.
 
 In this regime, the NV Hamiltonian eigenstates are similar to the case where it is dominated by the transverse electric field and can be written $\approx \ket{0}, \ket{-}, \ket{+}$\citep{qiu2021nuclear, qiu2022nanoscale}, of respective eigenvalues $\approx -\frac{(\gamma_e B_\perp)^2}{D},D,D+\frac{(\gamma_e B_\perp)^2}{D}$, where:
 \begin{equation}
@@ -1694,7 +1648,7 @@ In conclusion, whenever the spin Hamiltonian is dominated by the local electric 
 
 A consequence of the change in the Hamiltonian eigenstates from the $\{ \ket{0}, \ket{\pm 1} \}$ to the $\{ \ket{0}, \ket{\pm} \}$ basis is that the Hamiltonian eigenvalues are sensitive to different part of the environment. The energy of the $\ket{\pm 1}$ states depends linearly on the longitudinal magnetic field, and quadratically on the transverse electric and magnetic fields. On the contrary, the $\ket{\pm}$ states depend linearly on the transverse electric field, and quadratically on the longitudinal and transverse magnetic field \footnote{The transverse magnetic field is always of second order for weak magnetic field because $D\gg \gamma B_\perp$.}. 
 
-The shape of the ODMR lines (i.e. the spectral response of the spins) is therefore dominated by the magnetic noise and the hyper-fine coupling in the $\{ \ket{0}, \ket{\pm 1} \}$ basis, and by the electric noise in the $\{ \ket{0}, \ket{\pm} \}$ basis, as we established in the previous part. Further details on the low magnetic field regime are available in \citep{jamonneau2016competition} and on the purely transverse magnetic field regime in \citep{qiu2021nuclear, qiu2022nanoscale}.
+The shape of the ODMR lines (i.e. the spectral response of the spins) is therefore dominated by the magnetic noise and the hyper-fine coupling in the $\{ \ket{0}, \ket{\pm 1} \}$ basis, and by the electric noise in the $\{ \ket{0}, \ket{\pm} \}$ basis, as we established in the previous part. Further details on the NV low magnetic field regime are available in \citep{jamonneau2016competition} and on the purely transverse magnetic field regime in \citep{qiu2021nuclear, qiu2022nanoscale}.
 
 Fig. \ref{ESR for T2*} shows ODMR profile on two samples, CVD-pink which shows weak dipole-induced depolarization and Sumi-2 which shows strong dipole-induced depolarization, in three distinct regime: for a purely longitudinal magnetic field, for a purely transverse magnetic field, and without magnetic field. The linewidths of the spin transition \footnote{We consider here the full linewidth of the electronic levels, i.e. including all three hyper fine levels.} for both samples are reported in the Table \ref{ESR for T2*}-d). In both cases, the linewidths are smaller in the $B=0$ and $B \perp NV$ cases than in the $B \parallel NV$ case, mainly due to the modification of the hyper-fine coupling. The linewidth modification reaches up to $\sim 50\ \%$ for the CVD sample and $\sim 20\ \%$ for the HPHT one.
 
@@ -1719,7 +1673,7 @@ Finally we have seen that this change of eigenstates occasions a modification of
 
 We will focus on this section on the mechanisms responsible for the depolarization of dense NV ensemble at low magnetic fields. We have identified four such mechanisms that lead to an increase in the resonant dipole-dipole coupling between NV and fluctuators, which in turn results in an increased spin depolarization rate.
 
-Fig. \ref{summary_theory} summarizes these four mechanisms along with the theoretical increase in the depolarization rate caused by each of them. We will detail below the physical origin of these four mechanisms and the calculations that lead to the values presented in Fig. \ref{summary_theory}.
+Fig. \ref{summary_theory} summarizes these four mechanisms along with the theoretical increase in the depolarization rate computed from the fluctuator model for each of them. We will detail below the physical origin of these four mechanisms. The computation of the theoretical rates will be mostly detailed in appendix \ref{Appendix eta}.
 
 We should note that the values indicated in Fig. \ref{summary_theory} for the double flips and the $T_2^*$ contributions depend on experimental parameters, while the ones for the 4-classes degeneracy and the eigenbasis change are purely based on theory.
 
@@ -1813,9 +1767,9 @@ The fact that the increase of the depolarization rate at zero field is about $\s
 
 \subsection{NV-NV CR under purely transverse magnetic field}
 
-Thank to the two previous experiments, we were able to discriminate the contribution of the 4-classes degeneracy from the three other mechanisms that are which are the eigenbasis change, the double-flips and the $T_2^* increase$. We now seek to discriminate the contribution of each of these three mechanisms.
+Thank to the two previous experiments, we were able to discriminate the contribution of the 4-classes degeneracy from the three other mechanisms that are which are the eigenbasis change, the double-flips and the $T_2^*$ increase. We now seek to discriminate the contribution of each of these three mechanisms.
 
-We unfortunately were not able to discriminate the change of eigenbasis from the $T_2^* increase$, which would likely require a statistical study over different samples with different $T_2^*$ values. We were however able to discriminate the double flip contribution from the two other ones by scanning the magnetic field in a direction orthogonal to one NV class ($\vec{B} \perp [111]$).
+We unfortunately were not able to discriminate the change of eigenbasis from the $T_2^*$ increase, which would likely require a statistical study over different samples with different $T_2^*$ values. We were however able to discriminate the double flip contribution from the two other ones by scanning the magnetic field in a direction orthogonal to one NV class ($\vec{B} \perp [111]$).
 
 \subsubsection{Principle of the experiment}
 \begin{figure}[h]
@@ -1844,7 +1798,9 @@ Ideally, we would have used an electric field instead of a transverse magnetic f
 \label{champ tranverse exp}
 \end{figure}
 
-Fig. \ref{champ tranverse exp}-a) shows an ODMR spectrum for $B=20\ \rm G$ with the two central lines corresponding to the $\ket{0} \to \ket{+}$ and $\ket{0} \to \ket{-}$ transitions of the class orthogonal to the magnetic field. We decided to start the scan of the magnetic field at $20\ \rm G$ because the class orthogonal to $\vec{B}$ was far enough ($> 20 MHz\ \rm MHz$) from the three other ones that flip-flop between them could be neglected\footnote{The small plateau at the beginning of the $1/T_1^{\rm dd}$ curve in Fig. \ref{champ tranverse exp}-c) confirms that flip-flop between the class orthogonal to $\vec{B}$ and the three other classes are indeed negligible compared to the other depolarization factors.}.
+Fig. \ref{champ tranverse exp}-a) shows an ODMR spectrum for $B=20\ \rm G$ with the two central lines corresponding to the $\ket{0} \to \ket{+}$ and $\ket{0} \to \ket{-}$ transitions of the class orthogonal to the magnetic field. We decided to start the scan of the magnetic field at $20\ \rm G$ because the class orthogonal to $\vec{B}$ was far enough ($> 20 \ \rm MHz$) from the three other ones that flip-flop between them could be neglected\footnote{This is confirmed by the small plateau at the beginning of Fig. \ref{champ tranverse exp}-c)}.
+
+%\footnote{The small plateau at the beginning of the $1/T_1^{\rm dd}$ curve in Fig. \ref{champ tranverse exp}-c) confirms that flip-flop between the class orthogonal to $\vec{B}$ and the three other classes are indeed negligible compared to the other depolarization factors.}.
 
 Fig. \ref{champ tranverse exp}-b) shows the evolution of the $\nu_+$ and $\nu_-$ transition frequencies as a function of the magnetic field, measured via ODMR. The difference in frequency $\Delta \nu = \nu_+ - \nu_-$ is at first determined by the transverse electric field ($\sim 9\ \rm MHz$) and then grows qudratically with the transverse magnetic field up to a value of $\sim 50\ \rm MHz$.
 
@@ -1859,7 +1815,7 @@ We should note that the theoretical increase from the double flips and the chang
 \item $\Gamma_1^{\ket{\pm}}=4 \Gamma_0$ when taking into account the change of eigenbasis.
 \item $\Gamma_1^{dd}=1.6\Gamma_1^{\ket{\pm}}=6.5\Gamma_0$ when taking into account the double flips.
 \end{itemize}
-We have labeled here $\Gamma_0$ the relaxation rate coming from the flip-flop inside of a single class in the $\ket{\pm 1}$ basis (same definition as in table \ref{T1 champ mag} (table des valeurs chap 3). Experimentally, $\Gamma_0$ corresponds to the baseline shown in Fig. \ref{champ tranverse exp}-c).
+We have labeled here $\Gamma_0$ the relaxation rate coming from the flip-flop inside of a single class in the $\ket{\pm 1}$ basis (same definition as in table \ref{T1 champ mag} and Fig. \ref{summary_theory}). Experimentally, $\Gamma_0$ corresponds to the baseline shown in Fig. \ref{champ tranverse exp}-c).
 
 Although we find again that the fluctuator model overestimates the actual relaxation rates, these experimental observations still confirm the qualitative predictions of the model. In particular, they confirm that the double-flips are the second leading cause of zero-field depolarization after the 4-classes degeneracy.
 
@@ -1882,20 +1838,20 @@ We will now cover the low-field magnetometry protocol, after a quick overview of
 \section{Introduction to ensemble NV magnetometry}
 \label{sec 4.4}
 
-There are two classes of NV magnetometer: single NV or ensemble. Single NVs offer a spatial resolution limited only by how far the magnetic source can be from the NV center (down to $\sim 10\ \rm nm$), but at the cost of a relatively low sensitivity (typically $\sim \mu \rm{T} / \sqrt{\rm Hz}$ \citep{pelliccione2016scanned}).
+There are two classes of NV magnetometer: single NV or ensemble. Single NVs offer a spatial resolution limited only by how far the magnetic source can be from the NV center (down to $\sim 10\ \rm nm$), but at the cost of a relatively low sensitivity (typically down to $\sim \mu \rm{T} / \sqrt{\rm Hz}$ \citep{pelliccione2016scanned}).
 
-Ensemble NV centers center on the other hand offer sensitivities as low as $1\ \rm pT / \sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}, at the cost of working with samples of sizes up to several mm.
+Ensemble NV centers on the other hand offer sensitivities as low as $1\ \rm pT / \sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}, at the cost of working with samples of sizes up to several mm.
 
-We will only focus in this section on NV ensemble magnetometry since we want to give elements of comparisons with our technique based on NV-NV CR. We will not try to give a complete overview of this field, but only of the elements close to the technique we present. For a general overview on NV magnetometry, we recommend the excellent reviews \citep{rondin2014magnetometry, degen2017quantum, barry2020sensitivity}.
+We will only focus in this section on NV ensemble magnetometry since we want to give elements of comparisons with our technique based on NV-NV CR. Furthermore, we will only focus on certain magnetometry aspects relevant to our study. For a general overview on NV magnetometry, we recommend the excellent reviews \citep{rondin2014magnetometry, degen2017quantum, barry2020sensitivity}.
 
 \subsection{AC and DC magnetometry}
-The most sensitive NV magnetometry protocols use the free precession of the spins to map a small change in the Zeeman energy into the phase of the spins, which is then converted into spin population. These protocols are generally separated between DC-broadband and AC-narrow band.
+The most sensitive NV magnetometers use the free precession of the spins to map a small change in the Zeeman energy into the phase of the spins, which is then converted into spin population and read out. These protocols are generally separated between DC-broadband and AC-narrow band.
 
-For DC-broadband magnetometry, the general technique consists of a Ramsey interferometry experiment, presented in chapter 1, the sensitivity of which is limited by the spin inhomogeneous coherence time $T_2^*$ (which can reach up to $\ \rm{\mu s}$ for NV ensembles). The bandwidth of the protocol is limited by the repetition rate of the experiment, generally up to $\sim 100\ \rm kHz$. Although less sensitive in theory, continuous-wave (CW) ODMR and pulsed ODMR are also often employed for DC magnetometry. The state of the art DC ensemble magnetometr operates with a sensitivity of $\sim 20\ \rm pT/ \sqrt{\rm Hz}$ \citep{barry2016optical, chatzidrosos2017miniature}.
+For DC-broadband magnetometry, the general technique consists of a Ramsey interferometry experiment, presented in chapter 1, the sensitivity of which is limited by the spin inhomogeneous coherence time $T_2^*$ (which can reach up to $\sim 1\ \rm{\mu s}$ for the best NV ensembles). The bandwidth of the protocol is limited by the repetition rate of the experiment, generally up to $\sim 100\ \rm kHz$. Although less sensitive in theory, continuous-wave (CW) ODMR and pulsed ODMR are also often employed for DC magnetometry. The state of the art DC ensemble magnetometer operates with a sensitivity of $\sim 20\ \rm pT/ \sqrt{\rm Hz}$ \citep{barry2016optical, chatzidrosos2017miniature}.
 
-For AC magnetometry, the basic protocol consists of a spin echo measurement, also presented in chapter 1, which extends the coherence time $T_2^*$ to $T_2 = 10 \sim 100 \rm{\mu s}$, and which can be extended even further to $\sim \rm ms$ times with dynamical decoupling \citep{pham2012enhanced}. Due to the longer ``free" precession time, a larger phase can be imprinted on the spin for a similar magnetic field. The AC magnetic field however has to be in phase with the rephasing pulses, which limits the AC sensing to a relatively narrow band. The state of the art in term of AC sensing is $\sim 1\ \rm pT/\sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}.
+For AC magnetometry, the basic protocol consists of a spin echo measurement, also presented in chapter 1, which extends the coherence time $T_2^*$ to $T_2 = 10 \sim 100 \rm{\mu s}$, and which can be extended even further to $\sim \rm ms$ times with more sophisticated dynamical decoupling \citep{pham2012enhanced}. Due to the longer ``free" precession time, a larger phase can be imprinted on the spin for a similar magnetic field. The AC magnetic field however has to be in phase with the rephasing pulses, which limits the AC sensing to a relatively narrow band. The state of the art in term of AC sensing is $\sim 1\ \rm pT/\sqrt{\rm Hz}$ \citep{wolf2015subpicotesla}.
 
-Recently, \citep{xie2021hybrid} have achieved new records in both DC ($\sim 200\ \rm fT/\sqrt{\rm Hz}$) and AC ($\sim 10\ \rm fT/\sqrt{\rm Hz}$) NV magnetometry by using flux concentrators which are ferromagnets concentrating the magnetic field in a small volume, similarly to an electromagnet. The technology of flux concentrator could be applied to any NV magnetometry protocol. We will here only compare experimental results obtained without a flux concentrator.
+Recently, \citep{xie2021hybrid} have achieved new records in both DC ($\sim 200\ \rm fT/\sqrt{\rm Hz}$) and AC ($\sim 10\ \rm fT/\sqrt{\rm Hz}$) NV magnetometry by using flux concentrators which are ferromagnets concentrating the magnetic field in a small volume, similarly to an electromagnet. The technology of flux concentrator could be applied to any NV magnetometry protocol. We will here only compare experimental results obtained without them.
 
 \subsection{Low field magnetometry}
 Magnetometry at low magnetic fields ($\gamma B < d_\perp E_\perp$) is challenging since in this regime the NV eigenstates and eigenenergies do not depend on the magnetic field to the first order. This complication is often lifted by simply using a bias magnetic field.
@@ -1904,7 +1860,7 @@ Some systems however need to be kept under low to zero external magnetic fields,
 
 The main technique for low field magnetometry consists in using circularly polarized microwaves, which can only excite the $\ket{0} \to \ket{-1}$ and $\ket{0} \to \ket{+1}$ transitions, even when these states are not the Hamiltonian's eigenstates \citep{mrozek2015circularly, zheng2019zero, lenz2021magnetic, vetter2022zero}. These states are linearly dependent on the magnetic field and can therefore be used to perform magnetometry. The best sensitivity achieved with this technique was $250\ \rm pT/\sqrt{\rm Hz}$ \citep{zheng2019zero}.
 
-Another technique consists in using the $^{13}\rm{C}-$NV complex we discussed in sec. \ref{sec NV-13c-NV} which because of the magnetic field offset caused by the $^{13}\rm{C}$ nucleus are first order sensitive to the magnetic field even in zero external magnetic field \citep{wang2022zero}. With natural abundance $^{13}\rm{C}$ however, this means that only $\sim 3\%$ of the NV centers are used, and increasing the $^{13}\rm{C}$ concentration can lower the coherence of the NV centers. 
+Another technique consists in using the $^{13}\rm{C}-$NV complex we discussed in sec. \ref{sec NV-13c-NV} which because of the magnetic field offset caused by the $^{13}\rm{C}$ nucleus are first order sensitive to the magnetic field even in zero external magnetic field \citep{wang2022zero}. With natural abundance $^{13}\rm{C}$ however, this means that only $\sim 3\%$ of the NV centers are available, and increasing the $^{13}\rm{C}$ concentration can lower the coherence of the NV centers. 
 
 \subsection{Microwave-free DC magnetometry}
 All the previously described magnetemetry protocols relied on the use of a controllable microwave field to coherently manipulate the NV spin state.
@@ -1968,7 +1924,7 @@ Fig. \ref{AC and DC sensing} shows how the AC and DC sensing work for LFDM: for 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{chapter 4/Figures/sensi_alternee}
-\caption{Sensitivity measurement of the LFDM on sample ADM-15-4. a) Temporal trace of the LIA signal when applying an alternating external magnetic field of amplitude 35 $\mu$T and frequency $f=1\ \rm Hz$. b) Histogram of the DC measurement over 50 s. The data is fitted with Gaussians of width $1.6\ \rm{\mu T}$.}
+\caption{Sensitivity measurement of the LFDM on sample ADM-15-4. a) Temporal trace of the LIA signal when applying an alternating external magnetic field of amplitude 35 $\mu$T and frequency $f=1\ \rm Hz$. b) Histogram of the DC measurement over 50 s. The data is fitted with Gaussians of width $1.5\ \rm{\mu T}$.}
 \label{sensei alternee}
 \end{figure}
 
@@ -1985,7 +1941,7 @@ Fig. \ref{sensei alternee}-b) shows an histogram of the measured magnetic field 
 
 where $\tau=3\ \rm ms$ is the LIA low-pass filter time constant. 
 
-We estimate that the sensitivity is mostly shot-noise limited because the same LIA voltage noise ($\sqrt{\langle \delta V^2 \rangle} \approx 35\ \rm mV$) was observed on a magnetic insensitive region (for $B_0 \approx 100\ \rm G$), and is far above the electrical noise measured when no optical signal is sent to the photodiode ($\sqrt{\langle \delta V^2 \rangle} < 1\ \rm mV$). The remaining noise could also come from laser intensity fluctuations.
+The same LIA voltage noise ($\sqrt{\langle \delta V^2 \rangle} \approx 35\ \rm mV$) was observed on a magnetic insensitive region (for $B_0 \approx 100\ \rm G$), and is far above the electrical noise measured when no optical signal is sent to the photodiode ($\sqrt{\langle \delta V^2 \rangle} < 1\ \rm mV$). The sensitivity in this case is either shot-noise limited or limited by the laser intensity fluctuations.
 
 \subsection{Angular dependence of the sensitivity}
 \label{sec angular sensi}
@@ -1996,7 +1952,7 @@ We estimate that the sensitivity is mostly shot-noise limited because the same L
 \label{angular sensi}
 \end{figure}
 
-We will now study the dependence of the sensitivity with respect to the magnetic field angle. In particular, we will compare the sensitivity for two scenarios: the case $\vec{B}\parallel [100]$and the four classes remains degenerate when $\vec{B}$ increases, and the case $\vec{B}\nparallel [100]$ where there is a lift of degeneracy between the four classes. We previously saw in Fig. \ref{scan 1x1x1x1} and \ref{scan 100} that the PL and $T_1$ contrast was much smaller when $\vec{B}\parallel [100]$, but we now focus on the sensitivity which is related to the slope of the PL change, and not directly to the contrast.
+We will now study the dependence of the sensitivity with respect to the magnetic field angle. In particular, we will compare the sensitivity for two scenarios: the case $\vec{B}\parallel [100]$ for which the four classes remains degenerate when $\vec{B}$ increases, and the case $\vec{B}\nparallel [100]$ for which there is a lift of degeneracy between the four classes. We previously saw in Fig. \ref{scan 1x1x1x1} and \ref{scan 100} that the PL and $T_1$ contrast were much smaller when $\vec{B}\parallel [100]$, but we now focus on the sensitivity which is related to the slope of the PL change, and not directly to the contrast.
 
 Fig. \ref{angular sensi}-a) and b) show the LIA signal when the DC field $B_0$ is scanned from $-150$ G to +150 G on the same sample ADM-15-4, but for two different angles of $B_0$. For the blue curve the field was scanned along the [100] axis, while for the orange curve it was scanned with an angle of $\sim 20\ ^\circ$ compared to the [100] axis. We can see that the maximum amplitude of the lock-in signal (relevant for AC sensing) is of the same order of magnitude for both case, and the slope around $B_0$ (relevant for DC sensing) is almost identical. Fig. \ref{angular sensi}-c) shows the sensitivity, measured with the protocol described in Fig. \ref{sensei alternee}, with respect to the angle between the magnetic field and the [100] axis. We can notice that the sensitivity depends only weakly on the magnetic field angle. 
 
@@ -2052,7 +2008,7 @@ Table \ref{table sensi volumiques} reports the best AC and DC volume-normalized 
 \label{comparaison 0B MW}
 \end{figure}
 
-Fig. \ref{comparaison 0B MW} shows a comparison between LFDM and microwave-based magnetometry using our setup. A fixed microwave tone (here at 2600 MHz) is sent to the diamond and a magnetic field $B_0$ close to the [111] axis is scanned along an oscillating field $\delta B$ to perform a lock-in detection. 
+Fig. \ref{comparaison 0B MW} shows a comparison between LFDM and microwave-based magnetometry using our setup. A fixed microwave tone (here at 2600 MHz) is sent to the diamond and a magnetic field $B_0$ close to the [111] axis is scanned along with an oscillating field $\tilde B_{\rm AC}$ to perform a lock-in detection. 
 
 Fig. \ref{comparaison 0B MW}-b) shows the LIA recorded during a $B_0$ scan: the profile is similar to the one in Fig. \ref{setup magneto}-b) with the addition to two sharp lines for $|B_0| \approx 100\ \rm G$. These two lines correspond to the resonance condition between the microwave tone and the $\ket{0} \to \ket{\pm 1}$ transition of the class parallel to the magnetic field\footnote{We would need to increase the amplitude of the magnetic field in order to see the three other classes.}. The microwave power used here correspond to a Rabi frequency $\Omega \approx (2\pi) 3\ \rm MHz$ comparable with $1/T_2^*$ and the slope on the steepest part of the microwave line is $\sim 2.5$ times higher than the slope in zero field.
 
@@ -2061,15 +2017,15 @@ Fig. \ref{comparaison 0B MW}-c) and d) show the temporal stability of the sensor
 We should stress that this microwave-based detection is not optimal: the technique used here is analogous to CW ODMR which is not the most sensitive DC magnetometer \citep{barry2020sensitivity}. In particular techniques based on double-quantum transition can be both more sensitive and less affected by thermal drifts. The sample used here is also poorly suited for traditional microwave magnetometry due to its low $T_2^*$ value. 
 
 \subsection{Comparison with microwave-less protocols}
-The most studied NV-based microwave-less protocols are the GSLAC protocols that we described previously \citep{wickenbrock2016microwave, zheng2020microwave}. Unfortunately the sensing volume in this studies is not known, meaning that we can not directly compare the volume normalized sensitivity of both approaches. Both GSLAC protocols and LFDM however work under the same basis, which is to exploit the dependency of the NV PL with the magnetic field. In order to compare both approach, we can simply focus on the characteristics (width and depth) of the GSLAC PL feature and the zero-field PL feature.
+The most studied NV-based microwave-less protocol is the GSLAC protocol that we described previously \citep{wickenbrock2016microwave, zheng2020microwave}. Unfortunately the sensing volume in these studies is not known, meaning that we can not directly compare the volume normalized sensitivity of both approaches. Both GSLAC protocols and LFDM however work under the same basis, which is to exploit the dependency of the NV PL with the magnetic field. In order to compare both approaches, we can simply focus on the characteristics (width and depth) of the GSLAC PL feature and the zero-field PL feature.
 
-In Fig. \ref{setup magneto}-c) we can observe a PL dip with a contrast $C=4.7\pm 1 \% $ for a full width at half maximum $\Gamma=20 \pm 1\ \rm G$. In comparison, in \citep{wickenbrock2016microwave} the authors observe a GSLAC PL dip with a contrast $C=4.5 \%$ for a full width of $12 \ \rm G$ with a type Ib irradiated diamond, similar to the ones we use. In \citep{zheng2020microwave} they manage to keep a contrast of 4.5 \% while reducing the GSLAC linewidth to $0.38\ \rm G$ by using a CVD sample isotopically enriched in $^{12}$C with a lower [NV] and [N] density.
+In Fig. \ref{setup magneto}-c) we can observe a PL dip with a contrast $C=4.7\pm 0.1 \% $ for a full width at half maximum $\Gamma=20 \pm 1\ \rm G$. In comparison, in \citep{wickenbrock2016microwave} the authors observe a GSLAC PL dip with a contrast $C=4.5 \%$ for a full width of $12 \ \rm G$ with a type Ib irradiated diamond, similar to the ones we use. In \citep{zheng2020microwave} they manage to keep a contrast of 4.5 \% while reducing the GSLAC linewidth to $0.38\ \rm G$ by using a CVD sample isotopically enriched in $^{12}$C with a lower [NV] and [N] density.
 
-The zero field technique is therefore comparable to the GSLAC technique for samples with high NV and impurity concentration, but unlike the GSLAC magnetometry, it is still unclear what kind of material engineering would improve its sensitivity.
+The zero field technique is therefore comparable to the GSLAC technique for samples with high NV and impurity concentration, but unlike the GSLAC magnetometry, it is still unclear how to improve its sensitivity with material engineering.
 
 %Je parle pas de la dépendence en puissance ou du champ transverse, je laisse ça pour plus tard.
 \section{Conclusion and perspectives}
-We have explored in this chapter the reasons behind the depolarization of dense NV ensemble at low magnetic field. We have identified four mechanisms by which the depolarization is increased in zero-field: the degeneracy of the classes, the double flips, the change in the NV eigenstates and the modification of the spins $T_2^*$.We have then quantified both theoretically and experimentally the contribution of each of these mechanisms to the zero-field depolarization.
+We have explored in this chapter the reasons behind the depolarization of dense NV ensemble at low magnetic field. We have identified four mechanisms increasing the depolarization in zero-field: the degeneracy of the classes, the double flips, the change in the NV eigenstates and the modification of the spins $T_2^*$. We have then quantified both theoretically and experimentally the contribution of each of these mechanisms to the zero-field depolarization.
 
 We have also shown that this low-field depolarization can be applied to perform magnetometry experiments. We have characterized the sensitivity, temporal stability, and angular dependence of such a magnetometer, and we have compared its performances to the established NV magnetometry protocols.
 
@@ -2089,7 +2045,7 @@ For traditional DC microwave-based magnetometry, the material optimization path 
 
 The same figure of merit cannot be used to characterize the LFDM: the sensitivity of the protocol does not scale as $1/\sqrt{T_2^*}$ due to the spectral broadening of $\gamma_f$, and the density of fluctuators not only impacts the number of sensor per unit volume, but also the density and properties of fluctuators, as well as the average flip-flop rate between NV and fluctuators. Further studies with higher NV concentrations than those used in this manuscript will be required to find the correct material optimization path.
 
-We should note that we observed large discrepancy in the zero field depolarization among the samples that we studied, even from samples coming from the same batch.
+We should note that we observed large discrepancies in the zero field depolarization among the samples that we studied, even from samples coming from the same batch.
 
 Fig. \ref{double dragon}-a) shows the PL on two distinct 15-$\mu$m Adamas microdiamonds for a magnetic field scanned in a random direction, and Fig. \ref{double dragon}-b) for a magnetic field scanned along the [100]. We can notice that the PL contrast in zero field is twice as big for sample ADM-15-4 when $B \nparallel [100]$, and 5 time as big when $B \parallel [100]$, which would directly impact their respective sensitivity in LFDM.
 
@@ -2108,7 +2064,7 @@ Other non-material parameters in the LFDM protocols should also be investigated.
 
 We will now turn to potential applications for LFDM, which could be useful even without material optimization.
 
-Fig. \ref{applications} illustrates two potential applications for LFDM. The first one consists in the wide-field magnetic imaging on a surface with micron-sized irregularities. The current leading technology for wide field imaging is to use a bulk CVD diamond with a very well polished surface in direct contact with the probed sample \citep{levine2019principles, scholten2021widefield}. While the diamond surface can be controlled within a few nm, the same is not always true for the sample, especially for paleomagnetism or biologic samples \citep{scholten2021widefield}. 
+Fig. \ref{applications} illustrates two potential applications for LFDM. The first one consists in the wide-field magnetic imaging on a surface with micron-sized irregularities. The current leading technology for wide field imaging is to use a bulk CVD diamond with a very well polished surface in direct contact with the probed sample \citep{levine2019principles, scholten2021widefield}. While the diamond surface can be polished within a few nm, the same is not always true for the sample, especially for paleomagnetism or biologic samples \citep{scholten2021widefield}. 
 
 Instead we propose to deposit a thin layer of 1 $\mu$m diamonds on top of the sample in order to always keep a sensor within $\sim$ 1 $\mu$m of the sample. Going below 1 $\mu$m may not prove useful as the spatial resolution is ultimately limited by the diffraction limit of the lens. One advantage of this method is that commercially available samples (Adamas Nano 1 $\mu$m red fluorescent diamond) are well suited for this task. We have measured the sensitivity on some of these samples and found the same volumetric sensitivity $\eta_v \sim 6 \ \rm{\mu T}\mu \rm{m}^{3/2} \rm{Hz}^{-1/2}$ than for the 15 $\mu$m samples. This sensitivity is already better than some previous applications of wide field imaging at $20 \ \rm{\mu T}\mu \rm{m} \rm{Hz}^{-1/2}$ \citep{glenn2017micrometer}. Another potential advantage of LFDM is that a homogeneous magnetic field or microwave intensity along the sample is not required. Only a $\sim 10 \ \rm G$ AC magnetic field is required, and the sensitivity does not depend critically on the AC field homogeneity.
 
@@ -2118,7 +2074,7 @@ In order to use AC LFDM with a scanning probe setup, one would need to have a na
 
 LFDM could also find applications in biosensing. The lack of microwave is a significant advantage in this field to prevent heating of the living organisms, and nano and micro-diamonds are already readily used as trackers for fluorescence microscopy \citep{mohan2010vivo}. The use of LFDM could allow to perform background free fluorescence imaging (with a higher sensitivity than what was done with transverse magnetic field \citep{chapman2013background}). It could also be used to perform real time magnetometry with diamonds floating in a liquid environment, as was done in \citep{feng2021association}, but without having to constantly calibrate the diamond axes through ODMR which significantly hinders the temporal resolution of microwave-based technique.
 
-Finally, LFDM could be a good candidate to be scaled up since the protocol is not sensitive to strain or thermal variations ,does not require a homogeneous magnetic field or microwave field along the sample, and can be used with polycrystalline samples which are easier to produce in large size. A recent paper demonstrates an energy-efficient and cost-effective NV magnetometer which uses sunlight as the optical excitation source, and exploits the transverse field dependence of the NV PL to measure the magnetic field\citep{zhu2022sunlight}. The use of LFDM instead of transverse field could improve the sensitivity of this magnetometer by an order of magnitude.
+Finally, LFDM could be a good candidate to be scaled up since the protocol is not sensitive to strain or thermal variations ,does not require a homogeneous magnetic field or microwave field along the sample, and can be used with polycrystalline samples which are easier to produce in large size. A recent paper demonstrated an energy-efficient and cost-effective NV magnetometer which uses sunlight as the optical excitation source, and exploits the transverse field dependence of the NV PL to measure the magnetic field\citep{zhu2022sunlight}. The use of LFDM instead of transverse field could improve the sensitivity of this magnetometer by an order of magnitude.
 
 
 
@@ -2132,7 +2088,7 @@ We have showed how cross-relaxations can be used in a CVD-grown diamond to detec
 
 We have then studied the cross-relaxation between NV centers, thanks to the multiple classes of NV and the ability to tune them in and out of resonance. The observation of cross-relaxation between seemingly equivalent spins has led previous researchers to postulate the existence of dark NV centers called fluctuators. We investigated experimentally the predictions of the fluctuator model, in particular the prediction of a stretched exponential profile for the depolarization of the spins, and a broadening of the fluctuators spectra compared to those of regular NV centers. Our observations for the large part comfort the fluctuator model, although we did notice some deviations which could indicate some limitations of the model. 
 
-Dipole-dipole interaction within dense ensemble of NV centers ([NV] > ppm) can be responsible for an increase of the depolarization rate by more than a factor of 10. This changes considerably the properties of NV ensemble compared to single NV. Having a better understanding of the fluctuators and of their microscopic origin will be a crucial point in the future development of NV ensemble technologies. The further steps to determine the nature of the fluctuators could include the study of dedicated samples grown with specific concentrations of NV and other defects, as well as the study of nano-diamonds to try to isolate a single fluctuator.
+Dipole-dipole interaction within dense ensemble of NV centers ([NV] $>$ ppm) can be responsible for an increase of the depolarization rate by more than a factor of 10. This changes considerably the properties of NV ensemble compared to single NV. Having a better understanding of the fluctuators and of their microscopic origin will be a crucial point in the future development of NV ensemble technologies. The further steps to determine the nature of the fluctuators could include the study of dedicated samples grown with specific concentrations of NV and other defects, as well as the study of nano-diamonds to try to isolate a single fluctuator.
 
 Finally, we investigated the depolarization of NV ensemble at low magnetic field. We identified 4 different contributions to the zero field depolarization which we analyzed both theoretically through the fluctuator model, and experimentally by varying the magnetic field orientation. We concluded that the dominant factor in the zero field depolarization was the degeneracy of the 4 NV classes, followed by the double flips. 
 
@@ -2170,10 +2126,10 @@ The growth process and characterization of sample CVD pink are detailed in \cite
 The concentration of NV centers and nitrogen impurities was determined via UV-visible absorption and FTIR.
 
 \subsection{CVD-B and CVD-C}
-The growth process and characterization of sample CVD pink are detailed in \citep{ngambou2022improving}. These two samples were grown with a N$_2$O concentration of 100 ppm in the gas phase, and were irradiated similarly to sample CVD-pink. The main difference between the two sample is the further annealing step on sample CVD-B, as detailed in chapter 2.
+The growth process and characterization of samples CVD-B and CVD-C are detailed in \citep{ngambou2022improving}. These two samples were grown with a N$_2$O concentration of 100 ppm in the gas phase, and were irradiated similarly to sample CVD-pink. The main difference between the two sample is the further annealing step on sample CVD-B, as detailed in chapter 2.
 
 \section{HPHT samples}
-\subsection{Adamas fluorescent microdimaonds}
+\subsection{Adamas fluorescent microdimaonds (ADM-15-$n$ and ADM-150-$n$)}
 \begin{table}[htbp]
 \centering
 \caption{Concentration in nitrogen and NV centers for the HPHT samples}
@@ -2192,7 +2148,7 @@ The main HPHT sample studied in this manuscript are the commercially available r
 
 \subsection{Other HPHT samples}
 \subsubsection{Sumi-2 and Sumi-4}
-Sample Sumi-2 is a type Ib HPHT sample bought from Sumitomo and irradiated with a 2 MeV electron beam and a fluence of $7\cdot 10^{18}\ \rm cm^{-2}$ for Sumi-2 and $71.5\cdot 10^{19}\ \rm cm^{-2}$ for Sumi-4. The two samples were further annealed at 800 $^\circ$C for two hours. The NV and N concentration were not measured on this sample.
+Sample Sumi-2 is a type Ib HPHT sample bought from Sumitomo and irradiated with a 2 MeV electron beam and a fluence of $7\cdot 10^{18}\ \rm cm^{-2}$ for Sumi-2 and $71.5\cdot 10^{19}\ \rm cm^{-2}$ for Sumi-4. The two samples were further annealed at 800 $^\circ$C for two hours. The NV and N concentration were not measured on these samples.
 \subsubsection{SBST-B and SBST-C}
 Samples SBST-B and SBST-C are the type Ib HPHT substrates on which the samples CVD-B and CVD-C grew. They were irradiated and annealed along the CVD layers. The NV and N concentrations in these samples has not been measured.
 
@@ -2251,12 +2207,12 @@ S_z&=\begin{pmatrix}
 \end{pmatrix}.
 \end{align*}
 
-The relative position between the two spins is noted with the vector $\vec{r}=r\hat{u}$. The vector's spherical coordinate are given in the Cartesian basis of the NV center ($\hat x_s,\hat y_s,\hat z_s$).
+The relative position between the two spins is noted with the vector $\vec{r}=r\hat{u}$. The vector's spherical coordinate are given in the Cartesian basis of the NV center ($\hat x_s,\hat y_s,\hat z_s$) with the usual definitions for the polar and azimuthal angles.
 
 The angle $\psi$ between the two spins $z$ axes is defined by the crystal lattice and can take three values within [0,$\pi$] which are: 0 (same class), $\cos^{-1}(1/3) \approx 70.5\ ^\circ$ and $\cos^{-1}(-1/3) \approx 109.5\ ^\circ$. Two distinct classes can either have a relative angle $\psi=70.5 \ ^\circ$ or $\psi=109.5 \ ^\circ$ depending on the external magnetic field: we choose by definition that $\vec{B}\cdot\hat{z}_i >0$, which imposes the orientation of $z_i$ and therefore the angle between $\hat z_s$ and $\hat z_f$. This point will be further developed when discussing the $\{100\}$ and $\{110\}$ type resonances.
 
 The direction $\hat x_s=\hat x_f$ is chosen arbitrarily to be : $$\hat x=\frac{\hat z_s \times \hat z_f}{\norm{\hat z_s \times \hat z_f}}.$$
-The arbitrary choice of the $\hat x$ direction is justified by the symmetry of the problem in the ($\hat x, \hat y$) plane. We chose here to neglect the symmetry-breaking part of the transverse magnetic field which is justified by the fact that we do not take into consideration the mixing of the eigenstates caused by the transverse field.
+The arbitrary choice of the $\hat x$ direction is justified by the symmetry of the problem in the ($\hat x, \hat y$) plane. We chose here to neglect the symmetry-breaking part of the transverse magnetic field which is justified by the assumption that $\gamma B_z \gg \frac{(\gamma B_\perp)^2}{D}$ for both spins.
 
 Following the notation introduced in \citep{choi2017depolarization}, we can rewrite the dipole-dipole Hamiltonian as:
 \begin{equation}
@@ -2325,7 +2281,7 @@ $\frac{2}{9}=0.222$ & 0.3757 & 0.4808 \\
 
 As discussed in sec. \ref{sec geometrie resonance}, there are 4 classes of magnetic field orientations for which at least two NV classes are co-resonant: $\vec{B} \in \{110\}$ (two-class resonance), $\vec{B} \in \{100\}$ (2$\times$two-class resonance), $\vec{B} \parallel \langle 111 \rangle$ (three-class resonance) and $\vec{B} \parallel \langle 100\rangle$ (four-class resonance).
 
-Fig. \ref{110 vs 100 annexe}-a) illustrates the difference in the angle $\psi$ for the case $\vec{B} \in \{110\}$ and $\vec{B} \in \{100\}$. We consider here an NV center parallel to the [111] axis and a fluctuator parallel to the [$\bar 1$11] axis. Without external fields, the $\hat z$ direction of the NV center could be either [111] or [$\bar 1 \bar 1 \bar 1$], however the condition $\vec{B}\cdot\hat{z} >0$ imposes in the left case $\hat z_s=[111]$ and in the right cases $\hat z_f=[\bar 1 \bar 1 \bar 1]$. 
+Fig. \ref{110 vs 100 annexe}-a) illustrates the difference in the angle $\psi$ for the case $\vec{B} \in \{110\}$ and $\vec{B} \in \{100\}$. We consider here an NV center parallel to the [111] axis and a fluctuator parallel to the [$\bar 1$11] axis. Without external fields, the $\hat z$ direction of the NV center could be either [111] or [$\bar 1 \bar 1 \bar 1$], however the condition $\vec{B}\cdot\hat{z} >0$ imposes in the left case $\hat z_s=[111]$ and $\hat z_f=[\bar 1 11]$, and in in the right cases $\hat z_s=[\bar 1 \bar 1 \bar 1]$ and $\hat z_f=[\bar 1 11]$. 
 
 For the NV center and the fluctuator to be resonant, the magnetic field needs to have the same projection on the $\hat z_s$ and $\hat z_f$ axes, which in this case means either $\vec{B} \in (100)$ or $\vec{B} \in (011)$. The angle $\psi$ between the $\hat z_s$ and $\hat z_f$ axes however is different in both cases. The same can be generalized for every $\vec{B} \in \{110\}$ and $\vec{B} \in \{100\}$ type resonance: the angle $\psi \in [0,\pi]$ between two resonant classes is equal to $70.5 \ ^\circ$ for a $\vec{B} \in \{100\}$ type resonance, and $109.5 \ ^\circ$ for a $\vec{B} \in \{110\}$ type resonance.
 
@@ -2349,7 +2305,7 @@ Note that we only give here the relaxation rates for a single class. To estimate
 
 \section{$\bar \eta$ in the non-magnetic basis $\{ \ket{0}, \ket{+}, \ket{-}\}$}
 
-In this part we will study the averaged flip-flop and double flip rates in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis which corresponds to the various mechanisms discribed in chapter 4.
+In this part we will study the averaged flip-flop and double flip rates in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis which is relevant for the low and transverse field regime as described in chapter 4.
 
 We will define here the $\ket{\pm}$ states as:
 \begin{equation}
@@ -2380,7 +2336,7 @@ Importantly, we have to note the breaking of the symmetry in the (xy) plane. Thi
 
 \subsection{Flip-flops in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis}
 \label{sec flip-flop +/-}
-Rewriting the dipole-dipole Hamiltonian in the $\{ \ket{0}, \ket{+}, \ket{-}\} \times \{ \ket{0}, \ket{+}, \ket{-}\}$ changes the value of the flip-flop and double flip prefactors. For instance, the prefactor of the $\ket{+,0}\bra{0,+}$ term is: \begin{equation}
+Rewriting the dipole-dipole Hamiltonian in the $\{ \ket{0}, \ket{+}, \ket{-}\} \times \{ \ket{0}, \ket{+}, \ket{-}\}$ basis changes the value of the flip-flop and double flip prefactors. For instance, the prefactor of the $\ket{+,0}\bra{0,+}$ term is: \begin{equation}
 -\frac{J_0}{r^3}\left[3(\hat{u}\cdot\hat{x}_s)(\hat{u}\cdot\hat{x}_f) - (\hat{x}_s \cdot \hat{x}_f)\right]
 \end{equation}
 while the prefactor of the $\ket{+1,0}\bra{0,+1}$ term was: \begin{equation}
@@ -2396,7 +2352,7 @@ while the prefactor of the $\ket{+1,0}\bra{0,+1}$ term was: \begin{equation}
 
 Because of the symmetry breaking of the $(xy)$ plane, we now have to consider the relative orientation of $x_s$ and $x_f$ on top of the previously mentioned angles $\theta$, $\phi$ and $\psi$. We define $\alpha_s$ and $\alpha_f$ in Fig. \ref{alpha s et f} as the relative angle formed by the $x_s$ and $x_f$ axes with the arbitrary axes $\hat x_s^0$ and $\hat x_f^0$ in their respective $(xy)$ plane (the arbitrary axis can be defined for instance in the lab frame of reference). 
 
-Because we assume that the physical orientation of the $x_s$ and $x_f$ axes in zero external magnetic field is determined by a random local electric field, we will sample than angles $\alpha_s$ and $\alpha_f$ on a uniform [0,$2\pi$] distribution independently for each spin.
+Because we assume that the physical orientation of the $x_s$ and $x_f$ axes in zero external magnetic field is determined by a random local electric field, we will sample the angles $\alpha_s$ and $\alpha_f$ on a uniform [0,$2\pi$] distribution independently for each spin.
 
 The integral to compute the $\bar G$ factor of the dipole-dipole interaction in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis then becomes\footnote{The flip-flop term considered here is $\ket{+,0}\bra{0,+}$. The $\ket{-,0}\bra{0,-}$ term gives the same numerical values once averaged.}:
 \begin{equation}
@@ -2422,7 +2378,7 @@ Finally the value $\Gamma_1^{\rm th}= 51.4 \Gamma_0^{\rm th}$ shown in Fig. \ref
 \frac{\Gamma_1^{\rm th}}{\Gamma_0^{\rm th}}=\left(\frac{\bar G_{\ket{\pm}}(\psi=0) + 3 \bar G_{\ket{\pm}}(\psi\neq 0) }{\bar G_{\ket{\pm 1}}(\psi=0)}\right)^2
 \end{equation}
 \subsection{Double-flips in the $\{ \ket{0}, \ket{+}, \ket{-}\}$ basis}
-Including the double flips, there are two possible relaxation path for each transition of the regular NV center. For instance the transition $\ket{0} \to \ket{-}$ can involve either the flip flop $\ket{0,-} \bra{-,0}$ or the double-flip $\ket{0,+} \bra{-,0}$.
+Including the double flips, there are two possible relaxation path for each transition of the ``normal" NV center. For instance the transition $\ket{0} \to \ket{-}$ can involve either the flip flop $\ket{0,-} \bra{-,0}$ or the double-flip $\ket{0,+} \bra{-,0}$.
 
 The inclusion of the double flips require to modify the expression of $\eta^2$ to include both relaxation path. According to the more general definition given in \citep{choi2017depolarization}, the $\eta^2$ term corresponding to the $\ket{0} \to \ket{-}$ transition of the NV center can be written\footnote{The $\ket{\pm}$ states in the formula can be replaced by $\ket{\pm 1}$ depending on the eigenbasis of the single spin Hamiltonian.}:
 \begin{align}
@@ -2432,7 +2388,7 @@ The inclusion of the double flips require to modify the expression of $\eta^2$ t
 \end{align}
 where $\Delta_{\omega_{NV}}^{(0,\pm)}$ corresponds to the central frequency of the $\ket{0} \to \ket{\pm}$ transition of the NV center, and $\Delta_{\omega_{f}}^{(0,\pm)}$ that of the fluctuator.
 
-Eq. (\ref{eq eta2 avec DQ}) can no longer be factorized as a product of a spectral and spatial function. To compute the value of $\bar eta$ in zero magnetic field, we will proceed to the following assumptions: $\Delta_{\omega_{NV}}^{(0,\pm)}=\Delta_{\omega_{f}}^{(0,\pm)}$, and $|\Delta_{\omega_{NV}}^{(0,\pm)}-\Delta_{\omega_{f}}^{(0,\mp)}|=2 \gamma_f$\footnote{This second assumption is justified by experimental measurements.}. Eq. (\ref{eq eta2 avec DQ}) then become:
+Eq. (\ref{eq eta2 avec DQ}) can no longer be factorized as a product of a spectral and spatial functions. To compute the value of $\bar \eta$ in zero magnetic field, we will proceed to the following assumptions: $\Delta_{\omega_{NV}}^{(0,\pm)}=\Delta_{\omega_{f}}^{(0,\pm)}$, and $|\Delta_{\omega_{NV}}^{(0,\pm)}-\Delta_{\omega_{f}}^{(0,\mp)}|=2 \gamma_f$\footnote{This second assumption is justified by experimental measurements.}. Eq. (\ref{eq eta2 avec DQ}) then become:
 \begin{equation}
 \eta^2=\frac{1}{3} \left(\frac{\mel{0,-}{\mathcal{H_{\rm dd}}}{-,0}}{\frac{J_0}{r^3}}\right)^2 
 +\frac{1}{3} \left(\frac{\mel{0,+}{\mathcal{H_{\rm dd}}}{-,0}}{\frac{J_0}{r^3}}\right)^2 \frac{1}{2}.
@@ -2457,7 +2413,7 @@ $\psi=0$ & $\psi=70.5 \ ^\circ$ & $\psi=109.5 \ ^\circ$ \\
 
 We will focus here on the case detailed in Fig. \ref{champ tranverse exp}: a single class of NV centers whose Hamiltonian is dominated by the transverse magnetic field. Unlike the case presented in Sec. \ref{sec flip-flop +/-}, the $x$ direction is fixed for all spins and imposed by the direction of the magnetic field.
 
-The expression of $\bar G$ then becomes:
+The expression of $\bar G$ when considering only the flip-flops then becomes:
 \begin{equation}
 \bar{G}= \frac{1}{\sqrt{3}}\iint \abs{3(\hat{u}\cdot\hat{x})^2 - 1} \frac{\rm d\theta \cos \theta \rm d\phi}{4 \pi}= \frac{4}{9}\approx 0.444.
 \end{equation}
@@ -2471,6 +2427,50 @@ To include the double-flip, we once again make the assumption that $|\Delta_{\om
 \begin{equation}
 \frac{\Gamma_1^{\rm th}}{\Gamma_0^{\rm th}}=\left(\frac{\bar \eta_{\ket{\pm}}(\psi=0)}{\bar \eta_{\ket{\pm 1}}(\psi=0)}\right)^2\approx 6.5.
 \end{equation}
+
+\chapter{Extraction of the fluctuator depolarization rate $\gamma_f$}
+
+\label{Appendix fluct T1}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{chapter 3/Figures/deconvolution}
+\caption{Blue curve $1/T_1^{\rm dd}$ data presented in Fig. \ref{fluct linewidth}. Red curve: deconvolution of the blue curve by the ODMR line shown on the same figure. Green curve: deconvolution of the red curve by the ODMR line. All three curves are fitted with Lorentzian of respective half widths $8.8 \pm 0.2$, $7.5 \pm 0.3$ and $6.4 \pm 0.4$ MHz (the precision is determined by the variance of the optimal fit parameters).}
+\label{deconvolution}
+\end{figure}
+
+We will detail here the process used to extract the fluctuator depolarization rate $\gamma_f$ from the data presented in Fig. \ref{fluct linewidth}.
+
+To do this we first assume that the dipole induced decay rate is proportional to the overlap of the spectral responses of the NV centers and fluctuators $S_{NV}$ and $S_f$. We will take $S_{NV}( \omega)$ and $S_{f}( \omega)$ as functions centered in $\omega=0$, and consider that the spectral responses are shifted by $\omega^0_{NV}$ and $\omega^0_{f}$ respectively, the central frequencies of each group. We then have:
+\begin{align*}
+\frac{1}{T_1^{\rm dd}} &\propto \int S_{NV} (\omega-\omega_{NV}^0) S_f (\omega-\omega_{f}^0) d\omega \\
+&= \int S_{NV} (\omega-\Delta \omega) S_f (\omega)
+ d\omega \\
+ &= (S_{NV}*S_{f})(\Delta \omega),
+\end{align*}
+
+where $\Delta \omega=\omega_{NV}^0-\omega_{f}^0$.
+
+Using the approximation $\bar {R ^2} \approx (\bar{R})^2$ detailed in sec. \ref{sec computation eta}, we can then decompose the fluctuator spectral response as a convolution of the lifetime contribution and the inhomogeneous broadening:
+\begin{equation}
+S_{f}(\omega)=\left(S_f^*(\omega)\right)*\left(\frac{1}{1+\left(\frac{\omega}{2 \gamma_f}\right)^2} \right),
+\end{equation}
+
+where $S_f^*$ is the spectral broadening caused by the inhomogeneous distribution of the fluctuators, which we will suppose to be equal to $S_{NV}$. With these assumptions, we are now ready to extract $\gamma_f$ from the data of Fig. \ref{fluct linewidth}.
+
+The first way to do this, as was done for NV-P1 CR in \citep{hall2016detection}, is to deconvolve the $1/T_1^{\rm dd}$ data by the ODMR spectrum using a Wiener deconvolution algorithm. The result of the deconvolution is shown in Fig. \ref{deconvolution}: the data is deconvolved once to get the spectral response of the fluctuator (red curve), and a second time to get only the lifetime contribution of the fluctuator (green curve). Fitting with Lorentzians, we find a final value $\Gamma_2 =2\gamma_f= (2\pi) 6.4 \pm 0.4\ \rm MHz$.
+
+Another, simpler alternative is to consider that the $1/T_1^{\rm dd}$ profile is a Voigt profile given by the convolution of two Gaussians of half width at half maximum (HWHM) $f_G=\frac{\sqrt{\ln (2)}}{\pi T_2^*}$ and a Lorentzian of HWHM $f_L=\frac{2 \gamma_f}{2 \pi}$:
+\begin{align*}
+\Gamma_1^{\rm dd}&\propto \mathcal{G}(f_G)*(\mathcal{L}(f_L)*\mathcal{G}(f_G)) \\
+&\propto \mathcal{L}(f_L)*\mathcal{G}(\sqrt{2} f_G),
+\end{align*}
+where $\mathcal{G}(f_G)$ and $\mathcal{L}(f_L)$ denote Gaussian and Lorentzian functions of HWHM $f_G$ and $f_L$ respectively.
+We can then use the formula of a pseudo-Voigt profile which gives an approximation of the Voigt profile's HWHM $f$ as a function of $f_G$ and $f_L$ \citep{ida2000extended}:
+\begin{equation}
+f = [f_G^5 + 2.69269 f_G^4 f_L + 2.42843 f_G^3 f_L^2 + 4.47163 f_G^2 f_L^3 + 0.07842 f_G f_L^4 + f_L^5]^{1/5}.
+\end{equation}
+
+With $f=8.8 \pm 0.2\ \rm MHz$ and $\sqrt{2}f_G=4.3 \pm 0.2\ \rm MHz$, we find $f_L= 2 \gamma_f =6.5 \pm 0.3\ \rm MHz$.
 
 \chapter{Influence of the magnetic field misalignment and laser polarization on the low field relaxation}
 \label{Appendix autres causes}
@@ -2497,7 +2497,7 @@ Other studies \citep{anishchik2015low, filimonenko2020weak} previously observed 
 
 Fig. \ref{pola laser} shows PL scans on sample ADM-150-3 for various polarization angle of the incident laser. We chose to apply the magnetic field in the laser polarization plane, in a direction that did not match any particular crystalline planes.
 
-We can see no clear differences between the different polarization angles used, whereas \citep{anishchik2015low} and \citep{filimonenko2020weak} saw an antiline growing inside the PL dip when $B \perp E_{\rm las}$. We think that the difference between our experiments come from the fact that we are using denser NV ensembles, and that any effects tied to the laser polarization are hidden by the stronger effects discussed previously.
+We can see no clear differences between the different polarization angles used, whereas \citep{anishchik2015low} and \citep{filimonenko2020weak} saw an antiline growing inside the PL dip when $B \perp E_{\rm las}$. We think that the difference between our experiments come from the fact that we are using denser NV ensembles, and that any effects tied to the laser polarization are hidden by the stronger effects associated with the fluctuators.
 
 \printbibliography
 \end{document}
