@@ -58,7 +58,7 @@ class Photon_Counter(QMainWindow):
 
 		#uW réseau : TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR
 		# USB0::0x0AAD::0x0054::110140::0::INSTR
-
+		'USB0::0x0AAD::0x0054::110140::INSTR'
 		resourceString4 = 'TCPIP0::micro-onde.phys.ens.fr::inst0::INSTR'  # Pour avoir l'adresse je suis allé regarder le programme RsVisaTester de R&S dans "find ressource"
 
 		rm = visa.ResourceManager()
