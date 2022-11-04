@@ -195,7 +195,6 @@ def gauss_derivative_fit(x,y,amp=None,x0=None,sigma=None,ss=0):
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
 
-
 def lor_fit(x,y,amp=None,x0=None,sigma=None,ss=None,err=False) :
 	#sigma=HWHM
 	if not ss :
@@ -233,7 +232,6 @@ def lor_fit_fixed(x,y,amp=None,x0=0,sigma=1,ss=None):
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
 
-
 def cos_fit(x,y,amp=None,omega=None,phi=0,ss=None):
 	if not amp :
 		amp=max(y)-min(y)
@@ -256,7 +254,6 @@ def invert_fit(x,y,amp=None):
 	p0=[amp]
 	popt, pcov = curve_fit(f, x, y, p0)
 	return(popt,f(x,*popt))
-
 
 def exp_fit(x,y,amp=None,ss=None,tau=None,err=False) :
 	if not amp :
@@ -294,7 +291,6 @@ def exp_fit_zero(x,y,amp=None,tau=None,norm=False,err=False) :
 		return(popt,f(x,*popt),np.sqrt(np.diag(pcov)))
 	else :
 		return(popt,f(x,*popt))
-
 
 def stretch_exp_fit(x,y,amp=None,ss=None,tau=None,err=False) :
 	if not amp :

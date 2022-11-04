@@ -714,8 +714,6 @@ class fitButton():
 		self.addFitButton.addToBox(box)
 		self.removeFitButton.addToBox(box)
 
-
-
 class device(): #Pour l'instant ça sert juste à les regrouper pour les fermer
 	def __init__(self):
 		self.toBeClosed=True

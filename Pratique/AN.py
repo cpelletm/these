@@ -12,6 +12,7 @@ Na=6.02e23
 hbar=1.05e-34
 h=2*pi*hbar
 mu0=4*pi*1e-7
+c=3e8
 
 density_diam=3.5 #g/cm3
 m_carbon=12.01/Na #g
@@ -31,7 +32,6 @@ eV=1.6E-19
 gamma_SI=1.761*1e11
 J0=mu0/(4*pi)*(gamma_SI*hbar)**2
 
-print(1240/800*eV*10**7)
 
 
 def pola_NV(T):
@@ -73,9 +73,11 @@ def simu_NRJ_NV():
 	plt.show()
 
 
-# simu_NRJ_NV()
+def shot_noise_limit(lbda=700e-9,P=0.8e-6):
+	S=2*h*c/lbda*P
+	print(S)
 
-
-
-# couplage_NV()
+lbda=700e-9
+P=0.8e-6
+print(sqrt(2.8e12)/2.8e12*2.6)
 
