@@ -4,7 +4,7 @@ sys.path.append('C:\\Users\\cleme\\OneDrive\\Documents\\these\\python_clément')
 sys.path.append('/home/pellet-mary/these/python_clément')
 from analyse import *
 
-plt.figure(num=1,figsize=(4.5,3),dpi=80)
+plt.figure(num=1,figsize=(4,3),dpi=80)
 plt.xticks(fontsize=16)
 plt.yticks(fontsize=16)
 plt.locator_params(axis='x', nbins=5)
@@ -30,8 +30,13 @@ plt.locator_params(axis='y', nbins=5)
 # print(popt)
 # plt.show()
 
+# fname='ESR 0B zoom +10 dBm avec un T et 50 ohms'
 fname='Vrai ESR 1x1x1x1'
 x,y=extract_data(fname)
+# plt.ylim(0.96,1.0015)
+# cs=[2624,3141]
+# popt,yfit=ESR_n_pics(x,y,cs)
+# plt.plot(x,yfit)
 plt.plot(x,y)
 
 plt.show()

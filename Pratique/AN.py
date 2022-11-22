@@ -34,6 +34,7 @@ J0=mu0/(4*pi)*(gamma_SI*hbar)**2
 
 
 
+
 def pola_NV(T):
 	dE=2.87E9*2*pi*hbar
 	pzero=1/(1+2*exp(-(dE)/(kb*T)))
@@ -74,10 +75,9 @@ def simu_NRJ_NV():
 
 
 def shot_noise_limit(lbda=700e-9,P=0.8e-6):
-	S=2*h*c/lbda*P
-	print(S)
+	pass
 
-lbda=700e-9
-P=0.8e-6
-print(sqrt(2.8e12)/2.8e12*2.6)
 
+nu=2.87e9
+E=h*nu
+print(E/eV)
