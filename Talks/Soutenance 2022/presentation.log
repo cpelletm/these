@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  22 NOV 2022 01:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.25)  29 NOV 2022 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -797,33 +797,29 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \TX@cols=\count328
 \TX@ftn=\toks48
 )
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerthemeRochester.sty
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemesidebar.sty
-\beamer@sidebarwidth=\dimen307
-\beamer@headheight=\dimen308
-)
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerinnerthemerectangles.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemeorchid.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerthemeMalmoe.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemesplit.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemeseahorse.sty)
 (./presentation.aux)
 \openout1 = `presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -862,13 +858,13 @@ LaTeX Font Info:    ... okay on input line 26.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count329
-\scratchdimen=\dimen309
+\scratchdimen=\dimen307
 \scratchbox=\box85
 \nofMPsegments=\count330
 \nofMParguments=\count331
 \everyMPshowfont=\toks49
 \MPscratchCnt=\count332
-\MPscratchDim=\dimen310
+\MPscratchDim=\dimen308
 \MPnumerator=\count333
 \makeMPintoPDFobject=\count334
 \everyMPtoPDFconversion=\toks50
@@ -883,7 +879,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box86
-Package hyperref Info: Link coloring OFF on input line 26.
+Package hyperref Info: Link coloring OFF on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -896,66 +892,66 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count335
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 27.
+LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \nameref on input line 27.
 
 (./presentation.out) (./presentation.out)
 \@outlinefile=\write7
 \openout7 = `presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 26.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 27.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 26.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 26.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 26.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 26.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 26.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 26.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 26.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 26.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 26.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 26.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 26.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 26.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 26.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 27.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 26.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 26.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 26.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 26.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 26.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 26.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 26.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 26.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 27.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 27.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 2
-6.
+7.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 2
-6.
+7.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 26.
+ut line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -983,287 +979,325 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
- (./presentation.nav) [1
+ (./presentation.nav) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./presentation.toc) [2
+] (./presentation.toc) [2
 
 ] (./presentation.toc) [3
 
 ]
-<Slide_quantum_metrology.pdf, id=121, 646.85953pt x 704.79228pt>
+<Slide_quantum_metrology.pdf, id=198, 930.61305pt x 456.91373pt>
 File: Slide_quantum_metrology.pdf Graphic file (type pdf)
 <use Slide_quantum_metrology.pdf>
-Package pdftex.def Info: Slide_quantum_metrology.pdf  used on input line 46.
-(pdftex.def)             Requested size: 185.1465pt x 201.72823pt.
+Package pdftex.def Info: Slide_quantum_metrology.pdf  used on input line 48.
+(pdftex.def)             Requested size: 307.28786pt x 150.87262pt.
  [4
 
  <./Slide_quantum_metrology.pdf>]
-<Slide_example_magnetometry.pdf, id=158, 810.20232pt x 438.95172pt>
-File: Slide_example_magnetometry.pdf Graphic file (type pdf)
-<use Slide_example_magnetometry.pdf>
-Package pdftex.def Info: Slide_example_magnetometry.pdf  used on input line 51.
-
-(pdftex.def)             Requested size: 307.28667pt x 166.48189pt.
+<Slide_magnetometer_size.pdf, id=240, 1330.4134pt x 803.25174pt>
+File: Slide_magnetometer_size.pdf Graphic file (type pdf)
+<use Slide_magnetometer_size.pdf>
+Package pdftex.def Info: Slide_magnetometer_size.pdf  used on input line 53.
+(pdftex.def)             Requested size: 307.28787pt x 185.52844pt.
  [5
 
- <./Slide_example_magnetometry.pdf>]
-<Slide_quantum_magnetometers.pdf, id=282, 1059.77951pt x 610.88425pt>
-File: Slide_quantum_magnetometers.pdf Graphic file (type pdf)
-<use Slide_quantum_magnetometers.pdf>
-Package pdftex.def Info: Slide_quantum_magnetometers.pdf  used on input line 56
-.
-(pdftex.def)             Requested size: 307.29585pt x 177.13324pt.
+ <./Slide_magnetometer_size.pdf>]
+<Slide_quantum_magnetometers_bare.pdf, id=315, 1086.2631pt x 591.85411pt>
+File: Slide_quantum_magnetometers_bare.pdf Graphic file (type pdf)
+<use Slide_quantum_magnetometers_bare.pdf>
+Package pdftex.def Info: Slide_quantum_magnetometers_bare.pdf  used on input li
+ne 58.
+(pdftex.def)             Requested size: 307.28427pt x 167.42487pt.
  [6
 
- <./Slide_quantum_magnetometers.pdf>] (./presentation.toc) [7
+ <./Slide_quantum_magnetometers_bare.pdf>]
+<Slide_quantum_magnetometers_OPM.pdf, id=424, 1086.2631pt x 591.85411pt>
+File: Slide_quantum_magnetometers_OPM.pdf Graphic file (type pdf)
+<use Slide_quantum_magnetometers_OPM.pdf>
+Package pdftex.def Info: Slide_quantum_magnetometers_OPM.pdf  used on input lin
+e 63.
+(pdftex.def)             Requested size: 307.28427pt x 167.42487pt.
+ [7
 
-]
-<Slide diamant.pdf, id=432, 1532.47005pt x 826.3612pt>
-File: Slide diamant.pdf Graphic file (type pdf)
-<use Slide diamant.pdf>
-Package pdftex.def Info: Slide diamant.pdf  used on input line 66.
-(pdftex.def)             Requested size: 307.28362pt x 165.69803pt.
+ <./Slide_quantum_magnetometers_OPM.pdf>]
+<Slide_quantum_magnetometers_SQUID.pdf, id=535, 1086.2631pt x 591.85411pt>
+File: Slide_quantum_magnetometers_SQUID.pdf Graphic file (type pdf)
+<use Slide_quantum_magnetometers_SQUID.pdf>
+Package pdftex.def Info: Slide_quantum_magnetometers_SQUID.pdf  used on input l
+ine 68.
+(pdftex.def)             Requested size: 307.28427pt x 167.42487pt.
  [8
 
- <./Slide diamant.pdf>]
-<Slide_fab_sample.pdf, id=1087, 721.96637pt x 493.68045pt>
-File: Slide_fab_sample.pdf Graphic file (type pdf)
-<use Slide_fab_sample.pdf>
-Package pdftex.def Info: Slide_fab_sample.pdf  used on input line 71.
-(pdftex.def)             Requested size: 295.01666pt x 201.73233pt.
+ <./Slide_quantum_magnetometers_SQUID.pdf>]
+<Slide_quantum_magnetometers_NV.pdf, id=645, 1086.2631pt x 591.85411pt>
+File: Slide_quantum_magnetometers_NV.pdf Graphic file (type pdf)
+<use Slide_quantum_magnetometers_NV.pdf>
+Package pdftex.def Info: Slide_quantum_magnetometers_NV.pdf  used on input line
+ 73.
+(pdftex.def)             Requested size: 307.28427pt x 167.42487pt.
+ [9
 
-[9
+ <./Slide_quantum_magnetometers_NV.pdf>]
+<Slide_NV_rapido.pdf, id=758, 1175.54968pt x 584.75488pt>
+File: Slide_NV_rapido.pdf Graphic file (type pdf)
+<use Slide_NV_rapido.pdf>
+Package pdftex.def Info: Slide_NV_rapido.pdf  used on input line 79.
+(pdftex.def)             Requested size: 307.28595pt x 152.85356pt.
 
- <./Slide_fab_sample.pdf>]
-<Slide_NV_levels_1.pdf, id=1153, 987.49089pt x 569.25294pt>
-File: Slide_NV_levels_1.pdf Graphic file (type pdf)
-<use Slide_NV_levels_1.pdf>
-Package pdftex.def Info: Slide_NV_levels_1.pdf  used on input line 76.
-(pdftex.def)             Requested size: 307.29431pt x 177.1441pt.
- [10
+[10
 
- <./Slide_NV_levels_1.pdf>]
-<Slide_NV_levels.pdf, id=1193, 987.49089pt x 569.25294pt>
-File: Slide_NV_levels.pdf Graphic file (type pdf)
-<use Slide_NV_levels.pdf>
-Package pdftex.def Info: Slide_NV_levels.pdf  used on input line 81.
-(pdftex.def)             Requested size: 307.29431pt x 177.1441pt.
+ <./Slide_NV_rapido.pdf>]
+<Slide_NV_limite_sensi.pdf, id=807, 2184.0909pt x 1051.37433pt>
+File: Slide_NV_limite_sensi.pdf Graphic file (type pdf)
+<use Slide_NV_limite_sensi.pdf>
+Package pdftex.def Info: Slide_NV_limite_sensi.pdf  used on input line 84.
+(pdftex.def)             Requested size: 307.27034pt x 147.91331pt.
  [11
 
- <./Slide_NV_levels.pdf>]
-<Slide_ODMR_0.pdf, id=1299, 584.66722pt x 555.89891pt>
-File: Slide_ODMR_0.pdf Graphic file (type pdf)
-<use Slide_ODMR_0.pdf>
-Package pdftex.def Info: Slide_ODMR_0.pdf  used on input line 86.
-(pdftex.def)             Requested size: 212.16615pt x 201.72661pt.
- [12
-
- <./Slide_ODMR_0.pdf>]
-<Slide_setup.pdf, id=1451, 624.15918pt x 399.76022pt>
-File: Slide_setup.pdf Graphic file (type pdf)
-<use Slide_setup.pdf>
-Package pdftex.def Info: Slide_setup.pdf  used on input line 91.
-(pdftex.def)             Requested size: 276.5547pt x 177.1272pt.
- [13
-
- <./Slide_setup.pdf>]
-<Slide_ODMR_8_classes.pdf, id=1493, 1983.00786pt x 1305.50883pt>
-File: Slide_ODMR_8_classes.pdf Graphic file (type pdf)
-<use Slide_ODMR_8_classes.pdf>
-Package pdftex.def Info: Slide_ODMR_8_classes.pdf  used on input line 96.
-(pdftex.def)             Requested size: 306.39478pt x 201.71432pt.
- [14
-
- <./Slide_ODMR_8_classes.pdf>]
-<Slide_NV_ensemble_sensi.pdf, id=1584, 1917.54466pt x 1042.3298pt>
-File: Slide_NV_ensemble_sensi.pdf Graphic file (type pdf)
-<use Slide_NV_ensemble_sensi.pdf>
-Package pdftex.def Info: Slide_NV_ensemble_sensi.pdf  used on input line 101.
-(pdftex.def)             Requested size: 307.28157pt x 167.03064pt.
- [15
-
- <./Slide_NV_ensemble_sensi.pdf>]
-<Slide_dipole_dipole.pdf, id=1632, 786.11655pt x 484.00073pt>
-File: Slide_dipole_dipole.pdf Graphic file (type pdf)
-<use Slide_dipole_dipole.pdf>
-Package pdftex.def Info: Slide_dipole_dipole.pdf  used on input line 106.
-(pdftex.def)             Requested size: 307.29193pt x 189.19525pt.
- [16
-
- <./Slide_dipole_dipole.pdf>]
-<Slide_interaction_limit.pdf, id=1669, 681.74622pt x 483.16211pt>
+ <./Slide_NV_limite_sensi.pdf>]
+<Slide_interaction_limit.pdf, id=870, 1011.90952pt x 622.95547pt>
 File: Slide_interaction_limit.pdf Graphic file (type pdf)
 <use Slide_interaction_limit.pdf>
-Package pdftex.def Info: Slide_interaction_limit.pdf  used on input line 111.
-(pdftex.def)             Requested size: 284.64624pt x 201.73236pt.
- [17
+Package pdftex.def Info: Slide_interaction_limit.pdf  used on input line 89.
+(pdftex.def)             Requested size: 307.28091pt x 189.1694pt.
+ [12
 
- <./Slide_interaction_limit.pdf>] (./presentation.toc) [18
+ <./Slide_interaction_limit.pdf>] (./presentation.toc) [13
 
 ]
-<slide_presentation_sujet.pdf, id=1733, 516.26782pt x 366.58047pt>
-File: slide_presentation_sujet.pdf Graphic file (type pdf)
-<use slide_presentation_sujet.pdf>
-Package pdftex.def Info: slide_presentation_sujet.pdf  used on input line 123.
-(pdftex.def)             Requested size: 284.09785pt x 201.72615pt.
+<Slide diamant.pdf, id=982, 1532.47005pt x 826.3612pt>
+File: Slide diamant.pdf Graphic file (type pdf)
+<use Slide diamant.pdf>
+Package pdftex.def Info: Slide diamant.pdf  used on input line 100.
+(pdftex.def)             Requested size: 307.28362pt x 165.69803pt.
+ [14
+
+ <./Slide diamant.pdf>]
+<Slide_fab_sample.pdf, id=1645, 721.96637pt x 493.68045pt>
+File: Slide_fab_sample.pdf Graphic file (type pdf)
+<use Slide_fab_sample.pdf>
+Package pdftex.def Info: Slide_fab_sample.pdf  used on input line 105.
+(pdftex.def)             Requested size: 284.17662pt x 194.3199pt.
+
+[15
+
+ <./Slide_fab_sample.pdf>]
+<Slide_NV_levels_1.pdf, id=1717, 987.49089pt x 569.25294pt>
+File: Slide_NV_levels_1.pdf Graphic file (type pdf)
+<use Slide_NV_levels_1.pdf>
+Package pdftex.def Info: Slide_NV_levels_1.pdf  used on input line 111.
+(pdftex.def)             Requested size: 307.29431pt x 177.1441pt.
+ [16
+
+ <./Slide_NV_levels_1.pdf>]
+<Slide_NV_levels.pdf, id=1766, 987.49089pt x 569.25294pt>
+File: Slide_NV_levels.pdf Graphic file (type pdf)
+<use Slide_NV_levels.pdf>
+Package pdftex.def Info: Slide_NV_levels.pdf  used on input line 116.
+(pdftex.def)             Requested size: 307.29431pt x 177.1441pt.
+ [17
+
+ <./Slide_NV_levels.pdf>]
+<Slide_setup.pdf, id=1879, 624.15918pt x 399.76022pt>
+File: Slide_setup.pdf Graphic file (type pdf)
+<use Slide_setup.pdf>
+Package pdftex.def Info: Slide_setup.pdf  used on input line 122.
+(pdftex.def)             Requested size: 276.5547pt x 177.1272pt.
+ [18
+
+ <./Slide_setup.pdf>]
+<Slide_ODMR_0.pdf, id=1928, 584.66722pt x 395.05594pt>
+File: Slide_ODMR_0.pdf Graphic file (type pdf)
+<use Slide_ODMR_0.pdf>
+Package pdftex.def Info: Slide_ODMR_0.pdf  used on input line 127.
+(pdftex.def)             Requested size: 270.67198pt x 182.89134pt.
  [19
 
- <./Slide_presentation_sujet.pdf>]
-<Slide_principle_LFDM.pdf, id=1817, 908.88712pt x 632.62404pt>
-File: Slide_principle_LFDM.pdf Graphic file (type pdf)
-<use Slide_principle_LFDM.pdf>
-Package pdftex.def Info: Slide_principle_LFDM.pdf  used on input line 128.
-(pdftex.def)             Requested size: 289.82355pt x 201.72949pt.
+ <./Slide_ODMR_0.pdf>]
+<Slide_ODMR_8_classes.pdf, id=2088, 1983.00786pt x 1305.50883pt>
+File: Slide_ODMR_8_classes.pdf Graphic file (type pdf)
+<use Slide_ODMR_8_classes.pdf>
+Package pdftex.def Info: Slide_ODMR_8_classes.pdf  used on input line 132.
+(pdftex.def)             Requested size: 295.13872pt x 194.30392pt.
  [20
 
- <./Slide_principle_LFDM.pdf>]
-<Slide_sensi_LFDM.pdf, id=1899, 681.70027pt x 602.6386pt>
-File: Slide_sensi_LFDM.pdf Graphic file (type pdf)
-<use Slide_sensi_LFDM.pdf>
-Package pdftex.def Info: Slide_sensi_LFDM.pdf  used on input line 133.
-(pdftex.def)             Requested size: 228.19678pt x 201.73116pt.
+ <./Slide_ODMR_8_classes.pdf>]
+<Slide_champs_transverse.pdf, id=2188, 830.06915pt x 534.90477pt>
+File: Slide_champs_transverse.pdf Graphic file (type pdf)
+<use Slide_champs_transverse.pdf>
+Package pdftex.def Info: Slide_champs_transverse.pdf  used on input line 137.
+(pdftex.def)             Requested size: 301.54782pt x 194.32039pt.
  [21
 
+ <./Slide_champs_transverse.pdf>] (./presentation.toc)
+[22
+
+]
+<slide_presentation_sujet.pdf, id=2308, 516.26782pt x 366.58047pt>
+File: slide_presentation_sujet.pdf Graphic file (type pdf)
+<use slide_presentation_sujet.pdf>
+Package pdftex.def Info: slide_presentation_sujet.pdf  used on input line 150.
+(pdftex.def)             Requested size: 273.66791pt x 194.32028pt.
+ [23
+
+ <./Slide_presentation_sujet.pdf>]
+<Slide_principle_LFDM.pdf, id=2398, 908.88712pt x 632.62404pt>
+File: Slide_principle_LFDM.pdf Graphic file (type pdf)
+<use Slide_principle_LFDM.pdf>
+Package pdftex.def Info: Slide_principle_LFDM.pdf  used on input line 155.
+(pdftex.def)             Requested size: 279.18642pt x 194.3256pt.
+ [24
+
+ <./Slide_principle_LFDM.pdf>]
+<Slide_sensi_LFDM.pdf, id=2480, 681.70027pt x 602.6386pt>
+File: Slide_sensi_LFDM.pdf Graphic file (type pdf)
+<use Slide_sensi_LFDM.pdf>
+Package pdftex.def Info: Slide_sensi_LFDM.pdf  used on input line 161.
+(pdftex.def)             Requested size: 219.81284pt x 194.31956pt.
+
+[25
+
  <./Slide_sensi_LFDM.pdf>]
-<Slide_comparison_litterature.pdf, id=1958, 752.80135pt x 532.3402pt>
+<Slide_comparison_litterature.pdf, id=2549, 752.80135pt x 532.3402pt>
 File: Slide_comparison_litterature.pdf Graphic file (type pdf)
 <use Slide_comparison_litterature.pdf>
 Package pdftex.def Info: Slide_comparison_litterature.pdf  used on input line 1
-38.
-(pdftex.def)             Requested size: 285.27489pt x 201.7309pt.
- [22
+66.
+(pdftex.def)             Requested size: 274.79892pt x 194.32286pt.
+ [26
 
  <./Slide_comparison_litterature.pdf>]
-<Slide_comparison_microwave.pdf, id=1985, 765.54071pt x 627.79036pt>
+<Slide_comparison_microwave.pdf, id=2584, 765.54071pt x 627.79036pt>
 File: Slide_comparison_microwave.pdf Graphic file (type pdf)
 <use Slide_comparison_microwave.pdf>
-Package pdftex.def Info: Slide_comparison_microwave.pdf  used on input line 143
+Package pdftex.def Info: Slide_comparison_microwave.pdf  used on input line 171
 .
-(pdftex.def)             Requested size: 245.9943pt x 201.73041pt.
- [23
+(pdftex.def)             Requested size: 236.95305pt x 194.31604pt.
+
+[27
 
  <./Slide_comparison_microwave.pdf>]
-<Slide_applications_wide_field.pdf, id=2034, 998.91786pt x 635.0697pt>
+<Slide_applications_wide_field.pdf, id=2641, 998.91786pt x 635.0697pt>
 File: Slide_applications_wide_field.pdf Graphic file (type pdf)
 <use Slide_applications_wide_field.pdf>
 Package pdftex.def Info: Slide_applications_wide_field.pdf  used on input line 
-148.
-(pdftex.def)             Requested size: 307.28355pt x 195.35786pt.
- [24
+177.
+(pdftex.def)             Requested size: 305.65263pt x 194.321pt.
+ [28
 
- <./Slide_applications_wide_field.pdf>] (./presentation.toc) [25
+ <./Slide_applications_wide_field.pdf>] (./presentation.toc) [29
 
 ]
-<Slide_CR_presentation.pdf, id=2111, 803.27998pt x 532.59879pt>
+<Slide_CR_presentation.pdf, id=2738, 803.27998pt x 520.07623pt>
 File: Slide_CR_presentation.pdf Graphic file (type pdf)
 <use Slide_CR_presentation.pdf>
-Package pdftex.def Info: Slide_CR_presentation.pdf  used on input line 157.
-(pdftex.def)             Requested size: 270.4518pt x 179.31767pt.
- [26
+Package pdftex.def Info: Slide_CR_presentation.pdf  used on input line 186.
+(pdftex.def)             Requested size: 282.48822pt x 182.8944pt.
+ [30
 
  <./Slide_CR_presentation.pdf>]
-<Slide_CR_VH.pdf, id=2153, 893.01329pt x 589.0588pt>
+<Slide_CR_VH.pdf, id=2787, 893.01329pt x 589.0588pt>
 File: Slide_CR_VH.pdf Graphic file (type pdf)
 <use Slide_CR_VH.pdf>
-Package pdftex.def Info: Slide_CR_VH.pdf  used on input line 162.
-(pdftex.def)             Requested size: 305.82796pt x 201.73344pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 162
+Package pdftex.def Info: Slide_CR_VH.pdf  used on input line 191.
+(pdftex.def)             Requested size: 294.58629pt x 194.3181pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 191
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 162
+LaTeX Font Info:    Trying to load font information for U+msb on input line 191
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 162.
+ut line 191.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-[27
+[31
 
  <./Slide_CR_VH.pdf>]
-<Slide_CR_adamas.pdf, id=2238, 1356.29697pt x 915.08765pt>
+<Slide_CR_adamas.pdf, id=2879, 1356.29697pt x 915.08765pt>
 File: Slide_CR_adamas.pdf Graphic file (type pdf)
 <use Slide_CR_adamas.pdf>
-Package pdftex.def Info: Slide_CR_adamas.pdf  used on input line 167.
-(pdftex.def)             Requested size: 298.98642pt x 201.72484pt.
- [28
-
- <./Slide_CR_adamas.pdf>]
-<Slide_fluct_intro.pdf, id=2291, 539.85037pt x 374.49545pt>
-File: Slide_fluct_intro.pdf Graphic file (type pdf)
-<use Slide_fluct_intro.pdf>
-Package pdftex.def Info: Slide_fluct_intro.pdf  used on input line 172.
-(pdftex.def)             Requested size: 258.49918pt x 179.32147pt.
- [29
-
- <./Slide_fluct_intro.pdf>]
-<Slide_T1_exp_stretch.pdf, id=2332, 915.44438pt x 497.52724pt>
-File: Slide_T1_exp_stretch.pdf Graphic file (type pdf)
-<use Slide_T1_exp_stretch.pdf>
-Package pdftex.def Info: Slide_T1_exp_stretch.pdf  used on input line 177.
-(pdftex.def)             Requested size: 307.2799pt x 167.00099pt.
- [30
-
- <./Slide_T1_exp_stretch.pdf>]
-<Slide_0B_theorie.pdf, id=2450, 1189.22026pt x 568.24564pt>
-File: Slide_0B_theorie.pdf Graphic file (type pdf)
-<use Slide_0B_theorie.pdf>
-Package pdftex.def Info: Slide_0B_theorie.pdf  used on input line 182.
-(pdftex.def)             Requested size: 307.28465pt x 146.82994pt.
- [31
-
- <./Slide_0B_theorie.pdf>]
-<Slide_T1_PL_1x1x1x1.pdf, id=2500, 716.58781pt x 364.84569pt>
-File: Slide_T1_PL_1x1x1x1.pdf Graphic file (type pdf)
-<use Slide_T1_PL_1x1x1x1.pdf>
-Package pdftex.def Info: Slide_T1_PL_1x1x1x1.pdf  used on input line 187.
-(pdftex.def)             Requested size: 307.29575pt x 156.45747pt.
+Package pdftex.def Info: Slide_CR_adamas.pdf  used on input line 196.
+(pdftex.def)             Requested size: 287.99716pt x 194.31042pt.
  [32
 
- <./Slide_T1_PL_1x1x1x1.pdf>]
-<Slide_T1_PL_100.pdf, id=2543, 725.49443pt x 451.69936pt>
-File: Slide_T1_PL_100.pdf Graphic file (type pdf)
-<use Slide_T1_PL_100.pdf>
-Package pdftex.def Info: Slide_T1_PL_100.pdf  used on input line 192.
-(pdftex.def)             Requested size: 307.29599pt x 191.32524pt.
+ <./Slide_CR_adamas.pdf>]
+<Slide_fluct_intro.pdf, id=2936, 539.85037pt x 374.49545pt>
+File: Slide_fluct_intro.pdf Graphic file (type pdf)
+<use Slide_fluct_intro.pdf>
+Package pdftex.def Info: Slide_fluct_intro.pdf  used on input line 201.
+(pdftex.def)             Requested size: 263.64758pt x 182.89293pt.
  [33
 
- <./Slide_T1_PL_100.pdf>]
-<slide_champs_transverse.pdf, id=2583, 784.60799pt x 570.42064pt>
-File: slide_champs_transverse.pdf Graphic file (type pdf)
-<use slide_champs_transverse.pdf>
-Package pdftex.def Info: slide_champs_transverse.pdf  used on input line 197.
-(pdftex.def)             Requested size: 277.47826pt x 201.73044pt.
+ <./Slide_fluct_intro.pdf>]
+<Slide_T1_exp_stretch.pdf, id=2983, 915.44438pt x 497.52724pt>
+File: Slide_T1_exp_stretch.pdf Graphic file (type pdf)
+<use Slide_T1_exp_stretch.pdf>
+Package pdftex.def Info: Slide_T1_exp_stretch.pdf  used on input line 206.
+(pdftex.def)             Requested size: 307.2799pt x 167.00099pt.
  [34
 
- <./slide_champs_transverse.pdf>]
-<shema_summary_exp.pdf, id=2646, 861.48909pt x 772.97456pt>
-File: shema_summary_exp.pdf Graphic file (type pdf)
-<use shema_summary_exp.pdf>
-Package pdftex.def Info: shema_summary_exp.pdf  used on input line 202.
-(pdftex.def)             Requested size: 224.82318pt x 201.7235pt.
+ <./Slide_T1_exp_stretch.pdf>]
+<Slide_0B_theorie.pdf, id=3106, 1189.22026pt x 568.24564pt>
+File: Slide_0B_theorie.pdf Graphic file (type pdf)
+<use Slide_0B_theorie.pdf>
+Package pdftex.def Info: Slide_0B_theorie.pdf  used on input line 211.
+(pdftex.def)             Requested size: 307.28465pt x 146.82994pt.
  [35
 
- <./shema_summary_exp.pdf>]
-<Slide_angular_sensitivity.pdf, id=2704, 848.04077pt x 533.55942pt>
-File: Slide_angular_sensitivity.pdf Graphic file (type pdf)
-<use Slide_angular_sensitivity.pdf>
-Package pdftex.def Info: Slide_angular_sensitivity.pdf  used on input line 207.
-
-(pdftex.def)             Requested size: 307.28722pt x 193.33502pt.
+ <./Slide_0B_theorie.pdf>]
+<Slide_T1_PL_1x1x1x1.pdf, id=3160, 716.58781pt x 364.84569pt>
+File: Slide_T1_PL_1x1x1x1.pdf Graphic file (type pdf)
+<use Slide_T1_PL_1x1x1x1.pdf>
+Package pdftex.def Info: Slide_T1_PL_1x1x1x1.pdf  used on input line 216.
+(pdftex.def)             Requested size: 307.29575pt x 156.45747pt.
  [36
 
- <./Slide_angular_sensitivity.pdf>] [37
+ <./Slide_T1_PL_1x1x1x1.pdf>]
+<Slide_T1_PL_100.pdf, id=3208, 725.49443pt x 451.69936pt>
+File: Slide_T1_PL_100.pdf Graphic file (type pdf)
+<use Slide_T1_PL_100.pdf>
+Package pdftex.def Info: Slide_T1_PL_100.pdf  used on input line 221.
+(pdftex.def)             Requested size: 307.29599pt x 191.32524pt.
+ [37
 
-] [38
+ <./Slide_T1_PL_100.pdf>]
+<slide_champs_transverse.pdf, id=3254, 784.60799pt x 570.42064pt>
+File: slide_champs_transverse.pdf Graphic file (type pdf)
+<use slide_champs_transverse.pdf>
+Package pdftex.def Info: slide_champs_transverse.pdf  used on input line 226.
+(pdftex.def)             Requested size: 267.28996pt x 194.32341pt.
+ [38
+
+ <./slide_champs_transverse.pdf>]
+<shema_summary_exp.pdf, id=3321, 861.48909pt x 772.97456pt>
+File: shema_summary_exp.pdf Graphic file (type pdf)
+<use shema_summary_exp.pdf>
+Package pdftex.def Info: shema_summary_exp.pdf  used on input line 231.
+(pdftex.def)             Requested size: 216.56796pt x 194.31648pt.
+ [39
+
+ <./shema_summary_exp.pdf>]
+<Slide_angular_sensitivity.pdf, id=3385, 848.04077pt x 533.55942pt>
+File: Slide_angular_sensitivity.pdf Graphic file (type pdf)
+<use Slide_angular_sensitivity.pdf>
+Package pdftex.def Info: Slide_angular_sensitivity.pdf  used on input line 236.
+
+(pdftex.def)             Requested size: 307.28722pt x 193.33502pt.
+ [40
+
+ <./Slide_angular_sensitivity.pdf>] [41
+
+] [42
 
 ]
 \tf@nav=\write8
@@ -1275,31 +1309,32 @@ Package pdftex.def Info: Slide_angular_sensitivity.pdf  used on input line 207.
 \tf@snm=\write10
 \openout10 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 246.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 246.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 246.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 246.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: B9F67B4A233322EB79C2EA5198A7C7ED;290.
+(rerunfilecheck)             Checksum: 855D3AE9806B1DDC54143181809B74F0;862.
  ) 
 Here is how much of TeX's memory you used:
- 22773 strings out of 481239
- 446831 string characters out of 5920377
- 691113 words of memory out of 5000000
- 37445 multiletter control sequences out of 15000+600000
+ 22839 strings out of 481239
+ 448035 string characters out of 5920377
+ 692885 words of memory out of 5000000
+ 37498 multiletter control sequences out of 15000+600000
  538254 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,14n,80p,806b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,19n,80p,806b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentation.pdf (38 pages, 9892949 bytes).
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on presentation.pdf (42 pages, 10901219 bytes).
 PDF statistics:
- 3016 PDF objects out of 3580 (max. 8388607)
- 2415 compressed objects within 25 object streams
- 81 named destinations out of 1000 (max. 500000)
- 225 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3717 PDF objects out of 4296 (max. 8388607)
+ 3032 compressed objects within 31 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 309 words of extra memory for PDF output out of 10000 (max. 10000000)
 

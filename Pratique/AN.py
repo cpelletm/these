@@ -78,6 +78,4 @@ def shot_noise_limit(lbda=700e-9,P=0.8e-6):
 	pass
 
 
-nu=2.87e9
-E=h*nu
-print(E/eV)
+

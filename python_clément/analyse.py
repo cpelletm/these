@@ -657,8 +657,9 @@ class NVHamiltonian(): #x,y and z axis are taken as (100) axis
 			self.Sy=np.array([[0,-1j,1j],[1j,0,0],[-1j,0,0]])*1/np.sqrt(2)
 			self.Sx=np.array([[0,1,1],[1,0,0],[1,0,0]])*1/np.sqrt(2)
 			self.Sz2=np.array([[0,0,0],[0,1,0],[0,0,1]]) # Pour éviter une multilplcation matricielle
-			self.H_E_transverse_real=np.array([[0,0,0],[0,0,1],[0,1,0]])
-			self.H_E_transverse_imag=np.array([[0,0,0],[0,0,1],[0,1,0]])
+			self.H_E_transverse=np.array([[0,0,1],[0,0,0],[1,0,0]])
+			# self.H_E_transverse_real=np.array([[0,0,0],[0,0,1],[0,1,0]])
+			# self.H_E_transverse_imag=np.array([[0,0,0],[0,0,1],[0,1,0]])
 		if not isinstance(B,magneticField):
 			B=magneticField(x=B[0],y=B[1],z=B[2])
 		if c==5:
