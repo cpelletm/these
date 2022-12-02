@@ -126,12 +126,12 @@ plt.locator_params(axis='y', nbins=5)
 	
 
 plot_PL(0)
-plot_PL(5,beta=1e-5)
-plot_PL(10,beta=1e-5)
-plot_PL(20,beta=1e-5)
-plot_PL(30,beta=1e-5)
-plot_PL(40,beta=1e-5)
-plot_PL(50,beta=1e-5)
+# plot_PL(5,beta=1e-5)
+# plot_PL(10,beta=1e-5)
+# plot_PL(20,beta=1e-5)
+# plot_PL(30,beta=1e-5)
+# plot_PL(40,beta=1e-5)
+plot_PL(45,beta=1e-5)
 
 # plot_ODMR_contrast(beta=0.5,Omega12=10,c=1)
 # plot_ODMR_contrast(beta=0.5,Omega12=10,c=5,label=r'NV $\parallel$ [111]',ls='-')
