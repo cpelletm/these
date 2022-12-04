@@ -25,12 +25,34 @@ application to magnetometry}
 \usecolortheme{seahorse}
 \setcounter{tocdepth}{1}
 
+%\beamertemplatenavigationsymbolsempty
+%\setbeamerfont{page number in head/foot}{size=\large}
+%\setbeamertemplate{footline}[frame number]
+
+\expandafter\def\expandafter\insertshorttitle\expandafter{%
+  \insertshorttitle\hfill%
+  \insertframenumber\,}
+
 \begin{document}
+%\begin{frame}
+%\maketitle
+%\begin{center}
+%\includegraphics[width=\textwidth,height=0.5\textheight,keepaspectratio]{logos}
+%\end{center}
+%\end{frame}
+
 \begin{frame}
-\maketitle
-\begin{center}
-\includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{logos}
-\end{center}
+\centering
+\begin{tcolorbox}[colback=blue!20!white]
+\centering
+\Large
+Cross-relaxation in dense ensembles of NV centers and
+application to magnetometry
+\end{tcolorbox}
+\bigskip
+Clément Pellet-Mary PhD Defense
+\bigskip
+\includegraphics[width=\textwidth,height=0.5\textheight,keepaspectratio]{logos}
 \end{frame}
 
 \begin{frame}{Context of my PhD}
@@ -141,7 +163,7 @@ application to magnetometry}
 %\end{frame}
 
 
-\section{NV centers and diamonds in practice}
+\section{NV center spin properties}
 \subsection{Diamond properties}
 \begin{frame}{Outline}
 \tableofcontents[currentsection]
@@ -300,6 +322,11 @@ application to magnetometry}
 \subsection{Characterization}
 \begin{frame}{Sensitivity of LFDM}
 \centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_sensi_LFDM-1}
+\end{frame}
+
+\begin{frame}{Sensitivity of LFDM}
+\centering
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_sensi_LFDM}
 \end{frame}
 
@@ -345,19 +372,16 @@ application to magnetometry}
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_applications_wide_field_f-3}
 \end{frame}
 
-\subsection{Applications}
 \begin{frame}{Application: wide-field magnetometry}
 \centering
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_applications_wide_field_f-2}
 \end{frame}
 
-\subsection{Applications}
 \begin{frame}{Application: wide-field magnetometry}
 \centering
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_applications_wide_field_f-1}
 \end{frame}
 
-\subsection{Applications}
 \begin{frame}{Application: wide-field magnetometry}
 \centering
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_applications_wide_field_f}
@@ -368,64 +392,234 @@ application to magnetometry}
 \begin{frame}{Outline}
 \tableofcontents[currentsection]
 \end{frame}
+
 \begin{frame}{Principle of cross-relaxation with NV centers}
 \centering
-\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_CR_presentation}
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_CR_presentation_f-5}
+\end{frame}
+
+\begin{frame}{Principle of cross-relaxation with NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_CR_presentation_f-4}
+\end{frame}
+
+\begin{frame}{Principle of cross-relaxation with NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_CR_presentation_f-3}
+\end{frame}
+
+\begin{frame}{Principle of cross-relaxation with NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_CR_presentation_f-2}
+\end{frame}
+
+\begin{frame}{Principle of cross-relaxation with NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_CR_presentation_f-1}
+\end{frame}
+
+\begin{frame}{Principle of cross-relaxation with NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_CR_presentation_f}
 \end{frame}
 
 \begin{frame}{Example: Cross-relaxation between NV centers and VH$^-$}
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_VH}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_VH_0}
+\end{frame}
+
+\begin{frame}{Example: Cross-relaxation between NV centers and VH$^-$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_VH_1}
+\end{frame}
+
+\begin{frame}{Example: Cross-relaxation between NV centers and VH$^-$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_VH_2}
+\end{frame}
+
+\begin{frame}{Example: Cross-relaxation between NV centers and VH$^-$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_VH_3}
+\end{frame}
+
+\begin{frame}{Example: Cross-relaxation between NV centers and VH$^-$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_VH_4}
 \end{frame}
 
 \begin{frame}{Cross-relaxation between NV centers and NV centers}
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_adamas}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_adamas_f-3}
+\end{frame}
+
+\begin{frame}{Cross-relaxation between NV centers and NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_adamas_f-2}
+\end{frame}
+
+\begin{frame}{Cross-relaxation between NV centers and NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_adamas_f-1}
+\end{frame}
+
+\begin{frame}{Cross-relaxation between NV centers and NV centers}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_CR_adamas_f}
 \end{frame}
 
 \subsection{The fluctuator model}
 \begin{frame}{Presentation of the fluctuator model}
 \centering
-\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_fluct_intro}
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_fluct_intro_f-4}
+\end{frame}
+
+\begin{frame}{Presentation of the fluctuator model}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_fluct_intro_f-3}
+\end{frame}
+
+\begin{frame}{Presentation of the fluctuator model}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_fluct_intro_f-2}
+\end{frame}
+
+\begin{frame}{Presentation of the fluctuator model}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_fluct_intro_f-1}
+\end{frame}
+
+\begin{frame}{Presentation of the fluctuator model}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Slide_fluct_intro_f}
 \end{frame}
 
 \begin{frame}{Stretched exponential decay profile}
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_exp_stretch}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_exp_stretch_f-1}
+\end{frame}
+
+\begin{frame}{Stretched exponential decay profile}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_exp_stretch_f}
 \end{frame}
 
 \subsection{Low field depolarization mechanisms}
-\begin{frame}{Zero field depolarization sources (theory)}
+\begin{frame}{Zero field depolarization mechanisms (theory)}
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_0B_theorie}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_0B_theorie_f-5}
 \end{frame}
 
-\begin{frame}{Summary of the experimental observations}
+\begin{frame}{Zero field depolarization mechanisms (theory)}
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{shema_summary_exp}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_0B_theorie_f-4}
 \end{frame}
 
-\begin{frame}{Angular sensitivity of LFDM}
+\begin{frame}{Zero field depolarization mechanisms (theory)}
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_angular_sensitivity}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_0B_theorie_f-3}
 \end{frame}
+
+\begin{frame}{Zero field depolarization mechanisms (theory)}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_0B_theorie_f-2}
+\end{frame}
+
+\begin{frame}{Zero field depolarization mechanisms (theory)}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_0B_theorie_f-1}
+\end{frame}
+
+\begin{frame}{Zero field depolarization mechanisms (theory)}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_0B_theorie_f}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B$ in arbitrary direction}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_1x1x1x1_f-5}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B$ in arbitrary direction}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_1x1x1x1_f-4}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B$ in arbitrary direction}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_1x1x1x1_f-3}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B$ in arbitrary direction}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_1x1x1x1_f-2}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B$ in arbitrary direction}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_1x1x1x1_f-1}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B$ in arbitrary direction}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_1x1x1x1_f}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B \parallel [100]$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_100_f-6}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B \parallel [100]$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_100_f-5}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B \parallel [100]$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_100_f-4}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B \parallel [100]$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_100_f-3}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B \parallel [100]$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_100_f-2}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B \parallel [100]$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_100_f-1}
+\end{frame}
+
+\begin{frame}{Experiment: $\vec B \parallel [100]$}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_T1_PL_100_f}
+\end{frame}
+
 \subsection{Conclusion}
 \begin{frame}{Conclusion}
-
 \begin{itemize}
 \item The use of NV center ensemble for magnetometry is currently limited by the interactions between the spin defects.
+\pause
 \bigskip
-\item Dipole-dipole interaction within dense ensemble of NV centers result in spin depolarization which is exacerbated at low magnetic field.
+\item Dipole-dipole interaction within dense ensemble of NV centers result in spin depolarization. This effect is stronger in zero-field.
+\pause
 \bigskip
-\item This depolarization can be used to perform microwave-free and orientation-free magnetometry at low magneitc field.
+\item This depolarization can be used to perform microwave-free and orientation-free magnetometry at low magnetic field.
+\pause
 \bigskip
-\item the LFDM sensitivity seem to be determined by the double-flips.
+\item The physics of low-field depolarization is complex and need to be further studied to improve the performances of LFDM.
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Acknowledgments}
-
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Remerciements}
 \end{frame}
 
 \section*{Bonus slides}
@@ -449,7 +643,6 @@ application to magnetometry}
 \centering
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_NV_limite_sensi}
 \end{frame}
-\end{document}
 
 \begin{frame}{NV center magnetometry: the interaction limit}
 \centering
@@ -465,3 +658,15 @@ application to magnetometry}
 \centering
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_comparison_microwave}
 \end{frame}
+
+\begin{frame}{Summary of the experimental observations}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{shema_summary_exp}
+\end{frame}
+
+\begin{frame}{Angular sensitivity of LFDM}
+\centering
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{Slide_angular_sensitivity}
+\end{frame}
+
+\end{document}
